@@ -117,6 +117,95 @@ class OverlayTests(unittest.TestCase):
         self.assertEqual(stats2["changed"], 0)
         self.assertEqual(again, result)
 
+    def test_partial_overlay_preserves_older_score_description_and_price(self):
+        catalog, overlay = sample()
+        store = catalog["records"][0]["stores"][0]
+        store.update(price_rub=1980, price_checked_at="2026-11-21", price_source_url=URL)
+        store["product_details"] = {
+            "checked_at": "2026-11-21", "source_url": URL,
+            "description_excerpt": "Detailed existing description",
+            "pairing_notes": "рыба, морепродукты",
+            "field_evidence": {"description_excerpt": "Old text source"},
+            "ratings": [
+                {"source": "Wine Spectator", "score": 87, "scale": 100,
+                 "reported_by": "WineStyle", "source_url": URL,
+                 "observed_on": "2026-11-21", "evidence": "87/100"},
+                {"source": "Wine Enthusiast", "score": 91, "scale": 100,
+                 "reported_by": "WineStyle", "source_url": URL,
+                 "observed_on": "2026-11-21", "evidence": "91/100"}
+            ]
+        }
+        catalog["retailer_snapshot"] = {
+            "retailer": "WineStyle", "source": "user_supplied_browser_capture",
+            "observed_on": "2026-11-21", "source_export_sha256": "b" * 64,
+            "mismatched_urls": []
+        }
+        details = overlay["updates"]["abc"]["product_details"]
+        details.pop("description_excerpt")
+        details.pop("field_evidence")
+        details["ratings"][0]["score"] = 94
+        overlay["updates"]["abc"]["price_rub"] = None
+        overlay["updates"]["abc"]["price_checked_at"] = None
+        overlay["updates"]["abc"]["price_source_url"] = None
+        overlay["statistics"]["prices_with_direct_evidence"] = 0
+        imported, stats = verify_overlay(catalog, overlay)
+        result = imported["records"][0]["stores"][0]
+        self.assertEqual(result["product_details"]["description_excerpt"],
+                         "Detailed existing description")
+        self.assertEqual(result["product_details"]["pairing_notes"], "рыба, морепродукты")
+        self.assertEqual(result["product_details"]["field_checked_at"]["description_excerpt"],
+                         "2026-11-21")
+        self.assertEqual(result["product_details"]["field_evidence"]["description_excerpt"],
+                         "Old text source")
+        self.assertEqual({r["source"]: r["score"] for r in result["product_details"]["ratings"]},
+                         {"Wine Spectator": 87, "Wine Enthusiast": 94})
+        self.assertEqual(result["price_checked_at"], "2026-11-21")
+        self.assertEqual((imported["retailer_snapshot"]["direct_price_observations"],
+                          imported["retailer_snapshot"]["retailer_reported_ratings"]), (1, 2))
+        self.assertEqual(stats["changed"], 1)
+
+    def test_rating_date_required_and_not_future(self):
+        for value in (None, "2099-01-01", "not-a-date"):
+            catalog, overlay = sample()
+            if value is None:
+                del overlay["updates"]["abc"]["product_details"]["ratings"][0]["observed_on"]
+            else:
+                overlay["updates"]["abc"]["product_details"]["ratings"][0]["observed_on"] = value
+            with self.subTest(date=value), self.assertRaises(ValueError):
+                verify_overlay(catalog, overlay)
+
+    def test_manifest_only_changes_persist_through_apply_cli(self):
+        import json
+        import sys
+        import tempfile
+        from pathlib import Path
+        from unittest.mock import patch
+        from import_enrichment_overlay import main
+        catalog, overlay = sample()
+        url = "https://spb.winestyle.ru/products/Missing-Vintage-2021.html"
+        catalog["records"].append({
+            "id": "skipped", "title": "Missing Vintage", "year": 2021,
+            "stores": [{"url": url, "price_rub": None}]
+        })
+        overlay["updates"] = {}
+        overlay["skipped"] = [{"status": "identity_mismatch", "url": url}]
+        overlay["statistics"].update(
+            verified_exact_products=0, prices_with_direct_evidence=0,
+            rating_scores_published_by_retailer=0, mismatched_variant_count=1)
+        imported, stats = verify_overlay(catalog, overlay)
+        self.assertEqual(stats["changed"], 0)
+        self.assertTrue(stats["manifest_changed"])
+        self.assertIn(url, imported["retailer_snapshot"]["mismatched_urls"])
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "wines.json").write_text(json.dumps(catalog), encoding="utf-8")
+            (root / "overlay.json").write_text(json.dumps(overlay), encoding="utf-8")
+            with patch.object(sys, "argv", ["script", str(root / "overlay.json"),
+                                             "--apply", "--catalog", str(root / "wines.json")]):
+                main()
+            saved = json.loads((root / "wines.json").read_text(encoding="utf-8"))
+            self.assertIn(url, saved["retailer_snapshot"]["mismatched_urls"])
+
     def test_unverified_status_rejected(self):
         catalog, overlay = sample()
         overlay["updates"]["abc"]["enrichment_status"]["status"] = "unknown"
