@@ -74,6 +74,49 @@ class OverlayTests(unittest.TestCase):
         self.assertEqual(result["unchanged"], 1)
         self.assertEqual(once, again)
 
+    def test_partial_overlay_retains_all_other_wine_snapshots(self):
+        catalog, overlay = sample()
+        second_url = "https://spb.winestyle.ru/products/Other-Wine-2021.html"
+        catalog["records"].append({
+            "id": "other", "title": "Other Wine", "year": 2021,
+            "stores": [{
+                "url": second_url, "price_rub": 2150,
+                "price_checked_at": "2026-11-21",
+                "price_source_url": second_url, "regular_price_rub": None,
+                "enrichment_status": {"status": "verified", "checked_at": "2026-11-21",
+                                      "source_url": second_url},
+                "product_details": {
+                    "source_url": second_url, "checked_at": "2026-11-21",
+                    "producer": "Other", "grapes": "Мерло",
+                    "ratings": [{"source": "Wine Spectator", "score": 90, "scale": 100,
+                                 "reported_by": "WineStyle", "source_url": second_url,
+                                 "observed_on": "2026-11-21", "evidence": "Wine Spectator 90/100"}]
+                }
+            }]
+        })
+        catalog["retailer_snapshot"] = {
+            "retailer": "WineStyle", "source": "user_supplied_browser_capture",
+            "source_export_sha256": "b" * 64, "observed_on": "2026-11-21",
+            "mismatched_urls": [], "matched_exact_products": 1,
+            "collected_target_urls": 1, "mismatched_variants": 0,
+            "direct_price_observations": 1, "retailer_reported_ratings": 1,
+            "regular_prices_confirmed": 0
+        }
+        result, stats = verify_overlay(catalog, overlay)
+        snapshot = result["retailer_snapshot"]
+        self.assertEqual((snapshot["matched_exact_products"],
+                          snapshot["direct_price_observations"],
+                          snapshot["retailer_reported_ratings"]), (2, 2, 2))
+        self.assertEqual(snapshot["source_export_sha256"], "b" * 64)
+        self.assertEqual(snapshot["observed_on"], "2026-11-21")
+        self.assertEqual(snapshot["latest_observed_on"], DATE)
+        self.assertEqual(snapshot["additional_capture_sources"][0]["sha256"], "a" * 64)
+        self.assertEqual(result["records"][1], catalog["records"][1])
+        self.assertEqual(stats["changed"], 1)
+        again, stats2 = verify_overlay(result, overlay)
+        self.assertEqual(stats2["changed"], 0)
+        self.assertEqual(again, result)
+
     def test_unverified_status_rejected(self):
         catalog, overlay = sample()
         overlay["updates"]["abc"]["enrichment_status"]["status"] = "unknown"
