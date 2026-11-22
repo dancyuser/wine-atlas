@@ -75,6 +75,24 @@ class OverlayTests(unittest.TestCase):
         self.assertEqual(result["unchanged"], 1)
         self.assertEqual(once, again)
 
+    def test_same_overlay_without_ratings_is_repeatable(self):
+        for variant in ("missing", "null"):
+            with self.subTest(variant=variant):
+                catalog, overlay = sample()
+                details = overlay["updates"]["abc"]["product_details"]
+                if variant == "missing":
+                    details.pop("ratings")
+                else:
+                    details["ratings"] = None
+                overlay["statistics"]["rating_scores_published_by_retailer"] = 0
+                first, first_stats = verify_overlay(catalog, overlay)
+                self.assertEqual(first_stats["changed"], 1)
+                self.assertEqual(first["records"][0]["stores"][0]["product_details"]["ratings"], [])
+                second, second_stats = verify_overlay(first, overlay)
+                self.assertEqual(second_stats["changed"], 0)
+                self.assertEqual(second_stats["unchanged"], 1)
+                self.assertEqual(second, first)
+
     def test_partial_overlay_retains_all_other_wine_snapshots(self):
         catalog, overlay = sample()
         second_url = "https://spb.winestyle.ru/products/Other-Wine-2021.html"
