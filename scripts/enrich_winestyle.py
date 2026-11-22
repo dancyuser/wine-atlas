@@ -24,6 +24,7 @@ import urllib.robotparser
 from urllib.parse import unquote, urlsplit, urljoin
 from winestyle_ratings import extract_ratings, is_recommendation
 from retailer_manifest import reconcile_manifest
+from import_enrichment_overlay import validate_product_identity
 
 ROOT = Path(__file__).resolve().parents[1]
 AGENT = 'PersonalWineAtlasCatalog/1.0 (respectful metadata fetch)'
@@ -321,6 +322,9 @@ def apply_result(record, store, details, current, regular, overrides):
         raise ValueError('previous_product_details_url_mismatch')
     if url_key(details['source_url']) != url_key(store['url']):
         raise ValueError('incoming_product_details_url_mismatch')
+    # A parsed HTML page and a reviewed overlay must enforce the same product,
+    # cuvee, vintage and bottle-variant identity contract before mutation.
+    validate_product_identity(record, store, details)
     old_date = previous.get('checked_at')
     if old_date and old_date > details['checked_at']:
         raise ValueError('older_observation_would_replace_newer_snapshot')
