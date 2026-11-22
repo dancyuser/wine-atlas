@@ -373,6 +373,58 @@ class OfflineWorkflowTests(unittest.TestCase):
             self.assertEqual(manifest['observed_on'], DATE)
             self.assertEqual(len(manifest['source_export_sha256']), 64)
 
+    def test_older_separate_html_does_not_relabel_existing_capture_sha(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder)
+            url2 = URL.replace('2023', '2022')
+            old = copy.deepcopy(RECORD)
+            old_store = old['stores'][0]
+            old_store.update(
+                product_details={'source_url': URL, 'checked_at': DATE,
+                                 'full_name': 'Peter Zemmer Chardonnay Alto Adige DOC 2023',
+                                 'producer': 'Peter Zemmer', 'ratings': []},
+                enrichment_status={'status': 'verified', 'source_url': URL,
+                                   'checked_at': DATE}
+            )
+            rec2 = copy.deepcopy(RECORD)
+            rec2.update(id='another-wine', year=2022)
+            rec2['stores'][0]['url'] = url2
+            catalog = path/'catalog.json'
+            report = path/'report.json'
+            access = path/'access.json'
+            parser.atomic_json(catalog, {
+                'records': [old, rec2],
+                'retailer_snapshot': {
+                    'retailer': 'WineStyle', 'source': 'user_supplied_browser_capture',
+                    'source_export_sha256': 'a'*64, 'observed_on': DATE,
+                    'mismatched_urls': []
+                }
+            })
+            product2 = product()
+            product2['url'] = url2
+            product2['name'] = product2['name'].replace('2023', '2022')
+            body = ('<html><link rel="canonical" href="' + url2 +
+                    '"><main><script type="application/ld+json">' +
+                    json.dumps(product2) + '</script></main></html>')
+            (path/'older.html').write_text(body, encoding='utf-8')
+            parser.atomic_json(path/'manifest.json', [{
+                'url': url2, 'file': 'older.html', 'checked_at': '2026-11-21'
+            }])
+            with patch.object(parser, 'fetch', side_effect=AssertionError('no network')):
+                with patch('sys.stdout', new_callable=io.StringIO):
+                    status = parser.main([
+                        '--catalog', str(catalog), '--report', str(report),
+                        '--access-state', str(access), '--input-dir', str(path)
+                    ])
+            self.assertEqual(status, 0)
+            snapshot = json.loads(catalog.read_text(encoding='utf-8'))['retailer_snapshot']
+            self.assertEqual(snapshot['observed_on'], DATE)
+            self.assertEqual(snapshot['source_export_sha256'], 'a'*64)
+            self.assertEqual(snapshot['earliest_observed_on'], '2026-11-21')
+            self.assertEqual(snapshot['latest_observed_on'], DATE)
+            self.assertEqual(snapshot['additional_capture_sources'][0]['observed_on'],
+                             '2026-11-21')
+
     def test_two_saved_pages_import_without_manifest_shadowing(self):
         with tempfile.TemporaryDirectory() as folder:
             path = Path(folder)
