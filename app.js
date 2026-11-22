@@ -102,7 +102,8 @@ function wineStyleMarkup(r){
    ' / '+safe(x.scale)+'</strong></li>').join('');
  const availability=d.availability_note==='Ожидаем поступление'?'Ожидаем поступление':
    d.availability_note==='Нет в наличии'?'Нет в наличии':
-   d.availability_spb===true?'Наличие подтверждалось в СПб на дату проверки':'';
+   d.availability_spb===true?'Наличие подтверждалось в СПб на дату проверки':
+   d.availability_spb===false?'Нет в наличии в СПб на дату проверки':'';
  if(!rows&&!scores&&!availability)return '';
  const link=cleanUrl(store.url);
  return '<details class="rating-details"><summary>Данные WineStyle · '+date(d.checked_at)+'</summary>'+
