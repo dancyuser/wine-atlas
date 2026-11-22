@@ -1644,7 +1644,7 @@
         "scale": 5,
         "scope": "all_vintages",
         "vintage": null,
-        "source_url": "https://www.vivino.com/en/wineries/romagnoli",
+        "source_url": "https://www.vivino.com/en/romagnoli-vizzo/w/6734027",
         "source_kind": "vivino_page",
         "observed_on": "2026-11-22",
         "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
@@ -1661,6 +1661,62 @@
         "source_kind": "vivino_page",
         "observed_on": "2026-11-22",
         "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      }
+    ],
+    "22c9be4678f5": [
+      {
+        "source": "Vivino",
+        "score": 4.2,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2018,
+        "ratings_count": 174,
+        "source_url": "https://www.vivino.com/en/zantho-beerenauslese/w/1171429?year=2018",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Проверено для точного года урожая."
+      }
+    ],
+    "e6beca8a8172": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": 375,
+        "source_url": "https://www.vivino.com/en/mar-de-frades-albarino-rias-baixas/w/12391329?year=2023",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Проверено для точного года урожая."
+      }
+    ],
+    "4341f4fa849e": [
+      {
+        "source": "Vivino",
+        "score": 4.1,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2019,
+        "ratings_count": 92,
+        "source_url": "https://www.vivino.com/en/explore?search_term=Quinta%20de%20La%20Rosa%20Late%20Bottled%20Vintage%20Port%202019",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Проверено для точного года урожая."
+      }
+    ],
+    "8fb6ff3a814f": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": 192,
+        "source_url": "https://www.vivino.com/en/undurraga-sibaris-gran-reserva-pinot-noir/w/1130492?year=2023",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Проверено для точного года урожая."
       }
     ]
   }
