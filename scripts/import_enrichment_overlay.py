@@ -162,15 +162,16 @@ def validate_product_identity(record, store, details):
     if not expected_tokens:
         expected_tokens = identity_tokens(record["title"])
     actual_tokens = identity_tokens(name)
-    require(expected_tokens and
-            len(expected_tokens.intersection(actual_tokens)) / len(expected_tokens) >= 0.9,
-            f"product_details name does not match original URL: {record['id']}")
-    # Numerically labelled cuvees are distinct products (e.g. "006" vs "007"),
-    # even if generic word coverage remains above the 90% threshold.
+    require(bool(expected_tokens),
+            f"no distinctive URL identity tokens: {record['id']}")
+    # Distinctive numeric cuvees ("006" vs "007") get an exact-match check,
+    # regardless of whether the generic-name overlap would also reject them.
     expected_numbers = {token for token in expected_tokens if token.isdigit()}
     actual_numbers = {token for token in actual_tokens if token.isdigit()}
     require(expected_numbers == actual_numbers,
             f"numeric cuvee designation mismatch: {record['id']}")
+    require(len(expected_tokens.intersection(actual_tokens)) / len(expected_tokens) >= 0.9,
+            f"product_details name does not match original URL: {record['id']}")
     # One-way slug coverage is not sufficient: "Riserva", "Reserve" and
     # other extra cuvee names can refer to a different wine from the same estate.
     extra = actual_tokens - expected_tokens - identity_tokens(record["title"])
