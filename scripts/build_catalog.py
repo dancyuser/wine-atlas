@@ -55,9 +55,15 @@ def maybe_grapes(text, category):
 
 def wine_title(url):
  slug=unquote(urlsplit(url).path).rstrip('/').split('/')[-1].removesuffix('.html')
- slug=re.sub(r'(?i)-id\d+$','',slug)
- slug=re.sub(r'(?i)_?0?75_\d+$','',slug)
- return re.sub(r'[-_]+',' ',slug).strip()
+ slug=re.sub(r'(?i)-id\\d+$','',slug)
+ # Product IDs, EANs and bottle sizes are not part of a wine's name.
+ slug=re.sub(r'(?i)(?:[-_]\\d{5,})+$','',slug)
+ slug=re.sub(r'(?i)(?:[-_](?:075|375|750|1500))$','',slug)
+ title=re.sub(r'[-_]+',' ',slug).strip()
+ title=re.sub(r'(?<!\\d)(19\\d{2}|20\\d{2})(?!\\d)(?=\\s|$)','',title).strip()
+ title=re.sub(r'\\s+',' ',title)
+ if title.islower():title=title.title()
+ return title
 
 def key(url):
  u=urlsplit(url);return (u.netloc.lower()+u.path.rstrip('/').lower()).removesuffix('.html')

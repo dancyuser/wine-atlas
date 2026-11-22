@@ -16,7 +16,7 @@
   "records": [
     {
       "id": "2f1b26d235e4",
-      "title": "Graham’s Late Bottled Vintage (LBV), gift tube, 2019",
+      "title": "Graham’s Late Bottled Vintage Port (LBV), gift tube",
       "year": 2019,
       "country": "Португалия",
       "grapes": [],
@@ -50,7 +50,7 @@
     },
     {
       "id": "4341f4fa849e",
-      "title": "Quinta De La Rosa LBV Port 2019",
+      "title": "Quinta de la Rosa Late Bottled Vintage Port",
       "year": 2019,
       "country": "Португалия",
       "grapes": [],
@@ -81,7 +81,7 @@
     },
     {
       "id": "c9f63273980c",
-      "title": "dow s late bottled vintage port 5608309002876 43233",
+      "title": "Dow’s Late Bottled Vintage Port (LBV)",
       "year": null,
       "country": "Португалия",
       "grapes": [],
@@ -112,7 +112,7 @@
     },
     {
       "id": "060e3c866e44",
-      "title": "kopke leyt bottled vintedzh porto 075",
+      "title": "Kopke Late Bottled Vintage Port (LBV)",
       "year": null,
       "country": "Португалия",
       "grapes": [],
@@ -137,13 +137,13 @@
           "reference_date": null
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null
     },
     {
       "id": "8433dbc66ae6",
-      "title": "kendall jackson vintners reserve chardonnay 1831018",
+      "title": "Kendall-Jackson Vintner’s Reserve Chardonnay",
       "year": null,
       "country": "США",
       "grapes": [
@@ -177,7 +177,7 @@
     },
     {
       "id": "22c9be4678f5",
-      "title": "Zantho Beerenauslese 2018",
+      "title": "Zantho Beerenauslese",
       "year": 2018,
       "country": "Австрия",
       "grapes": [],
@@ -209,7 +209,7 @@
     },
     {
       "id": "42b87c5124ce",
-      "title": "Girlan Chardonnay Sudtirol Alto Adige DOC 2023",
+      "title": "Girlan Chardonnay Südtirol Alto Adige DOC",
       "year": 2023,
       "country": "Италия",
       "grapes": [
@@ -243,7 +243,7 @@
     },
     {
       "id": "bdbf5d0327dc",
-      "title": "Tement Ehrenhausen Muschelkalk, 2017",
+      "title": "Tement Ehrenhausen Muschelkalk",
       "year": 2017,
       "country": "Австрия",
       "grapes": [],
@@ -275,7 +275,7 @@
     },
     {
       "id": "81d1c4e70b33",
-      "title": "Lapis Luna Chardonnay North Coast AVA 2022",
+      "title": "Lapis Luna Chardonnay North Coast AVA",
       "year": 2022,
       "country": "США",
       "grapes": [
@@ -309,7 +309,7 @@
     },
     {
       "id": "1fc33a9c0505",
-      "title": "Viña Cobos Felino Chardonnay, 2023",
+      "title": "Viña Cobos Felino Chardonnay",
       "year": 2023,
       "country": "Аргентина",
       "grapes": [
@@ -346,7 +346,7 @@
     },
     {
       "id": "2a8f07a9732b",
-      "title": "Kurtatsch Caliz Chardonnay Sudtirol Alto Adige DOC 2022",
+      "title": "Kurtatsch Caliz Chardonnay Südtirol Alto Adige DOC",
       "year": 2022,
       "country": "Италия",
       "grapes": [
@@ -380,7 +380,7 @@
     },
     {
       "id": "467b63015a0c",
-      "title": "Kleine Zalze Vineyard Selection Chardonnay 2024",
+      "title": "Kleine Zalze Vineyard Selection Chardonnay",
       "year": 2024,
       "country": "ЮАР",
       "grapes": [
@@ -414,7 +414,7 @@
     },
     {
       "id": "839e49e2c896",
-      "title": "Feudi del Pisciotto Alberta Ferretti Chardonnay Sicilia IGT 2014",
+      "title": "Feudi del Pisciotto Alberta Ferretti Chardonnay Sicilia IGT",
       "year": 2014,
       "country": "Италия",
       "grapes": [
@@ -448,7 +448,7 @@
     },
     {
       "id": "93f0823b0c90",
-      "title": "Peter Zemmer Chardonnay Alto Adige DOC, 2023",
+      "title": "Peter Zemmer Chardonnay Alto Adige DOC",
       "year": 2023,
       "country": "Италия",
       "grapes": [
@@ -485,7 +485,7 @@
     },
     {
       "id": "d8c0fc71ced9",
-      "title": "Wente Morning Fog Chardonnay 2023",
+      "title": "Wente Morning Fog Chardonnay",
       "year": 2023,
       "country": "США",
       "grapes": [
@@ -519,7 +519,7 @@
     },
     {
       "id": "cbc96de28176",
-      "title": "Wente Morning Fog Chardonnay 2016",
+      "title": "Wente Morning Fog Chardonnay",
       "year": 2016,
       "country": "США",
       "grapes": [
@@ -553,7 +553,7 @@
     },
     {
       "id": "c917fcb740fd",
-      "title": "Albert Bichot Origines Chardonnay Bourgogne AOC 2022",
+      "title": "Albert Bichot Origines Chardonnay Bourgogne AOC",
       "year": 2022,
       "country": "Франция",
       "grapes": [
@@ -587,7 +587,7 @@
     },
     {
       "id": "209d7a6d9fe0",
-      "title": "Loimer Gluegglich",
+      "title": "Loimer Glügglich",
       "year": null,
       "country": "Австрия",
       "grapes": [],
@@ -619,7 +619,7 @@
     },
     {
       "id": "91f9214b514c",
-      "title": "Huia Pinot Noir 2013",
+      "title": "Huia Pinot Noir",
       "year": 2013,
       "country": "Новая Зеландия",
       "grapes": [
@@ -653,7 +653,7 @@
     },
     {
       "id": "2d98b7c07c09",
-      "title": "Pyramid Scheme Pinot Noir, 2023",
+      "title": "Pyramid Scheme Pinot Noir",
       "year": 2023,
       "country": "США",
       "grapes": [
@@ -690,7 +690,7 @@
     },
     {
       "id": "079c918bef91",
-      "title": "Bodega Aniello 006 Riverside Estate Pinot Noir Rio Negro 2022",
+      "title": "Bodega Aniello 006 Riverside Estate Pinot Noir Rio Negro",
       "year": 2022,
       "country": "Аргентина",
       "grapes": [
@@ -724,7 +724,7 @@
     },
     {
       "id": "170ab9abed3f",
-      "title": "Ingrid Groiss Ried Hasenhaide Rosé, 2023",
+      "title": "Ingrid Groiss Ried Hasenhaide Rosé",
       "year": 2023,
       "country": "Австрия",
       "grapes": [],
@@ -756,7 +756,7 @@
     },
     {
       "id": "8fb6ff3a814f",
-      "title": "Undurraga Sibaris Pinot Noir Gran Reserva Leyda Valley DO 2023",
+      "title": "Undurraga Sibaris Pinot Noir Gran Reserva Leyda Valley DO",
       "year": 2023,
       "country": "Чили",
       "grapes": [
@@ -790,7 +790,7 @@
     },
     {
       "id": "2ae8e7fc916b",
-      "title": "Weingut J Neus Ingelheim am Rhein Muschelkalk Spatburgunder 2021",
+      "title": "J. Neus Muschelkalk Spätburgunder Ingelheim",
       "year": 2021,
       "country": "Германия",
       "grapes": [
@@ -824,7 +824,7 @@
     },
     {
       "id": "745a343dcdc1",
-      "title": "Luca Winery G Lot Pinot Noir Tupungato 2022",
+      "title": "Luca Winery G Lot Pinot Noir Tupungato",
       "year": 2022,
       "country": "Аргентина",
       "grapes": [
@@ -858,7 +858,7 @@
     },
     {
       "id": "1d4b1fae8d7a",
-      "title": "El Esteco Blanc de Noir 2023",
+      "title": "El Esteco Blanc de Noir",
       "year": 2023,
       "country": "Аргентина",
       "grapes": [],
@@ -890,7 +890,7 @@
     },
     {
       "id": "d9a5af8ef749",
-      "title": "Amalaya Blanco 2024",
+      "title": "Amalaya Blanco",
       "year": 2024,
       "country": "Аргентина",
       "grapes": [],
@@ -922,7 +922,7 @@
     },
     {
       "id": "aa6da0a65a5d",
-      "title": "Bestheim Riesling Grand Cru Schlossberg, 2021",
+      "title": "Bestheim Riesling Grand Cru Schlossberg",
       "year": 2021,
       "country": "Франция",
       "grapes": [
@@ -958,7 +958,7 @@
     },
     {
       "id": "426bd971c45a",
-      "title": "d’Arenberg The Stump Jump White, 2021",
+      "title": "d’Arenberg The Stump Jump White",
       "year": 2021,
       "country": "Австралия",
       "grapes": [],
@@ -993,7 +993,7 @@
     },
     {
       "id": "3da3f3b14e7a",
-      "title": "Georg Breuer Estate Rudesheim 2018",
+      "title": "Georg Breuer Estate Rüdesheim",
       "year": 2018,
       "country": "Германия",
       "grapes": [],
@@ -1025,7 +1025,7 @@
     },
     {
       "id": "2d0e198f8485",
-      "title": "Nik Weis Urban Riesling 2024",
+      "title": "Nik Weis Urban Riesling",
       "year": 2024,
       "country": "Германия",
       "grapes": [
@@ -1059,7 +1059,7 @@
     },
     {
       "id": "62988f645654",
-      "title": "Tesch Unplugged Riesling 2024",
+      "title": "Tesch Unplugged Riesling",
       "year": 2024,
       "country": "Германия",
       "grapes": [
@@ -1093,7 +1093,7 @@
     },
     {
       "id": "19cfb8faf5be",
-      "title": "Frankland Estate Poison Hill Vineyard Riesling 2016",
+      "title": "Frankland Estate Poison Hill Vineyard Riesling",
       "year": 2016,
       "country": "Австралия",
       "grapes": [
@@ -1127,7 +1127,7 @@
     },
     {
       "id": "28bf2f843af7",
-      "title": "Vigna Senza Nome Moscato d Asti DOCG 2023 375",
+      "title": "Braida Vigna Senza Nome Moscato d’Asti DOCG",
       "year": 2023,
       "country": "Италия",
       "grapes": [
@@ -1155,13 +1155,13 @@
           "reference_date": null
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.375,
       "scores": [],
       "review_note": null
     },
     {
       "id": "e3e9c91e71bc",
-      "title": "Rotari Blanc de Blancs Extra Brut Trento DOC 2018",
+      "title": "Rotari Blanc de Blancs Extra Brut Trento DOC",
       "year": 2018,
       "country": "Италия",
       "grapes": [],
@@ -1193,7 +1193,7 @@
     },
     {
       "id": "5e980b14c4d5",
-      "title": "Canti Moscato D Asti DOCG 2019",
+      "title": "Canti Moscato d’Asti DOCG",
       "year": 2019,
       "country": "Италия",
       "grapes": [
@@ -1227,7 +1227,7 @@
     },
     {
       "id": "85f7014559dd",
-      "title": "Can Sumoi Ancestral Montonega 2023",
+      "title": "Can Sumoi Ancestral Montonega",
       "year": 2023,
       "country": "Испания",
       "grapes": [],
@@ -1259,7 +1259,7 @@
     },
     {
       "id": "ce214c07863d",
-      "title": "Vilarnau Brut Nature Reserva Cava DO 2021",
+      "title": "Vilarnau Brut Nature Reserva Cava DO",
       "year": 2021,
       "country": "Испания",
       "grapes": [],
@@ -1291,7 +1291,7 @@
     },
     {
       "id": "056c6f909a24",
-      "title": "Nino Franco Faive Rosé Brut Veneto, 2019",
+      "title": "Nino Franco Faive Rosé Brut Veneto",
       "year": 2019,
       "country": "Италия",
       "grapes": [],
@@ -1325,7 +1325,7 @@
     },
     {
       "id": "3684c27c6d62",
-      "title": "Bellenda San Fermo Conegliano Valdobbiadene DOCG Prosecco Superiore 2022 gift box",
+      "title": "Bellenda San Fermo Conegliano Valdobbiadene DOCG Prosecco Superiore gift box",
       "year": 2022,
       "country": "Италия",
       "grapes": [],
@@ -1357,7 +1357,7 @@
     },
     {
       "id": "5445709eae58",
-      "title": "Scarpa Tacco12 Moscato d Asti DOCG 2022",
+      "title": "Scarpa Tacco12 Moscato d’Asti DOCG",
       "year": 2022,
       "country": "Италия",
       "grapes": [
@@ -1391,7 +1391,7 @@
     },
     {
       "id": "801667d481d6",
-      "title": "Nino Franco Faive Rosé Brut Veneto, 2022",
+      "title": "Nino Franco Faive Rosé Brut Veneto",
       "year": 2022,
       "country": "Италия",
       "grapes": [],
@@ -1461,7 +1461,9 @@
       "title": "Montelliana Prosecco Treviso DOC Extra Dry",
       "year": null,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Глера"
+      ],
       "type": "Игристое",
       "pairings": [
         "Закуски",
@@ -1527,7 +1529,9 @@
       "title": "Pitars Prosecco DOC",
       "year": null,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Глера"
+      ],
       "type": "Игристое",
       "pairings": [
         "Закуски",
@@ -1556,7 +1560,7 @@
     },
     {
       "id": "e8609b5a3c65",
-      "title": "Dulong Cremant de Bordeaux AOP Brut",
+      "title": "Dulong Crémant de Bordeaux Brut AOP",
       "year": null,
       "country": "Франция",
       "grapes": [],
@@ -1588,7 +1592,7 @@
     },
     {
       "id": "7c836f833ee2",
-      "title": "Lucien Albrecht Brut Cremant d Alsace AOC",
+      "title": "Lucien Albrecht Crémant d’Alsace Brut AOC",
       "year": null,
       "country": "Франция",
       "grapes": [],
@@ -1620,7 +1624,7 @@
     },
     {
       "id": "caa3a12da960",
-      "title": "Romagnoli Vizzo Rosso Emilia IGT 2019",
+      "title": "Romagnoli Vizzo Rosso Emilia IGT",
       "year": 2019,
       "country": "Италия",
       "grapes": [],
@@ -1652,7 +1656,7 @@
     },
     {
       "id": "48e6958c78dc",
-      "title": "Jordan Black Magic Merlot 2021",
+      "title": "Jordan Black Magic Merlot",
       "year": 2021,
       "country": "ЮАР",
       "grapes": [
@@ -1686,7 +1690,7 @@
     },
     {
       "id": "9ddeb3cfb445",
-      "title": "Church Block Cabernet Shiraz Merlot 2011",
+      "title": "Church Block Cabernet Shiraz Merlot",
       "year": 2011,
       "country": "Австралия",
       "grapes": [
@@ -1721,7 +1725,7 @@
     },
     {
       "id": "b2276984217f",
-      "title": "Tenuta Poggio ai Mandorli Chianti Classico Gran Selezione DOCG 2019",
+      "title": "Tenuta Poggio ai Mandorli Chianti Classico Gran Selezione DOCG",
       "year": 2019,
       "country": "Италия",
       "grapes": [],
@@ -1753,7 +1757,7 @@
     },
     {
       "id": "9830fcbfa909",
-      "title": "Domaine Laffitte Rose Cotes de Gascogne IGP 2024",
+      "title": "Domaine Laffitte Rosé Côtes de Gascogne IGP",
       "year": 2024,
       "country": "Франция",
       "grapes": [],
@@ -1785,7 +1789,7 @@
     },
     {
       "id": "96d588edbbdb",
-      "title": "Kracher Spatlese Rose 2024",
+      "title": "Kracher Spatlese Rosé",
       "year": 2024,
       "country": "Австрия",
       "grapes": [],
@@ -1817,7 +1821,7 @@
     },
     {
       "id": "0d2ee38169c9",
-      "title": "Mare Magnum The Chocolate Tube Primitivo Puglia IGT 2023",
+      "title": "Mare Magnum The Chocolate Tube Primitivo Puglia IGT",
       "year": 2023,
       "country": "Италия",
       "grapes": [
@@ -1851,7 +1855,7 @@
     },
     {
       "id": "2f6a9b761e1f",
-      "title": "Montedidio San Domino Primitivo Puglia IGT 2021",
+      "title": "Montedidio San Domino Primitivo Puglia IGT",
       "year": 2021,
       "country": "Италия",
       "grapes": [
@@ -1885,7 +1889,7 @@
     },
     {
       "id": "d8aa36dd85fe",
-      "title": "Elena Fucci Verha Rosato Basilicata IGT 2023",
+      "title": "Elena Fucci Verha Rosato Basilicata IGT",
       "year": 2023,
       "country": "Италия",
       "grapes": [],
@@ -1917,7 +1921,7 @@
     },
     {
       "id": "4d35092a1505",
-      "title": "Castello di Querceto Chianti Classico Riserva DOCG 2012",
+      "title": "Castello di Querceto Chianti Classico Riserva DOCG",
       "year": 2012,
       "country": "Италия",
       "grapes": [],
@@ -1949,7 +1953,7 @@
     },
     {
       "id": "569268902614",
-      "title": "Nipozzano Chianti Rufina Riserva DOCG 2022",
+      "title": "Nipozzano Chianti Rufina Riserva DOCG",
       "year": 2022,
       "country": "Италия",
       "grapes": [],
@@ -1981,7 +1985,7 @@
     },
     {
       "id": "8a9950e9e3c4",
-      "title": "Capo di Stato Colli Trevigiani IGT 2013",
+      "title": "Capo di Stato Colli Trevigiani IGT",
       "year": 2013,
       "country": "Италия",
       "grapes": [],
@@ -2013,7 +2017,7 @@
     },
     {
       "id": "7c5d44c4353e",
-      "title": "Fattoria Le Pupille Morellino di Scansano Riserva DOCG 2021",
+      "title": "Fattoria Le Pupille Morellino di Scansano Riserva DOCG",
       "year": 2021,
       "country": "Италия",
       "grapes": [],
@@ -2045,7 +2049,7 @@
     },
     {
       "id": "6645f77efb94",
-      "title": "Chateau Ducluzeau Listrac Medoc AOC 2017",
+      "title": "Château Ducluzeau Listrac Medoc AOC",
       "year": 2017,
       "country": "Франция",
       "grapes": [],
@@ -2077,7 +2081,7 @@
     },
     {
       "id": "e65c60dd483b",
-      "title": "Chateau Marjosse Bordeaux AOC Rouge 2021",
+      "title": "Château Marjosse Bordeaux AOC Rouge",
       "year": 2021,
       "country": "Франция",
       "grapes": [],
@@ -2143,7 +2147,7 @@
     },
     {
       "id": "de91d5c1fa5e",
-      "title": "Long Barn Zinfandel 2024",
+      "title": "Long Barn Zinfandel",
       "year": 2024,
       "country": "США",
       "grapes": [
@@ -2177,7 +2181,7 @@
     },
     {
       "id": "7309e60757dd",
-      "title": "El Esteco Don David Malbec Reserve 2023",
+      "title": "El Esteco Don David Malbec Reserve",
       "year": 2023,
       "country": "Аргентина",
       "grapes": [
@@ -2211,7 +2215,7 @@
     },
     {
       "id": "e3190ea1eebc",
-      "title": "Mi Terruno Expresion Malbec 2022",
+      "title": "Mi Terruño Expresión Malbec",
       "year": 2022,
       "country": "Аргентина",
       "grapes": [
@@ -2245,7 +2249,7 @@
     },
     {
       "id": "9b6ffd01ee4a",
-      "title": "Vina Cobos Felino Malbec 2021",
+      "title": "Viña Cobos Felino Malbec",
       "year": 2021,
       "country": "Аргентина",
       "grapes": [
@@ -2279,7 +2283,7 @@
     },
     {
       "id": "9a7644231a69",
-      "title": "Clos de los Siete 2021",
+      "title": "Clos de los Siete",
       "year": 2021,
       "country": "Аргентина",
       "grapes": [],
@@ -2311,7 +2315,7 @@
     },
     {
       "id": "e3bc96e35d46",
-      "title": "La Posta Rose of Malbec Mendoza DO 2023",
+      "title": "La Posta Rosé of Malbec Mendoza DO",
       "year": 2023,
       "country": "Аргентина",
       "grapes": [
@@ -2345,7 +2349,7 @@
     },
     {
       "id": "87c72ad959cc",
-      "title": "Ramón Bilbao Crianza Rioja DOCa, 2021",
+      "title": "Ramón Bilbao Crianza Rioja DOCa",
       "year": 2021,
       "country": "Испания",
       "grapes": [],
@@ -2379,7 +2383,7 @@
     },
     {
       "id": "cd226588d1df",
-      "title": "Lavau EnvyFol GSM Pays d Oc IGP 2022",
+      "title": "Lavau EnvyFol GSM Pays d’Oc IGP",
       "year": 2022,
       "country": "Франция",
       "grapes": [],
@@ -2411,7 +2415,7 @@
     },
     {
       "id": "001eeb719213",
-      "title": "Crapula Gold 2022",
+      "title": "Crapula Gold",
       "year": 2022,
       "country": "Испания",
       "grapes": [],
@@ -2443,7 +2447,7 @@
     },
     {
       "id": "88a3bb7ae281",
-      "title": "Belguardo Rose Toscana IGT 2022",
+      "title": "Belguardo Rosé Toscana IGT",
       "year": 2022,
       "country": "Италия",
       "grapes": [],
@@ -2475,7 +2479,7 @@
     },
     {
       "id": "298ebca26e9c",
-      "title": "Fattoria Le Pupille Morellino di Scansano DOCG 2021",
+      "title": "Fattoria Le Pupille Morellino di Scansano DOCG",
       "year": 2021,
       "country": "Италия",
       "grapes": [],
@@ -2507,7 +2511,7 @@
     },
     {
       "id": "006f83a3b98d",
-      "title": "Santa Cristina Giardino Rose Toscana IGT 2024",
+      "title": "Santa Cristina Giardino Rosé Toscana IGT",
       "year": 2024,
       "country": "Италия",
       "grapes": [],
@@ -2539,7 +2543,7 @@
     },
     {
       "id": "15b856b072fd",
-      "title": "Torres Vina Esmeralda Rose Catalunya DO 2024",
+      "title": "Torres Viña Esmeralda Rosé Catalunya DO",
       "year": 2024,
       "country": "Испания",
       "grapes": [],
@@ -2571,7 +2575,7 @@
     },
     {
       "id": "9fb448b8f505",
-      "title": "Apollonio Mani del Sud Rosso Salice Salentino DOP 2021",
+      "title": "Apollonio Mani del Sud Rosso Salice Salentino DOP",
       "year": 2021,
       "country": "Италия",
       "grapes": [],
@@ -2603,7 +2607,7 @@
     },
     {
       "id": "5b8fb4a0202e",
-      "title": "Felline Cicala Rose Salento IGT 2018",
+      "title": "Felline Cicala Rosé Salento IGT",
       "year": 2018,
       "country": "Италия",
       "grapes": [],
@@ -2635,7 +2639,7 @@
     },
     {
       "id": "4d6ad3b07c95",
-      "title": "Zantho St Laurent 2021",
+      "title": "Zantho St Laurent",
       "year": 2021,
       "country": "Австрия",
       "grapes": [
@@ -2669,7 +2673,7 @@
     },
     {
       "id": "65df74bcd692",
-      "title": "d Arenberg d Arry s Original 2020",
+      "title": "d’Arenberg d’Arry’s Original",
       "year": 2020,
       "country": "Австралия",
       "grapes": [],
@@ -2701,7 +2705,7 @@
     },
     {
       "id": "55ad5827620c",
-      "title": "Protos Roble 2024",
+      "title": "Protos Roble",
       "year": 2024,
       "country": "Испания",
       "grapes": [],
@@ -2733,7 +2737,7 @@
     },
     {
       "id": "3e7d77f4d094",
-      "title": "Ramon Bilbao Reserva Rioja DOC 2018",
+      "title": "Ramón Bilbao Reserva Rioja DOC",
       "year": 2018,
       "country": "Испания",
       "grapes": [],
@@ -2765,7 +2769,7 @@
     },
     {
       "id": "160221740978",
-      "title": "Bodegas Ramon Bilbao Crianza Rioja DOC 2013 1500",
+      "title": "Bodegas Ramón Bilbao Crianza Rioja DOC",
       "year": 2013,
       "country": "Испания",
       "grapes": [],
@@ -2791,13 +2795,13 @@
           "reference_date": null
         }
       ],
-      "volume_l": null,
+      "volume_l": 1.5,
       "scores": [],
       "review_note": null
     },
     {
       "id": "19c9dff352b3",
-      "title": "La Bioca Sterma Nebbiolo d Alba DOC Superiore 2021",
+      "title": "La Bioca Sterma Nebbiolo d’Alba Superiore DOC",
       "year": 2021,
       "country": "Италия",
       "grapes": [
@@ -2831,7 +2835,7 @@
     },
     {
       "id": "c817a42207f3",
-      "title": "Enrico Serafino Pajena Barbera d Alba DOC 2021",
+      "title": "Enrico Serafino Pajena Barbera d’Alba DOC",
       "year": 2021,
       "country": "Италия",
       "grapes": [
@@ -2865,7 +2869,7 @@
     },
     {
       "id": "bab581b955b0",
-      "title": "Parajes del Valle Monastrell Ecologico Jumilla DOP 2022",
+      "title": "Parajes del Valle Monastrell Ecologico Jumilla DOP",
       "year": 2022,
       "country": "Испания",
       "grapes": [
@@ -2899,7 +2903,7 @@
     },
     {
       "id": "bb252388600c",
-      "title": "Tedeschi Capitel San Rocco Valpolicella Ripasso DOC Superiore 2015",
+      "title": "Tedeschi Capitel San Rocco Valpolicella Ripasso Superiore DOC",
       "year": 2015,
       "country": "Италия",
       "grapes": [],
@@ -2931,7 +2935,7 @@
     },
     {
       "id": "77b281dd280d",
-      "title": "Tenuta Sant Antonio Nanfre Valpolicella DOC 2023",
+      "title": "Tenuta Sant Antonio Nanfre Valpolicella DOC",
       "year": 2023,
       "country": "Италия",
       "grapes": [],
@@ -2963,7 +2967,7 @@
     },
     {
       "id": "eaa1207798b9",
-      "title": "Tedeschi Capitel San Rocco Valpolicella Ripasso DOC Superiore 2019",
+      "title": "Tedeschi Capitel San Rocco Valpolicella Ripasso Superiore DOC",
       "year": 2019,
       "country": "Италия",
       "grapes": [],
@@ -2995,7 +2999,7 @@
     },
     {
       "id": "87669b47495e",
-      "title": "Pieropan Ruberpan Valpolicella Superiore DOC 2021",
+      "title": "Pieropan Ruberpan Valpolicella Superiore DOC",
       "year": 2021,
       "country": "Италия",
       "grapes": [],
@@ -3027,7 +3031,7 @@
     },
     {
       "id": "a748bd657f0a",
-      "title": "Atzei Saragat Cannonau di Sardegna DOC 2021",
+      "title": "Atzei Saragat Cannonau di Sardegna DOC",
       "year": 2021,
       "country": "Италия",
       "grapes": [
@@ -3061,7 +3065,7 @@
     },
     {
       "id": "ee109cc95019",
-      "title": "Elias Mora Crianza 2020",
+      "title": "Elias Mora Crianza",
       "year": 2020,
       "country": "Испания",
       "grapes": [],
@@ -3093,7 +3097,7 @@
     },
     {
       "id": "d4d77be3bdca",
-      "title": "D Angelo Aglianico del Vulture DOC 2021",
+      "title": "D’Angelo Aglianico del Vulture DOC",
       "year": 2021,
       "country": "Италия",
       "grapes": [
@@ -3127,7 +3131,7 @@
     },
     {
       "id": "e552320d1248",
-      "title": "Antigua DOC 2024",
+      "title": "Antigua DOC",
       "year": 2024,
       "country": null,
       "grapes": [],
@@ -3159,7 +3163,7 @@
     },
     {
       "id": "2f06acc1cf43",
-      "title": "Hito Ribera Del Duero DO 2023",
+      "title": "Hito Ribera Del Duero DO",
       "year": 2023,
       "country": "Испания",
       "grapes": [],
@@ -3191,7 +3195,7 @@
     },
     {
       "id": "537d512cc39f",
-      "title": "Aixala I Alcait Pardelasses Priorat DOQ 2018",
+      "title": "Aixala I Alcait Pardelasses Priorat DOQ",
       "year": 2018,
       "country": "Испания",
       "grapes": [],
@@ -3219,7 +3223,7 @@
     },
     {
       "id": "f0c33d420f2f",
-      "title": "Marius Peyol Coteaux d Aix en Provence AOC 2024",
+      "title": "Marius Peyol Coteaux d’Aix en Provence AOC",
       "year": 2024,
       "country": "Франция",
       "grapes": [],
@@ -3247,7 +3251,7 @@
     },
     {
       "id": "4123b553c232",
-      "title": "Lapostolle Le Rose 2024",
+      "title": "Lapostolle Le Rosé",
       "year": 2024,
       "country": "Чили",
       "grapes": [],
@@ -3279,7 +3283,7 @@
     },
     {
       "id": "e5af8c73633f",
-      "title": "Miraval Rose Cotes de Provence AOC 2018 375",
+      "title": "Miraval Rosé Côtes de Provence AOC",
       "year": 2018,
       "country": "Франция",
       "grapes": [],
@@ -3305,13 +3309,13 @@
           "reference_date": null
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.375,
       "scores": [],
       "review_note": null
     },
     {
       "id": "5f82dc29ad72",
-      "title": "Muga Rosado Rioja DOC 2021",
+      "title": "Muga Rosado Rioja DOC",
       "year": 2021,
       "country": "Испания",
       "grapes": [],
@@ -3343,7 +3347,7 @@
     },
     {
       "id": "0269b462fa82",
-      "title": "Estandon Heritage Cotes de Provence AOP 2020",
+      "title": "Estandon Heritage Côtes de Provence AOP",
       "year": 2020,
       "country": "Франция",
       "grapes": [],
@@ -3371,7 +3375,7 @@
     },
     {
       "id": "c04e76e37fa1",
-      "title": "Muga Rosado Rioja DOC 2023",
+      "title": "Muga Rosado Rioja DOC",
       "year": 2023,
       "country": "Испания",
       "grapes": [],
@@ -3403,7 +3407,7 @@
     },
     {
       "id": "75ea3ee23df9",
-      "title": "Chateau La Tour de L Eveque Petale de Rose Cotes de Provence AOC 2020",
+      "title": "Château La Tour de L Eveque Petale de Rosé Côtes de Provence AOC",
       "year": 2020,
       "country": "Франция",
       "grapes": [],
@@ -3435,7 +3439,7 @@
     },
     {
       "id": "2b85a6978520",
-      "title": "Mezzacorona Pinot Grigio Trentino DOC 2022",
+      "title": "Mezzacorona Pinot Grigio Trentino DOC",
       "year": 2022,
       "country": "Италия",
       "grapes": [
@@ -3469,7 +3473,7 @@
     },
     {
       "id": "45a235043feb",
-      "title": "Domane Wachau Katzensprung Gruner Veltliner Federspiel 2023",
+      "title": "Domäne Wachau Katzensprung Grüner Veltliner Federspiel",
       "year": 2023,
       "country": "Австрия",
       "grapes": [
@@ -3503,7 +3507,7 @@
     },
     {
       "id": "060a331fa324",
-      "title": "Gaintza Txakolina 2023",
+      "title": "Gaintza Txakolina",
       "year": 2023,
       "country": "Испания",
       "grapes": [],
@@ -3535,7 +3539,7 @@
     },
     {
       "id": "80cb76314c74",
-      "title": "Ascevi Luwa Ronco dei Sassi Collio DOC 2021",
+      "title": "Ascevi Luwa Ronco dei Sassi Collio DOC",
       "year": 2021,
       "country": "Италия",
       "grapes": [],
@@ -3567,7 +3571,7 @@
     },
     {
       "id": "5740739d992b",
-      "title": "Recanati Yasmin White kosher mevushal 2018",
+      "title": "Recanati Yasmin White kosher mevushal",
       "year": 2018,
       "country": "Израиль",
       "grapes": [],
@@ -3599,7 +3603,7 @@
     },
     {
       "id": "f05b85f57f2c",
-      "title": "The Ned Sauvignon Blanc, 2024",
+      "title": "The Ned Sauvignon Blanc",
       "year": 2024,
       "country": "Новая Зеландия",
       "grapes": [
@@ -3635,7 +3639,7 @@
     },
     {
       "id": "d41d680aacec",
-      "title": "Fattoria Le Pupille Poggio Argentato IGT 2022",
+      "title": "Fattoria Le Pupille Poggio Argentato IGT",
       "year": 2022,
       "country": "Италия",
       "grapes": [],
@@ -3667,7 +3671,7 @@
     },
     {
       "id": "f32c8d6cae2b",
-      "title": "Protos Verdejo 2018",
+      "title": "Protos Verdejo",
       "year": 2018,
       "country": "Испания",
       "grapes": [
@@ -3701,7 +3705,7 @@
     },
     {
       "id": "f6c18006b2cc",
-      "title": "Chateau Pajzos T Tokaji Furmint 2022",
+      "title": "Château Pajzos T Tokaji Furmint",
       "year": 2022,
       "country": "Венгрия",
       "grapes": [
@@ -3735,7 +3739,7 @@
     },
     {
       "id": "4bdac639abe7",
-      "title": "Taboadella Villae Branco Dao DOC 2020",
+      "title": "Taboadella Villae Branco Dão DOC",
       "year": 2020,
       "country": "Португалия",
       "grapes": [],
@@ -3767,7 +3771,7 @@
     },
     {
       "id": "995b5447875b",
-      "title": "Azienda Agricola Ottella Lugana Ottella 2017",
+      "title": "Ottella Lugana DOC",
       "year": 2017,
       "country": "Италия",
       "grapes": [],
@@ -3799,7 +3803,7 @@
     },
     {
       "id": "ea7851a726ac",
-      "title": "Ottella Lugana DOC 2024 750",
+      "title": "Ottella Lugana DOC",
       "year": 2024,
       "country": "Италия",
       "grapes": [],
@@ -3825,13 +3829,13 @@
           "reference_date": null
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null
     },
     {
       "id": "321ec8a9b417",
-      "title": "Azienda Agricola Ottella Le Creete Lugana DOC 2024",
+      "title": "Azienda Agricola Ottella Le Creete Lugana DOC",
       "year": 2024,
       "country": "Италия",
       "grapes": [],
@@ -3863,7 +3867,7 @@
     },
     {
       "id": "b754161b525f",
-      "title": "I Frati Lugana DOC 2024",
+      "title": "I Frati Lugana DOC",
       "year": 2024,
       "country": "Италия",
       "grapes": [],
@@ -3895,7 +3899,7 @@
     },
     {
       "id": "5039c04e5d73",
-      "title": "Batasiolo Granee Gavi del Comune di Gavi DOCG 2023",
+      "title": "Batasiolo Granée Gavi del Comune di Gavi DOCG",
       "year": 2023,
       "country": "Италия",
       "grapes": [],
@@ -3927,7 +3931,7 @@
     },
     {
       "id": "47bef620896d",
-      "title": "Chanzy Les Fortunes Aligote Bourgogne AOC 2023",
+      "title": "Chanzy Les Fortunes Aligote Bourgogne AOC",
       "year": 2023,
       "country": "Франция",
       "grapes": [
@@ -3961,7 +3965,7 @@
     },
     {
       "id": "0f0246d18580",
-      "title": "Wohlmuth Gewurztraminer Sudsteiermark DAC 2021",
+      "title": "Wohlmuth Gewürztraminer Sudsteiermark DAC",
       "year": 2021,
       "country": "Австрия",
       "grapes": [
@@ -3995,7 +3999,7 @@
     },
     {
       "id": "e6beca8a8172",
-      "title": "Mar de Frades Albarino Rias Baixas DO 2023",
+      "title": "Mar de Frades Albariño Rías Baixas DO",
       "year": 2023,
       "country": "Испания",
       "grapes": [
@@ -4029,7 +4033,7 @@
     },
     {
       "id": "cb6c474afa17",
-      "title": "A A Badenhorst Secateurs Rose Swartland WO 2022",
+      "title": "A.A. Badenhorst Secateurs Rosé Swartland WO",
       "year": 2022,
       "country": "ЮАР",
       "grapes": [],
@@ -4061,7 +4065,7 @@
     },
     {
       "id": "5b9b46b0b3e6",
-      "title": "Maturana Wines Naranjo Torontel Maule Valley DO 2024",
+      "title": "Maturana Wines Naranjo Torontel Maule Valley DO",
       "year": 2024,
       "country": "Чили",
       "grapes": [

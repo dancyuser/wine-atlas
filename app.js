@@ -60,8 +60,7 @@ function ratingsDetails(r,m){
 }
 function card(r){
  const m=metrics(r),s=r.stores[0]||{},url=cleanUrl(s.url);
- const grape=r.grapes.length?r.grapes.join(', '):'сорт не указан';
- const meta=[r.country||'страна не указана',grape,r.year?String(r.year):''].filter(Boolean).join(' · ');
+ const meta=[r.country||null,...(r.grapes||[]),r.year?String(r.year):null,r.volume_l?(r.volume_l<1?Math.round(r.volume_l*1000)+' мл':new Intl.NumberFormat('ru-RU').format(r.volume_l)+' л'):null].filter(Boolean).join(' · ');
  const pairs=(r.pairings||[]).length?'Подходит к: '+r.pairings.join(', '):'Сочетания не указаны';
  return '<article class="wine-card"><div class="card-head"><span class="type-tag"><i aria-hidden="true" class="type-dot '+typeDot(r.type)+'"></i>'+safe(r.type||'Вино')+'</span>'+favoriteButton(r.id)+'</div><h3 class="card-title">'+safe(r.title)+'</h3><p class="card-meta">'+safe(meta)+'</p>'+metricRow(m,r)+ratingsDetails(r,m)+'<p class="card-pairings">'+safe(pairs)+'</p><div class="card-bottom"><div class="price-block">'+priceBlock(r)+'</div>'+(url?'<a class="store-link" href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">Карточка вина ↗</a>':'')+'</div></article>';
 }
