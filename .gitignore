@@ -1,7 +1,0 @@
-# Local exports and AI-agent observations; only reviewed catalog changes enter PRs.
-source.txt
-agent-output/
-*.tmp
-__pycache__/
-*.py[cod]
-.venv/
