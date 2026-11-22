@@ -351,6 +351,71 @@ class OverlayTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "name does not match"):
             verify_overlay(catalog, overlay)
 
+    def test_reject_extra_riserva_cuvee_with_same_base_name_and_year(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["product_details"]["full_name"] = (
+            "Example Wine Riserva 2023"
+        )
+        with self.assertRaisesRegex(ValueError, "unexpected cuvee qualifiers"):
+            verify_overlay(catalog, overlay)
+
+    def test_reject_real_riserva_snapshot_for_non_riserva_wine(self):
+        import json
+        from pathlib import Path
+        catalog = json.loads(
+            (Path(__file__).resolve().parents[1] / "data" / "wines.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        by_id = {r["id"]: r for r in catalog["records"]}
+        normal = by_id["298ebca26e9c"]
+        riserva = by_id["7c5d44c4353e"]
+        target_store = normal["stores"][0]
+        wrong_details = riserva["stores"][0]["product_details"]
+        with self.assertRaisesRegex(ValueError, "unexpected cuvee qualifiers"):
+            validate_product_identity(normal, target_store, wrong_details)
+
+    def test_reject_different_bottle_volume_same_wine_and_vintage(self):
+        catalog, overlay = sample()
+        catalog["records"][0]["volume_l"] = 0.75
+        details = overlay["updates"]["abc"]["product_details"]
+        details["full_name"] = "Example Wine 2023 1.5 l"
+        details["volume_l"] = "1.5 л"
+        with self.assertRaisesRegex(ValueError, "volume mismatches"):
+            verify_overlay(catalog, overlay)
+
+    def test_reject_conflicting_volume_in_name_when_detail_is_missing(self):
+        catalog, overlay = sample()
+        catalog["records"][0]["volume_l"] = 0.75
+        details = overlay["updates"]["abc"]["product_details"]
+        details["full_name"] = "Example Wine 2023 1.5 l"
+        details.pop("volume_l", None)
+        with self.assertRaisesRegex(ValueError, "volume mismatches"):
+            verify_overlay(catalog, overlay)
+
+    def test_accept_confirmed_equivalent_ml_volume(self):
+        catalog, overlay = sample()
+        catalog["records"][0]["volume_l"] = 0.75
+        details = overlay["updates"]["abc"]["product_details"]
+        details["volume_l"] = "750 мл"
+        details["full_name"] = "Example Wine 2023 750 мл"
+        result, stats = verify_overlay(catalog, overlay)
+        self.assertEqual(stats["matched"], 1)
+        self.assertEqual(result["records"][0]["volume_l"], 0.75)
+
+    def test_reject_bottle_volume_change_from_previous_verified_snapshot(self):
+        catalog, overlay = sample()
+        existing = catalog["records"][0]["stores"][0]
+        existing["product_details"] = {
+            "source_url": URL, "checked_at": "2026-11-21",
+            "full_name": "Example Wine 2023",
+            "producer": "Example",
+            "volume_l": "0.75 л"
+        }
+        overlay["updates"]["abc"]["product_details"]["volume_l"] = "1.5 л"
+        with self.assertRaisesRegex(ValueError, "volume mismatches"):
+            verify_overlay(catalog, overlay)
+
     def test_embedded_product_identity_rejects_different_vintage_in_name(self):
         catalog, overlay = sample()
         overlay["updates"]["abc"]["product_details"]["full_name"] = "Example Wine 2024"
