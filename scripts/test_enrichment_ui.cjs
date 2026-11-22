@@ -55,9 +55,17 @@ assert(card.includes('Вино с ароматом цитрусов'));
 assert(card.includes('Wine Enthusiast'));
 assert(card.includes('Морепродукты'));
 sample.stores[0].product_details.availability_spb=false;
+sample.stores[0].product_details.field_checked_at={availability_spb:'2026-11-21'};
 const noStockCard=h.card(sample);
-assert(noStockCard.includes('Нет в наличии в СПб на дату проверки'),
-       'Explicit negative stock must be visible, not silently hidden');
+assert(noStockCard.includes('Нет в наличии в СПб'),
+       'Explicit negative stock must be visible');
+assert(noStockCard.includes('21.11.2026'),
+       'Retained availability must show its own observation date, not the newer snapshot date');
+sample.stores[0].product_details.availability_note='Ожидаем поступление';
+sample.stores[0].product_details.field_checked_at.availability_note='2026-11-20';
+const oldNoteCard=h.card(sample);
+assert(oldNoteCard.includes('20.11.2026'),
+       'Retained availability note must show its own observation date');
 
 assert(card.includes('3\u00a0590')||card.includes('3 590'));
 const curated={...sample,grapes:['Семильон'],pairings:['Сыры'],country:'Португалия'};
