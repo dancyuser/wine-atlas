@@ -14,6 +14,8 @@ import re
 import tempfile
 from pathlib import Path
 
+from retailer_manifest import reconcile_manifest
+
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "data" / "wines.json"
 PUBLISH_EXCLUDE = {
@@ -143,21 +145,34 @@ def verify_overlay(catalog, overlay):
             n_ratings == audit.get("rating_scores_published_by_retailer") and
             len(skipped_urls) == audit.get("mismatched_variant_count"),
             "overlay counts disagree with source audit")
-    if n_updated:
-        new["retailer_snapshot"] = {
-            "retailer": "WineStyle",
-            "source": "user_supplied_browser_capture",
-            "observed_on": source_date.isoformat(),
-            "source_export_sha256": source,
-            "collected_target_urls": audit.get("target_count"),
-            "matched_exact_products": len(overlay["updates"]),
-            "mismatched_variants": len(skipped_urls),
-            "mismatched_urls": skipped_urls,
-            "direct_price_observations": n_prices,
-            "retailer_reported_ratings": n_ratings,
-            "regular_prices_confirmed": audit.get("regular_prices_explicitly_present", 0),
-            "caveat": "Archived retailer display; not live stock or independent critic verification.",
-        }
+    # Overlay updates are partial. Recalculate statistics from all retained stores.
+    if n_updated or skipped_urls:
+        prior = copy.deepcopy(new.get("retailer_snapshot") or {})
+        if prior:
+            require(day(prior["observed_on"]) <= source_date,
+                    "overlay predates original retailer provenance")
+            if source != prior.get("source_export_sha256"):
+                additional = list(prior.get("additional_capture_sources") or [])
+                if not any(entry.get("sha256") == source for entry in additional):
+                    additional.append({
+                        "sha256": source,
+                        "observed_on": source_date.isoformat(),
+                        "submitted_matches": len(overlay["updates"]),
+                        "submitted_mismatches": len(skipped_urls)
+                    })
+                prior["additional_capture_sources"] = additional
+        else:
+            prior = {
+                "retailer": "WineStyle",
+                "source": "user_supplied_browser_capture",
+                "observed_on": source_date.isoformat(),
+                "source_export_sha256": source,
+                "caveat": "Archived retailer display; not live stock or independent critic verification.",
+            }
+        prior["mismatched_urls"] = list(dict.fromkeys(
+            [*(prior.get("mismatched_urls") or []), *skipped_urls]
+        ))
+        new["retailer_snapshot"] = reconcile_manifest(prior, new["records"])
     return new, {
         "catalog_records": len(records), "matched": len(overlay["updates"]),
         "changed": n_updated, "unchanged": n_unchanged,
