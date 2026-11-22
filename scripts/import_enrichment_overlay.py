@@ -9,6 +9,7 @@ import copy
 import datetime as dt
 import hashlib
 import json
+import math
 import os
 import re
 import tempfile
@@ -73,6 +74,8 @@ def validate_details_schema(details, product_day):
         require(value is None or (type(value) in (str, float, int)
                                   and not (isinstance(value, str) and not value.strip())),
                 f"published field {key} has invalid type")
+        if isinstance(value, (float, int)) and not isinstance(value, bool):
+            require(math.isfinite(value), f"published field {key} must be finite")
     require(details.get("ratings") is None or isinstance(details["ratings"], list),
             "ratings must be a list or null before normalization")
     availability = details.get("availability_spb")
@@ -109,6 +112,11 @@ def merge_details(previous, incoming):
         if key in meta or value is None or value == "" or value == []:
             continue
         old = combined.get(key)
+        incoming_day = day((incoming.get("field_checked_at") or {}).get(key, incoming["checked_at"]))
+        saved_date = dates.get(key, previous.get("checked_at"))
+        if key != "ratings" and old is not None and saved_date and day(saved_date) > incoming_day:
+            # A newer snapshot can still carry an older independently observed field.
+            continue
         if key == "ratings":
             by_source = {r["source"]: r for r in (old or [])
                          if isinstance(r, dict) and isinstance(r.get("source"), str)}
@@ -128,17 +136,22 @@ def merge_details(previous, incoming):
             sources[key] = "user_supplied_browser_capture"
         else:
             sources[key] = sources.get(key, "user_supplied_browser_capture")
-        dates[key] = (incoming.get("field_checked_at") or {}).get(key, incoming["checked_at"])
+        dates[key] = incoming_day.isoformat()
         new_evidence = (incoming.get("field_evidence") or {}).get(key)
         if new_evidence:
             evidence[key] = new_evidence
         elif old != combined.get(key):
             evidence.pop(key, None)
-    if incoming.get("availability_spb") is not None:
-        combined.pop("availability_note", None)
-        sources.pop("availability_note", None)
-        dates.pop("availability_note", None)
-        evidence.pop("availability_note", None)
+    if incoming.get("availability_spb") is not None and (
+        combined.get("availability_spb") == incoming["availability_spb"]
+    ):
+        newer_stock_day = day(dates.get("availability_spb", incoming["checked_at"]))
+        note_date = dates.get("availability_note", previous.get("checked_at"))
+        if not note_date or newer_stock_day >= day(note_date):
+            combined.pop("availability_note", None)
+            sources.pop("availability_note", None)
+            dates.pop("availability_note", None)
+            evidence.pop("availability_note", None)
     combined.update(source_url=incoming["source_url"], checked_at=incoming["checked_at"])
     combined["field_sources"] = sources
     combined["field_checked_at"] = dates
@@ -253,8 +266,8 @@ def verify_overlay(catalog, overlay):
     if n_updated or skipped_urls:
         prior = copy.deepcopy(new.get("retailer_snapshot") or {})
         if prior:
-            require(day(prior["observed_on"]) <= source_date,
-                    "overlay predates original retailer provenance")
+            # Preserve original source date and hash. Older independent captures
+            # are permitted for other wines, subject to per-record freshness gates.
             if source != prior.get("source_export_sha256"):
                 additional = list(prior.get("additional_capture_sources") or [])
                 if not any(entry.get("sha256") == source for entry in additional):
@@ -277,6 +290,9 @@ def verify_overlay(catalog, overlay):
             [*(prior.get("mismatched_urls") or []), *skipped_urls]
         ))
         new["retailer_snapshot"] = reconcile_manifest(prior, new["records"])
+    # Validate the complete JSON output before atomic replacement; Python's default
+    # json.dumps would otherwise encode Infinity/NaN, invalid in browsers.
+    json.dumps(new, ensure_ascii=False, allow_nan=False)
     manifest_changed = new.get("retailer_snapshot") != catalog.get("retailer_snapshot")
     return new, {
         "manifest_changed": manifest_changed,
@@ -321,7 +337,7 @@ def main():
         backup.parent.mkdir(parents=True, exist_ok=True)
         if not backup.exists():
             backup.write_bytes(source)
-        atomic_write(args.catalog, json.dumps(data, ensure_ascii=False, indent=2) + "\n")
+        atomic_write(args.catalog, json.dumps(data, ensure_ascii=False, indent=2, allow_nan=False) + "\n")
 
 
 if __name__ == "__main__":
