@@ -22,7 +22,8 @@ import urllib.error
 import urllib.request
 import urllib.robotparser
 from urllib.parse import unquote, urlsplit, urljoin
-from winestyle_ratings import extract_ratings
+from winestyle_ratings import extract_ratings, is_recommendation
+from retailer_manifest import reconcile_manifest
 
 ROOT = Path(__file__).resolve().parents[1]
 AGENT = 'PersonalWineAtlasCatalog/1.0 (respectful metadata fetch)'
@@ -187,16 +188,41 @@ def extract(body, record, source_url, checked_at):
                    identity_evidence='URL/name tokens >=90%, producer, exact vintage; known volume checked',
                    image_usage_allowed=False, image_permission_source=None,
                    field_sources={'full_name':'JSON-LD/structured Product','producer':'JSON-LD/structured Product'})
-    labels = {}
-    for row in soup.select('tr'):
-        cells = row.find_all(['th','td'], recursive=False)
-        if len(cells) == 2: labels[normalized(cells[0].get_text(' ', strip=True))] = cells[1].get_text(' ', strip=True)
-    for term in soup.select('dt'):
-        value = term.find_next_sibling('dd')
-        if value: labels[normalized(term.get_text(' ', strip=True))] = value.get_text(' ', strip=True)
+    # Extract characteristics only from the matched product's main body.
+    # Exclude recommendation/comparison subtrees and never let a later
+    # unrelated table silently overwrite an earlier labelled value.
+    primary = soup.select_one('main') or soup.select_one('[itemscope][itemtype$="/Product"]')
+    candidates = {}
+    if primary:
+        for row in primary.select('tr'):
+            if is_recommendation(row):
+                continue
+            cells = row.find_all(['th', 'td'], recursive=False)
+            if len(cells) == 2:
+                label = normalized(cells[0].get_text(' ', strip=True))
+                value = cells[1].get_text(' ', strip=True)
+                if label and value:
+                    candidates.setdefault(label, set()).add(value)
+        for term in primary.select('dt'):
+            if is_recommendation(term):
+                continue
+            value = term.find_next_sibling('dd')
+            if value and not is_recommendation(value):
+                label = normalized(term.get_text(' ', strip=True))
+                content = value.get_text(' ', strip=True)
+                if label and content:
+                    candidates.setdefault(label, set()).add(content)
+    # If the same DOM label contains conflicting values, none are accepted.
+    labels = {label: next(iter(values)) for label, values in candidates.items() if len(values) == 1}
+    structured_labels = {}
     for prop in product.get('additionalProperty', []) if isinstance(product.get('additionalProperty'), list) else []:
         if isinstance(prop, dict) and text_value(prop.get('name')):
-            labels[normalized(prop['name'])] = text_value(prop.get('value'))
+            label = normalized(prop['name'])
+            value = text_value(prop.get('value'))
+            if value:
+                structured_labels.setdefault(label, set()).add(value)
+    structured_labels = {label: next(iter(values)) for label, values in structured_labels.items()
+                         if len(values) == 1}
     mapping = {
         'country':('Страна','Страна происхождения','Country'), 'region':('Регион','Region'),
         'appellation':('Апелласьон','Аппелласьон','Appellation'), 'grapes':('Сорт винограда','Сорта винограда','Grape varieties'),
@@ -206,10 +232,15 @@ def extract(body, record, source_url, checked_at):
         'taste':('Вкус','Taste'), 'aroma':('Аромат','Aroma'), 'food_pairings':('Гастрономические сочетания','Food pairing'),
     }
     for field, aliases in mapping.items():
-        value = next((labels[normalized(k)] for k in aliases if labels.get(normalized(k))), None)
+        value = next((structured_labels[normalized(k)] for k in aliases
+                      if structured_labels.get(normalized(k))), None)
+        source = 'Product.additionalProperty' if value else 'labelled main-product DOM'
+        if not value:
+            value = next((labels[normalized(k)] for k in aliases
+                          if labels.get(normalized(k))), None)
         if value:
             details[field] = value
-            details['field_sources'][field] = 'labelled DOM/additionalProperty'
+            details['field_sources'][field] = source
     volume = measure(product.get('size') or details['volume_l'], 'volume')
     if volume is None:
         match = re.search(r'(\d+[.,]\d+)\s*(?:л\b|l\b)', name, re.I)
@@ -257,36 +288,85 @@ def extract(body, record, source_url, checked_at):
     return details, current, regular
 
 
+# Map independent extractor field names onto the published browser-capture schema.
+PUBLISHED_FIELDS = {
+    'wine_type': 'wine_style',
+    'food_pairings': 'pairing_notes',
+    'description': 'description_excerpt',
+}
+
+
 def apply_result(record, store, details, current, regular, overrides):
-    # Additive source-specific data; preserve original annotations and manual overrides.
-    # Older catalog builds may carry product_details: null. Treat it as no snapshot.
+    """Overlay new verified observations without discarding unrelated old fields."""
     previous = store.get('product_details') or {}
     if not isinstance(previous, dict):
         raise ValueError('product_details must be a mapping when present')
-    merged = copy.deepcopy(details)
+    if previous.get('source_url') and url_key(previous['source_url']) != url_key(store['url']):
+        raise ValueError('previous_product_details_url_mismatch')
+    if url_key(details['source_url']) != url_key(store['url']):
+        raise ValueError('incoming_product_details_url_mismatch')
+    old_date = previous.get('checked_at')
+    if old_date and old_date > details['checked_at']:
+        raise ValueError('older_observation_would_replace_newer_snapshot')
+    if current is not None and store.get('price_checked_at') and store['price_checked_at'] > details['checked_at']:
+        raise ValueError('older_price_would_replace_newer_price')
+
+    merged = copy.deepcopy(previous)
     sources = dict(previous.get('field_sources') or {})
-    sources.update(details.get('field_sources', {}))
-    for key in DETAIL_FIELDS:
-        if merged.get(key) is None and previous.get(key) is not None:
-            merged[key] = previous[key]
-            sources[key] = (previous.get('field_sources') or {}).get(key, 'previous verified snapshot')
+    sources_checked = dict(previous.get('field_checked_at') or {})
+    evidence = dict(previous.get('field_evidence') or {})
+    for field, value in details.items():
+        if field in ('checked_at', 'source_url', 'field_sources', 'field_evidence',
+                     'field_checked_at', 'identity_evidence'):
+            continue
+        if field in ('image_url', 'image_source'):
+            # Images are recorded as source-only data; never imply usage permission.
+            if value is not None:
+                merged[field] = value
+            continue
+        if value is None or value == '' or value == []:
+            continue
+        canonical = PUBLISHED_FIELDS.get(field, field)
+        if canonical == 'ratings':
+            # A saved HTML page may contain fewer critic entries than a prior
+            # browser capture. Update those named in the new page only.
+            existing = {row['source']: row for row in (merged.get('ratings') or [])
+                        if isinstance(row, dict) and isinstance(row.get('source'), str)}
+            for row in value:
+                existing[row['source']] = row
+            merged['ratings'] = list(existing.values())
+        else:
+            merged[canonical] = value
+        sources[canonical] = (details.get('field_sources') or {}).get(field, 'matched product HTML')
+        sources_checked[canonical] = details['checked_at']
+        if (details.get('field_evidence') or {}).get(field):
+            evidence[canonical] = details['field_evidence'][field]
+        else:
+            # The old evidence refers to a different value, not the new one.
+            evidence.pop(canonical, None)
+
+    merged.update(source_url=store['url'], checked_at=details['checked_at'])
     merged['field_sources'] = sources
-    merged['field_checked_at'] = {
-        key: details['checked_at'] if details.get(key) is not None else
-        (previous.get('field_checked_at') or {}).get(key, previous.get('checked_at'))
-        for key in DETAIL_FIELDS if merged.get(key) is not None
-    }
+    merged['field_checked_at'] = sources_checked
+    if evidence:
+        merged['field_evidence'] = evidence
+    merged['image_usage_allowed'] = False
+    merged['image_permission_source'] = None
+    merged.setdefault('ratings', [])
     store['product_details'] = merged
     if current is not None:
-        store.update(price_rub=current, regular_price_rub=regular, price_checked_at=details['checked_at'],
-                     price_source_url=details['source_url'])
-    # Existing top-level attributes and data/overrides.json always take precedence.
+        store.update(price_rub=current, regular_price_rub=regular,
+                     price_checked_at=details['checked_at'], price_source_url=store['url'])
+    # Existing top-level attributes and overrides take precedence.
     manual = overrides.get(record['id'], {})
-    for field in ('country','volume_l'):
-        if record.get(field) is None and field not in manual and merged.get(field) is not None:
-            record[field] = merged[field]
-    store['enrichment_status'] = {'status':'verified', 'checked_at':details['checked_at'], 'source_url':store['url']}
-
+    if record.get('country') is None and 'country' not in manual and merged.get('country'):
+        record['country'] = str(merged['country']).split(',')[0].strip()
+    if record.get('volume_l') is None and 'volume_l' not in manual and merged.get('volume_l') is not None:
+        record['volume_l'] = merged['volume_l']
+    store['enrichment_status'] = {
+        'status': 'verified', 'checked_at': details['checked_at'],
+        'source_url': store['url'], 'method': 'offline_html'
+    }
 
 class DomainBlocked(RuntimeError): pass
 
@@ -437,6 +517,9 @@ def main(argv=None):
             if not args.dry_run:
                 if entry['status'] == 'verified':
                     data['updated_at'] = today()
+                    manifest = reconcile_manifest(data.get('retailer_snapshot'), data['records'])
+                    if manifest is not None:
+                        data['retailer_snapshot'] = manifest
                     atomic_json(args.catalog,data)
                 atomic_json(args.report,report)
             if not args.input_dir and index+1 < len(targets):
