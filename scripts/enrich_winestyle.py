@@ -565,8 +565,9 @@ def main(argv=None):
                         }
                     else:
                         previous_manifest = copy.deepcopy(previous_manifest)
-                        if entry['checked_at'] < previous_manifest['observed_on']:
-                            previous_manifest['observed_on'] = entry['checked_at']
+                        # The original capture hash and its date form one
+                        # immutable provenance pair. Earlier independent HTML
+                        # captures are tracked separately, not relabelled.
                         if previous_manifest.get('source_export_sha256') != body_hash:
                             prior_sources = list(previous_manifest.get('additional_capture_sources') or [])
                             if not any(x.get('sha256') == body_hash for x in prior_sources):
