@@ -351,6 +351,31 @@ class OverlayTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "name does not match"):
             verify_overlay(catalog, overlay)
 
+    def test_reject_cuvee_number_change_006_to_007(self):
+        import json
+        from pathlib import Path
+        catalog = json.loads(
+            (Path(__file__).resolve().parents[1] / "data" / "wines.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        record = next(r for r in catalog["records"] if r["id"] == "079c918bef91")
+        store = record["stores"][0]
+        wrong = copy.deepcopy(store["product_details"])
+        wrong["full_name"] = wrong["full_name"].replace("006", "007")
+        with self.assertRaisesRegex(ValueError, "numeric cuvee designation mismatch"):
+            validate_product_identity(record, store, wrong)
+
+    def test_correct_equivalent_cl_volume_is_not_cuvee(self):
+        catalog, overlay = sample()
+        catalog["records"][0]["volume_l"] = 0.75
+        details = overlay["updates"]["abc"]["product_details"]
+        details["volume_l"] = "75 cl"
+        details["full_name"] = "Example Wine 2023 75 cl"
+        result, stats = verify_overlay(catalog, overlay)
+        self.assertEqual(stats["matched"], 1)
+        self.assertEqual(result["records"][0]["stores"][0]["product_details"]["volume_l"], "75 cl")
+
     def test_reject_extra_riserva_cuvee_with_same_base_name_and_year(self):
         catalog, overlay = sample()
         overlay["updates"]["abc"]["product_details"]["full_name"] = (
