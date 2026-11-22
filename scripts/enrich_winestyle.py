@@ -314,6 +314,11 @@ def apply_result(record, store, details, current, regular, overrides):
     merged = copy.deepcopy(previous)
     sources = dict(previous.get('field_sources') or {})
     sources_checked = dict(previous.get('field_checked_at') or {})
+    for field, old_value in previous.items():
+        if (field not in ('field_sources', 'field_checked_at', 'field_evidence',
+                          'checked_at', 'source_url') and old_value is not None
+                and field not in sources_checked and previous.get('checked_at')):
+            sources_checked[field] = previous['checked_at']
     evidence = dict(previous.get('field_evidence') or {})
     for field, value in details.items():
         if field in ('checked_at', 'source_url', 'field_sources', 'field_evidence',
