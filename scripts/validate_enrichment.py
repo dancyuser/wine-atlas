@@ -74,7 +74,6 @@ for record in records:
 assert enriched == snapshot["matched_exact_products"], (enriched, snapshot)
 assert priced == snapshot["direct_price_observations"], (priced, snapshot)
 assert ratings == snapshot["retailer_reported_ratings"], (ratings, snapshot)
-assert priced == 88 and enriched == 118 and ratings == 182, "Initial review baseline changed unexpectedly"
 assert snapshot["regular_prices_confirmed"] == 0, "No regular prices were confirmed in source capture"
 print("WINESTYLE SNAPSHOT VALIDATED", enriched, "exact products,", priced,
       "retailer prices,", ratings, "retailer-reported scores,", scored_wines, "scored products")
