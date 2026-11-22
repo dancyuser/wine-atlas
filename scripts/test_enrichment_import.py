@@ -36,6 +36,7 @@ def sample():
             "price_rub": 1490, "price_checked_at": DATE, "price_source_url": URL,
             "regular_price_rub": None,
             "product_details": {
+                "full_name": "Example Wine 2023",
                 "producer": "Example", "grapes": "Рислинг",
                 "description_excerpt": "Dry white wine.",
                 "checked_at": DATE, "source_url": URL,
