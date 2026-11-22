@@ -265,23 +265,34 @@ def extract(body, record, source_url, checked_at):
         details.update(image_url=urljoin(source_url, image), image_source=source_url)
     offers = product.get('offers', [])
     offers = offers if isinstance(offers, list) else [offers]
-    verified = []
+    verified_prices = []
+    regional_stock = []
     for offer in offers:
-        if not isinstance(offer, dict) or schema_type(offer, 'AggregateOffer'): continue
-        if offer.get('url') and url_key(urljoin(source_url, str(offer['url']))) != url_key(source_url): continue
-        if offer.get('priceCurrency') not in ('RUB','RUR'): continue
-        current = price(offer.get('price'))
-        if current is None: continue
-        regular = next((p for k in ('oldPrice','previousPrice','originalPrice')
-                        if (p := price(offer.get(k))) and p > current), None)
-        verified.append((current, regular, offer))
-    current = regular = None
-    if verified and len({(a,b) for a,b,_ in verified}) == 1:
-        current, regular, offer = verified[0]
+        if not isinstance(offer, dict) or schema_type(offer, 'AggregateOffer'):
+            continue
+        if offer.get('url') and url_key(urljoin(source_url, str(offer['url']))) != url_key(source_url):
+            continue
         region = text_value(offer.get('eligibleRegion'))
         if region and normalized(region) in ('санкт петербург','saint petersburg','st petersburg'):
-            availability = str(offer.get('availability','')).rsplit('/',1)[-1]
-            details['availability_spb'] = {'InStock':True,'OutOfStock':False,'SoldOut':False}.get(availability)
+            availability = str(offer.get('availability', '')).rsplit('/', 1)[-1]
+            value = {'InStock': True, 'OutOfStock': False, 'SoldOut': False}.get(availability)
+            if value is not None:
+                # Availability does not depend on an offer exposing a price.
+                regional_stock.append(value)
+        if offer.get('priceCurrency') not in ('RUB', 'RUR'):
+            continue
+        current = price(offer.get('price'))
+        if current is None:
+            continue
+        regular = next((p for k in ('oldPrice','previousPrice','originalPrice')
+                        if (p := price(offer.get(k))) and p > current), None)
+        verified_prices.append((current, regular))
+    current = regular = None
+    if verified_prices and len(set(verified_prices)) == 1:
+        current, regular = verified_prices[0]
+    if regional_stock and len(set(regional_stock)) == 1:
+        details['availability_spb'] = regional_stock[0]
+        details['field_sources']['availability_spb'] = 'Product Offer eligibleRegion/availability'
     details['ratings'] = extract_ratings(soup, product, source_url, checked_at)
     if details['ratings']:
         details['field_sources']['ratings'] = 'Product ratings JSON-LD or labelled DOM'
