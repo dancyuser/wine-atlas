@@ -58,11 +58,41 @@ function ratingsDetails(r,m){
  const body='<ul>'+list+fallback+'</ul>'+(m.vivino?'':un.reason?'<p class="rating-hint">'+safe(un.reason)+'</p>':'');
  return '<details class="rating-details"><summary>Оценки и источники ('+m.all.length+')</summary>'+body+'<p class="rating-hint">Оценки редакций из прежней подборки - срез 14.11.2026. Общий индекс условный, по оценкам того же винтажа.</p></details>';
 }
+function wineStyleMarkup(r){
+ const store=(r.stores||[]).find(s=>s.enrichment_status?.status==='verified'&&s.product_details?.source_url===s.url&&s.product_details?.checked_at);
+ if(!store)return '';
+ const d=store.product_details, fields=[
+  ['Производитель','producer'],['Страна','country'],['Регион','region'],['Апелласьон','appellation'],
+  ['Сорта','grapes'],['Цвет','color'],['Вид вина','wine_type'],['Сладость','sweetness'],
+  ['Крепость','alcohol_percent'],['Объём','volume_l'],['Вкус','taste'],['Аромат','aroma'],
+  ['Гастрономия','food_pairings'],['Описание','description']
+ ];
+ const rows=fields.filter(([,key])=>d[key]!=null&&d[key]!=='').map(([label,key])=>{
+  const value=Array.isArray(d[key])?d[key].join(', '):String(d[key]);
+  const checked=d.field_checked_at?.[key]||d.checked_at;
+  return '<li><span>'+safe(label)+(checked?' ('+date(checked)+')':'')+'</span><strong>'+safe(value)+'</strong></li>';
+ }).join('');
+ const ratings=(Array.isArray(d.ratings)?d.ratings:[]).filter(x=>x.reported_by==='WineStyle'&&
+  typeof x.source==='string'&&Number.isFinite(x.score)&&[5,10,20,100].includes(x.scale)&&
+  x.score>0&&x.score<=x.scale&&x.source_url===store.url);
+ const scores=ratings.map(x=>'<li><span>'+safe(x.source)+' · по данным WineStyle'+
+   (x.ratings_count?' · '+fmt.format(x.ratings_count)+' оценок':'')+
+   (x.observed_on?' · '+date(x.observed_on):'')+'</span><strong>'+safe(num(x.score))+
+   ' / '+safe(x.scale)+'</strong></li>').join('');
+ const availability=d.availability_spb===true?'Есть в наличии в СПб':d.availability_spb===false?'Нет в наличии в СПб':'';
+ if(!rows&&!scores&&!availability)return '';
+ const link=cleanUrl(store.url);
+ return '<details class="rating-details"><summary>Данные WineStyle · '+date(d.checked_at)+'</summary>'+
+  (rows?'<ul>'+rows+'</ul>':'')+(availability?'<p>'+safe(availability)+'</p>':'')+
+  (scores?'<p>Рейтинги, опубликованные продавцом (не независимо проверенные оценки критиков):</p><ul>'+scores+'</ul>':'')+
+  (link?'<p><a href="'+safe(link)+'" rel="noopener noreferrer" target="_blank">Первоисточник</a></p>':'')+
+  '<p class="rating-hint">Данные привязаны к дате наблюдения. В общий индекс и оценки Vivino не включаются.</p></details>';
+}
 function card(r){
  const m=metrics(r),s=r.stores[0]||{},url=cleanUrl(s.url);
  const meta=[r.country||null,...(r.grapes||[]),r.year?String(r.year):null,r.volume_l?(r.volume_l<1?Math.round(r.volume_l*1000)+' мл':new Intl.NumberFormat('ru-RU').format(r.volume_l)+' л'):null].filter(Boolean).join(' · ');
  const pairs=(r.pairings||[]).length?'Подходит к: '+r.pairings.join(', '):'Сочетания не указаны';
- return '<article class="wine-card"><div class="card-head"><span class="type-tag"><i aria-hidden="true" class="type-dot '+typeDot(r.type)+'"></i>'+safe(r.type||'Вино')+'</span>'+favoriteButton(r.id)+'</div><h3 class="card-title">'+safe(r.title)+'</h3><p class="card-meta">'+safe(meta)+'</p>'+metricRow(m,r)+ratingsDetails(r,m)+'<p class="card-pairings">'+safe(pairs)+'</p><div class="card-bottom"><div class="price-block">'+priceBlock(r)+'</div>'+(url?'<a class="store-link" href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">Карточка вина ↗</a>':'')+'</div></article>';
+ return '<article class="wine-card"><div class="card-head"><span class="type-tag"><i aria-hidden="true" class="type-dot '+typeDot(r.type)+'"></i>'+safe(r.type||'Вино')+'</span>'+favoriteButton(r.id)+'</div><h3 class="card-title">'+safe(r.title)+'</h3><p class="card-meta">'+safe(meta)+'</p>'+metricRow(m,r)+ratingsDetails(r,m)+wineStyleMarkup(r)+'<p class="card-pairings">'+safe(pairs)+'</p><div class="card-bottom"><div class="price-block">'+priceBlock(r)+'</div>'+(url?'<a class="store-link" href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">Карточка вина ↗</a>':'')+'</div></article>';
 }
 function matched(r){
  const term=$('search').value.trim().toLocaleLowerCase('ru');
