@@ -14505,6 +14505,11 @@
     "direct_price_observations": 88,
     "retailer_reported_ratings": 182,
     "regular_prices_confirmed": 0,
-    "caveat": "Archived retailer display; source prices and ratings are not live stock/independent critic verification."
+    "caveat": "Archived retailer display; source prices and ratings are not live stock/independent critic verification.",
+    "mismatched_urls": [
+      "https://spb.winestyle.ru/products/Rotari-Blanc-de-Blancs-Extra-Brut-Trento-DOC-2018.html",
+      "https://spb.winestyle.ru/products/Vigna-Senza-Nome-Moscato-d-Asti-DOCG-2023-375.html",
+      "https://spb.winestyle.ru/products/Vilarnau-Brut-Nature-Reserva-Cava-DO-2021.html"
+    ]
   }
 }
