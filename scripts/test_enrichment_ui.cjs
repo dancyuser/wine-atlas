@@ -54,6 +54,11 @@ const card=h.card(sample);
 assert(card.includes('Вино с ароматом цитрусов'));
 assert(card.includes('Wine Enthusiast'));
 assert(card.includes('Морепродукты'));
+sample.stores[0].product_details.availability_spb=false;
+const noStockCard=h.card(sample);
+assert(noStockCard.includes('Нет в наличии в СПб на дату проверки'),
+       'Explicit negative stock must be visible, not silently hidden');
+
 assert(card.includes('3\u00a0590')||card.includes('3 590'));
 const curated={...sample,grapes:['Семильон'],pairings:['Сыры'],country:'Португалия'};
 assert.deepEqual([...h.grapeValues(curated)],['Семильон']);
