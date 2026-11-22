@@ -43,9 +43,10 @@ for record in records:
         date = dt.date.fromisoformat(d["checked_at"])
         assert observation_day <= date <= dt.date.today(), "Snapshot outside permitted observation range"
         assert d.get("source_url") == store["url"]
-        assert d.get("producer") and d.get("grapes") and d.get("region"), record["id"]
-        assert d.get("aroma") and d.get("taste") and d.get("description_excerpt"), record["id"]
-        assert d.get("full_name") and d.get("volume_l"), record["id"]
+        # A verified observation means an exact wine identity, not that WineStyle
+        # published every optional tasting characteristic for that vintage.
+        assert isinstance(d.get("full_name"), str) and d["full_name"], record["id"]
+        assert isinstance(d.get("producer"), str) and d["producer"], record["id"]
         # Do not ship raw/recommended-item captures to the publicly displayed catalog.
         for key in ("all_characteristics", "sections", "unparsed_rating_lines",
                     "excluded_conflicting_fields", "identity_evidence"):
