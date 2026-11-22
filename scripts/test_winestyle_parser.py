@@ -285,6 +285,46 @@ class ExtractionTests(unittest.TestCase):
         self.assertNotIn('availability_note', merged['field_evidence'])
         self.assertIs(merged['availability_spb'], True)
 
+    def test_html_import_rejects_extra_riserva_cuvee(self):
+        record = copy.deepcopy(RECORD)
+        store = record["stores"][0]
+        item = product()
+        item["name"] = item["name"].replace("DOC 2023", "DOC Riserva 2023")
+        details, current, regular = parser.extract(html(item), record, URL, DATE)
+        with self.assertRaisesRegex(ValueError, "unexpected cuvee qualifiers"):
+            parser.apply_result(record, store, details, current, regular, {})
+        self.assertIsNone(store["price_rub"])
+        self.assertNotIn("product_details", store)
+
+    def test_html_import_checks_prior_verified_volume_when_record_volume_missing(self):
+        record = copy.deepcopy(RECORD)
+        record["volume_l"] = None
+        store = record["stores"][0]
+        store["product_details"] = {
+            "source_url": URL, "checked_at": "2026-11-21",
+            "full_name": "Peter Zemmer Chardonnay Alto Adige DOC 2023 0.75 l",
+            "producer": "Peter Zemmer", "volume_l": "0.75 л"
+        }
+        item = product()
+        item["size"] = "1.5 l"
+        item["name"] = item["name"].replace("0.75 l", "1.5 l")
+        details, current, regular = parser.extract(html(item), record, URL, DATE)
+        with self.assertRaisesRegex(ValueError, "volume mismatches"):
+            parser.apply_result(record, store, details, current, regular, {})
+        self.assertEqual(store["product_details"]["volume_l"], "0.75 л")
+        self.assertIsNone(record["volume_l"])
+
+    def test_html_accepts_matching_bottle_in_cl(self):
+        record = copy.deepcopy(RECORD)
+        store = record["stores"][0]
+        item = product()
+        item["size"] = "75 cl"
+        item["name"] = item["name"].replace("0.75 l", "75 cl")
+        details, current, regular = parser.extract(html(item), record, URL, DATE)
+        parser.apply_result(record, store, details, current, regular, {})
+        self.assertEqual(store["product_details"]["volume_l"], 0.75)
+        self.assertEqual(record["volume_l"], 0.75)
+
     def test_retained_volume_does_not_block_repeated_html_without_volume(self):
         record = copy.deepcopy(RECORD)
         record["volume_l"] = None
