@@ -53,7 +53,11 @@ for record in records:
         enriched += 1
         if store.get("price_rub") is not None:
             assert isinstance(store["price_rub"], int) and 100 <= store["price_rub"] <= 1_000_000
-            assert store.get("price_checked_at") == d["checked_at"]
+            # Price and characteristics are independent observations. Keeping an
+            # older verified price must not imply it was rechecked with the new HTML.
+            price_checked = dt.date.fromisoformat(store["price_checked_at"])
+            assert price_checked <= date and price_checked <= dt.date.today(), (
+                "Retained price dated after product observation")
             assert store.get("price_source_url") == store["url"]
             old = store.get("regular_price_rub")
             assert old is None or old > store["price_rub"]
