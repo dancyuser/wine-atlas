@@ -56,7 +56,7 @@ function ratingsDetails(r,m){
  const un=vivinoUnavailable(r);
  const fallback=!m.vivino?'<li><span><a target="_blank" rel="noopener noreferrer" href="'+safe(un.url)+'">Карточка / поиск Vivino</a></span><span>'+safe(un.label)+'</span></li>':'';
  const body='<ul>'+list+fallback+'</ul>'+(m.vivino?'':un.reason?'<p class="rating-hint">'+safe(un.reason)+'</p>':'');
- return '<details class="rating-details"><summary>Оценки и источники ('+m.all.length+')</summary>'+body+'<p class="rating-hint">Оценки из исходной подборки - срез 14.11.2026. Общий индекс условный, по оценкам того же винтажа.</p></details>';
+ return '<details class="rating-details"><summary>Оценки и источники ('+m.all.length+')</summary>'+body+'<p class="rating-hint">Оценки редакций из прежней подборки - срез 14.11.2026. Общий индекс условный, по оценкам того же винтажа.</p></details>';
 }
 function card(r){
  const m=metrics(r),s=r.stores[0]||{},url=cleanUrl(s.url);
@@ -72,8 +72,6 @@ function matched(r){
  if($('grape').value&&!r.grapes.includes($('grape').value))return false;
  if($('type').value&&r.type!==$('type').value)return false;
  if($('pairing').value&&!r.pairings.includes($('pairing').value))return false;
- if(state.scope==='wishlist'&&!r.wishlist)return false;
- if(state.scope==='research'&&!r.research)return false;
  if(state.scope==='saved'&&!state.favorites.has(r.id))return false;
  return true;
 }
@@ -85,7 +83,7 @@ function render(){
  else if(mode==='price-asc')rs.sort((a,b)=>(priceValue(a)??Infinity)-(priceValue(b)??Infinity));
  else if(mode==='price-desc')rs.sort((a,b)=>(priceValue(b)??-1)-(priceValue(a)??-1));
  else if(mode==='year-desc')rs.sort((a,b)=>(b.year??0)-(a.year??0));
- else rs.sort((a,b)=>Number(b.research)-Number(a.research)||a.title.localeCompare(b.title,'ru'));
+ else { /* default: preserve Google Docs source order */ }
  $('cards').innerHTML=rs.map(card).join('');
  $('empty').hidden=!!rs.length;
  $('result-count').textContent='Найдено: '+fmt.format(rs.length)+' из '+fmt.format(state.records.length);

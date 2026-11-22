@@ -30,10 +30,8 @@ for r in records:
    assert store['price_rub'] is not None and store['regular_price_rub']>store['price_rub']
   if store['reference_regular_price_rub'] is not None:
    assert store['reference_price_rub'] is not None and store['reference_regular_price_rub']>store['reference_price_rub']
-assert len(records)==163,len(records)
-assert sum(bool(x['research']) for x in records)==51
-assert sum(bool(x['wishlist']) for x in records)==112
-assert not any(r['wishlist'] and r['research'] for r in records), 'A researched wine cannot also be on the wishlist'
-assert sum(any(s['reference_price_rub'] for s in x['stores']) for x in records)==51
-assert not any(s['price_rub'] is not None for r in records for s in r['stores']),'No current prices were verified in this snapshot'
+assert len(records)==d['source']['unique_wine_urls'], 'Catalog size differs from source snapshot'
+assert all(r['wishlist'] and not r['research'] for r in records), 'Archived research cannot appear in active catalog'
+assert not any(r['section']=='Джин' for r in records)
+assert len(records)>0
 print('VALIDATED',len(records),'unique wine entries',len(urls),'retailer links', 'countries=',len({r['country'] for r in records if r['country']}))

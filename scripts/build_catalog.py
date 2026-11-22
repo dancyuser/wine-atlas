@@ -73,55 +73,16 @@ def main():
  src=Path(sys.argv[1]) if len(sys.argv)>1 else ROOT/'source.txt'
  lines=src.read_text(encoding='utf-8-sig').splitlines()
  recs={}; cat=None; research=False; num_research=0; extra_gin=0
- for i,ln in enumerate(lines):
+ # The current Google Doc has one active wishlist tab. Any historical research
+ # section in a local export is not part of the active catalog.
+ for ln in lines:
   s=ln.strip()
-  if s.startswith('ВИНА ДЛЯ ПОКУПКИ'):research=True;continue
-  if not research:
-   if s in CATEGORIES:cat=s;continue
-   if s.startswith('https://') and cat:
-    if cat=='Джин':extra_gin+=1;continue
-    k=key(s)
-    if k not in recs:recs[k]=make_record(s,cat)
-  else:
-   match=re.match(r'^(\d+)\.\s+(.*)',s)
-   if not match:continue
-   num_research+=1
-   description=match.group(2)
-   url=next((x.strip() for x in lines[i+1:i+6] if x.strip().startswith('http') and 'docs.google' not in x.strip()),None)
-   if not url:continue
-   k=key(url)
-   if k in recs:r=recs[k]
-   else:
-    r=make_record(url,'Подборка СПб');r['wishlist']=False;recs[k]=r
-   r['research']=True
-   title=description.split(' — ',1)[0]
-   # A researched exact title is generally more informative than the URL slug.
-   title=re.sub(r'^[\s\d]+\.\s*','',title).strip()
-   r['title']=title
-   r['description']=description.split(' — ',1)[1].split(' ₽.',1)[-1].strip()[:240] if ' — ' in description else r['description']
-   info=description.split(' — ',1)[-1]
-   country=next((c for c in COUNTRIES.values() if re.search(r'(?<!\w)'+re.escape(c)+r'(?!\w)',info)),None)
-   if country:r['country']=country
-   typ=parse_type(info.split(' ₽')[0],r['section'])
-   if typ!='Не установлен':r['type']=typ;r['pairings']=PAIRINGS.get(typ,[])
-   grams=maybe_grapes(title+' '+wine_title(url),r['section'])
-   if grams:r['grapes']=grams
-   price_m=re.search(r'(?<!\d)(\d[\d\s]{2,6})\s*(?:\([^)]*\)\s*)?₽',info)
-   if price_m:
-    r['stores'][0]['reference_price_rub']=int(price_m.group(1).replace(' ',''))
-    r['stores'][0]['reference_date']='2026-11-14'
-   if 'Семисам Красное' in title:
-    r['stores'][0]['reference_price_rub']=743
-    r['stores'][0]['reference_regular_price_rub']=990
-   if 'Вторая Линия Солист' in title:
-    r['stores'][0]['reference_price_rub']=1300
-    r['stores'][0]['reference_regular_price_rub']=1733
-   year=re.search(r'(?<!\d)(20\d\d|19\d\d)(?!\d)',title)
-   if year:r['year']=int(year.group())
-   vol=re.search(r'(\d[,\.]\d+)\s*л',info)
-   if vol:r['volume_l']=float(vol.group(1).replace(',','.'))
-   r['scores']=re.findall(r'(?:Decanter|Wine Enthusiast|Wine Spectator|Tim Atkin|James Suckling|Falstaff|Top100Wines|Simple Wine News)[^.;]{0,65}',info,re.I)[:3]
-   r['review_note']='Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены.'
+  if s.startswith('ВИНА ДЛЯ ПОКУПКИ'):break
+  if s in CATEGORIES:cat=s;continue
+  if not (s.startswith('https://') and cat):continue
+  if cat=='Джин':extra_gin+=1;continue
+  k=key(s)
+  if k not in recs:recs[k]=make_record(s,cat)
  overrides=ROOT/'data'/'overrides.json'
  if overrides.exists():
   custom=json.loads(overrides.read_text(encoding='utf-8'))
@@ -141,13 +102,17 @@ def main():
   for record in recs.values():
    prev=previous.get(record['id'])
    if not prev:continue
+   # Re-importing the same retailer URL must not erase enriched tasting and
+   # rating-context fields. Section and membership come from the new list.
+   for field in ('title','year','country','grapes','type','pairings','description','volume_l','scores','review_note'):
+    if field in prev:record[field]=prev[field]
    old_stores={key(s['url']):s for s in prev.get('stores',[])}
    for store in record['stores']:
     was=old_stores.get(key(store['url']))
     if was:
-     for f in ('price_rub','regular_price_rub','price_checked_at'):
+     for f in ('price_rub','regular_price_rub','price_checked_at','reference_price_rub','reference_regular_price_rub','reference_date'):
       store[f]=was.get(f)
- out={'updated_at':'2026-11-22','region':'Санкт-Петербург','historical_as_of':'2026-11-14','records':sorted(recs.values(),key=lambda r:(not r['research'],r['title'].casefold()))}
+ out={'updated_at':'2026-11-22','region':'Санкт-Петербург','historical_as_of':'2026-11-14','source':{'kind':'local_text_export','unique_wine_urls':len(recs),'excluded_gin_urls':extra_gin},'records':list(recs.values())}
  (ROOT/'data'/'wines.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
  print(f'wishlist URLs excluding gin and duplicates: {sum(r["wishlist"] for r in recs.values())}; research: {num_research}; total unique: {len(recs)}; gin excluded: {extra_gin}')
 if __name__=='__main__':main()
