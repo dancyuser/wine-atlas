@@ -90,22 +90,46 @@ def collect_structured(product, url, date):
     return result
 
 
+RECOMMENDATION_MARKERS = re.compile(
+    r'related|similar|recommend|suggest|cross.sell|upsell|also.buy|'
+    r'похож|рекоменду|с этим покупа|смотрите также|'
+    r'сопутствующ|аналогич|вместе с этим', re.I,
+)
+
+
+def is_recommendation(node):
+    """Reject nested recommendation widgets and their descendants, not just the widget itself."""
+    for item in [node, *list(node.parents)]:
+        if not hasattr(item, 'get'):
+            continue
+        marker = ' '.join([str(item.get('id', '')), ' '.join(item.get('class', []))])
+        if RECOMMENDATION_MARKERS.search(marker):
+            return True
+    return False
+
+
 def collect_dom(soup, url, date):
-    # Limit extraction to one product's main content. Do not scan unrelated tiles.
     main = soup.select_one('main') or soup.select_one('[itemscope][itemtype$="/Product"]')
     if main is None:
         return []
     result = []
     for region in main.select('section, [class*="rating"], [class*="critic"], [class*="expert"], [id*="rating"]'):
+        if is_recommendation(region):
+            continue
         marker = ' '.join(str(x) for x in (region.get('id', ''), ' '.join(region.get('class', [])))).lower()
-        heading = ' '.join(t.get_text(' ', strip=True) for t in region.select('h2,h3,h4')[:2]).lower()
+        heading = ' '.join(t.get_text(' ', strip=True) for t in region.select('h2,h3,h4')[:2]
+                           if not is_recommendation(t)).lower()
         if not re.search(r'rating|critic|expert|рейтинг|оценк|критик|эксперт', marker + ' ' + heading):
             continue
-        if re.search(r'related|similar|recommend|suggest|похож|рекоменду', marker):
-            continue
-        lines = [x.get_text(' ', strip=True) for x in region.select('li, tr, p')]
-        if not lines and len(region.get_text(' ', strip=True)) < 1000:
-            lines = [region.get_text(' ', strip=True)]
+        lines = [x.get_text(' ', strip=True) for x in region.select('li, tr, p')
+                 if not is_recommendation(x)]
+        if not lines:
+            # A region without text nodes can contain recommendation widgets;
+            # only take direct text if there are no recommendation descendants.
+            if not any(is_recommendation(node) for node in region.select('*')):
+                value = region.get_text(' ', strip=True)
+                if len(value) < 1000:
+                    lines = [value]
         for line in lines:
             if len(line) > 500:
                 continue
@@ -122,7 +146,6 @@ def collect_dom(soup, url, date):
                 if row:
                     result.append(row)
     return result
-
 
 def extract_ratings(soup, product, source_url, checked_at):
     """Return only non-conflicting supported scores for the matched product."""
