@@ -149,6 +149,18 @@
         "source_url": "https://simplewine.ru/catalog/product/chardonnay_2023_075_151986/",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": 120,
+        "source_url": "https://www.vivino.com/en/usad-ba-markotkh-manor-markoth-shardone-chardonnay/w/5017893?year=2023",
+        "source_kind": "vivino_site_and_store_match",
+        "observed_on": "2026-11-22",
+        "note": "Оценка конкретного винтажа; производитель подтверждён по артикулу продавца."
       }
     ],
     "b017a9cc9ed1": [
@@ -161,6 +173,17 @@
         "source_url": "https://simplewine.ru/catalog/product/chardonnay_2025_075_161892/",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/usad-ba-markotkh-manor-markoth-shardone-chardonnay/w/5017893",
+        "source_kind": "vivino_site_and_store_match",
+        "observed_on": "2026-11-22",
+        "note": "Подтверждённая оценка вина в целом; для указанного года значение не установлено."
       }
     ],
     "5cfad037629f": [
@@ -305,6 +328,17 @@
         "source_url": "https://simplewine.ru/catalog/product/cuvee_blanc_2024_075_162586/",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/usad-ba-markotkh-manor-markoth-kiuve-blan-cuvee-blanc/w/8574776",
+        "source_kind": "vivino_site_and_store_match",
+        "observed_on": "2026-11-22",
+        "note": "Подтверждённая оценка вина в целом; для указанного года значение не установлено."
       }
     ],
     "426bd971c45a": [
@@ -1400,6 +1434,17 @@
         "source_url": "https://simplewine.ru/catalog/product/sovinon_blan_2025_075_162211/",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/nikolaev-sons-sauvignon-blanc/w/9866362",
+        "source_kind": "vivino_site_and_store_match",
+        "observed_on": "2026-11-22",
+        "note": "Подтверждённая оценка вина в целом; для указанного года значение не установлено."
       }
     ],
     "81ff7d710fae": [
@@ -1434,6 +1479,18 @@
         "source_url": "https://simplewine.ru/catalog/product/shardone_krasnaya_gorka_2025_075_161414/",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2025,
+        "ratings_count": 31,
+        "source_url": "https://www.vivino.com/en/galitskii-i-galitskii-galitsky-and-galitsky-shardone-chardonnay/w/7735566?year=2025",
+        "source_kind": "vivino_site_and_store_match",
+        "observed_on": "2026-11-22",
+        "note": "Оценка конкретного винтажа; производитель подтверждён по артикулу продавца."
       }
     ],
     "2c652f8c3115": [
@@ -2891,6 +2948,32 @@
         "source_kind": "vivino_verified_web",
         "observed_on": "2026-11-22",
         "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
+      }
+    ],
+    "160221740978": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/ramon-bilbao-crianza-rioja/w/77021",
+        "source_kind": "vivino_site_and_store_match",
+        "observed_on": "2026-11-22",
+        "note": "Подтверждённая оценка вина в целом; для указанного года значение не установлено."
+      }
+    ],
+    "9830fcbfa909": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/les-freres-laffitte-domaine-laffitte-rose/w/6245863",
+        "source_kind": "vivino_site_and_store_match",
+        "observed_on": "2026-11-22",
+        "note": "Подтверждённая оценка вина в целом; для указанного года значение не установлено."
       }
     ]
   }
