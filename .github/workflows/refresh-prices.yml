@@ -1,0 +1,25 @@
+name: Refresh prices (manual)
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch public JSON-LD prices, respecting robots.txt
+        run: python scripts/update_prices.py --delay 3
+      - name: Commit only verified price changes
+        run: |
+          if ! git diff --quiet -- data/wines.json; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add data/wines.json
+            git commit -m 'data: refresh verified retail prices'
+            git push
+          fi

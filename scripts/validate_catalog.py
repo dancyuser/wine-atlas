@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+"""Static data contract checks (no network required)."""
+import json,re
+from collections import Counter
+from pathlib import Path
+from urllib.parse import urlsplit
+p=Path(__file__).resolve().parents[1]/'data'/'wines.json'
+d=json.loads(p.read_text(encoding='utf-8'))
+assert d['region']=='Санкт-Петербург'
+records=d['records']
+assert records and len(records)==len({r['id'] for r in records})
+assert all(r['type'] in ('Красное','Белое','Розовое','Игристое','Оранжевое','Портвейн','Не установлен') for r in records)
+urls=[]
+for r in records:
+ assert r['title'] and len(r['title'])<230,r
+ assert isinstance(r['pairings'],list)
+ assert isinstance(r['grapes'],list)
+ assert r['stores']
+ assert not (r['section']=='Джин')
+ for store in r['stores']:
+  url=store['url']
+  assert urlsplit(url).scheme=='https' and urlsplit(url).hostname,url
+  assert not url.split('#')[0] in urls, 'Duplicate store URL: '+url
+  urls.append(url.split('#')[0])
+  for f,tf in (('price_rub','price_checked_at'),('reference_price_rub','reference_date')):
+   if store[f] is not None:
+    assert isinstance(store[f],int) and store[f]>0
+    assert store[tf] and re.fullmatch(r'\d{4}-\d{2}-\d{2}',store[tf])
+  if store['regular_price_rub'] is not None:
+   assert store['price_rub'] is not None and store['regular_price_rub']>store['price_rub']
+  if store['reference_regular_price_rub'] is not None:
+   assert store['reference_price_rub'] is not None and store['reference_regular_price_rub']>store['reference_price_rub']
+assert len(records)==163,len(records)
+assert sum(bool(x['research']) for x in records)==51
+assert sum(bool(x['wishlist']) for x in records)==124
+assert sum(any(s['reference_price_rub'] for s in x['stores']) for x in records)==51
+assert not any(s['price_rub'] is not None for r in records for s in r['stores']),'No current prices were verified in this snapshot'
+print('VALIDATED',len(records),'unique wine entries',len(urls),'retailer links', 'countries=',len({r['country'] for r in records if r['country']}))
