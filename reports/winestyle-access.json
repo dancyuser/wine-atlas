@@ -1,0 +1,7 @@
+{
+  "blocked": true,
+  "checked_at": "2026-11-22",
+  "reason": "Automated WineStyle requests received HTTP 403. Do not resume collection until applicable site permissions and access are independently reviewed.",
+  "source": "agent report, commit 9e9985b",
+  "url": "https://spb.winestyle.ru/products/Graham-s-Late-Bottled-Vintage-LBV-2019-gift-tube.html"
+}
