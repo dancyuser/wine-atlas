@@ -100,14 +100,17 @@ function wineStyleMarkup(r){
    (x.ratings_count?' · '+fmt.format(x.ratings_count)+' оценок':'')+
    (x.observed_on?' · '+date(x.observed_on):'')+'</span><strong>'+safe(num(x.score))+
    ' / '+safe(x.scale)+'</strong></li>').join('');
- const availability=d.availability_note==='Ожидаем поступление'?'Ожидаем поступление':
-   d.availability_note==='Нет в наличии'?'Нет в наличии':
-   d.availability_spb===true?'Наличие подтверждалось в СПб на дату проверки':
-   d.availability_spb===false?'Нет в наличии в СПб на дату проверки':'';
+ const availabilityNote=d.availability_note==='Ожидаем поступление'||d.availability_note==='Нет в наличии';
+ const availability=availabilityNote?d.availability_note:
+   d.availability_spb===true?'Наличие подтверждалось в СПб':
+   d.availability_spb===false?'Нет в наличии в СПб':'';
+ const availabilityObservedOn=availabilityNote
+   ?(d.field_checked_at?.availability_note||d.checked_at)
+   :(d.field_checked_at?.availability_spb||d.checked_at);
  if(!rows&&!scores&&!availability)return '';
  const link=cleanUrl(store.url);
  return '<details class="rating-details"><summary>Данные WineStyle · '+date(d.checked_at)+'</summary>'+
-  (rows?'<ul>'+rows+'</ul>':'')+(availability?'<p>'+safe(availability)+'</p>':'')+
+  (rows?'<ul>'+rows+'</ul>':'')+(availability?'<p>'+safe(availability)+' · '+safe(date(availabilityObservedOn))+'</p>':'')+
   (scores?'<p>Рейтинги, опубликованные продавцом (не независимо проверенные оценки критиков):</p><ul>'+scores+'</ul>':'')+
   (link?'<p><a href="'+safe(link)+'" rel="noopener noreferrer" target="_blank">Первоисточник</a></p>':'')+
   '<p class="rating-hint">Данные привязаны к дате наблюдения. В общий индекс и оценки Vivino не включаются.</p></details>';
