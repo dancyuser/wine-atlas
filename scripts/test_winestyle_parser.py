@@ -204,6 +204,29 @@ class ExtractionTests(unittest.TestCase):
         self.assertEqual(store['price_checked_at'], '2026-11-21')
         self.assertEqual(store['product_details']['checked_at'], DATE)
 
+    def test_new_explicit_stock_status_replaces_older_waiting_note(self):
+        record = copy.deepcopy(RECORD)
+        store = record['stores'][0]
+        store['product_details'] = {
+            'source_url': URL, 'checked_at': '2026-11-21',
+            'availability_note': 'Ожидаем поступление',
+            'field_sources': {'availability_note': 'older retail capture'},
+            'field_evidence': {'availability_note': 'Ожидаем поступление'},
+            'field_checked_at': {'availability_note': '2026-11-21'}
+        }
+        item = product()
+        item['offers']['eligibleRegion'] = 'Санкт-Петербург'
+        item['offers']['availability'] = 'https://schema.org/InStock'
+        details, current, regular = parser.extract(html(item), record, URL, DATE)
+        self.assertIs(details['availability_spb'], True)
+        parser.apply_result(record, store, details, current, regular, {})
+        merged = store['product_details']
+        self.assertNotIn('availability_note', merged)
+        self.assertNotIn('availability_note', merged['field_sources'])
+        self.assertNotIn('availability_note', merged['field_checked_at'])
+        self.assertNotIn('availability_note', merged['field_evidence'])
+        self.assertIs(merged['availability_spb'], True)
+
     def test_newer_snapshot_is_not_downgraded(self):
         record = copy.deepcopy(RECORD)
         store = record['stores'][0]
