@@ -239,6 +239,39 @@ class OverlayTests(unittest.TestCase):
         self.assertEqual(current["field_sources"]["country"], "user_supplied_browser_capture")
         self.assertEqual(current["field_checked_at"]["country"], DATE)
 
+    def test_partial_exact_wine_passes_publication_validator(self):
+        import json
+        import shutil
+        import subprocess
+        import sys
+        import tempfile
+        from pathlib import Path
+        catalog, overlay = sample()
+        details = overlay["updates"]["abc"]["product_details"]
+        details.pop("grapes")
+        details.pop("description_excerpt")
+        imported, _ = verify_overlay(catalog, overlay)
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "data").mkdir()
+            (root / "scripts").mkdir()
+            (root / "data" / "wines.json").write_text(
+                json.dumps(imported), encoding="utf-8"
+            )
+            shutil.copy(Path(__file__).parent / "validate_enrichment.py",
+                        root / "scripts" / "validate_enrichment.py")
+            result = subprocess.run(
+                [sys.executable, str(root / "scripts" / "validate_enrichment.py")],
+                capture_output=True, text=True
+            )
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_initial_partial_wine_without_identity_is_rejected(self):
+        catalog, overlay = sample()
+        del overlay["updates"]["abc"]["product_details"]["full_name"]
+        with self.assertRaisesRegex(ValueError, "verified product identity missing"):
+            verify_overlay(catalog, overlay)
+
     def test_unverified_status_rejected(self):
         catalog, overlay = sample()
         overlay["updates"]["abc"]["enrichment_status"]["status"] = "unknown"
