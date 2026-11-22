@@ -96,18 +96,42 @@ def validate_details_schema(details, product_day):
 IDENTITY_STOPWORDS = {
     "wine", "вино", "port", "портвейн", "doc", "docg", "igt", "aoc",
     "aop", "do", "d", "s", "gift", "tube", "box", "в", "тубе",
-    "подарочной", "упаковке", "л", "l", "ml", "бутылка",
+    "подарочной", "упаковке", "л", "l", "ml", "мл", "бутылка",
+    "игристое", "портвеин",
 }
 YEAR_PATTERN = re.compile(r"(?<!\d)(?:19|20)\d{2}(?!\d)")
 
 
 def identity_tokens(value):
-    words = re.sub(
-        r"[^a-zа-я0-9]+", " ",
-        unicodedata.normalize("NFKD", str(value)).lower()
-    ).split()
+    decomposed = unicodedata.normalize("NFKD", str(value)).casefold()
+    clean = "".join(ch for ch in decomposed if not unicodedata.combining(ch))
+    words = re.sub(r"[^a-zа-я0-9]+", " ", clean).split()
     return {word for word in words if word not in IDENTITY_STOPWORDS
             and not word.isdigit()}
+
+
+
+VOLUME_PATTERN = re.compile(
+    r"^\s*(\d+(?:[.,]\d+)?)\s*(мл|ml|cl|л|l|литр|литра|литров)?\s*$", re.I
+)
+NAME_VOLUME_PATTERN = re.compile(
+    r"(?<![\w])(\d+(?:[.,]\d+)?)\s*(мл|ml|cl|л|l)(?![\w])", re.I
+)
+
+
+def parse_volume_l(value):
+    if value is None or isinstance(value, bool):
+        return None
+    match = VOLUME_PATTERN.fullmatch(str(value))
+    if not match:
+        return None
+    amount = float(match.group(1).replace(",", "."))
+    unit = (match.group(2) or "").lower()
+    if unit in ("мл", "ml"):
+        amount /= 1000
+    elif unit == "cl":
+        amount /= 100
+    return amount if math.isfinite(amount) and 0.05 <= amount <= 30 else None
 
 
 def validate_product_identity(record, store, details):
@@ -132,6 +156,12 @@ def validate_product_identity(record, store, details):
     require(expected_tokens and
             len(expected_tokens.intersection(actual_tokens)) / len(expected_tokens) >= 0.9,
             f"product_details name does not match original URL: {record['id']}")
+    # One-way slug coverage is not sufficient: "Riserva", "Reserve" and
+    # other extra cuvee names can refer to a different wine from the same estate.
+    extra = actual_tokens - expected_tokens - identity_tokens(record["title"])
+    previous_name = (store.get("product_details") or {}).get("full_name")
+    if extra and previous_name != name:
+        require(False, f"unexpected cuvee qualifiers in product_details: {sorted(extra)}")
     visible_years = {int(y) for y in YEAR_PATTERN.findall(name)}
     vintage = details.get("vintage")
     explicit_year = None
@@ -150,6 +180,28 @@ def validate_product_identity(record, store, details):
     else:
         require(not visible_years and explicit_year is None,
                 f"unexpected vintage for non-vintage catalog wine: {record['id']}")
+    # A bottle size printed in the product title, in the overlay fields or
+    # in a previously verified snapshot must not contradict a known variant.
+    observed_volumes = []
+    if details.get("volume_l") is not None:
+        incoming_volume = parse_volume_l(details["volume_l"])
+        require(incoming_volume is not None, f"invalid product volume: {record['id']}")
+        observed_volumes.append(incoming_volume)
+    for match in NAME_VOLUME_PATTERN.finditer(name):
+        volume_from_name = parse_volume_l(" ".join(match.groups()))
+        if volume_from_name is not None:
+            observed_volumes.append(volume_from_name)
+    source_volume = record.get("volume_l")
+    previous = store.get("product_details") or {}
+    if source_volume is None and previous.get("source_url") == store["url"]:
+        source_volume = parse_volume_l(previous.get("volume_l"))
+    if source_volume is not None:
+        expected_volume = parse_volume_l(source_volume)
+        require(expected_volume is not None, f"invalid reference volume: {record['id']}")
+        require(all(abs(volume - expected_volume) <= 0.001 for volume in observed_volumes),
+                f"product_details volume mismatches catalog bottle: {record['id']}")
+    require(not observed_volumes or max(observed_volumes) - min(observed_volumes) <= 0.001,
+            f"conflicting volume in product_details: {record['id']}")
 
 
 def merge_details(previous, incoming):
