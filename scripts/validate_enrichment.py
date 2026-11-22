@@ -13,7 +13,15 @@ assert snapshot["retailer"] == "WineStyle"
 assert snapshot["source"] == "user_supplied_browser_capture"
 assert re.fullmatch(r"[0-9a-f]{64}", snapshot["source_export_sha256"])
 observation_day = dt.date.fromisoformat(snapshot["observed_on"])
-assert observation_day <= dt.date.today()
+source_dates = [observation_day]
+for entry in snapshot.get("additional_capture_sources") or []:
+    assert isinstance(entry, dict)
+    assert re.fullmatch(r"[0-9a-f]{64}", entry["sha256"])
+    source_dates.append(dt.date.fromisoformat(entry["observed_on"]))
+minimum_observation_day = min(source_dates)
+assert snapshot.get("earliest_observed_on", minimum_observation_day.isoformat()) == minimum_observation_day.isoformat()
+assert minimum_observation_day <= observation_day <= dt.date.today()
+assert all(x <= dt.date.today() for x in source_dates)
 assert snapshot["regular_prices_confirmed"] >= 0
 assert snapshot["matched_exact_products"] <= snapshot["collected_target_urls"]
 
@@ -41,7 +49,7 @@ for record in records:
         assert isinstance(d, dict), "Verified retailer observation without details"
         assert d.get("checked_at") == status.get("checked_at"), "Snapshot/status date mismatch"
         date = dt.date.fromisoformat(d["checked_at"])
-        assert observation_day <= date <= dt.date.today(), "Snapshot outside permitted observation range"
+        assert minimum_observation_day <= date <= dt.date.today(), "Snapshot outside permitted observation range"
         assert d.get("source_url") == store["url"]
         # A verified observation means an exact wine identity, not that WineStyle
         # published every optional tasting characteristic for that vintage.
@@ -71,7 +79,7 @@ for record in records:
             assert rating.get("reported_by") == "WineStyle"
             assert rating.get("source_url") == store["url"]
             rating_day = dt.date.fromisoformat(rating["observed_on"])
-            assert observation_day <= rating_day <= date, "Retailer score date out of range"
+            assert minimum_observation_day <= rating_day <= date, "Retailer score date out of range"
             assert rating.get("source") not in sources, "Duplicate rating source"
             assert rating.get("scale") in (5, 10, 20, 100)
             assert isinstance(rating.get("score"), (float, int)) and 0 < rating["score"] <= rating["scale"]
