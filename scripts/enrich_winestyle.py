@@ -273,12 +273,17 @@ def extract(body, record, source_url, checked_at):
         if offer.get('url') and url_key(urljoin(source_url, str(offer['url']))) != url_key(source_url):
             continue
         region = text_value(offer.get('eligibleRegion'))
-        if region and normalized(region) in ('санкт петербург','saint petersburg','st petersburg'):
+        local_region = bool(region and normalized(region) in
+                            ('санкт петербург', 'saint petersburg', 'st petersburg'))
+        if local_region:
             availability = str(offer.get('availability', '')).rsplit('/', 1)[-1]
             value = {'InStock': True, 'OutOfStock': False, 'SoldOut': False}.get(availability)
             if value is not None:
                 # Availability does not depend on an offer exposing a price.
                 regional_stock.append(value)
+        # An explicitly non-SPb offer is never evidence of an SPb price.
+        if region and not local_region:
+            continue
         if offer.get('priceCurrency') not in ('RUB', 'RUR'):
             continue
         current = price(offer.get('price'))
