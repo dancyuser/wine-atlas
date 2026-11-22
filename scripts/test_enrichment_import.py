@@ -2,7 +2,7 @@
 import copy
 import unittest
 
-from import_enrichment_overlay import verify_overlay
+from import_enrichment_overlay import verify_overlay, validate_product_identity
 
 
 URL = "https://spb.winestyle.ru/products/Example-Wine-2023.html"
@@ -344,6 +344,47 @@ class OverlayTests(unittest.TestCase):
         overlay["updates"]["abc"]["url"] = URL.replace("2023", "2024")
         with self.assertRaises(ValueError):
             verify_overlay(catalog, overlay)
+
+    def test_embedded_product_identity_rejects_different_wine(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["product_details"]["full_name"] = "Totally Different Wine 2023"
+        with self.assertRaisesRegex(ValueError, "name does not match"):
+            verify_overlay(catalog, overlay)
+
+    def test_embedded_product_identity_rejects_different_vintage_in_name(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["product_details"]["full_name"] = "Example Wine 2024"
+        with self.assertRaisesRegex(ValueError, "vintage mismatches"):
+            verify_overlay(catalog, overlay)
+
+    def test_embedded_product_identity_rejects_explicit_vintage_mismatch(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["product_details"]["vintage"] = 2024
+        with self.assertRaisesRegex(ValueError, "vintage mismatches"):
+            verify_overlay(catalog, overlay)
+
+    def test_embedded_product_identity_requires_confirmed_vintage(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["product_details"]["full_name"] = "Example Wine"
+        with self.assertRaisesRegex(ValueError, "vintage mismatches or unconfirmed"):
+            verify_overlay(catalog, overlay)
+
+    def test_real_reviewed_wines_remain_identity_compatible(self):
+        import json
+        from pathlib import Path
+        catalog = json.loads(
+            (Path(__file__).resolve().parents[1] / "data" / "wines.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        verified = 0
+        for record in catalog["records"]:
+            for store in record.get("stores", []):
+                if (store.get("enrichment_status") or {}).get("status") == "verified":
+                    with self.subTest(wine=record["id"]):
+                        validate_product_identity(record, store, store["product_details"])
+                    verified += 1
+        self.assertGreater(verified, 0)
 
     def test_different_vintage_rejected(self):
         catalog, overlay = sample()
