@@ -350,6 +350,12 @@ def apply_result(record, store, details, current, regular, overrides):
             # The old evidence refers to a different value, not the new one.
             evidence.pop(canonical, None)
 
+    # A new explicit availability assertion supersedes an older textual note.
+    if details.get('availability_spb') is not None:
+        merged.pop('availability_note', None)
+        sources.pop('availability_note', None)
+        sources_checked.pop('availability_note', None)
+        evidence.pop('availability_note', None)
     merged.update(source_url=store['url'], checked_at=details['checked_at'])
     merged['field_sources'] = sources
     merged['field_checked_at'] = sources_checked
