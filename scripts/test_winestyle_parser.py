@@ -237,6 +237,7 @@ class ExtractionTests(unittest.TestCase):
         }
         item = product()
         del item["size"]
+        item["name"] = item["name"].replace(" 0.75 l", "")
         details, current, regular = parser.extract(html(item), record, URL, DATE)
         self.assertIsNone(details["volume_l"])
         parser.apply_result(record, store, details, current, regular, {})
