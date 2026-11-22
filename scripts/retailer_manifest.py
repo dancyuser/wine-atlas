@@ -45,6 +45,13 @@ def reconcile_manifest(previous_manifest, records):
                                       for store in verified),
         regular_prices_confirmed=sum(store.get("regular_price_rub") is not None for store in verified),
     )
+    # The original observed_on belongs to source_export_sha256. A separate
+    # lower bound covers independently retained capture files with older dates.
+    source_dates = [manifest["observed_on"]]
+    source_dates.extend(entry["observed_on"]
+                        for entry in (manifest.get("additional_capture_sources") or [])
+                        if isinstance(entry, dict) and isinstance(entry.get("observed_on"), str))
+    manifest["earliest_observed_on"] = min(source_dates)
     dates = [(store.get("product_details") or {}).get("checked_at") for store in verified]
     dates = [day for day in dates if isinstance(day, str)]
     if dates:
