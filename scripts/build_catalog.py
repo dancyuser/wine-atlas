@@ -126,6 +126,12 @@ def main():
       if f in was and was[f] is not None:
        store[f]=was[f]
  out={'updated_at':'2026-11-22','region':'Санкт-Петербург','historical_as_of':'2026-11-14','source':{'kind':'local_text_export','unique_wine_urls':len(recs),'excluded_gin_urls':extra_gin},'records':list(recs.values())}
+ if previous_data.get('source'):
+  previous_urls = {store['url'] for r in previous_data.get('records', []) for store in r.get('stores', [])}
+  current_urls = {store['url'] for r in out['records'] for store in r.get('stores', [])}
+  if previous_urls == current_urls:
+   # Source identity and Docs revision stay valid for an unchanged source list.
+   out['source'] = previous_data['source']
  manifest = reconcile_manifest(previous_data.get('retailer_snapshot'), out['records'])
  if manifest is not None:
   out['retailer_snapshot'] = manifest
