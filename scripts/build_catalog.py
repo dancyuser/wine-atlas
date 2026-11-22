@@ -128,6 +128,11 @@ def main():
   for r in recs.values():
    if r['id'] in custom:
     r.update({k:v for k,v in custom[r['id']].items() if k not in ['id','stores']})
+ # Entries in the Saint Petersburg research tab are exclusive to that tab,
+ # even if their URL was also present in the original wishlist or overrides.
+ for record in recs.values():
+  if record['research']:
+   record['wishlist']=False
  # Keep current verified store snapshots across re-imports of the source list.
  target=ROOT/'data'/'wines.json'
  if target.exists():

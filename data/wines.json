@@ -119,7 +119,7 @@
       ],
       "description": "WineStyle СПб: под заказ. Decanter 94; редакционная оценка, состав не раскрыт.",
       "section": "Рислинг",
-      "wishlist": true,
+      "wishlist": false,
       "research": true,
       "stores": [
         {
@@ -393,7 +393,7 @@
       ],
       "description": "WineStyle СПб: под заказ. Christina Pickard / Wine Enthusiast 90; Wine Spectator 89 (автор не указан).",
       "section": "Рислинг",
-      "wishlist": true,
+      "wishlist": false,
       "research": true,
       "stores": [
         {
@@ -427,7 +427,7 @@
       ],
       "description": "WineStyle СПб: доступно под заказ. Decanter World Wine Awards 2025 — золото, 95 баллов; Wine Enthusiast — 94.",
       "section": "Портвейн",
-      "wishlist": true,
+      "wishlist": false,
       "research": true,
       "stores": [
         {
@@ -462,7 +462,7 @@
       ],
       "description": "WineStyle СПб: склад, под заказ с 20 ноября. Vinous 90 (автор не раскрыт); BOTTI 86 (подпись ESH).",
       "section": "Пино Нуар",
-      "wishlist": true,
+      "wishlist": false,
       "research": true,
       "stores": [
         {
@@ -564,7 +564,7 @@
       ],
       "description": "WineStyle СПб: под заказ. Vinous 92; Wine Spectator 90 — по WineStyle, авторы не указаны.",
       "section": "Игристое",
-      "wishlist": true,
+      "wishlist": false,
       "research": true,
       "stores": [
         {
@@ -598,7 +598,7 @@
       ],
       "description": "WineStyle СПб: под заказ. Jeff Porter (Wine Enthusiast) 92; Wine Spectator 90 (автор не указан).",
       "section": "Игристое",
-      "wishlist": true,
+      "wishlist": false,
       "research": true,
       "stores": [
         {
@@ -635,7 +635,7 @@
       ],
       "description": "WineStyle СПб: в наличии, доступно под заказ. Decanter 92, серебро (по таблице наград производителя); Wine Enthusiast 90.",
       "section": "Шардоне",
-      "wishlist": true,
+      "wishlist": false,
       "research": true,
       "stores": [
         {
@@ -672,7 +672,7 @@
       ],
       "description": "WineStyle СПб: под заказ. Tonya Pitts / Wine Enthusiast 91; James Suckling 90.",
       "section": "Пино Нуар",
-      "wishlist": true,
+      "wishlist": false,
       "research": true,
       "stores": [
         {
@@ -707,7 +707,7 @@
       ],
       "description": "WineStyle СПб: в наличии в 1 магазине. Decanter 90, серебро; Concours Mondial de Bruxelles 85,7; IWSC 87, бронза.",
       "section": "Риоха",
-      "wishlist": true,
+      "wishlist": false,
       "research": true,
       "stores": [
         {
@@ -849,7 +849,7 @@
       ],
       "description": "WineStyle СПб: под заказ. Anne Krebiehl 93; Peter Moser 94.",
       "section": "Шардоне",
-      "wishlist": true,
+      "wishlist": false,
       "research": true,
       "stores": [
         {
@@ -883,7 +883,7 @@
       ],
       "description": "WineStyle СПб: в наличии в 1 магазине, также под заказ. Christina Pickard / Wine Enthusiast 86; JamesSuckling.com 90 (автор не уточнён).",
       "section": "Совиньон Блан",
-      "wishlist": true,
+      "wishlist": false,
       "research": true,
       "stores": [
         {
@@ -992,7 +992,7 @@
       ],
       "description": "WineStyle СПб: под заказ. Tim Atkin 90; Ken's Wine Guide 90; Wine Spectator 90.",
       "section": "Шардоне",
-      "wishlist": true,
+      "wishlist": false,
       "research": true,
       "stores": [
         {

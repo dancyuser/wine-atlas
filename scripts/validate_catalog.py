@@ -32,7 +32,8 @@ for r in records:
    assert store['reference_price_rub'] is not None and store['reference_regular_price_rub']>store['reference_price_rub']
 assert len(records)==163,len(records)
 assert sum(bool(x['research']) for x in records)==51
-assert sum(bool(x['wishlist']) for x in records)==124
+assert sum(bool(x['wishlist']) for x in records)==112
+assert not any(r['wishlist'] and r['research'] for r in records), 'A researched wine cannot also be on the wishlist'
 assert sum(any(s['reference_price_rub'] for s in x['stores']) for x in records)==51
 assert not any(s['price_rub'] is not None for r in records for s in r['stores']),'No current prices were verified in this snapshot'
 print('VALIDATED',len(records),'unique wine entries',len(urls),'retailer links', 'countries=',len({r['country'] for r in records if r['country']}))
