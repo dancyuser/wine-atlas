@@ -90,6 +90,29 @@ class ExtractionTests(unittest.TestCase):
         self.assertEqual([(r['source'], r['score']) for r in scores],
                          [('Jancis Robinson', 16.5)])
 
+    def test_main_product_attributes_exclude_recommendations(self):
+        markup = html(suffix=(
+            '<table class="product-specifications">'
+            '<tr><th>Сорта винограда</th><td>Шардоне</td></tr>'
+            '<tr><th>Регион</th><td>Альто-Адидже</td></tr></table>'
+            '<section class="recommended-products"><div class="product-ratings">'
+            '<table><tr><th>Сорта винограда</th><td>Сира</td></tr>'
+            '<tr><th>Регион</th><td>Риоха</td></tr></table></div></section>'
+            '<section class="comparison-table">'
+            '<dl><dt>Сорта винограда</dt><dd>Темпранильо</dd></dl></section>'
+        ))
+        details, _, _ = parser.extract(markup, RECORD, URL, DATE)
+        self.assertEqual(details['grapes'], 'Шардоне')
+        self.assertEqual(details['region'], 'Альто-Адидже')
+
+    def test_ambiguous_main_product_label_not_accepted(self):
+        markup = html(suffix=(
+            '<table><tr><th>Сорта винограда</th><td>Шардоне</td></tr>'
+            '<tr><th>Сорта винограда</th><td>Сира</td></tr></table>'
+        ))
+        details, _, _ = parser.extract(markup, RECORD, URL, DATE)
+        self.assertIsNone(details['grapes'])
+
     def test_unlabelled_ratings_not_accepted(self):
         markup = '<main><p>94/100</p><p>5/5</p><aside>Wine Enthusiast 94/100</aside></main>'
         self.assertEqual(extract_ratings(BeautifulSoup(markup, 'html.parser'), {}, URL, DATE), [])
@@ -120,6 +143,46 @@ class ExtractionTests(unittest.TestCase):
         del item['offers']['oldPrice']
         item['offers']['highPrice'] = 4200
         self.assertEqual(parser.extract(html(item), RECORD, URL, DATE)[1:], (2500, None))
+
+    def test_html_import_preserves_published_overlay_schema(self):
+        record = copy.deepcopy(RECORD)
+        store = record['stores'][0]
+        store['product_details'] = {
+            'source_url': URL, 'checked_at': '2026-11-21',
+            'wine_style': 'Белое, Сухое',
+            'pairing_notes': 'рыба, морепродукты',
+            'description_excerpt': 'Older description.',
+            'brand': 'Zemmer', 'availability_note': 'Ожидаем поступление',
+            'field_evidence': {'pairing_notes': 'Подходит к: рыба'},
+            'field_sources': {'pairing_notes': 'primary_product_table'},
+            'ratings': [{
+                'source': 'Wine Spectator', 'score': 88, 'scale': 100,
+                'reported_by': 'WineStyle', 'source_url': URL,
+                'observed_on': '2026-11-21', 'evidence': 'Wine Spectator 88/100'
+            }]
+        }
+        details, current, regular = parser.extract(html(), record, URL, DATE)
+        parser.apply_result(record, store, details, current, regular, {})
+        result = store['product_details']
+        self.assertEqual(result['description_excerpt'], 'Synthetic test description')
+        self.assertEqual(result['pairing_notes'], 'рыба, морепродукты')
+        self.assertEqual(result['wine_style'], 'Белое, Сухое')
+        self.assertEqual(result['brand'], 'Zemmer')
+        self.assertEqual(result['availability_note'], 'Ожидаем поступление')
+        self.assertIn('Wine Spectator', [r['source'] for r in result['ratings']])
+        self.assertIn('Jancis Robinson', [r['source'] for r in result['ratings']])
+        self.assertEqual(result['field_checked_at']['pairing_notes'], '2026-11-21')
+        self.assertEqual(result['field_checked_at']['description_excerpt'], DATE)
+        self.assertEqual(result['field_evidence']['pairing_notes'], 'Подходит к: рыба')
+        self.assertEqual(store['enrichment_status']['method'], 'offline_html')
+
+    def test_newer_snapshot_is_not_downgraded(self):
+        record = copy.deepcopy(RECORD)
+        store = record['stores'][0]
+        store['product_details'] = {'source_url': URL, 'checked_at': '2026-11-23'}
+        details, current, regular = parser.extract(html(), record, URL, DATE)
+        with self.assertRaisesRegex(ValueError, 'older_observation'):
+            parser.apply_result(record, store, details, current, regular, {})
 
     def test_null_previous_enrichment_is_accepted(self):
         record = copy.deepcopy(RECORD)
