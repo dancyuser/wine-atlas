@@ -102,12 +102,21 @@ IDENTITY_STOPWORDS = {
 YEAR_PATTERN = re.compile(r"(?<!\d)(?:19|20)\d{2}(?!\d)")
 
 
-def identity_tokens(value):
-    decomposed = unicodedata.normalize("NFKD", str(value)).casefold()
+def identity_tokens(value, *, slug=False):
+    text = str(value)
+    # Strip only *recognized* years and quantity expressions. Bare numeric
+    # identity markers such as Bodega Aniello "006" must survive comparison.
+    text = YEAR_PATTERN.sub(" ", text)
+    text = NAME_VOLUME_PATTERN.sub(" ", text)
+    if slug:
+        # WineStyle URLs sometimes append a standard bottle size in millilitres
+        # with no unit; restrict this exception to the final slug segment.
+        text = re.sub(r"[-_](?:125|187|200|250|375|500|750|1000|1500|3000|6000)$",
+                      "", text, flags=re.I)
+    decomposed = unicodedata.normalize("NFKD", text).casefold()
     clean = "".join(ch for ch in decomposed if not unicodedata.combining(ch))
     words = re.sub(r"[^a-zа-я0-9]+", " ", clean).split()
-    return {word for word in words if word not in IDENTITY_STOPWORDS
-            and not word.isdigit()}
+    return {word for word in words if word not in IDENTITY_STOPWORDS}
 
 
 
@@ -149,13 +158,19 @@ def validate_product_identity(record, store, details):
     slug = unquote(urlsplit(store["url"]).path.rsplit("/", 1)[-1])
     if slug.lower().endswith(".html"):
         slug = slug[:-5]
-    expected_tokens = identity_tokens(slug)
+    expected_tokens = identity_tokens(slug, slug=True)
     if not expected_tokens:
         expected_tokens = identity_tokens(record["title"])
     actual_tokens = identity_tokens(name)
     require(expected_tokens and
             len(expected_tokens.intersection(actual_tokens)) / len(expected_tokens) >= 0.9,
             f"product_details name does not match original URL: {record['id']}")
+    # Numerically labelled cuvees are distinct products (e.g. "006" vs "007"),
+    # even if generic word coverage remains above the 90% threshold.
+    expected_numbers = {token for token in expected_tokens if token.isdigit()}
+    actual_numbers = {token for token in actual_tokens if token.isdigit()}
+    require(expected_numbers == actual_numbers,
+            f"numeric cuvee designation mismatch: {record['id']}")
     # One-way slug coverage is not sufficient: "Riserva", "Reserve" and
     # other extra cuvee names can refer to a different wine from the same estate.
     extra = actual_tokens - expected_tokens - identity_tokens(record["title"])
