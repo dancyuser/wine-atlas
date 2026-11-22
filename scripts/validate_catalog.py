@@ -13,8 +13,10 @@ assert all(r['type'] in ('Красное','Белое','Розовое','Игр�
 urls=[]
 for r in records:
  assert r['title'] and len(r['title'])<230,r
- assert not re.search(r'(?<!\\d)\\d{5,}(?!\\d)',r['title']), 'SKU/EAN in title: '+r['title']
- assert not re.search(r'(?:^|\\s)(?:075|375|750|1500)
+ assert not re.search(r'(?<!\d)\d{5,}(?!\d)',r['title']), 'SKU/EAN in title: '+r['title']
+ assert not re.search(r'(?:^|\s)(?:075|375|750|1500)$',r['title']), 'Bottle volume in title: '+r['title']
+ assert r['title']!=r['title'].lower(), 'Title must use proper capitalization: '+r['title']
+ assert r['year'] is None or not re.search(r'(?<!\d)'+str(r['year'])+r'(?!\d)',r['title']), 'Vintage duplicated in title: '+r['title']
  assert isinstance(r['pairings'],list)
  assert isinstance(r['grapes'],list)
  assert r['stores']
