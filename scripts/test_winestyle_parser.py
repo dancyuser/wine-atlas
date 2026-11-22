@@ -314,6 +314,26 @@ class ExtractionTests(unittest.TestCase):
         self.assertEqual(store["product_details"]["volume_l"], "0.75 л")
         self.assertIsNone(record["volume_l"])
 
+    def test_volume_extracted_from_name_without_size_or_attributes(self):
+        for title_size in ("75 cl", "750 мл", "0.75 л"):
+            with self.subTest(size=title_size):
+                record = copy.deepcopy(RECORD)
+                item = product()
+                del item["size"]
+                item["name"] = item["name"].replace("0.75 l", title_size)
+                details, current, regular = parser.extract(html(item), record, URL, DATE)
+                self.assertEqual(details["volume_l"], 0.75)
+                parser.apply_result(record, record["stores"][0], details,
+                                    current, regular, {})
+                self.assertEqual(record["stores"][0]["product_details"]["volume_l"], 0.75)
+
+    def test_wrong_volume_in_name_without_size_is_rejected(self):
+        item = product()
+        del item["size"]
+        item["name"] = item["name"].replace("0.75 l", "1.5 л")
+        with self.assertRaisesRegex(ValueError, "volume_mismatch_or_unconfirmed"):
+            parser.extract(html(item), RECORD, URL, DATE)
+
     def test_html_accepts_matching_bottle_in_cl(self):
         record = copy.deepcopy(RECORD)
         store = record["stores"][0]
