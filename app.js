@@ -39,8 +39,10 @@ const pairingGroups=[
 function retailerDetails(r){const s=r.stores?.[0];return s?.enrichment_status?.status==='verified'&&s.product_details?.source_url===s.url?s.product_details:null}
 function grapeValues(r){const d=retailerDetails(r);return r.grapes?.length?r.grapes:(d?.grapes?d.grapes.split(',').map(s=>s.trim()).filter(Boolean):[])}
 function countryValue(r){return r.country||retailerDetails(r)?.country?.split(',')[0]?.trim()||null}
-function pairingValues(r){const note=retailerDetails(r)?.pairing_notes;return note?
-  pairingGroups.filter(([,pattern])=>pattern.test(note)).map(([name])=>name):(r.pairings||[])}
+function pairingValues(r){const note=retailerDetails(r)?.pairing_notes;
+  if(!note)return r.pairings||[];
+  const inferred=pairingGroups.filter(([,pattern])=>pattern.test(note)).map(([name])=>name);
+  return inferred.length?inferred:(r.pairings||[])}
 function distinct(k){return [...new Set(state.records.flatMap(r=>k==='grapes'?grapeValues(r):
   k==='country'?[countryValue(r)].filter(Boolean):k==='pairings'?pairingValues(r):
   Array.isArray(r[k])?r[k]:(r[k]?[r[k]]:[])))].sort((a,b)=>a.localeCompare(b,'ru'))}
