@@ -78,6 +78,9 @@ def main():
  for r in data['records']:
   for store in r['stores']:
    url=store['url']
+   if (urlsplit(url).hostname or '').lower().removeprefix('spb.')=='winestyle.ru':
+    # The identity-aware WineStyle pipeline owns this domain and its stop state.
+    blocked+=1;continue
    if url in seen:continue
    seen.add(url)
    if args.limit and attempted>=args.limit:break

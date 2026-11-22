@@ -1,0 +1,26 @@
+test_ambiguous_offers_rejected (test_enrichment.ParserTests.test_ambiguous_offers_rejected) ... ok
+test_apply_preserves_history_manual_and_missing_price (test_enrichment.ParserTests.test_apply_preserves_history_manual_and_missing_price) ... ok
+test_availability_requires_explicit_region (test_enrichment.ParserTests.test_availability_requires_explicit_region) ... ok
+test_block_page (test_enrichment.ParserTests.test_block_page) ... ok
+test_currency_and_aggregate_rejected (test_enrichment.ParserTests.test_currency_and_aggregate_rejected) ... ok
+test_dom_microdata (test_enrichment.ParserTests.test_dom_microdata) ... ok
+test_explicit_discount_only (test_enrichment.ParserTests.test_explicit_discount_only) ... ok
+test_fields_and_regional_uncertainty (test_enrichment.ParserTests.test_fields_and_regional_uncertainty) ... ok
+test_graph_and_duplicate_products (test_enrichment.ParserTests.test_graph_and_duplicate_products) ... ok
+test_invalid_prices (test_enrichment.ParserTests.test_invalid_prices) ... ok
+test_offer_url_mismatch_rejected (test_enrichment.ParserTests.test_offer_url_mismatch_rejected) ... ok
+test_recommendation_product_rejected (test_enrichment.ParserTests.test_recommendation_product_rejected) ... ok
+test_wrong_volume_rejected (test_enrichment.ParserTests.test_wrong_volume_rejected) ... ok
+test_wrong_year_name_and_producer_rejected (test_enrichment.ParserTests.test_wrong_year_name_and_producer_rejected) ... ok
+test_actual_catalog_preserved (test_enrichment.WorkflowTests.test_actual_catalog_preserved) ... ok
+test_block_stops_subsequent_requests (test_enrichment.WorkflowTests.test_block_stops_subsequent_requests) ... ok
+test_builder_retains_enrichment_and_history (test_enrichment.WorkflowTests.test_builder_retains_enrichment_and_history) ... ok
+test_offline_run_and_repeat (test_enrichment.WorkflowTests.test_offline_run_and_repeat) ... ok
+test_persistent_block_and_dry_run_no_writes (test_enrichment.WorkflowTests.test_persistent_block_and_dry_run_no_writes) ... WARNING domain_block_recorded: HTTP 403
+ok
+test_validator_detects_lost_history_duplicate_and_nan (test_enrichment.WorkflowTests.test_validator_detects_lost_history_duplicate_and_nan) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.400s
+
+OK

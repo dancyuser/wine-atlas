@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.playwright/
+tests/.tmp/
+reports/screenshots/

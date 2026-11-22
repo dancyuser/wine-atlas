@@ -1,0 +1,16 @@
+{
+  "passed": 9,
+  "checks": [
+    "163 real catalog cards rendered",
+    "individual existing descriptions and honest unknown-description fallback",
+    "favorite persisted across reload and saved scope",
+    "country, grape, type, food pairing filters",
+    "all sorting options",
+    "empty-state reset",
+    "synthetic confirmed price, discount, facts, date, image rights and HTML escaping",
+    "390 px mobile layout without horizontal overflow; favorite button usable",
+    "no browser JavaScript errors"
+  ],
+  "external_network": "blocked",
+  "fixtures": "synthetic in-memory UI checks; screenshots use real catalog"
+}

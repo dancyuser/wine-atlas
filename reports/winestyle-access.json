@@ -1,0 +1,884 @@
+{
+  "checked_at": "2026-11-22",
+  "blocked": true,
+  "domain": "winestyle.ru",
+  "reason": "HTTP 403 on third initial test card; do not retry or switch transport after refusal.",
+  "url": "https://spb.winestyle.ru/products/Graham-s-Late-Bottled-Vintage-LBV-2019-gift-tube.html",
+  "robots": {
+    "url": "https://spb.winestyle.ru/robots.txt",
+    "http_status": 200,
+    "response_bytes": 6382,
+    "review": "Read first 1200 characters only. Full robots rules were not retained/evaluated. Permission is not established."
+  },
+  "terms": {
+    "status": "not_verified",
+    "reason": "No terms page fetched before domain stop. Search results did not establish applicable terms."
+  },
+  "http_probe": {
+    "user_agent": "WineAtlas/1.0 (personal catalog verification)",
+    "connection": "Local Python requests, ordinary HTTP, no browser, no proxy configured by task",
+    "entries": [
+      {
+        "id": "aa6da0a65a5d",
+        "url": "https://spb.winestyle.ru/products/Bestheim-Alsace-Grand-Cru-Schlossberg-Riesling-AOC-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "426bd971c45a",
+        "url": "https://spb.winestyle.ru/products/d-Arenberg-The-Stump-Jump-White-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "2f1b26d235e4",
+        "url": "https://spb.winestyle.ru/products/Graham-s-Late-Bottled-Vintage-LBV-2019-gift-tube.html",
+        "status": "blocked",
+        "checked_at": "2026-11-22",
+        "http_status": 403,
+        "response_bytes": 10,
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "170ab9abed3f",
+        "url": "https://spb.winestyle.ru/products/Ingrid-Groiss-Rose-Ried-Hasenhaide-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "056c6f909a24",
+        "url": "https://spb.winestyle.ru/products/Nino-Franco-Faive-Rose-Brut-Veneto-IGT-2019.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "801667d481d6",
+        "url": "https://spb.winestyle.ru/products/Nino-Franco-Faive-Rose-Brut-Veneto-IGT-2022.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "93f0823b0c90",
+        "url": "https://spb.winestyle.ru/products/Peter-Zemmer-Chardonnay-Alto-Adige-DOC-2023.html",
+        "status": "http_received_unverified",
+        "checked_at": "2026-11-22",
+        "http_status": 200,
+        "response_bytes": 318642,
+        "reason": "Initial access probe only; full HTML was not retained or field-validated."
+      },
+      {
+        "id": "2d98b7c07c09",
+        "url": "https://spb.winestyle.ru/products/Pyramid-Scheme-Pinot-Noir-2023.html",
+        "status": "http_received_unverified",
+        "checked_at": "2026-11-22",
+        "http_status": 200,
+        "response_bytes": 300978,
+        "reason": "Initial access probe only; full HTML was not retained or field-validated."
+      },
+      {
+        "id": "87c72ad959cc",
+        "url": "https://spb.winestyle.ru/products/Bodegas-Ramon-Bilbao-Crianza-Rioja-DOC-2021-750.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "a6d998217348",
+        "url": "https://spb.winestyle.ru/products/Bodegas-Ramon-Bilbao-Crianza-Rioja-DOC-2022.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "bdbf5d0327dc",
+        "url": "https://spb.winestyle.ru/products/Tement-Ehrenhausen-Muschelkalk-2017-375.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "f05b85f57f2c",
+        "url": "https://spb.winestyle.ru/products/The-Ned-Sauvignon-Blanc-2024.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "1fc33a9c0505",
+        "url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Chardonnay-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "cb6c474afa17",
+        "url": "https://spb.winestyle.ru/products/A-A-Badenhorst-Secateurs-Rose-Swartland-WO-2022.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "537d512cc39f",
+        "url": "https://spb.winestyle.ru/products/Aixala-I-Alcait-Pardelasses-Priorat-DOQ-2018.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "c917fcb740fd",
+        "url": "https://spb.winestyle.ru/products/Albert-Bichot-Origines-Chardonnay-Bourgogne-AOC-2022.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "d9a5af8ef749",
+        "url": "https://spb.winestyle.ru/products/Amalaya-Blanco-2024.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "e552320d1248",
+        "url": "https://spb.winestyle.ru/products/Antigua-DOC-2024.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "9fb448b8f505",
+        "url": "https://spb.winestyle.ru/products/Apollonio-Mani-del-Sud-Rosso-Salice-Salentino-DOP-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "80cb76314c74",
+        "url": "https://spb.winestyle.ru/products/Ascevi-Luwa-Ronco-dei-Sassi-Collio-DOC-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "a748bd657f0a",
+        "url": "https://spb.winestyle.ru/products/Atzei-Saragat-Cannonau-di-Sardegna-DOC-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "321ec8a9b417",
+        "url": "https://spb.winestyle.ru/products/Azienda-Agricola-Ottella-Le-Creete-Lugana-DOC-2024.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "995b5447875b",
+        "url": "https://spb.winestyle.ru/products/Azienda-Agricola-Ottella-Lugana-Ottella-2017.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "5039c04e5d73",
+        "url": "https://spb.winestyle.ru/products/Batasiolo-Granee-Gavi-del-Comune-di-Gavi-DOCG-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "88a3bb7ae281",
+        "url": "https://spb.winestyle.ru/products/Belguardo-Rose-Toscana-IGT-2022.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "3684c27c6d62",
+        "url": "https://spb.winestyle.ru/products/Bellenda-San-Fermo-Conegliano-Valdobbiadene-DOCG-Prosecco-Superiore-2022-gift-box.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "079c918bef91",
+        "url": "https://spb.winestyle.ru/products/Bodega-Aniello-006-Riverside-Estate-Pinot-Noir-Rio-Negro-2022.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "160221740978",
+        "url": "https://spb.winestyle.ru/products/Bodegas-Ramon-Bilbao-Crianza-Rioja-DOC-2013-1500.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "85f7014559dd",
+        "url": "https://spb.winestyle.ru/products/Can-Sumoi-Ancestral-Montonega-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "5e980b14c4d5",
+        "url": "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2019.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "8a9950e9e3c4",
+        "url": "https://spb.winestyle.ru/products/Capo-di-Stato-Colli-Trevigiani-IGT-2013.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "4d35092a1505",
+        "url": "https://spb.winestyle.ru/products/Castello-di-Querceto-Chianti-Classico-Riserva-DOCG-2012.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "47bef620896d",
+        "url": "https://spb.winestyle.ru/products/Chanzy-Les-Fortunes-Aligote-Bourgogne-AOC-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "6645f77efb94",
+        "url": "https://spb.winestyle.ru/products/Chateau-Ducluzeau-Listrac-Medoc-AOC-2017.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "75ea3ee23df9",
+        "url": "https://spb.winestyle.ru/products/Chateau-La-Tour-de-L-Eveque-Petale-de-Rose-Cotes-de-Provence-AOC-2020.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "e65c60dd483b",
+        "url": "https://spb.winestyle.ru/products/Chateau-Marjosse-Bordeaux-AOC-Rouge-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "f6c18006b2cc",
+        "url": "https://spb.winestyle.ru/products/Chateau-Pajzos-T-Tokaji-Furmint-2022.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "9ddeb3cfb445",
+        "url": "https://spb.winestyle.ru/products/Church-Block-Cabernet-Shiraz-Merlot-2011.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "9a7644231a69",
+        "url": "https://spb.winestyle.ru/products/Clos-de-los-Siete-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "001eeb719213",
+        "url": "https://spb.winestyle.ru/products/Crapula-Gold-2022.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "d4d77be3bdca",
+        "url": "https://spb.winestyle.ru/products/D-Angelo-Aglianico-del-Vulture-DOC-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "65df74bcd692",
+        "url": "https://spb.winestyle.ru/products/d-Arenberg-d-Arry-s-Original-2020.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "9830fcbfa909",
+        "url": "https://spb.winestyle.ru/products/Domaine-Laffitte-Rose-Cotes-de-Gascogne-IGP-2024.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "45a235043feb",
+        "url": "https://spb.winestyle.ru/products/Domane-Wachau-Katzensprung-Gruner-Veltliner-Federspiel-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "e8609b5a3c65",
+        "url": "https://spb.winestyle.ru/products/Dulong-Cremant-de-Bordeaux-AOP-Brut.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "1d4b1fae8d7a",
+        "url": "https://spb.winestyle.ru/products/El-Esteco-Blanc-de-Noir-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "7309e60757dd",
+        "url": "https://spb.winestyle.ru/products/El-Esteco-Don-David-Malbec-Reserve-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "d8aa36dd85fe",
+        "url": "https://spb.winestyle.ru/products/Elena-Fucci-Verha-Rosato-Basilicata-IGT-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "ee109cc95019",
+        "url": "https://spb.winestyle.ru/products/Elias-Mora-Crianza-2020.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "c817a42207f3",
+        "url": "https://spb.winestyle.ru/products/Enrico-Serafino-Pajena-Barbera-d-Alba-DOC-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "0269b462fa82",
+        "url": "https://spb.winestyle.ru/products/Estandon-Heritage-Cotes-de-Provence-AOP-2020.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "298ebca26e9c",
+        "url": "https://spb.winestyle.ru/products/Fattoria-Le-Pupille-Morellino-di-Scansano-DOCG-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "7c5d44c4353e",
+        "url": "https://spb.winestyle.ru/products/Fattoria-Le-Pupille-Morellino-di-Scansano-Riserva-DOCG-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "d41d680aacec",
+        "url": "https://spb.winestyle.ru/products/Fattoria-Le-Pupille-Poggio-Argentato-IGT-2022.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "5b8fb4a0202e",
+        "url": "https://spb.winestyle.ru/products/Felline-Cicala-Rose-Salento-IGT-2018.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "839e49e2c896",
+        "url": "https://spb.winestyle.ru/products/Feudi-del-Pisciotto-Alberta-Ferretti-Chardonnay-Sicilia-IGT-2014.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "19cfb8faf5be",
+        "url": "https://spb.winestyle.ru/products/Frankland-Estate-Poison-Hill-Vineyard-Riesling-2016.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "060a331fa324",
+        "url": "https://spb.winestyle.ru/products/Gaintza-Txakolina-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "3da3f3b14e7a",
+        "url": "https://spb.winestyle.ru/products/Georg-Breuer-Estate-Rudesheim-2018.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "42b87c5124ce",
+        "url": "https://spb.winestyle.ru/products/Girlan-Chardonnay-Sudtirol-Alto-Adige-DOC-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "f97f2ccc67b8",
+        "url": "https://spb.winestyle.ru/products/Grande-Alberone-Moscato-Spumante-Dolce.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "2f06acc1cf43",
+        "url": "https://spb.winestyle.ru/products/Hito-Ribera-Del-Duero-DO-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "91f9214b514c",
+        "url": "https://spb.winestyle.ru/products/Huia-Pinot-Noir-2013.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "b754161b525f",
+        "url": "https://spb.winestyle.ru/products/I-Frati-Lugana-DOC-2024.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "48e6958c78dc",
+        "url": "https://spb.winestyle.ru/products/Jordan-Black-Magic-Merlot-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "467b63015a0c",
+        "url": "https://spb.winestyle.ru/products/Kleine-Zalze-Vineyard-Selection-Chardonnay-2024.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "96d588edbbdb",
+        "url": "https://spb.winestyle.ru/products/Kracher-Spatlese-Rose-2024.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "2a8f07a9732b",
+        "url": "https://spb.winestyle.ru/products/Kurtatsch-Caliz-Chardonnay-Sudtirol-Alto-Adige-DOC-2022.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "19c9dff352b3",
+        "url": "https://spb.winestyle.ru/products/La-Bioca-Sterma-Nebbiolo-d-Alba-DOC-Superiore-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "e3bc96e35d46",
+        "url": "https://spb.winestyle.ru/products/La-Posta-Rose-of-Malbec-Mendoza-DO-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "81d1c4e70b33",
+        "url": "https://spb.winestyle.ru/products/Lapis-Luna-Chardonnay-North-Coast-AVA-2022.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "4123b553c232",
+        "url": "https://spb.winestyle.ru/products/Lapostolle-Le-Rose-2024.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "cd226588d1df",
+        "url": "https://spb.winestyle.ru/products/Lavau-EnvyFol-GSM-Pays-d-Oc-IGP-2022.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "209d7a6d9fe0",
+        "url": "https://spb.winestyle.ru/products/Loimer-Gluegglich.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "de91d5c1fa5e",
+        "url": "https://spb.winestyle.ru/products/Long-Barn-Zinfandel-2024.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "745a343dcdc1",
+        "url": "https://spb.winestyle.ru/products/Luca-Winery-G-Lot-Pinot-Noir-Tupungato-2022.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "7c836f833ee2",
+        "url": "https://spb.winestyle.ru/products/Lucien-Albrecht-Brut-Cremant-d-Alsace-AOC.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "e6beca8a8172",
+        "url": "https://spb.winestyle.ru/products/Mar-de-Frades-Albarino-Rias-Baixas-DO-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "0d2ee38169c9",
+        "url": "https://spb.winestyle.ru/products/Mare-Magnum-The-Chocolate-Tube-Primitivo-Puglia-IGT-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "f0c33d420f2f",
+        "url": "https://spb.winestyle.ru/products/Marius-Peyol-Coteaux-d-Aix-en-Provence-AOC-2024.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "5b9b46b0b3e6",
+        "url": "https://spb.winestyle.ru/products/Maturana-Wines-Naranjo-Torontel-Maule-Valley-DO-2024.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "2b85a6978520",
+        "url": "https://spb.winestyle.ru/products/Mezzacorona-Pinot-Grigio-Trentino-DOC-2022.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "e3190ea1eebc",
+        "url": "https://spb.winestyle.ru/products/Mi-Terruno-Expresion-Malbec-2022.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "e5af8c73633f",
+        "url": "https://spb.winestyle.ru/products/Miraval-Rose-Cotes-de-Provence-AOC-2018-375.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "2f6a9b761e1f",
+        "url": "https://spb.winestyle.ru/products/Montedidio-San-Domino-Primitivo-Puglia-IGT-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "46622f963eaa",
+        "url": "https://spb.winestyle.ru/products/Montelliana-Prosecco-Treviso-DOC-Extra-Dry.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "5f82dc29ad72",
+        "url": "https://spb.winestyle.ru/products/Muga-Rosado-Rioja-DOC-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "c04e76e37fa1",
+        "url": "https://spb.winestyle.ru/products/Muga-Rosado-Rioja-DOC-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "6b16a51f5c8c",
+        "url": "https://spb.winestyle.ru/products/Myskhako-Quintessence-Zinfandel.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "2d0e198f8485",
+        "url": "https://spb.winestyle.ru/products/Nik-Weis-Urban-Riesling-2024.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "569268902614",
+        "url": "https://spb.winestyle.ru/products/Nipozzano-Chianti-Rufina-Riserva-DOCG-2022.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "ea7851a726ac",
+        "url": "https://spb.winestyle.ru/products/Ottella-Lugana-DOC-2024-750.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "bab581b955b0",
+        "url": "https://spb.winestyle.ru/products/Parajes-del-Valle-Monastrell-Ecologico-Jumilla-DOP-2022.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "87669b47495e",
+        "url": "https://spb.winestyle.ru/products/Pieropan-Ruberpan-Valpolicella-Superiore-DOC-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "5427ef8902aa",
+        "url": "https://spb.winestyle.ru/products/Pitars-Prosecco-DOC.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "55ad5827620c",
+        "url": "https://spb.winestyle.ru/products/Protos-Roble-2024.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "f32c8d6cae2b",
+        "url": "https://spb.winestyle.ru/products/Protos-Verdejo-2018.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "4341f4fa849e",
+        "url": "https://spb.winestyle.ru/products/Quinta-De-La-Rosa-LBV-Port-2019.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "3e7d77f4d094",
+        "url": "https://spb.winestyle.ru/products/Ramon-Bilbao-Reserva-Rioja-DOC-2018.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "5740739d992b",
+        "url": "https://spb.winestyle.ru/products/Recanati-Yasmin-White-kosher-mevushal-2018.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "caa3a12da960",
+        "url": "https://spb.winestyle.ru/products/Romagnoli-Vizzo-Rosso-Emilia-IGT-2019.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "e3e9c91e71bc",
+        "url": "https://spb.winestyle.ru/products/Rotari-Blanc-de-Blancs-Extra-Brut-Trento-DOC-2018.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "006f83a3b98d",
+        "url": "https://spb.winestyle.ru/products/Santa-Cristina-Giardino-Rose-Toscana-IGT-2024.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "5445709eae58",
+        "url": "https://spb.winestyle.ru/products/Scarpa-Tacco12-Moscato-d-Asti-DOCG-2022.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "ffffabb4d41a",
+        "url": "https://spb.winestyle.ru/products/Tabali-Tatie-Brut-Limari-Valley.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "4bdac639abe7",
+        "url": "https://spb.winestyle.ru/products/Taboadella-Villae-Branco-Dao-DOC-2020.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "bb252388600c",
+        "url": "https://spb.winestyle.ru/products/Tedeschi-Capitel-San-Rocco-Valpolicella-Ripasso-DOC-Superiore-2015.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "eaa1207798b9",
+        "url": "https://spb.winestyle.ru/products/Tedeschi-Capitel-San-Rocco-Valpolicella-Ripasso-DOC-Superiore-2019.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "b2276984217f",
+        "url": "https://spb.winestyle.ru/products/Tenuta-Poggio-ai-Mandorli-Chianti-Classico-Gran-Selezione-DOCG-2019.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "77b281dd280d",
+        "url": "https://spb.winestyle.ru/products/Tenuta-Sant-Antonio-Nanfre-Valpolicella-DOC-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "62988f645654",
+        "url": "https://spb.winestyle.ru/products/Tesch-Unplugged-Riesling-2024.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "15b856b072fd",
+        "url": "https://spb.winestyle.ru/products/Torres-Vina-Esmeralda-Rose-Catalunya-DO-2024.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "8fb6ff3a814f",
+        "url": "https://spb.winestyle.ru/products/Undurraga-Sibaris-Pinot-Noir-Gran-Reserva-Leyda-Valley-DO-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "28bf2f843af7",
+        "url": "https://spb.winestyle.ru/products/Vigna-Senza-Nome-Moscato-d-Asti-DOCG-2023-375.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "ce214c07863d",
+        "url": "https://spb.winestyle.ru/products/Vilarnau-Brut-Nature-Reserva-Cava-DO-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "9b6ffd01ee4a",
+        "url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Malbec-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "2ae8e7fc916b",
+        "url": "https://spb.winestyle.ru/products/Weingut-J-Neus-Ingelheim-am-Rhein-Muschelkalk-Spatburgunder-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "cbc96de28176",
+        "url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2016.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "d8c0fc71ced9",
+        "url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2023.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "0f0246d18580",
+        "url": "https://spb.winestyle.ru/products/Wohlmuth-Gewurztraminer-Sudsteiermark-DAC-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "22c9be4678f5",
+        "url": "https://spb.winestyle.ru/products/Zantho-Beerenauslese-2018.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      },
+      {
+        "id": "4d6ad3b07c95",
+        "url": "https://spb.winestyle.ru/products/Zantho-St-Laurent-2021.html",
+        "status": "skipped_domain_blocked",
+        "checked_at": "2026-11-22",
+        "reason": "HTTP 403 on test card; domain collection stopped."
+      }
+    ]
+  },
+  "retained_evidence": "HTTP statuses, byte counts and displayed response fragments; not full product HTML."
+}

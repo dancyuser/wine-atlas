@@ -123,6 +123,7 @@ def main():
    r['scores']=re.findall(r'(?:Decanter|Wine Enthusiast|Wine Spectator|Tim Atkin|James Suckling|Falstaff|Top100Wines|Simple Wine News)[^.;]{0,65}',info,re.I)[:3]
    r['review_note']='Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены.'
  overrides=ROOT/'data'/'overrides.json'
+ custom={}
  if overrides.exists():
   custom=json.loads(overrides.read_text(encoding='utf-8'))
   for r in recs.values():
@@ -140,8 +141,14 @@ def main():
    for store in record['stores']:
     was=old_stores.get(key(store['url']))
     if was:
-     for f in ('price_rub','regular_price_rub','price_checked_at'):
-      store[f]=was.get(f)
+     for f in ('price_rub','regular_price_rub','price_checked_at',
+               'reference_price_rub','reference_regular_price_rub','reference_date',
+               'price_source_url','product_details','enrichment_status'):
+      if f in was:store[f]=was[f]
+   # Retain confirmed additions to otherwise unknown source annotations.
+   for field in ('country','volume_l'):
+    if record.get(field) is None and prev.get(field) is not None:record[field]=prev[field]
+   record.update({k:v for k,v in custom.get(record['id'],{}).items() if k not in ('id','stores')})
  out={'updated_at':'2026-11-22','region':'Санкт-Петербург','historical_as_of':'2026-11-14','records':sorted(recs.values(),key=lambda r:(not r['research'],r['title'].casefold()))}
  (ROOT/'data'/'wines.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
  print(f'wishlist URLs excluding gin and duplicates: {sum(r["wishlist"] for r in recs.values())}; research: {num_research}; total unique: {len(recs)}; gin excluded: {extra_gin}')

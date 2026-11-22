@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-11-22",
+  "domain": "winestyle.ru",
+  "discovered": 122,
+  "selected": 122,
+  "attempted": 0,
+  "successful": 0,
+  "current_prices": 0,
+  "discounts": 0,
+  "characteristics": 0,
+  "errors": 0,
+  "blocked": 1,
+  "skipped": 122,
+  "entries": [],
+  "stop_reason": "domain_block_recorded: HTTP 403 on third initial test card; do not retry or switch transport after refusal."
+}
