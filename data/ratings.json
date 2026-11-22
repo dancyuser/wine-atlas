@@ -1,7 +1,7 @@
 {
   "version": 1,
   "generated_at": "2026-11-22",
-  "notes": "Оценки исходной исследовательской подборки от 14.11.2026; данные Vivino проверены адресно 22.11.2026 по найденным страницам. Комбинированный индекс является расчётным, не рейтингом внешней редакции.",
+  "notes": "Оценки профессиональных критиков перенесены из пользовательской подборки от 14.11.2026. Оценки Vivino вносились адресно по публичным страницам и индексируемым результатам. scope=vintage - рейтинг подтверждён для конкретного года; scope=all_vintages - показатель вина в целом, в индекс конкретного винтажа не включается. Общее значение - эвристический индекс, не рейтинг Vivino.",
   "records": {
     "ec43a400a90a": [
       {
@@ -59,6 +59,17 @@
         "source_url": "https://spb.winestyle.ru/products/Bestheim-Alsace-Grand-Cru-Schlossberg-Riesling-AOC-2021.html",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/bestheim-alsace-grand-cru-schlossberg-riesling/w/3793276",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
       }
     ],
     "b5e8b30f7ac7": [
@@ -169,6 +180,18 @@
         "source_url": "https://spb.decanter.ru/product/cune-crianza-rioja-doc-2019-id241266",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.7,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2019,
+        "ratings_count": 5739,
+        "source_url": "https://www.vivino.com/en/cune-cvne-crianza/w/1135311?year=2019",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
       }
     ],
     "d65eefd494f4": [
@@ -325,6 +348,18 @@
         "source_url": "https://simplewine.ru/catalog/product/loco_cimbali_riesling_2024_075_156504/",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "ratings_count": 153,
+        "source_url": "https://www.vivino.com/en/loco-cimbali-riesling/w/10097660?year=2024",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
       }
     ],
     "056c6f909a24": [
@@ -347,6 +382,17 @@
         "source_url": "https://spb.winestyle.ru/products/Nino-Franco-Faive-Rose-Brut-Veneto-IGT-2019.html",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.7,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/nino-franco-spumanti-srl-faive-rose-brut/w/1508196",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
       }
     ],
     "801667d481d6": [
@@ -369,6 +415,17 @@
         "source_url": "https://spb.winestyle.ru/products/Nino-Franco-Faive-Rose-Brut-Veneto-IGT-2022.html",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.7,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/nino-franco-spumanti-srl-faive-rose-brut/w/1508196",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
       }
     ],
     "93f0823b0c90": [
@@ -391,6 +448,17 @@
         "source_url": "https://spb.winestyle.ru/products/Peter-Zemmer-Chardonnay-Alto-Adige-DOC-2023.html",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/peter-zemmer-chardonnay/w/1929552",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
       }
     ],
     "2d98b7c07c09": [
@@ -508,10 +576,10 @@
         "scope": "vintage",
         "vintage": 2022,
         "ratings_count": 4702,
-        "source_url": "https://www.vivino.com/en/wineries/ramon-bilbao",
-        "source_kind": "vivino_search",
+        "source_url": "https://www.vivino.com/en/ramon-bilbao-crianza-rioja/w/77021?year=2022",
+        "source_kind": "vivino_page",
         "observed_on": "2026-11-22",
-        "note": "Винтаж 2022, оценка показана в Vivino Explore."
+        "note": "Подтверждённое соответствие урожаю 2022."
       }
     ],
     "eca0a46f83f1": [
@@ -566,6 +634,18 @@
         "source_url": "https://spb.decanter.ru/product/von-buhl-brut-riesling-2020-id261877",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2020,
+        "ratings_count": 426,
+        "source_url": "https://www.vivino.com/en/von-buhl-riesling-brut/w/1799048?year=2020",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
       }
     ],
     "bdbf5d0327dc": [
@@ -654,6 +734,17 @@
         "source_url": "https://simplewine.ru/catalog/product/vigna_senza_nome_2023_0375_146249/",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/braida-vigna-senza-nome-moscato-d-asti/w/15153",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
       }
     ],
     "816603916cdc": [
@@ -676,6 +767,18 @@
         "source_url": "https://spb.decanter.ru/product/villa-maria-private-bin-sauvignon-blanc-id165050",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 4.1,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2020,
+        "ratings_count": 9584,
+        "source_url": "https://www.vivino.com/en/villa-maria-auckland-private-bin-sauvignon-blanc/w/39034?year=2020",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
       }
     ],
     "1fc33a9c0505": [
@@ -752,6 +855,18 @@
         "source_url": "https://spb.decanter.ru/product/vina-real-crianza-2017-id161935",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.7,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2017,
+        "ratings_count": 1707,
+        "source_url": "https://www.vivino.com/en/es-vina-real-rioja-crianza/w/1261821?year=2017",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
       }
     ],
     "8e20b201ce08": [
@@ -774,6 +889,18 @@
         "source_url": "https://spb.decanter.ru/product/zantho-blaufrankisch-2018-id173224",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2018,
+        "ratings_count": 150,
+        "source_url": "https://www.vivino.com/en/zantho-blaufrankisch/w/96384?year=2018",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
       }
     ],
     "0c7a3925c709": [
@@ -1034,6 +1161,506 @@
         "source_url": "https://simplewine.ru/catalog/product/usadba_mezyb_shardone_2023_075_156221/",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      }
+    ],
+    "a748bd657f0a": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2021,
+        "ratings_count": 91,
+        "source_url": "https://www.vivino.com/en/atzei-saragat-cannonau-di-sardegna/w/9916617?year=2021",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "e3190ea1eebc": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "ratings_count": 26,
+        "source_url": "https://www.vivino.com/en/mi-terruno-expresion-malbec/w/1605319?year=2022",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "62988f645654": [
+      {
+        "source": "Vivino",
+        "score": 3.7,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "ratings_count": 88,
+        "source_url": "https://www.vivino.com/en/tesch-unplugged-riesling/w/1133980?year=2024",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "81d1c4e70b33": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "ratings_count": 164,
+        "source_url": "https://www.vivino.com/en/lapis-luna-chardonnay/w/7496798?year=2022",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "4bdac639abe7": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2020,
+        "ratings_count": 296,
+        "source_url": "https://www.vivino.com/en/taboadella-villae-branco/w/8519239?year=2020",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "d41d680aacec": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "ratings_count": 197,
+        "source_url": "https://www.vivino.com/en/fattoria-le-pupille-poggio-argentato-bianco/w/1180252?year=2022",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "006f83a3b98d": [
+      {
+        "source": "Vivino",
+        "score": 3.7,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "ratings_count": 121,
+        "source_url": "https://www.vivino.com/en/santa-cristina-giardino-rose/w/10619283?year=2024",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "47bef620896d": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": 78,
+        "source_url": "https://www.vivino.com/en/domaine-chanzy-les-fortunes-bourgogne-aligote/w/9570682?year=2023",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "6645f77efb94": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2017,
+        "ratings_count": 230,
+        "source_url": "https://www.vivino.com/en/ducluzeau-listrac-medoc/w/1170367?year=2017",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "060a331fa324": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": 91,
+        "source_url": "https://www.vivino.com/en/gaintza-getariako-txakolina/w/1680825?year=2023",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "87669b47495e": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2021,
+        "ratings_count": 461,
+        "source_url": "https://www.vivino.com/en/pieropan-ruberpan-valpolicella-superiore/w/1198253?year=2021",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "96d588edbbdb": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "ratings_count": 95,
+        "source_url": "https://www.vivino.com/en/kracher-spatlese-rose/w/7169860?year=2024",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "7c5d44c4353e": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2021,
+        "ratings_count": 206,
+        "source_url": "https://www.vivino.com/en/fattoria-le-pupille-morellino-di-scansano-riserva/w/82693?year=2021",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "55ad5827620c": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "ratings_count": 1324,
+        "source_url": "https://www.vivino.com/en/protos-roble/w/1132737?year=2024",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "f6c18006b2cc": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "ratings_count": 272,
+        "source_url": "https://www.vivino.com/en/chateau-pajzos-tokaji-frumint/w/4898172?year=2022",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "19cfb8faf5be": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2016,
+        "ratings_count": 54,
+        "source_url": "https://www.vivino.com/en/frankland-estate-poison-hill-vineyard-riesling/w/87380?year=2016",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "d4d77be3bdca": [
+      {
+        "source": "Vivino",
+        "score": 3.7,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2021,
+        "ratings_count": 88,
+        "source_url": "https://www.vivino.com/en/donato-dangelo-aglianico-del-vulture/w/1172677?year=2021",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "d8c0fc71ced9": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": 1433,
+        "source_url": "https://www.vivino.com/en/wente-family-vineyards-morning-fog-chardonnay/w/1720?year=2023",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "ea7851a726ac": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "ratings_count": 260,
+        "source_url": "https://www.vivino.com/en/ottella-lugana/w/1122030?year=2024",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino для указанного года урожая."
+      }
+    ],
+    "28bf2f843af7": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/braida-vigna-senza-nome-moscato-d-asti/w/15153",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      }
+    ],
+    "d8aa36dd85fe": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/elena-fucci-verha-rosato/w/12114307",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      }
+    ],
+    "001eeb719213": [
+      {
+        "source": "Vivino",
+        "score": 3.6,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/crapula-gold/w/2679432",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      }
+    ],
+    "839e49e2c896": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/feudi-del-pisciotto-alberta-ferretti-chardonnay/w/1812339",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      }
+    ],
+    "46622f963eaa": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/cantina-montelliana-prosecco-treviso-extra-dry/w/1173171",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      }
+    ],
+    "ffffabb4d41a": [
+      {
+        "source": "Vivino",
+        "score": 4.1,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/tabali-tatie-brut/w/7830083",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      }
+    ],
+    "7c836f833ee2": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/explore?search_term=Lucien%20Albrecht%20Cremant%20d%27Alsace%20Brut",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      }
+    ],
+    "e3e9c91e71bc": [
+      {
+        "source": "Vivino",
+        "score": 3.7,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/rotari-blanc-de-blancs-extra-brut/w/3476497",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      }
+    ],
+    "5f82dc29ad72": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/bodegas-muga-muga-rosado/w/7490",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      }
+    ],
+    "c04e76e37fa1": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/bodegas-muga-muga-rosado/w/7490",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      }
+    ],
+    "42b87c5124ce": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/girlan-chardonnay/w/83359",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      }
+    ],
+    "d9a5af8ef749": [
+      {
+        "source": "Vivino",
+        "score": 3.7,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/amalaya-blanco-torrontes-riesling/w/1177446",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      }
+    ],
+    "e65c60dd483b": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/chateau-marjosse-bordeaux/w/92492",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      }
+    ],
+    "995b5447875b": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/ottella-lugana/w/1122030",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      }
+    ],
+    "298ebca26e9c": [
+      {
+        "source": "Vivino",
+        "score": 3.7,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/fattoria-le-pupille-morellino-di-scansano/w/1367830",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      }
+    ],
+    "de91d5c1fa5e": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/long-barn-zinfandel/w/3774480",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      }
+    ],
+    "caa3a12da960": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/wineries/romagnoli",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      }
+    ],
+    "91f9214b514c": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/nz-huia-vineyards-pinot-noir/w/1943063",
+        "source_kind": "vivino_page",
+        "observed_on": "2026-11-22",
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
       }
     ]
   }
