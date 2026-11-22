@@ -53,6 +53,39 @@ def checked_rating(row, expected_url, min_day, product_day):
     require(min_day <= observed <= product_day, "rating date outside verified observation window")
 
 
+TEXT_FIELDS = {
+    "full_name", "producer", "country", "region", "appellation", "grapes",
+    "color", "wine_style", "sweetness", "taste", "aroma", "pairing_notes",
+    "description_excerpt", "brand", "body", "aging_potential", "color_intensity",
+    "availability_note", "image_url", "image_source",
+}
+
+
+def validate_details_schema(details, product_day):
+    """Reject malformed published fields *before* changing the active catalog."""
+    require(isinstance(details, dict), "product details must be a mapping")
+    for key in TEXT_FIELDS:
+        value = details.get(key)
+        require(value is None or isinstance(value, str),
+                f"published field {key} must be a string")
+    for key in ("volume_l", "alcohol_percent"):
+        value = details.get(key)
+        require(value is None or (type(value) in (str, float, int)
+                                  and not (isinstance(value, str) and not value.strip())),
+                f"published field {key} has invalid type")
+    availability = details.get("availability_spb")
+    require(availability is None or type(availability) is bool, "invalid availability type")
+    for name in ("field_sources", "field_evidence", "field_checked_at"):
+        values = details.get(name)
+        require(values is None or isinstance(values, dict), f"{name} must be a mapping")
+        for key, value in (values or {}).items():
+            require(isinstance(key, str) and isinstance(value, str) and value.strip(),
+                    f"{name} must contain nonempty string keys/values")
+            if name == "field_checked_at":
+                require(day(value) <= product_day,
+                        f"field_checked_at.{key} after product observation")
+
+
 def merge_details(previous, incoming):
     """Merge partial published retailer fields without erasing independent older observations."""
     if previous is None:
@@ -85,7 +118,14 @@ def merge_details(previous, incoming):
             combined["ratings"] = list(by_source.values())
         else:
             combined[key] = value
-        sources[key] = (incoming.get("field_sources") or {}).get(key, sources.get(key, "browser_capture"))
+        supplied_source = (incoming.get("field_sources") or {}).get(key)
+        if supplied_source:
+            sources[key] = supplied_source
+        elif old != combined.get(key):
+            # Never reuse provenance of the replaced value.
+            sources[key] = "user_supplied_browser_capture"
+        else:
+            sources[key] = sources.get(key, "user_supplied_browser_capture")
         dates[key] = (incoming.get("field_checked_at") or {}).get(key, incoming["checked_at"])
         new_evidence = (incoming.get("field_evidence") or {}).get(key)
         if new_evidence:
@@ -156,10 +196,10 @@ def verify_overlay(catalog, overlay):
             checked_rating(rating, store["url"], source_date, observed)
             require(rating["source"] not in seen_sources, f"duplicate critic: {id_}")
             seen_sources.add(rating["source"])
-        clean = merge_details(
-            store.get("product_details"),
-            {k: v for k, v in d.items() if k not in PUBLISH_EXCLUDE}
-        )
+        incoming = {k: v for k, v in d.items() if k not in PUBLISH_EXCLUDE}
+        validate_details_schema(incoming, observed)
+        clean = merge_details(store.get("product_details"), incoming)
+        validate_details_schema(clean, observed)
         current = update.get("price_rub")
         regular = update.get("regular_price_rub")
         if current is not None:
