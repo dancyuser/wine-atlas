@@ -92,8 +92,9 @@ def collect_structured(product, url, date):
 
 RECOMMENDATION_MARKERS = re.compile(
     r'related|similar|recommend|suggest|cross.sell|upsell|also.buy|'
+    r'compar|cross.sale|product-list|catalog-grid|carousel-products|'
     r'похож|рекоменду|с этим покупа|смотрите также|'
-    r'сопутствующ|аналогич|вместе с этим', re.I,
+    r'сопутствующ|аналогич|вместе с этим|сравнен|рекомендуемые', re.I,
 )
 
 
