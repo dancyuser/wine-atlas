@@ -200,6 +200,9 @@ def verify_overlay(catalog, overlay):
         validate_details_schema(incoming, observed)
         clean = merge_details(store.get("product_details"), incoming)
         validate_details_schema(clean, observed)
+        require(isinstance(clean.get("full_name"), str) and clean["full_name"] and
+                isinstance(clean.get("producer"), str) and clean["producer"],
+                f"verified product identity missing: {id_}")
         current = update.get("price_rub")
         regular = update.get("regular_price_rub")
         if current is not None:
