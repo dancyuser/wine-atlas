@@ -224,6 +224,32 @@ class ExtractionTests(unittest.TestCase):
         self.assertIs(store['product_details']['availability_spb'], False)
         self.assertNotIn('availability_note', store['product_details'])
 
+    def test_non_spb_offer_price_is_not_accepted(self):
+        item = product()
+        item['offers'] = {
+            '@type': 'Offer', 'url': URL, 'eligibleRegion': 'Moscow',
+            'priceCurrency': 'RUB', 'price': '3000',
+            'availability': 'https://schema.org/InStock'
+        }
+        details, current, regular = parser.extract(html(item), RECORD, URL, DATE)
+        self.assertIsNone(current)
+        self.assertIsNone(details['availability_spb'])
+        self.assertIsNone(regular)
+
+    def test_regional_price_ignores_moscow_when_spb_price_is_valid(self):
+        item = product()
+        item['offers'] = [
+            {'@type': 'Offer', 'url': URL, 'eligibleRegion': 'Moscow',
+             'priceCurrency': 'RUB', 'price': '3000'},
+            {'@type': 'Offer', 'url': URL, 'eligibleRegion': 'Saint Petersburg',
+             'priceCurrency': 'RUB', 'price': '2500',
+             'availability': 'https://schema.org/InStock'}
+        ]
+        details, current, regular = parser.extract(html(item), RECORD, URL, DATE)
+        self.assertEqual(current, 2500)
+        self.assertIsNone(regular)
+        self.assertIs(details['availability_spb'], True)
+
     def test_conflicting_stock_offers_are_not_accepted(self):
         item = product()
         item['offers'] = [
@@ -321,6 +347,31 @@ class OfflineWorkflowTests(unittest.TestCase):
                     self.assertEqual(parser.main(args), 0)
                     self.assertEqual(first, catalog.read_bytes())
             self.assertEqual(json.loads(first)['records'][0]['stores'][0]['product_details']['ratings'][1]['score'], 94)
+
+    def test_first_saved_html_creates_manifest_for_publication(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder)
+            catalog, report, access = path/'catalog.json', path/'run.json', path/'access.json'
+            parser.atomic_json(catalog, {'records': [copy.deepcopy(RECORD)]})
+            (path/'wine.html').write_text(html(), encoding='utf-8')
+            parser.atomic_json(path/'manifest.json', [
+                {'url': URL, 'file': 'wine.html', 'checked_at': DATE}
+            ])
+            with patch.object(parser, 'fetch', side_effect=AssertionError('network forbidden')):
+                with patch('sys.stdout', new_callable=io.StringIO):
+                    status = parser.main([
+                        '--catalog',str(catalog),'--report',str(report),
+                        '--access-state',str(access),'--input-dir',str(path)
+                    ])
+            self.assertEqual(status, 0)
+            result = json.loads(catalog.read_text(encoding='utf-8'))
+            manifest = result['retailer_snapshot']
+            self.assertEqual(manifest['source_capture_kind'], 'offline_saved_html')
+            self.assertEqual(manifest['matched_exact_products'], 1)
+            self.assertEqual(manifest['direct_price_observations'], 1)
+            self.assertEqual(manifest['retailer_reported_ratings'], 3)
+            self.assertEqual(manifest['observed_on'], DATE)
+            self.assertEqual(len(manifest['source_export_sha256']), 64)
 
     def test_two_saved_pages_import_without_manifest_shadowing(self):
         with tempfile.TemporaryDirectory() as folder:
