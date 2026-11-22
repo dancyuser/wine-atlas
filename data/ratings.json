@@ -1,7 +1,7 @@
 {
   "version": 1,
   "generated_at": "2026-11-22",
-  "notes": "Оценки профессиональных критиков перенесены из пользовательской подборки от 14.11.2026. Оценки Vivino вносились адресно по публичным страницам и индексируемым результатам. scope=vintage - рейтинг подтверждён для конкретного года; scope=all_vintages - показатель вина в целом, в индекс конкретного винтажа не включается. Общее значение - эвристический индекс, не рейтинг Vivino.",
+  "notes": "Оценки профессиональных критиков перенесены из пользовательской подборки от 14.11.2026. Оценки Vivino вносились адресно по публичным страницам и индексируемым результатам. scope=vintage - рейтинг подтверждён для конкретного года; scope=all_vintages - показатель вина в целом, в индекс конкретного винтажа не включается. Общее значение - эвристический индекс, не рейтинг Vivino. Для вин без доказуемой числовой оценки после проверки добавлен `unrated` со статусом, причиной и ссылкой при наличии. Наличие записи `unrated` не означает отсутствия вина в базе Vivino.",
   "records": {
     "ec43a400a90a": [
       {
@@ -137,6 +137,18 @@
         "source_url": "https://spb.decanter.ru/product/castelli-del-grevepesa-clemente-vii-chianti-id196627",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "ratings_count": 9574,
+        "source_url": "https://www.vivino.com/it/castelli-del-grevepesa-chianti-classico-clemente-vii/w/12463",
+        "source_kind": "vivino_public_page",
+        "observed_on": "2026-11-22",
+        "note": "Общая оценка вина. Для винтажа 2018 отдельная оценка не подтверждена."
       }
     ],
     "fae1c1462894": [
@@ -1099,6 +1111,17 @@
         "source_url": "https://spb.decanter.ru/product/belbek-orange-blend-id252330",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/nl/bel-bek-belbek-oranzh-blend-orange-blend/w/11912276",
+        "source_kind": "vivino_public_page",
+        "observed_on": "2026-11-22",
+        "note": "Общий рейтинг Belbek Orange Blend. Оценка 2022 отдельно не подтверждена."
       }
     ],
     "29f763c5579f": [
@@ -2975,6 +2998,58 @@
         "observed_on": "2026-11-22",
         "note": "Подтверждённая оценка вина в целом; для указанного года значение не установлено."
       }
+    ],
+    "bb252388600c": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "ratings_count": 10302,
+        "source_url": "https://www.vivino.com/de/tedeschi-capitel-san-rocco-valpolicella-ripasso-superiore/w/1150289",
+        "source_kind": "vivino_public_page",
+        "observed_on": "2026-11-22",
+        "note": "Общая оценка вина. Для года 2015 подтверждённое значение отсутствует."
+      }
     ]
+  },
+  "unrated": {
+    "00db7533b102": {
+      "status": "unverified_score",
+      "source_url": "https://www.vivino.com/en/galitskii-i-galitskii-galitsky-and-galitsky-roze-rose-kuban-anapa/w/7735621",
+      "checked_on": "2026-11-22",
+      "reason": "Найдена карточка Галицкий и Галицкий Розе, но оценка для урожая 2023 и достоверное общее значение вина не установлены."
+    },
+    "81ff7d710fae": {
+      "status": "insufficient_ratings",
+      "source_url": "https://www.vivino.com/US/en/usad-ba-perovskikh-manor-perovsky-rkatsiteli-oranzh-rkatsiteli-orange/w/12289522",
+      "checked_on": "2026-11-22",
+      "reason": "Карточка Vivino найдена, но на опубликованной странице указано not enough ratings; балл не публикуется."
+    },
+    "e552320d1248": {
+      "status": "no_verified_match",
+      "source_url": null,
+      "checked_on": "2026-11-22",
+      "reason": "Не найдено однозначного соответствия Antigua DOC 2024 с опубликованным рейтингом Vivino."
+    },
+    "cd226588d1df": {
+      "status": "no_verified_match",
+      "source_url": null,
+      "checked_on": "2026-11-22",
+      "reason": "Не найдено однозначного соответствия Lavau EnvyFol GSM 2022 с опубликованным числовым рейтингом Vivino."
+    },
+    "0d2ee38169c9": {
+      "status": "unverified_score",
+      "source_url": null,
+      "checked_on": "2026-11-22",
+      "reason": "Для Mare Magnum The Chocolate Tube 2023 встречаются упоминания рейтинга Vivino на сторонних сайтах, но не подтверждена первичная карточка Vivino с нужным значением и винтажом."
+    },
+    "5427ef8902aa": {
+      "status": "ambiguous_product",
+      "source_url": null,
+      "checked_on": "2026-11-22",
+      "reason": "Pitars Prosecco DOC обозначен без Brut/Extra Dry или другой разновидности; на Vivino разные варианты имеют разные рейтинги. Нельзя выбирать произвольный."
+    }
   }
 }

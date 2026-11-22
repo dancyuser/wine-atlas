@@ -34,3 +34,17 @@ for key,rr in obj["records"].items():
 assert scored>=51,(scored,count)
 assert vivino>=5,(vivino,count)
 print("RATINGS VALIDATED",count,"entries",scored,"rated wines",vivino,"Vivino matches")
+
+# The entire catalog has an explicit Vivino result or a documented unresolved status.
+rated_ids={key for key,rr in obj["records"].items() if any(s["source"]=="Vivino" for s in rr)}
+unrated=obj.get("unrated",{})
+assert isinstance(unrated,dict)
+assert rated_ids.isdisjoint(unrated),rated_ids.intersection(unrated)
+assert rated_ids|set(unrated)==set(items),set(items)-(rated_ids|set(unrated))
+for key,u in unrated.items():
+    assert u["status"] in ("insufficient_ratings","unverified_score","ambiguous_product","no_verified_match")
+    assert isinstance(u.get("reason"),str) and len(u["reason"])>=20
+    assert re.fullmatch(r"\d{4}-\d{2}-\d{2}",u["checked_on"])
+    assert u.get("source_url") is None or u["source_url"].startswith("https://www.vivino.com/")
+assert len(rated_ids)==157,(len(rated_ids),len(unrated))
+print("VIVINO AUDIT",len(rated_ids),"scored",len(unrated),"unresolved",len(items),"covered")

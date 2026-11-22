@@ -1,7 +1,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const fmt=new Intl.NumberFormat('ru-RU');
-const state={records:[],ratingRecords:{},favorites:new Set(),scope:'all'};
+const state={records:[],ratingRecords:{},unrated:{},favorites:new Set(),scope:'all'};
 const options={country:'country',grape:'grapes',type:'type',pairing:'pairings'};
 const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const cleanUrl=s=>{try{const u=new URL(s);return u.protocol==='https:'?u.href:null}catch{return null}};
@@ -33,11 +33,17 @@ function priceBlock(r){
  if(s.reference_price_rub!=null){return '<div class="price-main">'+money(s.reference_price_rub)+(s.reference_regular_price_rub>s.reference_price_rub?' <del>'+money(s.reference_regular_price_rub)+'</del>':'')+'</div><div class="price-note">Цена на '+date(s.reference_date)+' (архив)</div>'}
  return '<div class="price-main">Цена неизвестна</div><div class="price-note">Не проверена</div>';
 }
+function vivinoUnavailable(r){
+ const u=state.unrated[r.id]||{};
+ const labels={insufficient_ratings:'Мало оценок',unverified_score:'Число не подтверждено',ambiguous_product:'Не определён вариант вина',no_verified_match:'Совпадение не подтверждено'};
+ return {label:labels[u.status]||'Оценка не подтверждена',url:cleanUrl(u.source_url)||'https://www.vivino.com/search/wines?q='+encodeURIComponent(r.title),reason:u.reason||''};
+}
 function metricRow(m,r){
  const aggregate=m.index===null?'—':num(m.index);
  const cv=m.vivino?num(m.vivino.score):'—';
- const detail=m.vivino?(m.vivino.scope==='all_vintages'?'Все урожаи; вне индекса':(m.vivino.ratings_count?fmt.format(m.vivino.ratings_count)+' оценок':'Год подтверждён')):'Не проверено · поиск по Vivino';
- return '<div class="rating-box"><div class="rating-cell"><span class="rating-label">Общий индекс</span><div class="rating-value">'+aggregate+'<span class="rating-unit">/ 100</span></div><span class="rating-sub">'+(m.count?m.count+' ист. · расчётный':'Недостаточно данных')+'</span></div><div class="rating-cell"><span class="rating-label">Vivino</span><div class="rating-value">'+cv+'<span class="rating-unit">/ 5</span></div><span class="rating-sub">'+(m.vivino?safe(detail):'<a href="https://www.vivino.com/search/wines?q='+encodeURIComponent(r.title)+'" target="_blank" rel="noopener noreferrer">Найти на Vivino ↗</a>')+'</span></div></div>';
+ const unavailable=vivinoUnavailable(r);
+ const detail=m.vivino?(m.vivino.scope==='all_vintages'?'Все урожаи; вне индекса':(m.vivino.ratings_count?fmt.format(m.vivino.ratings_count)+' оценок':'Год подтверждён')):unavailable.label;
+ return '<div class="rating-box"><div class="rating-cell"><span class="rating-label">Общий индекс</span><div class="rating-value">'+aggregate+'<span class="rating-unit">/ 100</span></div><span class="rating-sub">'+(m.count?m.count+' ист. · расчётный':'Недостаточно данных')+'</span></div><div class="rating-cell"><span class="rating-label">Vivino</span><div class="rating-value">'+cv+'<span class="rating-unit">/ 5</span></div><span class="rating-sub">'+(m.vivino?safe(detail):safe(detail)+' · <a href="'+safe(unavailable.url)+'" target="_blank" rel="noopener noreferrer">Проверить ↗</a>')+'</span></div></div>';
 }
 function ratingsDetails(r,m){
  const list=m.all.map(x=>{
@@ -47,8 +53,9 @@ function ratingsDetails(r,m){
    const extra=x.scope==='all_vintages'?' (все урожаи)':'';
    return '<li><span>'+title+safe(extra)+'</span><strong>'+num(x.score)+' / '+x.scale+'</strong></li>';
  }).join('');
- const fallback=!m.vivino?'<li><span><a target="_blank" rel="noopener noreferrer" href="https://www.vivino.com/search/wines?q='+encodeURIComponent(r.title)+'">Поиск на Vivino</a></span><span>Без подтверждённой оценки</span></li>':'';
- const body=(list||fallback)?'<ul>'+list+fallback+'</ul>':'<p class="rating-hint">Подтверждённых оценок пока нет. <a href="https://www.vivino.com/search/wines?q='+encodeURIComponent(r.title)+'" target="_blank" rel="noopener noreferrer">Найти на Vivino</a></p>';
+ const un=vivinoUnavailable(r);
+ const fallback=!m.vivino?'<li><span><a target="_blank" rel="noopener noreferrer" href="'+safe(un.url)+'">Карточка / поиск Vivino</a></span><span>'+safe(un.label)+'</span></li>':'';
+ const body='<ul>'+list+fallback+'</ul>'+(m.vivino?'':un.reason?'<p class="rating-hint">'+safe(un.reason)+'</p>':'');
  return '<details class="rating-details"><summary>Оценки и источники ('+m.all.length+')</summary>'+body+'<p class="rating-hint">Оценки из исходной подборки - срез 14.11.2026. Общий индекс условный, по оценкам того же винтажа.</p></details>';
 }
 function card(r){
@@ -102,7 +109,7 @@ async function init(){
   const response=await fetch('./data/wines.json',{cache:'no-cache'});if(!response.ok)throw Error('Catalog HTTP '+response.status);
   const catalog=await response.json();if(!Array.isArray(catalog.records))throw Error('Invalid catalog');
   state.records=catalog.records;
-  try{const extra=await fetch('./data/ratings.json',{cache:'no-cache'});if(extra.ok){const o=await extra.json();state.ratingRecords=o.records||{}}}catch(e){console.warn('Ratings unavailable',e)}
+  try{const extra=await fetch('./data/ratings.json',{cache:'no-cache'});if(extra.ok){const o=await extra.json();state.ratingRecords=o.records||{};state.unrated=o.unrated||{}}}catch(e){console.warn('Ratings unavailable',e)}
   try{const saved=JSON.parse(localStorage.getItem('wine-atlas-favorites')||'[]');if(Array.isArray(saved))state.favorites=new Set(saved.filter(s=>typeof s==='string'))}catch{}
   $('stat-total').textContent=state.records.length;
   $('stat-countries').textContent=new Set(state.records.map(r=>r.country).filter(Boolean)).size;
