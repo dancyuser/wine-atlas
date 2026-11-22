@@ -388,10 +388,11 @@ def apply_result(record, store, details, current, regular, overrides):
     manual = overrides.get(record['id'], {})
     if record.get('country') is None and 'country' not in manual and merged.get('country'):
         record['country'] = str(merged['country']).split(',')[0].strip()
-    if record.get('volume_l') is None and 'volume_l' not in manual and merged.get('volume_l') is not None:
-        # Browser snapshots use strings such as "0.75 л", but the catalog
-        # contract requires a numeric volume for comparisons and card rendering.
-        parsed_volume = measure(merged['volume_l'], 'volume')
+    if record.get('volume_l') is None and 'volume_l' not in manual and details.get('volume_l') is not None:
+        # Only the currently matched HTML can promote volume to an identity
+        # constraint. Retained older snapshots may contain a bottle volume but
+        # cannot make a later page that omits it fail identity confirmation.
+        parsed_volume = measure(details['volume_l'], 'volume')
         if parsed_volume is not None:
             record['volume_l'] = parsed_volume
     store['enrichment_status'] = {
