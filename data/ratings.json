@@ -258,6 +258,18 @@
         "source_url": "https://spb.decanter.ru/product/cune-reserva-rioja-2016-id187671",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2016,
+        "ratings_count": 3077,
+        "source_url": "https://www.vivino.com/en/cune-cvne-reserva-rioja/w/49644?year=2016",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: оценка указанного урожая, по индексируемой карточке/таблице винтажей."
       }
     ],
     "bc1647883b8e": [
@@ -995,6 +1007,17 @@
         "source_url": "https://spb.decanter.ru/product/zantho-gruner-veltliner-2019-id147450",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/zantho-gruner-veltliner/w/1146411",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: общая оценка вина; рейтинг выбранного урожая не подтвержден, поэтому исключен из сводного индекса."
       }
     ],
     "f6becea05196": [
@@ -2210,6 +2233,253 @@
         "source_kind": "vivino_web_search_verified",
         "observed_on": "2026-11-22",
         "note": "Оценка вина по всем винтажам; в индекс конкретного урожая не включена."
+      }
+    ],
+    "b754161b525f": [
+      {
+        "source": "Vivino",
+        "score": 4.2,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "ratings_count": 5164,
+        "source_url": "https://www.vivino.com/en/ca-dei-frati-i-frati-lugana/w/1136902?year=2024",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: оценка указанного урожая, по индексируемой карточке/таблице винтажей."
+      }
+    ],
+    "9b6ffd01ee4a": [
+      {
+        "source": "Vivino",
+        "score": 4.1,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2021,
+        "ratings_count": 5878,
+        "source_url": "https://www.vivino.com/en/vina-cobos-felino-malbec/w/43994?year=2021",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: оценка указанного урожая, по индексируемой карточке/таблице винтажей."
+      }
+    ],
+    "745a343dcdc1": [
+      {
+        "source": "Vivino",
+        "score": 4.2,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "ratings_count": 450,
+        "source_url": "https://www.vivino.com/en/luca-pinot-noir-g-lot/w/74339?year=2022",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: оценка указанного урожая, по индексируемой карточке/таблице винтажей."
+      }
+    ],
+    "48e6958c78dc": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2021,
+        "ratings_count": 121,
+        "source_url": "https://www.vivino.com/en/jordan-wines-black-magic-merlot/w/11569?year=2021",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: оценка указанного урожая, по индексируемой карточке/таблице винтажей."
+      }
+    ],
+    "4d6ad3b07c95": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2021,
+        "ratings_count": 38,
+        "source_url": "https://www.vivino.com/en/zantho-sankt-laurent/w/1634341?year=2021",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: оценка указанного урожая, по индексируемой карточке/таблице винтажей."
+      }
+    ],
+    "0269b462fa82": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2020,
+        "ratings_count": 511,
+        "source_url": "https://www.vivino.com/en/estandon-heritage-rose/w/1269399?year=2020",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: оценка указанного урожая, по индексируемой карточке/таблице винтажей."
+      }
+    ],
+    "b2276984217f": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2019,
+        "ratings_count": 146,
+        "source_url": "https://www.vivino.com/en/trambusti-tenuta-poggio-ai-mandorli-gran-selezione-chianti-classico/w/3779311?year=2019",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: оценка указанного урожая, по индексируемой карточке/таблице винтажей."
+      }
+    ],
+    "2a8f07a9732b": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "source_url": "https://www.vivino.com/en/cantina-kurtatsch-chardonnay-caliz/w/7325370?year=2022",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: оценка указанного урожая, по индексируемой карточке/таблице винтажей."
+      }
+    ],
+    "e3bc96e35d46": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": 80,
+        "source_url": "https://www.vivino.com/en/la-posta-rose-of-malbec-mendoza/w/7833939?year=2023",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: оценка указанного урожая, по индексируемой карточке/таблице винтажей."
+      }
+    ],
+    "15b856b072fd": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "ratings_count": 92,
+        "source_url": "https://www.vivino.com/en/familia-torres-vina-esmeralda-rosado/w/4096075?year=2024",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: оценка указанного урожая, по индексируемой карточке/таблице винтажей."
+      }
+    ],
+    "5445709eae58": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "ratings_count": 42,
+        "source_url": "https://www.vivino.com/en/scarpa-tacco12-moscato-d-asti/w/2540249?year=2022",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: оценка указанного урожая, по индексируемой карточке/таблице винтажей."
+      }
+    ],
+    "209d7a6d9fe0": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "ratings_count": 2181,
+        "source_url": "https://www.vivino.com/en/weingut-fred-loimer-gluegglich-glucklich/w/8360364",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: общая оценка вина; рейтинг выбранного урожая не подтвержден, поэтому исключен из сводного индекса."
+      }
+    ],
+    "0f0246d18580": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "ratings_count": 87,
+        "source_url": "https://www.vivino.com/en/wohlmuth-gewurztraminer/w/9439041",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: общая оценка вина; рейтинг выбранного урожая не подтвержден, поэтому исключен из сводного индекса."
+      }
+    ],
+    "8433dbc66ae6": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/kendall-jackson-vintner-s-reserve-chardonnay/w/2132",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: общая оценка вина; рейтинг выбранного урожая не подтвержден, поэтому исключен из сводного индекса."
+      }
+    ],
+    "75ea3ee23df9": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "ratings_count": 3730,
+        "source_url": "https://www.vivino.com/en/chateau-la-tour-de-l-eveque-petale-de-rose/w/1543412",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: общая оценка вина; рейтинг выбранного урожая не подтвержден, поэтому исключен из сводного индекса."
+      }
+    ],
+    "cbc96de28176": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/wente-family-vineyards-morning-fog-chardonnay/w/1720",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: общая оценка вина; рейтинг выбранного урожая не подтвержден, поэтому исключен из сводного индекса."
+      }
+    ],
+    "e8609b5a3c65": [
+      {
+        "source": "Vivino",
+        "score": 3.7,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/dulong-cremant-de-bordeaux-brut/w/1136132",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: общая оценка вина; рейтинг выбранного урожая не подтвержден, поэтому исключен из сводного индекса."
+      }
+    ],
+    "5b9b46b0b3e6": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/maturana-naranjo-torontel/w/5354266",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Vivino: общая оценка вина; рейтинг выбранного урожая не подтвержден, поэтому исключен из сводного индекса."
       }
     ]
   }
