@@ -548,9 +548,35 @@ def main(argv=None):
             if not args.dry_run:
                 if entry['status'] == 'verified':
                     data['updated_at'] = today()
-                    snapshot_manifest = reconcile_manifest(data.get('retailer_snapshot'), data['records'])
-                    if snapshot_manifest is not None:
-                        data['retailer_snapshot'] = snapshot_manifest
+                    # The first saved HTML page has no existing snapshot manifest.
+                    # Record actual file provenance instead of creating a verified
+                    # product snapshot with no auditable origin.
+                    body_hash = hashlib.sha256(body.encode('utf-8')).hexdigest()
+                    previous_manifest = data.get('retailer_snapshot')
+                    if previous_manifest is None:
+                        previous_manifest = {
+                            'retailer': 'WineStyle',
+                            'source': 'user_supplied_browser_capture',
+                            'source_capture_kind': 'offline_saved_html',
+                            'observed_on': entry['checked_at'],
+                            'source_export_sha256': body_hash,
+                            'mismatched_urls': [],
+                            'caveat': 'Saved retailer HTML; not a real-time stock or independently verified critic claim.'
+                        }
+                    else:
+                        previous_manifest = copy.deepcopy(previous_manifest)
+                        if entry['checked_at'] < previous_manifest['observed_on']:
+                            previous_manifest['observed_on'] = entry['checked_at']
+                        if previous_manifest.get('source_export_sha256') != body_hash:
+                            prior_sources = list(previous_manifest.get('additional_capture_sources') or [])
+                            if not any(x.get('sha256') == body_hash for x in prior_sources):
+                                prior_sources.append({
+                                    'sha256': body_hash, 'observed_on': entry['checked_at'],
+                                    'source_capture_kind': 'offline_saved_html',
+                                    'product_url': url
+                                })
+                            previous_manifest['additional_capture_sources'] = prior_sources
+                    data['retailer_snapshot'] = reconcile_manifest(previous_manifest, data['records'])
                     atomic_json(args.catalog,data)
                 atomic_json(args.report,report)
             if not args.input_dir and index+1 < len(targets):
