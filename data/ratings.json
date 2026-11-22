@@ -23,6 +23,18 @@
         "source_url": "https://sabonis.ru/productDetail/vino-alma-velli-rezerv-kaberne-fran-zgu-krym",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2021,
+        "ratings_count": 49,
+        "source_url": "https://www.vivino.com/en/alma-valley-reserve-cabernet-franc/w/11267065?year=2021",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Рейтинг Vivino конкретного урожая."
       }
     ],
     "e27d9c70d718": [
@@ -1042,6 +1054,18 @@
         "source_url": "https://simplewine.ru/catalog/product/usadba_mezyb_vione_2023_075_153675/",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": 117,
+        "source_url": "https://www.vivino.com/en/usad-ba-mezyb-vion-e-viognier/w/11492580?year=2023",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Рейтинг Vivino конкретного урожая."
       }
     ],
     "ae38fd0f069c": [
@@ -1090,6 +1114,18 @@
         "source_url": "https://simplewine.ru/catalog/product/petrikor_aligote_2023_075_151726/",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": 40,
+        "source_url": "https://www.vivino.com/en/shumrinka-shumrinka-petrikor-aligote-petricor-aligote/w/9866441?year=2023",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Рейтинг Vivino конкретного урожая."
       }
     ],
     "104c10d47600": [
@@ -1126,6 +1162,18 @@
         "source_url": "https://simplewine.ru/catalog/product/petrikor_malvaziya_2023_075_151727/",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": 85,
+        "source_url": "https://www.vivino.com/en/shumrinka-shumrinka-petrikor-mal-vaziia-petricor-malvasia/w/10773477?year=2023",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Рейтинг Vivino конкретного урожая."
       }
     ],
     "090304a7001c": [
@@ -1138,6 +1186,18 @@
         "source_url": "https://simplewine.ru/catalog/product/petrikor_sovinon_blan_2023_075_153387/",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": 87,
+        "source_url": "https://www.vivino.com/en/shumrinka-shumrinka-petrikor-sovin-on-blan-petricor-sauvignon-blanc/w/9871293?year=2023",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Рейтинг Vivino конкретного урожая."
       }
     ],
     "d56c581b0a18": [
@@ -1150,6 +1210,18 @@
         "source_url": "https://simplewine.ru/catalog/product/petrikor_sovinon_blan_2025_075_163690/",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 4.1,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "ratings_count": 1058,
+        "source_url": "https://www.vivino.com/en/shumrinka-shumrinka-petrikor-sovin-on-blan-petricor-sauvignon-blanc/w/9871293",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Рейтинг Vivino вина в целом; для указанного урожая значение не подтверждено."
       }
     ],
     "976cc9b583d9": [
@@ -1234,6 +1306,18 @@
         "source_url": "https://simplewine.ru/catalog/product/sovinon_blan_2025_075_163461/",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "ratings_count": 2171,
+        "source_url": "https://www.vivino.com/en/sikory-sikory-sovin-on-blan-sauvignon-blanc/w/5762100",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Рейтинг Vivino вина в целом; для указанного урожая значение не подтверждено."
       }
     ],
     "ae9edb146aa5": [
@@ -2480,6 +2564,117 @@
         "source_kind": "vivino_site_verified",
         "observed_on": "2026-11-22",
         "note": "Vivino: общая оценка вина; рейтинг выбранного урожая не подтвержден, поэтому исключен из сводного индекса."
+      }
+    ],
+    "537d512cc39f": [
+      {
+        "source": "Vivino",
+        "score": 4.1,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2018,
+        "ratings_count": 74,
+        "source_url": "https://www.vivino.com/en/celler-aixala-alcait-pardelasses-priorat-red-wine/w/1284320?year=2018",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Рейтинг Vivino конкретного урожая."
+      }
+    ],
+    "079c918bef91": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "ratings_count": 236,
+        "source_url": "https://www.vivino.com/en/aniello-zero-zero-six-pinot-noir-riverside-estate/w/3055004?year=2022",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Рейтинг Vivino конкретного урожая."
+      }
+    ],
+    "c917fcb740fd": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "ratings_count": 122,
+        "source_url": "https://www.vivino.com/en/albert-bichot-origines-bourgogne-chardonnay/w/12558765?year=2022",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Рейтинг Vivino конкретного урожая."
+      }
+    ],
+    "88a3bb7ae281": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "ratings_count": 92,
+        "source_url": "https://www.vivino.com/en/belguardo-maremma-toscana-maremma-toscana-rosato/w/1479?year=2022",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Рейтинг Vivino конкретного урожая."
+      }
+    ],
+    "8a9950e9e3c4": [
+      {
+        "source": "Vivino",
+        "score": 4.3,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2013,
+        "ratings_count": 965,
+        "source_url": "https://www.vivino.com/en/loredan-gasparini-capo-di-stato/w/2528012?year=2013",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Рейтинг Vivino конкретного урожая."
+      }
+    ],
+    "e5af8c73633f": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "ratings_count": 59644,
+        "source_url": "https://www.vivino.com/en/miraval-cotes-de-provence-rose/w/2638097",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Рейтинг Vivino вина в целом; для указанного урожая значение не подтверждено."
+      }
+    ],
+    "9ddeb3cfb445": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "ratings_count": 11554,
+        "source_url": "https://www.vivino.com/en/wirra-wirra-church-block-cabernet-sauvignon-shiraz-merlot/w/82751",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Рейтинг Vivino вина в целом; для указанного урожая значение не подтверждено."
+      }
+    ],
+    "3da3f3b14e7a": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/georg-breuer-estate-rudesheim-riesling/w/1869140",
+        "source_kind": "vivino_site_verified",
+        "observed_on": "2026-11-22",
+        "note": "Рейтинг Vivino вина в целом; для указанного урожая значение не подтверждено."
       }
     ]
   }
