@@ -281,6 +281,40 @@ class OverlayTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "verified product identity missing"):
             verify_overlay(catalog, overlay)
 
+    def test_older_field_does_not_replace_newer_value_or_provenance(self):
+        catalog, overlay = sample()
+        store = catalog["records"][0]["stores"][0]
+        store["product_details"] = {
+            "source_url": URL, "checked_at": "2026-11-21",
+            "full_name": "Example Wine 2023", "producer": "Newer producer",
+            "field_checked_at": {"producer": "2026-11-21"},
+            "field_sources": {"producer": "verified main product table"},
+            "field_evidence": {"producer": "Producer: Newer producer"}
+        }
+        incoming = overlay["updates"]["abc"]["product_details"]
+        incoming["producer"] = "Stale producer"
+        incoming["field_checked_at"] = {"producer": "2026-11-20"}
+        incoming["field_sources"] = {"producer": "old page fragment"}
+        imported, _ = verify_overlay(catalog, overlay)
+        current = imported["records"][0]["stores"][0]["product_details"]
+        self.assertEqual(current["producer"], "Newer producer")
+        self.assertEqual(current["field_checked_at"]["producer"], "2026-11-21")
+        self.assertEqual(current["field_sources"]["producer"], "verified main product table")
+        self.assertEqual(current["field_evidence"]["producer"], "Producer: Newer producer")
+
+    def test_nonfinite_numeric_fields_rejected_before_catalog_write(self):
+        for value in (float("inf"), float("-inf"), float("nan")):
+            catalog, overlay = sample()
+            overlay["updates"]["abc"]["product_details"]["alcohol_percent"] = value
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                verify_overlay(catalog, overlay)
+
+    def test_nonfinite_nested_opaque_field_rejected_by_json_contract(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["product_details"]["unknown_opaque_metric"] = float("inf")
+        with self.assertRaises(ValueError):
+            verify_overlay(catalog, overlay)
+
     def test_unverified_status_rejected(self):
         catalog, overlay = sample()
         overlay["updates"]["abc"]["enrichment_status"]["status"] = "unknown"
