@@ -353,8 +353,8 @@ def apply_result(record, store, details, current, regular, overrides):
     merged.update(source_url=store['url'], checked_at=details['checked_at'])
     merged['field_sources'] = sources
     merged['field_checked_at'] = sources_checked
-    if evidence:
-        merged['field_evidence'] = evidence
+    # A stale previous value must never keep an unrelated evidence string.
+    merged['field_evidence'] = evidence
     merged['image_usage_allowed'] = False
     merged['image_permission_source'] = None
     merged.setdefault('ratings', [])
@@ -522,9 +522,9 @@ def main(argv=None):
             if not args.dry_run:
                 if entry['status'] == 'verified':
                     data['updated_at'] = today()
-                    manifest = reconcile_manifest(data.get('retailer_snapshot'), data['records'])
-                    if manifest is not None:
-                        data['retailer_snapshot'] = manifest
+                    snapshot_manifest = reconcile_manifest(data.get('retailer_snapshot'), data['records'])
+                    if snapshot_manifest is not None:
+                        data['retailer_snapshot'] = snapshot_manifest
                     atomic_json(args.catalog,data)
                 atomic_json(args.report,report)
             if not args.input_dir and index+1 < len(targets):
