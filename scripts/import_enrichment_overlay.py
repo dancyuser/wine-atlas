@@ -212,6 +212,9 @@ def verify_overlay(catalog, overlay):
             require(rating["source"] not in seen_sources, f"duplicate critic: {id_}")
             seen_sources.add(rating["source"])
         incoming = {k: v for k, v in d.items() if k not in PUBLISH_EXCLUDE}
+        # Normalize before comparing against an already published snapshot:
+        # absence or null of ratings means an empty observation, not a new shape.
+        incoming["ratings"] = source_ratings
         validate_details_schema(incoming, observed)
         clean = merge_details(store.get("product_details"), incoming)
         # The published snapshot contract uses a list, including when no ratings exist.
