@@ -13,7 +13,7 @@ This feature ports the non-invasive HTML extractor from historic agent commit `9
 
 ## Current access status
 
-The historic agent reports an automated HTTP 403 response from WineStyle on 2026-11-22. A blocking marker is carried forward in `reports/winestyle-access.json`. The generic price updater skips the entire WineStyle domain, even if run through GitHub Actions. This PR makes **zero new live requests** to WineStyle. Its parser and rating fixtures were tested offline; the real WineStyle DOM and end-to-end network collection remain unverified. All 124 current catalog entries and existing Vivino ratings remain unchanged.
+The historic agent reports an automated HTTP 403 response from WineStyle on 2026-11-22. A blocking marker is carried forward in `reports/winestyle-access.json`. The generic price updater skips the entire WineStyle domain, even if run through GitHub Actions. This PR makes **zero new live requests** to WineStyle. Its parser and rating fixtures were tested offline; the real WineStyle DOM and end-to-end network collection remain unverified. The active catalog retains 124 entries. From the supplied browser export, 118 exact products were enriched with 88 observed prices and 182 retailer-reported scores; independently verified Vivino data remain unchanged.
 
 Do not remove the blocked-state marker to work around QRATOR, CAPTCHA or other site access controls. Before any future automated collection, establish permission under applicable site terms, verify robots.txt and ordinary automated access, and only then review the block with an audit trail.
 
@@ -50,4 +50,18 @@ node --check app.js
 
 The offline parser neither contacts WineStyle nor automatically clears a previously recorded 403. Its output only applies to exact URLs present in the current catalogue. Add the resulting reviewed `data/wines.json` changes to a separate draft PR. Do not commit source HTML or personal browsing data. Confirm each extracted price and rating against the saved page before review.
 
-**Limitation:** no full, live WineStyle HTML snapshot is available in this PR or the agent archive. For that reason, the implementation cannot credibly be called a verified working live scraper. Real selectors must be tested on permitted source HTML, and the parsed results checked manually, before claiming that all fields and ratings have been collected.
+## Reviewed browser export import (2026-11-22)
+
+The user supplied a captured JSON archive of 121 target WineStyle URLs. Of these, 118 exact product/vintage matches passed the offline validation process, while three redirects were excluded. The resulting 118 `product_details` snapshots, 88 prices and 182 retailer-published ratings have been added to `data/wines.json`. All prices and scores carry an observation date and source provenance. The original complete capture is held by the user; the public repository contains the compact product details plus SHA256 and the audit at `data/archive/winestyle-import-audit-2026-11-22.json`.
+
+A repeatable offline importer is provided. To verify an overlay without writes:
+
+~~~powershell
+python scripts/import_enrichment_overlay.py path/to/winestyle-enrichment-overlay-2026-11-22.json
+~~~
+
+Add `--apply` only after reviewing the dry-run output. It enforces identity, vintage, URL, date, rating provenance and audit counts, preserving archived prices and manually curated values. If run on an already imported identical snapshot, it reports no changes.
+
+The site shows short excerpts, specific wine details and source-labelled ratings. Country, grape and food-pairing filters use verified details when the existing metadata lacks those values; pre-existing curated grapes take precedence.
+
+**Limitations:** the actual browser DOM/live network scraper is not independently validated within GitHub Actions, because the submitted export contains extracted text, not replayable HTML. The 182 ratings are WineStyle's reported values, not independently sourced reviews. No new live network request to WineStyle was made by this PR. Changes to QRATOR behavior and retailer stock are not assumed.
