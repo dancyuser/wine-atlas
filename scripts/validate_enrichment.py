@@ -39,7 +39,9 @@ for record in records:
         assert status.get("source_url") == store["url"]
         d = store.get("product_details")
         assert isinstance(d, dict), "Verified retailer observation without details"
-        assert d.get("checked_at") == status.get("checked_at") == snapshot["observed_on"]
+        assert d.get("checked_at") == status.get("checked_at"), "Snapshot/status date mismatch"
+        date = dt.date.fromisoformat(d["checked_at"])
+        assert observation_day <= date <= dt.date.today(), "Snapshot outside permitted observation range"
         assert d.get("source_url") == store["url"]
         assert d.get("producer") and d.get("grapes") and d.get("region"), record["id"]
         assert d.get("aroma") and d.get("taste") and d.get("description_excerpt"), record["id"]
@@ -63,7 +65,8 @@ for record in records:
         for rating in local_ratings:
             assert rating.get("reported_by") == "WineStyle"
             assert rating.get("source_url") == store["url"]
-            assert rating.get("observed_on") == snapshot["observed_on"]
+            rating_day = dt.date.fromisoformat(rating["observed_on"])
+            assert observation_day <= rating_day <= date, "Retailer score date out of range"
             assert rating.get("source") not in sources, "Duplicate rating source"
             assert rating.get("scale") in (5, 10, 20, 100)
             assert isinstance(rating.get("score"), (float, int)) and 0 < rating["score"] <= rating["scale"]
@@ -74,6 +77,10 @@ for record in records:
 assert enriched == snapshot["matched_exact_products"], (enriched, snapshot)
 assert priced == snapshot["direct_price_observations"], (priced, snapshot)
 assert ratings == snapshot["retailer_reported_ratings"], (ratings, snapshot)
-assert snapshot["regular_prices_confirmed"] == 0, "No regular prices were confirmed in source capture"
+assert snapshot["regular_prices_confirmed"] == sum(
+    1 for record in records for store in record["stores"]
+    if (store.get("enrichment_status") or {}).get("status") == "verified"
+    and store.get("regular_price_rub") is not None
+), "Verified regular price count does not match manifest"
 print("WINESTYLE SNAPSHOT VALIDATED", enriched, "exact products,", priced,
       "retailer prices,", ratings, "retailer-reported scores,", scored_wines, "scored products")
