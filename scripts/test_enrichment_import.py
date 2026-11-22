@@ -207,6 +207,15 @@ class OverlayTests(unittest.TestCase):
             saved = json.loads((root / "wines.json").read_text(encoding="utf-8"))
             self.assertIn(url, saved["retailer_snapshot"]["mismatched_urls"])
 
+    def test_null_ratings_saved_as_empty_list_on_first_overlay(self):
+        catalog, overlay = sample()
+        overlay['updates']['abc']['product_details']['ratings'] = None
+        overlay['statistics']['rating_scores_published_by_retailer'] = 0
+        result, report = verify_overlay(catalog, overlay)
+        self.assertEqual(report['ratings'], 0)
+        self.assertEqual(result['records'][0]['stores'][0]['product_details']['ratings'], [])
+        self.assertEqual(result['retailer_snapshot']['retailer_reported_ratings'], 0)
+
     def test_reject_array_for_ui_string_field(self):
         catalog, overlay = sample()
         overlay["updates"]["abc"]["product_details"]["grapes"] = ["Рислинг"]
