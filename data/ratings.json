@@ -1,0 +1,1040 @@
+{
+  "version": 1,
+  "generated_at": "2026-11-22",
+  "notes": "Оценки исходной исследовательской подборки от 14.11.2026; данные Vivino проверены адресно 22.11.2026 по найденным страницам. Комбинированный индекс является расчётным, не рейтингом внешней редакции.",
+  "records": {
+    "ec43a400a90a": [
+      {
+        "source": "Top100Wines",
+        "score": 100,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2021,
+        "source_url": "https://sabonis.ru/productDetail/vino-alma-velli-rezerv-kaberne-fran-zgu-krym",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Артур Саркисян",
+        "score": 89,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2021,
+        "source_url": "https://sabonis.ru/productDetail/vino-alma-velli-rezerv-kaberne-fran-zgu-krym",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "e27d9c70d718": [
+      {
+        "source": "Simple Wine News",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2025,
+        "source_url": "https://simplewine.ru/catalog/product/ballet_blanc_krasnaya_gorka_2025_075_163110/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "5059db96a376": [
+      {
+        "source": "Mundus Vini",
+        "score": 87,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2017,
+        "source_url": "https://spb.decanter.ru/product/beronia-crianza-2017-id139755",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "aa6da0a65a5d": [
+      {
+        "source": "Decanter",
+        "score": 94,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2021,
+        "source_url": "https://spb.winestyle.ru/products/Bestheim-Alsace-Grand-Cru-Schlossberg-Riesling-AOC-2021.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "b5e8b30f7ac7": [
+      {
+        "source": "James Suckling",
+        "score": 93,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2018,
+        "source_url": "https://spb.decanter.ru/product/castelli-del-grevepesa-clemente-vii-chianti-id196627",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "WinesCritic",
+        "score": 92,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2018,
+        "source_url": "https://spb.decanter.ru/product/castelli-del-grevepesa-clemente-vii-chianti-id196627",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "John Galea",
+        "score": 88,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2018,
+        "source_url": "https://spb.decanter.ru/product/castelli-del-grevepesa-clemente-vii-chianti-id196627",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "fae1c1462894": [
+      {
+        "source": "Top100Wines",
+        "score": 100,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://simplewine.ru/catalog/product/chardonnay_2023_075_151986/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "b017a9cc9ed1": [
+      {
+        "source": "Simple Wine News",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2025,
+        "source_url": "https://simplewine.ru/catalog/product/chardonnay_2025_075_161892/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "5cfad037629f": [
+      {
+        "source": "Decanter",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2017,
+        "source_url": "https://spb.decanter.ru/product/conde-valdemar-crianza-2017-id198162",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "James Suckling",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2017,
+        "source_url": "https://spb.decanter.ru/product/conde-valdemar-crianza-2017-id198162",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "bdf17d7cc75f": [
+      {
+        "source": "Mike DeSimone",
+        "score": 92,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2019,
+        "source_url": "https://spb.decanter.ru/product/cune-crianza-rioja-doc-2019-id241266",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Luis Gutiérrez",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2019,
+        "source_url": "https://spb.decanter.ru/product/cune-crianza-rioja-doc-2019-id241266",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "John Gilman",
+        "score": 91,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2019,
+        "source_url": "https://spb.decanter.ru/product/cune-crianza-rioja-doc-2019-id241266",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "d65eefd494f4": [
+      {
+        "source": "Tim Atkin",
+        "score": 92,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2016,
+        "source_url": "https://spb.decanter.ru/product/cune-reserva-rioja-2016-id187671",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Wine Advocate",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2016,
+        "source_url": "https://spb.decanter.ru/product/cune-reserva-rioja-2016-id187671",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Wine Spectator",
+        "score": 91,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2016,
+        "source_url": "https://spb.decanter.ru/product/cune-reserva-rioja-2016-id187671",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Wine Enthusiast",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2016,
+        "source_url": "https://spb.decanter.ru/product/cune-reserva-rioja-2016-id187671",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "bc1647883b8e": [
+      {
+        "source": "Simple Wine News",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2024,
+        "source_url": "https://simplewine.ru/catalog/product/cuvee_blanc_2024_075_162586/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "426bd971c45a": [
+      {
+        "source": "Wine Enthusiast",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2021,
+        "source_url": "https://spb.winestyle.ru/products/d-Arenberg-The-Stump-Jump-White-2021.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Wine Spectator",
+        "score": 89,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2021,
+        "source_url": "https://spb.winestyle.ru/products/d-Arenberg-The-Stump-Jump-White-2021.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "2f1b26d235e4": [
+      {
+        "source": "Decanter World Wine Awards",
+        "score": 95,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2019,
+        "source_url": "https://spb.winestyle.ru/products/Graham-s-Late-Bottled-Vintage-LBV-2019-gift-tube.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Wine Enthusiast",
+        "score": 94,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2019,
+        "source_url": "https://spb.winestyle.ru/products/Graham-s-Late-Bottled-Vintage-LBV-2019-gift-tube.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 4.1,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2019,
+        "ratings_count": 788,
+        "source_url": "https://www.vivino.com/en/w-j-graham-s-late-bottled-vintage-port/w/45974",
+        "source_kind": "vivino_search",
+        "observed_on": "2026-11-22",
+        "note": "Год 2019, результат Vivino Explore; объём подарочного набора не влияет на оценку самого вина."
+      }
+    ],
+    "170ab9abed3f": [
+      {
+        "source": "Vinous",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://spb.winestyle.ru/products/Ingrid-Groiss-Rose-Ried-Hasenhaide-2023.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "BOTTI",
+        "score": 86,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://spb.winestyle.ru/products/Ingrid-Groiss-Rose-Ried-Hasenhaide-2023.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "98cdd4b118a2": [
+      {
+        "source": "Simple Wine News",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2021,
+        "source_url": "https://simplewine.ru/catalog/product/loco_cimbali_cabernet_sauvignon_reserve_2021_075_158930/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "af4a217d6323": [
+      {
+        "source": "Top100Wines",
+        "score": 100,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2024,
+        "source_url": "https://simplewine.ru/catalog/product/loco_cimbali_riesling_2024_075_156504/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "056c6f909a24": [
+      {
+        "source": "Vinous",
+        "score": 92,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2019,
+        "source_url": "https://spb.winestyle.ru/products/Nino-Franco-Faive-Rose-Brut-Veneto-IGT-2019.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Wine Spectator",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2019,
+        "source_url": "https://spb.winestyle.ru/products/Nino-Franco-Faive-Rose-Brut-Veneto-IGT-2019.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "801667d481d6": [
+      {
+        "source": "Wine Enthusiast",
+        "score": 92,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2022,
+        "source_url": "https://spb.winestyle.ru/products/Nino-Franco-Faive-Rose-Brut-Veneto-IGT-2022.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Wine Spectator",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2022,
+        "source_url": "https://spb.winestyle.ru/products/Nino-Franco-Faive-Rose-Brut-Veneto-IGT-2022.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "93f0823b0c90": [
+      {
+        "source": "Decanter",
+        "score": 92,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://spb.winestyle.ru/products/Peter-Zemmer-Chardonnay-Alto-Adige-DOC-2023.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Wine Enthusiast",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://spb.winestyle.ru/products/Peter-Zemmer-Chardonnay-Alto-Adige-DOC-2023.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "2d98b7c07c09": [
+      {
+        "source": "Wine Enthusiast",
+        "score": 91,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://spb.winestyle.ru/products/Pyramid-Scheme-Pinot-Noir-2023.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "James Suckling",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://spb.winestyle.ru/products/Pyramid-Scheme-Pinot-Noir-2023.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/wineries/pyramid-scheme",
+        "source_kind": "vivino_winery",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Pinot Noir по всем годам; в индекс урожая 2023 не включается."
+      }
+    ],
+    "87c72ad959cc": [
+      {
+        "source": "Decanter",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2021,
+        "source_url": "https://spb.winestyle.ru/products/Bodegas-Ramon-Bilbao-Crianza-Rioja-DOC-2021-750.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Concours Mondial de Bruxelles",
+        "score": 85.7,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2021,
+        "source_url": "https://spb.winestyle.ru/products/Bodegas-Ramon-Bilbao-Crianza-Rioja-DOC-2021-750.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "IWSC",
+        "score": 87,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2021,
+        "source_url": "https://spb.winestyle.ru/products/Bodegas-Ramon-Bilbao-Crianza-Rioja-DOC-2021-750.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2021,
+        "ratings_count": 4878,
+        "source_url": "https://www.vivino.com/en/ramon-bilbao-crianza-rioja/w/77021?year=2021",
+        "source_kind": "vivino_search",
+        "observed_on": "2026-11-22",
+        "note": "Винтаж 2021, Vivino Explore."
+      }
+    ],
+    "a6d998217348": [
+      {
+        "source": "Wine Enthusiast",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2022,
+        "source_url": "https://spb.winestyle.ru/products/Bodegas-Ramon-Bilbao-Crianza-Rioja-DOC-2022.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Tim Atkin",
+        "score": 89,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2022,
+        "source_url": "https://spb.winestyle.ru/products/Bodegas-Ramon-Bilbao-Crianza-Rioja-DOC-2022.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "James Suckling",
+        "score": 91,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2022,
+        "source_url": "https://spb.winestyle.ru/products/Bodegas-Ramon-Bilbao-Crianza-Rioja-DOC-2022.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "ratings_count": 4702,
+        "source_url": "https://www.vivino.com/en/wineries/ramon-bilbao",
+        "source_kind": "vivino_search",
+        "observed_on": "2026-11-22",
+        "note": "Винтаж 2022, оценка показана в Vivino Explore."
+      }
+    ],
+    "eca0a46f83f1": [
+      {
+        "source": "Tim Atkin",
+        "score": 93,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2018,
+        "source_url": "https://spb.decanter.ru/product/bodegas-ramon-bilbao-reserva-rioja-doca-2018-id255534",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "James Suckling",
+        "score": 92,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2018,
+        "source_url": "https://spb.decanter.ru/product/bodegas-ramon-bilbao-reserva-rioja-doca-2018-id255534",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "IWC",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2018,
+        "source_url": "https://spb.decanter.ru/product/bodegas-ramon-bilbao-reserva-rioja-doca-2018-id255534",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "f4c4672512e6": [
+      {
+        "source": "Falstaff",
+        "score": 93,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2020,
+        "source_url": "https://spb.decanter.ru/product/von-buhl-brut-riesling-2020-id261877",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Wine Enthusiast",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2020,
+        "source_url": "https://spb.decanter.ru/product/von-buhl-brut-riesling-2020-id261877",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "bdbf5d0327dc": [
+      {
+        "source": "Anne Krebiehl",
+        "score": 93,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2017,
+        "source_url": "https://spb.winestyle.ru/products/Tement-Ehrenhausen-Muschelkalk-2017-375.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Peter Moser",
+        "score": 94,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2017,
+        "source_url": "https://spb.winestyle.ru/products/Tement-Ehrenhausen-Muschelkalk-2017-375.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "f05b85f57f2c": [
+      {
+        "source": "Wine Enthusiast",
+        "score": 86,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2024,
+        "source_url": "https://spb.winestyle.ru/products/The-Ned-Sauvignon-Blanc-2024.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "James Suckling",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2024,
+        "source_url": "https://spb.winestyle.ru/products/The-Ned-Sauvignon-Blanc-2024.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "ratings_count": 570,
+        "source_url": "https://www.vivino.com/en/the-ned-sauvignon-blanc/w/1513069?year=2024",
+        "source_kind": "vivino_search",
+        "observed_on": "2026-11-22",
+        "note": "Винтаж 2024, Vivino Toplist."
+      }
+    ],
+    "9080713e8199": [
+      {
+        "source": "Falstaff",
+        "score": 92,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://simplewine.ru/catalog/product/vigna_senza_nome_2023_0375_146249/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Wine Enthusiast",
+        "score": 94,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://simplewine.ru/catalog/product/vigna_senza_nome_2023_0375_146249/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "James Suckling",
+        "score": 91,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://simplewine.ru/catalog/product/vigna_senza_nome_2023_0375_146249/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "816603916cdc": [
+      {
+        "source": "Christina Pickard",
+        "score": 87,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2020,
+        "source_url": "https://spb.decanter.ru/product/villa-maria-private-bin-sauvignon-blanc-id165050",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Wine Spectator",
+        "score": 89,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2020,
+        "source_url": "https://spb.decanter.ru/product/villa-maria-private-bin-sauvignon-blanc-id165050",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "1fc33a9c0505": [
+      {
+        "source": "Tim Atkin",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Chardonnay-2023.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Ken's Wine Guide",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Chardonnay-2023.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Wine Spectator",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Chardonnay-2023.html",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": 390,
+        "source_url": "https://www.vivino.com/en/vina-cobos-felino-chardonnay/w/44024?year=2023",
+        "source_kind": "vivino_search",
+        "observed_on": "2026-11-22",
+        "note": "Винтаж 2023, Vivino Explore."
+      }
+    ],
+    "5db5a36ffc4c": [
+      {
+        "source": "Michael Schachner",
+        "score": 91,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2017,
+        "source_url": "https://spb.decanter.ru/product/vina-real-crianza-2017-id161935",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Luis Gutiérrez",
+        "score": 91,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2017,
+        "source_url": "https://spb.decanter.ru/product/vina-real-crianza-2017-id161935",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Tim Atkin",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2017,
+        "source_url": "https://spb.decanter.ru/product/vina-real-crianza-2017-id161935",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "8e20b201ce08": [
+      {
+        "source": "Anne Krebiehl",
+        "score": 88,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2018,
+        "source_url": "https://spb.decanter.ru/product/zantho-blaufrankisch-2018-id173224",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Peter Moser",
+        "score": 89,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2018,
+        "source_url": "https://spb.decanter.ru/product/zantho-blaufrankisch-2018-id173224",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "0c7a3925c709": [
+      {
+        "source": "Anne Krebiehl",
+        "score": 89,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2019,
+        "source_url": "https://spb.decanter.ru/product/zantho-gruner-veltliner-2019-id147450",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Peter Moser",
+        "score": 89,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2019,
+        "source_url": "https://spb.decanter.ru/product/zantho-gruner-veltliner-2019-id147450",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "f6becea05196": [
+      {
+        "source": "Роскачество",
+        "score": 85.67,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2022,
+        "source_url": "https://spb.decanter.ru/product/belbek-orange-blend-id252330",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "29f763c5579f": [
+      {
+        "source": "Top100Wines",
+        "score": 100,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://simplewine.ru/catalog/product/usadba_mezyb_vione_2023_075_153675/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "ae38fd0f069c": [
+      {
+        "source": "Кубок АВВР",
+        "score": 87,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2024,
+        "source_url": "https://sabonis.ru/productDetail/vino-usadba-divnomorskoe-vtoraia-liniia-solist-znmp",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "87d10e4fbd1f": [
+      {
+        "source": "Simple Wine News",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2024,
+        "source_url": "https://simplewine.ru/catalog/product/kaberne_sovinon_krasnaya_gorka_2024_075_163145/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "1b5dba978a16": [
+      {
+        "source": "Simple Wine News",
+        "score": 91,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://simplewine.ru/catalog/product/petrikor_aligote_2023_075_151726/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "104c10d47600": [
+      {
+        "source": "Кубок АВВР",
+        "score": 90.62,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2022,
+        "source_url": "https://simplewine.ru/catalog/product/petrikor_krasnoe_2022_075_153783/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "77d6998b120e": [
+      {
+        "source": "Top100Wines",
+        "score": 100,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://simplewine.ru/catalog/product/petrikor_malvaziya_2023_075_151727/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "090304a7001c": [
+      {
+        "source": "Кубок АВВР",
+        "score": 89.73,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://simplewine.ru/catalog/product/petrikor_sovinon_blan_2023_075_153387/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "d56c581b0a18": [
+      {
+        "source": "Simple Wine News",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2025,
+        "source_url": "https://simplewine.ru/catalog/product/petrikor_sovinon_blan_2025_075_163690/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "976cc9b583d9": [
+      {
+        "source": "Top100Wines",
+        "score": 100,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2024,
+        "source_url": "https://simplewine.ru/catalog/product/risling_krasnaya_gorka_2024_075_155480/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "00db7533b102": [
+      {
+        "source": "Кубок АВВР",
+        "score": 89.31,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://simplewine.ru/catalog/product/roze_krasnaya_gorka_2023_075_151027/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "312237eb5cd2": [
+      {
+        "source": "Simple Wine News",
+        "score": 91,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2022,
+        "source_url": "https://simplewine.ru/catalog/product/semisam_krasnoe_2022_075_145151/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "4c34e8c61b84": [
+      {
+        "source": "Top100Wines",
+        "score": 91.5,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2022,
+        "source_url": "https://simplewine.ru/catalog/product/semisam_rezerv_075_151884/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "da32f2509cd2": [
+      {
+        "source": "Simple Wine News",
+        "score": 89,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2025,
+        "source_url": "https://simplewine.ru/catalog/product/sovinon_blan_2025_075_163461/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "ae9edb146aa5": [
+      {
+        "source": "Top100Wines",
+        "score": 100,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2022,
+        "source_url": "https://simplewine.ru/catalog/product/skalistyy_bereg_kaberne_sovinon_2022_075_158451/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "7477ea318918": [
+      {
+        "source": "Simple Wine News",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2025,
+        "source_url": "https://simplewine.ru/catalog/product/sovinon_blan_2025_075_162211/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "81ff7d710fae": [
+      {
+        "source": "Top100Wines",
+        "score": 100,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2022,
+        "source_url": "https://www.wineassemblage.ru/market/vino/usad_ba_perovskih_rkaciteli_oranzh_0_75/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Роскачество",
+        "score": 87,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2022,
+        "source_url": "https://www.wineassemblage.ru/market/vino/usad_ba_perovskih_rkaciteli_oranzh_0_75/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "8a2cc44c7cfb": [
+      {
+        "source": "Simple Wine News",
+        "score": 91,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2025,
+        "source_url": "https://simplewine.ru/catalog/product/shardone_krasnaya_gorka_2025_075_161414/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ],
+    "2c652f8c3115": [
+      {
+        "source": "Top100Wines",
+        "score": 100,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://simplewine.ru/catalog/product/usadba_mezyb_shardone_2023_075_156221/",
+        "source_kind": "user_research",
+        "observed_on": "2026-11-14"
+      }
+    ]
+  }
+}

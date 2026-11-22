@@ -18,6 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Validate site data and JavaScript
+        run: |
+          python scripts/validate_catalog.py
+          python scripts/validate_ratings.py
+          node --check app.js
       - uses: actions/configure-pages@v5
         with:
           enablement: true

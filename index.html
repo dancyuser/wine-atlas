@@ -2,39 +2,65 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#241e23">
-  <meta name="description" content="Личный справочный каталог вин: страны, сорта винограда, стили, гастрономические сочетания и датированные цены из открытых источников.">
-  <title>Личный винный атлас · Каталог</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Личный винный вишлист: поиск, фильтры, рейтинги Vivino и критиков, цены и ссылки на карточки вин.">
+  <title>Мой список вин</title>
   <link rel="stylesheet" href="./styles.css">
   <script src="./app.js" defer></script>
 </head>
 <body>
-  <header class="topbar"><div class="shell bar-inner">
-    <a class="brand" href="./" aria-label="Винный атлас, на главную"><span class="brand-mark">W<span class="brand-dot">.</span></span><span class="brand-name">ВИННЫЙ АТЛАС <small>частная коллекция</small></span></a>
-    <span class="toplabel">Личный справочник · Санкт-Петербург</span>
+  <a class="skip-link" href="#catalog-title">Перейти к каталогу</a>
+  <header class="site-header"><div class="container header-inner">
+    <a href="./" class="logo">Мой список вин</a>
+    <span class="header-note">Личный вишлист · Санкт-Петербург</span>
   </div></header>
-  <main>
-    <section class="hero"><div class="shell hero-grid">
-      <div class="hero-copy">
-        <span class="eyebrow"><span class="tiny-line"></span> БИБЛИОТЕКА ВИН</span>
-        <h1>Вино начинается<br>с <em>любопытства.</em></h1>
-        <p class="hero-lead">Личный список интересных бутылок: сорта, регионы, стили и идеи сочетаний с едой. Удобно выбирать, сравнивать и сохранять.</p>
-        <div class="hero-stats"><div><strong id="stat-total">—</strong><small>позиций в каталоге</small></div><div><strong id="stat-countries">—</strong><small>стран происхождения</small></div><div><strong id="stat-prices">—</strong><small>цен из подборки</small></div></div>
-      </div>
-      <div class="hero-art" aria-hidden="true"><div class="art-ring ring-one"></div><div class="art-ring ring-two"></div><div class="art-glass"><div class="wine-body"></div><div class="glass-stem"></div><div class="glass-foot"></div></div><span class="art-text">AN EXPLORATION<br>IN TASTE</span><span class="art-index">01 / ATLAS</span></div>
-    </div></section>
-    <section class="catalog shell" aria-labelledby="catalog-title">
-      <div class="section-heading"><div><p class="section-kicker">КАТАЛОГ</p><h2 id="catalog-title">Найти свою бутылку</h2></div><p class="section-note">Данные проверяются по источникам. Цена без даты проверки не считается актуальной.</p></div>
-      <div class="toolbar"><label class="searchbox"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg><span class="sr-only">Поиск по названию</span><input id="search" type="search" autocomplete="off" placeholder="Название, винтаж, регион, производитель…"></label><label class="sort-wrap">Сортировка <select id="sort"><option value="recommended">По подборке</option><option value="alpha">По названию</option><option value="price-asc">Цена: по возрастанию</option><option value="price-desc">Цена: по убыванию</option><option value="year-desc">Винтаж: новые</option></select></label></div>
-      <div class="filters"><label>Страна<select id="country"><option value="">Все страны</option></select></label><label>Сорт винограда<select id="grape"><option value="">Все сорта</option></select></label><label>Тип вина<select id="type"><option value="">Любой тип</option></select></label><label>К чему подать<select id="pairing"><option value="">Любое сочетание</option></select></label></div>
-      <div class="filter-tail"><div id="scope" role="group" aria-label="Разделы каталога" class="scope-tabs"><button class="active" data-scope="all" type="button">Все вина</button><button data-scope="wishlist" type="button">Из списка желаний</button><button data-scope="research" type="button">Из подборки СПб</button><button data-scope="saved" type="button">Сохранённые <span id="saved-count">0</span></button></div><button id="reset" type="button" class="reset">Сбросить фильтры ↺</button></div>
-      <div class="results-line"><p id="result-count" aria-live="polite">Загрузка каталога…</p><p class="update-tag" id="update-tag">Источники · СПб</p></div>
-      <div id="cards" class="wine-grid" aria-live="off"></div>
-      <div id="empty" class="empty" hidden><h3>Ничего не найдено</h3><p>Измените фильтры или сбросьте параметры поиска.</p><button type="button" id="empty-reset">Сбросить фильтры</button></div>
-      <div id="error" class="empty" hidden><h3>Не удалось загрузить каталог</h3><p>Для локального просмотра откройте каталог через локальный веб-сервер: <code>python -m http.server 8000</code></p></div>
+  <main class="container">
+    <section class="intro" aria-labelledby="intro-title">
+      <h1 id="intro-title">Винный вишлист</h1>
+      <p>Бутылки, которые хочу попробовать. Можно сравнить цены, оценки и подобрать вино к еде.</p>
+      <div class="quick-stats"><span><strong id="stat-total">—</strong> вин</span><span><strong id="stat-countries">—</strong> стран</span><span><strong id="stat-rated">—</strong> с оценками</span></div>
     </section>
-    <section class="footnote"><div class="shell footgrid"><div><p class="section-kicker light">ПРИМЕЧАНИЕ К ДАННЫМ</p><h2>Прозрачность важнее<br><em>красивой цифры.</em></h2></div><div><p>Цена, помеченная датой, отражает только конкретный срез. Наименование, винтаж и объём при переходе к продавцу следует сверять. Для позиций без подтверждённой текущей цены показана последняя известная отметка либо «Нет данных».</p><p>Гастрономические сочетания — типичные рекомендации для стиля вина, а не подтверждённые дегустационные характеристики каждой бутылки. Этот сайт не продаёт алкоголь и не содержит оформления заказов.</p><p>Статический справочник без рекламы и трекинга.</p></div></div></section>
+    <section class="catalog" aria-labelledby="catalog-title">
+      <h2 class="section-title" id="catalog-title">Каталог</h2>
+      <div class="search-row">
+        <label class="search-field"><span>Поиск</span><input id="search" type="search" placeholder="Название, страна, сорт, год…" autocomplete="off"></label>
+        <label class="sort-field"><span>Сортировка</span><select id="sort">
+          <option value="recommended">Сначала из подборки</option>
+          <option value="rating-desc">Общий индекс: выше</option>
+          <option value="vivino-desc">Vivino: выше</option>
+          <option value="alpha">По названию</option>
+          <option value="price-asc">Цена: дешевле</option>
+          <option value="price-desc">Цена: дороже</option>
+          <option value="year-desc">Год: новее</option>
+        </select></label>
+      </div>
+      <div class="filters" aria-label="Фильтры">
+        <label>Страна<select id="country"><option value="">Все страны</option></select></label>
+        <label>Сорт<select id="grape"><option value="">Все сорта</option></select></label>
+        <label>Тип вина<select id="type"><option value="">Все типы</option></select></label>
+        <label>Сочетается с<select id="pairing"><option value="">Все блюда</option></select></label>
+      </div>
+      <div class="tools-row">
+        <div id="scope" class="scope" role="group" aria-label="Часть списка">
+          <button data-scope="all" type="button" class="active" aria-pressed="true">Все</button>
+          <button data-scope="wishlist" type="button" aria-pressed="false">Вишлист</button>
+          <button data-scope="research" type="button" aria-pressed="false">Подборка СПб</button>
+          <button data-scope="saved" type="button" aria-pressed="false">Избранное <span id="saved-count">0</span></button>
+        </div>
+        <button id="reset" type="button" class="link-button">Сбросить</button>
+      </div>
+      <div class="results"><span id="result-count" role="status" aria-live="polite">Загрузка…</span><span id="update-tag"></span></div>
+      <div id="cards" class="wine-grid"></div>
+      <div id="empty" class="empty" hidden><p>По этим условиям вина не найдены.</p><button id="empty-reset" type="button">Сбросить фильтры</button></div>
+      <div id="error" class="empty" hidden><p>Каталог не загрузился. Для локальной проверки запустите <code>python -m http.server 8000</code>.</p></div>
+    </section>
+    <section class="method" aria-labelledby="method-title">
+      <h2 id="method-title">Как считаются оценки</h2>
+      <p><strong>Vivino</strong> - оценки пользователей по шкале 1–5. Оценки критиков и конкурсов приводятся как опубликованы, по шкале 100. Для общего <strong>расчётного индекса</strong> каждая независимая оценка учитывается один раз; Vivino условно переводится по формуле <code>50 + 10 × рейтинг</code>, затем берётся обычное среднее. Например, 4,0/5 = 90 индексных пунктов. Это собственный ориентир, а не официальная оценка вина, и его нельзя интерпретировать как научно выверенное сопоставление шкал.</p>
+      <p>Оценки, относящиеся ко всем винтажам, видны отдельно и не участвуют в индексе конкретного года. Для оценки без подтверждённого совпадения вина и года ставится «Нет данных». Оценки редакций из исходной подборки датированы 14.11.2026; оценки Vivino могут изменяться.</p>
+      <p>Цены из исходного документа - исторические, на 14.11.2026. Ссылка ведёт к карточке продавца, но наличие и стоимость не гарантируются. Сочетания с едой носят ориентировочный характер.</p>
+    </section>
   </main>
-  <footer class="footer"><div class="shell footerbar"><span>W. / PERSONAL WINE ATLAS</span><span>Информационный справочник · 18+</span><span>Данные и цены могут устаревать</span></div></footer>
+  <footer class="site-footer"><div class="container">Личный список, не магазин · Без рекламы, аккаунтов и отслеживания · 18+</div></footer>
 </body></html>
