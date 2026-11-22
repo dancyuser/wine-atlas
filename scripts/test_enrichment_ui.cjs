@@ -68,6 +68,24 @@ assert(oldNoteCard.includes('20.11.2026'),
        'Retained availability note must show its own observation date');
 
 assert(card.includes('3\u00a0590')||card.includes('3 590'));
+const unmatchedPairings={
+  ...sample,
+  pairings:['Рыба','Морепродукты','Птица'],
+  stores:[{
+    ...sample.stores[0],
+    product_details:{
+      ...sample.stores[0].product_details,
+      pairing_notes:'сытные блюда, австрийская кухня'
+    }
+  }]
+};
+assert.deepEqual([...h.pairingValues(unmatchedPairings)],['Рыба','Морепродукты','Птица'],
+  'Unclassified WineStyle food notes must not discard curated pairings');
+selectors.get('pairing').value='Птица';
+assert.equal(h.matched(unmatchedPairings),true);
+selectors.get('pairing').value='';
+assert(h.card(unmatchedPairings).includes('Подходит к: Рыба, Морепродукты, Птица'));
+
 const curated={...sample,grapes:['Семильон'],pairings:['Сыры'],country:'Португалия'};
 assert.deepEqual([...h.grapeValues(curated)],['Семильон']);
 assert.equal(h.countryValue(curated),'Португалия');
