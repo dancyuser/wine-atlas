@@ -73,6 +73,8 @@ def validate_details_schema(details, product_day):
         require(value is None or (type(value) in (str, float, int)
                                   and not (isinstance(value, str) and not value.strip())),
                 f"published field {key} has invalid type")
+    require(details.get("ratings") is None or isinstance(details["ratings"], list),
+            "ratings must be a list or null before normalization")
     availability = details.get("availability_spb")
     require(availability is None or type(availability) is bool, "invalid availability type")
     for name in ("field_sources", "field_evidence", "field_checked_at"):
@@ -199,6 +201,9 @@ def verify_overlay(catalog, overlay):
         incoming = {k: v for k, v in d.items() if k not in PUBLISH_EXCLUDE}
         validate_details_schema(incoming, observed)
         clean = merge_details(store.get("product_details"), incoming)
+        # The published snapshot contract uses a list, including when no ratings exist.
+        if clean.get("ratings") is None:
+            clean["ratings"] = []
         validate_details_schema(clean, observed)
         require(isinstance(clean.get("full_name"), str) and clean["full_name"] and
                 isinstance(clean.get("producer"), str) and clean["producer"],
