@@ -285,7 +285,7 @@ class ExtractionTests(unittest.TestCase):
         self.assertNotIn('availability_note', merged['field_evidence'])
         self.assertIs(merged['availability_spb'], True)
 
-    def test_retained_text_volume_promoted_as_numeric_litres(self):
+    def test_retained_volume_does_not_block_repeated_html_without_volume(self):
         record = copy.deepcopy(RECORD)
         record["volume_l"] = None
         store = record["stores"][0]
@@ -296,8 +296,24 @@ class ExtractionTests(unittest.TestCase):
         item = product()
         del item["size"]
         item["name"] = item["name"].replace(" 0.75 l", "")
-        details, current, regular = parser.extract(html(item), record, URL, DATE)
+        page = html(item)
+        details, current, regular = parser.extract(page, record, URL, DATE)
         self.assertIsNone(details["volume_l"])
+        parser.apply_result(record, store, details, current, regular, {})
+        self.assertIsNone(record["volume_l"])
+        self.assertEqual(store["product_details"]["volume_l"], "0.75 л")
+        # The second extraction must not acquire an artificial identity constraint.
+        again, current2, regular2 = parser.extract(page, record, URL, DATE)
+        parser.apply_result(record, store, again, current2, regular2, {})
+        self.assertIsNone(record["volume_l"])
+        self.assertEqual(store["product_details"]["volume_l"], "0.75 л")
+
+    def test_volume_promoted_when_current_product_html_confirms_it(self):
+        record = copy.deepcopy(RECORD)
+        record["volume_l"] = None
+        store = record["stores"][0]
+        details, current, regular = parser.extract(html(), record, URL, DATE)
+        self.assertEqual(details["volume_l"], 0.75)
         parser.apply_result(record, store, details, current, regular, {})
         self.assertEqual(record["volume_l"], 0.75)
         self.assertIsInstance(record["volume_l"], float)
