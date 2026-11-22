@@ -204,6 +204,38 @@ class ExtractionTests(unittest.TestCase):
         self.assertEqual(store['price_checked_at'], '2026-11-21')
         self.assertEqual(store['product_details']['checked_at'], DATE)
 
+    def test_out_of_stock_without_price_still_supersedes_old_stock(self):
+        record = copy.deepcopy(RECORD)
+        store = record['stores'][0]
+        store['product_details'] = {
+            'source_url': URL, 'checked_at': '2026-11-21',
+            'availability_spb': True,
+            'availability_note': 'В наличии'
+        }
+        item = product()
+        item['offers'] = {
+            '@type': 'Offer', 'url': URL, 'eligibleRegion': 'Saint Petersburg',
+            'availability': 'https://schema.org/OutOfStock'
+        }
+        details, current, regular = parser.extract(html(item), record, URL, DATE)
+        self.assertIs(details['availability_spb'], False)
+        self.assertIsNone(current)
+        parser.apply_result(record, store, details, current, regular, {})
+        self.assertIs(store['product_details']['availability_spb'], False)
+        self.assertNotIn('availability_note', store['product_details'])
+
+    def test_conflicting_stock_offers_are_not_accepted(self):
+        item = product()
+        item['offers'] = [
+            {'@type': 'Offer', 'url': URL, 'eligibleRegion': 'Saint Petersburg',
+             'availability': 'https://schema.org/InStock'},
+            {'@type': 'Offer', 'url': URL, 'eligibleRegion': 'Saint Petersburg',
+             'availability': 'https://schema.org/OutOfStock'}
+        ]
+        details, price, _ = parser.extract(html(item), RECORD, URL, DATE)
+        self.assertIsNone(details['availability_spb'])
+        self.assertIsNone(price)
+
     def test_new_explicit_stock_status_replaces_older_waiting_note(self):
         record = copy.deepcopy(RECORD)
         store = record['stores'][0]
