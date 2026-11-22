@@ -24,6 +24,7 @@ jobs:
           python scripts/test_titles.py
           python scripts/validate_ratings.py
           node --check app.js
+          node scripts/test_theme.mjs
       - uses: actions/configure-pages@v5
         with:
           enablement: true

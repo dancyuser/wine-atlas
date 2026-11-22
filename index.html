@@ -3,9 +3,55 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#101820">
   <meta name="description" content="Личный винный вишлист: поиск, фильтры, рейтинги Vivino и критиков, цены и ссылки на карточки вин.">
   <title>Мой список вин</title>
+  <script data-theme-bootstrap>
+  (() => {
+    'use strict';
+    const key = 'wine-atlas-theme';
+    const choices = ['dark', 'light', 'system'];
+    let preference = 'dark';
+    try {
+      const stored = localStorage.getItem(key);
+      if (choices.includes(stored)) preference = stored;
+    } catch (_) {
+      // Private browsing and storage-disabled modes keep the dark default.
+    }
+    const system = typeof window.matchMedia === 'function'
+      ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+    const root = document.documentElement;
+    const meta = document.querySelector('meta[name="theme-color"]');
+
+    function apply() {
+      const theme = preference === 'system'
+        ? (system && system.matches ? 'dark' : 'light')
+        : preference;
+      root.dataset.theme = theme;
+      root.style.colorScheme = theme;
+      if (meta) meta.setAttribute('content', theme === 'dark' ? '#101820' : '#f7f9fb');
+    }
+
+    // Runs before the stylesheet: no flash of the opposite theme.
+    apply();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const select = document.getElementById('theme-select');
+      if (!select) return;
+      select.value = preference;
+      select.addEventListener('change', () => {
+        preference = choices.includes(select.value) ? select.value : 'dark';
+        try { localStorage.setItem(key, preference); } catch (_) {}
+        apply();
+      });
+      if (system) {
+        const sync = () => { if (preference === 'system') apply(); };
+        if (typeof system.addEventListener === 'function') system.addEventListener('change', sync);
+        else if (typeof system.addListener === 'function') system.addListener(sync);
+      }
+    });
+  })();
+  </script>
   <link rel="stylesheet" href="./styles.css">
   <script src="./app.js" defer></script>
 </head>
@@ -13,7 +59,16 @@
   <a class="skip-link" href="#catalog-title">Перейти к каталогу</a>
   <header class="site-header"><div class="container header-inner">
     <a href="./" class="logo">Мой список вин</a>
-    <span class="header-note">Личный вишлист · Санкт-Петербург</span>
+    <div class="header-controls">
+      <span class="header-note">Личный вишлист · Санкт-Петербург</span>
+      <label class="theme-control" for="theme-select"><span>Тема</span>
+        <select id="theme-select" name="theme" aria-label="Тема оформления">
+          <option value="dark" selected>Тёмная</option>
+          <option value="light">Светлая</option>
+          <option value="system">Как в системе</option>
+        </select>
+      </label>
+    </div>
   </div></header>
   <main class="container">
     <section class="intro" aria-labelledby="intro-title">
