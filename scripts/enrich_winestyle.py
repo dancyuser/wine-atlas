@@ -259,18 +259,21 @@ def extract(body, record, source_url, checked_at):
 
 def apply_result(record, store, details, current, regular, overrides):
     # Additive source-specific data; preserve original annotations and manual overrides.
-    previous = store.get('product_details', {})
+    # Older catalog builds may carry product_details: null. Treat it as no snapshot.
+    previous = store.get('product_details') or {}
+    if not isinstance(previous, dict):
+        raise ValueError('product_details must be a mapping when present')
     merged = copy.deepcopy(details)
-    sources = dict(previous.get('field_sources', {}))
+    sources = dict(previous.get('field_sources') or {})
     sources.update(details.get('field_sources', {}))
     for key in DETAIL_FIELDS:
         if merged.get(key) is None and previous.get(key) is not None:
             merged[key] = previous[key]
-            sources[key] = previous.get('field_sources', {}).get(key, 'previous verified snapshot')
+            sources[key] = (previous.get('field_sources') or {}).get(key, 'previous verified snapshot')
     merged['field_sources'] = sources
     merged['field_checked_at'] = {
         key: details['checked_at'] if details.get(key) is not None else
-        previous.get('field_checked_at', {}).get(key, previous.get('checked_at'))
+        (previous.get('field_checked_at') or {}).get(key, previous.get('checked_at'))
         for key in DETAIL_FIELDS if merged.get(key) is not None
     }
     store['product_details'] = merged
