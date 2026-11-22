@@ -40,7 +40,7 @@ def day(value):
     return parsed
 
 
-def checked_rating(row, expected_url):
+def checked_rating(row, expected_url, min_day, product_day):
     require(isinstance(row, dict), "rating must be a mapping")
     require(row.get("reported_by") == "WineStyle" and row.get("source_url") == expected_url,
             "rating source URL/provider mismatch")
@@ -49,6 +49,59 @@ def checked_rating(row, expected_url):
     require(type(row.get("score")) in (int, float) and 0 < row["score"] <= row["scale"],
             "invalid rating")
     require(isinstance(row.get("evidence"), str) and row["evidence"].strip(), "no rating evidence")
+    observed = day(row.get("observed_on"))
+    require(min_day <= observed <= product_day, "rating date outside verified observation window")
+
+
+def merge_details(previous, incoming):
+    """Merge partial published retailer fields without erasing independent older observations."""
+    if previous is None:
+        previous = {}
+    require(isinstance(previous, dict), "previous details must be a mapping")
+    if not previous or previous == incoming:
+        return copy.deepcopy(incoming)
+    require(previous.get("source_url") in (None, incoming["source_url"]),
+            "existing product details belong to another URL")
+    combined = copy.deepcopy(previous)
+    sources = dict(previous.get("field_sources") or {})
+    dates = dict(previous.get("field_checked_at") or {})
+    evidence = dict(previous.get("field_evidence") or {})
+    meta = {"checked_at", "source_url", "field_sources", "field_checked_at", "field_evidence"}
+    for key, value in previous.items():
+        if key not in meta and value is not None and key not in dates and previous.get("checked_at"):
+            dates[key] = previous["checked_at"]
+    for key, value in incoming.items():
+        if key in meta or value is None or value == "" or value == []:
+            continue
+        old = combined.get(key)
+        if key == "ratings":
+            by_source = {r["source"]: r for r in (old or [])
+                         if isinstance(r, dict) and isinstance(r.get("source"), str)}
+            for rating in value:
+                prior = by_source.get(rating["source"])
+                if prior and prior.get("observed_on") and day(prior["observed_on"]) > day(rating["observed_on"]):
+                    continue
+                by_source[rating["source"]] = rating
+            combined["ratings"] = list(by_source.values())
+        else:
+            combined[key] = value
+        sources[key] = (incoming.get("field_sources") or {}).get(key, sources.get(key, "browser_capture"))
+        dates[key] = (incoming.get("field_checked_at") or {}).get(key, incoming["checked_at"])
+        new_evidence = (incoming.get("field_evidence") or {}).get(key)
+        if new_evidence:
+            evidence[key] = new_evidence
+        elif old != combined.get(key):
+            evidence.pop(key, None)
+    if incoming.get("availability_spb") is not None:
+        combined.pop("availability_note", None)
+        sources.pop("availability_note", None)
+        dates.pop("availability_note", None)
+        evidence.pop("availability_note", None)
+    combined.update(source_url=incoming["source_url"], checked_at=incoming["checked_at"])
+    combined["field_sources"] = sources
+    combined["field_checked_at"] = dates
+    combined["field_evidence"] = evidence
+    return combined
 
 
 def verify_overlay(catalog, overlay):
@@ -100,10 +153,13 @@ def verify_overlay(catalog, overlay):
         require(isinstance(source_ratings, list), f"invalid ratings: {id_}")
         seen_sources = set()
         for rating in source_ratings:
-            checked_rating(rating, store["url"])
+            checked_rating(rating, store["url"], source_date, observed)
             require(rating["source"] not in seen_sources, f"duplicate critic: {id_}")
             seen_sources.add(rating["source"])
-        clean = {k: v for k, v in d.items() if k not in PUBLISH_EXCLUDE}
+        clean = merge_details(
+            store.get("product_details"),
+            {k: v for k, v in d.items() if k not in PUBLISH_EXCLUDE}
+        )
         current = update.get("price_rub")
         regular = update.get("regular_price_rub")
         if current is not None:
@@ -173,7 +229,9 @@ def verify_overlay(catalog, overlay):
             [*(prior.get("mismatched_urls") or []), *skipped_urls]
         ))
         new["retailer_snapshot"] = reconcile_manifest(prior, new["records"])
+    manifest_changed = new.get("retailer_snapshot") != catalog.get("retailer_snapshot")
     return new, {
+        "manifest_changed": manifest_changed,
         "catalog_records": len(records), "matched": len(overlay["updates"]),
         "changed": n_updated, "unchanged": n_unchanged,
         "prices": n_prices, "ratings": n_ratings,
@@ -209,7 +267,7 @@ def main():
     overlay = json.loads(args.overlay.read_text(encoding="utf-8-sig"))
     data, stats = verify_overlay(catalog, overlay)
     print(json.dumps({"mode": "apply" if args.apply else "dry-run", **stats}, ensure_ascii=False))
-    if args.apply and stats["changed"]:
+    if args.apply and data != catalog:
         backup = args.catalog.parent / "backups" / (
             "wines.before-overlay." + hashlib.sha256(source).hexdigest()[:12] + ".json")
         backup.parent.mkdir(parents=True, exist_ok=True)
