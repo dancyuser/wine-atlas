@@ -13,7 +13,9 @@ import math
 import os
 import re
 import tempfile
+import unicodedata
 from pathlib import Path
+from urllib.parse import unquote, urlsplit
 
 from retailer_manifest import reconcile_manifest
 
@@ -89,6 +91,65 @@ def validate_details_schema(details, product_day):
             if name == "field_checked_at":
                 require(day(value) <= product_day,
                         f"field_checked_at.{key} after product observation")
+
+
+IDENTITY_STOPWORDS = {
+    "wine", "вино", "port", "портвейн", "doc", "docg", "igt", "aoc",
+    "aop", "do", "d", "s", "gift", "tube", "box", "в", "тубе",
+    "подарочной", "упаковке", "л", "l", "ml", "бутылка",
+}
+YEAR_PATTERN = re.compile(r"(?<!\d)(?:19|20)\d{2}(?!\d)")
+
+
+def identity_tokens(value):
+    words = re.sub(
+        r"[^a-zа-я0-9]+", " ",
+        unicodedata.normalize("NFKD", str(value)).lower()
+    ).split()
+    return {word for word in words if word not in IDENTITY_STOPWORDS
+            and not word.isdigit()}
+
+
+def validate_product_identity(record, store, details):
+    """Validate the imported *product*, not only its external record wrapper.
+
+    Slug/name concordance follows the conservative HTML extractor. Year
+    assertions are independent of the catalog title and cannot be fabricated
+    by leaving the product's vintage unconfirmed.
+    """
+    name = details.get("full_name")
+    producer = details.get("producer")
+    require(isinstance(name, str) and name.strip() and
+            isinstance(producer, str) and producer.strip(),
+            f"verified product identity missing: {record['id']}")
+    slug = unquote(urlsplit(store["url"]).path.rsplit("/", 1)[-1])
+    if slug.lower().endswith(".html"):
+        slug = slug[:-5]
+    expected_tokens = identity_tokens(slug)
+    if not expected_tokens:
+        expected_tokens = identity_tokens(record["title"])
+    actual_tokens = identity_tokens(name)
+    require(expected_tokens and
+            len(expected_tokens.intersection(actual_tokens)) / len(expected_tokens) >= 0.9,
+            f"product_details name does not match original URL: {record['id']}")
+    visible_years = {int(y) for y in YEAR_PATTERN.findall(name)}
+    vintage = details.get("vintage")
+    explicit_year = None
+    if vintage is not None and str(vintage).strip():
+        require(isinstance(vintage, (str, int)) and type(vintage) is not bool
+                and bool(re.fullmatch(r"(?:19|20)\d{2}", str(vintage))),
+                f"invalid explicit product vintage: {record['id']}")
+        explicit_year = int(vintage)
+    target_year = record.get("year")
+    if target_year is not None:
+        require(type(target_year) is int, "catalog year must be an integer or null")
+        require((not visible_years or visible_years == {target_year}) and
+                (explicit_year is None or explicit_year == target_year) and
+                (visible_years or explicit_year is not None),
+                f"product_details vintage mismatches or unconfirmed: {record['id']}")
+    else:
+        require(not visible_years and explicit_year is None,
+                f"unexpected vintage for non-vintage catalog wine: {record['id']}")
 
 
 def merge_details(previous, incoming):
@@ -221,9 +282,8 @@ def verify_overlay(catalog, overlay):
         if clean.get("ratings") is None:
             clean["ratings"] = []
         validate_details_schema(clean, observed)
-        require(isinstance(clean.get("full_name"), str) and clean["full_name"] and
-                isinstance(clean.get("producer"), str) and clean["producer"],
-                f"verified product identity missing: {id_}")
+        validate_product_identity(record, store, incoming)
+        validate_product_identity(record, store, clean)
         current = update.get("price_rub")
         regular = update.get("regular_price_rub")
         if current is not None:
