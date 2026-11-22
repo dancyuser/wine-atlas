@@ -70,6 +70,26 @@ class ExtractionTests(unittest.TestCase):
         self.assertEqual({r['source']: r['score'] for r in got},
                          {'Wine Enthusiast': 94, 'Jancis Robinson': 16.5, 'WineStyle users': 5})
 
+    def test_recommendation_nested_rating_not_included(self):
+        markup = ('<main><section class="ratings"><h2>Рейтинги</h2>'
+                  '<p>Wine Enthusiast 94/100</p>'
+                  '<section class="recommended"><div class="ratings">'
+                  '<p>Wine Enthusiast 99/100</p>'
+                  '<p>Wine Spectator 98/100</p></div></section>'
+                  '</section></main>')
+        scores = extract_ratings(BeautifulSoup(markup, 'html.parser'), {}, URL, DATE)
+        self.assertEqual([(r['source'], r['score']) for r in scores],
+                         [('Wine Enthusiast', 94)])
+
+    def test_recommendation_ancestor_not_included(self):
+        markup = ('<main><section class="similar"><div class="ratings">'
+                  '<p>Wine Spectator 99/100</p></div></section>'
+                  '<section class="ratings"><p>Jancis Robinson 16.5/20</p>'
+                  '</section></main>')
+        scores = extract_ratings(BeautifulSoup(markup, 'html.parser'), {}, URL, DATE)
+        self.assertEqual([(r['source'], r['score']) for r in scores],
+                         [('Jancis Robinson', 16.5)])
+
     def test_unlabelled_ratings_not_accepted(self):
         markup = '<main><p>94/100</p><p>5/5</p><aside>Wine Enthusiast 94/100</aside></main>'
         self.assertEqual(extract_ratings(BeautifulSoup(markup, 'html.parser'), {}, URL, DATE), [])
@@ -100,6 +120,15 @@ class ExtractionTests(unittest.TestCase):
         del item['offers']['oldPrice']
         item['offers']['highPrice'] = 4200
         self.assertEqual(parser.extract(html(item), RECORD, URL, DATE)[1:], (2500, None))
+
+    def test_null_previous_enrichment_is_accepted(self):
+        record = copy.deepcopy(RECORD)
+        store = record['stores'][0]
+        store['product_details'] = None
+        details, current, regular = parser.extract(html(), record, URL, DATE)
+        parser.apply_result(record, store, details, current, regular, {})
+        self.assertEqual(store['product_details']['producer'], 'Peter Zemmer')
+        self.assertEqual(store['price_rub'], 2500)
 
     def test_retain_original_values_and_archive(self):
         record = copy.deepcopy(RECORD)
