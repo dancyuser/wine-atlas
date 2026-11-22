@@ -227,6 +227,22 @@ class ExtractionTests(unittest.TestCase):
         self.assertNotIn('availability_note', merged['field_evidence'])
         self.assertIs(merged['availability_spb'], True)
 
+    def test_retained_text_volume_promoted_as_numeric_litres(self):
+        record = copy.deepcopy(RECORD)
+        record["volume_l"] = None
+        store = record["stores"][0]
+        store["product_details"] = {
+            "source_url": URL, "checked_at": "2026-11-21",
+            "volume_l": "0.75 л"
+        }
+        item = product()
+        del item["size"]
+        details, current, regular = parser.extract(html(item), record, URL, DATE)
+        self.assertIsNone(details["volume_l"])
+        parser.apply_result(record, store, details, current, regular, {})
+        self.assertEqual(record["volume_l"], 0.75)
+        self.assertIsInstance(record["volume_l"], float)
+
     def test_newer_snapshot_is_not_downgraded(self):
         record = copy.deepcopy(RECORD)
         store = record['stores'][0]
