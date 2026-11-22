@@ -24,7 +24,7 @@ import urllib.robotparser
 from urllib.parse import unquote, urlsplit, urljoin
 from winestyle_ratings import extract_ratings, is_recommendation
 from retailer_manifest import reconcile_manifest
-from import_enrichment_overlay import validate_product_identity
+from import_enrichment_overlay import validate_product_identity, parse_volume_l, NAME_VOLUME_PATTERN
 
 ROOT = Path(__file__).resolve().parents[1]
 AGENT = 'PersonalWineAtlasCatalog/1.0 (respectful metadata fetch)'
@@ -244,8 +244,17 @@ def extract(body, record, source_url, checked_at):
             details['field_sources'][field] = source
     volume = measure(product.get('size') or details['volume_l'], 'volume')
     if volume is None:
-        match = re.search(r'(\d+[.,]\d+)\s*(?:л\b|l\b)', name, re.I)
-        if match: volume = measure(match[1], 'volume')
+        # Product.name may be the sole confirmed bottle-size source. Support
+        # litres, millilitres and centilitres with the same strict parser that
+        # validates the imported product identity; do not assume any size.
+        named_volumes = {
+            parsed for match in NAME_VOLUME_PATTERN.finditer(name)
+            if (parsed := parse_volume_l(' '.join(match.groups()))) is not None
+        }
+        if len(named_volumes) == 1:
+            volume = next(iter(named_volumes))
+        elif len(named_volumes) > 1:
+            raise ValueError('volume_conflict_in_product_name')
     if record.get('volume_l') is not None and (volume is None or abs(volume-record['volume_l']) > .001):
         raise ValueError('volume_mismatch_or_unconfirmed')
     details['volume_l'] = volume
