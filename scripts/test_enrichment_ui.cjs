@@ -37,7 +37,7 @@ const sample={
 h.state.records=[sample];
 assert.equal(h.countryValue(sample),'Франция');
 assert.deepEqual([...h.grapeValues(sample)],['Шардоне','Пино Гриджио']);
-assert.deepEqual([...h.pairingValues(sample)],['Рыба','Морепродукты','Птица']);
+assert.deepEqual([...h.pairingValues(sample)],['Рыба','Морепродукты','Белое мясо']);
 assert([...h.distinct('grapes')].includes('Пино Гриджио'));
 selectors.get('grape').value='Пино Гриджио';
 assert.equal(h.matched(sample),true);
