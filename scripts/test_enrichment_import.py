@@ -1,0 +1,540 @@
+"""Offline regression tests for the reviewed browser-capture overlay importer."""
+import copy
+import unittest
+
+from import_enrichment_overlay import verify_overlay, validate_product_identity
+
+
+URL = "https://spb.winestyle.ru/products/Example-Wine-2023.html"
+DATE = "2026-11-22"
+SHA = "a" * 64
+
+
+def sample():
+    catalog = {"region": "Санкт-Петербург", "records": [{
+        "id": "abc", "title": "Example Wine", "year": 2023,
+        "stores": [{"url": URL, "price_rub": None, "regular_price_rub": None,
+                    "price_checked_at": None, "reference_price_rub": 2000,
+                    "reference_regular_price_rub": None, "reference_date": "2026-11-14"}]
+    }]}
+    rating = {"source": "Wine Enthusiast", "score": 94, "scale": 100,
+              "reported_by": "WineStyle", "source_url": URL,
+              "observed_on": DATE, "evidence": "Wine Enthusiast 94/100"}
+    overlay = {
+        "schema_version": 2, "kind": "reviewed_overlay_not_complete_catalog",
+        "source_capture_sha256": SHA, "source_observed_at": DATE + "T18:54:25Z",
+        "statistics": {"verified_exact_products": 1,
+                       "prices_with_direct_evidence": 1,
+                       "rating_scores_published_by_retailer": 1,
+                       "mismatched_variant_count": 0, "target_count": 1,
+                       "regular_prices_explicitly_present": 0},
+        "skipped": [],
+        "updates": {"abc": {
+            "id": "abc", "title": "Example Wine", "year": 2023, "url": URL,
+            "enrichment_status": {"status": "verified", "checked_at": DATE,
+                                  "source_url": URL},
+            "price_rub": 1490, "price_checked_at": DATE, "price_source_url": URL,
+            "regular_price_rub": None,
+            "product_details": {
+                "full_name": "Example Wine 2023",
+                "producer": "Example", "grapes": "Рислинг",
+                "description_excerpt": "Dry white wine.",
+                "checked_at": DATE, "source_url": URL,
+                "ratings": [rating],
+                "field_evidence": {"producer": "Производитель: Example"},
+                "all_characteristics": {"Unrelated": "Similar product"},
+                "sections": [{"heading": "Other wines", "text": "Ignore"}],
+                "identity_evidence": {"canonical_url": URL},
+                "unparsed_rating_lines": ["unrelated"],
+                "excluded_conflicting_fields": {"producer": "related wine"},
+            }
+        }}
+    }
+    return catalog, overlay
+
+
+class OverlayTests(unittest.TestCase):
+    def test_apply_preserves_archives_and_prunes_related_noise(self):
+        catalog, overlay = sample()
+        result, stats = verify_overlay(catalog, overlay)
+        self.assertEqual((stats["changed"], stats["prices"], stats["ratings"]), (1, 1, 1))
+        store = result["records"][0]["stores"][0]
+        self.assertEqual(store["price_rub"], 1490)
+        self.assertEqual(store["reference_price_rub"], 2000)
+        self.assertEqual(store["product_details"]["ratings"][0]["score"], 94)
+        for field in ("all_characteristics", "sections", "identity_evidence",
+                      "excluded_conflicting_fields", "unparsed_rating_lines"):
+            self.assertNotIn(field, store["product_details"])
+        self.assertIsNone(catalog["records"][0]["stores"][0]["price_rub"])
+
+    def test_idempotent_on_same_capture(self):
+        catalog, overlay = sample()
+        once, _ = verify_overlay(catalog, overlay)
+        again, result = verify_overlay(once, overlay)
+        self.assertEqual(result["changed"], 0)
+        self.assertEqual(result["unchanged"], 1)
+        self.assertEqual(once, again)
+
+    def test_same_overlay_without_ratings_is_repeatable(self):
+        for variant in ("missing", "null"):
+            with self.subTest(variant=variant):
+                catalog, overlay = sample()
+                details = overlay["updates"]["abc"]["product_details"]
+                if variant == "missing":
+                    details.pop("ratings")
+                else:
+                    details["ratings"] = None
+                overlay["statistics"]["rating_scores_published_by_retailer"] = 0
+                first, first_stats = verify_overlay(catalog, overlay)
+                self.assertEqual(first_stats["changed"], 1)
+                self.assertEqual(first["records"][0]["stores"][0]["product_details"]["ratings"], [])
+                second, second_stats = verify_overlay(first, overlay)
+                self.assertEqual(second_stats["changed"], 0)
+                self.assertEqual(second_stats["unchanged"], 1)
+                self.assertEqual(second, first)
+
+    def test_partial_overlay_retains_all_other_wine_snapshots(self):
+        catalog, overlay = sample()
+        second_url = "https://spb.winestyle.ru/products/Other-Wine-2021.html"
+        catalog["records"].append({
+            "id": "other", "title": "Other Wine", "year": 2021,
+            "stores": [{
+                "url": second_url, "price_rub": 2150,
+                "price_checked_at": "2026-11-21",
+                "price_source_url": second_url, "regular_price_rub": None,
+                "enrichment_status": {"status": "verified", "checked_at": "2026-11-21",
+                                      "source_url": second_url},
+                "product_details": {
+                    "source_url": second_url, "checked_at": "2026-11-21",
+                    "producer": "Other", "grapes": "Мерло",
+                    "ratings": [{"source": "Wine Spectator", "score": 90, "scale": 100,
+                                 "reported_by": "WineStyle", "source_url": second_url,
+                                 "observed_on": "2026-11-21", "evidence": "Wine Spectator 90/100"}]
+                }
+            }]
+        })
+        catalog["retailer_snapshot"] = {
+            "retailer": "WineStyle", "source": "user_supplied_browser_capture",
+            "source_export_sha256": "b" * 64, "observed_on": "2026-11-21",
+            "mismatched_urls": [], "matched_exact_products": 1,
+            "collected_target_urls": 1, "mismatched_variants": 0,
+            "direct_price_observations": 1, "retailer_reported_ratings": 1,
+            "regular_prices_confirmed": 0
+        }
+        result, stats = verify_overlay(catalog, overlay)
+        snapshot = result["retailer_snapshot"]
+        self.assertEqual((snapshot["matched_exact_products"],
+                          snapshot["direct_price_observations"],
+                          snapshot["retailer_reported_ratings"]), (2, 2, 2))
+        self.assertEqual(snapshot["source_export_sha256"], "b" * 64)
+        self.assertEqual(snapshot["observed_on"], "2026-11-21")
+        self.assertEqual(snapshot["latest_observed_on"], DATE)
+        self.assertEqual(snapshot["additional_capture_sources"][0]["sha256"], "a" * 64)
+        self.assertEqual(result["records"][1], catalog["records"][1])
+        self.assertEqual(stats["changed"], 1)
+        again, stats2 = verify_overlay(result, overlay)
+        self.assertEqual(stats2["changed"], 0)
+        self.assertEqual(again, result)
+
+    def test_partial_overlay_preserves_older_score_description_and_price(self):
+        catalog, overlay = sample()
+        store = catalog["records"][0]["stores"][0]
+        store.update(price_rub=1980, price_checked_at="2026-11-21", price_source_url=URL)
+        store["product_details"] = {
+            "checked_at": "2026-11-21", "source_url": URL,
+            "description_excerpt": "Detailed existing description",
+            "pairing_notes": "рыба, морепродукты",
+            "field_evidence": {"description_excerpt": "Old text source"},
+            "ratings": [
+                {"source": "Wine Spectator", "score": 87, "scale": 100,
+                 "reported_by": "WineStyle", "source_url": URL,
+                 "observed_on": "2026-11-21", "evidence": "87/100"},
+                {"source": "Wine Enthusiast", "score": 91, "scale": 100,
+                 "reported_by": "WineStyle", "source_url": URL,
+                 "observed_on": "2026-11-21", "evidence": "91/100"}
+            ]
+        }
+        catalog["retailer_snapshot"] = {
+            "retailer": "WineStyle", "source": "user_supplied_browser_capture",
+            "observed_on": "2026-11-21", "source_export_sha256": "b" * 64,
+            "mismatched_urls": []
+        }
+        details = overlay["updates"]["abc"]["product_details"]
+        details.pop("description_excerpt")
+        details.pop("field_evidence")
+        details["ratings"][0]["score"] = 94
+        overlay["updates"]["abc"]["price_rub"] = None
+        overlay["updates"]["abc"]["price_checked_at"] = None
+        overlay["updates"]["abc"]["price_source_url"] = None
+        overlay["statistics"]["prices_with_direct_evidence"] = 0
+        imported, stats = verify_overlay(catalog, overlay)
+        result = imported["records"][0]["stores"][0]
+        self.assertEqual(result["product_details"]["description_excerpt"],
+                         "Detailed existing description")
+        self.assertEqual(result["product_details"]["pairing_notes"], "рыба, морепродукты")
+        self.assertEqual(result["product_details"]["field_checked_at"]["description_excerpt"],
+                         "2026-11-21")
+        self.assertEqual(result["product_details"]["field_evidence"]["description_excerpt"],
+                         "Old text source")
+        self.assertEqual({r["source"]: r["score"] for r in result["product_details"]["ratings"]},
+                         {"Wine Spectator": 87, "Wine Enthusiast": 94})
+        self.assertEqual(result["price_checked_at"], "2026-11-21")
+        self.assertEqual((imported["retailer_snapshot"]["direct_price_observations"],
+                          imported["retailer_snapshot"]["retailer_reported_ratings"]), (1, 2))
+        self.assertEqual(stats["changed"], 1)
+
+    def test_rating_date_required_and_not_future(self):
+        for value in (None, "2099-01-01", "not-a-date"):
+            catalog, overlay = sample()
+            if value is None:
+                del overlay["updates"]["abc"]["product_details"]["ratings"][0]["observed_on"]
+            else:
+                overlay["updates"]["abc"]["product_details"]["ratings"][0]["observed_on"] = value
+            with self.subTest(date=value), self.assertRaises(ValueError):
+                verify_overlay(catalog, overlay)
+
+    def test_manifest_only_changes_persist_through_apply_cli(self):
+        import json
+        import sys
+        import tempfile
+        from pathlib import Path
+        from unittest.mock import patch
+        from import_enrichment_overlay import main
+        catalog, overlay = sample()
+        url = "https://spb.winestyle.ru/products/Missing-Vintage-2021.html"
+        catalog["records"].append({
+            "id": "skipped", "title": "Missing Vintage", "year": 2021,
+            "stores": [{"url": url, "price_rub": None}]
+        })
+        overlay["updates"] = {}
+        overlay["skipped"] = [{"status": "identity_mismatch", "url": url}]
+        overlay["statistics"].update(
+            verified_exact_products=0, prices_with_direct_evidence=0,
+            rating_scores_published_by_retailer=0, mismatched_variant_count=1)
+        imported, stats = verify_overlay(catalog, overlay)
+        self.assertEqual(stats["changed"], 0)
+        self.assertTrue(stats["manifest_changed"])
+        self.assertIn(url, imported["retailer_snapshot"]["mismatched_urls"])
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "wines.json").write_text(json.dumps(catalog), encoding="utf-8")
+            (root / "overlay.json").write_text(json.dumps(overlay), encoding="utf-8")
+            with patch.object(sys, "argv", ["script", str(root / "overlay.json"),
+                                             "--apply", "--catalog", str(root / "wines.json")]):
+                main()
+            saved = json.loads((root / "wines.json").read_text(encoding="utf-8"))
+            self.assertIn(url, saved["retailer_snapshot"]["mismatched_urls"])
+
+    def test_null_ratings_saved_as_empty_list_on_first_overlay(self):
+        catalog, overlay = sample()
+        overlay['updates']['abc']['product_details']['ratings'] = None
+        overlay['statistics']['rating_scores_published_by_retailer'] = 0
+        result, report = verify_overlay(catalog, overlay)
+        self.assertEqual(report['ratings'], 0)
+        self.assertEqual(result['records'][0]['stores'][0]['product_details']['ratings'], [])
+        self.assertEqual(result['retailer_snapshot']['retailer_reported_ratings'], 0)
+
+    def test_reject_array_for_ui_string_field(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["product_details"]["grapes"] = ["Рислинг"]
+        with self.assertRaisesRegex(ValueError, "grapes must be a string"):
+            verify_overlay(catalog, overlay)
+
+    def test_reject_invalid_field_level_dates_before_write(self):
+        for value in ("2099-01-01", "2026-11-23", "not-a-date"):
+            catalog, overlay = sample()
+            overlay["updates"]["abc"]["product_details"]["field_checked_at"] = {
+                "producer": value
+            }
+            with self.subTest(date=value), self.assertRaises(ValueError):
+                verify_overlay(catalog, overlay)
+
+    def test_replaced_field_gets_new_provenance_not_old_json_ld(self):
+        catalog, overlay = sample()
+        store = catalog["records"][0]["stores"][0]
+        store["product_details"] = {
+            "source_url": URL, "checked_at": "2026-11-21",
+            "country": "Италия", "field_sources": {
+                "country": "JSON-LD Product.countryOfOrigin"
+            }
+        }
+        details = overlay["updates"]["abc"]["product_details"]
+        details["country"] = "Испания"
+        result, _ = verify_overlay(catalog, overlay)
+        current = result["records"][0]["stores"][0]["product_details"]
+        self.assertEqual(current["country"], "Испания")
+        self.assertEqual(current["field_sources"]["country"], "user_supplied_browser_capture")
+        self.assertEqual(current["field_checked_at"]["country"], DATE)
+
+    def test_partial_exact_wine_passes_publication_validator(self):
+        import json
+        import shutil
+        import subprocess
+        import sys
+        import tempfile
+        from pathlib import Path
+        catalog, overlay = sample()
+        details = overlay["updates"]["abc"]["product_details"]
+        details.pop("grapes")
+        details.pop("description_excerpt")
+        imported, _ = verify_overlay(catalog, overlay)
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "data").mkdir()
+            (root / "scripts").mkdir()
+            (root / "data" / "wines.json").write_text(
+                json.dumps(imported), encoding="utf-8"
+            )
+            shutil.copy(Path(__file__).parent / "validate_enrichment.py",
+                        root / "scripts" / "validate_enrichment.py")
+            result = subprocess.run(
+                [sys.executable, str(root / "scripts" / "validate_enrichment.py")],
+                capture_output=True, text=True
+            )
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_initial_partial_wine_without_identity_is_rejected(self):
+        catalog, overlay = sample()
+        del overlay["updates"]["abc"]["product_details"]["full_name"]
+        with self.assertRaisesRegex(ValueError, "verified product identity missing"):
+            verify_overlay(catalog, overlay)
+
+    def test_older_field_does_not_replace_newer_value_or_provenance(self):
+        catalog, overlay = sample()
+        store = catalog["records"][0]["stores"][0]
+        store["product_details"] = {
+            "source_url": URL, "checked_at": "2026-11-21",
+            "full_name": "Example Wine 2023", "producer": "Newer producer",
+            "field_checked_at": {"producer": "2026-11-21"},
+            "field_sources": {"producer": "verified main product table"},
+            "field_evidence": {"producer": "Producer: Newer producer"}
+        }
+        incoming = overlay["updates"]["abc"]["product_details"]
+        incoming["producer"] = "Stale producer"
+        incoming["field_checked_at"] = {"producer": "2026-11-20"}
+        incoming["field_sources"] = {"producer": "old page fragment"}
+        imported, _ = verify_overlay(catalog, overlay)
+        current = imported["records"][0]["stores"][0]["product_details"]
+        self.assertEqual(current["producer"], "Newer producer")
+        self.assertEqual(current["field_checked_at"]["producer"], "2026-11-21")
+        self.assertEqual(current["field_sources"]["producer"], "verified main product table")
+        self.assertEqual(current["field_evidence"]["producer"], "Producer: Newer producer")
+
+    def test_nonfinite_numeric_fields_rejected_before_catalog_write(self):
+        for value in (float("inf"), float("-inf"), float("nan")):
+            catalog, overlay = sample()
+            overlay["updates"]["abc"]["product_details"]["alcohol_percent"] = value
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                verify_overlay(catalog, overlay)
+
+    def test_nonfinite_nested_opaque_field_rejected_by_json_contract(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["product_details"]["unknown_opaque_metric"] = float("inf")
+        with self.assertRaises(ValueError):
+            verify_overlay(catalog, overlay)
+
+    def test_unverified_status_rejected(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["enrichment_status"]["status"] = "unknown"
+        with self.assertRaises(ValueError):
+            verify_overlay(catalog, overlay)
+
+    def test_redirect_never_substitutes_products(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["url"] = URL.replace("2023", "2024")
+        with self.assertRaises(ValueError):
+            verify_overlay(catalog, overlay)
+
+    def test_embedded_product_identity_rejects_different_wine(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["product_details"]["full_name"] = "Totally Different Wine 2023"
+        with self.assertRaisesRegex(ValueError, "name does not match"):
+            verify_overlay(catalog, overlay)
+
+    def test_reject_cuvee_number_change_006_to_007(self):
+        import json
+        from pathlib import Path
+        catalog = json.loads(
+            (Path(__file__).resolve().parents[1] / "data" / "wines.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        record = next(r for r in catalog["records"] if r["id"] == "079c918bef91")
+        store = record["stores"][0]
+        wrong = copy.deepcopy(store["product_details"])
+        wrong["full_name"] = wrong["full_name"].replace("006", "007")
+        with self.assertRaisesRegex(ValueError, "numeric cuvee designation mismatch"):
+            validate_product_identity(record, store, wrong)
+
+    def test_correct_equivalent_cl_volume_is_not_cuvee(self):
+        catalog, overlay = sample()
+        catalog["records"][0]["volume_l"] = 0.75
+        details = overlay["updates"]["abc"]["product_details"]
+        details["volume_l"] = "75 cl"
+        details["full_name"] = "Example Wine 2023 75 cl"
+        result, stats = verify_overlay(catalog, overlay)
+        self.assertEqual(stats["matched"], 1)
+        self.assertEqual(result["records"][0]["stores"][0]["product_details"]["volume_l"], "75 cl")
+
+    def test_reject_extra_riserva_cuvee_with_same_base_name_and_year(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["product_details"]["full_name"] = (
+            "Example Wine Riserva 2023"
+        )
+        with self.assertRaisesRegex(ValueError, "unexpected cuvee qualifiers"):
+            verify_overlay(catalog, overlay)
+
+    def test_reject_real_riserva_snapshot_for_non_riserva_wine(self):
+        import json
+        from pathlib import Path
+        catalog = json.loads(
+            (Path(__file__).resolve().parents[1] / "data" / "wines.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        by_id = {r["id"]: r for r in catalog["records"]}
+        normal = by_id["298ebca26e9c"]
+        riserva = by_id["7c5d44c4353e"]
+        target_store = normal["stores"][0]
+        wrong_details = riserva["stores"][0]["product_details"]
+        with self.assertRaisesRegex(ValueError, "unexpected cuvee qualifiers"):
+            validate_product_identity(normal, target_store, wrong_details)
+
+    def test_reject_different_bottle_volume_same_wine_and_vintage(self):
+        catalog, overlay = sample()
+        catalog["records"][0]["volume_l"] = 0.75
+        details = overlay["updates"]["abc"]["product_details"]
+        details["full_name"] = "Example Wine 2023 1.5 l"
+        details["volume_l"] = "1.5 л"
+        with self.assertRaisesRegex(ValueError, "volume mismatches"):
+            verify_overlay(catalog, overlay)
+
+    def test_reject_conflicting_volume_in_name_when_detail_is_missing(self):
+        catalog, overlay = sample()
+        catalog["records"][0]["volume_l"] = 0.75
+        details = overlay["updates"]["abc"]["product_details"]
+        details["full_name"] = "Example Wine 2023 1.5 l"
+        details.pop("volume_l", None)
+        with self.assertRaisesRegex(ValueError, "volume mismatches"):
+            verify_overlay(catalog, overlay)
+
+    def test_accept_confirmed_equivalent_ml_volume(self):
+        catalog, overlay = sample()
+        catalog["records"][0]["volume_l"] = 0.75
+        details = overlay["updates"]["abc"]["product_details"]
+        details["volume_l"] = "750 мл"
+        details["full_name"] = "Example Wine 2023 750 мл"
+        result, stats = verify_overlay(catalog, overlay)
+        self.assertEqual(stats["matched"], 1)
+        self.assertEqual(result["records"][0]["volume_l"], 0.75)
+
+    def test_reject_bottle_volume_change_from_previous_verified_snapshot(self):
+        catalog, overlay = sample()
+        existing = catalog["records"][0]["stores"][0]
+        existing["product_details"] = {
+            "source_url": URL, "checked_at": "2026-11-21",
+            "full_name": "Example Wine 2023",
+            "producer": "Example",
+            "volume_l": "0.75 л"
+        }
+        overlay["updates"]["abc"]["product_details"]["volume_l"] = "1.5 л"
+        with self.assertRaisesRegex(ValueError, "volume mismatches"):
+            verify_overlay(catalog, overlay)
+
+    def test_embedded_product_identity_rejects_different_vintage_in_name(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["product_details"]["full_name"] = "Example Wine 2024"
+        with self.assertRaisesRegex(ValueError, "vintage mismatches"):
+            verify_overlay(catalog, overlay)
+
+    def test_embedded_product_identity_rejects_explicit_vintage_mismatch(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["product_details"]["vintage"] = 2024
+        with self.assertRaisesRegex(ValueError, "vintage mismatches"):
+            verify_overlay(catalog, overlay)
+
+    def test_embedded_product_identity_requires_confirmed_vintage(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["product_details"]["full_name"] = "Example Wine"
+        with self.assertRaisesRegex(ValueError, "vintage mismatches or unconfirmed"):
+            verify_overlay(catalog, overlay)
+
+    def test_real_reviewed_wines_remain_identity_compatible(self):
+        import json
+        from pathlib import Path
+        catalog = json.loads(
+            (Path(__file__).resolve().parents[1] / "data" / "wines.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        verified = 0
+        for record in catalog["records"]:
+            for store in record.get("stores", []):
+                if (store.get("enrichment_status") or {}).get("status") == "verified":
+                    with self.subTest(wine=record["id"]):
+                        validate_product_identity(record, store, store["product_details"])
+                    verified += 1
+        self.assertGreater(verified, 0)
+
+    def test_different_vintage_rejected(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["year"] = 2022
+        with self.assertRaises(ValueError):
+            verify_overlay(catalog, overlay)
+
+    def test_wrong_rating_provenance_rejected(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["product_details"]["ratings"][0]["source_url"] = \
+            URL.replace("2023", "2024")
+        with self.assertRaises(ValueError):
+            verify_overlay(catalog, overlay)
+
+    def test_wrong_rating_scale_rejected(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["product_details"]["ratings"][0]["scale"] = 7
+        with self.assertRaises(ValueError):
+            verify_overlay(catalog, overlay)
+
+    def test_false_discount_rejected(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["regular_price_rub"] = 1400
+        with self.assertRaises(ValueError):
+            verify_overlay(catalog, overlay)
+
+    def test_newer_price_not_overwritten(self):
+        catalog, overlay = sample()
+        catalog["records"][0]["stores"][0]["price_checked_at"] = "2026-11-23"
+        with self.assertRaises(ValueError):
+            verify_overlay(catalog, overlay)
+
+    def test_missing_or_bad_source_hash_rejected(self):
+        catalog, overlay = sample()
+        overlay["source_capture_sha256"] = "a short hash"
+        with self.assertRaises(ValueError):
+            verify_overlay(catalog, overlay)
+
+    def test_mismatch_skip_is_preserved(self):
+        catalog, overlay = sample()
+        skipped_url = "https://spb.winestyle.ru/products/Skipped-Wine-2021.html"
+        catalog["records"].append({
+            "id": "skip", "title": "Skipped Wine", "year": 2021,
+            "stores": [{"url": skipped_url, "price_rub": None}]
+        })
+        overlay["skipped"] = [{"status": "identity_mismatch", "url": skipped_url}]
+        overlay["statistics"]["mismatched_variant_count"] = 1
+        result, stats = verify_overlay(catalog, overlay)
+        self.assertEqual(stats["skipped_mismatches"], 1)
+        self.assertNotIn("product_details", result["records"][1]["stores"][0])
+        self.assertIn(skipped_url, result["retailer_snapshot"]["mismatched_urls"])
+
+    def test_reject_invalid_audit_counts_atomically(self):
+        catalog, overlay = sample()
+        original = copy.deepcopy(catalog)
+        overlay["statistics"]["rating_scores_published_by_retailer"] = 0
+        with self.assertRaises(ValueError):
+            verify_overlay(catalog, overlay)
+        self.assertEqual(catalog, original)
+
+
+if __name__ == "__main__":
+    unittest.main()

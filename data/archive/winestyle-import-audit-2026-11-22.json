@@ -1,0 +1,75 @@
+{
+  "source_file": "winestyle-capture-2026-11-22 (1).json",
+  "source_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+  "captured_at": "2026-11-22T18:54:25.587Z",
+  "target_count": 121,
+  "observations": 121,
+  "verified_exact_products": 118,
+  "mismatched_variant_count": 3,
+  "prices_with_direct_evidence": 88,
+  "priced_but_waiting_or_unavailable": 4,
+  "regular_prices_explicitly_present": 0,
+  "rating_scores_published_by_retailer": 182,
+  "products_with_retailer_ratings": 84,
+  "retailer_rating_sources": {
+    "Wine Spectator": 25,
+    "Vinous": 2,
+    "Wine Enthusiast": 28,
+    "James Suckling": 33,
+    "Decanter": 13,
+    "Tim Atkin": 9,
+    "Falstaff": 12,
+    "Vivino": 25,
+    "Luca Maroni": 9,
+    "Robert Parker": 19,
+    "Jancis Robinson": 7
+  },
+  "verified_field_coverage": {
+    "alcohol_percent": 118,
+    "aroma": 118,
+    "country": 118,
+    "full_name": 118,
+    "grapes": 118,
+    "producer": 118,
+    "region": 118,
+    "taste": 118,
+    "volume_l": 118,
+    "pairing_notes": 106,
+    "wine_style": 107,
+    "body": 116,
+    "color_intensity": 117,
+    "description_excerpt": 118,
+    "color": 88,
+    "aging_potential": 63,
+    "brand": 77
+  },
+  "unverified_products": [
+    {
+      "row": 98,
+      "url": "https://spb.winestyle.ru/products/Rotari-Blanc-de-Blancs-Extra-Brut-Trento-DOC-2018.html",
+      "status": "identity_mismatch",
+      "final_url": null,
+      "reason": "not an independently verified exact product"
+    },
+    {
+      "row": 112,
+      "url": "https://spb.winestyle.ru/products/Vigna-Senza-Nome-Moscato-d-Asti-DOCG-2023-375.html",
+      "status": "identity_mismatch",
+      "final_url": null,
+      "reason": "not an independently verified exact product"
+    },
+    {
+      "row": 113,
+      "url": "https://spb.winestyle.ru/products/Vilarnau-Brut-Nature-Reserva-Cava-DO-2021.html",
+      "status": "identity_mismatch",
+      "final_url": null,
+      "reason": "not an independently verified exact product"
+    }
+  ],
+  "reported_by": "WineStyle; not verified directly against review publishers",
+  "capture_is_historical_snapshot": true,
+  "original_catalog_not_replaced": true,
+  "catalog_updates_require_exact_id_and_url_match": true,
+  "note": "No live access attempted. Source capture was supplied by user.",
+  "publication_note": "Source capture HTML/raw text deliberately not committed; reviewed product metadata and source evidence live in data/wines.json. Canonical source export retained with user."
+}

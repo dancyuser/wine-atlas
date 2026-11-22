@@ -24,7 +24,28 @@ function metrics(r){
   return {all,exact:items,index:avg,vivino,count:items.length};
 }
 function priceValue(r){const s=r.stores[0]||{};return s.price_rub??s.reference_price_rub??null}
-function distinct(k){return [...new Set(state.records.flatMap(r=>Array.isArray(r[k])?r[k]:(r[k]?[r[k]]:[])))].sort((a,b)=>a.localeCompare(b,'ru'))}
+const pairingGroups=[
+  ['Рыба',/рыб|лосос|семг|суши|тунец/i],
+  ['Морепродукты',/морепродукт|морски|моллюск|кревет|устриц|кальмар|омар/i],
+  ['Птица',/птиц|куриц|цыплен|утк|индейк/i],
+  ['Белое мясо',/белое мясо/i],
+  ['Красное мясо',/красное мясо|говядин|стейк|баранин/i],
+  ['Мясо',/мясо на гриле|жареное мясо|тушеное мясо|(?:^|,\s*)мясо(?:,|$)/i],
+  ['Сыры',/сыр/i],['Паста',/паста|макарон|лазанья/i],
+  ['Овощи',/овощ|салат|гриб/i],['Десерты',/десерт|шоколад|выпечк|торт/i],
+  ['Закуски',/закуск|аперитив|канапе/i],
+  ['Пряные блюда',/остр|прян|азиатск/i]
+];
+function retailerDetails(r){const s=r.stores?.[0];return s?.enrichment_status?.status==='verified'&&s.product_details?.source_url===s.url?s.product_details:null}
+function grapeValues(r){const d=retailerDetails(r);return r.grapes?.length?r.grapes:(d?.grapes?d.grapes.split(',').map(s=>s.trim()).filter(Boolean):[])}
+function countryValue(r){return r.country||retailerDetails(r)?.country?.split(',')[0]?.trim()||null}
+function pairingValues(r){const note=retailerDetails(r)?.pairing_notes;
+  if(!note)return r.pairings||[];
+  const inferred=pairingGroups.filter(([,pattern])=>pattern.test(note)).map(([name])=>name);
+  return inferred.length?inferred:(r.pairings||[])}
+function distinct(k){return [...new Set(state.records.flatMap(r=>k==='grapes'?grapeValues(r):
+  k==='country'?[countryValue(r)].filter(Boolean):k==='pairings'?pairingValues(r):
+  Array.isArray(r[k])?r[k]:(r[k]?[r[k]]:[])))].sort((a,b)=>a.localeCompare(b,'ru'))}
 function favoriteButton(id){const yes=state.favorites.has(id);return '<button type="button" class="save-btn'+(yes?' saved':'')+'" data-fav="'+safe(id)+'" aria-label="'+(yes?'Убрать из избранного':'Добавить в избранное')+'" aria-pressed="'+yes+'" title="Избранное">'+(yes?'♥':'♡')+'</button>'}
 function typeDot(t){return {'Красное':'red','Белое':'white','Розовое':'rose','Игристое':'sparkling','Оранжевое':'orange','Портвейн':'port'}[t]||''}
 function priceBlock(r){
@@ -58,19 +79,60 @@ function ratingsDetails(r,m){
  const body='<ul>'+list+fallback+'</ul>'+(m.vivino?'':un.reason?'<p class="rating-hint">'+safe(un.reason)+'</p>':'');
  return '<details class="rating-details"><summary>Оценки и источники ('+m.all.length+')</summary>'+body+'<p class="rating-hint">Оценки редакций из прежней подборки - срез 14.11.2026. Общий индекс условный, по оценкам того же винтажа.</p></details>';
 }
+function wineStyleMarkup(r){
+ const store=(r.stores||[]).find(s=>s.enrichment_status?.status==='verified'&&s.product_details?.source_url===s.url&&s.product_details?.checked_at);
+ if(!store)return '';
+ const d=store.product_details, fields=[
+  ['Производитель','producer'],['Бренд','brand'],['Страна','country'],['Регион','region'],
+  ['Апелласьон','appellation'],['Сорта винограда','grapes'],['Вид вина','wine_style'],
+  ['Цвет','color'],['Насыщенность','body'],['Глубина цвета','color_intensity'],
+  ['Крепость','alcohol_percent'],['Объём','volume_l'],['Вкус','taste'],['Аромат','aroma'],
+  ['Сочетания с едой','pairing_notes'],['Потенциал хранения','aging_potential'],
+  ['Описание','description_excerpt']
+ ];
+ const rows=fields.filter(([,key])=>d[key]!=null&&d[key]!=='').map(([label,key])=>{
+  const value=Array.isArray(d[key])?d[key].join(', '):String(d[key]);
+  const checked=d.field_checked_at?.[key]||d.checked_at;
+  return '<li><span>'+safe(label)+(checked?' ('+date(checked)+')':'')+'</span><strong>'+safe(value)+'</strong></li>';
+ }).join('');
+ const ratings=(Array.isArray(d.ratings)?d.ratings:[]).filter(x=>x.reported_by==='WineStyle'&&
+  typeof x.source==='string'&&Number.isFinite(x.score)&&[5,10,20,100].includes(x.scale)&&
+  x.score>0&&x.score<=x.scale&&x.source_url===store.url);
+ const scores=ratings.map(x=>'<li><span>'+safe(x.source)+' · по данным WineStyle'+
+   (x.ratings_count?' · '+fmt.format(x.ratings_count)+' оценок':'')+
+   (x.observed_on?' · '+date(x.observed_on):'')+'</span><strong>'+safe(num(x.score))+
+   ' / '+safe(x.scale)+'</strong></li>').join('');
+ const availabilityNote=d.availability_note==='Ожидаем поступление'||d.availability_note==='Нет в наличии';
+ const availability=availabilityNote?d.availability_note:
+   d.availability_spb===true?'Наличие подтверждалось в СПб':
+   d.availability_spb===false?'Нет в наличии в СПб':'';
+ const availabilityObservedOn=availabilityNote
+   ?(d.field_checked_at?.availability_note||d.checked_at)
+   :(d.field_checked_at?.availability_spb||d.checked_at);
+ if(!rows&&!scores&&!availability)return '';
+ const link=cleanUrl(store.url);
+ return '<details class="rating-details"><summary>Данные WineStyle · '+date(d.checked_at)+'</summary>'+
+  (rows?'<ul>'+rows+'</ul>':'')+(availability?'<p>'+safe(availability)+' · '+safe(date(availabilityObservedOn))+'</p>':'')+
+  (scores?'<p>Рейтинги, опубликованные продавцом (не независимо проверенные оценки критиков):</p><ul>'+scores+'</ul>':'')+
+  (link?'<p><a href="'+safe(link)+'" rel="noopener noreferrer" target="_blank">Первоисточник</a></p>':'')+
+  '<p class="rating-hint">Данные привязаны к дате наблюдения. В общий индекс и оценки Vivino не включаются.</p></details>';
+}
 function card(r){
  const m=metrics(r),s=r.stores[0]||{},url=cleanUrl(s.url);
- const meta=[r.country||null,...(r.grapes||[]),r.year?String(r.year):null,r.volume_l?(r.volume_l<1?Math.round(r.volume_l*1000)+' мл':new Intl.NumberFormat('ru-RU').format(r.volume_l)+' л'):null].filter(Boolean).join(' · ');
- const pairs=(r.pairings||[]).length?'Подходит к: '+r.pairings.join(', '):'Сочетания не указаны';
- return '<article class="wine-card"><div class="card-head"><span class="type-tag"><i aria-hidden="true" class="type-dot '+typeDot(r.type)+'"></i>'+safe(r.type||'Вино')+'</span>'+favoriteButton(r.id)+'</div><h3 class="card-title">'+safe(r.title)+'</h3><p class="card-meta">'+safe(meta)+'</p>'+metricRow(m,r)+ratingsDetails(r,m)+'<p class="card-pairings">'+safe(pairs)+'</p><div class="card-bottom"><div class="price-block">'+priceBlock(r)+'</div>'+(url?'<a class="store-link" href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">Карточка вина ↗</a>':'')+'</div></article>';
+ const details=s.enrichment_status?.status==='verified'&&s.product_details?.source_url===s.url?s.product_details:null;
+ const synopsis=details?.description_excerpt?String(details.description_excerpt).slice(0,260):'';
+ const meta=[countryValue(r),...grapeValues(r),r.year?String(r.year):null,r.volume_l?(r.volume_l<1?Math.round(r.volume_l*1000)+' мл':new Intl.NumberFormat('ru-RU').format(r.volume_l)+' л'):null].filter(Boolean).join(' · ');
+ const sourcePairings=pairingValues(r);
+ const pairs=sourcePairings.length?'Подходит к: '+sourcePairings.join(', '):'Сочетания не указаны';
+ return '<article class="wine-card"><div class="card-head"><span class="type-tag"><i aria-hidden="true" class="type-dot '+typeDot(r.type)+'"></i>'+safe(r.type||'Вино')+'</span>'+favoriteButton(r.id)+'</div><h3 class="card-title">'+safe(r.title)+'</h3><p class="card-meta">'+safe(meta)+'</p>'+(synopsis?'<p class="card-description">'+safe(synopsis)+(details.description_excerpt.length>260?'…':'')+'</p>':'')+metricRow(m,r)+ratingsDetails(r,m)+wineStyleMarkup(r)+'<p class="card-pairings">'+safe(pairs)+'</p><div class="card-bottom"><div class="price-block">'+priceBlock(r)+'</div>'+(url?'<a class="store-link" href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">Карточка вина ↗</a>':'')+'</div></article>';
 }
 function matched(r){
  const term=$('search').value.trim().toLocaleLowerCase('ru');
- if(term&&!([r.title,r.country,r.section,String(r.year||''),...(r.grapes||[]),...(r.pairings||[])].join(' ').toLocaleLowerCase('ru').includes(term)))return false;
- if($('country').value&&r.country!==$('country').value)return false;
- if($('grape').value&&!r.grapes.includes($('grape').value))return false;
+ if(term&&!([r.title,countryValue(r),r.section,String(r.year||''),...grapeValues(r),...pairingValues(r)].join(' ').toLocaleLowerCase('ru').includes(term)))return false;
+ if($('country').value&&countryValue(r)!==$('country').value)return false;
+ if($('grape').value&&!grapeValues(r).includes($('grape').value))return false;
  if($('type').value&&r.type!==$('type').value)return false;
- if($('pairing').value&&!r.pairings.includes($('pairing').value))return false;
+ if($('pairing').value&&!pairingValues(r).includes($('pairing').value))return false;
  if(state.scope==='saved'&&!state.favorites.has(r.id))return false;
  return true;
 }

@@ -6,6 +6,7 @@ No external dependencies. Manual country/grape annotations can be added in data/
 """
 import json, re, sys, hashlib
 from pathlib import Path
+from retailer_manifest import reconcile_manifest
 from urllib.parse import urlsplit, unquote
 ROOT = Path(__file__).resolve().parents[1]
 CATEGORIES = {'Портвейн','Джин','Шардоне','Пино Нуар','Рислинг','Игристое','Мерло','Примитиво','Кьянти','Каберне Совиньон','Зинфандель','Мальбек','Риоха','Сира','Санджовезе','Негроамаро','Сен-Лоран','Шираз','Темпранильо','Неббиоло','Барбера','Монастрель','Корвина','Каннонау','Тинта де торо','Альянико','Моника','Тинто Фино','Гренаш','Пино Гриджио','Грюнер','Ондарраби Сури','Совиньон Блан','Вердехо','Фурминт','Энкрузаду','Треббьяно','Турбиана','Кортезе','Алиготе','Гевюрцртамминер','Альбариньо','Мурведр','Торронтес'}
@@ -102,9 +103,14 @@ def main():
    record['wishlist']=False
  # Keep current verified store snapshots across re-imports of the source list.
  target=ROOT/'data'/'wines.json'
+ previous_data = {}
  if target.exists():
-  try: previous={r['id']:r for r in json.loads(target.read_text(encoding='utf-8'))['records']}
-  except (KeyError,ValueError):previous={}
+  try:
+   previous_data = json.loads(target.read_text(encoding='utf-8'))
+   previous = {r['id']:r for r in previous_data['records']}
+  except (KeyError,ValueError,TypeError):
+   previous_data = {}
+   previous = {}
   for record in recs.values():
    prev=previous.get(record['id'])
    if not prev:continue
@@ -116,9 +122,19 @@ def main():
    for store in record['stores']:
     was=old_stores.get(key(store['url']))
     if was:
-     for f in ('price_rub','regular_price_rub','price_checked_at','reference_price_rub','reference_regular_price_rub','reference_date'):
-      store[f]=was.get(f)
+     for f in ('price_rub','regular_price_rub','price_checked_at','reference_price_rub','reference_regular_price_rub','reference_date','price_source_url','product_details','enrichment_status'):
+      if f in was and was[f] is not None:
+       store[f]=was[f]
  out={'updated_at':'2026-11-22','region':'Санкт-Петербург','historical_as_of':'2026-11-14','source':{'kind':'local_text_export','unique_wine_urls':len(recs),'excluded_gin_urls':extra_gin},'records':list(recs.values())}
+ if previous_data.get('source'):
+  previous_urls = {store['url'] for r in previous_data.get('records', []) for store in r.get('stores', [])}
+  current_urls = {store['url'] for r in out['records'] for store in r.get('stores', [])}
+  if previous_urls == current_urls:
+   # Source identity and Docs revision stay valid for an unchanged source list.
+   out['source'] = previous_data['source']
+ manifest = reconcile_manifest(previous_data.get('retailer_snapshot'), out['records'])
+ if manifest is not None:
+  out['retailer_snapshot'] = manifest
  (ROOT/'data'/'wines.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
  print(f'wishlist URLs excluding gin and duplicates: {sum(r["wishlist"] for r in recs.values())}; research: {num_research}; total unique: {len(recs)}; gin excluded: {extra_gin}')
 if __name__=='__main__':main()

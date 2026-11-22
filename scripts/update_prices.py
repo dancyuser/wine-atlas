@@ -74,10 +74,14 @@ def robots_allowed(url,cache):
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--limit',type=int,default=0);ap.add_argument('--delay',type=float,default=3.0);ap.add_argument('--dry-run',action='store_true');args=ap.parse_args()
  path=ROOT/'data'/'wines.json';data=json.loads(path.read_text(encoding='utf-8'))
- cache={};seen=set();updated=0;attempted=0;blocked=0;failed=0
+ cache={};seen=set();updated=0;attempted=0;blocked=0;failed=0;skipped_winestyle=0
  for r in data['records']:
   for store in r['stores']:
    url=store['url']
+   host=(urlsplit(url).hostname or '').lower()
+   if host=='winestyle.ru' or host.endswith('.winestyle.ru'):
+    skipped_winestyle+=1
+    continue
    if url in seen:continue
    seen.add(url)
    if args.limit and attempted>=args.limit:break
@@ -107,5 +111,5 @@ def main():
  if updated and not args.dry_run:
   data['updated_at']=datetime.date.today().isoformat()
   tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');tmp.replace(path)
- print(f'PROCESSED={attempted} UPDATED={updated} ROBOTS_DENIED={blocked} ERRORS={failed}')
+ print(f'PROCESSED={attempted} UPDATED={updated} ROBOTS_DENIED={blocked} ERRORS={failed} SKIPPED_WINESTYLE={skipped_winestyle}')
 if __name__=='__main__':main()
