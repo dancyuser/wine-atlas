@@ -206,6 +206,38 @@ class OverlayTests(unittest.TestCase):
             saved = json.loads((root / "wines.json").read_text(encoding="utf-8"))
             self.assertIn(url, saved["retailer_snapshot"]["mismatched_urls"])
 
+    def test_reject_array_for_ui_string_field(self):
+        catalog, overlay = sample()
+        overlay["updates"]["abc"]["product_details"]["grapes"] = ["Рислинг"]
+        with self.assertRaisesRegex(ValueError, "grapes must be a string"):
+            verify_overlay(catalog, overlay)
+
+    def test_reject_invalid_field_level_dates_before_write(self):
+        for value in ("2099-01-01", "2026-11-23", "not-a-date"):
+            catalog, overlay = sample()
+            overlay["updates"]["abc"]["product_details"]["field_checked_at"] = {
+                "producer": value
+            }
+            with self.subTest(date=value), self.assertRaises(ValueError):
+                verify_overlay(catalog, overlay)
+
+    def test_replaced_field_gets_new_provenance_not_old_json_ld(self):
+        catalog, overlay = sample()
+        store = catalog["records"][0]["stores"][0]
+        store["product_details"] = {
+            "source_url": URL, "checked_at": "2026-11-21",
+            "country": "Италия", "field_sources": {
+                "country": "JSON-LD Product.countryOfOrigin"
+            }
+        }
+        details = overlay["updates"]["abc"]["product_details"]
+        details["country"] = "Испания"
+        result, _ = verify_overlay(catalog, overlay)
+        current = result["records"][0]["stores"][0]["product_details"]
+        self.assertEqual(current["country"], "Испания")
+        self.assertEqual(current["field_sources"]["country"], "user_supplied_browser_capture")
+        self.assertEqual(current["field_checked_at"]["country"], DATE)
+
     def test_unverified_status_rejected(self):
         catalog, overlay = sample()
         overlay["updates"]["abc"]["enrichment_status"]["status"] = "unknown"
