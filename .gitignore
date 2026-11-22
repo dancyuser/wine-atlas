@@ -1,0 +1,8 @@
+source.txt
+agent-output/
+manual/
+data/backups/
+.venv/
+__pycache__/
+*.py[cod]
+*.tmp
