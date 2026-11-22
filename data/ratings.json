@@ -71,6 +71,17 @@
         "source_url": "https://spb.decanter.ru/product/beronia-crianza-2017-id139755",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.6,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/beronia-rioja-crianza/w/20796",
+        "source_kind": "vivino_verified_web",
+        "observed_on": "2026-11-22",
+        "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
       }
     ],
     "aa6da0a65a5d": [
@@ -408,6 +419,18 @@
         "source_url": "https://simplewine.ru/catalog/product/loco_cimbali_cabernet_sauvignon_reserve_2021_075_158930/",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 4.1,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2021,
+        "ratings_count": 280,
+        "source_url": "https://www.vivino.com/en/zolotaya-balka-zolotaia-balka-balaklava-loco-cimbali-reserve/w/8930517?year=2021",
+        "source_kind": "vivino_verified_web",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino конкретного года урожая; срез поисковой выдачи или карточки."
       }
     ],
     "af4a217d6323": [
@@ -1102,6 +1125,17 @@
         "source_url": "https://simplewine.ru/catalog/product/kaberne_sovinon_krasnaya_gorka_2024_075_163145/",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 4.1,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/galitskii-i-galitskii-galitsky-and-galitsky-kaberne-sovin-on-cabernet-sauvignon/w/7735623",
+        "source_kind": "vivino_verified_web",
+        "observed_on": "2026-11-22",
+        "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
       }
     ],
     "1b5dba978a16": [
@@ -1234,6 +1268,18 @@
         "source_url": "https://simplewine.ru/catalog/product/risling_krasnaya_gorka_2024_075_155480/",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "ratings_count": 203,
+        "source_url": "https://www.vivino.com/en/galitskii-i-galitskii-galitsky-and-galitsky-risling-riesling/w/7738828?year=2024",
+        "source_kind": "vivino_verified_web",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino конкретного года урожая; срез поисковой выдачи или карточки."
       }
     ],
     "00db7533b102": [
@@ -1400,6 +1446,18 @@
         "source_url": "https://simplewine.ru/catalog/product/usadba_mezyb_shardone_2023_075_156221/",
         "source_kind": "user_research",
         "observed_on": "2026-11-14"
+      },
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": 31,
+        "source_url": "https://www.vivino.com/en/usad-ba-mezyb-shardone-chardonnay/w/11560854?year=2023",
+        "source_kind": "vivino_verified_web",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino конкретного года урожая; срез поисковой выдачи или карточки."
       }
     ],
     "a748bd657f0a": [
@@ -2675,6 +2733,164 @@
         "source_kind": "vivino_site_verified",
         "observed_on": "2026-11-22",
         "note": "Рейтинг Vivino вина в целом; для указанного урожая значение не подтверждено."
+      }
+    ],
+    "2f6a9b761e1f": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2021,
+        "ratings_count": 57,
+        "source_url": "https://www.vivino.com/en/montedidio-san-domino/w/7334207?year=2021",
+        "source_kind": "vivino_verified_web",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino конкретного года урожая; срез поисковой выдачи или карточки."
+      }
+    ],
+    "7309e60757dd": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": 1085,
+        "source_url": "https://www.vivino.com/en/el-esteco-don-david-reserve-malbec/w/1817266?year=2023",
+        "source_kind": "vivino_verified_web",
+        "observed_on": "2026-11-22",
+        "note": "Оценка Vivino конкретного года урожая; срез поисковой выдачи или карточки."
+      }
+    ],
+    "80cb76314c74": [
+      {
+        "source": "Vivino",
+        "score": 3.7,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/ascevi-luwa-ronco-dei-sassi-sauvignon/w/1323470",
+        "source_kind": "vivino_verified_web",
+        "observed_on": "2026-11-22",
+        "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
+      }
+    ],
+    "5e980b14c4d5": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/it-canti-moscato-d-asti/w/2198945",
+        "source_kind": "vivino_verified_web",
+        "observed_on": "2026-11-22",
+        "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
+      }
+    ],
+    "4d35092a1505": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/castello-di-querceto-chianti-classico-riserva/w/15634",
+        "source_kind": "vivino_verified_web",
+        "observed_on": "2026-11-22",
+        "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
+      }
+    ],
+    "f32c8d6cae2b": [
+      {
+        "source": "Vivino",
+        "score": 3.7,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/protos-verdejo/w/1135415",
+        "source_kind": "vivino_verified_web",
+        "observed_on": "2026-11-22",
+        "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
+      }
+    ],
+    "ce214c07863d": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/es-vilarnau-cava-barcelona-organico-brut-nature-reserva/w/9241219",
+        "source_kind": "vivino_verified_web",
+        "observed_on": "2026-11-22",
+        "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
+      }
+    ],
+    "bab581b955b0": [
+      {
+        "source": "Vivino",
+        "score": 3.7,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/parajes-del-valle-monastrell/w/7281325",
+        "source_kind": "vivino_verified_web",
+        "observed_on": "2026-11-22",
+        "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
+      }
+    ],
+    "2ae8e7fc916b": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/j-neus-spatburgunder-muschelkalk/w/6089142",
+        "source_kind": "vivino_verified_web",
+        "observed_on": "2026-11-22",
+        "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
+      }
+    ],
+    "f0c33d420f2f": [
+      {
+        "source": "Vivino",
+        "score": 3.5,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/marius-peyol-coteaux-d-aix-en-provence-rose/w/1228939",
+        "source_kind": "vivino_verified_web",
+        "observed_on": "2026-11-22",
+        "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
+      }
+    ],
+    "c9f63273980c": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/dows-port-late-bottled-vintage-port/w/1361814",
+        "source_kind": "vivino_verified_web",
+        "observed_on": "2026-11-22",
+        "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
+      }
+    ],
+    "060e3c866e44": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/kopke-l-b-v-port/w/76373",
+        "source_kind": "vivino_verified_web",
+        "observed_on": "2026-11-22",
+        "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
       }
     ]
   }
