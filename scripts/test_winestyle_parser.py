@@ -176,6 +176,34 @@ class ExtractionTests(unittest.TestCase):
         self.assertEqual(result['field_evidence']['pairing_notes'], 'Подходит к: рыба')
         self.assertEqual(store['enrichment_status']['method'], 'offline_html')
 
+    def test_stale_field_evidence_cleared_after_replacement(self):
+        record = copy.deepcopy(RECORD)
+        store = record['stores'][0]
+        store['product_details'] = {
+            'source_url': URL, 'checked_at': '2026-11-21',
+            'description_excerpt': 'old',
+            'field_evidence': {'description_excerpt': 'old literal text'}
+        }
+        details, current, regular = parser.extract(html(), record, URL, DATE)
+        parser.apply_result(record, store, details, current, regular, {})
+        result = store['product_details']
+        self.assertEqual(result['description_excerpt'], 'Synthetic test description')
+        self.assertEqual(result['field_evidence'], {})
+
+    def test_retain_older_price_if_latest_html_has_no_offer(self):
+        record = copy.deepcopy(RECORD)
+        store = record['stores'][0]
+        store.update(price_rub=3490, price_checked_at='2026-11-21',
+                     price_source_url=URL, regular_price_rub=None)
+        item = product()
+        item['offers'] = []
+        details, current, regular = parser.extract(html(item), record, URL, DATE)
+        self.assertIsNone(current)
+        parser.apply_result(record, store, details, current, regular, {})
+        self.assertEqual(store['price_rub'], 3490)
+        self.assertEqual(store['price_checked_at'], '2026-11-21')
+        self.assertEqual(store['product_details']['checked_at'], DATE)
+
     def test_newer_snapshot_is_not_downgraded(self):
         record = copy.deepcopy(RECORD)
         store = record['stores'][0]
@@ -221,6 +249,40 @@ class OfflineWorkflowTests(unittest.TestCase):
                     self.assertEqual(parser.main(args), 0)
                     self.assertEqual(first, catalog.read_bytes())
             self.assertEqual(json.loads(first)['records'][0]['stores'][0]['product_details']['ratings'][1]['score'], 94)
+
+    def test_two_saved_pages_import_without_manifest_shadowing(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder)
+            url2 = URL.replace('2023', '2022')
+            rec2 = copy.deepcopy(RECORD)
+            rec2.update(id='synthetic-2', year=2022)
+            rec2['stores'][0]['url'] = url2
+            catalog, report, access = path/'catalog.json', path/'run.json', path/'access.json'
+            parser.atomic_json(catalog, {'records': [copy.deepcopy(RECORD), rec2]})
+            (path/'one.html').write_text(html(), encoding='utf-8')
+            p2 = product()
+            p2['url'] = url2
+            p2['name'] = p2['name'].replace('2023', '2022')
+            body2 = ('<html><link rel="canonical" href="' + url2 +
+                     '"><main><script type="application/ld+json">' +
+                     json.dumps(p2) + '</script></main></html>')
+            (path/'two.html').write_text(body2, encoding='utf-8')
+            parser.atomic_json(path/'manifest.json', [
+                {'url': URL, 'file': 'one.html', 'checked_at': DATE},
+                {'url': url2, 'file': 'two.html', 'checked_at': DATE}
+            ])
+            with patch.object(parser, 'fetch', side_effect=AssertionError('network forbidden')):
+                with patch('sys.stdout', new_callable=io.StringIO):
+                    status = parser.main(['--catalog',str(catalog),'--report',str(report),
+                                          '--access-state',str(access),
+                                          '--input-dir',str(path)])
+            self.assertEqual(status, 0)
+            run = json.loads(report.read_text(encoding='utf-8'))
+            self.assertEqual(run['successful'], 2)
+            self.assertEqual(run['skipped'], 0)
+            records = json.loads(catalog.read_text(encoding='utf-8'))['records']
+            self.assertTrue(all(r['stores'][0]['product_details']['producer'] == 'Peter Zemmer'
+                                for r in records))
 
     def test_persisted_403_blocks_all_network_actions(self):
         with tempfile.TemporaryDirectory() as folder:
