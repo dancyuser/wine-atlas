@@ -39,7 +39,8 @@ def fixture():
         "direct_price_observations": 1, "retailer_reported_ratings": 1,
         "regular_prices_confirmed": 0
     }
-    return {"records": [rec, skipped], "retailer_snapshot": manifest}
+    return {"records": [rec, skipped], "retailer_snapshot": manifest,
+            "source": {"kind": "google_docs", "revision_id": "source-revision-1"}}
 
 
 class RebuildTest(unittest.TestCase):
@@ -64,6 +65,7 @@ class RebuildTest(unittest.TestCase):
             manifest = actual["retailer_snapshot"]
             self.assertEqual(manifest["source_export_sha256"], "a" * 64)
             self.assertEqual(manifest["collected_target_urls"], 2)
+            self.assertEqual(actual["source"]["revision_id"], "source-revision-1")
             self.assertEqual(manifest["matched_exact_products"], 1)
             self.assertEqual(manifest["mismatched_variants"], 1)
             self.assertEqual(manifest["retailer_reported_ratings"], 1)
@@ -84,6 +86,7 @@ class RebuildTest(unittest.TestCase):
             pruned = self.rebuild(root, [WINE])
             manifest = pruned["retailer_snapshot"]
             self.assertEqual(manifest["collected_target_urls"], 1)
+            self.assertNotIn("revision_id", pruned["source"])
             self.assertEqual(manifest["matched_exact_products"], 1)
             self.assertEqual(manifest["mismatched_variants"], 0)
             self.assertEqual(manifest["mismatched_urls"], [])
