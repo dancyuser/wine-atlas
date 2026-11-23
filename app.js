@@ -124,8 +124,16 @@ function retailerDetails(r){
  const supplemental=Object.keys(research).some(k=>
   !['source_kind','source_url','checked_at','full_name','field_checked_at'].includes(k)&&
   research[k]!=null&&research[k]!==''&&(archive[k]==null||archive[k]===''));
- return {...research,...archive,
-  field_checked_at:{...(research.field_checked_at||{}),...(archive.field_checked_at||{})},
+ const combined={...research};
+ const fieldDates={...(archive.field_checked_at||{})};
+ for(const [key,value] of Object.entries(archive)){
+  if(value!=null&&value!=='')combined[key]=value;
+  else if(!(key in combined))combined[key]=value;
+ }
+ for(const [key,value] of Object.entries(research.field_checked_at||{})){
+  if((archive[key]==null||archive[key]==='')&&combined[key]===research[key])fieldDates[key]=value;
+ }
+ return {...combined,field_checked_at:fieldDates,
   supplemental_checked_at:supplemental?
    Object.values(research.field_checked_at||{}).sort().at(-1)||research.checked_at:null};
 }
