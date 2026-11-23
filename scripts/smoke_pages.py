@@ -12,6 +12,7 @@ import subprocess
 import sys
 import time
 import urllib.request
+import urllib.error
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 
@@ -48,6 +49,16 @@ def check(base):
         if hashlib.sha256(observed).digest() != hashlib.sha256(expected).digest():
             raise ValueError(filename + " differs from deployed commit")
         print("OK", filename, len(observed), "bytes")
+    for forbidden in ("README.md", "scripts/update_prices.py",
+                      "data/archive/spb-research-2026-11-14.json"):
+        try:
+            fetch(urljoin(base, forbidden))
+        except urllib.error.HTTPError as exc:
+            if exc.code not in (403, 404):
+                raise ValueError(f"Unexpected HTTP status for {forbidden}: {exc.code}") from exc
+        else:
+            raise ValueError("Internal repository file publicly accessible: " + forbidden)
+    print("INTERNAL_FILES_NOT_PUBLISHED")
     catalog = json.loads((ROOT / "data/wines.json").read_text(encoding="utf-8"))
     assert catalog["records"] and isinstance(catalog["records"], list)
     assert "<script src=\"./app.js\" defer></script>" in (ROOT / "index.html").read_text(encoding="utf-8")
