@@ -113,7 +113,7 @@ function captureWineAtlasPage() {
   // panel, not Product/Offer JSON-LD. Never read recommendations, sticky
   // teasers or generic price elements outside this product panel.
   const visibleOffer=(()=>{
-    if(location.hostname.toLowerCase()!=='spb.winestyle.ru')return null;
+    if(new URL(location.href).hostname.toLowerCase()!=='spb.winestyle.ru')return null;
     const root=document.querySelector('.o-productpage-info__price .m-productpage-price');
     if(!root)return null;
     const parseRub=raw=>{
