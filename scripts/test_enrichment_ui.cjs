@@ -108,7 +108,8 @@ assert(!h.card(latest).includes('Ожидаем поступление'),
 h.state.snapshots.fixture=[3990,'272012'];
 h.state.snapshotDate='2026-11-23';
 const enrichedCard=h.card(sample);
-assert(enrichedCard.includes('3 990')||enrichedCard.includes('3\\u00a0990'));
+assert(enrichedCard.includes(new Intl.NumberFormat('ru-RU').format(3990)),
+  'Snapshot price should use production locale formatting');
 assert(enrichedCard.includes('images_gen/272/272012/0_0_695x600.webp'));
 assert(enrichedCard.includes('Цена в архиве'));
 h.state.snapshots={};
