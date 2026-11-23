@@ -15,6 +15,24 @@ CRITIC_PATTERN = re.compile(
     r')\s*(?:[:–—-]\s*)?(\d{1,3}(?:[.,]\d)?)\s*(?:/|из)\s*(5|10|20|100)\b',
     re.I,
 )
+# WineStyle's visible ratings are commonly written as "94 /100 Wine Enthusiast"
+# rather than "Wine Enthusiast 94/100". Keep this confined to the verified
+# main-product rating area; never scan the whole page or related products.
+SCORE_FIRST_PATTERN = re.compile(
+    r'(?<!\d)(\d{1,3}(?:[.,]\d+)?)\s*/\s*(5|10|20|100)\s+'
+    r'(Wine Enthusiast|Jancis Robinson|Wine Spectator|Robert Parker|'
+    r'Decanter(?:\s*\|\s*100)?|James Suckling|Falstaff(?: Magazine)?|'
+    r'Vinous|Tim Atkin|Wine Advocate|Vivino)\b', re.I,
+)
+
+def normalized_score_source(label):
+    label = ' '.join(label.split())
+    if label.lower().startswith('decanter'):
+        return 'Decanter'
+    if label.lower().startswith('falstaff'):
+        return 'Falstaff'
+    return next((x for x in (*CRITICS, 'Vivino') if x.casefold() == label.casefold()), None)
+
 CUSTOMER_PATTERN = re.compile(
     r'(?:оценк[аи]\s+(?:покупател\w*|пользовател\w*)|отзывы\s+покупателей|customer\s+rating)'
     r'\s*[:–—-]?\s*(\d(?:[.,]\d+)?)\s*(?:/|из)\s*(5|10)\b'
@@ -45,7 +63,7 @@ def scalar(value):
 
 
 def score_row(source, value, scale, source_url, checked_at, count=None, evidence=None):
-    if source not in (*CRITICS, 'WineStyle users'):
+    if source not in (*CRITICS, 'WineStyle users', 'Vivino'):
         return None
     n, top = scalar(value), scalar(scale)
     if n is None or top not in SCALES or not 0 < n <= top:
@@ -139,6 +157,13 @@ def collect_dom(soup, url, date):
                 if source:
                     row = score_row(source, m.group(2), m.group(3), url, date,
                                     evidence='labelled DOM rating section')
+                    if row:
+                        result.append(row)
+            for m in SCORE_FIRST_PATTERN.finditer(line):
+                source = normalized_score_source(m.group(3))
+                if source and (source != 'Vivino' or m.group(2) == '5'):
+                    row = score_row(source, m.group(1), m.group(2), url, date,
+                                    evidence=m.group(0).strip())
                     if row:
                         result.append(row)
             for m in CUSTOMER_PATTERN.finditer(line):
