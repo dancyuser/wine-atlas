@@ -21,5 +21,6 @@ jobs:
           python -m unittest discover -s scripts -p 'test_import_manual_capture.py' -v
           node --check extension/capture.js
           node --check extension/popup.js
+          node scripts/test_extension_capture.cjs
           node --check app.js
           node scripts/test_theme.mjs
