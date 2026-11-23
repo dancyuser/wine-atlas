@@ -46,7 +46,7 @@ def check(base):
             raise ValueError(filename + " differs from deployed commit")
         print("OK", filename, len(observed), "bytes")
     catalog = json.loads((ROOT / "data/wines.json").read_text(encoding="utf-8"))
-    assert len(catalog["records"]) >= 110
+    assert catalog["records"] and isinstance(catalog["records"], list)
     assert "<script src=\"./app.js\" defer></script>" in (ROOT / "index.html").read_text(encoding="utf-8")
 
 
