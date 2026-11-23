@@ -31,6 +31,7 @@ jobs:
       - name: JavaScript syntax and UI regressions
         run: |
           python -m unittest discover -s scripts -p 'test_verified_offers.py' -v
+          python -m unittest discover -s scripts -p 'test_site_package.py' -v
           node --check app.js
           node scripts/test_theme.mjs
           node scripts/test_enrichment_ui.cjs
