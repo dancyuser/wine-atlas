@@ -154,6 +154,10 @@ def verified_offer(text, record, original_url, final_url):
         for offer in offers:
             if not isinstance(offer, dict) or offer.get("priceCurrency") not in {"RUB", "RUR"}:
                 continue
+            kinds = offer.get("@type", [])
+            kinds = [kinds] if isinstance(kinds, str) else kinds
+            if kinds and not any(str(t).rsplit("/", 1)[-1].lower() == "offer" for t in kinds):
+                continue
             if offer.get("url") and canonical_url(offer["url"]) != canonical:
                 continue
             value = offer.get("price")
