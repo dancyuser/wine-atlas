@@ -109,6 +109,14 @@ if publication:
  assert publication['reviewed']==publication['verified_for_order']+publication['excluded']
  assert publication['visible_after_review']==110
 
+visible=[r for r in records if r.get('availability',{}).get('status')!='out_of_stock' and
+         r.get('publication_review',{}).get('status')!='excluded']
+assert len(visible)==110
+assert all(type(r.get('volume_l')) in (float,int) and r['volume_l']>0 for r in visible), 'Missing published bottle volume'
+assert all(isinstance(r.get('grapes'),list) and r['grapes'] for r in visible), 'Missing published grape identity'
+assert all((r['stores'][0].get('product_details') or r['stores'][0].get('research_details') or {}).get('color')
+           for r in visible), 'Missing published source color description'
+
 assert len(records)==d['source']['unique_wine_urls'], 'Catalog size differs from source snapshot'
 assert all(r['wishlist'] and not r['research'] for r in records), 'Archived research cannot appear in active catalog'
 assert not any(r['section']=='Джин' for r in records)
