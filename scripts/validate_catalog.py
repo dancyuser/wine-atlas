@@ -25,6 +25,12 @@ for r in records:
   assert photo.get('url','').startswith('https://'),('Invalid photo URL',r['id'])
   assert photo.get('source_url','').startswith('https://'),('Invalid photo source',r['id'])
   assert photo.get('source') and photo.get('verified_on'),('Missing photo provenance',r['id'])
+ stock=r.get('availability')
+ if stock is not None:
+  assert stock['status'] in ('in_stock','out_of_stock'), (r['id'],stock)
+  assert stock.get('source_url') in {s['url'] for s in r['stores']},r['id']
+  assert re.fullmatch(r'\\d{4}-\\d{2}-\\d{2}',stock['observed_on']),r['id']
+  assert stock.get('evidence') and stock.get('snapshot_source'),r['id']
  assert r['stores']
  assert not (r['section']=='Джин')
  for store in r['stores']:
@@ -40,6 +46,18 @@ for r in records:
    assert store['price_rub'] is not None and store['regular_price_rub']>store['price_rub']
   if store['reference_regular_price_rub'] is not None:
    assert store['reference_price_rub'] is not None and store['reference_regular_price_rub']>store['reference_price_rub']
+snapshot=d.get('inventory_snapshot')
+if snapshot:
+ assert re.fullmatch(r'[0-9a-f]{64}',snapshot['archive_sha256'])
+ assert re.fullmatch(r'\\d{4}-\\d{2}-\\d{2}',snapshot['observed_on'])
+ in_stock=sum(r.get('availability',{}).get('status')=='in_stock' for r in records)
+ unavailable=sum(r.get('availability',{}).get('status')=='out_of_stock' for r in records)
+ unknown=sum(r.get('availability') is None for r in records)
+ assert snapshot['targets']==len(records)
+ assert (in_stock,unavailable,unknown)==(snapshot['in_stock'],snapshot['out_of_stock'],snapshot['unconfirmed_identity'])
+ assert in_stock+unavailable==snapshot['exact_matches']
+ assert all(r['availability']['observed_on']==snapshot['observed_on']
+            for r in records if r.get('availability'))
 assert len(records)==d['source']['unique_wine_urls'], 'Catalog size differs from source snapshot'
 assert all(r['wishlist'] and not r['research'] for r in records), 'Archived research cannot appear in active catalog'
 assert not any(r['section']=='Джин' for r in records)
