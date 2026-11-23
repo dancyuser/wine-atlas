@@ -6,6 +6,9 @@ deployment action alone is not a browser/network availability check.
 """
 import hashlib
 import json
+import re
+import shutil
+import subprocess
 import sys
 import time
 import urllib.request
@@ -48,6 +51,38 @@ def check(base):
     catalog = json.loads((ROOT / "data/wines.json").read_text(encoding="utf-8"))
     assert catalog["records"] and isinstance(catalog["records"], list)
     assert "<script src=\"./app.js\" defer></script>" in (ROOT / "index.html").read_text(encoding="utf-8")
+    # Chromium exercises real network fetches, initialization and DOM rendering.
+    browser = next((shutil.which(x) for x in ("google-chrome-stable", "google-chrome",
+                                             "chromium", "chromium-browser") if shutil.which(x)), None)
+    if not browser:
+        raise RuntimeError("Chromium required for deployed-site UI smoke test")
+    command = [browser, "--headless", "--no-sandbox", "--disable-gpu",
+               "--disable-dev-shm-usage", "--disable-extensions",
+               "--blink-settings=imagesEnabled=false",
+               "--virtual-time-budget=12000", "--dump-dom", base]
+    completed = subprocess.run(command, capture_output=True, text=True, timeout=90)
+    if completed.returncode:
+        raise ValueError("Chromium failed: " + completed.stderr[-1000:])
+    dom = completed.stdout
+    rendered = len(re.findall(r'<article class="wine-card"', dom))
+    expected = sum(
+        r.get("availability", {}).get("status") != "out_of_stock"
+        and r.get("publication_review", {}).get("status") != "excluded"
+        and not (
+            r.get("publication_review", {}).get("status") == "verified"
+            and r.get("stores", [{}])[0].get("live_offer", {}).get("verification_method") == "exact_jsonld_product"
+            and r["stores"][0]["live_offer"].get("availability") == "out_of_stock"
+            and r["stores"][0]["live_offer"].get("observed_on", "") >= r["publication_review"]["checked_at"]
+        )
+        for r in catalog["records"]
+    )
+    if rendered != expected or expected == 0:
+        raise ValueError(f"Rendered cards {rendered}, expected {expected}")
+    if not re.search(r'id="stat-total"[^>]*>' + str(expected) + r'<', dom):
+        raise ValueError("Catalog total was not populated by app.js")
+    if 'id="result-count"' not in dom or 'Ошибка загрузки' in dom:
+        raise ValueError("Catalog initialization failed")
+    print("RENDERED_CARDS_VERIFIED", rendered)
 
 
 def main():
@@ -60,7 +95,7 @@ def main():
             check(url)
             print("PUBLISHED_SITE_VERIFIED")
             return
-        except (OSError, ValueError, AssertionError) as exc:
+        except (OSError, ValueError, AssertionError, RuntimeError, subprocess.TimeoutExpired) as exc:
             last_error = exc
             print("PENDING", attempt, str(exc), file=sys.stderr)
             if attempt < 8:
