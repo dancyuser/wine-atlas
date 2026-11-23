@@ -1114,10 +1114,10 @@
         "scale": 5,
         "scope": "all_vintages",
         "vintage": null,
-        "source_url": "https://www.vivino.com/en/myskhako-myskhako-igristoe-vino-quinteccence-zinfandel-polusukhoe-rozovoe-sparkling-wine-quintessence-zinfandel-semi-dry-rose/w/10522915",
-        "source_kind": "vivino_web_search_verified",
-        "observed_on": "2026-11-22",
-        "note": "Оценка вина по всем винтажам; в индекс конкретного урожая не включена."
+        "source_url": "https://www.vivino.com/en/myskhako-myskhako-quintessence-collection-zinfandel-ripasso/w/9317032",
+        "source_kind": "vivino_primary_style_and_producer_verified",
+        "observed_on": "2026-11-23",
+        "note": "Исправлена ранее ошибочная ссылка на розовое игристое. Данное вино - красное полусухое Myskhako Quintessence Zinfandel (Ripasso), 0.75 л. Vivino red Zinfandel Ripasso 4.1/5 относится ко всем винтажам. Прямо сверено с исходной карточкой WineStyle."
       }
     ],
     "de91d5c1fa5e": [
