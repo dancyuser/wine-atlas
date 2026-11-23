@@ -226,6 +226,10 @@ const port={
     description_excerpt:'Портвейн региона Дору урожая 2018 года'
    }}]
 };
+const manualDetailsPort={...port,stores:[{...port.stores[0],
+ research_details:{...port.stores[0].research_details,source_kind:'manual_verified_original_seller'}}]};
+assert(h.card(manualDetailsPort).includes('Насыщенный рубиновый'),
+  'Imported manual original-seller metadata must be displayed');
 const portCard=h.card(port);
 assert(portCard.includes('Насыщенный рубиновый'));
 assert(portCard.includes('Портвейн региона Дору'));
