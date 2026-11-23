@@ -39,6 +39,7 @@ jobs:
           node --check extension/capture.js
           node --check extension/popup.js
           node scripts/test_extension_capture.cjs
+          node scripts/test_visible_price_capture.cjs
           node --check extension/batch_core.js
           node --check extension/background.js
           node scripts/test_batch_core.cjs
