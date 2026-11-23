@@ -8,8 +8,8 @@ catalog=json.loads((ROOT/'data/wines.json').read_text(encoding='utf-8'))
 obj=json.loads((ROOT/'data/ratings.json').read_text(encoding='utf-8'))
 audit=json.loads((ROOT/'data/archive/vivino-reconciliation-2026-11-23.json').read_text(encoding='utf-8'))
 wines={w['id']:w for w in catalog['records']}
-assert len(wines)==124
-assert len(obj['records'])==124 and obj['unrated']=={},'All four old gaps must be researched'
+assert len(wines)==123
+assert len(obj['records'])==123 and obj['unrated']=={},'All four old gaps must be researched'
 for match in audit['matched_unrated']:
     id_=match['id']
     assert id_ in wines
@@ -29,7 +29,7 @@ for wine in wines.values():
     if values:
         assert len(values)==1
         quoted.append((wine,values[0]))
-assert len(quoted)==audit['wineStyle_vivino_display_observations']==33
+assert len(quoted)==audit['wineStyle_vivino_display_observations']==32
 matches=differences=0
 for wine,v in quoted:
     direct=next(x for x in obj['records'][wine['id']] if x['source']=='Vivino')
@@ -38,5 +38,5 @@ for wine,v in quoted:
     else:
         differences+=1
         assert wine['id']=='f0c33d420f2f' and direct['score']==3.5 and v['score']==3.8
-assert matches==32 and differences==1
-print('VIVINO AUDIT VALIDATED: 124/124 resolved, 33 seller comparisons, 1 archived conflict')
+assert matches==31 and differences==1
+print('VIVINO AUDIT VALIDATED: 123/123 resolved, 32 seller comparisons, 1 archived conflict')
