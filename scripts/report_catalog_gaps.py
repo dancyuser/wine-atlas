@@ -17,6 +17,7 @@ def report():
     independent = json.loads((ROOT / 'data/ratings.json').read_text(encoding='utf-8'))
     snapshot = json.loads((ROOT / 'data/verified-snapshot-2026-11-23.json').read_text(encoding='utf-8'))
     verified = snapshot['records']
+    researched = json.loads((ROOT / 'data/researched-photos-2026-11-23.json').read_text(encoding='utf-8'))['records']
     visible = [r for r in c['records'] if r.get('availability', {}).get('status') != 'out_of_stock']
     missing = []
     totals = {'visible': len(visible), 'snapshot_price_and_photo': 0,
@@ -28,7 +29,7 @@ def report():
         if x:
             totals['snapshot_price_and_photo'] += 1
         has_price = bool(x or s.get('price_rub') is not None or s.get('reference_price_rub') is not None)
-        has_photo = bool(x or r.get('photo', {}).get('url'))
+        has_photo = bool(x or researched.get(r['id'], {}).get('url') or r.get('photo', {}).get('url'))
         has_vivino = any(y.get('source') == 'Vivino'
                          for y in independent['records'].get(r['id'], []))
         has_critic = any(y.get('scale') in (20, 100) and y.get('source') != 'Vivino'
