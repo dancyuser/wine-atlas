@@ -25,6 +25,7 @@ jobs:
           python scripts/validate_ratings.py
           python scripts/validate_enrichment.py
           python scripts/validate_verified_snapshot.py
+          python scripts/validate_researched_photos.py
           python scripts/report_catalog_gaps.py > /dev/null
           python -m unittest discover -s scripts -p 'test_recover_capture_ratings.py' -v
           python -m unittest discover -s scripts -p 'test_recover_capture_prices.py' -v

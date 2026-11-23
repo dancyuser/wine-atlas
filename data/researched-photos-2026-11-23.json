@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "observed_on": "2026-11-23",
+  "note": "Exact product photos from independent merchants; image URLs may change or refuse hotlinking. Source pages and visible bottle vintages reviewed; some page titles/vintage packaging can differ. These are photo leads, not proof of current availability or price.",
+  "records": {
+    "c9f63273980c": {
+      "year": 2018,
+      "url": "https://cdn11.bigcommerce.com/s-41e84jdtvf/images/stencil/500x659/products/56307/100457/68565__23661.1768600897.jpg?c=1",
+      "source_url": "https://holidaywinecellar.com/dow-s-2018-late-bottled-vintage-porto/",
+      "source": "Holiday Wine Cellar / image shown in product gallery",
+      "evidence": "Bottle label clearly reads Dow's 2018 LBV; source page for 2018 wine exists but image was also returned under a different product"
+    },
+    "060e3c866e44": {
+      "year": 2018,
+      "url": "https://festus.pl/sklep/9372-large_default/kopke-porto-lbv-2018.jpg",
+      "source_url": "https://festus.pl/sklep/wino-wzmacniane/1348-kopke-porto-lbv-2018-5601194709981.html",
+      "source": "Festus",
+      "evidence": "Bottle label clearly reads KOPKE LBV 2018; page heading may show an alternate vintage"
+    },
+    "8433dbc66ae6": {
+      "year": 2018,
+      "url": "https://www.harrogatefinewinecompany.com/cdn/shop/products/image_c2b9616c-410f-4815-bea3-7df0149450cb_1081x1080.jpg?v=1634649001",
+      "source_url": "https://www.harrogatefinewinecompany.com/products/kendall-jackson-vintners-reserve-chardonnay-2017",
+      "source": "Harrogate Fine Wine",
+      "evidence": "Bottle label shows Kendall-Jackson Vintner's Reserve Chardonnay 2018; page slug is an older vintage"
+    },
+    "d9a5af8ef749": {
+      "year": 2024,
+      "url": "https://cavacolome.com/cdn/shop/files/PTC6ML20230108_1000x.png?v=1719328755",
+      "source_url": "https://cavacolome.com/products/amalaya-blanco-2024-6x750-ml",
+      "source": "Cava Colomé",
+      "evidence": "Product page is 2024 Amalaya Blanco; bottle image is standard label and may be non-vintage-specific"
+    },
+    "28bf2f843af7": {
+      "year": 2023,
+      "url": "https://communitywineandspirits.com/cdn/shop/files/597ca8dc-1957-4753-8265-c2072da2d162.png?v=1750953964",
+      "source_url": "https://communitywineandspirits.com/products/braida-moscato-dasti-vigna-senza-nome-2023-375ml/",
+      "source": "Community Wine & Spirits",
+      "evidence": "Exact Braida Vigna Senza Nome Moscato d'Asti 2023, 375 ml product page"
+    },
+    "e3e9c91e71bc": {
+      "year": 2018,
+      "url": "https://diy335ne.user.webaccel.jp/cache/images/item/5d/a4/9d6d43c3baf904f647563171646bfd1bfa2d5da4.1200x1200.fill.png",
+      "source_url": "https://www.mottox.co.jp/catalog/wine/621623",
+      "source": "Mottox",
+      "evidence": "Bottle neck and label show Rotari Blanc de Blancs Extra Brut 2018"
+    },
+    "ce214c07863d": {
+      "year": 2021,
+      "url": "https://bottle-hero.de/cdn/shop/files/2021_vilarnau_brut_nature_reserva_cava.png?crop=center&height=1200&v=1775478615&width=1200",
+      "source_url": "https://bottle-hero.de/products/2021-vilarnau-brut-nature-reserva-cava",
+      "source": "Bottle Hero",
+      "evidence": "Exact Vilarnau Brut Nature Reserva Cava 2021 product page"
+    },
+    "3684c27c6d62": {
+      "year": 2022,
+      "url": "https://static.wixstatic.com/media/737bcf_d4efa3759bff4fe3b1c274f262316a9f~mv2.png/v1/fill/w_1040%2Ch_1040%2Cal_c%2Cq_90%2Cenc_avif%2Cquality_auto/737bcf_d4efa3759bff4fe3b1c274f262316a9f~mv2.png",
+      "source_url": "https://www.simplewinecellar.com.tw/product-page/1198-bellenda-san-fermo-prosecco",
+      "source": "Simple Wine Cellar",
+      "evidence": "Bottle capsule reads Millesimato 2022; gift-box packaging not shown"
+    }
+  }
+}
