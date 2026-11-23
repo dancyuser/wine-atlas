@@ -14,7 +14,7 @@ const sandbox = {
 };
 vm.createContext(sandbox);
 vm.runInContext(original.replace(/\binit\(\);\s*$/, '')+
-  '\nglobalThis.helpers={countryValue,grapeValues,pairingValues,distinct,matched,card,state,metrics,criticRatingsFor,snapshotFor};',sandbox);
+  '\nglobalThis.helpers={countryValue,grapeValues,pairingValues,distinct,matched,card,state,metrics,criticRatingsFor,snapshotFor,priceValue,priceBlock,liveOfferFor,isPublished};',sandbox);
 const h=sandbox.helpers;
 const sample={
  id:'fixture',title:'Test Chardonnay',country:null,grapes:[],type:'Белое',
@@ -179,4 +179,37 @@ assert.deepEqual([...h.grapeValues(curated)],['Семильон']);
 assert.equal(h.countryValue(curated),'Португалия');
 const noRetail={...sample,stores:[{url:sample.stores[0].url}]};
 assert.deepEqual([...h.pairingValues(noRetail)],['Паста']);
+// A later verified retailer observation must outrank a preserved old snapshot,
+// and only explicit exact-identified out-of-stock can hide a reviewed product.
+h.state.snapshots.fixture=[3990,'272012'];
+h.state.snapshotDate='2026-11-23';
+const reviewed={
+ ...sample, publication_review:{status:'verified',checked_at:'2026-11-23',
+    final_url:sample.stores[0].url},
+ stores:[{...sample.stores[0],live_offer:{
+  price_rub:2890,regular_price_rub:null,availability:'in_stock',
+  source_url:sample.stores[0].url,observed_on:'2026-11-24',
+  product_name:'Test Chardonnay 2023 750 ml',
+  verification_method:'exact_jsonld_product'
+ }}]
+};
+assert.equal(h.liveOfferFor(reviewed).price_rub,2890);
+assert.equal(h.priceValue(reviewed),2890,'New observation must override the static archive');
+assert(h.priceBlock(reviewed).includes('2\u00a0890')||h.priceBlock(reviewed).includes('2 890'));
+assert(h.priceBlock(reviewed).includes('24.11.2026'));
+assert(!h.priceBlock(reviewed).includes('Цена в архиве'));
+assert.equal(h.isPublished(reviewed),true);
+const soldOut={...reviewed,stores:[{...reviewed.stores[0],
+ live_offer:{...reviewed.stores[0].live_offer,availability:'out_of_stock'}}]};
+assert.equal(h.isPublished(soldOut),false,'Reviewed current out-of-stock must be excluded');
+const unknown={...reviewed,stores:[{...reviewed.stores[0],
+ live_offer:{...reviewed.stores[0].live_offer,availability:'unknown'}}]};
+assert.equal(h.isPublished(unknown),true,'Unknown stock must not be converted to out-of-stock');
+const redirected={...reviewed,stores:[{...reviewed.stores[0],
+ live_offer:{...reviewed.stores[0].live_offer,
+    source_url:'https://spb.winestyle.ru/products/Another-Wine-2025.html'}}]};
+assert.equal(h.liveOfferFor(redirected),null,'Unmatched live offer URL cannot affect displayed price');
+assert.equal(h.priceValue(redirected),3990);
+h.state.snapshots={};
+h.state.snapshotDate=null;
 console.log('WINESTYLE UI TESTS PASSED: derived filters, merged grape synonyms, excluded redirected wines, source display, curated preservation, fallback');
