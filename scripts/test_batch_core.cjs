@@ -24,6 +24,21 @@ assert.equal(api.check(t,{...c,h1:'Dow LBV Porto 2018, 750 ml'}).reason,'product
 assert.equal(api.check(t,{...c,h1:'Kopke LBV Porto 2022, 750 ml',products:[]}).reason,'missing_or_conflicting_vintage');
 assert.equal(api.check(t,{...c,h1:'Kopke LBV Porto 2018, 1.5 l',products:[]}).reason,'missing_or_conflicting_volume');
 assert.equal(api.check(t,{...c,blocked:true}).status,'blocked');
+const bichot={id:'bichot',title:'Albert Bichot Origines Chardonnay Bourgogne AOC',
+ expected_product_name:'Вино Albert Bichot, Origines Chardonnay, Bourgogne AOC, 2022',
+ year:2022,volume_l:0.75,
+ url:'https://spb.winestyle.ru/products/Albert-Bichot-Origines-Chardonnay-Bourgogne-AOC-2022.html'};
+const replaced={source_url:bichot.url,
+ h1:'Albert Bichot Origines Pinot Noir Bourgogne AOC 2022, 750 ml',
+ products:[{name:'Albert Bichot Origines Pinot Noir Bourgogne AOC 2022, 750 ml',
+ size:'750 ml',url:bichot.url}],fields:{},blocked:false};
+assert.equal(api.check(bichot,replaced).reason,'product_name_mismatch',
+ 'The same producer + same cuvée + same year/size must not substitute Chardonnay with Pinot Noir');
+const bichotValid={...replaced,h1:'Albert Bichot Origines Chardonnay Bourgogne AOC 2022, 750 ml',
+ products:[{name:'Albert Bichot Origines Chardonnay Bourgogne AOC 2022, 750 ml',
+ size:'750 ml',url:bichot.url}]};
+assert.equal(api.check(bichot,bichotValid).status,'exact');
+
 assert.equal(api.check({...t,year:null},c).reason,'catalog_vintage_unspecified');
 assert.equal(api.identityUrl(t.url+'?session=secret'),api.identityUrl(t.url+'?session=secret'));
 assert.notEqual(api.identityUrl(t.url+'?session=secret'),api.identityUrl(t.url));
