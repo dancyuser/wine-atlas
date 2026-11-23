@@ -18,14 +18,47 @@
     "title": "Quinta de la Rosa Late Bottled Vintage Port"
   },
   "c9f63273980c": {
-    "title": "Dow’s Late Bottled Vintage Port (LBV)"
+    "title": "Dow’s Late Bottled Vintage Port (LBV)",
+    "year": 2018,
+    "volume_l": 0.75,
+    "grapes": [
+      "Турига Насьональ",
+      "Турига Франка",
+      "Тинта Баррока",
+      "Тинта Рориш",
+      "Тинта Као"
+    ],
+    "field_provenance": {
+      "checked_at": "2026-11-23",
+      "source_url": "https://ast.wine/catalog/product/dow_s_late_bottled_vintage_port_5608309002876_43233/",
+      "scope": "exact product 2018 / 0.75L"
+    }
   },
   "060e3c866e44": {
     "title": "Kopke Late Bottled Vintage Port (LBV)",
-    "volume_l": 0.75
+    "volume_l": 0.75,
+    "year": 2018,
+    "grapes": [
+      "Турига Насьональ",
+      "Турига Франка",
+      "Тинта Рориш",
+      "Сузео"
+    ],
+    "field_provenance": {
+      "checked_at": "2026-11-23",
+      "source_url": "https://ladogawine.ru/catalog/wine/kopke_leyt_bottled_vintedzh_porto_075/",
+      "scope": "exact product 2018 / 0.75L"
+    }
   },
   "8433dbc66ae6": {
-    "title": "Kendall-Jackson Vintner’s Reserve Chardonnay"
+    "title": "Kendall-Jackson Vintner’s Reserve Chardonnay",
+    "year": 2018,
+    "volume_l": 0.75,
+    "field_provenance": {
+      "checked_at": "2026-11-23",
+      "source_url": "https://vinissimo.biz/catalog/wine/kendall_jackson_vintners_reserve_chardonnay-1831018/",
+      "scope": "exact product 2018 / 0.75L"
+    }
   },
   "22c9be4678f5": {
     "title": "Zantho Beerenauslese"
