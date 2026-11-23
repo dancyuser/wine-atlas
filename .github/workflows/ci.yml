@@ -45,5 +45,6 @@ jobs:
           node --check app.js
           node scripts/test_theme.mjs
           node scripts/test_enrichment_ui.cjs
+          node scripts/test_catalog_filters.cjs
           node scripts/test_responsive_ui.mjs
           python scripts/test_responsive_browser.py

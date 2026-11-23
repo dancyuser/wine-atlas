@@ -8,9 +8,9 @@ vm.runInContext(fs.readFileSync(path.join(folder,'batch_core.js'),'utf8')+';this
 const api=context.checks;
 const bundled=JSON.parse(fs.readFileSync(path.join(folder,'targets.json'),'utf8'));
 const list=api.validateTargets(bundled);
-assert.equal(list.length,124,'All 124 wishlist entries must be bundled, including excluded variants');
-assert.equal(list.filter(x=>!x.excluded).length,110);
-assert.equal(new Set(list.map(x=>x.id)).size,124);
+assert.equal(list.length,123,'All 123 wishlist entries must be bundled, including excluded variants');
+assert.equal(list.filter(x=>!x.excluded).length,109);
+assert.equal(new Set(list.map(x=>x.id)).size,123);
 
 const dataBytes=fs.readFileSync(path.join(__dirname,'..','data','wines.json'));
 const expectedSha=crypto.createHash('sha1').update('blob '+dataBytes.length+'\0').update(dataBytes).digest('hex');
@@ -72,11 +72,11 @@ assert.notEqual(api.identityUrl(t.url+'?session=secret'),api.identityUrl(t.url))
 assert.equal(api.identityUrl('http://spb.winestyle.ru/products/a'),null);
 assert.equal(api.identityUrl('https://evil.example.com/products/a'),null);
 const bundle=api.exportBundle({run_id:'abc',catalog_blob_sha:bundled.catalog_blob_sha,
-  status:'completed',cursor:124,total:124,exact:100,needs_review:10,errors:[{},{}],
+  status:'completed',cursor:123,total:123,exact:100,needs_review:10,errors:[{},{}],
   started_at:'2026-11-23T00:00:00Z',finished_at:'2026-11-23T01:00:00Z',
   observations:[{target_id:'1',capture:c}]});
 assert.equal(bundle.schema_version,2);
 assert.equal(bundle.source,'wine_atlas_automated_browser_extension');
 assert.equal(bundle.observations.length,1);
 assert.equal(bundle.failures.length,2);
-console.log('BATCH CORE TESTS PASSED: 124 bundled wines; strict name, year, volume, redirect, blocked and export');
+console.log('BATCH CORE TESTS PASSED: 123 bundled wines; strict name, year, volume, redirect, blocked and export');

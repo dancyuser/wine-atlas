@@ -33,5 +33,5 @@ for id_,title in {
 }.items():
  assert by_id[id_]["title"]==title,(id_,by_id.get(id_,{}).get("title"))
  assert overrides[id_]["title"]==title,(id_,overrides[id_])
-assert len(obj["records"])==124
+assert len(obj["records"])==123
 print("TITLE REGRESSIONS PASSED",len(cases),"source slugs",len(overrides),"overrides")

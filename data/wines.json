@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22",
+  "updated_at": "2026-11-23",
   "region": "Санкт-Петербург",
   "historical_as_of": "2026-11-14",
   "source": {
@@ -9,9 +9,15 @@
     "tab_id": "t.0",
     "tab_title": "Tab 1",
     "synced_at": "2026-11-22",
-    "unique_wine_urls": 124,
+    "unique_wine_urls": 123,
     "excluded_gin_urls": 3,
-    "deduplicated_url_occurrences": 3
+    "deduplicated_url_occurrences": 3,
+    "manual_curation": {
+      "updated_at": "2026-11-23",
+      "base_document_revision_unmodified": true,
+      "description": "After original Google Doc export: remove Myskhako Quintessence Zinfandel and replace Canti Moscato d’Asti 2019 with exact 2023 store link; old snapshot evidence is not reassigned.",
+      "file": "data/wishlist-curation.json"
+    }
   },
   "records": [
     {
@@ -4740,119 +4746,62 @@
       }
     },
     {
-      "id": "5e980b14c4d5",
+      "id": "a1faf8b0af1d",
       "title": "Canti Moscato d’Asti DOCG",
-      "year": 2019,
+      "year": 2023,
       "country": "Италия",
       "grapes": [
         "Москато"
       ],
       "type": "Игристое",
       "pairings": [
-        "Закуски",
-        "Сыры",
-        "Морепродукты"
+        "Аперитив",
+        "Фрукты",
+        "Десерты"
       ],
-      "description": "Игристое вино. Сочетания указаны как ориентиры для категории, а не персональные дегустационные характеристики.",
+      "description": "Сладкое белое игристое вино Moscato d’Asti DOCG из Пьемонта. Сведения о стиле подтверждены производителем, не являются дегустационной оценкой винтажа 2023.",
       "section": "Игристое",
       "wishlist": true,
       "research": false,
       "stores": [
         {
           "name": "winestyle.ru",
-          "url": "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2019.html",
-          "price_rub": 2680,
+          "url": "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2023.html",
+          "price_rub": null,
           "regular_price_rub": null,
-          "price_checked_at": "2026-11-22",
+          "price_checked_at": null,
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
-          "product_details": {
-            "alcohol_percent": "5.5 %",
-            "aroma": "Игристое вино чарует гармоничным, легким ароматом с фруктово-цветочными оттенками.",
-            "color": "Игристое вино бледно-золотистого цвета.",
-            "country": "Италия, Пьемонт",
-            "full_name": "Игристое вино Canti, Moscato D'Asti DOCG, 2019",
-            "grapes": "Мускат",
+          "research_details": {
+            "source_kind": "producer_style_profile",
+            "scope": "all_vintages",
+            "source_url": "https://www.cantiwine.com/portfolios/moscato-dasti-d-o-c-g/",
+            "checked_at": "2026-11-23",
             "producer": "Canti",
-            "region": "Италия Пьемонт",
-            "taste": "Шипучее игристое вино демонстрирует мягкий, свежий вкус с фруктовыми акцентами и приятной сладостью в послевкусии.",
-            "volume_l": "0.75 л",
-            "brand": "Bruni",
-            "pairing_notes": "аперитив, десерты, фрукты",
-            "body": "лёгкое",
-            "aging_potential": "1-2 года",
-            "color_intensity": "светлое",
-            "description_excerpt": "Белое сладкое Moscato d'Asti — это легкое шипучее вино, изготовленное из ароматических сортов винограда сорта Мускат, произрастающего в регионе Пьемонт. Вино входит в линейку \"Premium Estate\", отражающую истинный итальянский характер и гордость за свою землю и традиции. Это вино для людей, которые хотят ощутить вкус настоящей Италии, получая наслаждение в каждом глотке. Потенциал хранения вина составляет 1-2 года, перед подачей декантация не рекомендуется. История компании Canti не насчитывает многих поколений. Ее истоки восходят к 2001 году,",
-            "source_url": "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2019.html",
-            "checked_at": "2026-11-22",
-            "ratings": [],
-            "field_sources": {
-              "alcohol_percent": "primary_product_table",
-              "aroma": "visible_section",
-              "color": "visible_section",
-              "country": "primary_product_table",
-              "full_name": "visible_h1",
-              "grapes": "primary_product_table",
-              "producer": "primary_product_table",
-              "region": "primary_product_table",
-              "taste": "visible_section",
-              "volume_l": "primary_product_table",
-              "brand": "primary_product_table",
-              "pairing_notes": "primary_product_table",
-              "body": "primary_product_table",
-              "aging_potential": "primary_product_table",
-              "color_intensity": "primary_product_table",
-              "description_excerpt": "primary_product_description"
-            },
-            "field_evidence": {
-              "alcohol_percent": "Крепость: 5.5 %",
-              "aroma": "Аромат: Игристое вино чарует гармоничным, легким ароматом с фруктово-цветочными оттенками.",
-              "color": "Цвет: Игристое вино бледно-золотистого цвета.",
-              "country": "Страна производства: Италия, Пьемонт",
-              "full_name": "Игристое вино Canti, Moscato D'Asti DOCG, 2019",
-              "grapes": "Сорта винограда: Мускат",
-              "producer": "Производитель: Canti",
-              "region": "Регион: Италия Пьемонт",
-              "taste": "Вкус: Шипучее игристое вино демонстрирует мягкий, свежий вкус с фруктовыми акцентами и приятной сладостью в послевкусии.",
-              "volume_l": "Объем: 0.75 л",
-              "brand": "Бренд: Bruni",
-              "pairing_notes": "Подходит к: аперитив, десерты, фрукты",
-              "body": "Насыщенность: лёгкое",
-              "aging_potential": "Потенциал хранения: 1-2 года",
-              "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Белое сладкое Moscato d'Asti — это легкое шипучее вино, изготовленное из ароматических сортов винограда сорта Мускат, произрастающего в регионе Пьемонт. Вино входит в линейку \"Premium Estate\", отражающую истинный итальянский характер и гордость за св",
-              "wine_style": "Primary product style heading in exact URL + SHA-256 verified browser HTML archive dated 2026-11-23"
-            },
-            "raw_product_text_sha256": "03cab9f8b94adba46d0fb29cdf125c892233ba3223559bd0475ada542667fb16",
-            "raw_product_text_chars": 6579,
-            "availability_note": "Добавить в корзину",
-            "availability_spb": null,
-            "image_usage_allowed": false,
-            "image_permission_source": null,
-            "wine_style": "Игристое-белое, Сладкое",
-            "field_checked_at": {
-              "wine_style": "2026-11-23"
-            }
-          },
-          "enrichment_status": {
-            "status": "verified",
-            "checked_at": "2026-11-22",
-            "source_url": "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2019.html",
-            "method": "user_supplied_browser_capture"
-          },
-          "price_source_url": "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2019.html"
+            "wine_style": "Игристое-белое, сладкое",
+            "grapes": "Москато Бьянко",
+            "country": "Италия, Пьемонт",
+            "region": "Италия, Пьемонт",
+            "color": "Бледно-золотистый с зеленоватыми оттенками",
+            "aroma": "Жасмин, свежие цитрусовые",
+            "taste": "Абрикос, зелёный виноград, деликатная сладость и мягкие пузырьки",
+            "alcohol_percent": "5,5 %",
+            "volume_l": "0,75 л",
+            "pairing_notes": "аперитив, фрукты, десерты",
+            "description_excerpt": "Характеристика винной линейки Canti Moscato d’Asti от производителя; год урожая по этому источнику не уточняется."
+          }
         }
       ],
       "volume_l": 0.75,
       "scores": [],
       "review_note": null,
-      "availability": {
-        "status": "in_stock",
-        "observed_on": "2026-11-23",
-        "source_url": "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2019.html",
-        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
-        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      "photo": {
+        "url": "https://bestwine24.ru/storage/optimized/product/sampanskoe/702d4010c232a49f9ade703bfb50b8a4_67fd138be87f7_600x800.webp",
+        "source_url": "https://bestwine24.ru/sampanskoe-canti-moscato-d-asti-docg-2023-075-l/",
+        "source": "BestWine24",
+        "matched_year": 2023,
+        "verified_on": "2026-11-23"
       }
     },
     {
@@ -8495,130 +8444,6 @@
         "status": "in_stock",
         "observed_on": "2026-11-23",
         "source_url": "https://spb.winestyle.ru/products/Chateau-Marjosse-Bordeaux-AOC-Rouge-2021.html",
-        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
-        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
-      }
-    },
-    {
-      "id": "6b16a51f5c8c",
-      "title": "Myskhako Quintessence Zinfandel",
-      "year": null,
-      "country": "Россия",
-      "grapes": [
-        "Зинфандель"
-      ],
-      "type": "Красное",
-      "pairings": [
-        "Красное мясо",
-        "Сыры",
-        "Паста"
-      ],
-      "description": "Красное вино. Сочетания указаны как ориентиры для категории, а не персональные дегустационные характеристики.",
-      "section": "Зинфандель",
-      "wishlist": true,
-      "research": false,
-      "stores": [
-        {
-          "name": "winestyle.ru",
-          "url": "https://spb.winestyle.ru/products/Myskhako-Quintessence-Zinfandel.html",
-          "price_rub": 1162,
-          "regular_price_rub": null,
-          "price_checked_at": "2026-11-22",
-          "reference_price_rub": null,
-          "reference_regular_price_rub": null,
-          "reference_date": null,
-          "product_details": {
-            "alcohol_percent": "14.7 %",
-            "aroma": "Вино демонстрирует щедрый, богатый аромат, сотканный из нот ежевики, вишни, черных ягод, кофе и дыма.",
-            "color": "Вино глубокого красно-рубинового цвета.",
-            "country": "Россия, Краснодарский край",
-            "full_name": "Вино Myskhako, \"Quintessence\" Zinfandel",
-            "grapes": "Зинфандель",
-            "producer": "Мысхако",
-            "region": "Россия Краснодарский край",
-            "taste": "Вкус вина полный, округлый, с шелковистыми танинами, нотами фруктового пирога и продолжительным послевкусием.",
-            "volume_l": "0.75 л",
-            "brand": "Quintessence",
-            "pairing_notes": "мясо, дичь, сыры, твердые сыры, мясо диких животных",
-            "wine_style": "Красное, Полусухое",
-            "body": "полнотелое",
-            "color_intensity": "насыщенное",
-            "description_excerpt": "\"Quintessence\" Zinfandel — красное полусухое вино из линейки \"Квинтэссенция\", насыщенное и одновременно элегантное. Вино отлично раскрывается с горячими мясными блюдами, дичью и твёрдыми сырами, но оно достаточно гармоничное, чтобы наслаждаться им иожно было и соло. \"Quintessence\" — напиток, который хочется открыть прямо сейчас, чтобы прочувствовать всю полноту аромата и богатство вкуса. Вино создаётся из винограда сорта Зинфандель, выращенного в защищённом географическом регионе Кубань, где тёплый климат и каменистые почвы придают ягодам",
-            "source_url": "https://spb.winestyle.ru/products/Myskhako-Quintessence-Zinfandel.html",
-            "checked_at": "2026-11-22",
-            "ratings": [
-              {
-                "source": "Vivino",
-                "score": 4.1,
-                "scale": 5,
-                "ratings_count": null,
-                "source_url": "https://spb.winestyle.ru/products/Myskhako-Quintessence-Zinfandel.html",
-                "scope": "unspecified",
-                "reported_by": "WineStyle",
-                "observed_on": "2026-11-22",
-                "evidence": "4.1 /5 Vivino",
-                "method": "visible_primary_rating_text"
-              }
-            ],
-            "field_sources": {
-              "alcohol_percent": "primary_product_table",
-              "aroma": "visible_section",
-              "color": "visible_section",
-              "country": "primary_product_table",
-              "full_name": "visible_h1",
-              "grapes": "primary_product_table",
-              "producer": "primary_product_table",
-              "region": "primary_product_table",
-              "taste": "visible_section",
-              "volume_l": "primary_product_table",
-              "brand": "primary_product_table",
-              "pairing_notes": "primary_product_table",
-              "wine_style": "primary_product_table",
-              "body": "primary_product_table",
-              "color_intensity": "primary_product_table",
-              "description_excerpt": "primary_product_description"
-            },
-            "field_evidence": {
-              "alcohol_percent": "Крепость: 14.7 %",
-              "aroma": "Аромат: Вино демонстрирует щедрый, богатый аромат, сотканный из нот ежевики, вишни, черных ягод, кофе и дыма.",
-              "color": "Цвет: Вино глубокого красно-рубинового цвета.",
-              "country": "Страна производства: Россия, Краснодарский край",
-              "full_name": "Вино Myskhako, \"Quintessence\" Zinfandel",
-              "grapes": "Сорта винограда: Зинфандель",
-              "producer": "Производитель: Мысхако",
-              "region": "Регион: Россия Краснодарский край",
-              "taste": "Вкус: Вкус вина полный, округлый, с шелковистыми танинами, нотами фруктового пирога и продолжительным послевкусием.",
-              "volume_l": "Объем: 0.75 л",
-              "brand": "Бренд: Quintessence",
-              "pairing_notes": "Подходит к: мясо, дичь, сыры, твердые сыры, мясо диких животных",
-              "wine_style": "Вино: Красное, Полусухое",
-              "body": "Насыщенность: полнотелое",
-              "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: \"Quintessence\" Zinfandel — красное полусухое вино из линейки \"Квинтэссенция\", насыщенное и одновременно элегантное. Вино отлично раскрывается с горячими мясными блюдами, дичью и твёрдыми сырами, но оно достаточно гармоничное, чтобы наслаждаться им ио"
-            },
-            "raw_product_text_sha256": "bb51fb4c8a095b79d28430b21ea668b784610fcd6ae6a0e34269323d70f7894b",
-            "raw_product_text_chars": 5213,
-            "availability_note": "Добавить в корзину",
-            "availability_spb": null,
-            "image_usage_allowed": false,
-            "image_permission_source": null
-          },
-          "enrichment_status": {
-            "status": "verified",
-            "checked_at": "2026-11-22",
-            "source_url": "https://spb.winestyle.ru/products/Myskhako-Quintessence-Zinfandel.html",
-            "method": "user_supplied_browser_capture"
-          },
-          "price_source_url": "https://spb.winestyle.ru/products/Myskhako-Quintessence-Zinfandel.html"
-        }
-      ],
-      "volume_l": 0.75,
-      "scores": [],
-      "review_note": null,
-      "availability": {
-        "status": "in_stock",
-        "observed_on": "2026-11-23",
-        "source_url": "https://spb.winestyle.ru/products/Myskhako-Quintessence-Zinfandel.html",
         "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
         "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
       }
@@ -17042,11 +16867,11 @@
     "source": "user_supplied_browser_capture",
     "observed_on": "2026-11-22",
     "source_export_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
-    "collected_target_urls": 121,
-    "matched_exact_products": 118,
+    "collected_target_urls": 119,
+    "matched_exact_products": 116,
     "mismatched_variants": 3,
-    "direct_price_observations": 118,
-    "retailer_reported_ratings": 246,
+    "direct_price_observations": 116,
+    "retailer_reported_ratings": 245,
     "regular_prices_confirmed": 0,
     "caveat": "Archived retailer display; source prices and ratings are not live stock/independent critic verification.",
     "mismatched_urls": [
@@ -17071,13 +16896,13 @@
     "observed_on": "2026-11-23",
     "archive_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
     "source": "user_supplied_background_snapshot_v5.1",
-    "targets": 124,
-    "exact_matches": 116,
-    "in_stock": 108,
+    "targets": 123,
+    "exact_matches": 114,
+    "in_stock": 106,
     "out_of_stock": 8,
-    "unconfirmed_identity": 8,
+    "unconfirmed_identity": 9,
     "method": "primary product purchase block, not global page text, recommendations or sticky badges",
-    "note": "Point-in-time stock snapshot; unknown inventory remains displayed until independently verified."
+    "note": "Point-in-time stock snapshot; unknown inventory remains displayed until independently verified. This manifest is filtered to the manually curated wishlist; 2023 Canti has no inherited stock observation."
   },
   "publication_review_snapshot": {
     "checked_at": "2026-11-23",
@@ -17085,8 +16910,8 @@
     "reviewed": 8,
     "verified_for_order": 2,
     "excluded": 6,
-    "original_available_count": 116,
-    "visible_after_review": 110,
-    "description": "Independent 23 Nov 2026 reconciliation of original vendor pages and 124 archived full HTML snapshots. Exact year, volume and purchase status required; redirect destinations never substitute wishlist entries."
+    "original_available_count": 115,
+    "visible_after_review": 109,
+    "description": "Independent 23 Nov 2026 reconciliation of original vendor pages and 124 archived full HTML snapshots. Exact year, volume and purchase status required; redirect destinations never substitute wishlist entries. Original 124-item review remains archived; these figures apply only to 123 curated entries."
   }
 }

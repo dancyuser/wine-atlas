@@ -14,7 +14,7 @@ assert snapshot['source_archive_sha256'] == '6a25aaf5b393b0e19c909cef7f44532b6bd
 assert date.fromisoformat(snapshot['as_of']) <= date.today()
 index = {r['id']: r for r in catalog['records']}
 rows = snapshot['records']
-assert len(rows) == 116, len(rows)
+assert len(rows) == 114, len(rows)
 for id_, observation in rows.items():
     assert id_ in index
     wine = index[id_]
@@ -28,5 +28,5 @@ for id_, observation in rows.items():
 available = [r for r in catalog['records']
              if r.get('availability', {}).get('status') != 'out_of_stock']
 matched = sum(r['id'] in rows for r in available)
-assert matched == 108 and len(available) == 116, (matched, len(available))
+assert matched == 106 and len(available) == 115, (matched, len(available))
 print('VERIFIED SNAPSHOT:', len(rows), 'photo/price pairs,', matched, 'visible exact matches')

@@ -95,9 +95,14 @@ for r in records:
  # Vendor-sourced manual research is separate from the immutable WineStyle archive.
   manual=store.get('research_details')
   if manual is not None:
-   assert manual.get('source_kind') in ('primary_retailer_product_description','manual_verified_original_seller','automated_verified_original_seller'),('Research kind',r['id'])
+   assert manual.get('source_kind') in ('primary_retailer_product_description','manual_verified_original_seller','automated_verified_original_seller','producer_style_profile'),('Research kind',r['id'])
    assert manual.get('checked_at') and re.fullmatch(r'\d{4}-\d{2}-\d{2}',manual['checked_at']),('Research date',r['id'])
-   assert manual.get('source_url','').split('#')[0].rstrip('/')==store['url'].split('#')[0].rstrip('/'),('Research URL',r['id'])
+   if manual['source_kind']=='producer_style_profile':
+    assert manual.get('scope')=='all_vintages' and manual.get('producer'),('Producer scope',r['id'])
+    assert urlsplit(manual.get('source_url','')).scheme=='https' and urlsplit(manual['source_url']).hostname,('Producer URL',r['id'])
+    assert store.get('product_details') is None and store.get('enrichment_status') is None,('Producer profile is not retailer capture',r['id'])
+   else:
+    assert manual.get('source_url','').split('#')[0].rstrip('/')==store['url'].split('#')[0].rstrip('/'),('Research URL',r['id'])
    assert manual.get('full_name') or manual.get('producer'),('Research identity',r['id'])
 
 snapshot=d.get('inventory_snapshot')
@@ -121,11 +126,11 @@ if publication:
  assert publication['original_available_count']==sum(r.get('availability',{}).get('status')!='out_of_stock' for r in records)
  assert publication['visible_after_review']==sum(r.get('availability',{}).get('status')!='out_of_stock' and r.get('publication_review',{}).get('status')!='excluded' for r in records)
  assert publication['reviewed']==publication['verified_for_order']+publication['excluded']
- assert publication['visible_after_review']==110
+ assert publication['visible_after_review']==109
 
 visible=[r for r in records if r.get('availability',{}).get('status')!='out_of_stock' and
          r.get('publication_review',{}).get('status')!='excluded']
-assert len(visible)==110
+assert len(visible)==109
 assert all(type(r.get('volume_l')) in (float,int) and r['volume_l']>0 for r in visible), 'Missing published bottle volume'
 assert all(isinstance(r.get('grapes'),list) and r['grapes'] for r in visible), 'Missing published grape identity'
 assert all(any((r['stores'][0].get(kind) or {}).get('color') for kind in ('product_details','research_details'))

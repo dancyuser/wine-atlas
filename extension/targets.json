@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "catalog_blob_sha": "fcf30ff9472a6824da7023576710e7f7e102afe7",
-  "total": 124,
+  "catalog_blob_sha": "16dc52ae4bb0c70fc84dc8fb9b09e3ebfd5650ab",
+  "total": 123,
   "targets": [
     {
       "id": "2f1b26d235e4",
@@ -27,7 +27,8 @@
       "year": 2018,
       "volume_l": 0.75,
       "url": "https://ast.wine/catalog/product/dow_s_late_bottled_vintage_port_5608309002876_43233/",
-      "excluded": false
+      "excluded": false,
+      "expected_product_name": null
     },
     {
       "id": "060e3c866e44",
@@ -35,7 +36,8 @@
       "year": 2018,
       "volume_l": 0.75,
       "url": "https://ladogawine.ru/catalog/wine/kopke_leyt_bottled_vintedzh_porto_075/#",
-      "excluded": false
+      "excluded": false,
+      "expected_product_name": null
     },
     {
       "id": "8433dbc66ae6",
@@ -43,7 +45,8 @@
       "year": 2018,
       "volume_l": 0.75,
       "url": "https://vinissimo.biz/catalog/wine/kendall_jackson_vintners_reserve_chardonnay-1831018/",
-      "excluded": true
+      "excluded": true,
+      "expected_product_name": null
     },
     {
       "id": "22c9be4678f5",
@@ -303,7 +306,8 @@
       "year": 2023,
       "volume_l": 0.375,
       "url": "https://spb.winestyle.ru/products/Vigna-Senza-Nome-Moscato-d-Asti-DOCG-2023-375.html",
-      "excluded": true
+      "excluded": true,
+      "expected_product_name": null
     },
     {
       "id": "e3e9c91e71bc",
@@ -311,16 +315,17 @@
       "year": 2018,
       "volume_l": null,
       "url": "https://spb.winestyle.ru/products/Rotari-Blanc-de-Blancs-Extra-Brut-Trento-DOC-2018.html",
-      "excluded": true
+      "excluded": true,
+      "expected_product_name": null
     },
     {
-      "id": "5e980b14c4d5",
+      "id": "a1faf8b0af1d",
       "title": "Canti Moscato d’Asti DOCG",
-      "year": 2019,
+      "year": 2023,
       "volume_l": 0.75,
-      "url": "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2019.html",
+      "url": "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2023.html",
       "excluded": false,
-      "expected_product_name": "Игристое вино Canti, Moscato D'Asti DOCG, 2019"
+      "expected_product_name": null
     },
     {
       "id": "85f7014559dd",
@@ -337,7 +342,8 @@
       "year": 2021,
       "volume_l": null,
       "url": "https://spb.winestyle.ru/products/Vilarnau-Brut-Nature-Reserva-Cava-DO-2021.html",
-      "excluded": true
+      "excluded": true,
+      "expected_product_name": null
     },
     {
       "id": "056c6f909a24",
@@ -563,15 +569,6 @@
       "url": "https://spb.winestyle.ru/products/Chateau-Marjosse-Bordeaux-AOC-Rouge-2021.html",
       "excluded": false,
       "expected_product_name": "Вино Chateau Marjosse, Bordeaux AOC Rouge, 2021"
-    },
-    {
-      "id": "6b16a51f5c8c",
-      "title": "Myskhako Quintessence Zinfandel",
-      "year": null,
-      "volume_l": 0.75,
-      "url": "https://spb.winestyle.ru/products/Myskhako-Quintessence-Zinfandel.html",
-      "excluded": false,
-      "expected_product_name": "Вино Myskhako, \"Quintessence\" Zinfandel"
     },
     {
       "id": "de91d5c1fa5e",

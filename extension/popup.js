@@ -9,10 +9,10 @@ const statusNames={
 };
 let operation=false;
 function render(job){
- job=job||{status:'idle',cursor:0,total:124,exact:0,needs_review:0,errors:0};
+ job=job||{status:'idle',cursor:0,total:123,exact:0,needs_review:0,errors:0};
  const running=job.status==='running', stopped=job.status==='stopped';
  byId('start').hidden=running||stopped;
- byId('start').textContent=job.status==='completed'?'Повторить сбор всех 124 вин':'Собрать все 124 вина';
+ byId('start').textContent=job.status==='completed'?'Повторить сбор всех 123 вин':'Собрать все 123 вина';
  byId('start').disabled=operation;
  byId('stop').hidden=!running;
  byId('resume').hidden=!stopped;
@@ -21,9 +21,9 @@ function render(job){
  byId('export').hidden=(!job.cursor||job.status==='idle');
  byId('export').disabled=operation;
  byId('phase').textContent=statusNames[job.status]||job.status;
- byId('progress').max=job.total||124;
+ byId('progress').max=job.total||123;
  byId('progress').value=job.cursor||0;
- byId('count').textContent=(job.cursor||0)+' / '+(job.total||124);
+ byId('count').textContent=(job.cursor||0)+' / '+(job.total||123);
  byId('exact').textContent='Точных: '+(job.exact||0);
  byId('review').textContent='Требуют проверки: '+(job.needs_review||0);
  byId('errors').textContent='Ошибок: '+(job.errors||0);

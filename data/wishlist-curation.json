@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "updated_at": "2026-11-23",
+  "removed_urls": [
+    "https://spb.winestyle.ru/products/Myskhako-Quintessence-Zinfandel.html"
+  ],
+  "replaced_urls": {
+    "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2019.html": "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2023.html"
+  },
+  "note": "Explicit owner-approved changes after source Google Doc export. Never transfer vintage-specific prices, photos or inventory from the old URL."
+}

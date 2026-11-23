@@ -717,19 +717,6 @@
         "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
       }
     ],
-    "5e980b14c4d5": [
-      {
-        "source": "Vivino",
-        "score": 4,
-        "scale": 5,
-        "scope": "all_vintages",
-        "vintage": null,
-        "source_url": "https://www.vivino.com/en/it-canti-moscato-d-asti/w/2198945",
-        "source_kind": "vivino_verified_web",
-        "observed_on": "2026-11-22",
-        "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
-      }
-    ],
     "85f7014559dd": [
       {
         "source": "Vivino",
@@ -1105,19 +1092,6 @@
         "source_kind": "vivino_page",
         "observed_on": "2026-11-22",
         "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
-      }
-    ],
-    "6b16a51f5c8c": [
-      {
-        "source": "Vivino",
-        "score": 4.1,
-        "scale": 5,
-        "scope": "all_vintages",
-        "vintage": null,
-        "source_url": "https://www.vivino.com/en/myskhako-myskhako-quintessence-collection-zinfandel-ripasso/w/9317032",
-        "source_kind": "vivino_primary_style_and_producer_verified",
-        "observed_on": "2026-11-23",
-        "note": "Исправлена ранее ошибочная ссылка на розовое игристое. Данное вино - красное полусухое Myskhako Quintessence Zinfandel (Ripasso), 0.75 л. Vivino red Zinfandel Ripasso 4.1/5 относится ко всем винтажам. Прямо сверено с исходной карточкой WineStyle."
       }
     ],
     "de91d5c1fa5e": [
@@ -2063,6 +2037,19 @@
         "source_kind": "vivino_primary_alias_verified",
         "observed_on": "2026-11-23",
         "note": "Exact producer Cantina di Santadi and Antigua DOC Monica di Sardegna match. 3.5 applies to all vintages; 2024 rating is not independently published."
+      }
+    ],
+    "a1faf8b0af1d": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/it-canti-moscato-d-asti/w/2198945",
+        "source_kind": "vivino_verified_web",
+        "observed_on": "2026-11-22",
+        "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа. Перенесено на урожай 2023 только как оценка линейки для всех винтажей; не является оценкой 2023."
       }
     ]
   },

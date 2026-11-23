@@ -78,6 +78,8 @@ input,select{height:clamp(50px,3vw,60px);font-size:calc(16px + var(--reading-boo
  .bottle-media{height:clamp(290px,14vw,355px)}
  .card-intro{grid-template-columns:minmax(170px,32%) minmax(0,1fr)}
 }
+/* Six filters remain accessible on laptop-sized screens. */
+@media(max-width:1120px){.filters{grid-template-columns:repeat(3,minmax(0,1fr))}}
 /* Two-column cards are crowded on small laptops; switch to one generous column. */
 @media(max-width:1120px){
  .container{width:calc(100% - 48px)}
