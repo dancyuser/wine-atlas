@@ -102,13 +102,13 @@ def render(tmp: Path, width: int, mode: str) -> dict:
       style="border:0;display:block;width:{width}px;height:1000px"></iframe>
     <script>
     const frame=document.getElementById('fixture');
-    frame.addEventListener('load',()=>{
+    frame.addEventListener('load',()=>{{
       const metric=frame.contentDocument.getElementById('layout-metrics');
       const pre=document.createElement('pre');
       pre.id='layout-metrics';
       pre.textContent=metric?metric.textContent:'{}';
       document.body.appendChild(pre);
-    });
+    }});
     </script></body></html>"""
     page.write_text(outer,encoding='utf-8')
     command=[BROWSER, '--headless=new', '--no-sandbox', '--disable-gpu',
