@@ -18,6 +18,19 @@ const WineAtlasBatch = (() => {
     if (/\blate\s+bottled\s+vintage\b/.test(normalized)) tokens.add('lbv');
     return tokens;
   };
+  // Conservative automatic identity: every distinctive name token must be
+  // represented. Matching only producer tokens can misidentify another cuvée
+  // or grape from the same producer, even at an unchanged retailer URL.
+  const genericTitleTokens=new Set(['aoc','aop','doc','docg','doca','igt','igp','doq','ava','wo']);
+  function exactProductName(target,h1){
+    const shown=words(h1);
+    const candidates=[target.title,target.expected_product_name].filter(Boolean);
+    for(const candidate of candidates){
+      const expected=[...words(candidate)].filter(t=>!genericTitleTokens.has(t));
+      if(expected.length>=2&&expected.every(t=>shown.has(t)))return true;
+    }
+    return false;
+  }
   const volumeMls = raw => {
     const values = new Set(), normalized=String(raw||'').replace(/,/g,'.');
     const re=/(?<![\d.])(\d+(?:\.\d+)?)\s*(мл|ml|л|l)(?!\w)/gi;
@@ -33,9 +46,7 @@ const WineAtlasBatch = (() => {
     if (identityUrl(capture.source_url)!==identityUrl(target.url))
       return {status:'rejected',reason:'redirect_or_query_variant'};
     if (!capture.h1) return {status:'rejected',reason:'missing_main_product'};
-    const expected=words(target.title), shown=words(capture.h1);
-    const overlap=[...expected].filter(x=>shown.has(x)).length;
-    if (!expected.size || overlap<Math.min(2,expected.size))
+    if (!exactProductName(target,capture.h1))
       return {status:'rejected',reason:'product_name_mismatch'};
     // Use only matching primary Product nodes where the product URL is absent
     // or equals the exact target, never unrelated recommendation nodes.
@@ -77,5 +88,5 @@ const WineAtlasBatch = (() => {
       observations:job.observations,failures:job.errors
     };
   }
-  return {identityUrl,words,volumeMls,years,check,validateTargets,exportBundle};
+  return {identityUrl,words,exactProductName,volumeMls,years,check,validateTargets,exportBundle};
 })();
