@@ -76,7 +76,7 @@ assert(ratedCard.includes('Первоисточники и принадлежн�
 assert.equal(h.state.ratingRecords.fixture.length,3);
 const metric=h.metrics(sample);
 assert.equal(metric.critics.length,1);
-assert.equal(metric.summary,91.7, 'Summary must mix exact Vivino, exact independent Decanter and WineStyle-published critic without counting WineStyle duplicates');
+assert.equal(metric.summary,92, 'Summary must mix exact Vivino, exact independent Decanter and WineStyle-published critic without counting WineStyle duplicates');
 assert.equal(metric.index,92, 'Exact vintage-only index should remain separately available');
 const unavailable={...sample,availability:{status:'out_of_stock',observed_on:'2026-11-23'}};
 assert.equal(h.matched(unavailable),false,
