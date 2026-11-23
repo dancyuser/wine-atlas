@@ -202,7 +202,7 @@ function ratingsDetails(r,m){
 function wineStyleMarkup(r){
  const s=r.stores?.[0],d=retailerDetails(r);
  if(!s||!d)return '';
- const fields=[['Вкус','taste'],['Аромат','aroma'],['Сочетания','pairing_notes'],['Регион','region'],['Крепость','alcohol_percent'],['Объём','volume_l'],['Производитель','producer'],['Описание','description_excerpt']];
+ const fields=[['Вкус','taste'],['Аромат','aroma'],['Цвет','color'],['Насыщенность','body'],['Потенциал хранения','aging_potential'],['Стиль','wine_style'],['Сочетания','pairing_notes'],['Регион','region'],['Крепость','alcohol_percent'],['Объём','volume_l'],['Производитель','producer'],['Описание','description_excerpt']];
  const rows=fields.filter(([,k])=>d[k]!=null&&d[k]!=='').map(([label,k])=>'<li><span>'+safe(label)+'</span><strong>'+safe(String(d[k]))+'</strong></li>').join('');
  const observed=r.availability;
  const stockNote=observed?.status==='in_stock'?'Доступно к заказу':observed?.status==='out_of_stock'?'Нет в наличии':
