@@ -102,7 +102,8 @@ function captureWineAtlasPage() {
   // Prevent accidental extraction from sign-in, bot, error or checkout pages.
   const blocked=/(?:captcha|access denied|just a moment|доступ ограничен|войдите в аккаунт)/i.test(
     document.title+' '+rootName);
-  const image=privacyUrl(document.querySelector('meta[property="og:image"]')?.content||'');
+  const imageMeta=document.querySelector('meta[property="og:image"]')?.content;
+  const image=imageMeta?privacyUrl(imageMeta):null;
   return {
     source_url:mainURL,canonical_url:canonical?trim(canonical,1000):null,
     page_title:trim(document.title,260),h1:rootName,
