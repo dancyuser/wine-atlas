@@ -33,3 +33,4 @@ jobs:
           node scripts/test_theme.mjs
           node scripts/test_enrichment_ui.cjs
           node scripts/test_responsive_ui.mjs
+          python scripts/test_responsive_browser.py
