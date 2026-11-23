@@ -25,6 +25,8 @@ const labels=[...pairingValues(mixed)];
 for(const label of ['Рыба','Красная рыба','Мясо','Дичь','Красное мясо','Салаты','Овощи','Выдержанные сыры','Сыры'])assert(labels.includes(label),'Lost separate category '+label);
 const salmon=wine('salmon',2000,'лосось/семга');
 assert.deepEqual([...pairingValues(salmon)],['Красная рыба']);
+const compound=wine('compound',2000,'рыба и красная рыба, мясо и дичь');
+for(const label of ['Рыба','Красная рыба','Мясо','Дичь'])assert([...pairingValues(compound)].includes(label),'Compound retailer pairing lost '+label);
 const game=wine('game',2000,'дичь, мясо диких животных');
 assert.deepEqual([...pairingValues(game)],['Дичь']);
 assert.deepEqual([...pairingValues(wine('salad',1000,'салат'))],['Салаты']);
