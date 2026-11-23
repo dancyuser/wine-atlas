@@ -14,7 +14,7 @@ const sandbox = {
 };
 vm.createContext(sandbox);
 vm.runInContext(original.replace(/\binit\(\);\s*$/, '')+
-  '\nglobalThis.helpers={countryValue,grapeValues,pairingValues,distinct,matched,card,state,metrics,criticRatingsFor,snapshotFor,priceValue,priceBlock,liveOfferFor,isPublished};',sandbox);
+  '\nglobalThis.helpers={countryValue,grapeValues,pairingValues,distinct,matched,card,state,metrics,criticRatingsFor,snapshotFor,priceValue,priceBlock,liveOfferFor,isPublished,retailerDetails};',sandbox);
 const h=sandbox.helpers;
 const sample={
  id:'fixture',title:'Test Chardonnay',country:null,grapes:[],type:'Белое',
@@ -230,6 +230,36 @@ const manualDetailsPort={...port,stores:[{...port.stores[0],
  research_details:{...port.stores[0].research_details,source_kind:'manual_verified_original_seller'}}]};
 assert(h.card(manualDetailsPort).includes('Насыщенный рубиновый'),
   'Imported manual original-seller metadata must be displayed');
+// New observations complement, but never replace, the archived source.
+const mixed={...sample,stores:[{...sample.stores[0],
+ research_details:{
+  source_kind:'manual_verified_original_seller',
+  source_url:sample.stores[0].url,checked_at:'2026-11-23',
+  full_name:'Test Chardonnay 2023 750 ml',
+  field_checked_at:{color:'2026-11-23',aroma:'2026-11-23'},
+  color:'Ярко-золотистый',aroma:'Противоречивый аромат'
+ }}]};
+const merged=h.retailerDetails(mixed);
+assert.equal(merged.aroma,'Цитрусовые',
+ 'Archived seller tasting notes take precedence over supplementary observations');
+assert.equal(merged.color,'Ярко-золотистый',
+ 'Verified manual color fills the blank field without erasing source data');
+assert.equal(merged.supplemental_checked_at,'2026-11-23');
+const mixedCard=h.card(mixed);
+assert(mixedCard.includes('Ярко-золотистый'));
+assert(mixedCard.includes('Цитрусовые'));
+assert(!mixedCard.includes('Противоречивый аромат'));
+assert(mixedCard.includes('Дополнено ручной проверкой 23.11.2026'));
+const emptyArchive={...mixed,stores:[{...mixed.stores[0],
+ product_details:{...mixed.stores[0].product_details,color:null,body:''},
+ research_details:{...mixed.stores[0].research_details,
+  body:'Полнотелое',field_checked_at:{color:'2026-11-23',body:'2026-11-23'}}}]};
+assert.equal(h.retailerDetails(emptyArchive).color,'Ярко-золотистый',
+ 'A null archival field must not shadow verified manual evidence');
+assert.equal(h.retailerDetails(emptyArchive).body,'Полнотелое',
+ 'An empty archival field must not shadow verified manual evidence');
+assert(h.card(emptyArchive).includes('Полнотелое'));
+
 const portCard=h.card(port);
 assert(portCard.includes('Насыщенный рубиновый'));
 assert(portCard.includes('Портвейн региона Дору'));

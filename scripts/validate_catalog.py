@@ -114,11 +114,11 @@ visible=[r for r in records if r.get('availability',{}).get('status')!='out_of_s
 assert len(visible)==110
 assert all(type(r.get('volume_l')) in (float,int) and r['volume_l']>0 for r in visible), 'Missing published bottle volume'
 assert all(isinstance(r.get('grapes'),list) and r['grapes'] for r in visible), 'Missing published grape identity'
-assert all((r['stores'][0].get('product_details') or r['stores'][0].get('research_details') or {}).get('color')
+assert all(any((r['stores'][0].get(kind) or {}).get('color') for kind in ('product_details','research_details'))
            for r in visible), 'Missing published source color description'
-assert all((r['stores'][0].get('product_details') or r['stores'][0].get('research_details') or {}).get('wine_style')
+assert all(any((r['stores'][0].get(kind) or {}).get('wine_style') for kind in ('product_details','research_details'))
            for r in visible), 'Missing verified wine style for published bottle'
-assert all((r['stores'][0].get('product_details') or r['stores'][0].get('research_details') or {}).get('pairing_notes')
+assert all(any((r['stores'][0].get(kind) or {}).get('pairing_notes') for kind in ('product_details','research_details'))
            for r in visible), 'Missing verified food pairings for published bottle'
 
 assert len(records)==d['source']['unique_wine_urls'], 'Catalog size differs from source snapshot'

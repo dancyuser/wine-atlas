@@ -18,7 +18,16 @@ def report():
     snapshot = json.loads((ROOT / 'data/verified-snapshot-2026-11-23.json').read_text(encoding='utf-8'))
     verified = snapshot['records']
     researched = json.loads((ROOT / 'data/researched-photos-2026-11-23.json').read_text(encoding='utf-8'))['records']
-    visible = [r for r in c['records'] if r.get('availability', {}).get('status') != 'out_of_stock' and r.get('publication_review', {}).get('status') != 'excluded']
+    def displayed(r):
+        if (r.get('availability', {}).get('status') == 'out_of_stock'
+                or r.get('publication_review', {}).get('status') == 'excluded'):
+            return False
+        live = r['stores'][0].get('live_offer') or {}
+        return not (live.get('verification_method') == 'exact_jsonld_product'
+                    and live.get('availability') == 'out_of_stock'
+                    and live.get('observed_on', '') >=
+                        r.get('availability', {}).get('observed_on', '0000-00-00'))
+    visible = [r for r in c['records'] if displayed(r)]
     missing = []
     totals = {'visible': len(visible), 'snapshot_price_and_photo': 0,
               'missing_price': 0, 'missing_photo': 0,
@@ -28,7 +37,8 @@ def report():
         x = verified.get(r['id'])
         if x:
             totals['snapshot_price_and_photo'] += 1
-        has_price = bool(x or s.get('price_rub') is not None or s.get('reference_price_rub') is not None)
+        has_price = bool(x or (s.get('live_offer') or {}).get('price_rub') is not None
+                         or s.get('price_rub') is not None or s.get('reference_price_rub') is not None)
         has_photo = bool(x or researched.get(r['id'], {}).get('url') or r.get('photo', {}).get('url'))
         has_vivino = any(y.get('source') == 'Vivino'
                          for y in independent['records'].get(r['id'], []))
@@ -56,15 +66,20 @@ def report():
     detail_gaps=[]
     for r in visible:
         st=r['stores'][0]
-        d=st.get('product_details') if st.get('enrichment_status',{}).get('status')=='verified' else None
-        if not d:
-            d=st.get('research_details') or {}
+        archived = (st.get('product_details') or {}) if (
+            st.get('enrichment_status',{}).get('status')=='verified'
+            and (st.get('product_details') or {}).get('source_url')==st['url']) else {}
+        manual = st.get('research_details') or {}
+        if manual.get('source_url') != st['url'].split('#')[0]:
+            manual = {}
+        # Either verified layer can fill a blank/null field without allowing
+        # an empty archival value to shadow a valid manual observation.
         absent=[]
         for field in ('year','volume_l','grapes'):
             if not r.get(field):
                 absent.append(field)
         for field in detail_fields:
-            if not d.get(field):
+            if not (archived.get(field) or manual.get(field)):
                 absent.append(field)
         for field in absent:
             detail_totals[field]+=1
