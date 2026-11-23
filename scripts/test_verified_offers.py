@@ -60,6 +60,13 @@ class ExactOfferTests(unittest.TestCase):
         _, reason = self.check(page(), final="https://shop.example/products/kopke-lbv-2025")
         self.assertEqual(reason, "redirected_to_different_product")
 
+    def test_query_variant_cannot_substitute_product(self):
+        self.assertEqual(
+            self.check(page(), final=BASE + "?variant=2025")[1],
+            "redirected_to_different_product"
+        )
+        self.assertIsNone(self.check(page(url=BASE + "?variant=2025"))[0])
+
     def test_schema_product_url_rejected(self):
         self.assertIsNone(self.check(page(url="https://shop.example/products/kopke-lbv-2025"))[0])
 
