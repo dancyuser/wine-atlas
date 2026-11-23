@@ -3,6 +3,16 @@
 // cookies, raw DOM/HTML, storage, hidden frames, recommendations or screenshots.
 function captureWineAtlasPage() {
   const trim = (s, max=450) => String(s == null ? '' : s).replace(/\s+/g, ' ').trim().slice(0,max);
+  // Do not persist query parameters: they can carry sessions/tracking tokens.
+  // An unexpected query disables the exact-target check instead of stripping
+  // a real product variant and silently treating it as the original wine.
+  const privacyUrl = (raw) => {
+    try {
+      const u=new URL(String(raw),location.href);
+      if(u.protocol!=='https:')return null;
+      return u.origin+u.pathname+(u.search?'?query_redacted=1':'');
+    }catch{return null}
+  };
   const labelDefs = [
     ['volume_l',/^(?:объ[её]м|volume|bottle size)$/i],
     ['alcohol_percent',/^(?:крепость|алкоголь|alcohol|abv)$/i],
@@ -54,7 +64,7 @@ function captureWineAtlasPage() {
       if(cells.length===2)collect(cells[0],cells[1],text);
     }
   }
-  const canonical = (()=>{const a=document.querySelector('link[rel="canonical"]');return a?.href||null})();
+  const canonical = (()=>{const a=document.querySelector('link[rel="canonical"]');return a?.href?privacyUrl(a.href):null})();
   const rootName = trim(document.querySelector('main h1,article h1,h1')?.innerText||
     document.querySelector('meta[property="og:title"]')?.content||'',260);
   const products=[];
@@ -68,13 +78,13 @@ function captureWineAtlasPage() {
     const output={
       '@context':'https://schema.org','@type':'Product',name:trim(v.name,260),
       description:trim(v.description,500),size:trim(v.size||v.weight,70),
-      url:typeof v.url==='string'?trim(v.url,1000):null,
+      url:typeof v.url==='string'?privacyUrl(v.url):null,
       offers:offers.filter(o=>{
         if(!o||typeof o!=='object')return false;
         const types=Array.isArray(o['@type'])?o['@type']:[o['@type']];
         return types.some(t=>String(t||'').toLowerCase().split('/').pop()==='offer');
       }).slice(0,4).map(o=>({
-        '@type':'Offer',url:typeof o.url==='string'?trim(o.url,1000):null,
+        '@type':'Offer',url:typeof o.url==='string'?privacyUrl(o.url):null,
         priceCurrency:trim(o.priceCurrency,8),
         price:typeof o.price==='number'||typeof o.price==='string'?o.price:null,
         availability:trim(o.availability,120),
@@ -88,11 +98,11 @@ function captureWineAtlasPage() {
     if((script.textContent||'').length>150000)continue;
     try{unpack(JSON.parse(script.textContent));}catch{}
   }
-  const mainURL=location.href;
+  const mainURL=privacyUrl(location.href);
   // Prevent accidental extraction from sign-in, bot, error or checkout pages.
   const blocked=/(?:captcha|access denied|just a moment|доступ ограничен|войдите в аккаунт)/i.test(
     document.title+' '+rootName);
-  const image=trim(document.querySelector('meta[property="og:image"]')?.content||'',1000);
+  const image=privacyUrl(document.querySelector('meta[property="og:image"]')?.content||'');
   return {
     source_url:mainURL,canonical_url:canonical?trim(canonical,1000):null,
     page_title:trim(document.title,260),h1:rootName,
