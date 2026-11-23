@@ -106,7 +106,7 @@ def render(tmp: Path, width: int, mode: str) -> dict:
       const metric=frame.contentDocument.getElementById('layout-metrics');
       const pre=document.createElement('pre');
       pre.id='layout-metrics';
-      pre.textContent=metric?metric.textContent:'{}';
+      pre.textContent=metric?metric.textContent:'{{}}';
       document.body.appendChild(pre);
     }});
     </script></body></html>"""
