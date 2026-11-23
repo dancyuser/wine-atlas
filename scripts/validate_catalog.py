@@ -57,6 +57,22 @@ for r in records:
    assert store['price_rub'] is not None and store['regular_price_rub']>store['price_rub']
   if store['reference_regular_price_rub'] is not None:
    assert store['reference_price_rub'] is not None and store['reference_regular_price_rub']>store['reference_price_rub']
+  live=store.get('live_offer')
+  if live is not None:
+   assert r.get('publication_review',{}).get('status')=='verified',('Unreviewed offer',r['id'])
+   assert live.get('verification_method')=='exact_jsonld_product',('Offer method',r['id'])
+   assert live.get('availability') in ('in_stock','out_of_stock','unknown'),('Offer status',r['id'])
+   assert re.fullmatch(r'\d{4}-\d{2}-\d{2}',live.get('observed_on','')),('Offer date',r['id'])
+   assert live['observed_on']>=r['publication_review']['checked_at'],('Stale offer',r['id'])
+   assert live.get('price_rub') is not None and type(live['price_rub']) is int and 100<=live['price_rub']<=1000000,('Offer price',r['id'])
+   regular=live.get('regular_price_rub')
+   assert regular is None or (type(regular) is int and live['price_rub']<regular<=1000000),('Offer old price',r['id'])
+   def source_id(u):
+    p=urlsplit(u)
+    return (p.scheme,p.hostname,p.path.rstrip('/'))
+   assert source_id(live.get('source_url',''))==source_id(store['url'])==source_id(r['publication_review']['final_url']),('Offer redirect',r['id'])
+   assert live.get('product_name') and isinstance(live['product_name'],str),('Offer product',r['id'])
+
 snapshot=d.get('inventory_snapshot')
 if snapshot:
  assert re.fullmatch(r'[0-9a-f]{64}',snapshot['archive_sha256'])
