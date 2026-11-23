@@ -46,14 +46,17 @@ def observation_day(value):
         return None
 
 
-def volume_ml(value):
+def volume_mls(value):
+    """Find ALL candidate sizes; the presence of a conflicting size rejects identity."""
     value = str(value or '').replace(',', '.')
-    m = re.search(r'(?<!\d)(\d+(?:\.\d+)?)\s*(мл|ml|л|l)(?!\w)', value, flags=re.I)
-    if not m:
-        return None
-    number = float(m[1])
-    ml = round(number * (1 if m[2].lower() in ('мл', 'ml') else 1000))
-    return ml if 50 <= ml <= 30000 else None
+    values = set()
+    for m in re.finditer(r'(?<![\d.])(\d+(?:\.\d+)?)\s*(мл|ml|л|l)(?!\w)',
+                         value, flags=re.I):
+        number = float(m[1])
+        ml = round(number * (1 if m[2].lower() in ('мл', 'ml') else 1000))
+        if 50 <= ml <= 30000:
+            values.add(ml)
+    return values
 
 
 def visible_value(payload):
@@ -98,11 +101,13 @@ def verified_identity(target, capture):
     expected_ml = round((target.get('volume_l') or 0) * 1000)
     if expected_ml < 50:
         return False, 'missing_target_bottle_size'
-    measurements = {x for x in (
-        *(volume_ml(x) for x in product_names),
-        volume_ml(visible_value((capture.get('fields') or {}).get('volume_l'))),
-        *(volume_ml(p.get('size')) for p in matched_products),
-    ) if x is not None}
+    measurements = set()
+    for value in [
+        *product_names,
+        visible_value((capture.get('fields') or {}).get('volume_l')),
+        *(p.get('size') for p in matched_products),
+    ]:
+        measurements.update(volume_mls(value))
     if measurements != {expected_ml}:
         return False, 'missing_or_conflicting_bottle_size'
     return True, 'exact_wine_vintage_and_volume'
