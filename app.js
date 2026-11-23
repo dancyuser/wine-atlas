@@ -70,7 +70,29 @@ function snapshotFor(r){
  if(!Number.isInteger(v[0])||v[0]<100||v[0]>1000000||typeof v[1]!=='string'||!/^\d{4,6}$/.test(v[1]))return null;
  return {price:v[0],photo:'https://s2.wine.style/images_gen/'+v[1].slice(0,3)+'/'+v[1]+'/0_0_695x600.webp',source:s.url};
 }
-function priceValue(r){const s=r.stores[0]||{};return snapshotFor(r)?.price??s.price_rub??s.reference_price_rub??null}
+function liveOfferFor(r){
+ const store=r.stores?.[0], offer=store?.live_offer, review=r.publication_review;
+ if(!offer||review?.status!=='verified'||offer.verification_method!=='exact_jsonld_product')return null;
+ if(!/^\d{4}-\d{2}-\d{2}$/.test(offer.observed_on||''))return null;
+ if(offer.observed_on<review.checked_at || (store.price_checked_at&&offer.observed_on<store.price_checked_at))return null;
+ if(!Number.isInteger(offer.price_rub)||offer.price_rub<=0)return null;
+ try {
+  const a=new URL(store.url),b=new URL(offer.source_url),c=new URL(review.final_url);
+  const normalized=u=>u.hostname.toLowerCase()+decodeURIComponent(u.pathname).replace(/\/$/,'')+u.search;
+  if(a.protocol!=='https:'||b.protocol!=='https:'||normalized(a)!==normalized(b)||normalized(b)!==normalized(c))return null;
+ }catch{return null}
+ return offer;
+}
+function isPublished(r){
+ if(r.availability?.status==='out_of_stock'||r.publication_review?.status==='excluded')return false;
+ const live=liveOfferFor(r);
+ return !(live?.availability==='out_of_stock'&&live.observed_on>=(r.availability?.observed_on||'0000-00-00'));
+}
+function priceValue(r){
+ const store=r.stores?.[0]||{},live=liveOfferFor(r),snap=snapshotFor(r);
+ if(live&&(!snap||live.observed_on>=state.snapshotDate))return live.price_rub;
+ return snap?.price??store.price_rub??store.reference_price_rub??null;
+}
 const pairingGroups=[
   ['Рыба',/рыб|лосос|семг|суши|тунец/i],
   ['Морепродукты',/морепродукт|морски|моллюск|кревет|устриц|кальмар|омар/i],
@@ -124,10 +146,15 @@ function distinct(k){return [...new Set(state.records.flatMap(r=>k==='grapes'?gr
 function favoriteButton(id){const yes=state.favorites.has(id);return '<button type="button" class="save-btn'+(yes?' saved':'')+'" data-fav="'+safe(id)+'" aria-label="'+(yes?'Убрать из избранного':'Добавить в избранное')+'" aria-pressed="'+yes+'" title="Избранное">'+(yes?'♥':'♡')+'</button>'}
 function typeDot(t){return {'Красное':'red','Белое':'white','Розовое':'rose','Игристое':'sparkling','Оранжевое':'orange','Портвейн':'port'}[t]||''}
 function priceBlock(r){
- const s=r.stores[0]||{},snap=snapshotFor(r);
+ const store=r.stores[0]||{},snap=snapshotFor(r),live=liveOfferFor(r);
+ if(live&&(!snap||live.observed_on>=state.snapshotDate)){
+  const old=live.regular_price_rub>live.price_rub?' <del>'+money(live.regular_price_rub)+'</del>':'';
+  const stock=live.availability==='in_stock'?' · наличие подтверждено':live.availability==='out_of_stock'?' · нет в наличии':' · наличие не подтверждено';
+  return '<div class="price-main">'+money(live.price_rub)+old+'</div><div class="price-note">Проверка предложения · '+date(live.observed_on)+stock+'</div>';
+ }
  if(snap)return '<div class="price-main">'+money(snap.price)+'</div><div class="price-note">Цена в архиве · '+date(state.snapshotDate)+'</div>';
- if(s.price_rub!=null&&s.price_checked_at){return '<div class="price-main">'+money(s.price_rub)+(s.regular_price_rub>s.price_rub?' <del>'+money(s.regular_price_rub)+'</del>':'')+'</div><div class="price-note">Проверено '+date(s.price_checked_at)+'</div>'}
- if(s.reference_price_rub!=null){return '<div class="price-main">'+money(s.reference_price_rub)+(s.reference_regular_price_rub>s.reference_price_rub?' <del>'+money(s.reference_regular_price_rub)+'</del>':'')+'</div><div class="price-note">Цена на '+date(s.reference_date)+' (архив)</div>'}
+ if(store.price_rub!=null&&store.price_checked_at)return '<div class="price-main">'+money(store.price_rub)+(store.regular_price_rub>store.price_rub?' <del>'+money(store.regular_price_rub)+'</del>':'')+'</div><div class="price-note">Архивное наблюдение · '+date(store.price_checked_at)+'</div>';
+ if(store.reference_price_rub!=null)return '<div class="price-main">'+money(store.reference_price_rub)+(store.reference_regular_price_rub>store.reference_price_rub?' <del>'+money(store.reference_regular_price_rub)+'</del>':'')+'</div><div class="price-note">Цена на '+date(store.reference_date)+' (архив)</div>';
  return '<div class="price-main">Цена неизвестна</div><div class="price-note">Не проверена</div>';
 }
 function vivinoUnavailable(r){
@@ -210,7 +237,7 @@ function card(r){
 }
 
 function matched(r){
- if(r.availability?.status==='out_of_stock'||r.publication_review?.status==='excluded')return false;
+ if(!isPublished(r))return false;
  const term=$('search').value.trim().toLocaleLowerCase('ru');
  if(term&&!([r.title,countryValue(r),r.section,String(r.year||''),...grapeValues(r),...pairingValues(r)].join(' ').toLocaleLowerCase('ru').includes(term)))return false;
  if($('country').value&&countryValue(r)!==$('country').value)return false;
@@ -302,7 +329,7 @@ async function init(){
  try{
   const response=await fetch('./data/wines.json',{cache:'no-cache'});if(!response.ok)throw Error('Catalog HTTP '+response.status);
   const catalog=await response.json();if(!Array.isArray(catalog.records))throw Error('Invalid catalog');
-  state.records=catalog.records.filter(r=>r.availability?.status!=='out_of_stock'&&r.publication_review?.status!=='excluded');
+  state.records=catalog.records.filter(isPublished);
   try{
     const snapshots=await fetch('./data/verified-snapshot-2026-11-23.json',{cache:'no-cache'});
     if(snapshots.ok){

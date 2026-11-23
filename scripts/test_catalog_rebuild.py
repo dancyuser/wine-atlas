@@ -31,6 +31,10 @@ def fixture():
                          "observed_on": "2026-11-22", "evidence": "94/100"}]
         }
     )
+    store["live_offer"]={"verification_method":"exact_jsonld_product","price_rub":2590,
+                         "regular_price_rub":None,"availability":"in_stock",
+                         "observed_on":"2026-11-24","product_name":"Peter Zemmer Chardonnay",
+                         "source_url":WINE}
     rec["availability"]={"status":"in_stock","observed_on":"2026-11-23",
                          "source_url":WINE,"evidence":"primary purchase button",
                          "snapshot_source":"fixture.zip"}
@@ -80,6 +84,7 @@ class RebuildTest(unittest.TestCase):
             self.assertEqual(observed["stores"][0]["product_details"],
                              original["records"][0]["stores"][0]["product_details"])
             self.assertEqual(observed["availability"],original["records"][0]["availability"])
+            self.assertEqual(observed["stores"][0].get("live_offer"),original["records"][0]["stores"][0].get("live_offer"))
             self.assertEqual(actual["inventory_snapshot"],original["inventory_snapshot"])
             again = self.rebuild(root, [WINE, SKIPPED])
             self.assertEqual(again["retailer_snapshot"], actual["retailer_snapshot"])
