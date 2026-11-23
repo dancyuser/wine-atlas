@@ -279,7 +279,15 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "photo": {
+        "url": "https://www.bauraulacvins.ch/upload/rm/61/04/61046719-13.png?_=1757132105000",
+        "source_url": "https://www.bauraulacvins.ch/en/p/port-sherry-vermouth/portugal/porto/quinta-de-la-rosa-late-bottled-vintage-2019-61046719.html",
+        "source": "Baur au Lac Vins",
+        "matched_year": 2019,
+        "verified_on": "2026-11-23",
+        "note": "Quinta de la Rosa 2019 LBV, vintage shown on front label"
+      }
     },
     {
       "id": "c9f63273980c",
@@ -516,7 +524,15 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "photo": {
+        "url": "https://bestwine24.ru/storage/optimized/product/vino/0b4a1b66ef4536b4db25ed1ddc937382_67fd16af15fcd_600x800.webp",
+        "source_url": "https://bestwine24.ru/vino-zantho-beerenauslese-2018-0375-l/",
+        "source": "BestWine24",
+        "matched_year": 2018,
+        "verified_on": "2026-11-23",
+        "note": "Zantho Beerenauslese 2018 375ml, matching producer and cuvee"
+      }
     },
     {
       "id": "42b87c5124ce",
@@ -793,7 +809,15 @@
       ],
       "volume_l": 0.375,
       "scores": [],
-      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены."
+      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены.",
+      "photo": {
+        "url": "https://vinoterra.ru/upload/iblock/b6e/u2e57sgrmrptrnz8oeyfd7mavj8xeizd/Ehrenhausen-Muschelkalk-Sauvignon-Blanc-2017.png",
+        "source_url": "https://vinoterra.ru/catalog/product/tement-ehrenhausen-muschelkalk-sauvignon-blanc-2017-375-2017/",
+        "source": "Vinoterra",
+        "matched_year": 2017,
+        "verified_on": "2026-11-23",
+        "note": "Tement Ehrenhausen Muschelkalk Sauvignon Blanc 2017, 375ml"
+      }
     },
     {
       "id": "81d1c4e70b33",
