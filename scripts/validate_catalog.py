@@ -19,6 +19,12 @@ for r in records:
  assert r['year'] is None or not re.search(r'(?<!\d)'+str(r['year'])+r'(?!\d)',r['title']), 'Vintage duplicated in title: '+r['title']
  assert isinstance(r['pairings'],list)
  assert isinstance(r['grapes'],list)
+ photo=r.get('photo')
+ if photo:
+  assert r['year'] is not None and photo.get('matched_year')==r['year'],('Photo vintage mismatch',r['id'])
+  assert photo.get('url','').startswith('https://'),('Invalid photo URL',r['id'])
+  assert photo.get('source_url','').startswith('https://'),('Invalid photo source',r['id'])
+  assert photo.get('source') and photo.get('verified_on'),('Missing photo provenance',r['id'])
  assert r['stores']
  assert not (r['section']=='Джин')
  for store in r['stores']:

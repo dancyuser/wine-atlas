@@ -7,7 +7,7 @@ import math
 import re
 
 SCALES = {5, 10, 20, 100}
-CRITICS = ('Wine Enthusiast', 'Jancis Robinson', 'Wine Spectator',
+CRITICS = ('Vivino', 'Luca Maroni', 'Wine Enthusiast', 'Jancis Robinson', 'Wine Spectator',
            'Robert Parker', 'Decanter', 'James Suckling', 'Falstaff',
            'Vinous', 'Tim Atkin', 'Wine Advocate')
 CRITIC_PATTERN = re.compile(
@@ -148,9 +148,31 @@ def collect_dom(soup, url, date):
                     result.append(row)
     return result
 
+def collect_product_header(soup, url, date):
+    """Fallback for WineStyle's score-first 90 /100 Wine Spectator markup.
+
+    Only the score strip before "Все товары" is scanned. The parser rejects
+    unrelated offers/recommendations and cannot manufacture a vintage scope.
+    """
+    from recover_capture_ratings import score_rows
+    root = soup.select_one("main") or soup.select_one('[itemscope][itemtype$="/Product"]')
+    if root is None:
+        return []
+    text = " " + root.get_text(" ", strip=True) + " "
+    result = []
+    for score in score_rows(text):
+        row = score_row(score["source"], score["score"], score["scale"],
+                        url, date, evidence=score["evidence"])
+        if row:
+            result.append(row)
+    return result
+
+
 def extract_ratings(soup, product, source_url, checked_at):
     """Return only non-conflicting supported scores for the matched product."""
-    rows = collect_structured(product, source_url, checked_at) + collect_dom(soup, source_url, checked_at)
+    rows = (collect_structured(product, source_url, checked_at)
+            + collect_dom(soup, source_url, checked_at)
+            + collect_product_header(soup, source_url, checked_at))
     by_source = {}
     conflicted = set()
     for row in rows:

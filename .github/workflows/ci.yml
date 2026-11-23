@@ -1,0 +1,29 @@
+name: Wine Atlas checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Catalog, ratings and source integrity
+        run: |
+          python scripts/validate_catalog.py
+          python scripts/validate_ratings.py
+          python scripts/validate_enrichment.py
+          python scripts/test_titles.py
+          python -m unittest discover -s scripts -p 'test_enrichment_import.py' -v
+          python -m unittest discover -s scripts -p 'test_catalog_rebuild.py' -v
+          python -m unittest discover -s scripts -p 'test_recover_capture_ratings.py' -v
+      - name: JavaScript syntax and UI regressions
+        run: |
+          node --check app.js
+          node scripts/test_theme.mjs
+          node scripts/test_enrichment_ui.cjs

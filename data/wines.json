@@ -56,7 +56,44 @@
             "description_excerpt": "\"Graham’s\" Late Bottled Vintage — превосходный портвейн, который производится только в лучшие урожайные годы. В отличие от винтажных портвейнов, которые разливаются на второй год после выдержки, \"Late Bottled Vintage\" созревает в среднем в течение 5 лет в бочках из мореного дуба. Портвейн \"LBV Грэм'с\" является лидером в своей категории и высоко ценится среди знатоков портвейна на Британских островах, которые традиционно являются одним из самых искушенных и конкурентных рынков портвейна. Виноград для портвейна собирается с величайшего",
             "source_url": "https://spb.winestyle.ru/products/Graham-s-Late-Bottled-Vintage-LBV-2019-gift-tube.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Wine Enthusiast",
+                "score": 94,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Graham-s-Late-Bottled-Vintage-LBV-2019-gift-tube.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "94 /100 Wine Enthusiast",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Jancis Robinson",
+                "score": 16.5,
+                "scale": 20,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Graham-s-Late-Bottled-Vintage-LBV-2019-gift-tube.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "16.5 /20 Jancis Robinson",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Falstaff",
+                "score": 90,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Graham-s-Late-Bottled-Vintage-LBV-2019-gift-tube.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "90 /100 Falstaff Magazine",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -109,7 +146,15 @@
         "Decanter World Wine Awards 2025 — золото, 95 баллов",
         "Wine Enthusiast — 94"
       ],
-      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены."
+      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены.",
+      "photo": {
+        "url": "https://facoporti.pt/575-large_default/grahams-lbv-2019-vinho-do-porto.jpg",
+        "source_url": "https://facoporti.pt/vinho-porto/510-grahams-lbv-2019-vinho-do-porto.html",
+        "source": "Facoporti",
+        "matched_year": 2019,
+        "verified_on": "2026-11-23",
+        "note": "2019 Graham's LBV, bottle and gift tube; external retailer image"
+      }
     },
     {
       "id": "4341f4fa849e",
@@ -155,7 +200,32 @@
             "description_excerpt": "Quinta De La Rosa, LBV Port, 2019 — винтажный портвейн позднего розлива, изготовленный из винограда традиционных португальских сортов: Турига Насьональ, Турига Франка, Сузао и Тинта Рориз. Все еще неизведанный терруар Дору предлагает невероятные возможности. В частности, виноградник \"La Rosa’s\", лозы которого резко возвышаются над рекой, вместе с внушительным виноградником \"Vale do Inferno\", величественно поднимаются на высоту 500 метров над уровнем моря с \"Lamelas\", откуда открывается великолепный вид на самое сердце региона. Виноград",
             "source_url": "https://spb.winestyle.ru/products/Quinta-De-La-Rosa-LBV-Port-2019.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Wine Enthusiast",
+                "score": 90,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Quinta-De-La-Rosa-LBV-Port-2019.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "90 /100 Wine Enthusiast",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Jancis Robinson",
+                "score": 16,
+                "scale": 20,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Quinta-De-La-Rosa-LBV-Port-2019.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "16 /20 Jancis Robinson",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -353,7 +423,44 @@
             "description_excerpt": "Zantho, Beerenauslese — уникальное специальное сладкое вино из местечка Зеевинкель в Бургенланде, обладающее огромным потенциалом хранения. Зеевинкель, наряду с Сотерном во Франции и Токаем в Венгрии, считается одним из самых известных регионов мира по производству сладких вин. Беренауслезе изготавливается из очень зрелого винограда сортов Шардоне и Грюнер Вельтлинер, взятых в равных частях. Виноград снимается с лоз поздно, когда ягоды уже затронула благородная серая гниль. При производстве вина применяют ферментацию в чанах из нержавеющей",
             "source_url": "https://spb.winestyle.ru/products/Zantho-Beerenauslese-2018.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Robert Parker",
+                "score": 89,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Zantho-Beerenauslese-2018.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "89 /100 Robert Parker",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Wine Enthusiast",
+                "score": 94,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Zantho-Beerenauslese-2018.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "94 /100 Wine Enthusiast",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Falstaff",
+                "score": 92,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Zantho-Beerenauslese-2018.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "92 /100 Falstaff Magazine",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -456,7 +563,44 @@
             "description_excerpt": "Girlan, Chardonnay — чрезвычайно свежее, деликатное белое сухое вино, в изготовлении которого используется виноград сорта Шардоне, произрастающий на склонах виноградников Крю \"Гирлан\" на высоте 450-500 метров над уровнем моря, а также на хорошо проветриваемых виноградниках, расположенных в Басса-Атесине. Лозы высажены на богатых минералами почвах, образовавшихся в результате отложений ледникового периода. Сбор урожая проводится вручную в небольшие контейнеры, чтобы предотвратить избыточное давление на виноград. На винодельне ягоды подвергаются",
             "source_url": "https://spb.winestyle.ru/products/Girlan-Chardonnay-Sudtirol-Alto-Adige-DOC-2023.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Wine Spectator",
+                "score": 90,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Girlan-Chardonnay-Sudtirol-Alto-Adige-DOC-2023.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "90 /100 Wine Spectator",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Wine Enthusiast",
+                "score": 93,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Girlan-Chardonnay-Sudtirol-Alto-Adige-DOC-2023.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "93 /100 Wine Enthusiast",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "James Suckling",
+                "score": 89,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Girlan-Chardonnay-Sudtirol-Alto-Adige-DOC-2023.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "89 /100 James Suckling",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -506,7 +650,15 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "photo": {
+        "url": "https://images.commerce7.com/maze-row/images/large/girlan-chardonnay-2023-bottle-shot-1724878333971.png",
+        "source_url": "https://www.offscriptwines.com/product/2023-girlan-classici-chardonnay-alto-adige/",
+        "source": "Offscript Wines",
+        "matched_year": 2023,
+        "verified_on": "2026-11-23",
+        "note": "Girlan Chardonnay Alto Adige DOC 2023 front bottle label; external retailer image"
+      }
     },
     {
       "id": "bdbf5d0327dc",
@@ -552,7 +704,44 @@
             "description_excerpt": "Tement, \"Ehrenhausen\" Muschelkalk — элегантное белое вино, виноград для которого выращивают на виноградниках в муницепалитете Эренхаузен. Этот регион характеризуется плодородными известняковыми почвами и прохладным климатом — идеальными условиями для производства роскошных вин. Сбор урожая для создания вина осуществляется вручную. В 2017 году в купаж к Совиньон Блан (89%) было добавлено небольшое количество Шардоне (10%) и Вельшрислинга (1%). Ферментация проходила в больших старых дубовых бочках. Выдерживалось вино на тонком осадке на",
             "source_url": "https://spb.winestyle.ru/products/Tement-Ehrenhausen-Muschelkalk-2017-375.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Robert Parker",
+                "score": 92,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Tement-Ehrenhausen-Muschelkalk-2017-375.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "92 /100 Robert Parker",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Wine Enthusiast",
+                "score": 93,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Tement-Ehrenhausen-Muschelkalk-2017-375.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "93 /100 Wine Enthusiast",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "James Suckling",
+                "score": 92,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Tement-Ehrenhausen-Muschelkalk-2017-375.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "92 /100 James Suckling",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -653,7 +842,32 @@
             "description_excerpt": "\"Lapis Luna\" дословно переводится с латинского как \"Камень и Луна\", что отображает важное влияние Луны на калифорнийский виноград. Этикетки вин \"Лапис Луна\" воплощают в жизнь медные гравюры 400-летней давности, изображающие связь между землей и Луной, ее влиянием на человека. На каждой этикетке вин изображены безликие герои, стремящиеся соединиться с Луной и ищущие у нее вдохновения, как это делают виноделы при создании вин \"Lapis Luna\". Бренд \"Лапис Луна\" ведет свою историю с 1999 года и каждый год раздвигает границы традиционного виноделия,",
             "source_url": "https://spb.winestyle.ru/products/Lapis-Luna-Chardonnay-North-Coast-AVA-2022.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Jancis Robinson",
+                "score": 15.5,
+                "scale": 20,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Lapis-Luna-Chardonnay-North-Coast-AVA-2022.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "15.5 /20 Jancis Robinson",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Decanter",
+                "score": 91,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Lapis-Luna-Chardonnay-North-Coast-AVA-2022.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "91 /100 Decanter | 100",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -756,7 +970,32 @@
             "description_excerpt": "\"Felino\" Chardonnay входит в линейку изысканных вин Vina Cobos, демонстрирующих флагманские сорта винограда региона Мендоса и выражающих богатство каждого сорта с лучших виноградников департамента Лухан де Куйо и долины Уко. Шардоне для изготовления вина выращивается органическими методами в долине Уко на виноградниках Гуальталлари, Лос-Чакайес, Вилла Бастиас, посаженных на большой высоте (около 1000 метров над уровнем моря) в условиях полупустынного климата. Урожай собирается вручную. Шардоне прессуется целыми гроздьями, ферментация с",
             "source_url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Chardonnay-2023.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Wine Spectator",
+                "score": 90,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Chardonnay-2023.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "90 /100 Wine Spectator",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Tim Atkin",
+                "score": 90,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Chardonnay-2023.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "90 /100 Tim Atkin | 100",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -863,7 +1102,44 @@
             "description_excerpt": "Kurtatsch, \"Caliz\" Chardonnay — свежее белое сухое вино из винограда сорта Шардоне, выращенного на виноградниках хозяйства Куртач в Альто Адидже. Виноградники расположены на склоне с юго-восточной экспозицией на высоте 250-400 метров над уровнем моря. Название вина \"Caliz\" происходит от латинских слов \"Calix\" (\"чашечка\") и \"Calx\" (\"мел\") — отсылка к типу почв, на которых культивируется виноград для этого вина. Шардоне растет исключительно на легких гравийных почвах с большой долей доломитового известняка. Альто Адидже — винодельческая",
             "source_url": "https://spb.winestyle.ru/products/Kurtatsch-Caliz-Chardonnay-Sudtirol-Alto-Adige-DOC-2022.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Falstaff",
+                "score": 90,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Kurtatsch-Caliz-Chardonnay-Sudtirol-Alto-Adige-DOC-2022.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "90 /100 Falstaff Magazine",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "James Suckling",
+                "score": 91,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Kurtatsch-Caliz-Chardonnay-Sudtirol-Alto-Adige-DOC-2022.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "91 /100 James Suckling",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Decanter",
+                "score": 91,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Kurtatsch-Caliz-Chardonnay-Sudtirol-Alto-Adige-DOC-2022.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "91 /100 Decanter | 100",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -966,7 +1242,32 @@
             "description_excerpt": "Kleine Zalze, \"Vineyard Selection\" Chardonnay — насыщенное, но при этом нежное и элегантное белое вино, произведенное из южноафриканского Шардоне. Освежающий фруктовый вкус изящно дополняют дубовые оттенки, напоминающие о месяцах выдержки в подвалах винодельни. Аромат раскрывается ярким букетов фруктовых нот с оттенками цветов и миндаля, характерными для этого сорта. Вино идеально подходит для особых случаев, романтических вечеров или душевных встреч с близкими людьми. Элегантность и благородство напитка делают его истинным украшением любого",
             "source_url": "https://spb.winestyle.ru/products/Kleine-Zalze-Vineyard-Selection-Chardonnay-2024.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Vivino",
+                "score": 3.9,
+                "scale": 5,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Kleine-Zalze-Vineyard-Selection-Chardonnay-2024.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "3.9 /5 Vivino",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Decanter",
+                "score": 92,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Kleine-Zalze-Vineyard-Selection-Chardonnay-2024.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "92 /100 Decanter | 100",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -1016,7 +1317,15 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "photo": {
+        "url": "https://shop.kleinezalze.co.za/image/cache/catalog/product/2024_VS_Chardonnay_-_New_Label-630x800.jpg",
+        "source_url": "https://shop.kleinezalze.co.za/kleine-zalze-vineyard-selection-barrel-fermented-chardonnay-2024",
+        "source": "Kleine Zalze",
+        "matched_year": 2024,
+        "verified_on": "2026-11-23",
+        "note": "Photo URL and label explicitly 2024, source page later redirected to 2025; do not use redirected page for other facts"
+      }
     },
     {
       "id": "839e49e2c896",
@@ -1065,7 +1374,44 @@
             "description_excerpt": "Первый урожай с нового виноградника в Феуди дель Пишотто датируется 2007 годом. Несмотря на юный возраст, лозы всех сортов дали поразительные результаты. Паоло Панерай, который контролирует компанию, решил объединить полученные вина в новую линейку, которая бы могла ассоциироваться с лучшим, что есть в Италии. Именно поэтому он обратил свой взгляд в сторону высокой моды. Так, линия вин Feudi del Pisciotto посвящена наиболее известным итальянским дизайнерам, которые являются разработчиками этикеток в собственном индивидуальном стиле. Часть",
             "source_url": "https://spb.winestyle.ru/products/Feudi-del-Pisciotto-Alberta-Ferretti-Chardonnay-Sicilia-IGT-2014.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Wine Spectator",
+                "score": 91,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Feudi-del-Pisciotto-Alberta-Ferretti-Chardonnay-Sicilia-IGT-2014.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "91 /100 Wine Spectator",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Falstaff",
+                "score": 90,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Feudi-del-Pisciotto-Alberta-Ferretti-Chardonnay-Sicilia-IGT-2014.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "90 /100 Falstaff Magazine",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "James Suckling",
+                "score": 89,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Feudi-del-Pisciotto-Alberta-Ferretti-Chardonnay-Sicilia-IGT-2014.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "89 /100 James Suckling",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -1168,7 +1514,20 @@
             "description_excerpt": "Peter Zemmer, Chardonnay, Alto Adige DOC — нежное, ароматное белое вино из винограда сорта Шардоне, который выращивается на лучших виноградниках вокруг центра деревни Куртиниг. Удачное расположение виноградников, идеальная экспозиция и хорошая вентиляция гарантируют урожай превосходного качества. На холмах почвы представлены известковым гравием из моренных отложений, в низине — песчаные аллювиальные почвы. Урожайность с гектара не превышает 70 гл. Урожай собирается в момент оптимальной зрелости ягод. Чтобы подчеркнуть яркую фруктовость,",
             "source_url": "https://spb.winestyle.ru/products/Peter-Zemmer-Chardonnay-Alto-Adige-DOC-2023.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Decanter",
+                "score": 92,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Peter-Zemmer-Chardonnay-Alto-Adige-DOC-2023.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "92 /100 Decanter | 100",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -1274,7 +1633,44 @@
             "description_excerpt": "\"Morning Fog\" Chardonnay — элегантное, освежающее и соблазнительное белое вино, названное в честь, вызванного потоками Тихоокеанского ветра утреннего прибрежного тумана, который окутывает часть залива Сан-Франциско, охлаждая воздух. Благодаря превосходным климатическим условиям долины Ливермор на виноградных лозах произрастает виноград с отлично сбалансированным вкусом. Сбор урожая с каждого участка осуществляется отдельно. 50% сусла подвергается ферментации в бочках из американского дуба, остальные 50% — в резервуарах из нержавеющей стали. Та",
             "source_url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2023.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Wine Spectator",
+                "score": 90,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2023.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "90 /100 Wine Spectator",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Wine Enthusiast",
+                "score": 89,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2023.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "89 /100 Wine Enthusiast",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "James Suckling",
+                "score": 89,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2023.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "89 /100 James Suckling",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -1376,7 +1772,44 @@
             "description_excerpt": "\"Morning Fog\" Chardonnay — элегантное, освежающее и соблазнительное белое вино. Вызванный потоками Тихоокеанского ветра, утренний прибрежный туман окутывает часть залива Сан-Франциско, охлаждая воздух. Благодаря превосходным климатическим условиям долины Ливермор на виноградных лозах произрастает виноград с отлично сбалансированным вкусом. Сбор урожая с каждого участка осуществляется отдельно. 50% сусла подвергается ферментации в бочках из американского и французского дуба, остальные 50% — в резервуарах из нержавеющей стали. Та часть сусла,",
             "source_url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2016.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Wine Spectator",
+                "score": 87,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2016.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "87 /100 Wine Spectator",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Jancis Robinson",
+                "score": 16,
+                "scale": 20,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2016.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "16 /20 Jancis Robinson",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Decanter",
+                "score": 92,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2016.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "92 /100 Decanter | 100",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -1478,7 +1911,32 @@
             "description_excerpt": "\"Origines\" Chardonnay — кюве, созданное для демонстрации всей глубины белых вин одного из старейших винодельческих регионов Франции, Бургундии. Для него использовали Шардоне, собранный на виноградниках, различающихся экспозицией и высотой, но схожих по составу своих известково-глинистых почв. Выращенный на этих участках виноград был собран вручную и тщательно отсортирован, после чего отжатый из него сок прошёл брожение в ёмкостях двух разных типов. 80% сусла ферментировалось в цистернах из нержавеющей стали, а остальные 20% — в деревянных",
             "source_url": "https://spb.winestyle.ru/products/Albert-Bichot-Origines-Chardonnay-Bourgogne-AOC-2022.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Wine Spectator",
+                "score": 88,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Albert-Bichot-Origines-Chardonnay-Bourgogne-AOC-2022.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "88 /100 Wine Spectator",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Vivino",
+                "score": 4,
+                "scale": 5,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Albert-Bichot-Origines-Chardonnay-Bourgogne-AOC-2022.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "4 /5 Vivino",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -1580,7 +2038,32 @@
             "description_excerpt": "Loimer, \"Gluegglich\" — органическое белое сухое вино под названием \"счастливый\", поскольку для его изготовления используется отборный виноград только лучших урожаев. В купаж входят сорта Цирфандлер, Ротгипфлер, Рислинг, Шардоне, Траминер и Мускателлер, собранные в 2017 (21%), 2018 (48%) и 2019 (31%) годах. Урожай был собран вручную в ящики по 20 кг. Часть винограда была очищена от стеблей, часть винифицировалась целыми гроздьями. Самопроизвольное брожение протекало в дубовых бочках частично в контакте с кожицей винограда. Вина выдерживались от",
             "source_url": "https://spb.winestyle.ru/products/Loimer-Gluegglich.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Falstaff",
+                "score": 90,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Loimer-Gluegglich.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "90 /100 Falstaff Magazine",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Vivino",
+                "score": 3.9,
+                "scale": 5,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Loimer-Gluegglich.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "3.9 /5 Vivino",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -1781,7 +2264,32 @@
             "description_excerpt": "\"Pyramid Scheme\" Pinot Noir — сухое красное вино из Калифорнии, сочетающее современный стиль и выразительный фруктовый характер. Легкое в употреблении и вместе с тем насыщенное, оно понравится ценителям полнотелых, ароматных красных вин. Мягкий климат региона обеспечивает медленное созревание ягод, способствуя развитию яркой ароматики и гармоничной кислотности. Сбор урожая проводится вручную в начале сентября, винификация осуществляется в стальных емкостях с контролем температуры для сохранения свежести, после чего вино выдерживается в дубовых",
             "source_url": "https://spb.winestyle.ru/products/Pyramid-Scheme-Pinot-Noir-2023.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Wine Enthusiast",
+                "score": 91,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Pyramid-Scheme-Pinot-Noir-2023.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "91 /100 Wine Enthusiast",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "James Suckling",
+                "score": 90,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Pyramid-Scheme-Pinot-Noir-2023.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "90 /100 James Suckling",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -1888,7 +2396,32 @@
             "description_excerpt": "Bodega Aniello, \"006\" Riverside Estate Pinot Noir — очень сочное и яркое вино из Южной Америки. Оно производится из знаменитого сорта Пино Нуар, произрастающего в Патагонии — самом южном винодельческий районе Аргентины. Сильные ветры Патагонии способствуют образованию у винограда более толстой кожицы, что способствует концентрации танинов, насыщенному цвету и разнообразию ароматов. Благодаря особенностям терруара вино отличается ярким ягодно-фруктовым вкусом с легкой терпкостью и минеральными оттенками. Аромат складывается из сложного",
             "source_url": "https://spb.winestyle.ru/products/Bodega-Aniello-006-Riverside-Estate-Pinot-Noir-Rio-Negro-2022.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Wine Spectator",
+                "score": 90,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Bodega-Aniello-006-Riverside-Estate-Pinot-Noir-Rio-Negro-2022.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "90 /100 Wine Spectator",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Vivino",
+                "score": 3.9,
+                "scale": 5,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Bodega-Aniello-006-Riverside-Estate-Pinot-Noir-Rio-Negro-2022.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "3.9 /5 Vivino",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -2093,7 +2626,32 @@
             "description_excerpt": "\"Sibaris\" Pinot Noir Gran Reserva — свежее фруктовое вино из винограда, выращенного в долине Лейда. Вино с легкой свежестью и яркими фруктовыми нотами идеально подходит для неспешных городских вечеров — будь то встреча с друзьями на террасе или уютный ужин дома. Его вкус и аромат отражают гармонию прохладного морского бриза и уникального терруара долины Лейда, создавая настроение легкости и спокойствия среди городской суеты. Это вино для тех, кто ценит качество и хочет добавить в повседневность немного природной элегантности. Ягоды, собранные",
             "source_url": "https://spb.winestyle.ru/products/Undurraga-Sibaris-Pinot-Noir-Gran-Reserva-Leyda-Valley-DO-2023.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Vivino",
+                "score": 3.9,
+                "scale": 5,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Undurraga-Sibaris-Pinot-Noir-Gran-Reserva-Leyda-Valley-DO-2023.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "3.9 /5 Vivino",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Tim Atkin",
+                "score": 90,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Undurraga-Sibaris-Pinot-Noir-Gran-Reserva-Leyda-Valley-DO-2023.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "90 /100 Tim Atkin | 100",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -2193,7 +2751,44 @@
             "description_excerpt": "Weingut J. Neus, Ingelheim am Rhein \"Muschelkalk\" Spatburgunder — приятный и свежий Пино Нуар категории Gutsweine VDP, которая отражает \"домашний стиль\" J. Neus. \"Мушелькальк\" Шпетбургундер отличается высоким качеством, что характерно для всех вин винодельни J. Neus, и подходит для ежедневного наслаждения. Как следует из названия вина, виноград для его изготовления собирается только с участков с известковыми почвами, расположенных вокруг Ингельхайма. Ракушечный известняк придает вину чистую минеральность, которая подчеркивает стройную",
             "source_url": "https://spb.winestyle.ru/products/Weingut-J-Neus-Ingelheim-am-Rhein-Muschelkalk-Spatburgunder-2021.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Jancis Robinson",
+                "score": 16,
+                "scale": 20,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Weingut-J-Neus-Ingelheim-am-Rhein-Muschelkalk-Spatburgunder-2021.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "16 /20 Jancis Robinson",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Falstaff",
+                "score": 90,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Weingut-J-Neus-Ingelheim-am-Rhein-Muschelkalk-Spatburgunder-2021.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "90 /100 Falstaff Magazine",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Vivino",
+                "score": 3.8,
+                "scale": 5,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Weingut-J-Neus-Ingelheim-am-Rhein-Muschelkalk-Spatburgunder-2021.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "3.8 /5 Vivino",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -2295,7 +2890,32 @@
             "description_excerpt": "\"G Lot\" Pinot Noir — выразительное вино с интенсивным ароматом, деликатной минеральностью и утонченной элегантностью. Пино Нуар для этого вина выращивается на особом участке, расположенном на высоте более 1500 метров над уровнем моря в Гуалталлари. Впервые в Мендосе Пино Нуар был высажен на такой экстремальной высоте в 1994 году. Сочетание холодных ночей и особых почв позволяет сформировать уникальный характер Пино Нуар. Рыхлые горные породы, песок и суглинки на поверхности сменяются плотным красноватым известняком на глубине 40-60 см и",
             "source_url": "https://spb.winestyle.ru/products/Luca-Winery-G-Lot-Pinot-Noir-Tupungato-2022.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Wine Enthusiast",
+                "score": 91,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Luca-Winery-G-Lot-Pinot-Noir-Tupungato-2022.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "91 /100 Wine Enthusiast",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "James Suckling",
+                "score": 94,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Luca-Winery-G-Lot-Pinot-Noir-Tupungato-2022.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "94 /100 James Suckling",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -2397,7 +3017,32 @@
             "description_excerpt": "El Esteco, Blanc de Noir — необычное, яркое и насыщенное розовое вино из высокогорной долины Кальчаки, передающее свежесть прохладных ночей региона и деликатный характер Пино Нуар. Оно демонстрирует оттенки красных ягод, цитрусовых и белых фруктов с легкими минеральными нюансами, а вкус раскрывается живой кислотностью, мягкой текстурой и освежающим фруктовым послевкусием. Потенциал выдержки составляет около 5 лет, за это время вино приобретает идеальный баланс между свежестью и фруктовой выразительностью. Оно идеально подойдет для летнего",
             "source_url": "https://spb.winestyle.ru/products/El-Esteco-Blanc-de-Noir-2023.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Vivino",
+                "score": 4,
+                "scale": 5,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/El-Esteco-Blanc-de-Noir-2023.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "4 /5 Vivino",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Tim Atkin",
+                "score": 94,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/El-Esteco-Blanc-de-Noir-2023.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "94 /100 Tim Atkin | 100",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -2497,7 +3142,44 @@
             "description_excerpt": "Слово \"Амалайя\" на языке коренных индейцев Кальчаки означает \"вера в чудо\" и имеет символическое обозначение в виде круга. Созданное из винограда сортов Торронтес и Рислинг, нежное, свежее и ароматное вино \"Amalaya\" Blanco демонстрирует великолепный терруар северной части долины Кальчаки с ее уникальным для выращивания винограда климатом. Долина расположена в северо-западной части Аргентины, в восточных предгорьях Анд. Интенсивное солнце в течение дня и прохладные ночи помогают выращивать виноград с концентрированным вкусом и хорошей",
             "source_url": "https://spb.winestyle.ru/products/Amalaya-Blanco-2024.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 90,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Amalaya-Blanco-2024.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "90 /100 James Suckling",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Decanter",
+                "score": 95,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Amalaya-Blanco-2024.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "95 /100 Decanter | 100",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Tim Atkin",
+                "score": 91,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Amalaya-Blanco-2024.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "91 /100 Tim Atkin | 100",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -2705,7 +3387,20 @@
             "description_excerpt": "Линейка вин, к которой относится белое сухое вино \"Стамп Джамп\", называется \"Stumpies\". Она идеально подходит для начала знакомства с винами \"d'Arenberg\". В ее составе превосходные вина \"на каждый день\", которые отличаются гастрономичностью — способностью сочетаться со множеством блюд и которые подходят для любого случая. Дизайн этикеток серии отражает юмор бренда \"d'Arenberg\". Он выполнен в стиле таблицы для проверки зрения и предназначен для определения степени трезвости: если Вы держите бутылку на расстоянии вытянутой руки и можете",
             "source_url": "https://spb.winestyle.ru/products/d-Arenberg-The-Stump-Jump-White-2021.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Wine Enthusiast",
+                "score": 90,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/d-Arenberg-The-Stump-Jump-White-2021.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "90 /100 Wine Enthusiast",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -2809,7 +3504,44 @@
             "description_excerpt": "Georg Breuer, \"Estate\" Rudesheim — высококачественное органическое белое сухое вино из винограда сорта Рислинг, выращенного в Рюдесхайме. Для Рюдесхайма характерны крутые террасные виноградники со сланцево-кварцитовыми почвами, которые наделяют виноград нотами минералов и косточковых фруктов. В 2001-2002 годах на различных виноградниках в Рюдесхайме было проведено глубокое бурение, чтобы изучить землю для строительства запланированного железнодорожного тоннеля. Винодельня Георг Бройер воспользовалась возможностью, чтобы забрать четыре керна из",
             "source_url": "https://spb.winestyle.ru/products/Georg-Breuer-Estate-Rudesheim-2018.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Wine Spectator",
+                "score": 90,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Georg-Breuer-Estate-Rudesheim-2018.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "90 /100 Wine Spectator",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Robert Parker",
+                "score": 91,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Georg-Breuer-Estate-Rudesheim-2018.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "91 /100 Robert Parker",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Falstaff",
+                "score": 91,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Georg-Breuer-Estate-Rudesheim-2018.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "91 /100 Falstaff Magazine",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -2913,7 +3645,32 @@
             "description_excerpt": "Nik Weis, Urban Riesling — свежее, гармоничное белое вино, созданное дарить наслаждение. Свое название оно получило в честь Святого Урбана, покровителя виноделов и виноградарей, который часто изображается с лозой или виноградом в руках. Существует поверье, что если 23 января, в день Св. Урбана, будет солнечно, значит виноделов ждет богатый урожай. Виноград сорта Рислинг произрастает на крутых склонах Мозеля. Среди виноделов существует мнение: чем круче склон и чем сложнее лозе расти, тем выше будет концентрация ароматов в ягодах. Для",
             "source_url": "https://spb.winestyle.ru/products/Nik-Weis-Urban-Riesling-2024.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 90,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Nik-Weis-Urban-Riesling-2024.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "90 /100 James Suckling",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Vivino",
+                "score": 3.9,
+                "scale": 5,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Nik-Weis-Urban-Riesling-2024.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "3.9 /5 Vivino",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -3017,7 +3774,44 @@
             "description_excerpt": "Tesch, \"Unplugged\" Riesling — предельно чистое и точное вино с яркой кислотностью и выразительным минеральным характером. В аромате раскрываются ноты крыжовника, яблока и цитрусовых фруктов с легкими каменными оттенками, а вкус отличается сухостью, сочностью и четкой структурой. Это уверенное, безошибочно аутентичное, полное тонких минеральных нюансов вино, которые завершаются невероятно свежим, стимулирующим аппетит послевкусием Вино создается по принципу \"без лишнего\": ферментация и выдержка проходят в нержавеющей стали без влияния дуба,",
             "source_url": "https://spb.winestyle.ru/products/Tesch-Unplugged-Riesling-2024.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Robert Parker",
+                "score": 90,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Tesch-Unplugged-Riesling-2024.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "90 /100 Robert Parker",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "James Suckling",
+                "score": 91,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Tesch-Unplugged-Riesling-2024.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "91 /100 James Suckling",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Vinous",
+                "score": 92,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Tesch-Unplugged-Riesling-2024.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "92 /100 Vinous | 100",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -3117,7 +3911,32 @@
             "description_excerpt": "Начиная с 2001 года, винодельня Франкленд Истейт производит ограниченное количество вин с двух одиночных виноградников — \"Poison Hill\" и \"Cooladerra\". Нетрадиционное название виноградника \"Poison Hill\" является результатом того, что он расположен на склонах холма, где обнаружен ядовитый клевер, опасный для всех, кроме коренных животных. Посаженный в 1988 году, этот небольшой виноградник площадью в 3 гектара имеет уникальную почву из белой глины и выветренного кварца, которая отражается в характере вина. \"Poison Hill Vineyard\" Riesling —",
             "source_url": "https://spb.winestyle.ru/products/Frankland-Estate-Poison-Hill-Vineyard-Riesling-2016.html",
             "checked_at": "2026-11-22",
-            "ratings": [],
+            "ratings": [
+              {
+                "source": "Robert Parker",
+                "score": 92,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Frankland-Estate-Poison-Hill-Vineyard-Riesling-2016.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "92 /100 Robert Parker",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              },
+              {
+                "source": "Wine Enthusiast",
+                "score": 88,
+                "scale": 100,
+                "ratings_count": null,
+                "source_url": "https://spb.winestyle.ru/products/Frankland-Estate-Poison-Hill-Vineyard-Riesling-2016.html",
+                "scope": "unspecified",
+                "reported_by": "WineStyle",
+                "observed_on": "2026-11-22",
+                "evidence": "88 /100 Wine Enthusiast",
+                "method": "visible_primary_rating_text_recovered_from_saved_capture"
+              }
+            ],
             "field_sources": {
               "alcohol_percent": "primary_product_table",
               "aroma": "visible_section",
@@ -14503,13 +15322,24 @@
     "matched_exact_products": 118,
     "mismatched_variants": 3,
     "direct_price_observations": 88,
-    "retailer_reported_ratings": 182,
+    "retailer_reported_ratings": 246,
     "regular_prices_confirmed": 0,
     "caveat": "Archived retailer display; source prices and ratings are not live stock/independent critic verification.",
     "mismatched_urls": [
       "https://spb.winestyle.ru/products/Rotari-Blanc-de-Blancs-Extra-Brut-Trento-DOC-2018.html",
       "https://spb.winestyle.ru/products/Vigna-Senza-Nome-Moscato-d-Asti-DOCG-2023-375.html",
       "https://spb.winestyle.ru/products/Vilarnau-Brut-Nature-Reserva-Cava-DO-2021.html"
-    ]
+    ],
+    "recovered_from_source_capture": {
+      "as_of": "2026-11-22",
+      "method": "primary_product_text_strict_labeled_score",
+      "added": 64,
+      "affected_products": 27,
+      "source": "winestyle-capture-2026-11-22 (1).json",
+      "excluded_scales": [
+        3
+      ],
+      "note": "Retailer-reported, non-independent, not necessarily vintage-specific; excluded from index"
+    }
   }
 }

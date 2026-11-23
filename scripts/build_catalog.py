@@ -116,7 +116,7 @@ def main():
    if not prev:continue
    # Re-importing the same retailer URL must not erase enriched tasting and
    # rating-context fields. Section and membership come from the new list.
-   for field in ('title','year','country','grapes','type','pairings','description','volume_l','scores','review_note'):
+   for field in ('title','year','country','grapes','type','pairings','description','volume_l','scores','review_note','photo'):
     if field in prev:record[field]=prev[field]
    old_stores={key(s['url']):s for s in prev.get('stores',[])}
    for store in record['stores']:
