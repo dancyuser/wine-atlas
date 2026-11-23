@@ -84,7 +84,35 @@ const pairingGroups=[
   ['Пряные блюда',/остр|прян|азиатск/i]
 ];
 function retailerDetails(r){const s=r.stores?.[0];return s?.enrichment_status?.status==='verified'&&s.product_details?.source_url===s.url?s.product_details:null}
-function grapeValues(r){const d=retailerDetails(r);return r.grapes?.length?r.grapes:(d?.grapes?d.grapes.split(',').map(s=>s.trim()).filter(Boolean):[])}
+// Retailers use multiple spellings for the SAME grape variety. Normalize the
+// filter and visible metadata without altering the archival source fields.
+const grapeAliases=new Map([
+ ['сира','Сира / Шираз'],['шираз','Сира / Шираз'],['сира / шираз','Сира / Шираз'],
+ ['сузео','Сузао'],['сузао','Сузао'],
+ ['турига франсеса/турига франка','Турига Франка'],
+ ['турига франка','Турига Франка'],
+ ['тинта рориз','Темпранильо / Тинта Рориш'],
+ ['тинта рориш','Темпранильо / Тинта Рориш'],
+ ['темпранильо','Темпранильо / Тинта Рориш'],
+ ['тинто фино','Темпранильо / Тинта Рориш'],
+ ['турбиана','Турбиана / Треббьяно ди Лугана'],
+ ['треббьяно ди лугана','Турбиана / Треббьяно ди Лугана'],
+ ['монастрель','Мурведр / Монастрель'],
+ ['мурведр','Мурведр / Монастрель'],
+ ['масуэло','Кариньяно / Масуэло'],
+ ['кариньяно','Кариньяно / Масуэло'],
+ ['красные сорта винограда',null],['другие сорта',null]
+]);
+function normalizeGrape(grape){
+ const raw=String(grape||'').trim().replace(/\s+/g,' ');
+ if(!raw)return null;
+ const k=raw.toLocaleLowerCase('ru');
+ return grapeAliases.has(k)?grapeAliases.get(k):raw;
+}
+function grapeValues(r){
+ const d=retailerDetails(r),raw=r.grapes?.length?r.grapes:(d?.grapes?d.grapes.split(','):[]);
+ return [...new Set(raw.map(normalizeGrape).filter(Boolean))];
+}
 function countryValue(r){return r.country||retailerDetails(r)?.country?.split(',')[0]?.trim()||null}
 function pairingValues(r){const note=retailerDetails(r)?.pairing_notes;
   if(!note)return r.pairings||[];
