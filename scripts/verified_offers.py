@@ -74,7 +74,7 @@ def words(s):
     stop = {"wine", "вино", "port", "porto", "портвейн", "late", "bottled",
             "vintage", "reserve", "reserva", "the", "of", "and", "de", "la", "do"}
     tokens = {x for x in re.findall(r"[a-zа-я]{3,}", normalized) if x not in stop}
-    if re.search(r"\\blate\\s+bottled\\s+vintage\\b", normalized):
+    if re.search(r"\blate\s+bottled\s+vintage\b", normalized):
         tokens.add("lbv")
     return tokens
 
