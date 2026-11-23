@@ -68,6 +68,13 @@ for record in records:
             assert price_checked <= date and price_checked <= dt.date.today(), (
                 "Retained price dated after product observation")
             assert store.get("price_source_url") == store["url"]
+            evidence = store.get("price_evidence")
+            if evidence is not None:
+                assert evidence.get("source_capture_sha256") == snapshot["source_export_sha256"]
+                assert evidence.get("value_rub") == store["price_rub"]
+                assert evidence.get("observed_on") == store["price_checked_at"]
+                assert evidence.get("method") == "saved_exact_product_primary_price_text"
+
             old = store.get("regular_price_rub")
             assert old is None or old > store["price_rub"]
             priced += 1
