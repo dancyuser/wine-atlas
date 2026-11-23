@@ -111,8 +111,10 @@ def verified_identity(target, capture, automated=False):
     if automated and not strict_automatic_name(target,capture['h1']):
         return False, 'strict_main_product_name_mismatch'
     year = target.get('year')
-    # Undated targets may be non-vintage products. Never guess the year.
-    if year is None:
+    # In a manually reviewed capture, undated vintages need a user decision.
+    # In an automated capture, a title that has no vintage on either source
+    # can still be the exact undated catalog product without inventing a year.
+    if year is None and not automated:
         return False, 'unidentified_vintage'
     product_names = [capture['h1']]
     matched_products = []
@@ -127,7 +129,12 @@ def verified_identity(target, capture, automated=False):
     dedicated = visible_value((capture.get('fields') or {}).get('vintage'))
     if dedicated:
         years.update(int(y) for y in re.findall(r'(?<!\d)(?:19\d\d|20\d\d)(?!\d)', dedicated))
-    if years != {year}:
+    years.update(int(y) for y in re.findall(r'(?<!\d)(?:19\d\d|20\d\d)(?!\d)',
+                                           str(capture.get('page_title') or '')))
+    if year is None:
+        if years:
+            return False, 'unexpected_vintage_on_undated_product'
+    elif years != {year}:
         return False, 'missing_or_conflicting_vintage'
     expected_ml = round((target.get('volume_l') or 0) * 1000)
     if expected_ml < 50:
@@ -141,7 +148,7 @@ def verified_identity(target, capture, automated=False):
         measurements.update(volume_mls(value))
     if measurements != {expected_ml}:
         return False, 'missing_or_conflicting_bottle_size'
-    return True, 'exact_wine_vintage_and_volume'
+    return True, 'exact_undated_product_and_volume' if year is None else 'exact_wine_vintage_and_volume'
 
 
 def numeric_displayed_rubles(text):
@@ -221,8 +228,14 @@ def apply_observations(catalog, observations, automated=False):
         if automated:
             # No per-bottle clicks. Revalidate *every* source field independently
             # below; do not equate browser navigation with human review.
-            if (obs.get('capture_method') != 'automated_browser_batch'
-                    or (obs.get('verification') or {}).get('status') != 'exact'):
+            verification=obs.get('verification') or {}
+            trusted_exact=verification.get('status')=='exact'
+            # Backward-compatible revalidation for the first one-click run:
+            # its undated, otherwise exact products were marked needs_review.
+            undated_legacy=(verification.get('status')=='needs_review'
+                           and verification.get('reason')=='catalog_vintage_unspecified'
+                           and r.get('year') is None)
+            if obs.get('capture_method') != 'automated_browser_batch' or not (trusted_exact or undated_legacy):
                 summary['rejected'].append([id_, 'automated_identity_not_verified'])
                 continue
         elif not obs.get('reviewer_confirmed'):
