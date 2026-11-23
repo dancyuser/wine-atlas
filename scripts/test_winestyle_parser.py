@@ -113,6 +113,36 @@ class ExtractionTests(unittest.TestCase):
         details, _, _ = parser.extract(markup, RECORD, URL, DATE)
         self.assertIsNone(details['grapes'])
 
+    def test_score_first_retailer_ratings_are_extracted(self):
+        markup = ('<main><section class="ratings"><h2>Рейтинги и награды</h2>'
+                  '<p>94 /100 Wine Enthusiast Необыкновенное</p>'
+                  '<p>16.5 /20 Jancis Robinson Изысканное</p>'
+                  '<p>90 /100 Falstaff Magazine Восхитительное</p>'
+                  '<p>92 /100 Decanter | 100 Яркое вино</p>'
+                  '<p>3.9 /5 Vivino</p></section></main>')
+        got = extract_ratings(BeautifulSoup(markup, 'html.parser'), {}, URL, DATE)
+        self.assertEqual({x['source']: (x['score'], x['scale']) for x in got},
+                         {'Wine Enthusiast': (94, 100),
+                          'Jancis Robinson': (16.5, 20),
+                          'Falstaff': (90, 100),
+                          'Decanter': (92, 100),
+                          'Vivino': (3.9, 5)})
+
+    def test_score_first_does_not_import_related_product(self):
+        markup = ('<main><section class="ratings"><p>90 /100 Wine Spectator</p>'
+                  '<div class="recommended-products"><p>99 /100 Wine Enthusiast</p>'
+                  '</div></section></main>')
+        got = extract_ratings(BeautifulSoup(markup, 'html.parser'), {}, URL, DATE)
+        self.assertEqual([(x['source'], x['score']) for x in got],
+                         [('Wine Spectator', 90)])
+
+    def test_score_first_requires_rating_section_and_valid_scale(self):
+        markup = ('<main><p>94 /100 Wine Enthusiast</p>'
+                  '<section class="ratings"><p>99 /10 Wine Spectator</p>'
+                  '<p>6 /5 Vivino</p></section></main>')
+        got = extract_ratings(BeautifulSoup(markup, 'html.parser'), {}, URL, DATE)
+        self.assertEqual(got, [])
+
     def test_unlabelled_ratings_not_accepted(self):
         markup = '<main><p>94/100</p><p>5/5</p><aside>Wine Enthusiast 94/100</aside></main>'
         self.assertEqual(extract_ratings(BeautifulSoup(markup, 'html.parser'), {}, URL, DATE), [])
