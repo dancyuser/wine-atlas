@@ -65,7 +65,7 @@ for r in records:
     and store.get('enrichment_status',{}).get('status')=='verified'
     and store.get('product_details',{}).get('source_url')==store['url']
    )),('Unreviewed offer',r['id'])
-   assert live.get('verification_method')=='exact_jsonld_product',('Offer method',r['id'])
+   assert live.get('verification_method') in ('exact_jsonld_product','exact_main_product_visible_price'),('Offer method',r['id'])
    assert live.get('availability') in ('in_stock','out_of_stock','unknown'),('Offer status',r['id'])
    assert re.fullmatch(r'\d{4}-\d{2}-\d{2}',live.get('observed_on','')),('Offer date',r['id'])
    assert live['observed_on']>=((r.get('publication_review') or {}).get('checked_at') or store.get('enrichment_status',{}).get('checked_at','9999-12-31')),('Stale offer',r['id'])
@@ -77,6 +77,20 @@ for r in records:
     return (p.scheme,p.hostname,p.path.rstrip('/'))
    assert source_id(live.get('source_url',''))==source_id(store['url'])==source_id((r.get('publication_review') or {}).get('final_url') or store.get('enrichment_status',{}).get('source_url')),('Offer redirect',r['id'])
    assert live.get('product_name') and isinstance(live['product_name'],str),('Offer product',r['id'])
+   if live['verification_method']=='exact_main_product_visible_price':
+    assert urlsplit(store['url']).hostname=='spb.winestyle.ru',('Visible offer vendor',r['id'])
+    assert live.get('capture_method')=='automated_browser_batch',('Visible offer source',r['id'])
+    from import_manual_capture import numeric_displayed_rubles
+    assert numeric_displayed_rubles(live.get('price_evidence'))==live['price_rub'],('Visible offer price evidence',r['id'])
+    if regular is not None:
+     assert numeric_displayed_rubles(live.get('regular_price_evidence'))==regular,('Visible offer regular price proof',r['id'])
+    stock=live.get('availability_evidence')
+    assert isinstance(stock,str) and stock,('Visible offer stock proof',r['id'])
+    if live['availability']=='in_stock':
+     assert re.match(r'^в наличии(?:\s|$)',stock,re.I),('Visible offer availability',r['id'])
+    elif live['availability']=='out_of_stock':
+     assert re.match(r'^(?:ожидаем поступление|нет в наличии|товар отсутствует)(?:\s|$)',stock,re.I),('Visible unavailable stock proof',r['id'])
+    else: raise AssertionError(('Unconfirmed visible-stock offer',r['id']))
 
  # Vendor-sourced manual research is separate from the immutable WineStyle archive.
   manual=store.get('research_details')
