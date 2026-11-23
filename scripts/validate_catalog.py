@@ -116,6 +116,8 @@ assert all(type(r.get('volume_l')) in (float,int) and r['volume_l']>0 for r in v
 assert all(isinstance(r.get('grapes'),list) and r['grapes'] for r in visible), 'Missing published grape identity'
 assert all((r['stores'][0].get('product_details') or r['stores'][0].get('research_details') or {}).get('color')
            for r in visible), 'Missing published source color description'
+assert all((r['stores'][0].get('product_details') or r['stores'][0].get('research_details') or {}).get('wine_style')
+           for r in visible), 'Missing verified wine style for published bottle'
 
 assert len(records)==d['source']['unique_wine_urls'], 'Catalog size differs from source snapshot'
 assert all(r['wishlist'] and not r['research'] for r in records), 'Archived research cannot appear in active catalog'
