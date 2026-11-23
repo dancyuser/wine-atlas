@@ -1,0 +1,148 @@
+/* Readability system. Loaded after base and editorial styles.
+   The app keeps a comfortable reading measure while using more of 2K/4K screens. */
+:root{--reading-boost:0px}
+:root[data-reading-size="large"]{--reading-boost:2px}
+:root[data-reading-size="xlarge"]{--reading-boost:4px}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-size:calc(clamp(16px,0.38vw + 12px,21px) + var(--reading-boost));line-height:1.6}
+.container{width:min(calc(100% - clamp(28px,5vw,128px)),2240px)}
+.header-inner{min-height:clamp(74px,4.3vw,96px);flex-wrap:wrap;padding-block:10px}
+.logo{font-size:clamp(23px,1.3vw,31px)}
+.header-controls{flex-wrap:wrap;justify-content:flex-end;gap:clamp(10px,1vw,20px)}
+.header-note{font-size:calc(12px + var(--reading-boost));letter-spacing:.045em}
+.theme-control,.text-scale-control{display:flex;align-items:center;gap:8px;color:var(--sub);font-size:calc(13px + var(--reading-boost));font-weight:650;white-space:nowrap}
+.theme-control select,.text-scale-control select{min-width:115px;width:auto;height:46px;margin:0;border:1px solid var(--line);border-radius:999px;padding:0 13px;background:var(--white);color:var(--ink);font-size:calc(14px + var(--reading-boost))}
+.intro{padding:clamp(32px,3.3vw,80px);margin:clamp(20px,1.7vw,38px) 0 clamp(30px,2.6vw,60px)}
+.intro-kicker{font-size:calc(12px + var(--reading-boost))!important;letter-spacing:.15em}
+.intro h1{font-size:clamp(42px,4.5vw,88px);line-height:1.08}
+.intro p:not(.intro-kicker){max-width:760px;font-size:calc(clamp(16px,.4vw + 12px,21px) + var(--reading-boost));line-height:1.65}
+.quick-stats{gap:clamp(18px,2.5vw,52px)}
+.quick-stats span{font-size:calc(15px + var(--reading-boost))}
+.quick-stats strong{font-size:clamp(27px,1.6vw,37px)}
+.section-title{font-size:clamp(31px,2.2vw,45px);margin-bottom:clamp(20px,1.7vw,34px)}
+.search-row{grid-template-columns:minmax(0,1fr) minmax(260px,370px);gap:clamp(14px,1.1vw,24px)}
+.search-field,.sort-field,.filters label{font-size:calc(13px + var(--reading-boost));letter-spacing:.045em}
+input,select{height:clamp(50px,3vw,60px);font-size:calc(16px + var(--reading-boost));margin-top:9px;padding-inline:16px}
+.filters{gap:clamp(12px,1.2vw,24px);margin-top:clamp(15px,1vw,20px)}
+.scope button,.link-button,.empty button{min-height:46px;font-size:calc(14px + var(--reading-boost));padding-inline:18px}
+.scope button.active{font-weight:750}
+.results{font-size:calc(14px + var(--reading-boost));padding:18px 2px;margin-bottom:clamp(21px,1.6vw,33px)}
+.wine-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(19px,1.45vw,33px);align-items:start}
+.wine-card{padding:clamp(22px,1.45vw,34px);border-radius:clamp(17px,1vw,23px);min-width:0}
+.type-tag{font-size:calc(13px + var(--reading-boost));letter-spacing:.05em}
+.type-dot{width:10px;height:10px;flex:none}
+.save-btn{min-width:48px;min-height:48px;font-size:24px;flex:none}
+.card-intro{grid-template-columns:minmax(165px,31%) minmax(0,1fr);gap:clamp(18px,1.25vw,30px);min-width:0;min-height:0;margin:clamp(14px,1vw,22px) 0 clamp(20px,1.4vw,30px);align-items:start}
+.card-intro-copy{min-width:0}
+.card-title,.card-intro .card-title{font-size:calc(clamp(25px,1.25vw,33px) + var(--reading-boost));line-height:1.22;letter-spacing:-.025em;overflow-wrap:anywhere}
+.card-meta,.card-intro .card-meta{font-size:calc(clamp(14px,.25vw + 12px,18px) + var(--reading-boost));line-height:1.55;margin:0 0 13px;overflow-wrap:anywhere}
+.card-description{font-size:calc(clamp(15px,.24vw + 12px,18px) + var(--reading-boost));line-height:1.58;margin-top:12px;-webkit-line-clamp:4;overflow-wrap:anywhere}
+.bottle-media{width:100%;height:clamp(260px,14vw,360px);padding:0 0 28px;border-radius:16px;overflow:hidden}
+.bottle-view{display:block;width:100%;height:100%;margin:0;padding:7px;border:0;background:transparent;color:inherit;cursor:zoom-in;position:relative;z-index:2;min-width:0}
+.bottle-view:focus-visible{outline:3px solid var(--focus);outline-offset:-4px}
+.bottle-photo{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;object-position:center;filter:drop-shadow(0 8px 10px #00000026);border-radius:4px}
+.bottle-photo.landscape-source{object-fit:cover;object-position:center}
+.bottle-placeholder{inset:12px 12px 30px;pointer-events:none}
+.photo-credit{font-size:calc(11px + var(--reading-boost));line-height:1.3;bottom:5px;white-space:nowrap}
+.rating-box{gap:0;padding:0;grid-template-columns:repeat(2,minmax(0,1fr))}
+.rating-cell{padding:clamp(16px,1.1vw,23px);min-width:0}
+.rating-label{font-size:calc(13px + var(--reading-boost));line-height:1.4;letter-spacing:.03em}
+.rating-value{font-size:clamp(34px,2vw,49px);line-height:1.12}
+.rating-unit{font-size:calc(14px + var(--reading-boost))}
+.rating-sub{font-size:calc(13px + var(--reading-boost));line-height:1.5;overflow-wrap:anywhere}
+.rating-details{margin:10px 0}
+.rating-details summary{font-size:calc(15px + var(--reading-boost));line-height:1.4;min-height:50px;overflow-wrap:anywhere}
+.rating-details h4{font-size:calc(13px + var(--reading-boost));letter-spacing:.02em}
+.rating-details li{font-size:calc(15px + var(--reading-boost));gap:14px;padding:12px 0}
+.rating-details .rating-hint,.availability-note{font-size:calc(14px + var(--reading-boost));line-height:1.6}
+.rating-details li span{max-width:65%;min-width:0;overflow-wrap:anywhere}
+.rating-details li strong{min-width:0;overflow-wrap:anywhere}
+.characteristics li{align-items:flex-start}
+.characteristics li span{max-width:30%;min-width:0}
+.characteristics li strong{max-width:68%;text-align:left;font-size:calc(15px + var(--reading-boost));line-height:1.55;overflow-wrap:anywhere;word-break:normal;font-weight:450}
+.card-pairings{font-size:calc(15px + var(--reading-boost));line-height:1.6;margin:16px 0 24px}
+.card-bottom{padding-top:20px;align-items:center;flex-wrap:wrap}
+.price-main{font-size:clamp(30px,1.7vw,40px)}
+.price-main del{font-size:calc(15px + var(--reading-boost))}
+.price-note{font-size:calc(13px + var(--reading-boost));line-height:1.45}
+.store-link{font-size:calc(14px + var(--reading-boost));min-height:49px;padding:13px 18px}
+.method{margin-top:45px;padding:38px 0 55px;font-size:calc(15px + var(--reading-boost));line-height:1.65}
+.method h2{font-size:clamp(26px,1.5vw,36px)}
+.method p{max-width:1100px}
+.method code{font-size:calc(14px + var(--reading-boost))}
+.site-footer{font-size:calc(13px + var(--reading-boost));line-height:1.6}
+
+/* Extra viewport space produces extra readable cards, not microscopic ones. */
+@media(min-width:1800px){
+ .wine-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .bottle-media{height:clamp(290px,14vw,355px)}
+ .card-intro{grid-template-columns:minmax(170px,32%) minmax(0,1fr)}
+}
+/* Two-column cards are crowded on small laptops; switch to one generous column. */
+@media(max-width:1120px){
+ .container{width:calc(100% - 48px)}
+ .wine-grid{grid-template-columns:1fr}
+ .card-intro{grid-template-columns:minmax(150px,26%) minmax(0,1fr)}
+ .bottle-media{height:285px}
+ .card-description{-webkit-line-clamp:5}
+}
+@media(max-width:800px){
+ .header-inner{min-height:76px}
+ .header-controls{gap:10px}
+ .header-note{display:none}
+ .container{width:calc(100% - 32px)}
+ .intro{padding:32px 28px}
+ .filters{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .search-row{grid-template-columns:minmax(0,1fr)}
+ .card-intro{grid-template-columns:155px minmax(0,1fr)}
+ .bottle-media{height:255px}
+ .card-title,.card-intro .card-title{font-size:calc(26px + var(--reading-boost))}
+}
+@media(max-width:580px){
+ .container{width:calc(100% - 24px)}
+ .header-inner{gap:8px;min-height:74px}
+ .logo{font-size:23px}
+ .header-controls{width:100%;justify-content:flex-start;gap:10px;padding-bottom:9px}
+ .theme-control,.text-scale-control{flex:1 1 130px;justify-content:space-between;min-width:0}
+ .theme-control select,.text-scale-control select{min-width:0;width:auto;max-width:155px;font-size:14px;padding:0 11px}
+ .intro{padding:28px 21px;margin:15px 0 27px}
+ .intro h1{font-size:clamp(39px,10vw,54px)}
+ .intro p:not(.intro-kicker){font-size:calc(16px + var(--reading-boost))}
+ .quick-stats{gap:14px 23px}
+ .quick-stats strong{font-size:29px}
+ .section-title{font-size:32px}
+ .filters{gap:11px}
+ .wine-card{padding:18px}
+ .card-intro{grid-template-columns:1fr;gap:16px;margin:14px 0 20px}
+ .bottle-media{width:100%;height:310px;padding-bottom:29px}
+ .bottle-photo.landscape-source{object-fit:cover}
+ .card-title,.card-intro .card-title{font-size:calc(26px + var(--reading-boost))}
+ .card-description{-webkit-line-clamp:4}
+ .rating-cell{padding:15px 13px}
+ .rating-label{font-size:calc(12px + var(--reading-boost))}
+ .rating-value{font-size:35px}
+ .rating-sub{font-size:calc(12px + var(--reading-boost))}
+ .card-bottom{align-items:stretch;flex-direction:column}
+ .store-link{width:100%}
+ .rating-details li{flex-wrap:wrap;gap:4px}
+ .rating-details li span{max-width:100%;width:100%}
+ .rating-details li strong{max-width:100%;width:100%}
+ .characteristics li span{max-width:100%}
+ .characteristics li strong{max-width:100%}
+}
+@media(max-width:380px){
+ .filters{grid-template-columns:1fr}
+ .theme-control>span,.text-scale-control>span{position:static;width:auto;height:auto;margin:0;padding:0;clip-path:none;white-space:normal}
+ .theme-control,.text-scale-control{font-size:12px}
+ .theme-control select,.text-scale-control select{max-width:125px;font-size:13px}
+ .rating-value{font-size:31px}
+ .rating-cell{padding:14px 10px}
+ .bottle-media{height:285px}
+}
+.image-dialog{border:1px solid var(--line);border-radius:20px;padding:20px;background:var(--white);color:var(--ink);max-width:min(92vw,940px);max-height:94dvh;box-shadow:0 30px 100px #0009}
+.image-dialog::backdrop{background:#08060bc9}
+.image-dialog-inner{display:flex;flex-direction:column;align-items:center;gap:14px;min-width:min(80vw,280px)}
+.image-dialog img{display:block;max-width:min(80vw,840px);max-height:calc(92dvh - 135px);width:auto;height:auto;object-fit:contain}
+.image-dialog-title{font-size:calc(16px + var(--reading-boost));text-align:center;max-width:78ch;line-height:1.45}
+.image-dialog-close{position:absolute;right:10px;top:10px;display:grid;place-items:center;min-width:44px;min-height:44px;border-radius:50%;background:var(--rating-bg);color:var(--ink);border:1px solid var(--line);font-size:28px;cursor:pointer;z-index:2}
+@media(prefers-reduced-motion:reduce){.wine-card:hover{transform:none}}

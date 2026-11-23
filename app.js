@@ -31,6 +31,16 @@ function criticRatingsFor(r){
  }
  return [...found.values()];
 }
+function retailerVivinoFor(r){
+ // Fallback only: seller quotes Vivino, but does not prove score vintage.
+ const store=(r.stores||[]).find(s=>s.enrichment_status?.status==='verified'&&s.product_details?.source_url===s.url);
+ const entry=store?.product_details?.ratings?.find(x=>x?.source==='Vivino'&&x.reported_by==='WineStyle'&&x.source_url===store.url&&x.scale===5&&Number.isFinite(x.score)&&x.score>=1&&x.score<=5);
+ if(!entry)return null;
+ return {source:'Vivino',score:entry.score,scale:5,scope:'all_vintages',
+  vintage:null,ratings_count:null,source_url:store.url,source_kind:'retailer_reported_vivino',
+  observed_on:entry.observed_on||store.product_details.checked_at,
+  note:'Оценка Vivino указана WineStyle; год рейтинга не подтверждён'};
+}
 function metrics(r){
  const all=ratingsFor(r);
  const exact=all.filter(x=>x.scope==='vintage');
@@ -44,7 +54,7 @@ function metrics(r){
   const key=x.source.toLocaleLowerCase('ru');
   if(!chosen.has(key))chosen.set(key,x);
  }
- const vivino=all.find(x=>x.source==='Vivino'&&x.scope==='vintage')||all.find(x=>x.source==='Vivino'&&x.scope==='all_vintages')||null;
+ const vivino=all.find(x=>x.source==='Vivino'&&x.scope==='vintage')||all.find(x=>x.source==='Vivino'&&x.scope==='all_vintages')||retailerVivinoFor(r);
  // Include Vivino at most once, including a scope-all-vintages estimate.
  if(vivino&&!chosen.has('vivino'))chosen.set('vivino',vivino);
  const scaled=[...chosen.values()].map(x=>x.scale===5?50+10*x.score:x.scale===20?5*x.score:x.score);
@@ -102,7 +112,7 @@ function metricRow(m,r){
  const aggregate=m.summary===null?'—':num(m.summary);
  const cv=m.vivino?num(m.vivino.score):'—';
  const unavailable=vivinoUnavailable(r);
- const detail=m.vivino?(m.vivino.scope==='all_vintages'?'Общая оценка · все урожаи':(m.vivino.ratings_count?fmt.format(m.vivino.ratings_count)+' оценок':'Оценка винтажа')):unavailable.label;
+ const detail=m.vivino?(m.vivino.source_kind==='retailer_reported_vivino'?'По данным WineStyle · год не проверен':m.vivino.scope==='all_vintages'?'Общая оценка · все урожаи':(m.vivino.ratings_count?fmt.format(m.vivino.ratings_count)+' оценок':'Оценка винтажа')):unavailable.label;
  return '<div class="rating-box">'+
  '<div class="rating-cell"><span class="rating-label">Сводный рейтинг</span><div class="rating-value">'+aggregate+'<span class="rating-unit">/ 100</span></div><span class="rating-sub">'+(m.summaryCount?m.summaryCount+' ист. · '+(m.hasUnverifiedVintage?'год оценок может отличаться':'винтаж подтверждён'):'Пока нет оценок')+'</span></div>'+
  '<div class="rating-cell"><span class="rating-label">Vivino</span><div class="rating-value">'+cv+'<span class="rating-unit">/ 5</span></div><span class="rating-sub">'+safe(detail)+'</span></div>'+
@@ -116,7 +126,7 @@ function ratingsDetails(r,m){
  }).join('');
  const published=m.critics.map(x=>'<li><span>'+safe(x.source)+'</span><strong>'+num(x.score)+' / '+x.scale+'</strong></li>').join('');
  const un=vivinoUnavailable(r);
- const fallback=!m.vivino?'<p class="rating-hint">'+safe(un.label)+' · <a href="'+safe(un.url)+'" target="_blank" rel="noopener noreferrer">Проверить на Vivino</a></p>':'';
+ const fallback=!m.vivino?'<p class="rating-hint">'+safe(un.label)+' · <a href="'+safe(un.url)+'" target="_blank" rel="noopener noreferrer">Проверить на Vivino</a></p>':m.vivino.source_kind==='retailer_reported_vivino'?'<p class="rating-hint">Vivino: '+num(m.vivino.score)+'/5, по сведениям WineStyle · винтаж не установлен · <a href="'+safe(cleanUrl(m.vivino.source_url)||'#')+'" target="_blank" rel="noopener noreferrer">Источник</a></p>':'';
  return '<details class="rating-details score-details"><summary>Оценки и источники ('+(m.all.length+m.critics.length)+')</summary>'+
  (independent?'<h4>Независимо подтверждённые</h4><ul>'+independent+'</ul>':'')+
  (published?'<h4>Оценки критиков, опубликованные WineStyle</h4><ul>'+published+'</ul><p class="rating-hint">Не являются оценками покупателей WineStyle. Первоисточники и принадлежность к винтажу отдельно не проверены.</p>':'')+
@@ -148,9 +158,12 @@ function photoMarkup(r){
  const url=snap?.photo||cleanUrl(researched?.url)||cleanUrl(p.url);
  const source=snap?.source||cleanUrl(researched?.source_url)||cleanUrl(p.source_url);
  const backup=(snap||researched)?cleanUrl(p.url):null;
- return '<div class="bottle-media">'+
- (url?'<img class="bottle-photo" src="'+safe(url)+'"'+(backup?' data-fallback="'+safe(backup)+'"':'')+' alt="Бутылка '+safe(r.title)+(r.year?' '+r.year:'')+'" loading="lazy" decoding="async" referrerpolicy="no-referrer">':'')+
- '<div class="bottle-placeholder'+(url?' hidden-photo-placeholder':'')+'" aria-hidden="true"><span class="bottle-silhouette"></span></div>'+
+ const alt='Бутылка '+r.title+(r.year?' '+r.year:'');
+ const placeholder='<div class="bottle-placeholder'+(url?' hidden-photo-placeholder':'')+'" aria-hidden="true"><span class="bottle-silhouette"></span></div>';
+ const visual=url?'<button type="button" class="bottle-view" data-bottle-view aria-label="Увеличить фото: '+safe(r.title)+'">'+
+  '<img class="bottle-photo" src="'+safe(url)+'"'+(backup?' data-fallback="'+safe(backup)+'"':'')+
+  ' alt="'+safe(alt)+'" loading="lazy" decoding="async" referrerpolicy="no-referrer">'+placeholder+'</button>':placeholder;
+ return '<div class="bottle-media">'+visual+
  (source&&url?'<a class="photo-credit" href="'+safe(source)+'" target="_blank" rel="noopener noreferrer">Фото: '+(snap?'WineStyle':researched?safe(researched.source):safe(p.source||'источник'))+'</a>':'<span class="photo-credit photo-missing">Фото не найдено</span>')+
  '</div>';
 }
@@ -204,6 +217,14 @@ function setup(){
  $('search').addEventListener('input',render);$('sort').addEventListener('change',render);
  $('reset').addEventListener('click',reset);$('empty-reset').addEventListener('click',reset);
  document.querySelectorAll('#scope button').forEach(b=>b.addEventListener('click',()=>{state.scope=b.dataset.scope;document.querySelectorAll('#scope button').forEach(btn=>{const on=btn===b;btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',String(on))});render()}));
+ $('cards').addEventListener('load',e=>{
+  const img=e.target;
+  if(!img.classList?.contains('bottle-photo'))return;
+  // Most WineStyle images are wide canvases with a centrally positioned bottle.
+  // Cropping side margins makes the bottle fill its tall display rather than
+  // shrinking it into a short landscape thumbnail.
+  img.classList.toggle('landscape-source',img.naturalWidth>=img.naturalHeight*.9);
+ },true);
  $('cards').addEventListener('error',e=>{
   const img=e.target;
   if(!img.classList?.contains('bottle-photo'))return;
@@ -213,11 +234,41 @@ function setup(){
     return;
   }
   img.hidden=true;
-  img.parentElement.querySelector('.bottle-placeholder')?.classList.remove('hidden-photo-placeholder');
-  const credit=img.parentElement.querySelector('.photo-credit');
+  const media=img.closest('.bottle-media');
+  media?.querySelector('.bottle-placeholder')?.classList.remove('hidden-photo-placeholder');
+  const button=img.closest('button[data-bottle-view]');
+  if(button){button.disabled=true;button.setAttribute('aria-disabled','true')}
+  const credit=media?.querySelector('.photo-credit');
   if(credit)credit.textContent='Фото недоступно';
  },true);
- $('cards').addEventListener('click',e=>{const b=e.target.closest('button[data-fav]');if(!b)return;const id=b.dataset.fav;if(state.favorites.has(id))state.favorites.delete(id);else state.favorites.add(id);try{localStorage.setItem('wine-atlas-favorites',JSON.stringify([...state.favorites]))}catch{}render()});
+ $('cards').addEventListener('click',e=>{
+  const photoButton=e.target.closest('button[data-bottle-view]');
+  if(photoButton){
+    const img=photoButton.querySelector('img.bottle-photo');
+    if(!img||img.hidden||photoButton.disabled)return;
+    const dialog=$('bottle-dialog');
+    if(dialog&&typeof dialog.showModal==='function'){
+      const full=$('bottle-dialog-image'),caption=$('bottle-dialog-title');
+      full.src=img.currentSrc||img.src;
+      full.alt=img.alt;
+      caption.textContent=img.alt;
+      dialog.showModal();
+    }else window.open(img.currentSrc||img.src,'_blank','noopener,noreferrer');
+    return;
+  }
+  const b=e.target.closest('button[data-fav]');
+  if(!b)return;
+  const id=b.dataset.fav;
+  if(state.favorites.has(id))state.favorites.delete(id);else state.favorites.add(id);
+  try{localStorage.setItem('wine-atlas-favorites',JSON.stringify([...state.favorites]))}catch{}
+  render();
+ });
+ const dialog=$('bottle-dialog');
+ if(dialog){
+  $('bottle-dialog-close')?.addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
+  dialog.addEventListener('close',()=>{$('bottle-dialog-image')?.removeAttribute('src')});
+ }
 }
 async function init(){
  try{

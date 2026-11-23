@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "observed_on": "2026-11-23",
+  "catalog_vivino_before": 120,
+  "missing_before": 4,
+  "primary_matches_added": 4,
+  "catalog_vivino_after": 124,
+  "wineStyle_vivino_display_observations": 33,
+  "retailer_vs_primary_within_0_15": 32,
+  "differences_gt_0_15": [
+    {
+      "id": "f0c33d420f2f",
+      "wine": "Marius Peyol Coteaux d’Aix en Provence AOC",
+      "primary_vivino_score": 3.5,
+      "retailer_reported_vivino_score": 3.8,
+      "primary_scope": "all_vintages",
+      "decision": "Keep directly verified Vivino 3.5; retailer 3.8 remains archived, not overlaid."
+    }
+  ],
+  "matched_unrated": [
+    {
+      "id": "5427ef8902aa",
+      "matched_as": "Pitars Prosecco Brut N.V.",
+      "score": 3.8,
+      "scope": "all_vintages",
+      "source": "https://www.vivino.com/en/pitars-prosecco-brut/w/2179084"
+    },
+    {
+      "id": "0d2ee38169c9",
+      "matched_as": "The Chocolate Tube Primitivo 2023",
+      "score": 4.1,
+      "scope": "vintage",
+      "source": "https://www.vivino.com/en/the-chocolate-tube-primitivo-puglia/w/4406268"
+    },
+    {
+      "id": "cd226588d1df",
+      "matched_as": "EnvyFol G.S.M 2022",
+      "score": 3.9,
+      "scope": "vintage",
+      "source": "https://www.vivino.com/en/envy-fol-g-s-m/w/2656744"
+    },
+    {
+      "id": "e552320d1248",
+      "matched_as": "Cantina di Santadi Antigua Monica di Sardegna",
+      "score": 3.5,
+      "scope": "all_vintages",
+      "source": "https://www.vivino.com/en/cantina-di-santadi-antigua-monica-di-sardegna/w/1397648"
+    }
+  ],
+  "rules": [
+    "Primary Vivino matching by producer, cuvee, appellation, grapes and exact vintage if available; display reported source and vintage scope.",
+    "If primary Vivino is absent, allow verified exact WineStyle product's retailer-reported Vivino score only as all-vintages unverified-fallback.",
+    "Never take WineStyle's own customer-rating stars as Vivino or include them in the index.",
+    "If independent and retailer Vivino disagree, primary Vivino wins; never average or double count."
+  ]
+}

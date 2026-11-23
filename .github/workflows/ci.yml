@@ -17,6 +17,7 @@ jobs:
         run: |
           python scripts/validate_catalog.py
           python scripts/validate_ratings.py
+          python scripts/test_vivino_reconciliation.py
           python scripts/validate_enrichment.py
           python scripts/validate_verified_snapshot.py
           python scripts/validate_researched_photos.py
@@ -31,3 +32,5 @@ jobs:
           node --check app.js
           node scripts/test_theme.mjs
           node scripts/test_enrichment_ui.cjs
+          node scripts/test_responsive_ui.mjs
+          python scripts/test_responsive_browser.py
