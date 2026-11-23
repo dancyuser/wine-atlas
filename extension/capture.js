@@ -157,12 +157,16 @@ function captureWineAtlasPage() {
     document.title+' '+rootName);
   const imageMeta=document.querySelector('meta[property="og:image"]')?.content;
   const image=imageMeta?privacyUrl(imageMeta):null;
+  // WineStyle's default social preview is a generic brand banner, never the
+  // actual bottle. Exclude it instead of presenting it as image evidence.
+  const bottleImage=image&&!/\/assets\/images\/ogImage_1200x630\.png(?:$|\?)/i.test(image)
+    ?image:null;
   return {
     source_url:mainURL,canonical_url:canonical?trim(canonical,1000):null,
     page_title:trim(document.title,260),h1:rootName,
     captured_at:new Date().toISOString(),
     fields,products,visible_offer:visibleOffer,offer_evidence_complete:offerEvidenceComplete,
-    image_candidate:image?{url:image,rights:'unverified_not_for_publication'}:null,
+    image_candidate:bottleImage?{url:bottleImage,rights:'unverified_not_for_publication'}:null,
     blocked,
     extraction:{type:'active_product_tab_visible_labels_prices_and_jsonld',raw_html_saved:false}
   };
