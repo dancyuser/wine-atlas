@@ -1,13 +1,24 @@
 <!doctype html>
-<html lang="ru">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Wine Atlas - снимки карточек</title><link rel="stylesheet" href="popup.css"></head>
-<body>
-<header><h1>Wine Atlas Capture</h1><p>Ручной сбор данных с открытой карточки. Никаких автоматических запросов.</p></header>
-<section><label for="catalog">1. Загрузить <code>data/wines.json</code></label><input type="file" id="catalog" accept=".json,application/json"><p id="loaded" class="hint">Каталог не загружен</p></section>
-<section><label for="target">2. Выбрать вино</label><select id="target" aria-label="Вино"><option value="">Загрузите каталог</option></select><div class="actions"><button id="open" disabled>Открыть карточку</button><button id="capture" disabled>Снять текущую вкладку</button></div></section>
-<section id="preview" hidden><h2>3. Предпросмотр</h2><pre id="summary"></pre><p id="warnings" class="warning"></p><label class="check"><input type="checkbox" id="confirmed">Проверил, что это именно выбранное вино, год и объём. Данные взяты из основной карточки, не из рекомендаций.</label><button id="save" disabled>Сохранить наблюдение</button></section>
-<section><h2>4. Выгрузка</h2><p id="progress" class="hint">Сохранено: 0</p><button id="export" disabled>Скачать проверяемый JSON</button><button id="clear" class="secondary">Очистить локальные наблюдения</button></section>
-<div id="status" role="status" aria-live="polite"></div>
-<footer>Расширение не получает cookies, пароли, заголовки или HTML целиком. Фото и цены до скидки не считаются лицензированными или подтверждёнными без отдельной проверки.</footer>
-<script src="capture.js"></script><script src="popup.js"></script>
+<html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wine Atlas - автовыгрузка</title><link rel="stylesheet" href="popup.css">
+</head><body>
+<header><h1>Wine Atlas - автовыгрузка</h1>
+<p>Все 124 карточки уже загружены в расширение. Один запуск - автоматический сбор и сохранение JSON.</p></header>
+<section class="main">
+<button id="start" class="primary">Собрать все 124 вина</button>
+<div class="actions"><button id="resume" hidden>Продолжить</button><button id="stop" class="secondary" hidden>Остановить и сохранить</button></div>
+<div id="phase" aria-live="polite">Готово к запуску</div>
+<progress id="progress" max="124" value="0"></progress>
+<div class="metrics"><span id="count">0 / 124</span><span id="exact">Точных: 0</span><span id="review">Требуют проверки: 0</span><span id="errors">Ошибок: 0</span></div>
+<p id="last" class="hint"></p>
+<p id="download-status" class="hint"></p>
+<button id="export" class="secondary" hidden>Скачать JSON ещё раз</button>
+</section>
+<section class="notice"><strong>Как работает сбор</strong>
+<p>Расширение последовательно открывает карточки в неактивных вкладках, извлекает видимые характеристики и структурированные предложения, закрывает вкладки и переходит к следующему вину. Прогресс сохраняется автоматически.</p>
+<p>При CAPTCHA, блокировке или замене карточки другое вино не подставляется. Такие адреса попадают в отчёт. Исходные фото не копируются, cookies и HTML целиком не сохраняются.</p>
+</section>
+<div id="message" role="status" aria-live="polite"></div>
+<script src="popup.js"></script>
 </body></html>
