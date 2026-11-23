@@ -308,9 +308,15 @@
     {
       "id": "c9f63273980c",
       "title": "Dow’s Late Bottled Vintage Port (LBV)",
-      "year": null,
+      "year": 2018,
       "country": "Португалия",
-      "grapes": [],
+      "grapes": [
+        "Турига Насьональ",
+        "Турига Франка",
+        "Тинта Баррока",
+        "Тинта Рориш",
+        "Тинта Као"
+      ],
       "type": "Портвейн",
       "pairings": [
         "Десерты",
@@ -332,16 +338,21 @@
           "reference_date": null
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null
     },
     {
       "id": "060e3c866e44",
       "title": "Kopke Late Bottled Vintage Port (LBV)",
-      "year": null,
+      "year": 2018,
       "country": "Португалия",
-      "grapes": [],
+      "grapes": [
+        "Турига Насьональ",
+        "Турига Франка",
+        "Тинта Рориш",
+        "Сузео"
+      ],
       "type": "Портвейн",
       "pairings": [
         "Десерты",
@@ -370,7 +381,7 @@
     {
       "id": "8433dbc66ae6",
       "title": "Kendall-Jackson Vintner’s Reserve Chardonnay",
-      "year": null,
+      "year": 2018,
       "country": "США",
       "grapes": [
         "Шардоне"
@@ -397,7 +408,7 @@
           "reference_date": null
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null
     },
