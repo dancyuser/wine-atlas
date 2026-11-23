@@ -14,7 +14,7 @@ const sandbox = {
 };
 vm.createContext(sandbox);
 vm.runInContext(original.replace(/\binit\(\);\s*$/, '')+
-  '\nglobalThis.helpers={countryValue,grapeValues,pairingValues,distinct,matched,card,state};',sandbox);
+  '\nglobalThis.helpers={countryValue,grapeValues,pairingValues,distinct,matched,card,state,metrics,criticRatingsFor,snapshotFor};',sandbox);
 const h=sandbox.helpers;
 const sample={
  id:'fixture',title:'Test Chardonnay',country:null,grapes:[],type:'Белое',
@@ -52,8 +52,12 @@ assert.equal(h.matched(sample),true);
 selectors.get('country').value='';
 const card=h.card(sample);
 assert(card.includes('Вино с ароматом цитрусов'));
-assert(!card.includes('Wine Enthusiast'),
-  'WineStyle-published scores must not be rendered');
+assert(card.includes('Wine Enthusiast'),
+  'Named expert scores published by WineStyle must be rendered');
+assert(card.includes('92 / 100'),
+  'The original critic score and scale must be preserved');
+assert(!card.includes('Оценка покупателей WineStyle'),
+  'Retailer customer ratings must not appear');
 h.state.ratingRecords.fixture=[
  {source:'Vivino',score:4.2,scale:5,scope:'vintage',vintage:2023,
    source_url:'https://www.vivino.com/wines/123'},
@@ -66,8 +70,14 @@ const ratedCard=h.card(sample);
 assert(ratedCard.includes('Vivino') && ratedCard.includes('Decanter'),
  'Independently sourced ratings must remain');
 assert(!ratedCard.includes('Wine Spectator'),
- 'Independent overlay score reported via WineStyle must also be hidden');
-assert(!ratedCard.includes('Опубликованы WineStyle'));
+ 'WineStyle links in independently curated scores must still be excluded to avoid double counting');
+assert(ratedCard.includes('Оценки критиков, опубликованные WineStyle'));
+assert(ratedCard.includes('Первоисточники и принадлежность к винтажу отдельно не проверены.'));
+assert.equal(h.state.ratingRecords.fixture.length,3);
+const metric=h.metrics(sample);
+assert.equal(metric.critics.length,1);
+assert.equal(metric.summary,91.7, 'Summary must mix exact Vivino, exact independent Decanter and WineStyle-published critic without counting WineStyle duplicates');
+assert.equal(metric.index,92, 'Exact vintage-only index should remain separately available');
 const unavailable={...sample,availability:{status:'out_of_stock',observed_on:'2026-11-23'}};
 assert.equal(h.matched(unavailable),false,
  'Products confirmed unavailable must not appear in any filter');
@@ -95,6 +105,13 @@ assert(h.card(latest).includes('23.11.2026'));
 assert(!h.card(latest).includes('Ожидаем поступление'),
  'New stock observation must override stale historic status');
 
+h.state.snapshots.fixture=[3990,'272012'];
+h.state.snapshotDate='2026-11-23';
+const enrichedCard=h.card(sample);
+assert(enrichedCard.includes('3 990')||enrichedCard.includes('3\\u00a0990'));
+assert(enrichedCard.includes('images_gen/272/272012/0_0_695x600.webp'));
+assert(enrichedCard.includes('Цена в архиве'));
+h.state.snapshots={};
 assert(card.includes('3\u00a0590')||card.includes('3 590'));
 const unmatchedPairings={
   ...sample,
