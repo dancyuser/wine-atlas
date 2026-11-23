@@ -21,7 +21,7 @@ def first_exact_product_price(text):
     if not isinstance(text, str):
         return None
     first = text.find(" Все товары ")
-    last = text.find(" Условия для бизнеса ", first + 1) if first >= 0 else -1
+    last = text.find(" Условия для бизнеса", first + 1) if first >= 0 else -1
     if first < 0 or last <= first:
         return None
     # Source header, before any related item / cross-sell.
