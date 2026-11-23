@@ -34,16 +34,19 @@ jobs:
           python -m unittest discover -s scripts -p 'test_enrichment_import.py' -v
           python -m unittest discover -s scripts -p 'test_catalog_rebuild.py' -v
           python -m unittest discover -s scripts -p 'test_verified_offers.py' -v
+          python -m unittest discover -s scripts -p 'test_site_package.py' -v
           node --check app.js
           node scripts/test_theme.mjs
           node scripts/test_enrichment_ui.cjs
           node scripts/test_responsive_ui.mjs
+      - name: Assemble minimal Pages artifact
+        run: python scripts/build_site.py
       - uses: actions/configure-pages@v5
         with:
           enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - name: Wait for Pages artifact indexing
         run: sleep 15
       - id: deployment
