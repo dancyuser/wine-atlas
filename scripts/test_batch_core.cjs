@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto'),assert=require('node:assert/strict');
 const folder=path.resolve(__dirname,'../extension');
 const context={URL,Date,Set,Number,String,Array,decodeURIComponent};
 vm.createContext(context);
@@ -11,6 +11,28 @@ const list=api.validateTargets(bundled);
 assert.equal(list.length,124,'All 124 wishlist entries must be bundled, including excluded variants');
 assert.equal(list.filter(x=>!x.excluded).length,110);
 assert.equal(new Set(list.map(x=>x.id)).size,124);
+
+const dataBytes=fs.readFileSync(path.join(__dirname,'..','data','wines.json'));
+const expectedSha=crypto.createHash('sha1').update('blob '+dataBytes.length+'\\0'.replace('\\0','\0')).update(dataBytes).digest('hex');
+assert.equal(bundled.catalog_blob_sha,expectedSha,'The bundled queue must match the exact current catalog blob');
+const catalog=JSON.parse(dataBytes.toString('utf8'));
+const sourceById=new Map(catalog.records.map(r=>[r.id,r]));
+for(const target of list){
+ const wine=sourceById.get(target.id);
+ assert(wine,'Unknown target id: '+target.id);
+ const store=wine.stores[0];
+ assert.equal(target.url,store.url,'Bundled URL changed for '+wine.title);
+ assert.equal(target.title,wine.title,'Bundled title changed');
+ assert.equal(target.year,wine.year??null,'Bundled year changed');
+ assert.equal(target.volume_l,wine.volume_l??null,'Bundled bottle size changed');
+ assert.equal(target.excluded,wine.availability?.status==='out_of_stock'||
+   wine.publication_review?.status==='excluded','Bundled exclusion status changed');
+ const verifiedName=store.enrichment_status?.status==='verified'&&store.product_details?.source_url===store.url
+   ?store.product_details?.full_name:null;
+ assert.equal(target.expected_product_name??null,verifiedName??null,
+   'Bundled exact-verified retail name changed: '+wine.title);
+}
+
 const t={id:'1',title:'Kopke Late Bottled Vintage Port (LBV)',year:2018,volume_l:0.75,
   url:'https://spb.winestyle.ru/products/Kopke-LBV-2018.html'};
 const c={
