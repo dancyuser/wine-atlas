@@ -144,6 +144,67 @@ def verified_identity(target, capture, automated=False):
     return True, 'exact_wine_vintage_and_volume'
 
 
+def numeric_displayed_rubles(text):
+    """Match one literal, visible RUB amount; not a range or inferred MSRP."""
+    if not isinstance(text, str) or len(text)>90:
+        return None
+    m=re.fullmatch(r'\s*(\d[\d \u00a0\u202f]*)\s*(?:₽|руб\.?)\s*',text,re.I)
+    if not m:
+        return None
+    amount=int(re.sub(r'[\s\u00a0\u202f]','',m.group(1)))
+    return amount if 100<=amount<=1000000 else None
+
+
+def verified_visible_main_offer(target, capture):
+    """Use only explicitly observed WineStyle main-product price and stock.
+
+    Browser capture must already pass independently verified full name, URL,
+    vintage, and bottle size. This provenance is separate from Product JSON-LD.
+    """
+    source=canonical_url(capture.get('source_url'))
+    store=target['stores'][0]
+    if source is None or source[0]!='spb.winestyle.ru' or source!=canonical_url(store['url']):
+        return None
+    v=capture.get('visible_offer')
+    if not isinstance(v,dict) or (v.get('method')!='visible_main_product_price'
+        or v.get('scope')!='winestyle_primary_product_panel'
+        or v.get('price_currency')!='RUB'
+        or capture.get('offer_evidence_complete') is not True):
+        return None
+    # Never silently privilege a visible price if conflicting or unparseable
+    # Product/Offer JSON-LD also appeared on the same page.
+    if any(isinstance(p,dict) and p.get('offers') for p in capture.get('products') or []):
+        return None
+    price=numeric_displayed_rubles(v.get('price_evidence'))
+    if price is None or type(v.get('price_rub')) is not int or v['price_rub']!=price:
+        return None
+    availability=v.get('availability')
+    evidence=v.get('availability_evidence')
+    if not isinstance(evidence,str) or len(evidence)>180:
+        return None
+    if availability=='in_stock':
+        if not re.match(r'^в наличии(?:\s|$)',evidence.strip(),re.I):
+            return None
+    elif availability=='out_of_stock':
+        if not re.match(r'^(?:ожидаем поступление|нет в наличии|товар отсутствует)(?:\s|$)',evidence.strip(),re.I):
+            return None
+    else:
+        return None
+    regular=None
+    if v.get('regular_price_rub') is not None or v.get('regular_price_evidence') is not None:
+        regular=numeric_displayed_rubles(v.get('regular_price_evidence'))
+        if regular is None or type(v.get('regular_price_rub')) is not int or (
+            regular!=v['regular_price_rub'] or regular<=price):
+            return None
+    return {'price_rub':price,'regular_price_rub':regular,
+            'availability':availability,'product_name':capture['h1'],
+            'source_url':capture['source_url'],
+            'verification_method':'exact_main_product_visible_price',
+            'price_evidence':v['price_evidence'],
+            'availability_evidence':evidence.strip(),
+            'regular_price_evidence':v.get('regular_price_evidence') if regular is not None else None}
+
+
 def apply_observations(catalog, observations, automated=False):
     catalog = copy.deepcopy(catalog)
     index = {r['id']: r for r in catalog['records']}
@@ -247,6 +308,21 @@ def apply_observations(catalog, observations, automated=False):
                     if previous != offer:
                         store['live_offer'] = offer
                         summary['live_offers_updated'] += 1
+        # WineStyle usually publishes its offer only as visible main-page HTML.
+        # In that case, a strictly identified browser capture provides a
+        # separate documented offer without inventing JSON-LD or discount.
+        if (automated and not any(isinstance(p,dict) and p.get('offers')
+                                  for p in captured.get('products') or [])):
+            visible=verified_visible_main_offer(r,captured)
+            if visible and observed_on >= (review.get('checked_at') or
+                   store.get('enrichment_status',{}).get('checked_at','9999-12-31')):
+                previous=store.get('live_offer') or {}
+                if previous.get('observed_on','')<=observed_on:
+                    visible['observed_on']=observed_on
+                    visible['capture_method']='automated_browser_batch'
+                    if visible!=previous:
+                        store['live_offer']=visible
+                        summary['live_offers_updated']+=1
     return catalog, summary
 
 
