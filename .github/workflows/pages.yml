@@ -21,6 +21,7 @@ jobs:
       - name: Validate site data and JavaScript
         run: |
           python scripts/validate_catalog.py
+          python scripts/test_publication_review.py
           python scripts/test_titles.py
           python scripts/validate_ratings.py
           python scripts/test_vivino_reconciliation.py
