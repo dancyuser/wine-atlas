@@ -1,7 +1,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const fmt=new Intl.NumberFormat('ru-RU');
-const state={records:[],ratingRecords:{},unrated:{},snapshots:{},snapshotDate:null,favorites:new Set(),scope:'all'};
+const state={records:[],ratingRecords:{},unrated:{},snapshots:{},snapshotDate:null,researchedPhotos:{},favorites:new Set(),scope:'all'};
 const options={country:'country',grape:'grapes',type:'type',pairing:'pairings'};
 const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const cleanUrl=s=>{try{const u=new URL(s);return u.protocol==='https:'?u.href:null}catch{return null}};
@@ -143,13 +143,15 @@ function wineStyleMarkup(r){
  '<p class="rating-hint">Данные WineStyle на '+date(d.checked_at)+' · <a href="'+safe(s.url)+'" target="_blank" rel="noopener noreferrer">Источник</a></p></details>';
 }
 function photoMarkup(r){
- const snap=snapshotFor(r),p=r.photo||{};
- const url=snap?.photo||cleanUrl(p.url),source=snap?.source||cleanUrl(p.source_url);
- const backup=snap?cleanUrl(p.url):null;
+ const snap=snapshotFor(r),p=r.photo||{},raw=state.researchedPhotos[r.id];
+ const researched=raw&&raw.year===r.year?raw:null;
+ const url=snap?.photo||cleanUrl(researched?.url)||cleanUrl(p.url);
+ const source=snap?.source||cleanUrl(researched?.source_url)||cleanUrl(p.source_url);
+ const backup=(snap||researched)?cleanUrl(p.url):null;
  return '<div class="bottle-media">'+
  (url?'<img class="bottle-photo" src="'+safe(url)+'"'+(backup?' data-fallback="'+safe(backup)+'"':'')+' alt="Бутылка '+safe(r.title)+(r.year?' '+r.year:'')+'" loading="lazy" decoding="async" referrerpolicy="no-referrer">':'')+
  '<div class="bottle-placeholder'+(url?' hidden-photo-placeholder':'')+'" aria-hidden="true"><span class="bottle-silhouette"></span></div>'+
- (source&&url?'<a class="photo-credit" href="'+safe(source)+'" target="_blank" rel="noopener noreferrer">Фото: '+(snap?'WineStyle':safe(p.source||'источник'))+'</a>':'<span class="photo-credit photo-missing">Фото не найдено</span>')+
+ (source&&url?'<a class="photo-credit" href="'+safe(source)+'" target="_blank" rel="noopener noreferrer">Фото: '+(snap?'WineStyle':researched?safe(researched.source):safe(p.source||'источник'))+'</a>':'<span class="photo-credit photo-missing">Фото не найдено</span>')+
  '</div>';
 }
 
@@ -231,6 +233,14 @@ async function init(){
       }else console.warn('Invalid product snapshot manifest');
     }
   }catch(e){console.warn('Price/photo snapshot unavailable',e)}
+  try{
+    const extraPhotos=await fetch('./data/researched-photos-2026-11-23.json',{cache:'no-cache'});
+    if(extraPhotos.ok){
+      const d=await extraPhotos.json();
+      if(d.version===1&&Object.keys(d.records||{}).length===8)state.researchedPhotos=d.records;
+      else console.warn('Invalid supplementary photo catalog');
+    }
+  }catch(e){console.warn('Supplementary photos unavailable',e)}
   try{const extra=await fetch('./data/ratings.json',{cache:'no-cache'});if(extra.ok){const o=await extra.json();state.ratingRecords=o.records||{};state.unrated=o.unrated||{}}}catch(e){console.warn('Ratings unavailable',e)}
   try{const saved=JSON.parse(localStorage.getItem('wine-atlas-favorites')||'[]');if(Array.isArray(saved))state.favorites=new Set(saved.filter(s=>typeof s==='string'))}catch{}
   $('stat-total').textContent=state.records.length;
