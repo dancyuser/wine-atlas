@@ -18,7 +18,10 @@ const chrome={
  runtime:{getURL:p=>'chrome-extension://example/'+p,
   onMessage:event(),onStartup:event(),onInstalled:event()},
  storage:{local:{
-  async get(k){return {[k]:memory[k]};},
+  async get(k){
+   if(Array.isArray(k))return Object.fromEntries(k.map(key=>[key,memory[key]]));
+   return {[k]:memory[k]};
+  },
   async set(v){Object.assign(memory,v);}},
   onChanged:event()},
  tabs:{
