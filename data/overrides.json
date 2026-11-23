@@ -153,9 +153,6 @@
   "e3e9c91e71bc": {
     "title": "Rotari Blanc de Blancs Extra Brut Trento DOC"
   },
-  "5e980b14c4d5": {
-    "title": "Canti Moscato d’Asti DOCG"
-  },
   "85f7014559dd": {
     "title": "Can Sumoi Ancestral Montonega"
   },
@@ -420,5 +417,20 @@
   },
   "5b9b46b0b3e6": {
     "title": "Maturana Wines Naranjo Torontel Maule Valley DO"
+  },
+  "a1faf8b0af1d": {
+    "title": "Canti Moscato d’Asti DOCG",
+    "year": 2023,
+    "country": "Италия",
+    "grapes": [
+      "Москато"
+    ],
+    "type": "Игристое",
+    "pairings": [
+      "Аперитив",
+      "Фрукты",
+      "Десерты"
+    ],
+    "volume_l": 0.75
   }
 }
