@@ -4802,14 +4802,19 @@
               "body": "Насыщенность: лёгкое",
               "aging_potential": "Потенциал хранения: 1-2 года",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Белое сладкое Moscato d'Asti — это легкое шипучее вино, изготовленное из ароматических сортов винограда сорта Мускат, произрастающего в регионе Пьемонт. Вино входит в линейку \"Premium Estate\", отражающую истинный итальянский характер и гордость за св"
+              "description_excerpt": "Описание: Белое сладкое Moscato d'Asti — это легкое шипучее вино, изготовленное из ароматических сортов винограда сорта Мускат, произрастающего в регионе Пьемонт. Вино входит в линейку \"Premium Estate\", отражающую истинный итальянский характер и гордость за св",
+              "wine_style": "Primary product style heading in exact URL + SHA-256 verified browser HTML archive dated 2026-11-23"
             },
             "raw_product_text_sha256": "03cab9f8b94adba46d0fb29cdf125c892233ba3223559bd0475ada542667fb16",
             "raw_product_text_chars": 6579,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "wine_style": "Игристое-белое, Сладкое",
+            "field_checked_at": {
+              "wine_style": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -5095,14 +5100,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 1-5 лет",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: \"Faive\" — итальянское мягкое игристое вино со сливочным вкусом и длительным послевкусием. Название вина происходит от слова \"Faville\", что на венецианском диалекте означает мелкие красные искры, которые отлетают от костра и легко и свободно переносят"
+              "description_excerpt": "Описание: \"Faive\" — итальянское мягкое игристое вино со сливочным вкусом и длительным послевкусием. Название вина происходит от слова \"Faville\", что на венецианском диалекте означает мелкие красные искры, которые отлетают от костра и легко и свободно переносят",
+              "wine_style": "Primary product style heading in exact URL + SHA-256 verified browser HTML archive dated 2026-11-23"
             },
             "raw_product_text_sha256": "c20dfb442fc08f4552fb56cd05bf16cc0bf9bdf97dc6de61bed7705a58dca95c",
             "raw_product_text_chars": 5843,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "wine_style": "Игристое-розовое, Сухое, Брют",
+            "field_checked_at": {
+              "wine_style": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -5482,14 +5492,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 1-5 лет",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: \"Faive\" — итальянское мягкое игристое вино со сливочным вкусом и длительным послевкусием. Название вина происходит от слова \"Faville\", что на венецианском диалекте означает мелкие красные искры, которые отлетают от костра и легко и свободно переносят"
+              "description_excerpt": "Описание: \"Faive\" — итальянское мягкое игристое вино со сливочным вкусом и длительным послевкусием. Название вина происходит от слова \"Faville\", что на венецианском диалекте означает мелкие красные искры, которые отлетают от костра и легко и свободно переносят",
+              "wine_style": "Primary product style heading in exact URL + SHA-256 verified browser HTML archive dated 2026-11-23"
             },
             "raw_product_text_sha256": "505e738db74c1a9b507be88d9bc07a98faf5dbbf24c981fef7414ddab7ea7d25",
             "raw_product_text_chars": 5864,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "wine_style": "Игристое-розовое, Сухое, Брют",
+            "field_checked_at": {
+              "wine_style": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -5770,14 +5785,19 @@
               "pairing_notes": "Подходит к: аперитив, паста, сыры, закуски, десерты, фрукты, легкие блюда",
               "body": "Насыщенность: лёгкое",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Белое сухое игристое вино Montelliana, Prosecco Treviso DOC Extra Dry создано преимущественно из винограда сорта Глера, выращенного в провинции Тревизо в регионе Венето. Собранный виноград мягко прессуют, после ферментируют методом Charmat. Вино прек"
+              "description_excerpt": "Описание: Белое сухое игристое вино Montelliana, Prosecco Treviso DOC Extra Dry создано преимущественно из винограда сорта Глера, выращенного в провинции Тревизо в регионе Венето. Собранный виноград мягко прессуют, после ферментируют методом Charmat. Вино прек",
+              "wine_style": "Primary product style heading in exact URL + SHA-256 verified browser HTML archive dated 2026-11-23"
             },
             "raw_product_text_sha256": "b42be90eb8db479e6646e4fada53688a7873803a27619b73111f9c260908e800",
             "raw_product_text_chars": 4398,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "wine_style": "Игристое-белое, Сухое",
+            "field_checked_at": {
+              "wine_style": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -5900,14 +5920,19 @@
               "pairing_notes": "Подходит к: рыба, белое мясо, аперитив, салат, овощи, легкие блюда",
               "body": "Насыщенность: среднее",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Grande Alberone, Moscato Spumante Dolce — изысканное сладкое вино, привлекающее внимание фруктово-цветочными акцентами во вкусе и аромате. Виноград сорта Москато Бьянко произрастает на известково-месчаных почвах на высоте 200-250 метров над уровнем м"
+              "description_excerpt": "Описание: Grande Alberone, Moscato Spumante Dolce — изысканное сладкое вино, привлекающее внимание фруктово-цветочными акцентами во вкусе и аромате. Виноград сорта Москато Бьянко произрастает на известково-месчаных почвах на высоте 200-250 метров над уровнем м",
+              "wine_style": "Primary product style heading in exact URL + SHA-256 verified browser HTML archive dated 2026-11-23"
             },
             "raw_product_text_sha256": "59fdd5ce6a30400588cf8238dcf7467319a26490b9bed040a9a1d70a07830e27",
             "raw_product_text_chars": 4483,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "wine_style": "Игристое-белое, Сладкое",
+            "field_checked_at": {
+              "wine_style": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -6160,14 +6185,19 @@
               "body": "Насыщенность: лёгкое",
               "aging_potential": "Потенциал хранения: 2 года",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Dulong, Cremant de Bordeaux Brut — нежное, свежее, сбалансированное белое игристое вино с прекрасными тонкими пузырьками. В купаж вина входит виноград сортов Семильон и Каберне Фран из Бордо. Собранный вручную виноград прессуется для извлечения сока,"
+              "description_excerpt": "Описание: Dulong, Cremant de Bordeaux Brut — нежное, свежее, сбалансированное белое игристое вино с прекрасными тонкими пузырьками. В купаж вина входит виноград сортов Семильон и Каберне Фран из Бордо. Собранный вручную виноград прессуется для извлечения сока,",
+              "wine_style": "Primary product style heading in exact URL + SHA-256 verified browser HTML archive dated 2026-11-23"
             },
             "raw_product_text_sha256": "8a91f011e6d6e9996a40c820d52757fa2f5d910bd5ffcd8ad529da516045f4d5",
             "raw_product_text_chars": 3877,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "wine_style": "Игристое-белое, Сухое, Брют",
+            "field_checked_at": {
+              "wine_style": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -6289,14 +6319,19 @@
               "volume_l": "Объем: 0.75 л",
               "pairing_notes": "Подходит к: десерты, фрукты, дижестив, фруктовый десерт",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Изысканное, нежное игристое вино Lucien Albrecht, Brut привлекает к себе внимание с первых секунд. Оно обладает восхитительным ароматом и элегантным вкусом с чарующим послевкусием. В производстве вина используется виноград сортов Пино Оссеруа (Оссеру"
+              "description_excerpt": "Описание: Изысканное, нежное игристое вино Lucien Albrecht, Brut привлекает к себе внимание с первых секунд. Оно обладает восхитительным ароматом и элегантным вкусом с чарующим послевкусием. В производстве вина используется виноград сортов Пино Оссеруа (Оссеру",
+              "wine_style": "Primary product style heading in exact URL + SHA-256 verified browser HTML archive dated 2026-11-23"
             },
             "raw_product_text_sha256": "189b3b5edf96ead388cf261a83dd5f844e6988226b6ec56d960a15ab7fa9dc1e",
             "raw_product_text_chars": 4299,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "wine_style": "Игристое-белое, Сухое, Брют",
+            "field_checked_at": {
+              "wine_style": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
