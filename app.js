@@ -78,7 +78,8 @@ function metricRow(m,r){
 function ratingsDetails(r,m){
  const independent=m.all.map(x=>{
   const url=cleanUrl(x.source_url);
-  return '<li><span>'+(url?'<a href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">'+safe(x.source)+'</a>':safe(x.source))+(x.scope==='all_vintages'?' · все урожаи':' · '+safe(String(x.vintage||'год не указан'))+'</span><strong>'+num(x.score)+' / '+x.scale+'</strong></li>';
+  const suffix=x.scope==='all_vintages'?' · все урожаи':' · '+String(x.vintage||'год не указан');
+  return '<li><span>'+(url?'<a href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">'+safe(x.source)+'</a>':safe(x.source))+safe(suffix)+'</span><strong>'+num(x.score)+' / '+x.scale+'</strong></li>';
  }).join('');
  const retailer=retailerRatingsFor(r);
  const published=retailer.map(x=>'<li><span>'+safe(x.source)+'</span><strong>'+num(x.score)+' / '+x.scale+'</strong></li>').join('');
