@@ -5,7 +5,7 @@ const vm=require('node:vm');
 const path=require('node:path');
 const assert=require('node:assert/strict');
 const source=fs.readFileSync(path.join(__dirname,'..','extension','capture.js'),'utf8');
-function collect(title='Kopke LBV 2018'){
+function collect(title='Kopke LBV 2018', extraOffers=0){
  const sourceUrl='https://shop.example.com/bottle/2018';
  const dom={
   title,
@@ -20,6 +20,7 @@ function collect(title='Kopke LBV 2018'){
      name:'Kopke Late Bottled Vintage Port 2018, 750 ml',url:sourceUrl,
      offers:[
       {'@type':'Offer',price:'6348',priceCurrency:'RUB',availability:'https://schema.org/InStock'},
+      ...Array.from({length:extraOffers},(_,i)=>({'@type':'Offer',price:String(7000+i),priceCurrency:'RUB',availability:'https://schema.org/OutOfStock'})),
       {'@type':'AggregateOffer',lowPrice:'300',highPrice:'8000',price:'4500',priceCurrency:'RUB'}
      ]
     })}];
@@ -45,6 +46,9 @@ assert.equal(result.fields.volume_l.value,'0.75 л');
 assert.equal(result.products.length,1);
 assert.equal(result.products[0].offers.length,1,'AggregateOffer must be rejected');
 assert.equal(result.products[0].offers[0].price,'6348');
+assert.equal(result.offer_evidence_complete,true);
+assert.equal(collect('Kopke LBV 2018',4).products[0].offers.length,5, 'Preserve all conflicting offers');
+assert.equal(collect('Kopke LBV 2018',24).offer_evidence_complete,false, 'Never certify truncated price evidence');
 assert.equal(result.source_url,'https://shop.example.com/bottle/2018');
 assert.equal(result.extraction.raw_html_saved,false);
 assert.equal(result.blocked,false);
