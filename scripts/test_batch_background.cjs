@@ -9,6 +9,8 @@ const chosen=ids.map(id=>bundled.targets.find(t=>t.id===id));
 assert(chosen.every(Boolean));
 const file={...bundled,total:chosen.length,targets:chosen};
 const memory={},tabMap=new Map(),downloads=[];
+let onDownload=null;
+const clone=value=>value===undefined?undefined:JSON.parse(JSON.stringify(value));
 const event=()=>({listeners:[],addListener(fn){this.listeners.push(fn)}});
 let clock=0,nextId=10;
 class FakeDate extends Date {
@@ -19,10 +21,10 @@ const chrome={
   onMessage:event(),onStartup:event(),onInstalled:event()},
  storage:{local:{
   async get(k){
-   if(Array.isArray(k))return Object.fromEntries(k.map(key=>[key,memory[key]]));
-   return {[k]:memory[k]};
+   if(Array.isArray(k))return Object.fromEntries(k.map(key=>[key,clone(memory[key])]));
+   return {[k]:clone(memory[k])};
   },
-  async set(v){Object.assign(memory,v);}},
+  async set(v){for(const [key,value] of Object.entries(v))memory[key]=clone(value);}},
   onChanged:event()},
  tabs:{
   onUpdated:event(),onRemoved:event(),
@@ -52,6 +54,7 @@ const chrome={
  action:{async setBadgeText(){},async setBadgeBackgroundColor(){}},
  alarms:{onAlarm:event(),async create(){},async clear(){return true}},
  downloads:{async download({url,filename,saveAs}){
+  if(onDownload)await onDownload();
   assert.equal(saveAs,false);
   assert(url.startsWith('data:application/json;charset=utf-8,'));
   const payload=JSON.parse(decodeURIComponent(url.split(',').slice(1).join(',')));
@@ -99,6 +102,26 @@ async function run(){
  // Simulate popup closure: storage alone must retain the finished run.
  const snapshot=JSON.parse(JSON.stringify(job));
  assert.equal(snapshot.observations.length,4);
- console.log('BACKGROUND BATCH TESTS PASSED: automatic tabs, 4 targets, NV review, auto JSON download');
+ // Reproduce a concurrent capture completing during an export. The storage
+ // mock clones values like Chrome, so stale whole-job writes lose data.
+ const racing=clone(memory.wineAtlasBatchV2);
+ racing.status='running';racing.cursor=1;
+ racing.observations=racing.observations.slice(0,1);
+ racing.download_status=null;
+ memory.wineAtlasBatchV2=racing;
+ onDownload=async()=>{
+   await new Promise(resolve=>setTimeout(resolve,2));
+   const newer=clone(memory.wineAtlasBatchV2);
+   newer.cursor=2;
+   newer.observations.push({target_id:'captured_during_export'});
+   memory.wineAtlasBatchV2=newer;
+ };
+ await vm.runInContext('download(await read(),true)',context);
+ const after=memory.wineAtlasBatchV2;
+ assert.equal(after.cursor,2,'Download metadata cannot revert capture progress');
+ assert.equal(after.observations.length,2,'Download metadata cannot erase observations');
+ assert.equal(after.observations[1].target_id,'captured_during_export');
+ assert.equal(memory.wineAtlasBatchDownloadV2.status,'success');
+ console.log('BACKGROUND BATCH TESTS PASSED: 4 tabs, NV review, auto export, concurrent-write integrity');
 }
 run().catch(e=>{console.error(e);process.exitCode=1});
