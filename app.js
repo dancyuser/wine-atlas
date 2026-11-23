@@ -72,12 +72,17 @@ function snapshotFor(r){
 }
 function liveOfferFor(r){
  const store=r.stores?.[0], offer=store?.live_offer, review=r.publication_review;
- if(!offer||review?.status!=='verified'||offer.verification_method!=='exact_jsonld_product')return null;
+ if(!offer||offer.verification_method!=='exact_jsonld_product'||review?.status==='excluded')return null;
+ const reviewed=review?.status==='verified';
+ const manualArchive=offer.capture_method==='user_confirmed_active_browser_tab'&&
+    store?.enrichment_status?.status==='verified'&&store?.product_details?.source_url===store.url;
+ if(!reviewed&&!manualArchive)return null;
  if(!/^\d{4}-\d{2}-\d{2}$/.test(offer.observed_on||''))return null;
- if(offer.observed_on<review.checked_at || (store.price_checked_at&&offer.observed_on<store.price_checked_at))return null;
+ const reviewedAt=reviewed?review.checked_at:store.enrichment_status.checked_at;
+ if(!reviewedAt||offer.observed_on<reviewedAt || (store.price_checked_at&&offer.observed_on<store.price_checked_at))return null;
  if(!Number.isInteger(offer.price_rub)||offer.price_rub<=0)return null;
  try {
-  const a=new URL(store.url),b=new URL(offer.source_url),c=new URL(review.final_url);
+  const a=new URL(store.url),b=new URL(offer.source_url),c=new URL(reviewed?review.final_url:store.enrichment_status.source_url);
   const normalized=u=>u.hostname.toLowerCase()+decodeURIComponent(u.pathname).replace(/\/$/,'')+u.search;
   if(a.protocol!=='https:'||b.protocol!=='https:'||normalized(a)!==normalized(b)||normalized(b)!==normalized(c))return null;
  }catch{return null}
