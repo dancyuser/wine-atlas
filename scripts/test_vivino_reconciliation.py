@@ -29,7 +29,8 @@ for wine in wines.values():
     if values:
         assert len(values)==1
         quoted.append((wine,values[0]))
-assert len(quoted)==audit['wineStyle_vivino_display_observations']==32
+assert audit['wineStyle_vivino_display_observations']==33, 'The archived 124-item snapshot must remain immutable'
+assert len(quoted)==32, 'Removing Myskhako reduces current retailer Vivino quotations by one'
 matches=differences=0
 for wine,v in quoted:
     direct=next(x for x in obj['records'][wine['id']] if x['source']=='Vivino')
