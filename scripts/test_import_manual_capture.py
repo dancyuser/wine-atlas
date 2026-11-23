@@ -165,6 +165,32 @@ class ManualImportTests(unittest.TestCase):
         self.assertEqual(report['live_offers_updated'],0)
         self.assertEqual(report['rejected'][0][1],'main_product_name_mismatch')
 
+    def test_automated_undated_legacy_capture_revalidated_without_inventing_year(self):
+        o=copy.deepcopy(OBS)
+        o['capture_method']='automated_browser_batch'
+        o['reviewer_confirmed']=False
+        o['verification']={'status':'needs_review','reason':'catalog_vintage_unspecified'}
+        o['capture']['h1']='Kopke LBV Porto, 750 ml'
+        o['capture']['products']=[]
+        r=copy.deepcopy(RECORD)
+        r['year']=None
+        c,report=apply_observations({'records':[r]},[o],automated=True)
+        self.assertEqual(report['accepted_identity'],1)
+        self.assertIsNone(c['records'][0]['year'])
+        self.assertEqual(report['details_added'],1)
+
+    def test_undated_capture_with_seller_vintage_must_be_rejected(self):
+        o=copy.deepcopy(OBS)
+        o['capture_method']='automated_browser_batch'
+        o['reviewer_confirmed']=False
+        o['verification']={'status':'needs_review','reason':'catalog_vintage_unspecified'}
+        o['capture']['h1']='Kopke LBV Porto 2025, 750 ml'
+        o['capture']['products']=[]
+        r=copy.deepcopy(RECORD)
+        r['year']=None
+        _,report=apply_observations({'records':[r]},[o],automated=True)
+        self.assertEqual(report['rejected'][0][1],'unexpected_vintage_on_undated_product')
+
     def test_verified_metadata_and_price_separate(self):
         catalog, report = self.run_import()
         r = catalog['records'][0]
