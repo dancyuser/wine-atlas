@@ -41,6 +41,48 @@ class ManualImportTests(unittest.TestCase):
             [copy.deepcopy(observation or OBS)]
         )
 
+    def test_one_click_auto_import_requires_no_individual_review(self):
+        o=copy.deepcopy(OBS)
+        o['reviewer_confirmed']=False
+        o['capture_method']='automated_browser_batch'
+        o['verification']={'status':'exact','reason':'verified_url_title_vintage_volume'}
+        catalog,report=apply_observations({'records':[copy.deepcopy(RECORD)]},[o],automated=True)
+        store=catalog['records'][0]['stores'][0]
+        self.assertEqual(report['accepted_identity'],1)
+        self.assertEqual(store['live_offer']['capture_method'],'automated_browser_batch')
+        self.assertEqual(store['live_offer']['price_rub'],6348)
+        self.assertEqual(store['research_details']['source_kind'],'automated_verified_original_seller')
+        self.assertEqual(store['research_details']['color'],'Глубокий рубиновый')
+        self.assertNotIn('ratings',store['research_details'])
+        self.assertNotIn('image_url',store['research_details'])
+
+    def test_auto_import_cannot_bypass_own_identity_gate(self):
+        o=copy.deepcopy(OBS)
+        o['reviewer_confirmed']=False
+        o['capture_method']='automated_browser_batch'
+        o['verification']={'status':'needs_review'}
+        _,report=apply_observations({'records':[copy.deepcopy(RECORD)]},[o],automated=True)
+        self.assertEqual(report['rejected'][0][1],'automated_identity_not_verified')
+
+    def test_auto_import_rechecks_name_and_variant_again(self):
+        o=copy.deepcopy(OBS)
+        o['reviewer_confirmed']=False
+        o['capture_method']='automated_browser_batch'
+        o['verification']={'status':'exact'}
+        o['capture']['h1']='Dow LBV Port 2018 750 ml'
+        _,report=apply_observations({'records':[copy.deepcopy(RECORD)]},[o],automated=True)
+        self.assertEqual(report['rejected'][0][1],'main_product_name_mismatch')
+
+    def test_auto_import_rejected_when_excluded(self):
+        o=copy.deepcopy(OBS)
+        o['reviewer_confirmed']=False
+        o['capture_method']='automated_browser_batch'
+        o['verification']={'status':'exact'}
+        r=copy.deepcopy(RECORD)
+        r['publication_review']={'status':'excluded','checked_at':'2026-11-22'}
+        _,report=apply_observations({'records':[r]},[o],automated=True)
+        self.assertEqual(report['rejected'][0][1],'not_approved_for_publication')
+
     def test_verified_metadata_and_price_separate(self):
         catalog, report = self.run_import()
         r = catalog['records'][0]
