@@ -61,7 +61,12 @@ const bichotValid={...replaced,h1:'Albert Bichot Origines Chardonnay Bourgogne A
  size:'750 ml',url:bichot.url}]};
 assert.equal(api.check(bichot,bichotValid).status,'exact');
 
-assert.equal(api.check({...t,year:null},c).reason,'catalog_vintage_unspecified');
+assert.equal(api.check({...t,year:null},c).reason,'unexpected_vintage_on_undated_product');
+const noYear={...c,h1:'Kopke LBV Porto 750 ml',
+ products:[{name:'Kopke Late Bottled Vintage Porto 750 ml',size:'750 ml',url:t.url}],
+ page_title:'Kopke LBV Porto 0.75 л'};
+assert.equal(api.check({...t,year:null},noYear).status,'exact',
+ 'Undated catalog products should not demand a nonexistent vintage');
 assert.equal(api.identityUrl(t.url+'?session=secret'),api.identityUrl(t.url+'?session=secret'));
 assert.notEqual(api.identityUrl(t.url+'?session=secret'),api.identityUrl(t.url));
 assert.equal(api.identityUrl('http://spb.winestyle.ru/products/a'),null);
