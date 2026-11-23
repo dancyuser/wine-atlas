@@ -19,11 +19,11 @@ PUBLIC = (
 
 
 def build_site(output: Path):
-    output = output.resolve()
-    if output == ROOT.resolve() or ROOT.resolve() in output.parents and output.name == ".":
-        raise ValueError("The public output may not overwrite repository root")
     if output.is_symlink():
         raise ValueError("Refusing symlink output")
+    output = output.resolve()
+    if output == ROOT.resolve() or output in ROOT.resolve().parents:
+        raise ValueError("The public output may not overwrite repository root or ancestors")
     if output.exists():
         shutil.rmtree(output)
     output.mkdir(parents=True)
