@@ -133,6 +133,7 @@ $('capture').addEventListener('click',async ()=>{
   const warnings=[];
   if(!verification.url_match)warnings.push('URL отличается от выбранной карточки: сохранение запрещено.');
   if(capture.blocked)warnings.push('Страница недоступна или содержит проверку доступа.');
+  if(capture.offer_evidence_complete!==true)warnings.push('Неполная разметка JSON-LD: импорт цены и наличия запрещён.');
   if(verification.year_conflict||verification.volume_conflict)warnings.push('Другой винтаж или объём: не сохраняйте данные.');
   if(!verification.year_confirmed&&target.year!=null)warnings.push('Год не подтверждён заголовком или отдельным полем. Импортер отвергнет обновление.');
   if(!verification.volume_confirmed)warnings.push('Объём не подтверждён. Импортер отвергнет обновление.');
