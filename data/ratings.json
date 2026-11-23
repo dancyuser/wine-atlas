@@ -1943,32 +1943,59 @@
         "observed_on": "2026-11-22",
         "note": "Vivino: общая оценка вина; рейтинг выбранного урожая не подтвержден, поэтому исключен из сводного индекса."
       }
+    ],
+    "5427ef8902aa": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/pitars-prosecco-brut/w/2179084",
+        "source_kind": "vivino_primary_alias_verified",
+        "observed_on": "2026-11-23",
+        "note": "WineStyle product H1 explicitly says Pitars Prosecco DOC Brut, so match non-vintage Pitars Prosecco Brut; the bare wishlist title had omitted Brut."
+      }
+    ],
+    "0d2ee38169c9": [
+      {
+        "source": "Vivino",
+        "score": 4.1,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://www.vivino.com/en/the-chocolate-tube-primitivo-puglia/w/4406268",
+        "source_kind": "vivino_primary_alias_verified",
+        "observed_on": "2026-11-23",
+        "note": "Vivino calls the wine The Chocolate Tube Primitivo; Mare Magnum is the producer/distributor on WineStyle. 2023 appears as 4.1 in Vivino's compare-vintages data."
+      }
+    ],
+    "cd226588d1df": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "source_url": "https://www.vivino.com/en/envy-fol-g-s-m/w/2656744",
+        "source_kind": "vivino_primary_alias_verified",
+        "observed_on": "2026-11-23",
+        "note": "Vivino lists EnvyFol G.S.M 2022 as 3.9 (98 ratings). Also agrees with 3.9/5 Vivino shown by WineStyle; Lavau branding not part of Vivino winery name."
+      }
+    ],
+    "e552320d1248": [
+      {
+        "source": "Vivino",
+        "score": 3.5,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "source_url": "https://www.vivino.com/en/cantina-di-santadi-antigua-monica-di-sardegna/w/1397648",
+        "source_kind": "vivino_primary_alias_verified",
+        "observed_on": "2026-11-23",
+        "note": "Exact producer Cantina di Santadi and Antigua DOC Monica di Sardegna match. 3.5 applies to all vintages; 2024 rating is not independently published."
+      }
     ]
   },
-  "unrated": {
-    "5427ef8902aa": {
-      "status": "ambiguous_product",
-      "source_url": null,
-      "checked_on": "2026-11-22",
-      "reason": "Pitars Prosecco DOC обозначен без Brut/Extra Dry или другой разновидности; на Vivino разные варианты имеют разные рейтинги. Нельзя выбирать произвольный."
-    },
-    "0d2ee38169c9": {
-      "status": "unverified_score",
-      "source_url": null,
-      "checked_on": "2026-11-22",
-      "reason": "Для Mare Magnum The Chocolate Tube 2023 встречаются упоминания рейтинга Vivino на сторонних сайтах, но не подтверждена первичная карточка Vivino с нужным значением и винтажом."
-    },
-    "cd226588d1df": {
-      "status": "no_verified_match",
-      "source_url": null,
-      "checked_on": "2026-11-22",
-      "reason": "Не найдено однозначного соответствия Lavau EnvyFol GSM 2022 с опубликованным числовым рейтингом Vivino."
-    },
-    "e552320d1248": {
-      "status": "no_verified_match",
-      "source_url": null,
-      "checked_on": "2026-11-22",
-      "reason": "Не найдено однозначного соответствия Antigua DOC 2024 с опубликованным рейтингом Vivino."
-    }
-  }
+  "unrated": {}
 }
