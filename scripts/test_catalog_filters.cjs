@@ -1,0 +1,58 @@
+#!/usr/bin/env node
+'use strict';
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const vm=require('node:vm');
+const path=require('node:path');
+const root=path.resolve(__dirname,'..');
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const app=fs.readFileSync(path.join(root,'app.js'),'utf8');
+assert.doesNotMatch(html,/value="recommended"|В порядке вишлиста/);
+assert.match(html,/<option value="rating-desc" selected>/);
+for(const id of ['price-min','price-max'])assert.match(html,new RegExp('id="'+id+'"[^>]*type="number"'));
+const controls=new Map(['search','country','grape','type','pairing','price-min','price-max','sort'].map(id=>[id,{value:''}]));
+controls.get('sort').value='rating-desc';
+const doc={getElementById:id=>controls.get(id)||{value:''}};
+const sandbox={document:doc,Intl,URL,Set,Map,Number,String,Array,console};
+vm.createContext(sandbox);
+vm.runInContext(app.replace(/\binit\(\);\s*$/,'')+
+ '\nglobalThis.helpers={state,matched,pairingValues,withinPriceRange,sortRecords,metrics};',sandbox);
+const {state,matched,pairingValues,withinPriceRange,sortRecords,metrics}=sandbox.helpers;
+const url='https://spb.winestyle.ru/products/example.html';
+const wine=(id,price,note)=>({id,title:id,year:2023,type:'Красное',country:'Италия',grapes:['Мерло'],section:'Мерло',pairings:['Рыба'],stores:[{url,price_rub:price,price_checked_at:price==null?null:'2026-11-23',enrichment_status:{status:'verified'},product_details:{source_url:url,pairing_notes:note,ratings:[]}}]});
+const mixed=wine('mixed',2000,'рыба, лосось/семга, мясо, дичь, красное мясо, салат, овощи, зрелые/выдержанные сыры, сыры');
+const labels=[...pairingValues(mixed)];
+for(const label of ['Рыба','Красная рыба','Мясо','Дичь','Красное мясо','Салаты','Овощи','Выдержанные сыры','Сыры'])assert(labels.includes(label),'Lost separate category '+label);
+const salmon=wine('salmon',2000,'лосось/семга');
+assert.deepEqual([...pairingValues(salmon)],['Красная рыба']);
+const game=wine('game',2000,'дичь, мясо диких животных');
+assert.deepEqual([...pairingValues(game)],['Дичь']);
+assert.deepEqual([...pairingValues(wine('salad',1000,'салат'))],['Салаты']);
+controls.get('pairing').value='Рыба';
+assert.equal(matched(salmon),false,'Salmon cannot be merged into generic fish');
+controls.get('pairing').value='Мясо';
+assert.equal(matched(game),false,'Game cannot be merged into generic meat');
+controls.get('pairing').value='';
+const cheap=wine('cheap',1000,'рыба'),expensive=wine('expensive',5000,'рыба'),unknown=wine('unknown',null,'рыба');
+assert(withinPriceRange(unknown,'',''),'No range must retain unpriced cards');
+assert(!withinPriceRange(unknown,'1',''),'Priced ranges must exclude unknown prices');
+assert(withinPriceRange(cheap,'1000','1000'),'Endpoints must be inclusive');
+assert(!withinPriceRange(cheap,'1001',''));
+assert(!withinPriceRange(expensive,'','4000'));
+controls.get('price-min').value='1000';controls.get('price-max').value='3000';
+assert(matched(cheap));assert(!matched(expensive));assert(!matched(unknown));
+assert(!matched(wine('too-cheap',999,'рыба')));
+assert(!withinPriceRange(cheap,'3000','1000'),'Reversed range cannot match');
+controls.get('price-min').value='';controls.get('price-max').value='';
+const one=wine('one',1000,'рыба'),many=wine('many',1000,'рыба');
+state.ratingRecords.one=[{source:'Decanter',score:90,scale:100,scope:'vintage',vintage:2023,source_url:'https://www.decanter.com'}];
+state.ratingRecords.many=[
+ {source:'Decanter',score:90,scale:100,scope:'vintage',vintage:2023,source_url:'https://www.decanter.com'},
+ {source:'Falstaff',score:90,scale:100,scope:'vintage',vintage:2023,source_url:'https://www.falstaff.com'},
+ {source:'Wine Enthusiast',score:90,scale:100,scope:'vintage',vintage:2023,source_url:'https://www.wineenthusiast.com'}
+];
+assert.equal(metrics(one).summary,metrics(many).summary);
+assert(metrics(many).ranking>metrics(one).ranking,'More independent critics need higher confidence ranking');
+assert.deepEqual([...sortRecords([one,many],'rating-desc').map(x=>x.id)],['many','one']);
+assert(metrics(one).ranking<metrics(one).summary,'No bonus should inflate a low-confidence mean');
+console.log('CATALOG FILTERS PASSED: price boundaries, missing prices, taxonomy and ranking');
