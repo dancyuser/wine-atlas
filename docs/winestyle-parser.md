@@ -13,7 +13,7 @@ This feature ports the non-invasive HTML extractor from historic agent commit `9
 
 ## Current access status
 
-The historic agent reports an automated HTTP 403 response from WineStyle on 2026-11-22. A blocking marker is carried forward in `reports/winestyle-access.json`. The generic price updater skips the entire WineStyle domain, even if run through GitHub Actions. This PR makes **zero new live requests** to WineStyle. Its parser and rating fixtures were tested offline; the real WineStyle DOM and end-to-end network collection remain unverified. The active catalog retains 124 entries. From the supplied browser export, 118 exact products were enriched with 88 observed prices and 246 retailer-reported scores; independently verified Vivino data remain unchanged.
+The historic agent reports an automated HTTP 403 response from WineStyle on 2026-11-22. A blocking marker is carried forward in `reports/winestyle-access.json`. The generic price updater skips the entire WineStyle domain, even if run through GitHub Actions. This PR makes **zero new live requests** to WineStyle. Its parser and rating fixtures were tested offline; the real WineStyle DOM and end-to-end network collection remain unverified. The active catalog retains 124 entries. From the supplied browser export, 118 exact products were enriched with 118 observed prices and 246 retailer-reported scores; independently verified Vivino data remain unchanged.
 
 Do not remove the blocked-state marker to work around QRATOR, CAPTCHA or other site access controls. Before any future automated collection, establish permission under applicable site terms, verify robots.txt and ordinary automated access, and only then review the block with an audit trail.
 
@@ -52,7 +52,7 @@ The offline parser neither contacts WineStyle nor automatically clears a previou
 
 ## Reviewed browser export import (2026-11-22)
 
-The user supplied a captured JSON archive of 121 target WineStyle URLs. Of these, 118 exact product/vintage matches passed the offline validation process, while three redirects were excluded. The resulting 118 `product_details` snapshots, 88 prices and 182 retailer-published ratings have been added to `data/wines.json`. All prices and scores carry an observation date and source provenance. The original complete capture is held by the user; the public repository contains the compact product details plus SHA256 and the audit at `data/archive/winestyle-import-audit-2026-11-22.json`.
+The user supplied a captured JSON archive of 121 target WineStyle URLs. Of these, 118 exact product/vintage matches passed the offline validation process, while three redirects were excluded. The resulting 118 `product_details` snapshots, 118 prices and 182 retailer-published ratings have been added to `data/wines.json`. All prices and scores carry an observation date and source provenance. The original complete capture is held by the user; the public repository contains the compact product details plus SHA256 and the audit at `data/archive/winestyle-import-audit-2026-11-22.json`.
 
 A repeatable offline importer is provided. To verify an overlay without writes:
 
@@ -78,3 +78,7 @@ python -m unittest discover -s scripts -p 'test_recover_capture_ratings.py' -v
 ~~~
 
 The current WineStyle HTML rating extractor also recognizes this score-first header convention under strict product-region constraints. Live HTML parsing remains unverified: the saved user export is text, not a replayable DOM snapshot. Price-before-discount remains unsupported by the reviewed export; do not infer it from old prices. Three exact vintage-specific photos have source attribution; other cards intentionally use a neutral placeholder rather than another product's bottle.
+
+## Exact-product price recovery, 23 Nov 2026
+
+The saved browser capture contains the explicit price marker `Цена X ₽` for **all 118 verified primary products**. The original browser price parser only emitted 88 structured prices, omitting 30 exact offers. Independent replay of the primary product header found 118 prices and agreed with all 88 already imported values. The missing 30 are now attached with the original 2026-11-22 observation date, SHA256 and explicit primary-product evidence. Related-product prices are excluded; the three identity-mismatched redirects remain excluded. Prices are snapshots, not 2026-11-23 live quotations. Run `python scripts/recover_capture_prices.py 'winestyle-capture-2026-11-22 (1).json'` for a safe dry run and append `--apply` only after reviewing discrepancies. The regular/undiscounted price is still unverified, not inferred.
