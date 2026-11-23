@@ -8,8 +8,12 @@ const cleanUrl=s=>{try{const u=new URL(s);return u.protocol==='https:'?u.href:nu
 const date=s=>{if(!s||!/^\d{4}-\d{2}-\d{2}$/.test(s))return '—';const a=s.split('-');return a[2]+'.'+a[1]+'.'+a[0]};
 const num=x=>Number.isInteger(x)?String(x):fmt.format(x);
 const money=x=>fmt.format(x)+' ₽';
+function isWineStyleRating(x){
+  try { return /(^|\.)winestyle\.ru$/i.test(new URL(x.source_url).hostname); }
+  catch { return false; }
+}
 function ratingsFor(r){
-  const all=(state.ratingRecords[r.id]||[]).filter(x=>x&&typeof x.source==='string'&&Number.isFinite(x.score)&&((x.scale===100&&x.score>=0&&x.score<=100)||(x.scale===5&&x.score>=1&&x.score<=5)));
+  const all=(state.ratingRecords[r.id]||[]).filter(x=>x&&typeof x.source==='string'&&Number.isFinite(x.score)&&!isWineStyleRating(x)&&((x.scale===100&&x.score>=0&&x.score<=100)||(x.scale===5&&x.score>=1&&x.score<=5)));
   return all.filter(x=>x.scope==='all_vintages'||x.scope==='vintage'&&x.vintage===r.year);
 }
 function metrics(r){
