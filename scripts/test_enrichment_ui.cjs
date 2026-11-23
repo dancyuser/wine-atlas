@@ -52,7 +52,29 @@ assert.equal(h.matched(sample),true);
 selectors.get('country').value='';
 const card=h.card(sample);
 assert(card.includes('Вино с ароматом цитрусов'));
-assert(card.includes('Wine Enthusiast'));
+assert(!card.includes('Wine Enthusiast'),
+  'WineStyle-published scores must not be rendered');
+h.state.ratingRecords.fixture=[
+ {source:'Vivino',score:4.2,scale:5,scope:'vintage',vintage:2023,
+   source_url:'https://www.vivino.com/wines/123'},
+ {source:'Wine Spectator',score:91,scale:100,scope:'vintage',vintage:2023,
+   source_url:'https://spb.winestyle.ru/products/Synthetic-2023.html'},
+ {source:'Decanter',score:92,scale:100,scope:'vintage',vintage:2023,
+   source_url:'https://www.decanter.com/wine/123'}
+];
+const ratedCard=h.card(sample);
+assert(ratedCard.includes('Vivino') && ratedCard.includes('Decanter'),
+ 'Independently sourced ratings must remain');
+assert(!ratedCard.includes('Wine Spectator'),
+ 'Independent overlay score reported via WineStyle must also be hidden');
+assert(!ratedCard.includes('Опубликованы WineStyle'));
+const unavailable={...sample,availability:{status:'out_of_stock',observed_on:'2026-11-23'}};
+assert.equal(h.matched(unavailable),false,
+ 'Products confirmed unavailable must not appear in any filter');
+assert.equal(h.matched({...sample,availability:{status:'in_stock',observed_on:'2026-11-23'}}),true);
+assert.equal(h.matched({...sample,availability:undefined}),true,
+ 'Unknown stock must not be misreported as sold out');
+
 assert(card.includes('Морепродукты'));
 sample.stores[0].product_details.availability_spb=false;
 sample.stores[0].product_details.field_checked_at={availability_spb:'2026-11-21'};
@@ -66,6 +88,12 @@ sample.stores[0].product_details.field_checked_at.availability_note='2026-11-20'
 const oldNoteCard=h.card(sample);
 assert(oldNoteCard.includes('20.11.2026'),
        'Retained availability note must show its own observation date');
+
+const latest={...sample,availability:{status:'in_stock',observed_on:'2026-11-23'}};
+assert(h.card(latest).includes('Доступно к заказу'));
+assert(h.card(latest).includes('23.11.2026'));
+assert(!h.card(latest).includes('Ожидаем поступление'),
+ 'New stock observation must override stale historic status');
 
 assert(card.includes('3\u00a0590')||card.includes('3 590'));
 const unmatchedPairings={

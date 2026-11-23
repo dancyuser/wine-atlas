@@ -8,8 +8,12 @@ const cleanUrl=s=>{try{const u=new URL(s);return u.protocol==='https:'?u.href:nu
 const date=s=>{if(!s||!/^\d{4}-\d{2}-\d{2}$/.test(s))return '—';const a=s.split('-');return a[2]+'.'+a[1]+'.'+a[0]};
 const num=x=>Number.isInteger(x)?String(x):fmt.format(x);
 const money=x=>fmt.format(x)+' ₽';
+function isWineStyleRating(x){
+  try { return /(^|\.)winestyle\.ru$/i.test(new URL(x.source_url).hostname); }
+  catch { return false; }
+}
 function ratingsFor(r){
-  const all=(state.ratingRecords[r.id]||[]).filter(x=>x&&typeof x.source==='string'&&Number.isFinite(x.score)&&((x.scale===100&&x.score>=0&&x.score<=100)||(x.scale===5&&x.score>=1&&x.score<=5)));
+  const all=(state.ratingRecords[r.id]||[]).filter(x=>x&&typeof x.source==='string'&&Number.isFinite(x.score)&&!isWineStyleRating(x)&&((x.scale===100&&x.score>=0&&x.score<=100)||(x.scale===5&&x.score>=1&&x.score<=5)));
   return all.filter(x=>x.scope==='all_vintages'||x.scope==='vintage'&&x.vintage===r.year);
 }
 function metrics(r){
@@ -59,49 +63,42 @@ function vivinoUnavailable(r){
  const labels={insufficient_ratings:'Мало оценок',unverified_score:'Число не подтверждено',ambiguous_product:'Не определён вариант вина',no_verified_match:'Совпадение не подтверждено'};
  return {label:labels[u.status]||'Оценка не подтверждена',url:cleanUrl(u.source_url)||'https://www.vivino.com/search/wines?q='+encodeURIComponent(r.title),reason:u.reason||''};
 }
-function retailerRatingsFor(r){
- const s=(r.stores||[]).find(x=>x.enrichment_status?.status==='verified'&&x.product_details?.source_url===x.url);
- return (s?.product_details?.ratings||[]).filter(x=>x.reported_by==='WineStyle'&&x.source_url===s.url&&typeof x.source==='string'&&Number.isFinite(x.score)&&[5,10,20,100].includes(x.scale)&&x.score>0&&x.score<=x.scale);
-}
+
 function metricRow(m,r){
  const aggregate=m.index===null?'—':num(m.index);
  const cv=m.vivino?num(m.vivino.score):'—';
- const unavailable=vivinoUnavailable(r), retailer=retailerRatingsFor(r);
+ const unavailable=vivinoUnavailable(r);
  const detail=m.vivino?(m.vivino.scope==='all_vintages'?'Все урожаи · вне индекса':(m.vivino.ratings_count?fmt.format(m.vivino.ratings_count)+' оценок':'Винтаж подтверждён')):unavailable.label;
  return '<div class="rating-box">'+
  '<div class="rating-cell"><span class="rating-label">Индекс винтажа</span><div class="rating-value">'+aggregate+'<span class="rating-unit">/ 100</span></div><span class="rating-sub">'+(m.count?m.count+' независимых ист.':'Не рассчитан')+'</span></div>'+
  '<div class="rating-cell"><span class="rating-label">Vivino</span><div class="rating-value">'+cv+'<span class="rating-unit">/ 5</span></div><span class="rating-sub">'+safe(detail)+'</span></div>'+
- '<div class="rating-cell rating-cell-retailer"><span class="rating-label">Оценки на WineStyle</span><div class="rating-value">'+(retailer.length?fmt.format(retailer.length):'—')+'</div><span class="rating-sub">'+(retailer.length?'Доступны ниже · не проверены отдельно':'Нет опубликованных чисел')+'</span></div>'+
  '</div>';
 }
-
 function ratingsDetails(r,m){
  const independent=m.all.map(x=>{
   const url=cleanUrl(x.source_url);
   const suffix=x.scope==='all_vintages'?' · все урожаи':' · '+String(x.vintage||'год не указан');
   return '<li><span>'+(url?'<a href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">'+safe(x.source)+'</a>':safe(x.source))+safe(suffix)+'</span><strong>'+num(x.score)+' / '+x.scale+'</strong></li>';
  }).join('');
- const retailer=retailerRatingsFor(r);
- const published=retailer.map(x=>'<li><span>'+safe(x.source)+'</span><strong>'+num(x.score)+' / '+x.scale+'</strong></li>').join('');
  const un=vivinoUnavailable(r);
  const fallback=!m.vivino?'<p class="rating-hint">'+safe(un.label)+' · <a href="'+safe(un.url)+'" target="_blank" rel="noopener noreferrer">Проверить на Vivino</a></p>':'';
- return '<details class="rating-details score-details"><summary>Все оценки и источники ('+(m.all.length+retailer.length)+')</summary>'+
- (independent?'<h4>Независимо собранные</h4><ul>'+independent+'</ul>':'<p class="rating-hint">Подтверждённых оценок конкретного года пока нет.</p>')+
- fallback+
- (published?'<h4>Опубликованы WineStyle · '+date(retailer[0].observed_on)+'</h4><ul>'+published+'</ul><p class="rating-hint">Оценки переданы продавцом. Не подтверждены отдельно у критиков; год публикации оценки не всегда доказан. В индекс не включены.</p>':'')+
- '</details>';
+ return '<details class="rating-details score-details"><summary>Оценки и источники ('+m.all.length+')</summary>'+
+ (independent?'<ul>'+independent+'</ul>':'<p class="rating-hint">Подтверждённых независимых оценок пока нет.</p>')+
+ fallback+'</details>';
 }
-
 function wineStyleMarkup(r){
  const s=(r.stores||[]).find(x=>x.enrichment_status?.status==='verified'&&x.product_details?.source_url===x.url);
  if(!s)return '';
  const d=s.product_details;
  const fields=[['Вкус','taste'],['Аромат','aroma'],['Сочетания','pairing_notes'],['Регион','region'],['Крепость','alcohol_percent'],['Объём','volume_l'],['Производитель','producer'],['Описание','description_excerpt']];
  const rows=fields.filter(([,k])=>d[k]!=null&&d[k]!=='').map(([label,k])=>'<li><span>'+safe(label)+'</span><strong>'+safe(String(d[k]))+'</strong></li>').join('');
- const stockNote=['Ожидаем поступление','Нет в наличии'].includes(d.availability_note)?d.availability_note:
+ const observed=r.availability;
+ const stockNote=observed?.status==='in_stock'?'Доступно к заказу':observed?.status==='out_of_stock'?'Нет в наличии':
+  ['Ожидаем поступление','Нет в наличии'].includes(d.availability_note)?d.availability_note:
   d.availability_spb===true?'Наличие подтверждалось в СПб':d.availability_spb===false?'Нет в наличии в СПб':'';
- const stockDate=d.availability_note?(d.field_checked_at?.availability_note||d.checked_at):
-  (d.field_checked_at?.availability_spb||d.checked_at);
+ const stockDate=observed?.observed_on||(
+  d.availability_note?(d.field_checked_at?.availability_note||d.checked_at):
+  (d.field_checked_at?.availability_spb||d.checked_at));
  if(!rows&&!stockNote)return '';
  return '<details class="rating-details characteristics"><summary>Вкус, наличие и характеристики</summary>'+
  (stockNote?'<p class="availability-note">'+safe(stockNote)+' · '+date(stockDate)+'</p>':'')+
@@ -132,6 +129,7 @@ function card(r){
 }
 
 function matched(r){
+ if(r.availability?.status==='out_of_stock')return false;
  const term=$('search').value.trim().toLocaleLowerCase('ru');
  if(term&&!([r.title,countryValue(r),r.section,String(r.year||''),...grapeValues(r),...pairingValues(r)].join(' ').toLocaleLowerCase('ru').includes(term)))return false;
  if($('country').value&&countryValue(r)!==$('country').value)return false;
@@ -153,7 +151,7 @@ function render(){
  $('cards').innerHTML=rs.map(card).join('');
  $('empty').hidden=!!rs.length;
  $('result-count').textContent='Найдено: '+fmt.format(rs.length)+' из '+fmt.format(state.records.length);
- $('saved-count').textContent=state.favorites.size;
+ $('saved-count').textContent=state.records.filter(r=>state.favorites.has(r.id)).length;
 }
 function reset(){
  $('search').value='';$('sort').value='recommended';
@@ -180,13 +178,13 @@ async function init(){
  try{
   const response=await fetch('./data/wines.json',{cache:'no-cache'});if(!response.ok)throw Error('Catalog HTTP '+response.status);
   const catalog=await response.json();if(!Array.isArray(catalog.records))throw Error('Invalid catalog');
-  state.records=catalog.records;
+  state.records=catalog.records.filter(r=>r.availability?.status!=='out_of_stock');
   try{const extra=await fetch('./data/ratings.json',{cache:'no-cache'});if(extra.ok){const o=await extra.json();state.ratingRecords=o.records||{};state.unrated=o.unrated||{}}}catch(e){console.warn('Ratings unavailable',e)}
   try{const saved=JSON.parse(localStorage.getItem('wine-atlas-favorites')||'[]');if(Array.isArray(saved))state.favorites=new Set(saved.filter(s=>typeof s==='string'))}catch{}
   $('stat-total').textContent=state.records.length;
   $('stat-countries').textContent=new Set(state.records.map(r=>r.country).filter(Boolean)).size;
   $('stat-rated').textContent=state.records.filter(r=>metrics(r).vivino!==null).length;
-  $('update-tag').textContent='Исторические цены: '+date(catalog.historical_as_of);
+  $('update-tag').textContent='Наличие: '+date(catalog.inventory_snapshot?.observed_on)+' · исключено '+(catalog.records.length-state.records.length)+' недоступных';
   setup();render();
  }catch(e){console.error(e);$('result-count').textContent='Ошибка загрузки';$('error').hidden=false}
 }

@@ -146,7 +146,7 @@ input::placeholder{color:var(--placeholder)}
 .bottle-silhouette::after{content:"";position:absolute;top:32px;left:5px;width:25px;height:35px;border:2px solid var(--rating-bg);border-radius:3px}
 .photo-credit{position:absolute;bottom:3px;left:2px;right:2px;z-index:3;text-align:center;font-size:9px;color:var(--sub);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .photo-credit:hover{color:var(--accent)}
-.rating-box{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:10px}
+.rating-box{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:10px}
 .rating-value{font-size:21px}
 .rating-details h4{font-size:12px;color:var(--ink);margin:12px 0 5px;font-weight:650}
 .rating-details ul{overflow-wrap:anywhere}
@@ -160,11 +160,11 @@ input::placeholder{color:var(--placeholder)}
 .card-pairings{overflow-wrap:anywhere}
 @media(max-width:900px){
  .rating-box{grid-template-columns:repeat(2,minmax(0,1fr))}
- .rating-cell-retailer{grid-column:1/-1;border-top:1px solid var(--rating-border);padding-top:7px}
+ 
 }
 @media(max-width:550px){
  .card-intro{grid-template-columns:84px minmax(0,1fr);gap:11px}
  .bottle-media{width:84px;height:141px}
  .rating-box{grid-template-columns:repeat(2,minmax(0,1fr))}
- .rating-cell-retailer{grid-column:1/-1}
+ 
 }

@@ -162,6 +162,13 @@
         "matched_year": 2019,
         "verified_on": "2026-11-23",
         "note": "2019 Graham's LBV, bottle and gift tube; external retailer image"
+      },
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Graham-s-Late-Bottled-Vintage-LBV-2019-gift-tube.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
       }
     },
     {
@@ -303,6 +310,13 @@
         "matched_year": 2019,
         "verified_on": "2026-11-23",
         "note": "Quinta de la Rosa 2019 LBV, vintage shown on front label"
+      },
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Quinta-De-La-Rosa-LBV-Port-2019.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
       }
     },
     {
@@ -567,6 +581,13 @@
         "matched_year": 2018,
         "verified_on": "2026-11-23",
         "note": "Zantho Beerenauslese 2018 375ml, matching producer and cuvee"
+      },
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Zantho-Beerenauslese-2018.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
       }
     },
     {
@@ -717,6 +738,13 @@
         "matched_year": 2023,
         "verified_on": "2026-11-23",
         "note": "Girlan Chardonnay Alto Adige DOC 2023 front bottle label; external retailer image"
+      },
+      "availability": {
+        "status": "out_of_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Girlan-Chardonnay-Sudtirol-Alto-Adige-DOC-2023.html",
+        "evidence": "Main-product .m-productpage-price__status = Ожидаем поступление; purchase button absent",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
       }
     },
     {
@@ -868,6 +896,13 @@
         "matched_year": 2017,
         "verified_on": "2026-11-23",
         "note": "Tement Ehrenhausen Muschelkalk Sauvignon Blanc 2017, 375ml"
+      },
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Tement-Ehrenhausen-Muschelkalk-2017-375.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
       }
     },
     {
@@ -1004,7 +1039,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Lapis-Luna-Chardonnay-North-Coast-AVA-2022.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "1fc33a9c0505",
@@ -1143,7 +1185,14 @@
         "Tim Atkin 90",
         "Wine Spectator 90"
       ],
-      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены."
+      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены.",
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Chardonnay-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "2a8f07a9732b",
@@ -1294,7 +1343,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "out_of_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Kurtatsch-Caliz-Chardonnay-Sudtirol-Alto-Adige-DOC-2022.html",
+        "evidence": "Main-product .m-productpage-price__status = Ожидаем поступление; purchase button absent",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "467b63015a0c",
@@ -1432,6 +1488,13 @@
         "matched_year": 2024,
         "verified_on": "2026-11-23",
         "note": "Photo URL and label explicitly 2024, source page later redirected to 2025; do not use redirected page for other facts"
+      },
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Kleine-Zalze-Vineyard-Selection-Chardonnay-2024.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
       }
     },
     {
@@ -1580,7 +1643,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "out_of_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Feudi-del-Pisciotto-Alberta-Ferretti-Chardonnay-Sicilia-IGT-2014.html",
+        "evidence": "Main-product .m-productpage-price__status = Ожидаем поступление; purchase button absent",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "93f0823b0c90",
@@ -1707,7 +1777,14 @@
         "Decanter 92, серебро (по таблице наград производителя)",
         "Wine Enthusiast 90"
       ],
-      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены."
+      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены.",
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Peter-Zemmer-Chardonnay-Alto-Adige-DOC-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "d8c0fc71ced9",
@@ -1855,7 +1932,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "cbc96de28176",
@@ -2000,7 +2084,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2016.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "c917fcb740fd",
@@ -2139,7 +2230,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Albert-Bichot-Origines-Chardonnay-Bourgogne-AOC-2022.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "209d7a6d9fe0",
@@ -2270,7 +2368,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Loimer-Gluegglich.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "91f9214b514c",
@@ -2378,7 +2483,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Huia-Pinot-Noir-2013.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "2d98b7c07c09",
@@ -2517,7 +2629,14 @@
         "Wine Enthusiast 91",
         "James Suckling 90"
       ],
-      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены."
+      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены.",
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Pyramid-Scheme-Pinot-Noir-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "079c918bef91",
@@ -2656,7 +2775,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "out_of_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Bodega-Aniello-006-Riverside-Estate-Pinot-Noir-Rio-Negro-2022.html",
+        "evidence": "Main-product .m-productpage-price__status = Ожидаем поступление; purchase button absent",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "170ab9abed3f",
@@ -2765,7 +2891,14 @@
       ],
       "volume_l": 0.75,
       "scores": [],
-      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены."
+      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены.",
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Ingrid-Groiss-Rose-Ried-Hasenhaide-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "8fb6ff3a814f",
@@ -2898,7 +3031,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Undurraga-Sibaris-Pinot-Noir-Gran-Reserva-Leyda-Valley-DO-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "2ae8e7fc916b",
@@ -3043,7 +3183,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Weingut-J-Neus-Ingelheim-am-Rhein-Muschelkalk-Spatburgunder-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "745a343dcdc1",
@@ -3182,7 +3329,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Luca-Winery-G-Lot-Pinot-Noir-Tupungato-2022.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "1d4b1fae8d7a",
@@ -3313,7 +3467,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/El-Esteco-Blanc-de-Noir-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "d9a5af8ef749",
@@ -3575,7 +3736,14 @@
       "scores": [
         "Decanter 94"
       ],
-      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены."
+      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены.",
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Bestheim-Alsace-Grand-Cru-Schlossberg-Riesling-AOC-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "426bd971c45a",
@@ -3700,7 +3868,14 @@
         "Wine Enthusiast 90",
         "Wine Spectator 89 (автор не указан)"
       ],
-      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены."
+      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены.",
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/d-Arenberg-The-Stump-Jump-White-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "3da3f3b14e7a",
@@ -3846,7 +4021,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "out_of_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Georg-Breuer-Estate-Rudesheim-2018.html",
+        "evidence": "Main-product .m-productpage-price__status = Ожидаем поступление; purchase button absent",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "2d0e198f8485",
@@ -3985,7 +4167,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Nik-Weis-Urban-Riesling-2024.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "62988f645654",
@@ -4130,7 +4319,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Tesch-Unplugged-Riesling-2024.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "19cfb8faf5be",
@@ -4263,7 +4459,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Frankland-Estate-Poison-Hill-Vineyard-Riesling-2016.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "28bf2f843af7",
@@ -4433,7 +4636,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2019.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "85f7014559dd",
@@ -4540,6 +4750,13 @@
         "matched_year": 2023,
         "verified_on": "2026-11-23",
         "note": "Can Sumoi Ancestral Montonega 2023, year and cuvee visible on label"
+      },
+      "availability": {
+        "status": "out_of_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Can-Sumoi-Ancestral-Montonega-2023.html",
+        "evidence": "Main-product .m-productpage-price__status = Ожидаем поступление; purchase button absent",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
       }
     },
     {
@@ -4698,7 +4915,14 @@
       "scores": [
         "Wine Spectator 90 — по WineStyle, авторы не указаны"
       ],
-      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены."
+      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены.",
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Nino-Franco-Faive-Rose-Brut-Veneto-IGT-2019.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "3684c27c6d62",
@@ -4917,7 +5141,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "out_of_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Scarpa-Tacco12-Moscato-d-Asti-DOCG-2022.html",
+        "evidence": "Main-product .m-productpage-price__status = Ожидаем поступление; purchase button absent",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "801667d481d6",
@@ -5056,7 +5287,14 @@
         "Wine Enthusiast) 92",
         "Wine Spectator 90 (автор не указан)"
       ],
-      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены."
+      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены.",
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Nino-Franco-Faive-Rose-Brut-Veneto-IGT-2022.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "ffffabb4d41a",
@@ -5189,7 +5427,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "out_of_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Tabali-Tatie-Brut-Limari-Valley.html",
+        "evidence": "Main-product .m-productpage-price__status = Ожидаем поступление; purchase button absent",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "46622f963eaa",
@@ -5324,7 +5569,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Montelliana-Prosecco-Treviso-DOC-Extra-Dry.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "f97f2ccc67b8",
@@ -5447,7 +5699,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Grande-Alberone-Moscato-Spumante-Dolce.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "5427ef8902aa",
@@ -5561,7 +5820,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Pitars-Prosecco-DOC.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "e8609b5a3c65",
@@ -5685,7 +5951,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Dulong-Cremant-de-Bordeaux-AOP-Brut.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "7c836f833ee2",
@@ -5803,7 +6076,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Lucien-Albrecht-Brut-Cremant-d-Alsace-AOC.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "caa3a12da960",
@@ -5939,7 +6219,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Romagnoli-Vizzo-Rosso-Emilia-IGT-2019.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "48e6958c78dc",
@@ -6068,7 +6355,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Jordan-Black-Magic-Merlot-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "9ddeb3cfb445",
@@ -6186,7 +6480,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Church-Block-Cabernet-Shiraz-Merlot-2011.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "b2276984217f",
@@ -6310,7 +6611,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Tenuta-Poggio-ai-Mandorli-Chianti-Classico-Gran-Selezione-DOCG-2019.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "9830fcbfa909",
@@ -6431,7 +6739,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Domaine-Laffitte-Rose-Cotes-de-Gascogne-IGP-2024.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "96d588edbbdb",
@@ -6558,7 +6873,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Kracher-Spatlese-Rose-2024.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "0d2ee38169c9",
@@ -6687,7 +7009,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Mare-Magnum-The-Chocolate-Tube-Primitivo-Puglia-IGT-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "2f6a9b761e1f",
@@ -6816,7 +7145,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Montedidio-San-Domino-Primitivo-Puglia-IGT-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "d8aa36dd85fe",
@@ -6943,7 +7279,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Elena-Fucci-Verha-Rosato-Basilicata-IGT-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "4d35092a1505",
@@ -7085,7 +7428,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Castello-di-Querceto-Chianti-Classico-Riserva-DOCG-2012.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "569268902614",
@@ -7212,7 +7562,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Nipozzano-Chianti-Rufina-Riserva-DOCG-2022.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "8a9950e9e3c4",
@@ -7351,7 +7708,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Capo-di-Stato-Colli-Trevigiani-IGT-2013.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "7c5d44c4353e",
@@ -7490,7 +7854,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Fattoria-Le-Pupille-Morellino-di-Scansano-Riserva-DOCG-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "6645f77efb94",
@@ -7632,7 +8003,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Chateau-Ducluzeau-Listrac-Medoc-AOC-2017.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "e65c60dd483b",
@@ -7744,7 +8122,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Chateau-Marjosse-Bordeaux-AOC-Rouge-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "6b16a51f5c8c",
@@ -7861,7 +8246,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Myskhako-Quintessence-Zinfandel.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "de91d5c1fa5e",
@@ -7984,7 +8376,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Long-Barn-Zinfandel-2024.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "7309e60757dd",
@@ -8113,7 +8512,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/El-Esteco-Don-David-Malbec-Reserve-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "e3190ea1eebc",
@@ -8242,7 +8648,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Mi-Terruno-Expresion-Malbec-2022.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "9b6ffd01ee4a",
@@ -8371,7 +8784,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Malbec-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "9a7644231a69",
@@ -8513,7 +8933,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Clos-de-los-Siete-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "e3bc96e35d46",
@@ -8639,7 +9066,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/La-Posta-Rose-of-Malbec-Mendoza-DO-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "87c72ad959cc",
@@ -8771,7 +9205,14 @@
       "scores": [
         "Decanter 90, серебро"
       ],
-      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены."
+      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены.",
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Bodegas-Ramon-Bilbao-Crianza-Rioja-DOC-2021-750.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "cd226588d1df",
@@ -8898,7 +9339,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Lavau-EnvyFol-GSM-Pays-d-Oc-IGP-2022.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "001eeb719213",
@@ -9010,7 +9458,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Crapula-Gold-2022.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "88a3bb7ae281",
@@ -9134,7 +9589,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Belguardo-Rose-Toscana-IGT-2022.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "298ebca26e9c",
@@ -9273,7 +9735,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Fattoria-Le-Pupille-Morellino-di-Scansano-DOCG-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "006f83a3b98d",
@@ -9400,7 +9869,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Santa-Cristina-Giardino-Rose-Toscana-IGT-2024.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "15b856b072fd",
@@ -9524,7 +10000,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Torres-Vina-Esmeralda-Rose-Catalunya-DO-2024.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "9fb448b8f505",
@@ -9636,7 +10119,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Apollonio-Mani-del-Sud-Rosso-Salice-Salentino-DOP-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "5b8fb4a0202e",
@@ -9763,7 +10253,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Felline-Cicala-Rose-Salento-IGT-2018.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "4d6ad3b07c95",
@@ -9895,7 +10392,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Zantho-St-Laurent-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "65df74bcd692",
@@ -10025,7 +10529,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/d-Arenberg-d-Arry-s-Original-2020.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "55ad5827620c",
@@ -10152,7 +10663,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Protos-Roble-2024.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "3e7d77f4d094",
@@ -10257,7 +10775,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Ramon-Bilbao-Reserva-Rioja-DOC-2018.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "160221740978",
@@ -10384,7 +10909,14 @@
       ],
       "volume_l": 1.5,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Bodegas-Ramon-Bilbao-Crianza-Rioja-DOC-2013-1500.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "19c9dff352b3",
@@ -10513,7 +11045,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/La-Bioca-Sterma-Nebbiolo-d-Alba-DOC-Superiore-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "c817a42207f3",
@@ -10654,7 +11193,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Enrico-Serafino-Pajena-Barbera-d-Alba-DOC-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "bab581b955b0",
@@ -10771,7 +11317,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Parajes-del-Valle-Monastrell-Ecologico-Jumilla-DOP-2022.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "bb252388600c",
@@ -10898,7 +11451,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Tedeschi-Capitel-San-Rocco-Valpolicella-Ripasso-DOC-Superiore-2015.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "77b281dd280d",
@@ -11022,7 +11582,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Tenuta-Sant-Antonio-Nanfre-Valpolicella-DOC-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "eaa1207798b9",
@@ -11164,7 +11731,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Tedeschi-Capitel-San-Rocco-Valpolicella-Ripasso-DOC-Superiore-2019.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "87669b47495e",
@@ -11291,7 +11865,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Pieropan-Ruberpan-Valpolicella-Superiore-DOC-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "a748bd657f0a",
@@ -11432,7 +12013,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Atzei-Saragat-Cannonau-di-Sardegna-DOC-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "ee109cc95019",
@@ -11556,7 +12144,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Elias-Mora-Crianza-2020.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "d4d77be3bdca",
@@ -11688,7 +12283,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/D-Angelo-Aglianico-del-Vulture-DOC-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "e552320d1248",
@@ -11818,7 +12420,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Antigua-DOC-2024.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "2f06acc1cf43",
@@ -11945,7 +12554,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Hito-Ribera-Del-Duero-DO-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "537d512cc39f",
@@ -12068,7 +12684,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Aixala-I-Alcait-Pardelasses-Priorat-DOQ-2018.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "f0c33d420f2f",
@@ -12188,7 +12811,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Marius-Peyol-Coteaux-d-Aix-en-Provence-AOC-2024.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "4123b553c232",
@@ -12312,7 +12942,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Lapostolle-Le-Rose-2024.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "e5af8c73633f",
@@ -12439,7 +13076,14 @@
       ],
       "volume_l": 0.375,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Miraval-Rose-Cotes-de-Provence-AOC-2018-375.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "5f82dc29ad72",
@@ -12563,7 +13207,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Muga-Rosado-Rioja-DOC-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "0269b462fa82",
@@ -12686,7 +13337,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Estandon-Heritage-Cotes-de-Provence-AOP-2020.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "c04e76e37fa1",
@@ -12822,7 +13480,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Muga-Rosado-Rioja-DOC-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "75ea3ee23df9",
@@ -12958,7 +13623,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Chateau-La-Tour-de-L-Eveque-Petale-de-Rose-Cotes-de-Provence-AOC-2020.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "2b85a6978520",
@@ -13084,7 +13756,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Mezzacorona-Pinot-Grigio-Trentino-DOC-2022.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "45a235043feb",
@@ -13216,7 +13895,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Domane-Wachau-Katzensprung-Gruner-Veltliner-Federspiel-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "060a331fa324",
@@ -13343,7 +14029,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Gaintza-Txakolina-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "80cb76314c74",
@@ -13467,7 +14160,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Ascevi-Luwa-Ronco-dei-Sassi-Collio-DOC-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "5740739d992b",
@@ -13594,7 +14294,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Recanati-Yasmin-White-kosher-mevushal-2018.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "f05b85f57f2c",
@@ -13740,7 +14447,14 @@
       "scores": [
         "Wine Enthusiast 86"
       ],
-      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены."
+      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены.",
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/The-Ned-Sauvignon-Blanc-2024.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "d41d680aacec",
@@ -13879,7 +14593,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Fattoria-Le-Pupille-Poggio-Argentato-IGT-2022.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "f32c8d6cae2b",
@@ -14008,7 +14729,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Protos-Verdejo-2018.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "f6c18006b2cc",
@@ -14137,7 +14865,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Chateau-Pajzos-T-Tokaji-Furmint-2022.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "4bdac639abe7",
@@ -14273,7 +15008,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Taboadella-Villae-Branco-Dao-DOC-2020.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "995b5447875b",
@@ -14400,7 +15142,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Azienda-Agricola-Ottella-Lugana-Ottella-2017.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "ea7851a726ac",
@@ -14542,7 +15291,14 @@
       ],
       "volume_l": 0.75,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Ottella-Lugana-DOC-2024-750.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "321ec8a9b417",
@@ -14666,7 +15422,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Azienda-Agricola-Ottella-Le-Creete-Lugana-DOC-2024.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "b754161b525f",
@@ -14808,7 +15571,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/I-Frati-Lugana-DOC-2024.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "5039c04e5d73",
@@ -14947,7 +15717,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Batasiolo-Granee-Gavi-del-Comune-di-Gavi-DOCG-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "47bef620896d",
@@ -15070,7 +15847,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Chanzy-Les-Fortunes-Aligote-Bourgogne-AOC-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "0f0246d18580",
@@ -15202,7 +15986,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Wohlmuth-Gewurztraminer-Sudsteiermark-DAC-2021.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "e6beca8a8172",
@@ -15328,7 +16119,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Mar-de-Frades-Albarino-Rias-Baixas-DO-2023.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "cb6c474afa17",
@@ -15464,7 +16262,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/A-A-Badenhorst-Secateurs-Rose-Swartland-WO-2022.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     },
     {
       "id": "5b9b46b0b3e6",
@@ -15593,7 +16398,14 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Maturana-Wines-Naranjo-Torontel-Maule-Valley-DO-2024.html",
+        "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
+        "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      }
     }
   ],
   "retailer_snapshot": {
@@ -15625,5 +16437,17 @@
       "note": "Retailer-reported, non-independent, not necessarily vintage-specific; excluded from index",
       "added_prices": 30
     }
+  },
+  "inventory_snapshot": {
+    "observed_on": "2026-11-23",
+    "archive_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+    "source": "user_supplied_background_snapshot_v5.1",
+    "targets": 124,
+    "exact_matches": 116,
+    "in_stock": 108,
+    "out_of_stock": 8,
+    "unconfirmed_identity": 8,
+    "method": "primary product purchase block, not global page text, recommendations or sticky badges",
+    "note": "Point-in-time stock snapshot; unknown inventory remains displayed until independently verified."
   }
 }
