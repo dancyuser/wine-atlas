@@ -109,6 +109,48 @@ function captureWineAtlasPage() {
     if((script.textContent||'').length>150000){offerEvidenceComplete=false;continue;}
     try{unpack(JSON.parse(script.textContent));}catch{offerEvidenceComplete=false;}
   }
+  // WineStyle places its actual price and store inventory in the MAIN product
+  // panel, not Product/Offer JSON-LD. Never read recommendations, sticky
+  // teasers or generic price elements outside this product panel.
+  const visibleOffer=(()=>{
+    if(location.hostname.toLowerCase()!=='spb.winestyle.ru')return null;
+    const root=document.querySelector('.o-productpage-info__price .m-productpage-price');
+    if(!root)return null;
+    const parseRub=raw=>{
+      const line=trim(raw,90);
+      const match=line.match(/^(\d[\d \u00a0\u202f]*)\s*(?:₽|руб\.?)$/iu);
+      if(!match)return null;
+      const value=Number(match[1].replace(/[\s\u00a0\u202f]/g,''));
+      return Number.isInteger(value)&&value>=100&&value<=1000000?value:null;
+    };
+    const prices=[...root.querySelectorAll('p.price')];
+    const current=prices.filter(el=>!el.classList?.contains('price--old')&&!el.classList?.contains('price--strikethrough'));
+    if(!current.length||current.length>3)return null;
+    const amounts=current.map(el=>parseRub(el.innerText||el.textContent));
+    if(amounts.some(v=>v==null)||new Set(amounts).size!==1)return null;
+    const displayed=trim(current[0].innerText||current[0].textContent,90);
+    const oldRows=prices.filter(el=>el.classList?.contains('price--old')||el.classList?.contains('price--strikethrough'));
+    const oldValues=oldRows.map(el=>parseRub(el.innerText||el.textContent));
+    // A discount may be recorded only from a separate, explicit crossed-out
+    // old-price element in the same product panel, never a generic "from" price.
+    const regular=oldValues.length===1&&oldValues[0]>amounts[0]?oldValues[0]:null;
+    const availableTexts=[...root.querySelectorAll('.m-productpage-price__in-stock-shops')].map(el=>
+      trim(el.innerText||el.textContent,180)).filter(s=>/^в наличии\b/iu.test(s));
+    const rootText=trim(root.innerText||root.textContent,1200);
+    const outOfStockMatch=rootText.match(/ожидаем поступление|нет в наличии|товар отсутствует/iu);
+    const stock=(availableTexts.length && !outOfStockMatch)?'in_stock':
+      outOfStockMatch && !availableTexts.length?'out_of_stock':'unknown';
+    const stockEvidence=stock==='in_stock'?availableTexts[0]:
+      stock==='out_of_stock'?outOfStockMatch[0]:null;
+    return {
+      method:'visible_main_product_price',
+      scope:'winestyle_primary_product_panel',
+      price_rub:amounts[0],price_evidence:displayed,
+      regular_price_rub:regular,
+      regular_price_evidence:regular===null?null:trim(oldRows[0].innerText||oldRows[0].textContent,90),
+      price_currency:'RUB',availability:stock,availability_evidence:stockEvidence
+    };
+  })();
   const mainURL=privacyUrl(location.href);
   // Prevent accidental extraction from sign-in, bot, error or checkout pages.
   const blocked=/(?:captcha|access denied|just a moment|доступ ограничен|войдите в аккаунт)/i.test(
@@ -119,9 +161,9 @@ function captureWineAtlasPage() {
     source_url:mainURL,canonical_url:canonical?trim(canonical,1000):null,
     page_title:trim(document.title,260),h1:rootName,
     captured_at:new Date().toISOString(),
-    fields,products,offer_evidence_complete:offerEvidenceComplete,
+    fields,products,visible_offer:visibleOffer,offer_evidence_complete:offerEvidenceComplete,
     image_candidate:image?{url:image,rights:'unverified_not_for_publication'}:null,
     blocked,
-    extraction:{type:'manual_active_tab_visible_labels_and_jsonld',raw_html_saved:false}
+    extraction:{type:'active_product_tab_visible_labels_prices_and_jsonld',raw_html_saved:false}
   };
 }
