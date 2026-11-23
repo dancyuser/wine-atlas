@@ -46,8 +46,11 @@ class ManualImportTests(unittest.TestCase):
         r = catalog['records'][0]
         s = r['stores'][0]
         self.assertEqual(report['accepted_identity'],1)
-        self.assertEqual(s['product_details']['color'],'Глубокий рубиновый')
-        self.assertEqual(s['product_details']['field_checked_at']['color'],'2026-11-23')
+        self.assertNotIn('color', s['product_details'],
+                         'The original retailer archive is immutable')
+        self.assertEqual(s['research_details']['color'],'Глубокий рубиновый')
+        self.assertEqual(s['research_details']['field_checked_at']['color'],'2026-11-23')
+        self.assertEqual(s['research_details']['full_name'],CAPTURE['h1'])
         self.assertEqual(s['live_offer']['price_rub'],6348)
         self.assertEqual(s['live_offer']['regular_price_rub'],None)
         self.assertEqual(s['live_offer']['capture_method'],'user_confirmed_active_browser_tab')
@@ -63,6 +66,8 @@ class ManualImportTests(unittest.TestCase):
         c,report=self.run_import(record=r)
         self.assertEqual(c['records'][0]['stores'][0]['product_details']['color'],'Проверенный старый цвет')
         self.assertEqual(report['details_added'],0)
+        self.assertNotIn('research_details',c['records'][0]['stores'][0],
+                         'No redundant manual overlay for an already known field')
 
     def test_unreviewed_observation_is_rejected(self):
         o=copy.deepcopy(OBS);o['reviewer_confirmed']=False
@@ -76,6 +81,29 @@ class ManualImportTests(unittest.TestCase):
         c,report=self.run_import(observation=o)
         self.assertEqual(report['rejected'][0][1],'redirected_or_different_url')
         self.assertNotIn('live_offer',c['records'][0]['stores'][0])
+
+    def test_different_wine_same_year_and_volume_is_rejected(self):
+        o=copy.deepcopy(OBS)
+        o['capture']['h1']='Different Producer Chardonnay 2018, 750 ml'
+        o['capture']['products']=[]
+        c,report=self.run_import(observation=o)
+        self.assertEqual(report['rejected'][0][1], 'main_product_name_mismatch')
+        self.assertEqual(c['records'][0],RECORD)
+
+    def test_manual_supplement_preserves_existing_archive(self):
+        r=copy.deepcopy(RECORD)
+        r['stores'][0]['product_details']['aroma']='Проверенный аромат'
+        o=copy.deepcopy(OBS)
+        o['capture']['fields']['aroma']={
+            'method':'visible_product_label','value':'Другой аромат',
+            'evidence':'Аромат: Другой аромат'}
+        old=copy.deepcopy(r['stores'][0]['product_details'])
+        c,report=self.run_import(record=r,observation=o)
+        s=c['records'][0]['stores'][0]
+        self.assertEqual(s['product_details'],old)
+        self.assertEqual(s['research_details']['color'],'Глубокий рубиновый')
+        self.assertNotIn('aroma',s['research_details'])
+        self.assertEqual(report['details_added'],1)
 
     def test_different_year_rejected(self):
         o=copy.deepcopy(OBS);o['capture']['h1']='Kopke LBV Port 2025, 750 ml'

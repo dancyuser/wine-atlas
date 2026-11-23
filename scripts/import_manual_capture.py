@@ -14,7 +14,7 @@ import re
 import sys
 from urllib.parse import unquote, urlsplit
 
-from verified_offers import verified_offer
+from verified_offers import verified_offer, words
 
 ROOT = Path(__file__).resolve().parents[1]
 OPTIONAL = (
@@ -79,6 +79,11 @@ def verified_identity(target, capture):
         return False, 'redirected_or_different_url'
     if not isinstance(capture.get('h1'), str) or not capture['h1'].strip():
         return False, 'missing_main_product_title'
+    # Year + volume alone are not product identity: a replaced listing may
+    # contain another bottle of the same vintage and size at the original URL.
+    title_words = words(target.get('title'))
+    if not title_words or len(title_words & words(capture['h1'])) < min(2, len(title_words)):
+        return False, 'main_product_name_mismatch'
     year = target.get('year')
     # Undated targets may be non-vintage products. Never guess the year.
     if year is None:
@@ -151,24 +156,35 @@ def apply_observations(catalog, observations):
             summary['rejected'].append([id_, 'not_approved_for_publication'])
             continue
         summary['accepted_identity'] += 1
-        d = store.get('product_details') if store.get('enrichment_status', {}).get('status') == 'verified' else None
-        if d is not None and canonical_url(d.get('source_url')) != canonical_url(store['url']):
-            d = None
-        if d is None:
-            d = store.get('research_details')
-            if d is not None and canonical_url(d.get('source_url')) != canonical_url(store['url']):
-                d = None
-        if d is None:
-            # This is new, separately labelled manual provenance, not a WineStyle
-            # snapshot and not part of the immutable retailer ingestion manifest.
-            d = {'checked_at': observed_on, 'source_url': store['url'].split('#')[0],
-                 'source_kind': 'manual_verified_original_seller'}
-            store['research_details'] = d
-        field_dates = d.setdefault('field_checked_at', {})
+        # Keep verified product_details as an immutable source snapshot.
+        # Newly observed characteristics are separately attributed to a
+        # manual capture, and only fill fields absent from both sources.
+        archive = store.get('product_details')
+        if not (store.get('enrichment_status', {}).get('status') == 'verified'
+                and isinstance(archive, dict)
+                and canonical_url(archive.get('source_url')) == canonical_url(store['url'])):
+            archive = {}
+        manual = store.get('research_details')
+        if not (isinstance(manual, dict)
+                and manual.get('source_kind') in
+                    ('primary_retailer_product_description', 'manual_verified_original_seller')
+                and canonical_url(manual.get('source_url')) == canonical_url(store['url'])):
+            manual = None
+        additions = {}
         for key in OPTIONAL:
             value = visible_value((captured.get('fields') or {}).get(key))
-            if value and not d.get(key):
-                d[key] = value
+            if value and not archive.get(key) and not (manual or {}).get(key):
+                additions[key] = value
+        if additions:
+            if manual is None:
+                manual = {'checked_at': observed_on,
+                          'source_url': store['url'].split('#')[0],
+                          'source_kind': 'manual_verified_original_seller',
+                          'full_name': captured['h1']}
+                store['research_details'] = manual
+            field_dates = manual.setdefault('field_checked_at', {})
+            for key, value in additions.items():
+                manual[key] = value
                 field_dates[key] = observed_on
                 summary['details_added'] += 1
         # Offer import is independent from labels. Never accept a price based

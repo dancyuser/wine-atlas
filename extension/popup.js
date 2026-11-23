@@ -7,6 +7,17 @@ const urlId=value=>{
  catch{return null;}
 };
 const text=(value)=>String(value==null?'':value);
+// Match the importer's distinctive-name rule before presenting a user with
+// a confirmation checkbox. Vintage and bottle size are not enough.
+function identityWords(value){
+ const normalized=text(value).normalize('NFKD').replace(/[\u0300-\u036f]/g,'')
+   .toLocaleLowerCase().replace(/’/g,"'");
+ const stop=new Set(['wine','вино','port','porto','портвейн','late','bottled',
+   'vintage','reserve','reserva','the','of','and','de','la','do']);
+ const words=new Set((normalized.match(/[a-zа-я]{3,}/g)||[]).filter(w=>!stop.has(w)));
+ if(/\blate\s+bottled\s+vintage\b/.test(normalized))words.add('lbv');
+ return words;
+}
 const today=()=>new Date().toISOString().slice(0,10);
 function gapLabels(record){
  const d=record.details||{};
@@ -91,16 +102,21 @@ const numericVolumes=value=>{
 function candidateEvidence(target,capture){
  const sameProducts=capture.products.filter(p=>!p.url||urlId(p.url)===urlId(capture.source_url));
  const names=[capture.h1,...sameProducts.map(x=>x.name)];
+ const expectedWords=identityWords(target.title);
+ const shownWords=identityWords(capture.h1);
+ const overlap=[...expectedWords].filter(x=>shownWords.has(x)).length;
+ const nameMatch=expectedWords.size>0&&overlap>=Math.min(2,expectedWords.size);
  const year=target.year;
- const years=[...new Set(names.join(' ').match(/(?<!\d)(?:19\d\d|20\d\d)(?!\d)/g)||[])];
  const dedicated=text(capture.fields.vintage?.value);
- const yearConfirmed=year==null?false:years.includes(String(year))||dedicated===String(year);
+ const years=[...new Set((names.join(' ')+' '+dedicated).match(/(?<!\d)(?:19\d\d|20\d\d)(?!\d)/g)||[])];
+ const yearConfirmed=year!=null&&years.length===1&&years[0]===String(year);
  const yearConflict=year!=null&&years.some(x=>x!==String(year));
  const volumeParts=[...names,capture.fields.volume_l?.value,...sameProducts.map(x=>x.size)];
  const volumes=volumeParts.flatMap(numericVolumes);
  const volumeConfirmed=target.volume_l!=null&&volumes.includes(Math.round(target.volume_l*1000));
  const volumeConflict=target.volume_l!=null&&volumes.some(x=>x!==Math.round(target.volume_l*1000));
  return {url_match:urlId(capture.source_url)===urlId(target.store_url),
+  name_match:nameMatch,
   year_confirmed:yearConfirmed,year_conflict:yearConflict,
   volume_confirmed:volumeConfirmed,volume_conflict:volumeConflict,
   manual_review_required:true};
@@ -124,7 +140,8 @@ $('capture').addEventListener('click',async ()=>{
    'Выбрано: '+target.title+(target.year?' '+target.year:''),
    'URL: '+capture.source_url,'Заголовок: '+capture.h1,
    'Статус страницы: '+(capture.blocked?'проверка/блокировка':'страница прочитана'),
-   'URL совпадает: '+verification.url_match,'Год подтверждён: '+verification.year_confirmed,
+   'URL совпадает: '+verification.url_match,'Название совпадает: '+verification.name_match,
+   'Год подтверждён: '+verification.year_confirmed,
    'Объём подтверждён: '+verification.volume_confirmed,
    'JSON-LD: '+(schema?schema.name:'нет Product'),
    'Поля: '+Object.keys(capture.fields).join(', '),
@@ -133,9 +150,10 @@ $('capture').addEventListener('click',async ()=>{
   const warnings=[];
   if(!verification.url_match)warnings.push('URL отличается от выбранной карточки: сохранение запрещено.');
   if(capture.blocked)warnings.push('Страница недоступна или содержит проверку доступа.');
+  if(!verification.name_match)warnings.push('Название вина не совпадает с исходной карточкой: сохранение запрещено.');
   if(capture.offer_evidence_complete!==true)warnings.push('Неполная разметка JSON-LD: импорт цены и наличия запрещён.');
   if(verification.year_conflict||verification.volume_conflict)warnings.push('Другой винтаж или объём: не сохраняйте данные.');
-  if(!verification.year_confirmed&&target.year!=null)warnings.push('Год не подтверждён заголовком или отдельным полем. Импортер отвергнет обновление.');
+  if(!verification.year_confirmed)warnings.push('Год не подтверждён однозначно. Импортёр отвергнет обновление.');
   if(!verification.volume_confirmed)warnings.push('Объём не подтверждён. Импортер отвергнет обновление.');
   $('warnings').textContent=warnings.join(' ');
   $('confirmed').checked=false;
@@ -146,12 +164,15 @@ $('capture').addEventListener('click',async ()=>{
 });
 $('confirmed').addEventListener('change',e=>{
  const c=state.candidate;
- $('save').disabled=!(c&&e.target.checked&&c.verification.url_match&&!c.capture.blocked&&
+ $('save').disabled=!(c&&e.target.checked&&c.verification.url_match&&c.verification.name_match&&
+  c.verification.year_confirmed&&c.verification.volume_confirmed&&!c.capture.blocked&&
   !c.verification.year_conflict&&!c.verification.volume_conflict);
 });
 $('save').addEventListener('click',async ()=>{
  const c=state.candidate;if(!c||!$('confirmed').checked||!c.verification.url_match)return;
- if(c.capture.blocked||c.verification.year_conflict||c.verification.volume_conflict)return;
+ if(c.capture.blocked||!c.verification.name_match||
+  !c.verification.year_confirmed||!c.verification.volume_confirmed||
+  c.verification.year_conflict||c.verification.volume_conflict)return;
  c.reviewer_confirmed=true;
  state.observations.push(c);
  await persist();render();

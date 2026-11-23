@@ -56,9 +56,14 @@ def report():
     detail_gaps=[]
     for r in visible:
         st=r['stores'][0]
-        d=st.get('product_details') if st.get('enrichment_status',{}).get('status')=='verified' else None
-        if not d:
-            d=st.get('research_details') or {}
+        archived = (st.get('product_details') or {}) if (
+            st.get('enrichment_status',{}).get('status')=='verified'
+            and (st.get('product_details') or {}).get('source_url')==st['url']) else {}
+        manual = st.get('research_details') or {}
+        if manual.get('source_url') != st['url'].split('#')[0]:
+            manual = {}
+        # The same field may be sourced from either verified provenance layer.
+        d = {**manual, **archived}
         absent=[]
         for field in ('year','volume_l','grapes'):
             if not r.get(field):
