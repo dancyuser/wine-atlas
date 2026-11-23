@@ -97,7 +97,8 @@
     "title": "Albert Bichot Origines Chardonnay Bourgogne AOC"
   },
   "209d7a6d9fe0": {
-    "title": "Loimer Glügglich"
+    "title": "Loimer Glügglich",
+    "type": "Оранжевое"
   },
   "91f9214b514c": {
     "title": "Huia Pinot Noir"
@@ -121,7 +122,8 @@
     "title": "Luca Winery G Lot Pinot Noir Tupungato"
   },
   "1d4b1fae8d7a": {
-    "title": "El Esteco Blanc de Noir"
+    "title": "El Esteco Blanc de Noir",
+    "type": "Розовое"
   },
   "d9a5af8ef749": {
     "title": "Amalaya Blanco"
@@ -182,7 +184,8 @@
     "title": "Pitars Prosecco DOC",
     "grapes": [
       "Глера"
-    ]
+    ],
+    "type": "Игристое"
   },
   "e8609b5a3c65": {
     "title": "Dulong Crémant de Bordeaux Brut AOP"
