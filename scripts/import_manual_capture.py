@@ -178,7 +178,7 @@ def apply_observations(catalog, observations):
         products = [p for p in (captured.get('products') or [])
                     if isinstance(p,dict) and
                     (not p.get('url') or canonical_url(p['url']) == canonical_url(store['url']))]
-        if products:
+        if products and captured.get('offer_evidence_complete') is True:
             synthetic = '<script type="application/ld+json">' + json.dumps(
                 products, ensure_ascii=False
             ) + '</script>'
