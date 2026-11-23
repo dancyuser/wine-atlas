@@ -80,6 +80,17 @@ def main():
  src=Path(sys.argv[1]) if len(sys.argv)>1 else ROOT/'source.txt'
  lines=src.read_text(encoding='utf-8-sig').splitlines()
  recs={}; cat=None; research=False; num_research=0; extra_gin=0
+ curation_path=ROOT/'data'/'wishlist-curation.json'
+ curation=json.loads(curation_path.read_text(encoding='utf-8')) if curation_path.exists() else {}
+ if curation and curation.get('version')!=1:
+  raise ValueError('Unsupported wishlist curation version')
+ removed=set(curation.get('removed_urls',[]))
+ replaced=curation.get('replaced_urls',{})
+ if removed.intersection(replaced):
+  raise ValueError('Cannot remove and replace the same wine URL')
+ for url in [*removed,*replaced,*replaced.values()]:
+  if urlsplit(url).scheme!='https' or not urlsplit(url).hostname:
+   raise ValueError('Invalid curated wine URL')
  # The current Google Doc has one active wishlist tab. Any historical research
  # section in a local export is not part of the active catalog.
  for ln in lines:
@@ -88,6 +99,8 @@ def main():
   if s in CATEGORIES:cat=s;continue
   if not (s.startswith('https://') and cat):continue
   if cat=='Джин':extra_gin+=1;continue
+  if s in removed:continue
+  s=replaced.get(s,s)
   k=key(s)
   if k not in recs:recs[k]=make_record(s,cat)
  overrides=ROOT/'data'/'overrides.json'
@@ -125,7 +138,7 @@ def main():
      for f in ('price_rub','regular_price_rub','price_checked_at','reference_price_rub','reference_regular_price_rub','reference_date','price_source_url','price_evidence','product_details','enrichment_status','live_offer','research_details'):
       if f in was and was[f] is not None:
        store[f]=was[f]
- out={'updated_at':'2026-11-22','region':'Санкт-Петербург','historical_as_of':'2026-11-14','source':{'kind':'local_text_export','unique_wine_urls':len(recs),'excluded_gin_urls':extra_gin},'records':list(recs.values())}
+ out={'updated_at':'2026-11-23','region':'Санкт-Петербург','historical_as_of':'2026-11-14','source':{'kind':'local_text_export','unique_wine_urls':len(recs),'excluded_gin_urls':extra_gin},'records':list(recs.values())}
  if previous_data.get('source'):
   previous_urls = {store['url'] for r in previous_data.get('records', []) for store in r.get('stores', [])}
   current_urls = {store['url'] for r in out['records'] for store in r.get('stores', [])}

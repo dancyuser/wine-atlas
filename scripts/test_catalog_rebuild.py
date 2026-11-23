@@ -124,6 +124,31 @@ class RebuildTest(unittest.TestCase):
             rebuilt = self.rebuild(root, [WINE])
             self.assertNotIn("retailer_snapshot", rebuilt)
 
+    def test_owner_curation_replaces_vintage_without_inheriting_old_evidence(self):
+        original = fixture()
+        old_url = "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2019.html"
+        new_url = "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2023.html"
+        removed_url = "https://spb.winestyle.ru/products/Myskhako-Quintessence-Zinfandel.html"
+        stale = build_catalog.make_record(old_url, "Игристое")
+        stale['stores'][0]['price_rub'] = 2680
+        stale['stores'][0]['price_checked_at'] = "2026-11-22"
+        original['records'].append(stale)
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "data").mkdir()
+            (root / "data" / "wines.json").write_text(
+                json.dumps(original, ensure_ascii=False), encoding="utf-8"
+            )
+            (root / "data" / "wishlist-curation.json").write_text(
+                json.dumps({"version":1,"removed_urls":[removed_url],
+                            "replaced_urls":{old_url:new_url}}),encoding="utf-8")
+            result = self.rebuild(root, [WINE,old_url,removed_url])
+            urls=[w['stores'][0]['url'] for w in result['records']]
+            self.assertEqual(urls,[WINE,new_url])
+            new=next(w for w in result['records'] if w['stores'][0]['url']==new_url)
+            self.assertIsNone(new['stores'][0]['price_rub'])
+            self.assertIsNone(new['stores'][0]['price_checked_at'])
+
     def test_reconcile_new_observation_does_not_falsify_source_date(self):
         source = fixture()
         source["records"][0]["stores"][0]["product_details"]["checked_at"] = "2026-11-23"

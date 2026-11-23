@@ -136,9 +136,12 @@ function retailerDetails(r){
  const archive=s.enrichment_status?.status==='verified'&&s.product_details?.source_url===s.url?s.product_details:null;
  // Manual research is separately attributed and never overwrites the verified
  // retailer archive; the overlay fills only fields absent in that archive.
- const research=s.research_details?.source_url===s.url?.split('#')[0]&&
-  ['primary_retailer_product_description','manual_verified_original_seller','automated_verified_original_seller'].includes(s.research_details.source_kind)
-  ?s.research_details:null;
+ const candidate=s.research_details;
+ const sellerDetails=candidate?.source_url===s.url?.split('#')[0]&&
+  ['primary_retailer_product_description','manual_verified_original_seller','automated_verified_original_seller'].includes(candidate.source_kind);
+ const producerProfile=candidate?.source_kind==='producer_style_profile'&&candidate.scope==='all_vintages'&&
+  candidate.producer&&cleanUrl(candidate.source_url);
+ const research=(sellerDetails||producerProfile)?candidate:null;
  if(!archive)return research;
  if(!research)return archive;
  const supplemental=Object.keys(research).some(k=>
@@ -261,7 +264,7 @@ function wineStyleMarkup(r){
  return '<details class="rating-details characteristics"><summary>Вкус, наличие и характеристики</summary>'+
  (stockNote?'<p class="availability-note">'+safe(stockNote)+' · '+date(stockDate)+'</p>':'')+
  (rows?'<ul>'+rows+'</ul>':'')+
- '<p class="rating-hint">Данные '+safe(s.name||'продавца')+' на '+date(d.checked_at)+
+ '<p class="rating-hint">Данные '+(d.source_kind==='producer_style_profile'?'производителя (описание линейки, не проверка винтажа) ':safe(s.name||'продавца')+' ')+'на '+date(d.checked_at)+
  (d.supplemental_checked_at?' · Дополнено ручной проверкой '+date(d.supplemental_checked_at):'')+
  ' · <a href="'+safe(d.source_url)+'" target="_blank" rel="noopener noreferrer">Источник</a></p></details>';
 }
@@ -407,7 +410,7 @@ async function init(){
     const snapshots=await fetch('./data/verified-snapshot-2026-11-23.json',{cache:'no-cache'});
     if(snapshots.ok){
       const d=await snapshots.json();
-      if(d.version===1&&d.source_archive_sha256==='6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e'&&Object.keys(d.records||{}).length===116){
+      if(d.version===1&&d.source_archive_sha256==='6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e'&&Object.keys(d.records||{}).length===114){
         state.snapshots=d.records;state.snapshotDate=d.as_of;
       }else console.warn('Invalid product snapshot manifest');
     }

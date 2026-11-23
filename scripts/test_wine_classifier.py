@@ -19,7 +19,7 @@ def wine_subtype(text):
 
 
 class WineCategoryTests(unittest.TestCase):
-    def test_no_wine_color_conflicts_in_124_records(self):
+    def test_no_wine_color_conflicts_in_curated_records(self):
         conflicts = []
         for wine in CATALOG['records']:
             details = wine['stores'][0].get('product_details') or wine['stores'][0].get('research_details') or {}
