@@ -71,7 +71,31 @@ def visible_value(payload):
     return value.strip()
 
 
-def verified_identity(target, capture):
+def strict_automatic_name(target, h1):
+    """Reject same-producer substitutions: producer overlap alone is not wine identity.
+
+    Accept only when *every* distinctive product token from the curated
+    wishlist name OR previously SHA-verified exact retailer name appears in
+    the visible main heading. This deliberately sends ambiguous products to
+    review rather than inventing new verified observations.
+    """
+    generic={'aoc','aop','doc','docg','doca','igt','igp','doq','ava','wo'}
+    shown=words(h1)
+    store=target['stores'][0]
+    candidates=[target.get('title')]
+    details=store.get('product_details') or {}
+    if (store.get('enrichment_status',{}).get('status')=='verified'
+            and canonical_url(details.get('source_url'))==canonical_url(store['url'])
+            and isinstance(details.get('full_name'),str)):
+        candidates.append(details['full_name'])
+    for candidate in candidates:
+        expected=words(candidate)-generic
+        if len(expected)>=2 and expected<=shown:
+            return True
+    return False
+
+
+def verified_identity(target, capture, automated=False):
     store = target['stores'][0]
     if not isinstance(capture, dict) or capture.get('blocked'):
         return False, 'blocked_or_empty_capture'
@@ -84,6 +108,8 @@ def verified_identity(target, capture):
     title_words = words(target.get('title'))
     if not title_words or len(title_words & words(capture['h1'])) < min(2, len(title_words)):
         return False, 'main_product_name_mismatch'
+    if automated and not strict_automatic_name(target,capture['h1']):
+        return False, 'strict_main_product_name_mismatch'
     year = target.get('year')
     # Undated targets may be non-vintage products. Never guess the year.
     if year is None:
@@ -118,7 +144,7 @@ def verified_identity(target, capture):
     return True, 'exact_wine_vintage_and_volume'
 
 
-def apply_observations(catalog, observations):
+def apply_observations(catalog, observations, automated=False):
     catalog = copy.deepcopy(catalog)
     index = {r['id']: r for r in catalog['records']}
     summary = {'observations': 0, 'accepted_identity': 0, 'rejected': [],
@@ -131,7 +157,14 @@ def apply_observations(catalog, observations):
         if not r:
             summary['rejected'].append([id_, 'unknown_target'])
             continue
-        if not obs.get('reviewer_confirmed'):
+        if automated:
+            # No per-bottle clicks. Revalidate *every* source field independently
+            # below; do not equate browser navigation with human review.
+            if (obs.get('capture_method') != 'automated_browser_batch'
+                    or (obs.get('verification') or {}).get('status') != 'exact'):
+                summary['rejected'].append([id_, 'automated_identity_not_verified'])
+                continue
+        elif not obs.get('reviewer_confirmed'):
             summary['rejected'].append([id_, 'not_reviewed_by_user'])
             continue
         store = r['stores'][0]
@@ -143,7 +176,7 @@ def apply_observations(catalog, observations):
         if not observed_on:
             summary['rejected'].append([id_, 'invalid_capture_date'])
             continue
-        ok, reason = verified_identity(r, captured)
+        ok, reason = verified_identity(r, captured, automated=automated)
         if not ok:
             summary['rejected'].append([id_, reason])
             continue
@@ -167,7 +200,8 @@ def apply_observations(catalog, observations):
         manual = store.get('research_details')
         if not (isinstance(manual, dict)
                 and manual.get('source_kind') in
-                    ('primary_retailer_product_description', 'manual_verified_original_seller')
+                    ('primary_retailer_product_description', 'manual_verified_original_seller',
+                     'automated_verified_original_seller')
                 and canonical_url(manual.get('source_url')) == canonical_url(store['url'])):
             manual = None
         additions = {}
@@ -179,7 +213,8 @@ def apply_observations(catalog, observations):
             if manual is None:
                 manual = {'checked_at': observed_on,
                           'source_url': store['url'].split('#')[0],
-                          'source_kind': 'manual_verified_original_seller',
+                          'source_kind': ('automated_verified_original_seller' if automated
+                                          else 'manual_verified_original_seller'),
                           'full_name': captured['h1']}
                 store['research_details'] = manual
             field_dates = manual.setdefault('field_checked_at', {})
@@ -207,7 +242,8 @@ def apply_observations(catalog, observations):
                 previous = store.get('live_offer') or {}
                 if previous.get('observed_on', '') <= observed_on:
                     offer['observed_on'] = observed_on
-                    offer['capture_method'] = 'user_confirmed_active_browser_tab'
+                    offer['capture_method'] = ('automated_browser_batch' if automated
+                                               else 'user_confirmed_active_browser_tab')
                     if previous != offer:
                         store['live_offer'] = offer
                         summary['live_offers_updated'] += 1
@@ -223,13 +259,17 @@ def main():
     if args.capture.stat().st_size > MAX_IMPORT:
         raise SystemExit('Capture file exceeds safe size limit')
     imported = json.loads(args.capture.read_text(encoding='utf-8'))
-    if imported.get('schema_version') != 1 or imported.get('source') != 'wine_atlas_manual_extension':
+    legacy = (imported.get('schema_version') == 1
+              and imported.get('source') == 'wine_atlas_manual_extension')
+    automated = (imported.get('schema_version') == 2
+                 and imported.get('source') == 'wine_atlas_automated_browser_extension')
+    if not (legacy or automated):
         raise SystemExit('Unexpected capture schema or source')
     observations = imported.get('observations')
     if not isinstance(observations, list) or len(observations) > 1000:
         raise SystemExit('Invalid observation count')
     catalog = json.loads(args.catalog.read_text(encoding='utf-8'))
-    revised, summary = apply_observations(catalog, observations)
+    revised, summary = apply_observations(catalog, observations, automated=automated)
     if args.apply and revised != catalog:
         output = args.catalog.with_suffix('.new')
         output.write_text(json.dumps(revised,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')

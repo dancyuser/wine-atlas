@@ -74,7 +74,7 @@ function liveOfferFor(r){
  const store=r.stores?.[0], offer=store?.live_offer, review=r.publication_review;
  if(!offer||offer.verification_method!=='exact_jsonld_product'||review?.status==='excluded')return null;
  const reviewed=review?.status==='verified';
- const manualArchive=offer.capture_method==='user_confirmed_active_browser_tab'&&
+ const manualArchive=['user_confirmed_active_browser_tab','automated_browser_batch'].includes(offer.capture_method)&&
     store?.enrichment_status?.status==='verified'&&store?.product_details?.source_url===store.url;
  if(!reviewed&&!manualArchive)return null;
  if(!/^\d{4}-\d{2}-\d{2}$/.test(offer.observed_on||''))return null;
@@ -117,7 +117,7 @@ function retailerDetails(r){
  // Manual research is separately attributed and never overwrites the verified
  // retailer archive; the overlay fills only fields absent in that archive.
  const research=s.research_details?.source_url===s.url?.split('#')[0]&&
-  ['primary_retailer_product_description','manual_verified_original_seller'].includes(s.research_details.source_kind)
+  ['primary_retailer_product_description','manual_verified_original_seller','automated_verified_original_seller'].includes(s.research_details.source_kind)
   ?s.research_details:null;
  if(!archive)return research;
  if(!research)return archive;

@@ -2373,7 +2373,7 @@
         "Рислинг",
         "Мускателлер"
       ],
-      "type": "Белое",
+      "type": "Оранжевое",
       "pairings": [
         "Рыба",
         "Морепродукты",
@@ -2503,6 +2503,13 @@
         "source_url": "https://spb.winestyle.ru/products/Loimer-Gluegglich.html",
         "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
         "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      },
+      "classification_review": {
+        "status": "verified",
+        "verified_on": "2026-11-23",
+        "category": "type",
+        "source_url": "https://www.loimer.at/en/shop/gluegglich-nv/",
+        "evidence": "Manufacturer identifies Gluegglich White NV as low-intervention orange wine; WineStyle exact-product archived wine_style: Оранжевое, Сухое."
       }
     },
     {
@@ -3487,7 +3494,7 @@
       "grapes": [
         "Пино Нуар"
       ],
-      "type": "Белое",
+      "type": "Розовое",
       "pairings": [
         "Рыба",
         "Морепродукты",
@@ -3617,6 +3624,13 @@
         "source_url": "https://spb.winestyle.ru/products/El-Esteco-Blanc-de-Noir-2023.html",
         "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
         "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      },
+      "classification_review": {
+        "status": "verified",
+        "verified_on": "2026-11-23",
+        "category": "type",
+        "source_url": "https://www.alko.fi/en/products/912828/El-Esteco-Blanc-de-Noir-2023/",
+        "evidence": "El Esteco Blanc de Noir 2023 classified as rosé by Alko and primary product archived wine_style: Розовое, Сухое."
       }
     },
     {
@@ -5999,7 +6013,7 @@
             "volume_l": "0.75 л",
             "brand": "Masamadre",
             "pairing_notes": "рыба, аперитив, закуски",
-            "wine_style": "Белое, Сухое",
+            "wine_style": "Игристое-белое, Сухое",
             "body": "лёгкое",
             "color_intensity": "бледное",
             "description_excerpt": "Pitars, Prosecco DOC — изысканное игристое белое вино, созданное из отборного винограда сорта Глера. Являясь моносортовым, вино полностью раскрывает характер и аромат сорта: свежесть, легкую фруктовость и нежную цветочную ноту. Вино лёгкое, освежающее и идеально подходит для аперитива, дружеских встреч и банкета! Базовое вино создается традиционным способом: мягкое прессование отделяет сок от кожицы, а ферментация при контролируемой температуре около 18 °C помогает сохранить тонкие ароматы и свежесть. Вторичное брожение проводится в автоклаве",
@@ -6048,7 +6062,7 @@
               "volume_l": "Объем: 0.75 л",
               "brand": "Бренд: Masamadre",
               "pairing_notes": "Подходит к: рыба, аперитив, закуски",
-              "wine_style": "Вино: Белое, Сухое",
+              "wine_style": "Primary producer: Pitars Prosecco DOC is a sparkling white wine. https://www.pitars.it/en/sparkling-wines/; source exact product archive retains white/dry.",
               "body": "Насыщенность: лёгкое",
               "color_intensity": "Глубина цвета: бледное",
               "description_excerpt": "Описание: Pitars, Prosecco DOC — изысканное игристое белое вино, созданное из отборного винограда сорта Глера. Являясь моносортовым, вино полностью раскрывает характер и аромат сорта: свежесть, легкую фруктовость и нежную цветочную ноту. Вино лёгкое, освежающе",
@@ -6083,6 +6097,13 @@
         "source_url": "https://spb.winestyle.ru/products/Pitars-Prosecco-DOC.html",
         "evidence": "Main-product .m-productpage-price has Добавить в корзину button",
         "snapshot_source": "wine-atlas-background-snapshots-2026-11-23.zip"
+      },
+      "classification_review": {
+        "status": "verified",
+        "verified_on": "2026-11-23",
+        "category": "type",
+        "source_url": "https://www.pitars.it/en/sparkling-wines/",
+        "evidence": "Producer categorizes Pitars Prosecco DOC as a sparkling wine; correct white/dry product style field."
       }
     },
     {

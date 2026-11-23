@@ -1,15 +1,27 @@
 {
   "manifest_version": 3,
-  "name": "Wine Atlas Evidence Capture",
-  "version": "1.0.0",
-  "description": "Ручной сбор проверяемых характеристик конкретной бутылки с открытой вкладки без фонового обхода сайтов.",
+  "name": "Wine Atlas - пакетный сбор",
+  "version": "2.0.0",
+  "description": "Один запуск: последовательно просматривает все 124 карточки в браузере, собирает доказательства и автоматически сохраняет JSON.",
+  "minimum_chrome_version": "120",
   "permissions": [
-    "activeTab",
+    "storage",
     "scripting",
-    "storage"
+    "tabs",
+    "alarms",
+    "downloads"
   ],
+  "host_permissions": [
+    "https://spb.winestyle.ru/*",
+    "https://ast.wine/*",
+    "https://ladogawine.ru/*",
+    "https://vinissimo.biz/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "action": {
-    "default_title": "Wine Atlas Capture",
+    "default_title": "Wine Atlas - пакетный сбор",
     "default_popup": "popup.html"
   }
 }

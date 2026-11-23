@@ -61,7 +61,7 @@ for r in records:
   if live is not None:
    assert (r.get('publication_review',{}).get('status')=='verified' or (
     r.get('publication_review',{}).get('status')!='excluded'
-    and live.get('capture_method')=='user_confirmed_active_browser_tab'
+    and live.get('capture_method') in ('user_confirmed_active_browser_tab','automated_browser_batch')
     and store.get('enrichment_status',{}).get('status')=='verified'
     and store.get('product_details',{}).get('source_url')==store['url']
    )),('Unreviewed offer',r['id'])
@@ -81,7 +81,7 @@ for r in records:
  # Vendor-sourced manual research is separate from the immutable WineStyle archive.
   manual=store.get('research_details')
   if manual is not None:
-   assert manual.get('source_kind') in ('primary_retailer_product_description','manual_verified_original_seller'),('Research kind',r['id'])
+   assert manual.get('source_kind') in ('primary_retailer_product_description','manual_verified_original_seller','automated_verified_original_seller'),('Research kind',r['id'])
    assert manual.get('checked_at') and re.fullmatch(r'\d{4}-\d{2}-\d{2}',manual['checked_at']),('Research date',r['id'])
    assert manual.get('source_url','').split('#')[0].rstrip('/')==store['url'].split('#')[0].rstrip('/'),('Research URL',r['id'])
    assert manual.get('full_name') or manual.get('producer'),('Research identity',r['id'])

@@ -39,6 +39,11 @@ jobs:
           node --check extension/capture.js
           node --check extension/popup.js
           node scripts/test_extension_capture.cjs
+          node --check extension/batch_core.js
+          node --check extension/background.js
+          node scripts/test_batch_core.cjs
+          node scripts/test_batch_background.cjs
+          python -m unittest discover -s scripts -p 'test_wine_classifier.py' -v
           node --check app.js
           node scripts/test_theme.mjs
           node scripts/test_enrichment_ui.cjs

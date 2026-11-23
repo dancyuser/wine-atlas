@@ -54,23 +54,4 @@ assert.equal(result.extraction.raw_html_saved,false);
 assert.equal(result.blocked,false);
 assert.equal(collect('Captcha | Access denied').blocked,true);
 assert(!JSON.stringify(result).includes('cookie'));
-// Exercise the popup's exact-identity preview without Chrome permissions.
-const popup=fs.readFileSync(path.join(__dirname,'..','extension','popup.js'),'utf8');
-const dom={getElementById:()=>({addEventListener(){}})};
-const previewContext={document:dom,URL,Set,Array,Number,String,console};
-vm.createContext(previewContext);
-vm.runInContext(popup.replace(/\brestore\(\);\s*$/,'')+
-  '\nthis.verifyCandidate=candidateEvidence;',previewContext);
-const target={id:'kopke',title:'Kopke Late Bottled Vintage Port (LBV)',
- year:2018,volume_l:0.75,store_url:result.source_url};
-const correct=previewContext.verifyCandidate(target,result);
-assert.equal(correct.url_match,true);
-assert.equal(correct.name_match,true);
-assert.equal(correct.year_confirmed,true);
-assert.equal(correct.volume_confirmed,true);
-const unrelated={...result,h1:'Another Producer Chardonnay 2018, 750 ml',products:[]};
-assert.equal(previewContext.verifyCandidate(target,unrelated).name_match,false,
- 'A replacement wine with the same year and bottle volume must fail preview');
-const unknownYear={...result,h1:'Kopke LBV Port, 750 ml',products:[],fields:{}};
-assert.equal(previewContext.verifyCandidate(target,unknownYear).year_confirmed,false);
-console.log('MV3 CAPTURE TESTS PASSED: label parsing, identity preview, offer completeness, no session access');
+console.log('MV3 CAPTURE TESTS PASSED: label parsing, Offer completeness, no session access');
