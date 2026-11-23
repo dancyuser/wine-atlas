@@ -105,7 +105,13 @@ const pairingGroups=[
   ['Закуски',/закуск|аперитив|канапе/i],
   ['Пряные блюда',/остр|прян|азиатск/i]
 ];
-function retailerDetails(r){const s=r.stores?.[0];return s?.enrichment_status?.status==='verified'&&s.product_details?.source_url===s.url?s.product_details:null}
+function retailerDetails(r){
+ const s=r.stores?.[0];
+ if(s?.enrichment_status?.status==='verified'&&s.product_details?.source_url===s.url)return s.product_details;
+ // Manually researched exact product descriptions from the original seller.
+ if(s?.research_details?.source_url===s?.url?.split('#')[0]&&s.research_details.source_kind==='primary_retailer_product_description')return s.research_details;
+ return null;
+}
 // Retailers use multiple spellings for the SAME grape variety. Normalize the
 // filter and visible metadata without altering the archival source fields.
 const grapeAliases=new Map([
@@ -189,9 +195,8 @@ function ratingsDetails(r,m){
 }
 
 function wineStyleMarkup(r){
- const s=(r.stores||[]).find(x=>x.enrichment_status?.status==='verified'&&x.product_details?.source_url===x.url);
- if(!s)return '';
- const d=s.product_details;
+ const s=r.stores?.[0],d=retailerDetails(r);
+ if(!s||!d)return '';
  const fields=[['Вкус','taste'],['Аромат','aroma'],['Сочетания','pairing_notes'],['Регион','region'],['Крепость','alcohol_percent'],['Объём','volume_l'],['Производитель','producer'],['Описание','description_excerpt']];
  const rows=fields.filter(([,k])=>d[k]!=null&&d[k]!=='').map(([label,k])=>'<li><span>'+safe(label)+'</span><strong>'+safe(String(d[k]))+'</strong></li>').join('');
  const observed=r.availability;
@@ -205,7 +210,7 @@ function wineStyleMarkup(r){
  return '<details class="rating-details characteristics"><summary>Вкус, наличие и характеристики</summary>'+
  (stockNote?'<p class="availability-note">'+safe(stockNote)+' · '+date(stockDate)+'</p>':'')+
  (rows?'<ul>'+rows+'</ul>':'')+
- '<p class="rating-hint">Данные WineStyle на '+date(d.checked_at)+' · <a href="'+safe(s.url)+'" target="_blank" rel="noopener noreferrer">Источник</a></p></details>';
+ '<p class="rating-hint">Данные '+safe(s.name||'продавца')+' на '+date(d.checked_at)+' · <a href="'+safe(d.source_url)+'" target="_blank" rel="noopener noreferrer">Источник</a></p></details>';
 }
 function photoMarkup(r){
  const snap=snapshotFor(r),p=r.photo||{},raw=state.researchedPhotos[r.id];
