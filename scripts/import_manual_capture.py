@@ -173,30 +173,28 @@ def apply_observations(catalog, observations):
                 summary['details_added'] += 1
         # Offer import is independent from labels. Never accept a price based
         # on a generic price element, an AggregateOffer or browser text alone.
-        for product in captured.get('products') or []:
-            if product.get('url') and canonical_url(product['url']) != canonical_url(store['url']):
-                continue
+        # Verify every matching Product together. Conflicting offers must be
+        # rejected as a group, independently of JSON-LD node ordering.
+        products = [p for p in (captured.get('products') or [])
+                    if isinstance(p,dict) and
+                    (not p.get('url') or canonical_url(p['url']) == canonical_url(store['url']))]
+        if products:
             synthetic = '<script type="application/ld+json">' + json.dumps(
-                product, ensure_ascii=False
+                products, ensure_ascii=False
             ) + '</script>'
             verified_record = r if review.get('status') == 'verified' else {
                 **r, 'publication_review': {'status':'verified','final_url':store['url'].split('#')[0]}
             }
             offer, _ = verified_offer(synthetic, verified_record, store['url'].split('#')[0],
                                       captured['source_url'].split('#')[0])
-            if not offer:
-                continue
-            if observed_on < (review.get('checked_at') or store.get('enrichment_status', {}).get('checked_at', '9999-12-31')):
-                continue
-            previous = store.get('live_offer') or {}
-            if previous.get('observed_on', '') > observed_on:
-                continue
-            offer['observed_on'] = observed_on
-            offer['capture_method'] = 'user_confirmed_active_browser_tab'
-            if previous != offer:
-                store['live_offer'] = offer
-                summary['live_offers_updated'] += 1
-            break
+            if offer and observed_on >= (review.get('checked_at') or store.get('enrichment_status', {}).get('checked_at', '9999-12-31')):
+                previous = store.get('live_offer') or {}
+                if previous.get('observed_on', '') <= observed_on:
+                    offer['observed_on'] = observed_on
+                    offer['capture_method'] = 'user_confirmed_active_browser_tab'
+                    if previous != offer:
+                        store['live_offer'] = offer
+                        summary['live_offers_updated'] += 1
     return catalog, summary
 
 
