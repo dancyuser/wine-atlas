@@ -6,6 +6,7 @@
 'use strict';
 importScripts('capture.js','batch_core.js');
 const STORE='wineAtlasBatchV2';
+const DOWNLOAD_STORE='wineAtlasBatchDownloadV2';
 const ALARM='wineAtlasBatchRecover';
 const MIN_GAP_MS=4500;
 const AFTER_LOAD_MS=1500;
@@ -23,7 +24,18 @@ async function targets(){
  targetCache={list,sha:file.catalog_blob_sha};
  return targetCache;
 }
-async function read(){return (await chrome.storage.local.get(STORE))[STORE]||null;}
+async function read(){
+ const values=await chrome.storage.local.get([STORE,DOWNLOAD_STORE]);
+ const job=values[STORE];if(!job)return null;
+ const meta=values[DOWNLOAD_STORE];
+ // Download metadata is stored separately: writing it cannot overwrite a
+ // capture that finished while chrome.downloads.download() was pending.
+ if(meta?.run_id===job.run_id&&meta.cursor===job.cursor&&meta.run_status===job.status){
+   return {...job,download_status:meta.status,download_id:meta.download_id,
+           download_error:meta.download_error||null};
+ }
+ return job;
+}
 async function save(job){await chrome.storage.local.set({[STORE]:job});}
 function schedule(ms=0){
  if(pendingTimer!==null)clearTimeout(pendingTimer);
@@ -45,9 +57,10 @@ async function badge(job){
   await chrome.action.setBadgeBackgroundColor({color:'#245b42'});
  }catch{}
 }
-async function download(job){
+async function download(job,force=false){
  const latest=await read();
- if(!latest || latest.run_id!==job.run_id || latest.download_status==='success')return;
+ if(!latest || latest.run_id!==job.run_id || (!force&&latest.download_status==='success'))return;
+ let status='success',id=null,errorMessage=null;
  try{
   const bundle=WineAtlasBatch.exportBundle(latest);
   // No transfer to a server: a data URI is downloaded by the browser itself.
@@ -56,16 +69,18 @@ async function download(job){
   const url='data:application/json;charset=utf-8,'+encodeURIComponent(payload);
   const date=new Date().toISOString().slice(0,10);
   const filename='wine-atlas-capture-'+date+'-'+latest.run_id+'.json';
-  const id=await chrome.downloads.download({url,filename,saveAs:false,conflictAction:'uniquify'});
+  id=await chrome.downloads.download({url,filename,saveAs:false,conflictAction:'uniquify'});
   if(typeof id!=='number')throw Error('Браузер не подтвердил создание загрузки');
-  latest.download_status='success';
-  latest.download_id=id;
-  latest.download_error=null;
  }catch(error){
-  latest.download_status='failed';
-  latest.download_error=String(error?.message||error).slice(0,240);
+  status='failed';
+  errorMessage=String(error?.message||error).slice(0,240);
  }
- await save(latest);
+ // Only the download metadata key is written. Collection cursor and current
+ // tab may have advanced concurrently; neither can be reverted by this write.
+ await chrome.storage.local.set({[DOWNLOAD_STORE]:{
+   run_id:latest.run_id,cursor:latest.cursor,run_status:latest.status,
+   status,download_id:id,download_error:errorMessage
+ }});
 }
 async function complete(job,status='completed'){
  const latest=await read();
@@ -273,8 +288,8 @@ chrome.runtime.onMessage.addListener((request,sender,reply)=>{
   if(request.type==='wa_export'){
    const job=await read();
    if(!job)return summary(job);
-   // Explicit user request may re-download even if prior auto-download succeeded.
-   job.download_status=null;await save(job);await download(job);
+   // Explicit re-download never rewrites collection progress.
+   await download(job,true);
    return summary(await read());
   }
   return summary(await read());
