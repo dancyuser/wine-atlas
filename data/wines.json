@@ -148,12 +148,12 @@
       ],
       "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены.",
       "photo": {
-        "url": "https://facoporti.pt/575-large_default/grahams-lbv-2019-vinho-do-porto.jpg",
-        "source_url": "https://facoporti.pt/vinho-porto/510-grahams-lbv-2019-vinho-do-porto.html",
-        "source": "Facoporti",
+        "url": "https://www.snowdoniacheese.co.uk/cdn/shop/files/grahams-lbv-port-gift-blue-ps-1-product-image-d.png?crop=center&height=1000&v=1759403656&width=1000",
+        "source_url": "https://www.snowdoniacheese.co.uk/products/graham-s-late-bottled-vintage-port-2019",
+        "source": "Snowdonia Cheese",
         "matched_year": 2019,
         "verified_on": "2026-11-23",
-        "note": "2019 Graham's LBV, bottle and gift tube; external retailer image"
+        "note": "Exact 2019 vintage with gift tube; image from retailer product page"
       }
     },
     {
@@ -279,7 +279,15 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "photo": {
+        "url": "https://swines.co.uk/cdn/shop/files/5a4d190026b586f8d0a42637393bd442_1200x1200.jpg?v=1734959831",
+        "source_url": "https://swines.co.uk/products/quinta-de-la-rosa-lbv-portugal",
+        "source": "SW Wine Shop",
+        "matched_year": 2019,
+        "verified_on": "2026-11-23",
+        "note": "Retailer identifies product as 2019 LBV; bottle label may not visibly display vintage"
+      }
     },
     {
       "id": "c9f63273980c",
