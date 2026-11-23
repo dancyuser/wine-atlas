@@ -29,7 +29,7 @@ for r in records:
  if stock is not None:
   assert stock['status'] in ('in_stock','out_of_stock'), (r['id'],stock)
   assert stock.get('source_url') in {s['url'] for s in r['stores']},r['id']
-  assert re.fullmatch(r'\\d{4}-\\d{2}-\\d{2}',stock['observed_on']),r['id']
+  assert re.fullmatch(r'\d{4}-\d{2}-\d{2}',stock['observed_on']),r['id']
   assert stock.get('evidence') and stock.get('snapshot_source'),r['id']
  assert r['stores']
  assert not (r['section']=='Джин')
@@ -49,7 +49,7 @@ for r in records:
 snapshot=d.get('inventory_snapshot')
 if snapshot:
  assert re.fullmatch(r'[0-9a-f]{64}',snapshot['archive_sha256'])
- assert re.fullmatch(r'\\d{4}-\\d{2}-\\d{2}',snapshot['observed_on'])
+ assert re.fullmatch(r'\d{4}-\d{2}-\d{2}',snapshot['observed_on'])
  in_stock=sum(r.get('availability',{}).get('status')=='in_stock' for r in records)
  unavailable=sum(r.get('availability',{}).get('status')=='out_of_stock' for r in records)
  unknown=sum(r.get('availability') is None for r in records)
