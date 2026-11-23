@@ -76,20 +76,30 @@ def words(s):
     return {x for x in re.findall(r"[a-zа-я]{3,}", normalized) if x not in stop}
 
 
+def identity_years(text):
+    # Reject contradictory vintages rather than looking for one favorable mention.
+    return {int(m) for m in re.findall(r"(?<!\d)(?:19\d{2}|20\d{2})(?!\d)", text)}
+
+
+def identity_volumes(text):
+    text = text.casefold().replace(",", ".")
+    found = set()
+    liters = r"(?<![\d.])(\d+(?:\.\d+)?)\s*(?:л|l|литр(?:а|ов)?|lit(?:re|er)s?)(?![\w])"
+    milliliters = r"(?<!\d)(\d+)\s*(?:мл|ml|миллилитр(?:а|ов)?)(?![\w])"
+    for volume in re.findall(liters, text):
+        found.add(round(float(volume) * 1000))
+    for volume in re.findall(milliliters, text):
+        found.add(int(volume))
+    return found
+
+
 def exact_vintage(text, year):
-    return year is not None and bool(re.search(r"(?<!\d)" + re.escape(str(year)) + r"(?!\d)", text))
+    return year is not None and identity_years(text) == {int(year)}
 
 
 def exact_volume(text, volume_l):
-    if not isinstance(volume_l, (int, float)) or volume_l <= 0:
-        return False
-    text = text.casefold().replace(",", ".")
-    liters = format(float(volume_l), "g")
-    ml = str(round(volume_l * 1000))
-    return bool(re.search(r"(?<![\d.])" + re.escape(liters) +
-                          r"\s*(?:л|l|литр(?:а|ов)?|lit(?:re|er)s?)(?![\w])", text)
-                or re.search(r"(?<!\d)" + ml +
-                             r"\s*(?:мл|ml|миллилитр(?:а|ов)?)(?![\w])", text))
+    return (isinstance(volume_l, (int, float)) and volume_l > 0
+            and identity_volumes(text) == {round(volume_l * 1000)})
 
 
 def numeric_price(value):
