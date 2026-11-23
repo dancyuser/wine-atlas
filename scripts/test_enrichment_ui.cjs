@@ -285,6 +285,17 @@ assert.equal(h.liveOfferFor(manual).price_rub,2990);
 assert.equal(h.priceValue(manual),2990);
 assert.equal(h.isPublished({...manual,stores:[{...manual.stores[0],
  live_offer:{...manual.stores[0].live_offer,availability:'out_of_stock'}}]}),false);
+const sourcedVisible={...manual,stores:[{...manual.stores[0],
+ live_offer:{...manual.stores[0].live_offer,
+  price_rub:4840,verification_method:'exact_main_product_visible_price',
+  capture_method:'automated_browser_batch',price_evidence:'4 840 ₽',
+  availability_evidence:'В наличии в 1 магазине'}}]};
+assert.equal(h.liveOfferFor(sourcedVisible)?.price_rub,4840);
+assert.equal(h.priceValue(sourcedVisible),4840);
+const notAvailable={...sourcedVisible,stores:[{...sourcedVisible.stores[0],
+ live_offer:{...sourcedVisible.stores[0].live_offer,
+ availability:'out_of_stock',availability_evidence:'Ожидаем поступление'}}]};
+assert.equal(h.isPublished(notAvailable),false);
 h.state.snapshots={};
 h.state.snapshotDate=null;
 console.log('WINESTYLE UI TESTS PASSED: derived filters, merged grape synonyms, excluded redirected wines, source display, curated preservation, fallback');

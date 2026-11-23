@@ -52,10 +52,11 @@ const WineAtlasBatch = (() => {
     // or equals the exact target, never unrelated recommendation nodes.
     const products=(capture.products||[]).filter(p=>p && (!p.url||identityUrl(p.url)===identityUrl(target.url)));
     const names=[capture.h1,...products.map(p=>p.name||'')];
-    const allYears = [...new Set(years(names.join(' ')+' '+(capture.fields?.vintage?.value||'')))];
-    if (target.year==null)
-      return {status:'needs_review',reason:'catalog_vintage_unspecified'};
-    if (allYears.length!==1 || allYears[0]!==target.year)
+    const allYears = [...new Set(years(names.join(' ')+' '+(capture.fields?.vintage?.value||'')
+      +' '+(capture.page_title||'')))];
+    if (target.year==null && allYears.length)
+      return {status:'needs_review',reason:'unexpected_vintage_on_undated_product'};
+    if (target.year!=null && (allYears.length!==1 || allYears[0]!==target.year))
       return {status:'needs_review',reason:'missing_or_conflicting_vintage'};
     const sizes=new Set([
       ...names.flatMap(volumeMls),
@@ -64,7 +65,9 @@ const WineAtlasBatch = (() => {
     ]);
     if (!target.volume_l||sizes.size!==1||!sizes.has(Math.round(target.volume_l*1000)))
       return {status:'needs_review',reason:'missing_or_conflicting_volume'};
-    return {status:'exact',reason:'verified_url_title_vintage_volume'};
+    return target.year==null
+      ?{status:'exact',reason:'verified_undated_original_product_and_volume'}
+      :{status:'exact',reason:'verified_url_title_vintage_volume'};
   }
   function validateTargets(value) {
     if (!value || value.schema_version!==1||!Array.isArray(value.targets)||value.targets.length<1

@@ -23,7 +23,7 @@ def report():
                 or r.get('publication_review', {}).get('status') == 'excluded'):
             return False
         live = r['stores'][0].get('live_offer') or {}
-        return not (live.get('verification_method') == 'exact_jsonld_product'
+        return not (live.get('verification_method') in ('exact_jsonld_product','exact_main_product_visible_price')
                     and live.get('availability') == 'out_of_stock'
                     and live.get('observed_on', '') >=
                         r.get('availability', {}).get('observed_on', '0000-00-00'))

@@ -97,6 +97,115 @@ class ManualImportTests(unittest.TestCase):
         _,report=apply_observations({'records':[r]},[o],automated=True)
         self.assertEqual(report['rejected'][0][1],'not_approved_for_publication')
 
+    @staticmethod
+    def browser_visible_offer(o, price=4840, stock='В наличии остался в 1 магазине',
+                              availability='in_stock'):
+        o=copy.deepcopy(o)
+        o['capture_method']='automated_browser_batch'
+        o['reviewer_confirmed']=False
+        o['verification']={'status':'exact','reason':'verified_url_title_vintage_volume'}
+        o['capture']['products']=[]
+        o['capture']['visible_offer']={
+            'method':'visible_main_product_price','scope':'winestyle_primary_product_panel',
+            'price_rub':price,'price_evidence':f'{price:,} ₽'.replace(',',' '),
+            'price_currency':'RUB','availability':availability,
+            'availability_evidence':stock,'regular_price_rub':None,
+            'regular_price_evidence':None
+        }
+        return o
+
+    def test_automated_visible_main_price_with_stock(self):
+        o=self.browser_visible_offer(OBS)
+        c,report=apply_observations({'records':[copy.deepcopy(RECORD)]},[o],automated=True)
+        s=c['records'][0]['stores'][0]
+        self.assertEqual(report['accepted_identity'],1)
+        self.assertEqual(report['live_offers_updated'],1)
+        self.assertEqual(s['live_offer']['price_rub'],4840)
+        self.assertEqual(s['live_offer']['availability'],'in_stock')
+        self.assertEqual(s['live_offer']['verification_method'],'exact_main_product_visible_price')
+        self.assertEqual(s['live_offer']['capture_method'],'automated_browser_batch')
+        self.assertEqual(s['live_offer']['price_evidence'],'4 840 ₽')
+        self.assertEqual(s['price_rub'],7000,'Original archive price is immutable')
+
+    def test_visible_main_stock_explicitly_unavailable(self):
+        o=self.browser_visible_offer(OBS,4099,'Ожидаем поступление','out_of_stock')
+        c,report=apply_observations({'records':[copy.deepcopy(RECORD)]},[o],automated=True)
+        self.assertEqual(report['live_offers_updated'],1)
+        self.assertEqual(c['records'][0]['stores'][0]['live_offer']['availability'],'out_of_stock')
+
+    def test_no_visible_price_if_status_ambiguous(self):
+        o=self.browser_visible_offer(OBS,4840,'Доступно под заказ','unknown')
+        c,report=apply_observations({'records':[copy.deepcopy(RECORD)]},[o],automated=True)
+        self.assertEqual(report['live_offers_updated'],0)
+        self.assertNotIn('live_offer',c['records'][0]['stores'][0])
+
+    def test_price_must_match_source_text(self):
+        o=self.browser_visible_offer(OBS)
+        o['capture']['visible_offer']['price_rub']=1
+        c,report=apply_observations({'records':[copy.deepcopy(RECORD)]},[o],automated=True)
+        self.assertEqual(report['live_offers_updated'],0)
+
+    def test_never_accept_unverified_discount(self):
+        o=self.browser_visible_offer(OBS)
+        o['capture']['visible_offer']['regular_price_rub']=9000
+        c,report=apply_observations({'records':[copy.deepcopy(RECORD)]},[o],automated=True)
+        self.assertEqual(report['live_offers_updated'],0)
+
+    def test_agreeing_jsonld_and_visible_price_are_accepted(self):
+        o=self.browser_visible_offer(OBS,6348)
+        o['capture']['products']=copy.deepcopy(CAPTURE['products'])
+        c,report=apply_observations({'records':[copy.deepcopy(RECORD)]},[o],automated=True)
+        self.assertEqual(report['live_offers_updated'],1)
+        self.assertEqual(c['records'][0]['stores'][0]['live_offer']['price_rub'],6348)
+        self.assertEqual(c['records'][0]['stores'][0]['live_offer']['verification_method'],'exact_jsonld_product')
+
+    def test_jsonld_and_visible_stock_conflict_rejected(self):
+        o=self.browser_visible_offer(OBS,6348,'Ожидаем поступление','out_of_stock')
+        o['capture']['products']=copy.deepcopy(CAPTURE['products'])
+        c,report=apply_observations({'records':[copy.deepcopy(RECORD)]},[o],automated=True)
+        self.assertEqual(report['live_offers_updated'],0)
+        self.assertNotIn('live_offer',c['records'][0]['stores'][0])
+
+    def test_jsonld_and_visible_main_price_conflict_rejected(self):
+        o=self.browser_visible_offer(OBS)
+        o['capture']['products']=copy.deepcopy(CAPTURE['products'])
+        c,report=apply_observations({'records':[copy.deepcopy(RECORD)]},[o],automated=True)
+        self.assertEqual(report['live_offers_updated'],0)
+        self.assertNotIn('live_offer',c['records'][0]['stores'][0])
+
+    def test_unknown_wine_identity_rejects_visible_price(self):
+        o=self.browser_visible_offer(OBS)
+        o['capture']['h1']='Different Producer Chardonnay 2018 750 ml'
+        c,report=apply_observations({'records':[copy.deepcopy(RECORD)]},[o],automated=True)
+        self.assertEqual(report['live_offers_updated'],0)
+        self.assertEqual(report['rejected'][0][1],'main_product_name_mismatch')
+
+    def test_automated_undated_legacy_capture_revalidated_without_inventing_year(self):
+        o=copy.deepcopy(OBS)
+        o['capture_method']='automated_browser_batch'
+        o['reviewer_confirmed']=False
+        o['verification']={'status':'needs_review','reason':'catalog_vintage_unspecified'}
+        o['capture']['h1']='Kopke LBV Porto, 750 ml'
+        o['capture']['products']=[]
+        r=copy.deepcopy(RECORD)
+        r['year']=None
+        c,report=apply_observations({'records':[r]},[o],automated=True)
+        self.assertEqual(report['accepted_identity'],1)
+        self.assertIsNone(c['records'][0]['year'])
+        self.assertEqual(report['details_added'],1)
+
+    def test_undated_capture_with_seller_vintage_must_be_rejected(self):
+        o=copy.deepcopy(OBS)
+        o['capture_method']='automated_browser_batch'
+        o['reviewer_confirmed']=False
+        o['verification']={'status':'needs_review','reason':'catalog_vintage_unspecified'}
+        o['capture']['h1']='Kopke LBV Porto 2025, 750 ml'
+        o['capture']['products']=[]
+        r=copy.deepcopy(RECORD)
+        r['year']=None
+        _,report=apply_observations({'records':[r]},[o],automated=True)
+        self.assertEqual(report['rejected'][0][1],'unexpected_vintage_on_undated_product')
+
     def test_verified_metadata_and_price_separate(self):
         catalog, report = self.run_import()
         r = catalog['records'][0]
