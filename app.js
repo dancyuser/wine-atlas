@@ -78,7 +78,7 @@ function liveOfferFor(r){
  if(!Number.isInteger(offer.price_rub)||offer.price_rub<=0)return null;
  try {
   const a=new URL(store.url),b=new URL(offer.source_url),c=new URL(review.final_url);
-  const normalized=u=>u.hostname.toLowerCase()+decodeURIComponent(u.pathname).replace(/\/$/,'');
+  const normalized=u=>u.hostname.toLowerCase()+decodeURIComponent(u.pathname).replace(/\/$/,'')+u.search;
   if(a.protocol!=='https:'||b.protocol!=='https:'||normalized(a)!==normalized(b)||normalized(b)!==normalized(c))return null;
  }catch{return null}
  return offer;
