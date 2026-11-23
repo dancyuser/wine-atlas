@@ -56,8 +56,8 @@ byId('stop').addEventListener('click',()=>request('wa_stop'));
 byId('resume').addEventListener('click',()=>request('wa_resume'));
 byId('export').addEventListener('click',()=>request('wa_export'));
 chrome.storage.onChanged.addListener((changes,area)=>{
- if(area!=='local'||!changes.wineAtlasBatchV2)return;
- const j=changes.wineAtlasBatchV2.newValue;
- if(j)render({...j,errors:j.errors?.length||0});
+ if(area!=='local')return;
+ if(changes.wineAtlasBatchDownloadV2){void refresh();return;}
+ if(changes.wineAtlasBatchV2){void refresh();}
 });
 void refresh();
