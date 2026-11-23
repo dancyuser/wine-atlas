@@ -1,7 +1,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const fmt=new Intl.NumberFormat('ru-RU');
-const state={records:[],ratingRecords:{},unrated:{},favorites:new Set(),scope:'all'};
+const state={records:[],ratingRecords:{},unrated:{},snapshots:{},snapshotDate:null,favorites:new Set(),scope:'all'};
 const options={country:'country',grape:'grapes',type:'type',pairing:'pairings'};
 const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const cleanUrl=s=>{try{const u=new URL(s);return u.protocol==='https:'?u.href:null}catch{return null}};
@@ -54,7 +54,13 @@ function metrics(r){
  return {all,exact:items,index,summary,summaryCount:chosen.size,critics,vivino,count:items.length,hasUnverifiedVintage:critics.length>0||(vivino?.scope==='all_vintages')};
 }
 
-function priceValue(r){const s=r.stores[0]||{};return s.price_rub??s.reference_price_rub??null}
+function snapshotFor(r){
+ const s=r.stores?.[0],v=state.snapshots[r.id];
+ if(!s||!v||!/^https:\/\/spb\.winestyle\.ru\/products\//i.test(s.url))return null;
+ if(!Number.isInteger(v[0])||v[0]<100||v[0]>1000000||typeof v[1]!=='string'||!/^\d{4,6}$/.test(v[1]))return null;
+ return {price:v[0],photo:'https://s2.wine.style/images_gen/'+v[1].slice(0,3)+'/'+v[1]+'/0_0_695x600.webp',source:s.url};
+}
+function priceValue(r){const s=r.stores[0]||{};return snapshotFor(r)?.price??s.price_rub??s.reference_price_rub??null}
 const pairingGroups=[
   ['Рыба',/рыб|лосос|семг|суши|тунец/i],
   ['Морепродукты',/морепродукт|морски|моллюск|кревет|устриц|кальмар|омар/i],
@@ -80,7 +86,8 @@ function distinct(k){return [...new Set(state.records.flatMap(r=>k==='grapes'?gr
 function favoriteButton(id){const yes=state.favorites.has(id);return '<button type="button" class="save-btn'+(yes?' saved':'')+'" data-fav="'+safe(id)+'" aria-label="'+(yes?'Убрать из избранного':'Добавить в избранное')+'" aria-pressed="'+yes+'" title="Избранное">'+(yes?'♥':'♡')+'</button>'}
 function typeDot(t){return {'Красное':'red','Белое':'white','Розовое':'rose','Игристое':'sparkling','Оранжевое':'orange','Портвейн':'port'}[t]||''}
 function priceBlock(r){
- const s=r.stores[0]||{};
+ const s=r.stores[0]||{},snap=snapshotFor(r);
+ if(snap)return '<div class="price-main">'+money(snap.price)+'</div><div class="price-note">Цена в архиве · '+date(state.snapshotDate)+'</div>';
  if(s.price_rub!=null&&s.price_checked_at){return '<div class="price-main">'+money(s.price_rub)+(s.regular_price_rub>s.price_rub?' <del>'+money(s.regular_price_rub)+'</del>':'')+'</div><div class="price-note">Проверено '+date(s.price_checked_at)+'</div>'}
  if(s.reference_price_rub!=null){return '<div class="price-main">'+money(s.reference_price_rub)+(s.reference_regular_price_rub>s.reference_price_rub?' <del>'+money(s.reference_regular_price_rub)+'</del>':'')+'</div><div class="price-note">Цена на '+date(s.reference_date)+' (архив)</div>'}
  return '<div class="price-main">Цена неизвестна</div><div class="price-note">Не проверена</div>';
@@ -136,12 +143,13 @@ function wineStyleMarkup(r){
  '<p class="rating-hint">Данные WineStyle на '+date(d.checked_at)+' · <a href="'+safe(s.url)+'" target="_blank" rel="noopener noreferrer">Источник</a></p></details>';
 }
 function photoMarkup(r){
- const p=r.photo||{};
- const url=cleanUrl(p.url), source=cleanUrl(p.source_url);
+ const snap=snapshotFor(r),p=r.photo||{};
+ const url=snap?.photo||cleanUrl(p.url),source=snap?.source||cleanUrl(p.source_url);
+ const backup=snap?cleanUrl(p.url):null;
  return '<div class="bottle-media">'+
- (url?'<img class="bottle-photo" src="'+safe(url)+'" alt="Бутылка '+safe(r.title)+(r.year?' '+r.year:'')+'" loading="lazy" decoding="async">':'')+
+ (url?'<img class="bottle-photo" src="'+safe(url)+'"'+(backup?' data-fallback="'+safe(backup)+'"':'')+' alt="Бутылка '+safe(r.title)+(r.year?' '+r.year:'')+'" loading="lazy" decoding="async" referrerpolicy="no-referrer">':'')+
  '<div class="bottle-placeholder'+(url?' hidden-photo-placeholder':'')+'" aria-hidden="true"><span class="bottle-silhouette"></span></div>'+
- (source&&url?'<a class="photo-credit" href="'+safe(source)+'" target="_blank" rel="noopener noreferrer">Фото: источник</a>':'<span class="photo-credit photo-missing">Фото не найдено</span>')+
+ (source&&url?'<a class="photo-credit" href="'+safe(source)+'" target="_blank" rel="noopener noreferrer">Фото: '+(snap?'WineStyle':safe(p.source||'источник'))+'</a>':'<span class="photo-credit photo-missing">Фото не найдено</span>')+
  '</div>';
 }
 
@@ -197,6 +205,11 @@ function setup(){
  $('cards').addEventListener('error',e=>{
   const img=e.target;
   if(!img.classList?.contains('bottle-photo'))return;
+  if(img.dataset.fallback&&!img.dataset.triedFallback){
+    img.dataset.triedFallback='1';
+    img.src=img.dataset.fallback;
+    return;
+  }
   img.hidden=true;
   img.parentElement.querySelector('.bottle-placeholder')?.classList.remove('hidden-photo-placeholder');
   const credit=img.parentElement.querySelector('.photo-credit');
@@ -209,6 +222,15 @@ async function init(){
   const response=await fetch('./data/wines.json',{cache:'no-cache'});if(!response.ok)throw Error('Catalog HTTP '+response.status);
   const catalog=await response.json();if(!Array.isArray(catalog.records))throw Error('Invalid catalog');
   state.records=catalog.records.filter(r=>r.availability?.status!=='out_of_stock');
+  try{
+    const snapshots=await fetch('./data/verified-snapshot-2026-11-23.json',{cache:'no-cache'});
+    if(snapshots.ok){
+      const d=await snapshots.json();
+      if(d.version===1&&d.source_archive_sha256==='6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e'&&Object.keys(d.records||{}).length===116){
+        state.snapshots=d.records;state.snapshotDate=d.as_of;
+      }else console.warn('Invalid product snapshot manifest');
+    }
+  }catch(e){console.warn('Price/photo snapshot unavailable',e)}
   try{const extra=await fetch('./data/ratings.json',{cache:'no-cache'});if(extra.ok){const o=await extra.json();state.ratingRecords=o.records||{};state.unrated=o.unrated||{}}}catch(e){console.warn('Ratings unavailable',e)}
   try{const saved=JSON.parse(localStorage.getItem('wine-atlas-favorites')||'[]');if(Array.isArray(saved))state.favorites=new Set(saved.filter(s=>typeof s==='string'))}catch{}
   $('stat-total').textContent=state.records.length;
