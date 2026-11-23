@@ -112,10 +112,22 @@ const pairingGroups=[
 ];
 function retailerDetails(r){
  const s=r.stores?.[0];
- if(s?.enrichment_status?.status==='verified'&&s.product_details?.source_url===s.url)return s.product_details;
- // Manually researched exact product descriptions from the original seller.
- if(s?.research_details?.source_url===s?.url?.split('#')[0]&&['primary_retailer_product_description','manual_verified_original_seller'].includes(s.research_details.source_kind))return s.research_details;
- return null;
+ if(!s)return null;
+ const archive=s.enrichment_status?.status==='verified'&&s.product_details?.source_url===s.url?s.product_details:null;
+ // Manual research is separately attributed and never overwrites the verified
+ // retailer archive; the overlay fills only fields absent in that archive.
+ const research=s.research_details?.source_url===s.url?.split('#')[0]&&
+  ['primary_retailer_product_description','manual_verified_original_seller'].includes(s.research_details.source_kind)
+  ?s.research_details:null;
+ if(!archive)return research;
+ if(!research)return archive;
+ const supplemental=Object.keys(research).some(k=>
+  !['source_kind','source_url','checked_at','full_name','field_checked_at'].includes(k)&&
+  research[k]!=null&&research[k]!==''&&(archive[k]==null||archive[k]===''));
+ return {...research,...archive,
+  field_checked_at:{...(research.field_checked_at||{}),...(archive.field_checked_at||{})},
+  supplemental_checked_at:supplemental?
+   Object.values(research.field_checked_at||{}).sort().at(-1)||research.checked_at:null};
 }
 // Retailers use multiple spellings for the SAME grape variety. Normalize the
 // filter and visible metadata without altering the archival source fields.
@@ -215,7 +227,9 @@ function wineStyleMarkup(r){
  return '<details class="rating-details characteristics"><summary>Вкус, наличие и характеристики</summary>'+
  (stockNote?'<p class="availability-note">'+safe(stockNote)+' · '+date(stockDate)+'</p>':'')+
  (rows?'<ul>'+rows+'</ul>':'')+
- '<p class="rating-hint">Данные '+safe(s.name||'продавца')+' на '+date(d.checked_at)+' · <a href="'+safe(d.source_url)+'" target="_blank" rel="noopener noreferrer">Источник</a></p></details>';
+ '<p class="rating-hint">Данные '+safe(s.name||'продавца')+' на '+date(d.checked_at)+
+ (d.supplemental_checked_at?' · Дополнено ручной проверкой '+date(d.supplemental_checked_at):'')+
+ ' · <a href="'+safe(d.source_url)+'" target="_blank" rel="noopener noreferrer">Источник</a></p></details>';
 }
 function photoMarkup(r){
  const snap=snapshotFor(r),p=r.photo||{},raw=state.researchedPhotos[r.id];
