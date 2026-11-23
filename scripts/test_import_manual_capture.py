@@ -29,6 +29,7 @@ CAPTURE = {
        'offers':[{'@type':'Offer','url':URL,'priceCurrency':'RUB',
                   'price':'6348','availability':'https://schema.org/InStock'}]}],
     'image_candidate':{'url':'https://images.example/bottle.jpg','rights':'unverified_not_for_publication'},
+    'offer_evidence_complete':True,
 }
 OBS = {'target_id':'kopke','target_url':URL,'capture':CAPTURE,'reviewer_confirmed':True}
 
@@ -129,6 +130,22 @@ class ManualImportTests(unittest.TestCase):
         self.assertEqual(report['live_offers_updated'],0)
         self.assertNotIn('live_offer',catalog['records'][0]['stores'][0],
                          'Conflicting source offers must never hide a wine or replace its price')
+
+    def test_incomplete_jsonld_never_imports_a_price(self):
+        o=copy.deepcopy(OBS)
+        o['capture']['offer_evidence_complete']=False
+        catalog,report=self.run_import(observation=o)
+        self.assertEqual(report['accepted_identity'],1)
+        self.assertEqual(report['live_offers_updated'],0)
+        self.assertEqual(report['details_added'],1)
+        self.assertNotIn('live_offer',catalog['records'][0]['stores'][0])
+
+    def test_missing_completeness_flag_fails_closed(self):
+        o=copy.deepcopy(OBS)
+        o['capture'].pop('offer_evidence_complete')
+        catalog,report=self.run_import(observation=o)
+        self.assertEqual(report['live_offers_updated'],0)
+        self.assertNotIn('live_offer',catalog['records'][0]['stores'][0])
 
     def test_manual_port_research_without_wine_style_manifest(self):
         r=copy.deepcopy(RECORD)
