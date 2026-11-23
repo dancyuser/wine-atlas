@@ -69,7 +69,11 @@ function captureWineAtlasPage() {
       '@context':'https://schema.org','@type':'Product',name:trim(v.name,260),
       description:trim(v.description,500),size:trim(v.size||v.weight,70),
       url:typeof v.url==='string'?trim(v.url,1000):null,
-      offers:offers.filter(o=>o&&typeof o==='object').slice(0,4).map(o=>({
+      offers:offers.filter(o=>{
+        if(!o||typeof o!=='object')return false;
+        const types=Array.isArray(o['@type'])?o['@type']:[o['@type']];
+        return types.some(t=>String(t||'').toLowerCase().split('/').pop()==='offer');
+      }).slice(0,4).map(o=>({
         '@type':'Offer',url:typeof o.url==='string'?trim(o.url,1000):null,
         priceCurrency:trim(o.priceCurrency,8),
         price:typeof o.price==='number'||typeof o.price==='string'?o.price:null,
