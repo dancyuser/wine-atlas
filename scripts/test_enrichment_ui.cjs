@@ -113,6 +113,15 @@ assert(enrichedCard.includes(new Intl.NumberFormat('ru-RU').format(3990)),
 assert(enrichedCard.includes('images_gen/272/272012/0_0_695x600.webp'));
 assert(enrichedCard.includes('Цена в архиве'));
 h.state.snapshots={};
+h.state.researchedPhotos.fixture={
+  year:2023,url:'https://photos.example.com/bottle.jpg',
+  source_url:'https://shop.example.com/products/bottle-2023',
+  source:'Example merchant'
+};
+const researched=h.card(sample);
+assert(researched.includes('https://photos.example.com/bottle.jpg'));
+assert(researched.includes('Фото: Example merchant'));
+h.state.researchedPhotos={};
 assert(card.includes('3\u00a0590')||card.includes('3 590'));
 const unmatchedPairings={
   ...sample,
