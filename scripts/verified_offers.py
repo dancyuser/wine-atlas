@@ -73,7 +73,10 @@ def words(s):
     normalized = normalized.replace("ё", "е").replace("’", "'")
     stop = {"wine", "вино", "port", "porto", "портвейн", "late", "bottled",
             "vintage", "reserve", "reserva", "the", "of", "and", "de", "la", "do"}
-    return {x for x in re.findall(r"[a-zа-я]{3,}", normalized) if x not in stop}
+    tokens = {x for x in re.findall(r"[a-zа-я]{3,}", normalized) if x not in stop}
+    if re.search(r"\\blate\\s+bottled\\s+vintage\\b", normalized):
+        tokens.add("lbv")
+    return tokens
 
 
 def identity_years(text):
