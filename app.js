@@ -31,6 +31,16 @@ function criticRatingsFor(r){
  }
  return [...found.values()];
 }
+function retailerVivinoFor(r){
+ // Fallback only: seller quotes Vivino, but does not prove score vintage.
+ const store=(r.stores||[]).find(s=>s.enrichment_status?.status==='verified'&&s.product_details?.source_url===s.url);
+ const entry=store?.product_details?.ratings?.find(x=>x?.source==='Vivino'&&x.reported_by==='WineStyle'&&x.source_url===store.url&&x.scale===5&&Number.isFinite(x.score)&&x.score>=1&&x.score<=5);
+ if(!entry)return null;
+ return {source:'Vivino',score:entry.score,scale:5,scope:'all_vintages',
+  vintage:null,ratings_count:null,source_url:store.url,source_kind:'retailer_reported_vivino',
+  observed_on:entry.observed_on||store.product_details.checked_at,
+  note:'Оценка Vivino указана WineStyle; год рейтинга не подтверждён'};
+}
 function metrics(r){
  const all=ratingsFor(r);
  const exact=all.filter(x=>x.scope==='vintage');
@@ -44,7 +54,7 @@ function metrics(r){
   const key=x.source.toLocaleLowerCase('ru');
   if(!chosen.has(key))chosen.set(key,x);
  }
- const vivino=all.find(x=>x.source==='Vivino'&&x.scope==='vintage')||all.find(x=>x.source==='Vivino'&&x.scope==='all_vintages')||null;
+ const vivino=all.find(x=>x.source==='Vivino'&&x.scope==='vintage')||all.find(x=>x.source==='Vivino'&&x.scope==='all_vintages')||retailerVivinoFor(r);
  // Include Vivino at most once, including a scope-all-vintages estimate.
  if(vivino&&!chosen.has('vivino'))chosen.set('vivino',vivino);
  const scaled=[...chosen.values()].map(x=>x.scale===5?50+10*x.score:x.scale===20?5*x.score:x.score);
@@ -102,7 +112,7 @@ function metricRow(m,r){
  const aggregate=m.summary===null?'—':num(m.summary);
  const cv=m.vivino?num(m.vivino.score):'—';
  const unavailable=vivinoUnavailable(r);
- const detail=m.vivino?(m.vivino.scope==='all_vintages'?'Общая оценка · все урожаи':(m.vivino.ratings_count?fmt.format(m.vivino.ratings_count)+' оценок':'Оценка винтажа')):unavailable.label;
+ const detail=m.vivino?(m.vivino.source_kind==='retailer_reported_vivino'?'По данным WineStyle · год не проверен':m.vivino.scope==='all_vintages'?'Общая оценка · все урожаи':(m.vivino.ratings_count?fmt.format(m.vivino.ratings_count)+' оценок':'Оценка винтажа')):unavailable.label;
  return '<div class="rating-box">'+
  '<div class="rating-cell"><span class="rating-label">Сводный рейтинг</span><div class="rating-value">'+aggregate+'<span class="rating-unit">/ 100</span></div><span class="rating-sub">'+(m.summaryCount?m.summaryCount+' ист. · '+(m.hasUnverifiedVintage?'год оценок может отличаться':'винтаж подтверждён'):'Пока нет оценок')+'</span></div>'+
  '<div class="rating-cell"><span class="rating-label">Vivino</span><div class="rating-value">'+cv+'<span class="rating-unit">/ 5</span></div><span class="rating-sub">'+safe(detail)+'</span></div>'+
@@ -116,7 +126,7 @@ function ratingsDetails(r,m){
  }).join('');
  const published=m.critics.map(x=>'<li><span>'+safe(x.source)+'</span><strong>'+num(x.score)+' / '+x.scale+'</strong></li>').join('');
  const un=vivinoUnavailable(r);
- const fallback=!m.vivino?'<p class="rating-hint">'+safe(un.label)+' · <a href="'+safe(un.url)+'" target="_blank" rel="noopener noreferrer">Проверить на Vivino</a></p>':'';
+ const fallback=!m.vivino?'<p class="rating-hint">'+safe(un.label)+' · <a href="'+safe(un.url)+'" target="_blank" rel="noopener noreferrer">Проверить на Vivino</a></p>':m.vivino.source_kind==='retailer_reported_vivino'?'<p class="rating-hint">Vivino: '+num(m.vivino.score)+'/5, по сведениям WineStyle · винтаж не установлен · <a href="'+safe(cleanUrl(m.vivino.source_url)||'#')+'" target="_blank" rel="noopener noreferrer">Источник</a></p>':'';
  return '<details class="rating-details score-details"><summary>Оценки и источники ('+(m.all.length+m.critics.length)+')</summary>'+
  (independent?'<h4>Независимо подтверждённые</h4><ul>'+independent+'</ul>':'')+
  (published?'<h4>Оценки критиков, опубликованные WineStyle</h4><ul>'+published+'</ul><p class="rating-hint">Не являются оценками покупателей WineStyle. Первоисточники и принадлежность к винтажу отдельно не проверены.</p>':'')+
