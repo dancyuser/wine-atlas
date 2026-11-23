@@ -240,7 +240,7 @@ h.state.snapshotDate='2026-11-23';
 const manual={
  ...sample,publication_review:undefined,
  stores:[{...sample.stores[0],
-  enrichment_status:{...sample.stores[0].enrichment_status,checked_at:'2026-11-22'},
+  enrichment_status:{...sample.stores[0].enrichment_status,checked_at:'2026-11-22',source_url:sample.stores[0].url},
   live_offer:{price_rub:2990,regular_price_rub:null,availability:'in_stock',
    verification_method:'exact_jsonld_product',
    capture_method:'user_confirmed_active_browser_tab',
