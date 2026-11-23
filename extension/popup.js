@@ -84,21 +84,20 @@ $('open').addEventListener('click',async ()=>{
  const r=state.targets.find(x=>x.id===state.targetId);
  if(r)await chrome.tabs.create({url:r.store_url});
 });
-const numericVolume=value=>{
- const m=text(value).replace(',','.').match(/(\d+(?:\.\d+)?)\s*(л|l|мл|ml)\b/i);
- if(!m)return null;
- const ml=Number(m[1])*(m[2].toLowerCase()==='мл'||m[2].toLowerCase()==='ml'?1:1000);
- return Math.round(ml);
+const numericVolumes=value=>{
+ const all=[...text(value).replace(/,/g,'.').matchAll(/(?<![\d.])(\d+(?:\.\d+)?)\s*(мл|ml|л|l)(?!\w)/gi)];
+ return all.map(m=>Math.round(Number(m[1])*(m[2].toLowerCase()==='мл'||m[2].toLowerCase()==='ml'?1:1000)));
 };
 function candidateEvidence(target,capture){
- const names=[capture.h1,...capture.products.map(x=>x.name)];
+ const sameProducts=capture.products.filter(p=>!p.url||urlId(p.url)===urlId(capture.source_url));
+ const names=[capture.h1,...sameProducts.map(x=>x.name)];
  const year=target.year;
  const years=[...new Set(names.join(' ').match(/(?<!\d)(?:19\d\d|20\d\d)(?!\d)/g)||[])];
  const dedicated=text(capture.fields.vintage?.value);
  const yearConfirmed=year==null?false:years.includes(String(year))||dedicated===String(year);
  const yearConflict=year!=null&&years.some(x=>x!==String(year));
- const volumeParts=[...names,capture.fields.volume_l?.value,...capture.products.map(x=>x.size)];
- const volumes=volumeParts.map(numericVolume).filter(x=>x!=null);
+ const volumeParts=[...names,capture.fields.volume_l?.value,...sameProducts.map(x=>x.size)];
+ const volumes=volumeParts.flatMap(numericVolumes);
  const volumeConfirmed=target.volume_l!=null&&volumes.includes(Math.round(target.volume_l*1000));
  const volumeConflict=target.volume_l!=null&&volumes.some(x=>x!==Math.round(target.volume_l*1000));
  return {url_match:urlId(capture.source_url)===urlId(target.store_url),
