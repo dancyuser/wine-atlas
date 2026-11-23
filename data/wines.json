@@ -1717,14 +1717,19 @@
               "wine_style": "Вино: Белое, Сухое",
               "body": "Насыщенность: среднее",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Первый урожай с нового виноградника в Феуди дель Пишотто датируется 2007 годом. Несмотря на юный возраст, лозы всех сортов дали поразительные результаты. Паоло Панерай, который контролирует компанию, решил объединить полученные вина в новую линейку, "
+              "description_excerpt": "Описание: Первый урожай с нового виноградника в Феуди дель Пишотто датируется 2007 годом. Несмотря на юный возраст, лозы всех сортов дали поразительные результаты. Паоло Панерай, который контролирует компанию, решил объединить полученные вина в новую линейку, ",
+              "aging_potential": "Потенциал хранения винтажа 2014 года составляет 10 лет. (exact bottle, SHA-verified HTML archive)"
             },
             "raw_product_text_sha256": "e0e2a7af80f8b6fe2168843ecc6a383e3e264d2b23d072603a71b3ac3fd2df53",
             "raw_product_text_chars": 9678,
             "availability_note": null,
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "aging_potential": "10 лет",
+            "field_checked_at": {
+              "aging_potential": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -13075,14 +13080,19 @@
               "wine_style": "Вино: Красное, Сухое",
               "body": "Насыщенность: среднее",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: \"Pardelasses\" — яркое, энергичное, концентрированное вино с \"диким\" ароматом и захватывающим длительным вкусом. Виноград для изготовления вина поступает с 5 органических виноградников, разбитых на высоте от 285 до 500 метров над уровнем моря в двух р"
+              "description_excerpt": "Описание: \"Pardelasses\" — яркое, энергичное, концентрированное вино с \"диким\" ароматом и захватывающим длительным вкусом. Виноград для изготовления вина поступает с 5 органических виноградников, разбитых на высоте от 285 до 500 метров над уровнем моря в двух р",
+              "aging_potential": "Потенциал хранения \"Парделассес\" составляет 5 лет. (exact bottle, SHA-verified HTML archive)"
             },
             "raw_product_text_sha256": "1790d6d0d70b58912482afaeeba35a99d8225710e700f6e9fa35d53e370475d2",
             "raw_product_text_chars": 7108,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "aging_potential": "5 лет",
+            "field_checked_at": {
+              "aging_potential": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
