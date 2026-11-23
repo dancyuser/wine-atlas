@@ -73,7 +73,10 @@ def words(s):
     normalized = normalized.replace("ё", "е").replace("’", "'")
     stop = {"wine", "вино", "port", "porto", "портвейн", "late", "bottled",
             "vintage", "reserve", "reserva", "the", "of", "and", "de", "la", "do"}
-    return {x for x in re.findall(r"[a-zа-я]{3,}", normalized) if x not in stop}
+    tokens = {x for x in re.findall(r"[a-zа-я]{3,}", normalized) if x not in stop}
+    if re.search(r"\blate\s+bottled\s+vintage\b", normalized):
+        tokens.add("lbv")
+    return tokens
 
 
 def identity_years(text):
@@ -150,6 +153,10 @@ def verified_offer(text, record, original_url, final_url):
         offers = offers if isinstance(offers, list) else [offers]
         for offer in offers:
             if not isinstance(offer, dict) or offer.get("priceCurrency") not in {"RUB", "RUR"}:
+                continue
+            kinds = offer.get("@type", [])
+            kinds = [kinds] if isinstance(kinds, str) else kinds
+            if kinds and not any(str(t).rsplit("/", 1)[-1].lower() == "offer" for t in kinds):
                 continue
             if offer.get("url") and canonical_url(offer["url"]) != canonical:
                 continue

@@ -212,4 +212,49 @@ assert.equal(h.liveOfferFor(redirected),null,'Unmatched live offer URL cannot af
 assert.equal(h.priceValue(redirected),3990);
 h.state.snapshots={};
 h.state.snapshotDate=null;
+// Non-WineStyle seller evidence must be displayed and attributed to its seller.
+const port={
+ ...sample,id:'verified-port',title:"Dow's Late Bottled Vintage Port (LBV)",
+ year:2018,volume_l:0.75,grapes:['Турига Насьональ'],country:'Португалия',
+ stores:[{name:'ast.wine',url:'https://ast.wine/catalog/product/dows_lbv_2018/',
+   research_details:{
+    source_kind:'primary_retailer_product_description',
+    source_url:'https://ast.wine/catalog/product/dows_lbv_2018/',
+    checked_at:'2026-11-23',producer:"Dow's",volume_l:'0.75 л',
+    color:'Насыщенный рубиновый',aroma:'Чёрные ягоды',alcohol_percent:'20 %',
+    aging_potential:'Не требуется',wine_style:'Портвейн, сладкое',
+    description_excerpt:'Портвейн региона Дору урожая 2018 года'
+   }}]
+};
+const manualDetailsPort={...port,stores:[{...port.stores[0],
+ research_details:{...port.stores[0].research_details,source_kind:'manual_verified_original_seller'}}]};
+assert(h.card(manualDetailsPort).includes('Насыщенный рубиновый'),
+  'Imported manual original-seller metadata must be displayed');
+const portCard=h.card(port);
+assert(portCard.includes('Насыщенный рубиновый'));
+assert(portCard.includes('Портвейн региона Дору'));
+assert(portCard.includes('Потенциал хранения'));
+assert(portCard.includes('Данные ast.wine'));
+assert(!portCard.includes('Данные WineStyle'),'The external seller cannot be mislabeled');
+
+// A manually captured, exact-verified WineStyle offer can be used without
+// rewriting the original immutable publication-review snapshot.
+h.state.snapshots.fixture=[3990,'272012'];
+h.state.snapshotDate='2026-11-23';
+const manual={
+ ...sample,publication_review:undefined,
+ stores:[{...sample.stores[0],
+  enrichment_status:{...sample.stores[0].enrichment_status,checked_at:'2026-11-22',source_url:sample.stores[0].url},
+  live_offer:{price_rub:2990,regular_price_rub:null,availability:'in_stock',
+   verification_method:'exact_jsonld_product',
+   capture_method:'user_confirmed_active_browser_tab',
+   observed_on:'2026-11-24',source_url:sample.stores[0].url,
+   product_name:'Test Chardonnay 2023 750ml'}}]
+};
+assert.equal(h.liveOfferFor(manual).price_rub,2990);
+assert.equal(h.priceValue(manual),2990);
+assert.equal(h.isPublished({...manual,stores:[{...manual.stores[0],
+ live_offer:{...manual.stores[0].live_offer,availability:'out_of_stock'}}]}),false);
+h.state.snapshots={};
+h.state.snapshotDate=null;
 console.log('WINESTYLE UI TESTS PASSED: derived filters, merged grape synonyms, excluded redirected wines, source display, curated preservation, fallback');

@@ -19,7 +19,13 @@
       "title": "Graham’s Late Bottled Vintage Port (LBV), gift tube",
       "year": 2019,
       "country": "Португалия",
-      "grapes": [],
+      "grapes": [
+        "Тинта Баррока",
+        "Турига Насьональ",
+        "Турига Франсеса/Турига Франка",
+        "Тинта Рориз",
+        "Тинта Као"
+      ],
       "type": "Портвейн",
       "pairings": [
         "Десерты",
@@ -124,14 +130,19 @@
               "wine_style": "Вино: Портвейн, Сладкое",
               "body": "Насыщенность: полнотелое",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: \"Graham’s\" Late Bottled Vintage — превосходный портвейн, который производится только в лучшие урожайные годы. В отличие от винтажных портвейнов, которые разливаются на второй год после выдержки, \"Late Bottled Vintage\" созревает в среднем в течение 5 "
+              "description_excerpt": "Описание: \"Graham’s\" Late Bottled Vintage — превосходный портвейн, который производится только в лучшие урожайные годы. В отличие от винтажных портвейнов, которые разливаются на второй год после выдержки, \"Late Bottled Vintage\" созревает в среднем в течение 5 ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "a371504ade264b2379b7c8e8a51c282bb937a8b2f73682ecfa0eb0df88403a05",
             "raw_product_text_chars": 7770,
             "availability_note": null,
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Имеет глубокий красный цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -176,7 +187,12 @@
       "title": "Quinta de la Rosa Late Bottled Vintage Port",
       "year": 2019,
       "country": "Португалия",
-      "grapes": [],
+      "grapes": [
+        "Турига Насьональ",
+        "Турига Франсеса/Турига Франка",
+        "Сузао",
+        "Тинта Рориз"
+      ],
       "type": "Портвейн",
       "pairings": [
         "Десерты",
@@ -300,7 +316,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "photo": {
@@ -351,7 +367,25 @@
           "reference_regular_price_rub": null,
           "reference_date": null,
           "price_source_url": "https://ast.wine/catalog/product/dow_s_late_bottled_vintage_port_5608309002876_43233/",
-          "price_evidence": "AST.WINE primary product: 2018, 0.75 l, article 43233, 3579 RUB, Add to cart, St. Petersburg store availability; archived 2026-11-23 HTML and public page."
+          "price_evidence": "AST.WINE primary product: 2018, 0.75 l, article 43233, 3579 RUB, Add to cart, St. Petersburg store availability; archived 2026-11-23 HTML and public page.",
+          "research_details": {
+            "full_name": "Dow's Late Bottled Vintage Port 2018, 0.75 л",
+            "producer": "Dow's",
+            "country": "Португалия",
+            "region": "Дору",
+            "grapes": "Турига Насьональ, Турига Франка, Тинта Баррока, Тинта Рориш, Тинта Као",
+            "alcohol_percent": "20 %",
+            "volume_l": "0.75 л",
+            "wine_style": "Портвейн, сладкое",
+            "color": "Насыщенный рубиновый",
+            "aroma": "Чёрные ягоды, ежевика, черника и свежая мята",
+            "taste": "Лесные ягоды, чёрная слива, выразительные танины, сбалансированная кислотность; послевкусие с оттенками табака и чёрного чая",
+            "pairing_notes": "Мясной стейк, тёмный шоколад, выдержанные твёрдые сыры",
+            "description_excerpt": "Портвейн LBV урожая 2018 года из региона Дору. Производитель указывает выдержку в бочке не менее пяти лет.",
+            "checked_at": "2026-11-23",
+            "source_url": "https://ast.wine/catalog/product/dow_s_late_bottled_vintage_port_5608309002876_43233/",
+            "source_kind": "primary_retailer_product_description"
+          }
         }
       ],
       "volume_l": 0.75,
@@ -400,7 +434,25 @@
           "reference_regular_price_rub": null,
           "reference_date": null,
           "price_source_url": "https://ladogawine.ru/catalog/wine/kopke_leyt_bottled_vintedzh_porto_075/",
-          "price_evidence": "LADOGA Wine primary product: Kopke LBV 2018, barcode 5601194709981, 0.75 l, 6348 RUB, Add to cart; archived 2026-11-23 HTML and public page."
+          "price_evidence": "LADOGA Wine primary product: Kopke LBV 2018, barcode 5601194709981, 0.75 l, 6348 RUB, Add to cart; archived 2026-11-23 HTML and public page.",
+          "research_details": {
+            "full_name": "Kopke Late Bottled Vintage Porto 2018, 0.75 л",
+            "producer": "Kopke Sogevinos Fine Wines",
+            "country": "Португалия",
+            "region": "Долина Дору",
+            "grapes": "Турига Насьональ, Турига Франка, Тинта Рориш, Сузео",
+            "alcohol_percent": "20 %",
+            "volume_l": "0.75 л",
+            "wine_style": "Портвейн, сладкое",
+            "color": "Насыщенный красный с фиолетовым оттенком",
+            "aroma": "Чёрные ягоды с лёгкими бальзамическими нотами",
+            "taste": "Мягкий и сбалансированный, лёгкие бархатистые танины",
+            "pairing_notes": "Стейк и другие блюда из красного мяса, десерты, сыры средней выдержки",
+            "description_excerpt": "Портвейн LBV урожая 2018 года из региона Дору, выдержанный в дубовых бочках около пяти лет.",
+            "checked_at": "2026-11-23",
+            "source_url": "https://ladogawine.ru/catalog/wine/kopke_leyt_bottled_vintedzh_porto_075/",
+            "source_kind": "primary_retailer_product_description"
+          }
         }
       ],
       "volume_l": 0.75,
@@ -468,7 +520,10 @@
       "title": "Zantho Beerenauslese",
       "year": 2018,
       "country": "Австрия",
-      "grapes": [],
+      "grapes": [
+        "Шардоне",
+        "Грюнер Вельтлинер"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -608,7 +663,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.375,
       "scores": [],
       "review_note": null,
       "photo": {
@@ -765,7 +820,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "photo": {
@@ -789,7 +844,11 @@
       "title": "Tement Ehrenhausen Muschelkalk",
       "year": 2017,
       "country": "Австрия",
-      "grapes": [],
+      "grapes": [
+        "Совиньон Блан",
+        "Шардоне",
+        "Вельшрислинг"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -1049,14 +1108,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 6 лет",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: \"Lapis Luna\" дословно переводится с латинского как \"Камень и Луна\", что отображает важное влияние Луны на калифорнийский виноград. Этикетки вин \"Лапис Луна\" воплощают в жизнь медные гравюры 400-летней давности, изображающие связь между землей и Луной"
+              "description_excerpt": "Описание: \"Lapis Luna\" дословно переводится с латинского как \"Камень и Луна\", что отображает важное влияние Луны на калифорнийский виноград. Этикетки вин \"Лапис Луна\" воплощают в жизнь медные гравюры 400-летней давности, изображающие связь между землей и Луной",
+              "pairing_notes": "User-provided 2026-11-23 browser capture: direct labelled primary-product field, URL and HTML SHA-256 verified"
             },
             "raw_product_text_sha256": "3c85558faf77997ead10595185c8c98c5094742d043f868e3c3fee4f1612a517",
             "raw_product_text_chars": 7615,
             "availability_note": null,
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "pairing_notes": "Вино рекомендуется подавать к морепродуктам и свежим салатам, идеально сочетается с сырами.",
+            "field_checked_at": {
+              "pairing_notes": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -1074,7 +1138,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -1378,7 +1442,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -1490,14 +1554,19 @@
               "wine_style": "Вино: Белое, Сухое",
               "body": "Насыщенность: полнотелое",
               "aging_potential": "Потенциал хранения: 5-10 лет",
-              "description_excerpt": "Описание: Kleine Zalze, \"Vineyard Selection\" Chardonnay — насыщенное, но при этом нежное и элегантное белое вино, произведенное из южноафриканского Шардоне. Освежающий фруктовый вкус изящно дополняют дубовые оттенки, напоминающие о месяцах выдержки в подвалах "
+              "description_excerpt": "Описание: Kleine Zalze, \"Vineyard Selection\" Chardonnay — насыщенное, но при этом нежное и элегантное белое вино, произведенное из южноафриканского Шардоне. Освежающий фруктовый вкус изящно дополняют дубовые оттенки, напоминающие о месяцах выдержки в подвалах ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "94ea47b3c47a1833435d7e10a2cb48696d6dff420c0d492430900d5a16ece5d2",
             "raw_product_text_chars": 4720,
             "availability_note": null,
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Вино ярко-золотистого цвета.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -1515,7 +1584,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "photo": {
@@ -1653,14 +1722,19 @@
               "wine_style": "Вино: Белое, Сухое",
               "body": "Насыщенность: среднее",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Первый урожай с нового виноградника в Феуди дель Пишотто датируется 2007 годом. Несмотря на юный возраст, лозы всех сортов дали поразительные результаты. Паоло Панерай, который контролирует компанию, решил объединить полученные вина в новую линейку, "
+              "description_excerpt": "Описание: Первый урожай с нового виноградника в Феуди дель Пишотто датируется 2007 годом. Несмотря на юный возраст, лозы всех сортов дали поразительные результаты. Паоло Панерай, который контролирует компанию, решил объединить полученные вина в новую линейку, ",
+              "aging_potential": "Потенциал хранения винтажа 2014 года составляет 10 лет. (exact bottle, SHA-verified HTML archive)"
             },
             "raw_product_text_sha256": "e0e2a7af80f8b6fe2168843ecc6a383e3e264d2b23d072603a71b3ac3fd2df53",
             "raw_product_text_chars": 9678,
             "availability_note": null,
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "aging_potential": "10 лет",
+            "field_checked_at": {
+              "aging_potential": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -1678,7 +1752,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -1942,14 +2016,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 2-4 года",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: \"Morning Fog\" Chardonnay — элегантное, освежающее и соблазнительное белое вино, названное в честь, вызванного потоками Тихоокеанского ветра утреннего прибрежного тумана, который окутывает часть залива Сан-Франциско, охлаждая воздух. Благодаря превосх"
+              "description_excerpt": "Описание: \"Morning Fog\" Chardonnay — элегантное, освежающее и соблазнительное белое вино, названное в честь, вызванного потоками Тихоокеанского ветра утреннего прибрежного тумана, который окутывает часть залива Сан-Франциско, охлаждая воздух. Благодаря превосх",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "d740bfad2000b24a016a2e4c7df9fce356c9bc3c20d9ae3bf779e971ff8caceb",
             "raw_product_text_chars": 8093,
             "availability_note": null,
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Яркий золотистый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -1967,7 +2046,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -2094,14 +2173,19 @@
               "wine_style": "Вино: Белое, Сухое",
               "body": "Насыщенность: среднее",
               "color_intensity": "Глубина цвета: бледное",
-              "description_excerpt": "Описание: \"Morning Fog\" Chardonnay — элегантное, освежающее и соблазнительное белое вино. Вызванный потоками Тихоокеанского ветра, утренний прибрежный туман окутывает часть залива Сан-Франциско, охлаждая воздух. Благодаря превосходным климатическим условиям до"
+              "description_excerpt": "Описание: \"Morning Fog\" Chardonnay — элегантное, освежающее и соблазнительное белое вино. Вызванный потоками Тихоокеанского ветра, утренний прибрежный туман окутывает часть залива Сан-Франциско, охлаждая воздух. Благодаря превосходным климатическим условиям до",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "b4b40907251f9a24342d8f5650273c589ef9afb7cf97d339ff3b24c464f67346",
             "raw_product_text_chars": 7744,
             "availability_note": null,
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "У вина светло-соломенный цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -2119,7 +2203,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -2265,7 +2349,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -2281,7 +2365,14 @@
       "title": "Loimer Glügglich",
       "year": null,
       "country": "Австрия",
-      "grapes": [],
+      "grapes": [
+        "Ротгипфлер",
+        "Траминер",
+        "Шардоне",
+        "Цирфандлер",
+        "Рислинг",
+        "Мускателлер"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -2403,7 +2494,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -2518,7 +2609,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -2810,7 +2901,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -2826,7 +2917,10 @@
       "title": "Ingrid Groiss Ried Hasenhaide Rosé",
       "year": 2023,
       "country": "Австрия",
-      "grapes": [],
+      "grapes": [
+        "Пино Нуар",
+        "Цвайгельт"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -3041,14 +3135,19 @@
               "wine_style": "Вино: Красное, Сухое",
               "body": "Насыщенность: среднее",
               "color_intensity": "Глубина цвета: умеренное",
-              "description_excerpt": "Описание: \"Sibaris\" Pinot Noir Gran Reserva — свежее фруктовое вино из винограда, выращенного в долине Лейда. Вино с легкой свежестью и яркими фруктовыми нотами идеально подходит для неспешных городских вечеров — будь то встреча с друзьями на террасе или уютны"
+              "description_excerpt": "Описание: \"Sibaris\" Pinot Noir Gran Reserva — свежее фруктовое вино из винограда, выращенного в долине Лейда. Вино с легкой свежестью и яркими фруктовыми нотами идеально подходит для неспешных городских вечеров — будь то встреча с друзьями на террасе или уютны",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "f05f2353334ed2506780380d3a7511162b9eb95ee84f3b822eb419d4d18beeba",
             "raw_product_text_chars": 9054,
             "availability_note": null,
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Вино рубиново-красного цвета.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -3066,7 +3165,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -3193,14 +3292,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 10-13 лет",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: Weingut J. Neus, Ingelheim am Rhein \"Muschelkalk\" Spatburgunder — приятный и свежий Пино Нуар категории Gutsweine VDP, которая отражает \"домашний стиль\" J. Neus. \"Мушелькальк\" Шпетбургундер отличается высоким качеством, что характерно для всех вин ви"
+              "description_excerpt": "Описание: Weingut J. Neus, Ingelheim am Rhein \"Muschelkalk\" Spatburgunder — приятный и свежий Пино Нуар категории Gutsweine VDP, которая отражает \"домашний стиль\" J. Neus. \"Мушелькальк\" Шпетбургундер отличается высоким качеством, что характерно для всех вин ви",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "0bacfe61d274162ddc5c1e5759de4dd5f82362bb322ddb2f2de035151aa954f3",
             "raw_product_text_chars": 8700,
             "availability_note": null,
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Красно-рубиновый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -3218,7 +3322,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -3364,7 +3468,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -3380,7 +3484,9 @@
       "title": "El Esteco Blanc de Noir",
       "year": 2023,
       "country": "Аргентина",
-      "grapes": [],
+      "grapes": [
+        "Пино Нуар"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -3502,7 +3608,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -3518,7 +3624,10 @@
       "title": "Amalaya Blanco",
       "year": 2024,
       "country": "Аргентина",
-      "grapes": [],
+      "grapes": [
+        "Торронтес",
+        "Рислинг"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -3658,7 +3767,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "publication_review": {
@@ -3798,7 +3907,12 @@
       "title": "d’Arenberg The Stump Jump White",
       "year": 2021,
       "country": "Австралия",
-      "grapes": [],
+      "grapes": [
+        "Руссан",
+        "Рислинг",
+        "Марсан",
+        "Совиньон Блан"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -3930,7 +4044,9 @@
       "title": "Georg Breuer Estate Rüdesheim",
       "year": 2018,
       "country": "Германия",
-      "grapes": [],
+      "grapes": [
+        "Рислинг"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -4067,7 +4183,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.375,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -4213,7 +4329,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -4365,7 +4481,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -4480,14 +4596,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 15 лет",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Начиная с 2001 года, винодельня Франкленд Истейт производит ограниченное количество вин с двух одиночных виноградников — \"Poison Hill\" и \"Cooladerra\". Нетрадиционное название виноградника \"Poison Hill\" является результатом того, что он расположен на "
+              "description_excerpt": "Описание: Начиная с 2001 года, винодельня Франкленд Истейт производит ограниченное количество вин с двух одиночных виноградников — \"Poison Hill\" и \"Cooladerra\". Нетрадиционное название виноградника \"Poison Hill\" является результатом того, что он расположен на ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "4892da4885b30df171b2c509f3e9104a4971cdb4f5c2203407d64da1cf745aee",
             "raw_product_text_chars": 7542,
             "availability_note": null,
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Вино золотисто-желтого цвета.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -4505,7 +4626,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -4686,14 +4807,19 @@
               "body": "Насыщенность: лёгкое",
               "aging_potential": "Потенциал хранения: 1-2 года",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Белое сладкое Moscato d'Asti — это легкое шипучее вино, изготовленное из ароматических сортов винограда сорта Мускат, произрастающего в регионе Пьемонт. Вино входит в линейку \"Premium Estate\", отражающую истинный итальянский характер и гордость за св"
+              "description_excerpt": "Описание: Белое сладкое Moscato d'Asti — это легкое шипучее вино, изготовленное из ароматических сортов винограда сорта Мускат, произрастающего в регионе Пьемонт. Вино входит в линейку \"Premium Estate\", отражающую истинный итальянский характер и гордость за св",
+              "wine_style": "Primary product style heading in exact URL + SHA-256 verified browser HTML archive dated 2026-11-23"
             },
             "raw_product_text_sha256": "03cab9f8b94adba46d0fb29cdf125c892233ba3223559bd0475ada542667fb16",
             "raw_product_text_chars": 6579,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "wine_style": "Игристое-белое, Сладкое",
+            "field_checked_at": {
+              "wine_style": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -4704,7 +4830,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2019.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -4720,7 +4846,9 @@
       "title": "Can Sumoi Ancestral Montonega",
       "year": 2023,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Парельяда"
+      ],
       "type": "Игристое",
       "pairings": [
         "Закуски",
@@ -4810,7 +4938,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Can-Sumoi-Ancestral-Montonega-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "photo": {
@@ -4877,7 +5005,10 @@
       "title": "Nino Franco Faive Rosé Brut Veneto",
       "year": 2019,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Мерло",
+        "Каберне Фран"
+      ],
       "type": "Игристое",
       "pairings": [
         "Закуски",
@@ -4974,14 +5105,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 1-5 лет",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: \"Faive\" — итальянское мягкое игристое вино со сливочным вкусом и длительным послевкусием. Название вина происходит от слова \"Faville\", что на венецианском диалекте означает мелкие красные искры, которые отлетают от костра и легко и свободно переносят"
+              "description_excerpt": "Описание: \"Faive\" — итальянское мягкое игристое вино со сливочным вкусом и длительным послевкусием. Название вина происходит от слова \"Faville\", что на венецианском диалекте означает мелкие красные искры, которые отлетают от костра и легко и свободно переносят",
+              "wine_style": "Primary product style heading in exact URL + SHA-256 verified browser HTML archive dated 2026-11-23"
             },
             "raw_product_text_sha256": "c20dfb442fc08f4552fb56cd05bf16cc0bf9bdf97dc6de61bed7705a58dca95c",
             "raw_product_text_chars": 5843,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "wine_style": "Игристое-розовое, Сухое, Брют",
+            "field_checked_at": {
+              "wine_style": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -5010,7 +5146,9 @@
       "title": "Bellenda San Fermo Conegliano Valdobbiadene DOCG Prosecco Superiore gift box",
       "year": 2022,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Глера (Просекко)"
+      ],
       "type": "Игристое",
       "pairings": [
         "Закуски",
@@ -5103,7 +5241,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Bellenda-San-Fermo-Conegliano-Valdobbiadene-DOCG-Prosecco-Superiore-2022-gift-box.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "publication_review": {
@@ -5231,7 +5369,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Scarpa-Tacco12-Moscato-d-Asti-DOCG-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -5247,7 +5385,10 @@
       "title": "Nino Franco Faive Rosé Brut Veneto",
       "year": 2022,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Мерло",
+        "Каберне Фран"
+      ],
       "type": "Игристое",
       "pairings": [
         "Закуски",
@@ -5356,14 +5497,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 1-5 лет",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: \"Faive\" — итальянское мягкое игристое вино со сливочным вкусом и длительным послевкусием. Название вина происходит от слова \"Faville\", что на венецианском диалекте означает мелкие красные искры, которые отлетают от костра и легко и свободно переносят"
+              "description_excerpt": "Описание: \"Faive\" — итальянское мягкое игристое вино со сливочным вкусом и длительным послевкусием. Название вина происходит от слова \"Faville\", что на венецианском диалекте означает мелкие красные искры, которые отлетают от костра и легко и свободно переносят",
+              "wine_style": "Primary product style heading in exact URL + SHA-256 verified browser HTML archive dated 2026-11-23"
             },
             "raw_product_text_sha256": "505e738db74c1a9b507be88d9bc07a98faf5dbbf24c981fef7414ddab7ea7d25",
             "raw_product_text_chars": 5864,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "wine_style": "Игристое-розовое, Сухое, Брют",
+            "field_checked_at": {
+              "wine_style": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -5393,7 +5539,10 @@
       "title": "Tabali Tatie Brut Limari Valley",
       "year": null,
       "country": "Чили",
-      "grapes": [],
+      "grapes": [
+        "Шардоне",
+        "Пино Нуар"
+      ],
       "type": "Игристое",
       "pairings": [
         "Закуски",
@@ -5517,7 +5666,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Tabali-Tatie-Brut-Limari-Valley.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -5641,14 +5790,19 @@
               "pairing_notes": "Подходит к: аперитив, паста, сыры, закуски, десерты, фрукты, легкие блюда",
               "body": "Насыщенность: лёгкое",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Белое сухое игристое вино Montelliana, Prosecco Treviso DOC Extra Dry создано преимущественно из винограда сорта Глера, выращенного в провинции Тревизо в регионе Венето. Собранный виноград мягко прессуют, после ферментируют методом Charmat. Вино прек"
+              "description_excerpt": "Описание: Белое сухое игристое вино Montelliana, Prosecco Treviso DOC Extra Dry создано преимущественно из винограда сорта Глера, выращенного в провинции Тревизо в регионе Венето. Собранный виноград мягко прессуют, после ферментируют методом Charmat. Вино прек",
+              "wine_style": "Primary product style heading in exact URL + SHA-256 verified browser HTML archive dated 2026-11-23"
             },
             "raw_product_text_sha256": "b42be90eb8db479e6646e4fada53688a7873803a27619b73111f9c260908e800",
             "raw_product_text_chars": 4398,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "wine_style": "Игристое-белое, Сухое",
+            "field_checked_at": {
+              "wine_style": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -5659,7 +5813,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Montelliana-Prosecco-Treviso-DOC-Extra-Dry.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -5771,14 +5925,19 @@
               "pairing_notes": "Подходит к: рыба, белое мясо, аперитив, салат, овощи, легкие блюда",
               "body": "Насыщенность: среднее",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Grande Alberone, Moscato Spumante Dolce — изысканное сладкое вино, привлекающее внимание фруктово-цветочными акцентами во вкусе и аромате. Виноград сорта Москато Бьянко произрастает на известково-месчаных почвах на высоте 200-250 метров над уровнем м"
+              "description_excerpt": "Описание: Grande Alberone, Moscato Spumante Dolce — изысканное сладкое вино, привлекающее внимание фруктово-цветочными акцентами во вкусе и аромате. Виноград сорта Москато Бьянко произрастает на известково-месчаных почвах на высоте 200-250 метров над уровнем м",
+              "wine_style": "Primary product style heading in exact URL + SHA-256 verified browser HTML archive dated 2026-11-23"
             },
             "raw_product_text_sha256": "59fdd5ce6a30400588cf8238dcf7467319a26490b9bed040a9a1d70a07830e27",
             "raw_product_text_chars": 4483,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "wine_style": "Игристое-белое, Сладкое",
+            "field_checked_at": {
+              "wine_style": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -5789,7 +5948,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Grande-Alberone-Moscato-Spumante-Dolce.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -5892,14 +6051,19 @@
               "wine_style": "Вино: Белое, Сухое",
               "body": "Насыщенность: лёгкое",
               "color_intensity": "Глубина цвета: бледное",
-              "description_excerpt": "Описание: Pitars, Prosecco DOC — изысканное игристое белое вино, созданное из отборного винограда сорта Глера. Являясь моносортовым, вино полностью раскрывает характер и аромат сорта: свежесть, легкую фруктовость и нежную цветочную ноту. Вино лёгкое, освежающе"
+              "description_excerpt": "Описание: Pitars, Prosecco DOC — изысканное игристое белое вино, созданное из отборного винограда сорта Глера. Являясь моносортовым, вино полностью раскрывает характер и аромат сорта: свежесть, легкую фруктовость и нежную цветочную ноту. Вино лёгкое, освежающе",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "395f167f4b2e7eb27af0d994bda2f73a282532bfcbee809894cdbea96177e4c4",
             "raw_product_text_chars": 8034,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Бледно-соломенно-желтый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -5910,7 +6074,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Pitars-Prosecco-DOC.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -5926,7 +6090,10 @@
       "title": "Dulong Crémant de Bordeaux Brut AOP",
       "year": null,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Семильон",
+        "Каберне Фран"
+      ],
       "type": "Игристое",
       "pairings": [
         "Закуски",
@@ -6023,14 +6190,19 @@
               "body": "Насыщенность: лёгкое",
               "aging_potential": "Потенциал хранения: 2 года",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Dulong, Cremant de Bordeaux Brut — нежное, свежее, сбалансированное белое игристое вино с прекрасными тонкими пузырьками. В купаж вина входит виноград сортов Семильон и Каберне Фран из Бордо. Собранный вручную виноград прессуется для извлечения сока,"
+              "description_excerpt": "Описание: Dulong, Cremant de Bordeaux Brut — нежное, свежее, сбалансированное белое игристое вино с прекрасными тонкими пузырьками. В купаж вина входит виноград сортов Семильон и Каберне Фран из Бордо. Собранный вручную виноград прессуется для извлечения сока,",
+              "wine_style": "Primary product style heading in exact URL + SHA-256 verified browser HTML archive dated 2026-11-23"
             },
             "raw_product_text_sha256": "8a91f011e6d6e9996a40c820d52757fa2f5d910bd5ffcd8ad529da516045f4d5",
             "raw_product_text_chars": 3877,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "wine_style": "Игристое-белое, Сухое, Брют",
+            "field_checked_at": {
+              "wine_style": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -6041,7 +6213,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Dulong-Cremant-de-Bordeaux-AOP-Brut.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -6057,7 +6229,11 @@
       "title": "Lucien Albrecht Crémant d’Alsace Brut AOC",
       "year": null,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Оксеруа Блан",
+        "Пино Гри",
+        "Пино Блан"
+      ],
       "type": "Игристое",
       "pairings": [
         "Закуски",
@@ -6148,14 +6324,19 @@
               "volume_l": "Объем: 0.75 л",
               "pairing_notes": "Подходит к: десерты, фрукты, дижестив, фруктовый десерт",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Изысканное, нежное игристое вино Lucien Albrecht, Brut привлекает к себе внимание с первых секунд. Оно обладает восхитительным ароматом и элегантным вкусом с чарующим послевкусием. В производстве вина используется виноград сортов Пино Оссеруа (Оссеру"
+              "description_excerpt": "Описание: Изысканное, нежное игристое вино Lucien Albrecht, Brut привлекает к себе внимание с первых секунд. Оно обладает восхитительным ароматом и элегантным вкусом с чарующим послевкусием. В производстве вина используется виноград сортов Пино Оссеруа (Оссеру",
+              "wine_style": "Primary product style heading in exact URL + SHA-256 verified browser HTML archive dated 2026-11-23"
             },
             "raw_product_text_sha256": "189b3b5edf96ead388cf261a83dd5f844e6988226b6ec56d960a15ab7fa9dc1e",
             "raw_product_text_chars": 4299,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "wine_style": "Игристое-белое, Сухое, Брют",
+            "field_checked_at": {
+              "wine_style": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -6166,7 +6347,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Lucien-Albrecht-Brut-Cremant-d-Alsace-AOC.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -6182,7 +6363,10 @@
       "title": "Romagnoli Vizzo Rosso Emilia IGT",
       "year": 2019,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Барбера",
+        "Мерло"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -6291,14 +6475,22 @@
               "body": "Насыщенность: полнотелое",
               "aging_potential": "Потенциал хранения: 4 года",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: \"Vizzo\" Rosso — красное полусухое вино для уютного ужина или дружеской встречи. Оно сочетает живую фруктовую основу и мягкую, слегка бархатистую текстуру, позволяя постепенно раскрывать ноты ягод и специй. Производится из винограда Барбера и Мерло, в"
+              "description_excerpt": "Описание: \"Vizzo\" Rosso — красное полусухое вино для уютного ужина или дружеской встречи. Оно сочетает живую фруктовую основу и мягкую, слегка бархатистую текстуру, позволяя постепенно раскрывать ноты ягод и специй. Производится из винограда Барбера и Мерло, в",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23",
+              "pairing_notes": "User-provided 2026-11-23 browser capture: direct labelled primary-product field, URL and HTML SHA-256 verified"
             },
             "raw_product_text_sha256": "24aea125e4524503e2ebbccc570b79dda71e5e5aeb7418277d0c2f7877ab6410",
             "raw_product_text_chars": 4565,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Насыщенный красный.",
+            "field_checked_at": {
+              "color": "2026-11-23",
+              "pairing_notes": "2026-11-23"
+            },
+            "pairing_notes": "Составит отличную пару блюдам из мяса, лосося и тунца, а также сырам."
           },
           "enrichment_status": {
             "status": "verified",
@@ -6309,7 +6501,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Romagnoli-Vizzo-Rosso-Emilia-IGT-2019.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -6427,14 +6619,19 @@
               "body": "Насыщенность: полнотелое",
               "aging_potential": "Потенциал хранения: 10-12 лет",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: \"Black Magic\" Merlot — щедрое, ароматное красное вино, созданное из винограда сорта Мерло, который произрастает на виноградниках Стелленбоша с разложившимися гранитными почвами, восточной и западной экспозицией. Возраст лоз колеблется от 30 до 37 лет"
+              "description_excerpt": "Описание: \"Black Magic\" Merlot — щедрое, ароматное красное вино, созданное из винограда сорта Мерло, который произрастает на виноградниках Стелленбоша с разложившимися гранитными почвами, восточной и западной экспозицией. Возраст лоз колеблется от 30 до 37 лет",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "1b484ecf1df050726ea74f998cfe4798ce4e02992ee6f06df31f3058dc365747",
             "raw_product_text_chars": 7532,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Яркий красно-рубиновый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -6445,7 +6642,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Jordan-Black-Magic-Merlot-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -6570,7 +6767,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Church-Block-Cabernet-Shiraz-Merlot-2011.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -6586,7 +6783,10 @@
       "title": "Tenuta Poggio ai Mandorli Chianti Classico Gran Selezione DOCG",
       "year": 2019,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Санджовезе",
+        "Мерло"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -6701,7 +6901,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Tenuta-Poggio-ai-Mandorli-Chianti-Classico-Gran-Selezione-DOCG-2019.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -6717,7 +6917,10 @@
       "title": "Domaine Laffitte Rosé Côtes de Gascogne IGP",
       "year": 2024,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Мерло",
+        "Мальбек"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -6811,14 +7014,19 @@
               "wine_style": "Вино: Розовое, Полусухое",
               "body": "Насыщенность: лёгкое",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Domaine Laffitte, Rose — легкое и элегантное розовое вино с яркой фруктовой и ягодной палитрой. Лозы Мерло и Мальбек, растущие на глинисто-известковых почвах Кот де Гасконь, дают аккуратный, концентрированный урожай, который формирует насыщенность вк"
+              "description_excerpt": "Описание: Domaine Laffitte, Rose — легкое и элегантное розовое вино с яркой фруктовой и ягодной палитрой. Лозы Мерло и Мальбек, растущие на глинисто-известковых почвах Кот де Гасконь, дают аккуратный, концентрированный урожай, который формирует насыщенность вк",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "7190c387263909fb2edd733745646ce6f88d88da2191e3c7d85da2596ce6b9bb",
             "raw_product_text_chars": 4140,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Светло-розовый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -6829,7 +7037,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Domaine-Laffitte-Rose-Cotes-de-Gascogne-IGP-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -6845,7 +7053,9 @@
       "title": "Kracher Spatlese Rosé",
       "year": 2024,
       "country": "Австрия",
-      "grapes": [],
+      "grapes": [
+        "Мерло"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -6963,7 +7173,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Kracher-Spatlese-Rose-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -7099,7 +7309,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Mare-Magnum-The-Chocolate-Tube-Primitivo-Puglia-IGT-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -7235,7 +7445,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Montedidio-San-Domino-Primitivo-Puglia-IGT-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -7251,7 +7461,10 @@
       "title": "Elena Fucci Verha Rosato Basilicata IGT",
       "year": 2023,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Альянико",
+        "Примитиво"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -7351,14 +7564,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 3-5 лет",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: \"Verha\" Rosato, 2023 — легкое, яркое и живое розовое вино, созданное для солнечных летних вечеров и легкомысленных встреч с друзьями. Это вино — редкий купаж 80% Альянико и 20% Примитиво с другими местными красными сортами. Альянико дает вину свежест"
+              "description_excerpt": "Описание: \"Verha\" Rosato, 2023 — легкое, яркое и живое розовое вино, созданное для солнечных летних вечеров и легкомысленных встреч с друзьями. Это вино — редкий купаж 80% Альянико и 20% Примитиво с другими местными красными сортами. Альянико дает вину свежест",
+              "pairing_notes": "User-provided 2026-11-23 browser capture: direct labelled primary-product field, URL and HTML SHA-256 verified"
             },
             "raw_product_text_sha256": "900e542bf09a85752a47a2a7896712bd0d8a29e8fb4890ef8254d45e65302c44",
             "raw_product_text_chars": 6844,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "pairing_notes": "Это вино отлично сочетается с летними салатами, рыбой на гриле, креветками и лангустинами, мягкими сырами и легкими закусками.",
+            "field_checked_at": {
+              "pairing_notes": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -7369,7 +7587,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Elena-Fucci-Verha-Rosato-Basilicata-IGT-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -7385,7 +7603,11 @@
       "title": "Castello di Querceto Chianti Classico Riserva DOCG",
       "year": 2012,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Санджовезе",
+        "Канайоло",
+        "Колорино"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -7518,7 +7740,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Castello-di-Querceto-Chianti-Classico-Riserva-DOCG-2012.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -7534,7 +7756,13 @@
       "title": "Nipozzano Chianti Rufina Riserva DOCG",
       "year": 2022,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Санджовезе",
+        "Каберне Совиньон",
+        "Мерло",
+        "Мальвазия Нера",
+        "Колорино"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -7652,7 +7880,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Nipozzano-Chianti-Rufina-Riserva-DOCG-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -7668,7 +7896,12 @@
       "title": "Capo di Stato Colli Trevigiani IGT",
       "year": 2013,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Каберне Совиньон",
+        "Мерло",
+        "Каберне Фран",
+        "Мальбек"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -7798,7 +8031,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Capo-di-Stato-Colli-Trevigiani-IGT-2013.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -7814,7 +8047,10 @@
       "title": "Fattoria Le Pupille Morellino di Scansano Riserva DOCG",
       "year": 2021,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Санджовезе",
+        "Каберне Совиньон"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -7926,14 +8162,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 10-15 лет",
               "color_intensity": "Глубина цвета: тёмное",
-              "description_excerpt": "Описание: Morellino di Scansano Riserva — историческое вино, первое, созданное на винодельне Фаттория Ле Пупилле. Тогда еще не существовало наименования Morellino DOC, оно появилось только в 1978 году. Но уже с первых винтажей было понятно, что это вино являет"
+              "description_excerpt": "Описание: Morellino di Scansano Riserva — историческое вино, первое, созданное на винодельне Фаттория Ле Пупилле. Тогда еще не существовало наименования Morellino DOC, оно появилось только в 1978 году. Но уже с первых винтажей было понятно, что это вино являет",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "e5c527cc11694841df344ea0e419fc7fa84770084a6bc50ed9a1d03f0f76e1c7",
             "raw_product_text_chars": 9582,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Глубокий тёмно-рубиновый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -7944,7 +8185,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Fattoria-Le-Pupille-Morellino-di-Scansano-Riserva-DOCG-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -7960,7 +8201,11 @@
       "title": "Château Ducluzeau Listrac Medoc AOC",
       "year": 2017,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Пти Вердо",
+        "Мерло",
+        "Каберне Совиньон"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -8093,7 +8338,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Chateau-Ducluzeau-Listrac-Medoc-AOC-2017.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -8109,7 +8354,12 @@
       "title": "Château Marjosse Bordeaux AOC Rouge",
       "year": 2021,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Мерло",
+        "Мальбек",
+        "Каберне Совиньон",
+        "Каберне Фран"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -8194,14 +8444,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 10-12 лет",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: Chateau Marjosse — насыщенное, сочное, ароматное красное сухое вино с яркой фруктовостью и тонкими танинами. Вино произведено из купажа винограда сортов Мерло, Каберне Совиньон, Каберне Фран и Мальбек, выращенного на живописных виноградниках региона "
+              "description_excerpt": "Описание: Chateau Marjosse — насыщенное, сочное, ароматное красное сухое вино с яркой фруктовостью и тонкими танинами. Вино произведено из купажа винограда сортов Мерло, Каберне Совиньон, Каберне Фран и Мальбек, выращенного на живописных виноградниках региона ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "b0880ceadd39daa7e07e8c3b95b46d1e4e1cf192dd6444fb064fa12979e9a5b6",
             "raw_product_text_chars": 4546,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Нежный фиолетовый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -8212,7 +8467,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Chateau-Marjosse-Bordeaux-AOC-Rouge-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -8336,7 +8591,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Myskhako-Quintessence-Zinfandel.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -8448,14 +8703,19 @@
               "wine_style": "Вино: Красное, Полусухое",
               "body": "Насыщенность: полнотелое",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: Зинфандель — типично калифорнийский сорт винограда, который, как полагают, возник в Южной Италии и был завезен в Калифорнию выходцами из Италии. Вино из Зинфандель, благодаря жгучему калифорнийскому солнцу, получается сильным и сочным, похожим на фру"
+              "description_excerpt": "Описание: Зинфандель — типично калифорнийский сорт винограда, который, как полагают, возник в Южной Италии и был завезен в Калифорнию выходцами из Италии. Вино из Зинфандель, благодаря жгучему калифорнийскому солнцу, получается сильным и сочным, похожим на фру",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "a3c6990eb47fce65eaf93b22630726942f640df8a57a5e87e8206a9d640a023d",
             "raw_product_text_chars": 4858,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Насыщенный рубиновый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -8466,7 +8726,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Long-Barn-Zinfandel-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -8584,14 +8844,19 @@
               "body": "Насыщенность: полнотелое",
               "aging_potential": "Потенциал хранения: 1-3 года",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: \"Don David\" Malbec Reserve — элегантное, выразительное вино, названное в честь основателя винодельни, Don David Michel, который вложил много сил и энергии в развитие и расширение компании. Вино производится из винограда сорта Мальбек, произрастающего"
+              "description_excerpt": "Описание: \"Don David\" Malbec Reserve — элегантное, выразительное вино, названное в честь основателя винодельни, Don David Michel, который вложил много сил и энергии в развитие и расширение компании. Вино производится из винограда сорта Мальбек, произрастающего",
+              "pairing_notes": "User-provided 2026-11-23 browser capture: direct labelled primary-product field, URL and HTML SHA-256 verified"
             },
             "raw_product_text_sha256": "f089e336daaa9e4a1489ba8d99740e4f5fd66e4c63aa07723b443a3f444e751b",
             "raw_product_text_chars": 8678,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "pairing_notes": "Прекрасно сочетается с мясом на гриле, пиццей, тушеной говядиной и дичью.",
+            "field_checked_at": {
+              "pairing_notes": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -8602,7 +8867,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/El-Esteco-Don-David-Malbec-Reserve-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -8720,14 +8985,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 1-4 года",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: Mi Terruno, \"Expresion\" Malbec — выразительное красное вино из долины Уко, региона с сухим климатом, каменистыми почвами и резкими перепадами температур, где Мальбек раскрывает всю свою глубину. Ручной сбор, холодная мацерация, ферментация в стали и "
+              "description_excerpt": "Описание: Mi Terruno, \"Expresion\" Malbec — выразительное красное вино из долины Уко, региона с сухим климатом, каменистыми почвами и резкими перепадами температур, где Мальбек раскрывает всю свою глубину. Ручной сбор, холодная мацерация, ферментация в стали и ",
+              "pairing_notes": "User-provided 2026-11-23 browser capture: direct labelled primary-product field, URL and HTML SHA-256 verified"
             },
             "raw_product_text_sha256": "0b2a142101fa9c97c993aa5835b1e4c92fdbd786b78523b4b330ce97513742b6",
             "raw_product_text_chars": 7842,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "pairing_notes": "Хорошо сочетается с жареным мясом, мясом-гриль, холодными мясными закусками, но особенно превосходно в паре с бараниной.",
+            "field_checked_at": {
+              "pairing_notes": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -8738,7 +9008,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Mi-Terruno-Expresion-Malbec-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -8856,14 +9126,19 @@
               "body": "Насыщенность: полнотелое",
               "aging_potential": "Потенциал хранения: 5 лет",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: \"Я не знаю другого места на земле, где можно было бы встретить такие идеальные условия для Мальбека, как в Аргентине\", — Пол Хоббс \"Felino\" Malbec входит в линейку изысканных вин от компании Vina Cobos, демонстрирующих флагманские сорта винограда рег"
+              "description_excerpt": "Описание: \"Я не знаю другого места на земле, где можно было бы встретить такие идеальные условия для Мальбека, как в Аргентине\", — Пол Хоббс \"Felino\" Malbec входит в линейку изысканных вин от компании Vina Cobos, демонстрирующих флагманские сорта винограда рег",
+              "pairing_notes": "User-provided 2026-11-23 browser capture: direct labelled primary-product field, URL and HTML SHA-256 verified"
             },
             "raw_product_text_sha256": "707dbd1559fcd46831ca8e445152c4794e4fe2a18d60e49a9e166db355c81c81",
             "raw_product_text_chars": 8999,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "pairing_notes": "Вино рекомендуется подавать к блюдам из говядины, ягненка и домашней птицы. Оно также идеально дополнит вкус дичи, пасты и различных сыров.",
+            "field_checked_at": {
+              "pairing_notes": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -8874,7 +9149,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Malbec-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -8890,7 +9165,14 @@
       "title": "Clos de los Siete",
       "year": 2021,
       "country": "Аргентина",
-      "grapes": [],
+      "grapes": [
+        "Каберне Фран",
+        "Мальбек",
+        "Каберне Совиньон",
+        "Пти Вердо",
+        "Мерло",
+        "Сира"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -9023,7 +9305,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Clos-de-los-Siete-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -9138,14 +9420,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 3-4 года",
               "color_intensity": "Глубина цвета: умеренное",
-              "description_excerpt": "Описание: La Posta, Rose of Malbec — моносортовое вино из винограда сорта Мальбек, сочное и освежающее, оно может сочетаться практически с любым блюдом. Виноград собирается на виноградниках долины Уко на большой высоте, что отражается на характере вина. После "
+              "description_excerpt": "Описание: La Posta, Rose of Malbec — моносортовое вино из винограда сорта Мальбек, сочное и освежающее, оно может сочетаться практически с любым блюдом. Виноград собирается на виноградниках долины Уко на большой высоте, что отражается на характере вина. После ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "9b1faf570a4a9e7124bcea535967f29a3c36b65bb1e2f0920815db41ce3c7eb0",
             "raw_product_text_chars": 3784,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Нежный лососевый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -9156,7 +9443,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/La-Posta-Rose-of-Malbec-Mendoza-DO-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -9172,7 +9459,9 @@
       "title": "Ramón Bilbao Crianza Rioja DOCa",
       "year": 2021,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Темпранильо"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -9311,7 +9600,11 @@
       "title": "Lavau EnvyFol GSM Pays d’Oc IGP",
       "year": 2022,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Сира",
+        "Гренаш/Гарнача",
+        "Мурведр"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -9429,7 +9722,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Lavau-EnvyFol-GSM-Pays-d-Oc-IGP-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -9445,7 +9738,10 @@
       "title": "Crapula Gold",
       "year": 2022,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Монастрель",
+        "Сира"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -9548,7 +9844,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Crapula-Gold-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -9564,7 +9860,10 @@
       "title": "Belguardo Rosé Toscana IGT",
       "year": 2022,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Сира",
+        "Санджовезе"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -9661,14 +9960,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 1-2 года",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: \"Belgvardo\" Rose — приятное розовое сухое тосканское вино с оттенками свежих фруктов во вкусе и аромате, которое впервые было создано в 2007 году. Это вино рождено из винограда сортов Сира и Санджовезе, использованных в равной пропорции и собранных с"
+              "description_excerpt": "Описание: \"Belgvardo\" Rose — приятное розовое сухое тосканское вино с оттенками свежих фруктов во вкусе и аромате, которое впервые было создано в 2007 году. Это вино рождено из винограда сортов Сира и Санджовезе, использованных в равной пропорции и собранных с",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "2c25281decfacda3d131b3963ee75ede7aa4bbccaeebcba04b19a52e54f271f1",
             "raw_product_text_chars": 5009,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Имеет светло-розовый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -9679,7 +9983,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Belguardo-Rose-Toscana-IGT-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -9695,7 +9999,11 @@
       "title": "Fattoria Le Pupille Morellino di Scansano DOCG",
       "year": 2021,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Санджовезе",
+        "Чильеджоло",
+        "Аликанте"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -9807,14 +10115,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 5 лет",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: Вино Fattoria Le Pupille, Morellino di Scansano — это превосходное кюве, состоящее на 85% из винограда сорта Санджовезе, с добавлением 15% таких сортов как Аликанте и Чильеджоло. Первый винтаж этого вина датирован 1985-м годом, и с тех пор оно стало "
+              "description_excerpt": "Описание: Вино Fattoria Le Pupille, Morellino di Scansano — это превосходное кюве, состоящее на 85% из винограда сорта Санджовезе, с добавлением 15% таких сортов как Аликанте и Чильеджоло. Первый винтаж этого вина датирован 1985-м годом, и с тех пор оно стало ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "9da8a0c18762525f609513413b4cd616cd39dd113cc1cbdeb199031ec6e2f855",
             "raw_product_text_chars": 9436,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Имеет темно-рубиновый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -9825,7 +10138,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Fattoria-Le-Pupille-Morellino-di-Scansano-DOCG-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -9841,7 +10154,9 @@
       "title": "Santa Cristina Giardino Rosé Toscana IGT",
       "year": 2024,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Санджовезе"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -9941,14 +10256,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 2 года",
               "color_intensity": "Глубина цвета: умеренное",
-              "description_excerpt": "Описание: Santa Cristina, \"Giardino\" Rose, Toscana IGT, 2024 — свежее и яркое розовое вино, идеально подходящее для летних вечеров, ужинов в дачной беседке или пикников на природе. Идеальный сезон — весна и лето, когда его легкая фруктовость и хрустящая свежес"
+              "description_excerpt": "Описание: Santa Cristina, \"Giardino\" Rose, Toscana IGT, 2024 — свежее и яркое розовое вино, идеально подходящее для летних вечеров, ужинов в дачной беседке или пикников на природе. Идеальный сезон — весна и лето, когда его легкая фруктовость и хрустящая свежес",
+              "pairing_notes": "User-provided 2026-11-23 browser capture: direct labelled primary-product field, URL and HTML SHA-256 verified"
             },
             "raw_product_text_sha256": "a5c7e0cb6a702bace30da778089fa731dfe890072920885afe92b6e279033e6b",
             "raw_product_text_chars": 5027,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "pairing_notes": "Это вино прекрасно сочетается с летними блюдами итальянской кухни — легкими салатами, пастой с морепродуктами, рыбой-гриль, а также с мягкими сырами.",
+            "field_checked_at": {
+              "pairing_notes": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -9959,7 +10279,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Santa-Cristina-Giardino-Rose-Toscana-IGT-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -9975,7 +10295,9 @@
       "title": "Torres Viña Esmeralda Rosé Catalunya DO",
       "year": 2024,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Гренаш/Гарнача"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -10090,7 +10412,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Torres-Vina-Esmeralda-Rose-Catalunya-DO-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -10106,7 +10428,10 @@
       "title": "Apollonio Mani del Sud Rosso Salice Salentino DOP",
       "year": 2021,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Негроамаро",
+        "Мальвазия Нера"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -10191,14 +10516,19 @@
               "wine_style": "Вино: Красное, Сухое",
               "body": "Насыщенность: полнотелое",
               "color_intensity": "Глубина цвета: тёмное",
-              "description_excerpt": "Описание: \"Mani del Sud\" Rosso — богатое, выразительное, ароматное вино из автохтонных сортов винограда: Негроамаро и Мальвазия Нера, выращиваемых в Саличе Салентино. Исторически в Саленто сорта выращиваются вместе, с чередованием восьми лоз Негроамаро с двумя"
+              "description_excerpt": "Описание: \"Mani del Sud\" Rosso — богатое, выразительное, ароматное вино из автохтонных сортов винограда: Негроамаро и Мальвазия Нера, выращиваемых в Саличе Салентино. Исторически в Саленто сорта выращиваются вместе, с чередованием восьми лоз Негроамаро с двумя",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "e7100b652e19f346512dcb8e6f894a64f5b1c58a581a39078d413aeebec99dcc",
             "raw_product_text_chars": 8630,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Глубокий рубиновый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -10209,7 +10539,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Apollonio-Mani-del-Sud-Rosso-Salice-Salentino-DOP-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -10225,7 +10555,9 @@
       "title": "Felline Cicala Rosé Salento IGT",
       "year": 2018,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Негроамаро"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -10343,7 +10675,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Felline-Cicala-Rose-Salento-IGT-2018.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -10482,7 +10814,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Zantho-St-Laurent-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -10498,7 +10830,10 @@
       "title": "d’Arenberg d’Arry’s Original",
       "year": 2020,
       "country": "Австралия",
-      "grapes": [],
+      "grapes": [
+        "Гренаш/Гарнача",
+        "Шираз"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -10619,7 +10954,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/d-Arenberg-d-Arry-s-Original-2020.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -10635,7 +10970,9 @@
       "title": "Protos Roble",
       "year": 2024,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Темпранильо"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -10735,14 +11072,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 3-5 лет",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: \"Protos\" Roble — сочное и выразительное красное сухое вино с бархатистой текстурой, насыщенным фруктовым характером и мягкими оттенками дубовой выдержки. В аромате ощущаются интенсивные ноты темных фруктов, сливы, вишни и нежные сладкие пряности, пер"
+              "description_excerpt": "Описание: \"Protos\" Roble — сочное и выразительное красное сухое вино с бархатистой текстурой, насыщенным фруктовым характером и мягкими оттенками дубовой выдержки. В аромате ощущаются интенсивные ноты темных фруктов, сливы, вишни и нежные сладкие пряности, пер",
+              "pairing_notes": "User-provided 2026-11-23 browser capture: direct labelled primary-product field, URL and HTML SHA-256 verified"
             },
             "raw_product_text_sha256": "0d44cda4478e40ba9a5b64df25ab186820f67afd73c4252d2915cb3fac78c694",
             "raw_product_text_chars": 5115,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "pairing_notes": "Сочетается с мясом на гриле, рисом, дичью, овощами, пастой с мясными соусами и выдержанными сырами.",
+            "field_checked_at": {
+              "pairing_notes": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -10753,7 +11095,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Protos-Roble-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -10769,7 +11111,11 @@
       "title": "Ramón Bilbao Reserva Rioja DOC",
       "year": 2018,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Темпранильо",
+        "Грасиано",
+        "Масуэло"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -10865,7 +11211,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Ramon-Bilbao-Reserva-Rioja-DOC-2018.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -10881,7 +11227,9 @@
       "title": "Bodegas Ramón Bilbao Crianza Rioja DOC",
       "year": 2013,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Темпранильо"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -11135,7 +11483,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/La-Bioca-Sterma-Nebbiolo-d-Alba-DOC-Superiore-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -11265,14 +11613,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 4-6 лет",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: Бархатистое и освежающее красное сухое вино \"Pajena\" создано из винограда сорта Барбера, собранного с участков в Канале, Приокка, Говоне и Санта -Виттория. Виноградники имеют южную и юго-восточную экспозицию. Возраст виноградных лоз колеблется от 15 "
+              "description_excerpt": "Описание: Бархатистое и освежающее красное сухое вино \"Pajena\" создано из винограда сорта Барбера, собранного с участков в Канале, Приокка, Говоне и Санта -Виттория. Виноградники имеют южную и юго-восточную экспозицию. Возраст виноградных лоз колеблется от 15 ",
+              "pairing_notes": "User-provided 2026-11-23 browser capture: direct labelled primary-product field, URL and HTML SHA-256 verified"
             },
             "raw_product_text_sha256": "b28f22536265bf9293738949470f0f77e0a4fe38f4e19b08da6d3fb403e4e6e9",
             "raw_product_text_chars": 8911,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "pairing_notes": "Хорошо сочетается с пастой, ризотто, жареным мясом, сырами и салями.",
+            "field_checked_at": {
+              "pairing_notes": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -11283,7 +11636,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Enrico-Serafino-Pajena-Barbera-d-Alba-DOC-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -11407,7 +11760,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Parajes-del-Valle-Monastrell-Ecologico-Jumilla-DOP-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -11423,7 +11776,15 @@
       "title": "Tedeschi Capitel San Rocco Valpolicella Ripasso Superiore DOC",
       "year": 2015,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Корвина",
+        "Корвиноне",
+        "Рондинелла",
+        "Россиньола",
+        "Оселета",
+        "Неграра",
+        "Диндарелла"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -11541,7 +11902,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Tedeschi-Capitel-San-Rocco-Valpolicella-Ripasso-DOC-Superiore-2015.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -11557,7 +11918,10 @@
       "title": "Tenuta Sant Antonio Nanfre Valpolicella DOC",
       "year": 2023,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Корвина",
+        "Рондинелла"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -11654,14 +12018,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 4 года",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: Tenuta Sant'Antonio, \"Nanfre\", Valpolicella DOC — Вальполичелла Классико в современном ключе, с культовым вкусом терруара, но предназначенное для современного потребителя. Вино изготавливается из винограда сортов Корвина и Рондинелла. Виноградники, г"
+              "description_excerpt": "Описание: Tenuta Sant'Antonio, \"Nanfre\", Valpolicella DOC — Вальполичелла Классико в современном ключе, с культовым вкусом терруара, но предназначенное для современного потребителя. Вино изготавливается из винограда сортов Корвина и Рондинелла. Виноградники, г",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "a2282c48543001b01f00d1e5552cba05c5455d222f05f72d9fe86f3c38ade30e",
             "raw_product_text_chars": 4733,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Имеет рубиново-красный цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -11672,7 +12041,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Tenuta-Sant-Antonio-Nanfre-Valpolicella-DOC-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -11688,7 +12057,15 @@
       "title": "Tedeschi Capitel San Rocco Valpolicella Ripasso Superiore DOC",
       "year": 2019,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Корвина",
+        "Корвиноне",
+        "Россиньола",
+        "Оселета",
+        "Рондинелла",
+        "Неграра",
+        "Диндарелла"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -11821,7 +12198,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Tedeschi-Capitel-San-Rocco-Valpolicella-Ripasso-DOC-Superiore-2019.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -11837,7 +12214,12 @@
       "title": "Pieropan Ruberpan Valpolicella Superiore DOC",
       "year": 2021,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Корвина",
+        "Рондинелла",
+        "Кроатина",
+        "Корвиноне"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -11955,7 +12337,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Pieropan-Ruberpan-Valpolicella-Superiore-DOC-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -12103,7 +12485,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Atzei-Saragat-Cannonau-di-Sardegna-DOC-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -12119,7 +12501,9 @@
       "title": "Elias Mora Crianza",
       "year": 2020,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Тинта де Торо"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -12216,14 +12600,22 @@
               "body": "Насыщенность: полнотелое",
               "aging_potential": "Потенциал хранения: 3-6 лет",
               "color_intensity": "Глубина цвета: тёмное",
-              "description_excerpt": "Описание: \"Elias Mora\" Crianza — изысканное красное сухое вино, изготовленное из винограда сорта Тинта де Торо, который выращивается на виноградниках компании. Виноградники расположены между реками Дуэро и Хорния на высоте 800 метров над уровнем моря. Здесь пр"
+              "description_excerpt": "Описание: \"Elias Mora\" Crianza — изысканное красное сухое вино, изготовленное из винограда сорта Тинта де Торо, который выращивается на виноградниках компании. Виноградники расположены между реками Дуэро и Хорния на высоте 800 метров над уровнем моря. Здесь пр",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23",
+              "pairing_notes": "User-provided 2026-11-23 browser capture: direct labelled primary-product field, URL and HTML SHA-256 verified"
             },
             "raw_product_text_sha256": "44c858711631f314e38863e122bb0c829fa92dc79fb11fb6680d8e9a0fb3f1a5",
             "raw_product_text_chars": 4232,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Насыщенный пурпурный оттенок.",
+            "field_checked_at": {
+              "color": "2026-11-23",
+              "pairing_notes": "2026-11-23"
+            },
+            "pairing_notes": "Идеально подходит к жареному красному мясу и копченым сырам. Перед подачей рекомендуется декантация."
           },
           "enrichment_status": {
             "status": "verified",
@@ -12234,7 +12626,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Elias-Mora-Crianza-2020.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -12373,7 +12765,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/D-Angelo-Aglianico-del-Vulture-DOC-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -12389,7 +12781,10 @@
       "title": "Antigua DOC",
       "year": 2024,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Моника",
+        "Кариньяно"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -12510,7 +12905,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Antigua-DOC-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -12526,7 +12921,9 @@
       "title": "Hito Ribera Del Duero DO",
       "year": 2023,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Тинто Фино"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -12644,7 +13041,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Hito-Ribera-Del-Duero-DO-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -12660,7 +13057,10 @@
       "title": "Aixala I Alcait Pardelasses Priorat DOQ",
       "year": 2018,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Гренаш/Гарнача",
+        "Кариньяно"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -12761,14 +13161,19 @@
               "wine_style": "Вино: Красное, Сухое",
               "body": "Насыщенность: среднее",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: \"Pardelasses\" — яркое, энергичное, концентрированное вино с \"диким\" ароматом и захватывающим длительным вкусом. Виноград для изготовления вина поступает с 5 органических виноградников, разбитых на высоте от 285 до 500 метров над уровнем моря в двух р"
+              "description_excerpt": "Описание: \"Pardelasses\" — яркое, энергичное, концентрированное вино с \"диким\" ароматом и захватывающим длительным вкусом. Виноград для изготовления вина поступает с 5 органических виноградников, разбитых на высоте от 285 до 500 метров над уровнем моря в двух р",
+              "aging_potential": "Потенциал хранения \"Парделассес\" составляет 5 лет. (exact bottle, SHA-verified HTML archive)"
             },
             "raw_product_text_sha256": "1790d6d0d70b58912482afaeeba35a99d8225710e700f6e9fa35d53e370475d2",
             "raw_product_text_chars": 7108,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "aging_potential": "5 лет",
+            "field_checked_at": {
+              "aging_potential": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -12779,7 +13184,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Aixala-I-Alcait-Pardelasses-Priorat-DOQ-2018.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -12795,7 +13200,12 @@
       "title": "Marius Peyol Coteaux d’Aix en Provence AOC",
       "year": 2024,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Гренаш/Гарнача",
+        "Мурведр",
+        "Сира",
+        "Сенсо"
+      ],
       "type": "Розовое",
       "pairings": [
         "Рыба",
@@ -12909,7 +13319,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Marius-Peyol-Coteaux-d-Aix-en-Provence-AOC-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -12925,7 +13335,12 @@
       "title": "Lapostolle Le Rosé",
       "year": 2024,
       "country": "Чили",
-      "grapes": [],
+      "grapes": [
+        "Сенсо",
+        "Мурведр",
+        "Гренаш/Гарнача",
+        "Сира"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -13040,7 +13455,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Lapostolle-Le-Rose-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -13056,7 +13471,12 @@
       "title": "Miraval Rosé Côtes de Provence AOC",
       "year": 2018,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Гренаш/Гарнача",
+        "Сенсо",
+        "Роль",
+        "Сира"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -13190,7 +13610,10 @@
       "title": "Muga Rosado Rioja DOC",
       "year": 2021,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Гренаш/Гарнача",
+        "Виура"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -13287,14 +13710,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 1-3 года",
               "color_intensity": "Глубина цвета: бледное",
-              "description_excerpt": "Описание: Muga, Rosado — испанское розовое сухое вино, созданное по особой технологии. Вино производят из винограда сортов Гарнача и Виура, собранного с 14 виноградников в Риохе, расположенных на высоте от 450 до 600 метров над уровнем моря. Урожай собирают в "
+              "description_excerpt": "Описание: Muga, Rosado — испанское розовое сухое вино, созданное по особой технологии. Вино производят из винограда сортов Гарнача и Виура, собранного с 14 виноградников в Риохе, расположенных на высоте от 450 до 600 метров над уровнем моря. Урожай собирают в ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "c33a1f2ec3d8dbb9e5796623fc28f3423949fe0788abd54de718eed8baecf1ee",
             "raw_product_text_chars": 5596,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Вино бледно-розового цвета.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -13305,7 +13733,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Muga-Rosado-Rioja-DOC-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -13321,7 +13749,11 @@
       "title": "Estandon Heritage Côtes de Provence AOP",
       "year": 2020,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Гренаш/Гарнача",
+        "Сенсо",
+        "Сира"
+      ],
       "type": "Розовое",
       "pairings": [
         "Морепродукты",
@@ -13438,7 +13870,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Estandon-Heritage-Cotes-de-Provence-AOP-2020.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -13454,7 +13886,10 @@
       "title": "Muga Rosado Rioja DOC",
       "year": 2023,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Гренаш/Гарнача",
+        "Виура"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -13563,14 +13998,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 1-4 года",
               "color_intensity": "Глубина цвета: бледное",
-              "description_excerpt": "Описание: Muga, Rosado — испанское розовое сухое вино, созданное по особой технологии. Вино производят из винограда сортов Гарнача и Виура, собранного с виноградников в Риохе, которые расположены в основном на известково-глинистых почвах долины Оха и железисты"
+              "description_excerpt": "Описание: Muga, Rosado — испанское розовое сухое вино, созданное по особой технологии. Вино производят из винограда сортов Гарнача и Виура, собранного с виноградников в Риохе, которые расположены в основном на известково-глинистых почвах долины Оха и железисты",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "0f7d4ca3b3369c468de92624794634f34bb87c2554be982a46f9d62f2b7d797f",
             "raw_product_text_chars": 5927,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Имеет бледно-розовый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -13581,7 +14021,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Muga-Rosado-Rioja-DOC-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -13597,7 +14037,16 @@
       "title": "Château La Tour de L Eveque Petale de Rosé Côtes de Provence AOC",
       "year": 2020,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Семильон",
+        "Сенсо",
+        "Гренаш/Гарнача",
+        "Сира",
+        "Мурведр",
+        "Роль",
+        "Каберне Совиньон",
+        "Уни Блан"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -13724,7 +14173,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Chateau-La-Tour-de-L-Eveque-Petale-de-Rose-Cotes-de-Provence-AOC-2020.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -13839,14 +14288,19 @@
               "wine_style": "Вино: Белое, Сухое",
               "body": "Насыщенность: среднее",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Привлекательное вино Mezzacorona, Pinot Grigio, Trentino DOC обладает душистым ароматом и сбалансированным, свежим, очень элегантным вкусом. Такой выразительности удалось добиться благодаря Пино Гриджио, выращенному на безупречных виноградниках вдоль"
+              "description_excerpt": "Описание: Привлекательное вино Mezzacorona, Pinot Grigio, Trentino DOC обладает душистым ароматом и сбалансированным, свежим, очень элегантным вкусом. Такой выразительности удалось добиться благодаря Пино Гриджио, выращенному на безупречных виноградниках вдоль",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "0913dab6c4ef183458122163d0bb44acaa844dc984e4a9f8ea50d9d7fac3f0c2",
             "raw_product_text_chars": 7604,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Светло-соломенный цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -13857,7 +14311,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Mezzacorona-Pinot-Grigio-Trentino-DOC-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -13996,7 +14450,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Domane-Wachau-Katzensprung-Gruner-Veltliner-Federspiel-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -14012,7 +14466,10 @@
       "title": "Gaintza Txakolina",
       "year": 2023,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Ондарраби Сури",
+        "Гро Мансенг"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -14130,7 +14587,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Gaintza-Txakolina-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -14146,7 +14603,9 @@
       "title": "Ascevi Luwa Ronco dei Sassi Collio DOC",
       "year": 2021,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Совиньон Блан"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -14243,14 +14702,19 @@
               "wine_style": "Вино: Белое, Сухое",
               "body": "Насыщенность: среднее",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: В райском уголке в самом сердце Коллио, на винограднике Ronco dei Tassi выращивают виноград сорта Совиньон Блан, из которого производят ароматное белое вино \"Ronco dei Sassi\". Тщательный отбор лучших ягод, использование современных технологий и опыт "
+              "description_excerpt": "Описание: В райском уголке в самом сердце Коллио, на винограднике Ronco dei Tassi выращивают виноград сорта Совиньон Блан, из которого производят ароматное белое вино \"Ronco dei Sassi\". Тщательный отбор лучших ягод, использование современных технологий и опыт ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "717d835ad90953c2a83d0ecd50afc27d33dd6495f4326f871614138ebf2e3507",
             "raw_product_text_chars": 7518,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Вино светло-золотистого цвета.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -14261,7 +14725,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Ascevi-Luwa-Ronco-dei-Sassi-Collio-DOC-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -14277,7 +14741,10 @@
       "title": "Recanati Yasmin White kosher mevushal",
       "year": 2018,
       "country": "Израиль",
-      "grapes": [],
+      "grapes": [
+        "Совиньон Блан",
+        "Шардоне"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -14395,7 +14862,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Recanati-Yasmin-White-kosher-mevushal-2018.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -14564,7 +15031,11 @@
       "title": "Fattoria Le Pupille Poggio Argentato IGT",
       "year": 2022,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Совиньон Блан",
+        "Пти Мансенг",
+        "Семильон"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -14694,7 +15165,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Fattoria-Le-Pupille-Poggio-Argentato-IGT-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -14830,7 +15301,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Protos-Verdejo-2018.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -14966,7 +15437,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Chateau-Pajzos-T-Tokaji-Furmint-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -14982,7 +15453,11 @@
       "title": "Taboadella Villae Branco Dão DOC",
       "year": 2020,
       "country": "Португалия",
-      "grapes": [],
+      "grapes": [
+        "Энкрузаду",
+        "Бикал",
+        "Серсиаль"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -15109,7 +15584,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Taboadella-Villae-Branco-Dao-DOC-2020.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -15125,7 +15600,9 @@
       "title": "Ottella Lugana DOC",
       "year": 2017,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Треббьяно"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -15243,7 +15720,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Azienda-Agricola-Ottella-Lugana-Ottella-2017.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -15259,7 +15736,9 @@
       "title": "Ottella Lugana DOC",
       "year": 2024,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Треббьяно ди Лугана"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -15408,7 +15887,9 @@
       "title": "Azienda Agricola Ottella Le Creete Lugana DOC",
       "year": 2024,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Треббьяно ди Лугана"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -15523,7 +16004,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Azienda-Agricola-Ottella-Le-Creete-Lugana-DOC-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -15539,7 +16020,9 @@
       "title": "I Frati Lugana DOC",
       "year": 2024,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Турбиана"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -15672,7 +16155,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/I-Frati-Lugana-DOC-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -15688,7 +16171,9 @@
       "title": "Batasiolo Granée Gavi del Comune di Gavi DOCG",
       "year": 2023,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Кортезе"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -15818,7 +16303,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Batasiolo-Granee-Gavi-del-Comune-di-Gavi-DOCG-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -15930,14 +16415,19 @@
               "wine_style": "Вино: Белое, Сухое",
               "body": "Насыщенность: среднее",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Chanzy, \"Les Fortunes\" Aligote — свежее белое сухое вино из Бургундии, раскрывающее энергичный и чистый характер сорта Алиготе. В бокале раскрываются ноты лимона, зеленого яблока и груши, дополненные легким минеральным оттенком. Вино легкое и живое, "
+              "description_excerpt": "Описание: Chanzy, \"Les Fortunes\" Aligote — свежее белое сухое вино из Бургундии, раскрывающее энергичный и чистый характер сорта Алиготе. В бокале раскрываются ноты лимона, зеленого яблока и груши, дополненные легким минеральным оттенком. Вино легкое и живое, ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "d31ff61bd62ee622b7885f07bf1aa907af9596e19e11db0a431fb34e044de6fc",
             "raw_product_text_chars": 4664,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Светлый соломенный цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -15948,7 +16438,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Chanzy-Les-Fortunes-Aligote-Bourgogne-AOC-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -16087,7 +16577,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Wohlmuth-Gewurztraminer-Sudsteiermark-DAC-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -16202,14 +16692,19 @@
               "wine_style": "Вино: Белое, Сухое",
               "body": "Насыщенность: среднее",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Уникальное вино \"Mar de Frades\", обладающее особым характером, прославило свое хозяйство. Оно представляет всю выразительность сорта Альбариньо, выращенного в Валь до Сальнес в регионе Риас Байшас, окутывает своей свежестью и покоряет балансом между "
+              "description_excerpt": "Описание: Уникальное вино \"Mar de Frades\", обладающее особым характером, прославило свое хозяйство. Оно представляет всю выразительность сорта Альбариньо, выращенного в Валь до Сальнес в регионе Риас Байшас, окутывает своей свежестью и покоряет балансом между ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "3e1d147c90a05492369d3205287bf167a12573f29ebf0ce1d28961f8ca946d86",
             "raw_product_text_chars": 8686,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Имеет светло-золотистый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -16220,7 +16715,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Mar-de-Frades-Albarino-Rias-Baixas-DO-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -16236,7 +16731,9 @@
       "title": "A.A. Badenhorst Secateurs Rosé Swartland WO",
       "year": 2022,
       "country": "ЮАР",
-      "grapes": [],
+      "grapes": [
+        "Мурведр"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -16345,14 +16842,22 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 2 года",
               "color_intensity": "Глубина цвета: бледное",
-              "description_excerpt": "Описание: \"Secateurs\" Rose — изысканное розовое вино, созданное из винограда сорта Мурведр. Весь виноград для этого вина выращивается в Свартланде на гранитных и сланцевых почвах. Виноград собирают рано утром, до восхода солнца. Целые грозди подвергаются прямо"
+              "description_excerpt": "Описание: \"Secateurs\" Rose — изысканное розовое вино, созданное из винограда сорта Мурведр. Весь виноград для этого вина выращивается в Свартланде на гранитных и сланцевых почвах. Виноград собирают рано утром, до восхода солнца. Целые грозди подвергаются прямо",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23",
+              "pairing_notes": "User-provided 2026-11-23 browser capture: direct labelled primary-product field, URL and HTML SHA-256 verified"
             },
             "raw_product_text_sha256": "43ffe5ca7e8d852dfdf7004c10378bc0170a60941113aabc068a05febfbcde28",
             "raw_product_text_chars": 3928,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "У вина бледно-розовый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23",
+              "pairing_notes": "2026-11-23"
+            },
+            "pairing_notes": "Вино хорошо сочетается с морепродуктами, рыбой, белым мясом и твердыми сырами. Может подаваться в качестве аперитива."
           },
           "enrichment_status": {
             "status": "verified",
@@ -16363,7 +16868,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/A-A-Badenhorst-Secateurs-Rose-Swartland-WO-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -16499,7 +17004,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Maturana-Wines-Naranjo-Torontel-Maule-Valley-DO-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {

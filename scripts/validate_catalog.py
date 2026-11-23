@@ -59,19 +59,32 @@ for r in records:
    assert store['reference_price_rub'] is not None and store['reference_regular_price_rub']>store['reference_price_rub']
   live=store.get('live_offer')
   if live is not None:
-   assert r.get('publication_review',{}).get('status')=='verified',('Unreviewed offer',r['id'])
+   assert (r.get('publication_review',{}).get('status')=='verified' or (
+    r.get('publication_review',{}).get('status')!='excluded'
+    and live.get('capture_method')=='user_confirmed_active_browser_tab'
+    and store.get('enrichment_status',{}).get('status')=='verified'
+    and store.get('product_details',{}).get('source_url')==store['url']
+   )),('Unreviewed offer',r['id'])
    assert live.get('verification_method')=='exact_jsonld_product',('Offer method',r['id'])
    assert live.get('availability') in ('in_stock','out_of_stock','unknown'),('Offer status',r['id'])
    assert re.fullmatch(r'\d{4}-\d{2}-\d{2}',live.get('observed_on','')),('Offer date',r['id'])
-   assert live['observed_on']>=r['publication_review']['checked_at'],('Stale offer',r['id'])
+   assert live['observed_on']>=((r.get('publication_review') or {}).get('checked_at') or store.get('enrichment_status',{}).get('checked_at','9999-12-31')),('Stale offer',r['id'])
    assert live.get('price_rub') is not None and type(live['price_rub']) is int and 100<=live['price_rub']<=1000000,('Offer price',r['id'])
    regular=live.get('regular_price_rub')
    assert regular is None or (type(regular) is int and live['price_rub']<regular<=1000000),('Offer old price',r['id'])
    def source_id(u):
     p=urlsplit(u)
     return (p.scheme,p.hostname,p.path.rstrip('/'))
-   assert source_id(live.get('source_url',''))==source_id(store['url'])==source_id(r['publication_review']['final_url']),('Offer redirect',r['id'])
+   assert source_id(live.get('source_url',''))==source_id(store['url'])==source_id((r.get('publication_review') or {}).get('final_url') or store.get('enrichment_status',{}).get('source_url')),('Offer redirect',r['id'])
    assert live.get('product_name') and isinstance(live['product_name'],str),('Offer product',r['id'])
+
+ # Vendor-sourced manual research is separate from the immutable WineStyle archive.
+  manual=store.get('research_details')
+  if manual is not None:
+   assert manual.get('source_kind') in ('primary_retailer_product_description','manual_verified_original_seller'),('Research kind',r['id'])
+   assert manual.get('checked_at') and re.fullmatch(r'\d{4}-\d{2}-\d{2}',manual['checked_at']),('Research date',r['id'])
+   assert manual.get('source_url','').split('#')[0].rstrip('/')==store['url'].split('#')[0].rstrip('/'),('Research URL',r['id'])
+   assert manual.get('full_name') or manual.get('producer'),('Research identity',r['id'])
 
 snapshot=d.get('inventory_snapshot')
 if snapshot:
@@ -95,6 +108,18 @@ if publication:
  assert publication['visible_after_review']==sum(r.get('availability',{}).get('status')!='out_of_stock' and r.get('publication_review',{}).get('status')!='excluded' for r in records)
  assert publication['reviewed']==publication['verified_for_order']+publication['excluded']
  assert publication['visible_after_review']==110
+
+visible=[r for r in records if r.get('availability',{}).get('status')!='out_of_stock' and
+         r.get('publication_review',{}).get('status')!='excluded']
+assert len(visible)==110
+assert all(type(r.get('volume_l')) in (float,int) and r['volume_l']>0 for r in visible), 'Missing published bottle volume'
+assert all(isinstance(r.get('grapes'),list) and r['grapes'] for r in visible), 'Missing published grape identity'
+assert all((r['stores'][0].get('product_details') or r['stores'][0].get('research_details') or {}).get('color')
+           for r in visible), 'Missing published source color description'
+assert all((r['stores'][0].get('product_details') or r['stores'][0].get('research_details') or {}).get('wine_style')
+           for r in visible), 'Missing verified wine style for published bottle'
+assert all((r['stores'][0].get('product_details') or r['stores'][0].get('research_details') or {}).get('pairing_notes')
+           for r in visible), 'Missing verified food pairings for published bottle'
 
 assert len(records)==d['source']['unique_wine_urls'], 'Catalog size differs from source snapshot'
 assert all(r['wishlist'] and not r['research'] for r in records), 'Archived research cannot appear in active catalog'

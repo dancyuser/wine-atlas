@@ -41,6 +41,15 @@ class ExactOfferTests(unittest.TestCase):
         self.assertEqual(why, "verified")
         self.assertEqual(offer["regular_price_rub"], 7100)
 
+    def test_full_lbv_name_matches_abbreviation(self):
+        offer, reason = self.check(page(name="Kopke Late Bottled Vintage Port 2018, 750 ml"))
+        self.assertEqual(reason, "verified")
+        self.assertEqual(offer["price_rub"], 6348)
+
+    def test_aggregate_offer_never_used_as_bottle_price(self):
+        source = page().replace('"@type":"Offer"', '"@type":"AggregateOffer"')
+        self.assertEqual(self.check(source)[1], "no_exact_identified_offer")
+
     def test_changed_vintage_rejected(self):
         self.assertIsNone(self.check(page(name="Kopke LBV Port 2025, 750 ml"))[0])
 
