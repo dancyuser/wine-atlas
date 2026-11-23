@@ -16,6 +16,7 @@ jobs:
       - name: Catalog, ratings and source integrity
         run: |
           python scripts/validate_catalog.py
+          python scripts/test_publication_review.py
           python scripts/validate_ratings.py
           python scripts/test_vivino_reconciliation.py
           python scripts/validate_enrichment.py

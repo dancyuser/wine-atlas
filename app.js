@@ -84,7 +84,35 @@ const pairingGroups=[
   ['Пряные блюда',/остр|прян|азиатск/i]
 ];
 function retailerDetails(r){const s=r.stores?.[0];return s?.enrichment_status?.status==='verified'&&s.product_details?.source_url===s.url?s.product_details:null}
-function grapeValues(r){const d=retailerDetails(r);return r.grapes?.length?r.grapes:(d?.grapes?d.grapes.split(',').map(s=>s.trim()).filter(Boolean):[])}
+// Retailers use multiple spellings for the SAME grape variety. Normalize the
+// filter and visible metadata without altering the archival source fields.
+const grapeAliases=new Map([
+ ['сира','Сира / Шираз'],['шираз','Сира / Шираз'],['сира / шираз','Сира / Шираз'],
+ ['сузео','Сузао'],['сузао','Сузао'],
+ ['турига франсеса/турига франка','Турига Франка'],
+ ['турига франка','Турига Франка'],
+ ['тинта рориз','Темпранильо / Тинта Рориш'],
+ ['тинта рориш','Темпранильо / Тинта Рориш'],
+ ['темпранильо','Темпранильо / Тинта Рориш'],
+ ['тинто фино','Темпранильо / Тинта Рориш'],
+ ['турбиана','Турбиана / Треббьяно ди Лугана'],
+ ['треббьяно ди лугана','Турбиана / Треббьяно ди Лугана'],
+ ['монастрель','Мурведр / Монастрель'],
+ ['мурведр','Мурведр / Монастрель'],
+ ['масуэло','Кариньяно / Масуэло'],
+ ['кариньяно','Кариньяно / Масуэло'],
+ ['красные сорта винограда',null],['другие сорта',null]
+]);
+function normalizeGrape(grape){
+ const raw=String(grape||'').trim().replace(/\s+/g,' ');
+ if(!raw)return null;
+ const k=raw.toLocaleLowerCase('ru');
+ return grapeAliases.has(k)?grapeAliases.get(k):raw;
+}
+function grapeValues(r){
+ const d=retailerDetails(r),raw=r.grapes?.length?r.grapes:(d?.grapes?d.grapes.split(','):[]);
+ return [...new Set(raw.map(normalizeGrape).filter(Boolean))];
+}
 function countryValue(r){return r.country||retailerDetails(r)?.country?.split(',')[0]?.trim()||null}
 function pairingValues(r){const note=retailerDetails(r)?.pairing_notes;
   if(!note)return r.pairings||[];
@@ -182,7 +210,7 @@ function card(r){
 }
 
 function matched(r){
- if(r.availability?.status==='out_of_stock')return false;
+ if(r.availability?.status==='out_of_stock'||r.publication_review?.status==='excluded')return false;
  const term=$('search').value.trim().toLocaleLowerCase('ru');
  if(term&&!([r.title,countryValue(r),r.section,String(r.year||''),...grapeValues(r),...pairingValues(r)].join(' ').toLocaleLowerCase('ru').includes(term)))return false;
  if($('country').value&&countryValue(r)!==$('country').value)return false;
@@ -274,7 +302,7 @@ async function init(){
  try{
   const response=await fetch('./data/wines.json',{cache:'no-cache'});if(!response.ok)throw Error('Catalog HTTP '+response.status);
   const catalog=await response.json();if(!Array.isArray(catalog.records))throw Error('Invalid catalog');
-  state.records=catalog.records.filter(r=>r.availability?.status!=='out_of_stock');
+  state.records=catalog.records.filter(r=>r.availability?.status!=='out_of_stock'&&r.publication_review?.status!=='excluded');
   try{
     const snapshots=await fetch('./data/verified-snapshot-2026-11-23.json',{cache:'no-cache'});
     if(snapshots.ok){
@@ -297,7 +325,7 @@ async function init(){
   $('stat-total').textContent=state.records.length;
   $('stat-countries').textContent=new Set(state.records.map(r=>r.country).filter(Boolean)).size;
   $('stat-rated').textContent=state.records.filter(r=>metrics(r).vivino!==null).length;
-  $('update-tag').textContent='Наличие: '+date(catalog.inventory_snapshot?.observed_on)+' · исключено '+(catalog.records.length-state.records.length)+' недоступных';
+  $('update-tag').textContent='Проверка: '+date(catalog.publication_review_snapshot?.checked_at||catalog.inventory_snapshot?.observed_on)+' · исключено '+(catalog.records.length-state.records.length)+' недоступных / несовпадающих';
   setup();render();
  }catch(e){console.error(e);$('result-count').textContent='Ошибка загрузки';$('error').hidden=false}
 }

@@ -116,7 +116,7 @@ def main():
    if not prev:continue
    # Re-importing the same retailer URL must not erase enriched tasting and
    # rating-context fields. Section and membership come from the new list.
-   for field in ('title','year','country','grapes','type','pairings','description','volume_l','scores','review_note','photo','availability'):
+   for field in ('title','year','country','grapes','type','pairings','description','volume_l','scores','review_note','photo','availability','publication_review'):
     if field in prev:record[field]=prev[field]
    old_stores={key(s['url']):s for s in prev.get('stores',[])}
    for store in record['stores']:
@@ -134,6 +134,8 @@ def main():
    out['source'] = previous_data['source']
  if previous_data.get('source') and previous_data.get('inventory_snapshot') and previous_urls == current_urls:
   out['inventory_snapshot'] = previous_data['inventory_snapshot']
+ if previous_data.get('source') and previous_urls == current_urls and previous_data.get('publication_review_snapshot'):
+  out['publication_review_snapshot'] = previous_data['publication_review_snapshot']
  manifest = reconcile_manifest(previous_data.get('retailer_snapshot'), out['records'])
  if manifest is not None:
   out['retailer_snapshot'] = manifest

@@ -381,6 +381,28 @@
         "source_kind": "vivino_page",
         "observed_on": "2026-11-22",
         "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      },
+      {
+        "source": "Wine & Spirits",
+        "score": 92,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2013,
+        "source_url": "https://www.wine.com/product/huia-pinot-noir-2013/353610",
+        "source_kind": "verified_critic_score_source",
+        "observed_on": "2026-11-23",
+        "note": "Wine.com professional ratings list explicitly tied to Huia Pinot Noir 2013; original Wine & Spirits review not linked."
+      },
+      {
+        "source": "Wine Enthusiast",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2013,
+        "source_url": "https://www.wine.com/product/huia-pinot-noir-2013/353610",
+        "source_kind": "verified_critic_score_source",
+        "observed_on": "2026-11-23",
+        "note": "Wine.com professional ratings list explicitly tied to Huia Pinot Noir 2013; original Wine Enthusiast review not linked."
       }
     ],
     "2d98b7c07c09": [
@@ -437,9 +459,10 @@
         "scale": 100,
         "scope": "vintage",
         "vintage": 2023,
-        "source_url": "https://spb.winestyle.ru/products/Ingrid-Groiss-Rose-Ried-Hasenhaide-2023.html",
-        "source_kind": "user_research",
-        "observed_on": "2026-11-14"
+        "source_url": "https://www.wine.com/list/wine/weingut-ingrid-groiss/7155-113503",
+        "source_kind": "verified_critic_score_source",
+        "observed_on": "2026-11-23",
+        "note": "Wine.com lists Weingut Ingrid Groiss Ried Hasenhaide Rosé 2023 with Vinous 90; separate 2022 score not used."
       },
       {
         "source": "BOTTI",
@@ -447,9 +470,10 @@
         "scale": 100,
         "scope": "vintage",
         "vintage": 2023,
-        "source_url": "https://spb.winestyle.ru/products/Ingrid-Groiss-Rose-Ried-Hasenhaide-2023.html",
-        "source_kind": "user_research",
-        "observed_on": "2026-11-14"
+        "source_url": "https://www.botti.no/smaksnotater-bestillingsutvalget-mai-2024-rode-viner/",
+        "source_kind": "verified_critic_score_source",
+        "observed_on": "2026-11-23",
+        "note": "Norwegian first-party editorial tasting (ESH) explicitly names Ingrid Groiss Ried Hasenhaide Rosé 2023 and 86 points."
       },
       {
         "source": "Vivino",
@@ -539,9 +563,10 @@
         "scale": 100,
         "scope": "vintage",
         "vintage": 2021,
-        "source_url": "https://spb.winestyle.ru/products/Bestheim-Alsace-Grand-Cru-Schlossberg-Riesling-AOC-2021.html",
-        "source_kind": "user_research",
-        "observed_on": "2026-11-14"
+        "source_url": "https://www.decanter.com/alsace-grand-cru-2021-2020-score-table/",
+        "source_kind": "verified_critic_score_source",
+        "observed_on": "2026-11-23",
+        "note": "First-party Decanter Alsace Grand Cru score table, Bestheim Grand Cru Schlossberg 2021, 94 points."
       },
       {
         "source": "Vivino",
@@ -1089,10 +1114,10 @@
         "scale": 5,
         "scope": "all_vintages",
         "vintage": null,
-        "source_url": "https://www.vivino.com/en/myskhako-myskhako-igristoe-vino-quinteccence-zinfandel-polusukhoe-rozovoe-sparkling-wine-quintessence-zinfandel-semi-dry-rose/w/10522915",
-        "source_kind": "vivino_web_search_verified",
-        "observed_on": "2026-11-22",
-        "note": "Оценка вина по всем винтажам; в индекс конкретного урожая не включена."
+        "source_url": "https://www.vivino.com/en/myskhako-myskhako-quintessence-collection-zinfandel-ripasso/w/9317032",
+        "source_kind": "vivino_primary_style_and_producer_verified",
+        "observed_on": "2026-11-23",
+        "note": "Исправлена ранее ошибочная ссылка на розовое игристое. Данное вино - красное полусухое Myskhako Quintessence Zinfandel (Ripasso), 0.75 л. Vivino red Zinfandel Ripasso 4.1/5 относится ко всем винтажам. Прямо сверено с исходной карточкой WineStyle."
       }
     ],
     "de91d5c1fa5e": [
@@ -1371,6 +1396,50 @@
         "source_kind": "vivino_web_search_verified",
         "observed_on": "2026-11-22",
         "note": "Проверено по странице/результатам Vivino, актуальность и численность отзывов могут изменяться."
+      },
+      {
+        "source": "James Suckling",
+        "score": 92,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2018,
+        "source_url": "https://zamorawines.com/products/r-bilbao-reserva",
+        "source_kind": "verified_critic_score_source",
+        "observed_on": "2026-11-23",
+        "note": "Brand distributor's labelled list: James Suckling 2024 92 for Ramón Bilbao Reserva 2018."
+      },
+      {
+        "source": "Wine Spectator",
+        "score": 89,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2018,
+        "source_url": "https://zamorawines.com/products/r-bilbao-reserva",
+        "source_kind": "verified_critic_score_source",
+        "observed_on": "2026-11-23",
+        "note": "Brand distributor's labelled list: Wine Spectator 2024 89 for Ramón Bilbao Reserva 2018."
+      },
+      {
+        "source": "Decanter",
+        "score": 89,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2018,
+        "source_url": "https://zamorawines.com/products/r-bilbao-reserva",
+        "source_kind": "verified_critic_score_source",
+        "observed_on": "2026-11-23",
+        "note": "Brand distributor's labelled list: Decanter 2024 Bronze 89 for 2018; previous 2023 Decanter tasting yielded 87 points."
+      },
+      {
+        "source": "Tim Atkin",
+        "score": 92,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2018,
+        "source_url": "https://zamorawines.com/products/r-bilbao-reserva",
+        "source_kind": "verified_critic_score_source",
+        "observed_on": "2026-11-23",
+        "note": "Brand distributor's labelled list: Tim Atkin 2023 92 for Ramón Bilbao Reserva 2018."
       }
     ],
     "160221740978": [

@@ -344,17 +344,30 @@
         {
           "name": "ast.wine",
           "url": "https://ast.wine/catalog/product/dow_s_late_bottled_vintage_port_5608309002876_43233/",
-          "price_rub": null,
+          "price_rub": 3579,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-23",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
-          "reference_date": null
+          "reference_date": null,
+          "price_source_url": "https://ast.wine/catalog/product/dow_s_late_bottled_vintage_port_5608309002876_43233/",
+          "price_evidence": "AST.WINE primary product: 2018, 0.75 l, article 43233, 3579 RUB, Add to cart, St. Petersburg store availability; archived 2026-11-23 HTML and public page."
         }
       ],
       "volume_l": 0.75,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "publication_review": {
+        "status": "verified",
+        "checked_at": "2026-11-23",
+        "source_url": "https://ast.wine/catalog/product/dow_s_late_bottled_vintage_port_5608309002876_43233/",
+        "source_snapshot_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+        "reason": "same_product_in_stock",
+        "year": 2018,
+        "volume": 0.75,
+        "final_url": "https://ast.wine/catalog/product/dow_s_late_bottled_vintage_port_5608309002876_43233/",
+        "evidence": "AST.WINE primary product: 2018, 0.75 l, article 43233, 3579 RUB, Add to cart, St. Petersburg store availability; archived 2026-11-23 HTML and public page."
+      }
     },
     {
       "id": "060e3c866e44",
@@ -380,17 +393,30 @@
         {
           "name": "ladogawine.ru",
           "url": "https://ladogawine.ru/catalog/wine/kopke_leyt_bottled_vintedzh_porto_075/#",
-          "price_rub": null,
+          "price_rub": 6348,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-23",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
-          "reference_date": null
+          "reference_date": null,
+          "price_source_url": "https://ladogawine.ru/catalog/wine/kopke_leyt_bottled_vintedzh_porto_075/",
+          "price_evidence": "LADOGA Wine primary product: Kopke LBV 2018, barcode 5601194709981, 0.75 l, 6348 RUB, Add to cart; archived 2026-11-23 HTML and public page."
         }
       ],
       "volume_l": 0.75,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "publication_review": {
+        "status": "verified",
+        "checked_at": "2026-11-23",
+        "source_url": "https://ladogawine.ru/catalog/wine/kopke_leyt_bottled_vintedzh_porto_075/",
+        "source_snapshot_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+        "reason": "same_product_in_stock",
+        "year": 2018,
+        "volume": 0.75,
+        "final_url": "https://ladogawine.ru/catalog/wine/kopke_leyt_bottled_vintedzh_porto_075/",
+        "evidence": "LADOGA Wine primary product: Kopke LBV 2018, barcode 5601194709981, 0.75 l, 6348 RUB, Add to cart; archived 2026-11-23 HTML and public page."
+      }
     },
     {
       "id": "8433dbc66ae6",
@@ -424,7 +450,18 @@
       ],
       "volume_l": 0.75,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "publication_review": {
+        "status": "excluded",
+        "checked_at": "2026-11-23",
+        "source_url": "https://vinissimo.biz/catalog/wine/kendall_jackson_vintners_reserve_chardonnay-1831018/",
+        "source_snapshot_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+        "reason": "out_of_stock",
+        "year": 2018,
+        "volume": 0.75,
+        "final_url": "https://vinissimo.biz/catalog/wine/kendall_jackson_vintners_reserve_chardonnay-1831018/",
+        "evidence": "Vinissimo primary product for 2018 Kendall-Jackson Vintner's Reserve Chardonnay 0.75 l explicitly states 'Нет в наличии', and vintage selector confirms 2018 out of stock."
+      }
     },
     {
       "id": "22c9be4678f5",
@@ -3623,7 +3660,18 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "publication_review": {
+        "status": "excluded",
+        "checked_at": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Amalaya-Blanco-2024.html",
+        "source_snapshot_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+        "reason": "redirect_vintage_mismatch",
+        "year": 2024,
+        "volume": 0.75,
+        "final_url": "https://spb.winestyle.ru/products/Amalaya-Blanco-2025.html",
+        "evidence": "Winestyle 2024 Amalaya Blanco redirected to 2025 primary product, message 'Перенаправлено с отсутствующего товара'. Current 2025 stock is NOT 2024."
+      }
     },
     {
       "id": "aa6da0a65a5d",
@@ -4500,7 +4548,18 @@
       ],
       "volume_l": 0.375,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "publication_review": {
+        "status": "excluded",
+        "checked_at": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Vigna-Senza-Nome-Moscato-d-Asti-DOCG-2023-375.html",
+        "source_snapshot_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+        "reason": "redirect_vintage_and_volume_mismatch",
+        "year": 2023,
+        "volume": 0.375,
+        "final_url": "https://spb.winestyle.ru/products/Vigna-Senza-Nome-Moscato-d-Asti-DOCG-2025-750.html",
+        "evidence": "Winestyle 2023 Braida Vigna Senza Nome 375 ml redirected to in-stock 2025 750 ml; both vintage and volume mismatch; primary page labels 2023 original unavailable."
+      }
     },
     {
       "id": "e3e9c91e71bc",
@@ -4532,7 +4591,18 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "publication_review": {
+        "status": "excluded",
+        "checked_at": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Rotari-Blanc-de-Blancs-Extra-Brut-Trento-DOC-2018.html",
+        "source_snapshot_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+        "reason": "redirect_vintage_mismatch",
+        "year": 2018,
+        "volume": 0.75,
+        "final_url": "https://spb.winestyle.ru/products/Rotari-Blanc-de-Blancs-Extra-Brut-Trento-DOC-2021.html",
+        "evidence": "Winestyle Rotari Blanc de Blancs Extra Brut 2018 redirected to available 2021, labelled as 'Перенаправлено с отсутствующего товара' 2018."
+      }
     },
     {
       "id": "5e980b14c4d5",
@@ -4789,7 +4859,18 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "publication_review": {
+        "status": "excluded",
+        "checked_at": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Vilarnau-Brut-Nature-Reserva-Cava-DO-2021.html",
+        "source_snapshot_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+        "reason": "redirect_vintage_mismatch",
+        "year": 2021,
+        "volume": 0.75,
+        "final_url": "https://spb.winestyle.ru/products/Vilarnau-Brut-Nature-Reserva-Cava-DO-2022.html",
+        "evidence": "Winestyle Vilarnau Brut Nature Reserva 2021 redirected to 2022, labelled as 'Перенаправлено с отсутствующего товара' 2021."
+      }
     },
     {
       "id": "056c6f909a24",
@@ -5024,7 +5105,18 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "publication_review": {
+        "status": "excluded",
+        "checked_at": "2026-11-23",
+        "source_url": "https://spb.winestyle.ru/products/Bellenda-San-Fermo-Conegliano-Valdobbiadene-DOCG-Prosecco-Superiore-2022-gift-box.html",
+        "source_snapshot_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+        "reason": "redirect_vintage_mismatch",
+        "year": 2022,
+        "volume": 0.75,
+        "final_url": "https://spb.winestyle.ru/products/Bellenda-San-Fermo-Conegliano-Valdobbiadene-DOCG-Prosecco-Superiore-2024-gift-box.html",
+        "evidence": "Winestyle Bellenda San Fermo gift box 2022 redirected to gift box 2024, labelled as 'Перенаправлено с отсутствующего товара' 2022; previous 2022 card also showed waiting for restock."
+      }
     },
     {
       "id": "5445709eae58",
@@ -5582,7 +5674,7 @@
       "id": "f97f2ccc67b8",
       "title": "Grande Alberone Moscato Spumante Dolce",
       "year": null,
-      "country": null,
+      "country": "Италия",
       "grapes": [
         "Москато"
       ],
@@ -12296,7 +12388,7 @@
       "id": "e552320d1248",
       "title": "Antigua DOC",
       "year": 2024,
-      "country": null,
+      "country": "Италия",
       "grapes": [],
       "type": "Красное",
       "pairings": [
@@ -12569,8 +12661,13 @@
       "year": 2018,
       "country": "Испания",
       "grapes": [],
-      "type": "Не установлен",
-      "pairings": [],
+      "type": "Красное",
+      "pairings": [
+        "Красное мясо",
+        "Мясо",
+        "Сыры",
+        "Овощи"
+      ],
       "description": "Не установлен вино. Сочетания указаны как ориентиры для категории, а не персональные дегустационные характеристики.",
       "section": "Гренаш",
       "wishlist": true,
@@ -12699,8 +12796,11 @@
       "year": 2024,
       "country": "Франция",
       "grapes": [],
-      "type": "Не установлен",
-      "pairings": [],
+      "type": "Розовое",
+      "pairings": [
+        "Рыба",
+        "Пряные блюда"
+      ],
       "description": "Не установлен вино. Сочетания указаны как ориентиры для категории, а не персональные дегустационные характеристики.",
       "section": "Гренаш",
       "wishlist": true,
@@ -13222,8 +13322,11 @@
       "year": 2020,
       "country": "Франция",
       "grapes": [],
-      "type": "Не установлен",
-      "pairings": [],
+      "type": "Розовое",
+      "pairings": [
+        "Морепродукты",
+        "Пряные блюда"
+      ],
       "description": "Не установлен вино. Сочетания указаны как ориентиры для категории, а не персональные дегустационные характеристики.",
       "section": "Гренаш",
       "wishlist": true,
@@ -16449,5 +16552,15 @@
     "unconfirmed_identity": 8,
     "method": "primary product purchase block, not global page text, recommendations or sticky badges",
     "note": "Point-in-time stock snapshot; unknown inventory remains displayed until independently verified."
+  },
+  "publication_review_snapshot": {
+    "checked_at": "2026-11-23",
+    "baseline_archive_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+    "reviewed": 8,
+    "verified_for_order": 2,
+    "excluded": 6,
+    "original_available_count": 116,
+    "visible_after_review": 110,
+    "description": "Independent 23 Nov 2026 reconciliation of original vendor pages and 124 archived full HTML snapshots. Exact year, volume and purchase status required; redirect destinations never substitute wishlist entries."
   }
 }

@@ -18,7 +18,7 @@ def report():
     snapshot = json.loads((ROOT / 'data/verified-snapshot-2026-11-23.json').read_text(encoding='utf-8'))
     verified = snapshot['records']
     researched = json.loads((ROOT / 'data/researched-photos-2026-11-23.json').read_text(encoding='utf-8'))['records']
-    visible = [r for r in c['records'] if r.get('availability', {}).get('status') != 'out_of_stock']
+    visible = [r for r in c['records'] if r.get('availability', {}).get('status') != 'out_of_stock' and r.get('publication_review', {}).get('status') != 'excluded']
     missing = []
     totals = {'visible': len(visible), 'snapshot_price_and_photo': 0,
               'missing_price': 0, 'missing_photo': 0,
@@ -32,10 +32,15 @@ def report():
         has_photo = bool(x or researched.get(r['id'], {}).get('url') or r.get('photo', {}).get('url'))
         has_vivino = any(y.get('source') == 'Vivino'
                          for y in independent['records'].get(r['id'], []))
-        has_critic = any(y.get('scale') in (20, 100) and y.get('source') != 'Vivino'
-                         for y in s.get('product_details', {}).get('ratings', [])) or any(
-                         y.get('scale') == 100 and y.get('source') != 'Vivino'
-                         for y in independent['records'].get(r['id'], []))
+        product_critic = (s.get('enrichment_status', {}).get('status') == 'verified'
+                          and s.get('product_details', {}).get('source_url') == s['url']
+                          and any(y.get('scale') in (20, 100) and y.get('source') != 'Vivino'
+                                  for y in s.get('product_details', {}).get('ratings', [])))
+        independent_critic = any(
+            y.get('scale') in (20, 100) and y.get('source') != 'Vivino'
+            and 'winestyle.ru' not in (y.get('source_url') or '')
+            for y in independent['records'].get(r['id'], []))
+        has_critic = product_critic or independent_critic
         gaps = [name for name, exists in [('price', has_price),
                   ('photo', has_photo), ('vivino', has_vivino), ('critic', has_critic)]
                 if not exists]

@@ -50,6 +50,21 @@ selectors.get('pairing').value='';
 selectors.get('country').value='Франция';
 assert.equal(h.matched(sample),true);
 selectors.get('country').value='';
+const synonyms={...sample,grapes:['Сира','Шираз','Сира / Шираз','Сузео','Сузао','Турига Франсеса/Турига Франка','Турига Франка','Красные сорта винограда','Другие сорта','Корвина','Корвиноне']};
+assert.deepEqual([...h.grapeValues(synonyms)],['Сира / Шираз','Сузао','Турига Франка','Корвина','Корвиноне']);
+h.state.records=[synonyms];
+assert.deepEqual([...h.distinct('grapes')],['Корвина','Корвиноне','Сира / Шираз','Сузао','Турига Франка']);
+selectors.get('grape').value='Сира / Шираз';
+assert.equal(h.matched(synonyms),true,'Alias choice must still filter the underlying wine');
+selectors.get('grape').value='Корвиноне';
+assert.equal(h.matched({...synonyms,grapes:['Корвина']}),false,'Corvina and Corvinone are distinct cultivars');
+selectors.get('grape').value='';
+h.state.records=[sample];
+const reviewExcluded={...sample,publication_review:{status:'excluded',reason:'redirect_vintage_mismatch'}};
+assert.equal(h.matched(reviewExcluded),false,'Redirected wine must not remain visible');
+const reviewApproved={...sample,publication_review:{status:'verified',reason:'same_product_in_stock'}};
+assert.equal(h.matched(reviewApproved),true,'Exact matched wine should remain visible');
+
 const card=h.card(sample);
 assert(card.includes('Вино с ароматом цитрусов'));
 assert(card.includes('Wine Enthusiast'),
@@ -164,4 +179,4 @@ assert.deepEqual([...h.grapeValues(curated)],['Семильон']);
 assert.equal(h.countryValue(curated),'Португалия');
 const noRetail={...sample,stores:[{url:sample.stores[0].url}]};
 assert.deepEqual([...h.pairingValues(noRetail)],['Паста']);
-console.log('WINESTYLE UI TESTS PASSED: derived filters, source display, curated preservation, fallback');
+console.log('WINESTYLE UI TESTS PASSED: derived filters, merged grape synonyms, excluded redirected wines, source display, curated preservation, fallback');
