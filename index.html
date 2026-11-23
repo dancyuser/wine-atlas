@@ -111,8 +111,7 @@
       <div class="search-row">
         <label class="search-field"><span>Поиск</span><input id="search" type="search" placeholder="Название, страна, сорт, год…" autocomplete="off"></label>
         <label class="sort-field"><span>Сортировка</span><select id="sort">
-          <option value="recommended">В порядке вишлиста</option>
-          <option value="rating-desc">Сводный рейтинг: выше</option>
+          <option value="rating-desc" selected>Рейтинг: с учётом оценок</option>
           <option value="vivino-desc">Vivino: выше</option>
           <option value="alpha">По названию</option>
           <option value="price-asc">Цена: дешевле</option>
@@ -125,6 +124,8 @@
         <label>Сорт<select id="grape"><option value="">Все сорта</option></select></label>
         <label>Тип вина<select id="type"><option value="">Все типы</option></select></label>
         <label>Сочетается с<select id="pairing"><option value="">Все блюда</option></select></label>
+        <label>Цена от, ₽<input id="price-min" type="number" min="0" step="1" inputmode="numeric" placeholder="Без минимума" aria-label="Минимальная цена в рублях"></label>
+        <label>Цена до, ₽<input id="price-max" type="number" min="0" step="1" inputmode="numeric" placeholder="Без максимума" aria-label="Максимальная цена в рублях"></label>
       </div>
       <div class="tools-row">
         <div id="scope" class="scope" role="group" aria-label="Показать все или избранное">
@@ -147,6 +148,7 @@
     </section>
     <section class="method" aria-labelledby="method-title">
       <h2 id="method-title">Об источниках и оценках</h2>
+      <p><strong>Сортировка по рейтингу</strong> учитывает число уникальных источников вместе со средним баллом. Индекс сортировки равен <code>средний балл − 8 / √N</code>, где <code>N</code> - количество различных источников оценок. Дубли критиков не увеличивают N. Оценки критиков, опубликованные WineStyle, могут относиться к другому винтажу и не проверены по первоисточнику. Индекс является сравнительной эвристикой, а не вероятностной оценкой достоверности; средний балл вина остаётся неизменным.</p>
       <p><strong>Сводный рейтинг</strong> - справочный средний балл по отдельно собранным оценкам и по оценкам профессиональных критиков, опубликованным продавцом WineStyle. Повторные оценки одного критика учитываются один раз; при наличии собственной проверки винтажа она имеет приоритет. Шкала 20 приводится умножением на 5, оценка Vivino - условно по формуле <code>50 + 10 × рейтинг</code>. Такой расчёт служит ориентиром для вишлиста и не является рейтингом конкретного года урожая.</p>
       <p><strong>Отзывы покупателей WineStyle не используются.</strong> Оценки Wine Spectator, Wine Enthusiast, Decanter, James Suckling, Jancis Robinson и других критиков, опубликованные на WineStyle, показаны с указанием посредника; соответствие конкретному винтажу и первоисточники не подтверждены отдельно. Оценки Vivino без установленного винтажа помечены «все урожаи».</p>
       <p>Если независимо полученного Vivino нет, может использоваться оценка Vivino, указанная на WineStyle, с явной пометкой об источнике и неподтверждённом винтаже. При расхождении приоритет имеет непосредственно проверенная карточка Vivino.</p>
