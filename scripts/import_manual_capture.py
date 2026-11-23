@@ -71,7 +71,31 @@ def visible_value(payload):
     return value.strip()
 
 
-def verified_identity(target, capture):
+def strict_automatic_name(target, h1):
+    """Reject same-producer substitutions: producer overlap alone is not wine identity.
+
+    Accept only when *every* distinctive product token from the curated
+    wishlist name OR previously SHA-verified exact retailer name appears in
+    the visible main heading. This deliberately sends ambiguous products to
+    review rather than inventing new verified observations.
+    """
+    generic={'aoc','aop','doc','docg','doca','igt','igp','doq','ava','wo'}
+    shown=words(h1)
+    store=target['stores'][0]
+    candidates=[target.get('title')]
+    details=store.get('product_details') or {}
+    if (store.get('enrichment_status',{}).get('status')=='verified'
+            and canonical_url(details.get('source_url'))==canonical_url(store['url'])
+            and isinstance(details.get('full_name'),str)):
+        candidates.append(details['full_name'])
+    for candidate in candidates:
+        expected=words(candidate)-generic
+        if len(expected)>=2 and expected<=shown:
+            return True
+    return False
+
+
+def verified_identity(target, capture, automated=False):
     store = target['stores'][0]
     if not isinstance(capture, dict) or capture.get('blocked'):
         return False, 'blocked_or_empty_capture'
@@ -84,6 +108,8 @@ def verified_identity(target, capture):
     title_words = words(target.get('title'))
     if not title_words or len(title_words & words(capture['h1'])) < min(2, len(title_words)):
         return False, 'main_product_name_mismatch'
+    if automated and not strict_automatic_name(target,capture['h1']):
+        return False, 'strict_main_product_name_mismatch'
     year = target.get('year')
     # Undated targets may be non-vintage products. Never guess the year.
     if year is None:
@@ -150,7 +176,7 @@ def apply_observations(catalog, observations, automated=False):
         if not observed_on:
             summary['rejected'].append([id_, 'invalid_capture_date'])
             continue
-        ok, reason = verified_identity(r, captured)
+        ok, reason = verified_identity(r, captured, automated=automated)
         if not ok:
             summary['rejected'].append([id_, reason])
             continue
