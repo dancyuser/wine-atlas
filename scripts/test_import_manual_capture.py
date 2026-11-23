@@ -118,6 +118,18 @@ class ManualImportTests(unittest.TestCase):
         self.assertEqual(report['live_offers_updated'],0)
         self.assertEqual(c['records'][0]['stores'][0]['price_rub'],7000)
 
+    def test_conflicting_jsonld_product_offers_are_rejected_together(self):
+        o=copy.deepcopy(OBS)
+        conflict=copy.deepcopy(o['capture']['products'][0])
+        conflict['offers'][0]['price']='1000'
+        conflict['offers'][0]['availability']='https://schema.org/OutOfStock'
+        o['capture']['products'].append(conflict)
+        catalog,report=self.run_import(observation=o)
+        self.assertEqual(report['accepted_identity'],1)
+        self.assertEqual(report['live_offers_updated'],0)
+        self.assertNotIn('live_offer',catalog['records'][0]['stores'][0],
+                         'Conflicting source offers must never hide a wine or replace its price')
+
     def test_manual_port_research_without_wine_style_manifest(self):
         r=copy.deepcopy(RECORD)
         r['stores'][0].pop('enrichment_status')
