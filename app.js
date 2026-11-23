@@ -98,8 +98,15 @@ function wineStyleMarkup(r){
  const d=s.product_details;
  const fields=[['Вкус','taste'],['Аромат','aroma'],['Сочетания','pairing_notes'],['Регион','region'],['Крепость','alcohol_percent'],['Объём','volume_l'],['Производитель','producer'],['Описание','description_excerpt']];
  const rows=fields.filter(([,k])=>d[k]!=null&&d[k]!=='').map(([label,k])=>'<li><span>'+safe(label)+'</span><strong>'+safe(String(d[k]))+'</strong></li>').join('');
- if(!rows)return '';
- return '<details class="rating-details characteristics"><summary>Вкус и характеристики</summary><ul>'+rows+'</ul><p class="rating-hint">Данные WineStyle на '+date(d.checked_at)+' · <a href="'+safe(s.url)+'" target="_blank" rel="noopener noreferrer">Источник</a></p></details>';
+ const stockNote=['Ожидаем поступление','Нет в наличии'].includes(d.availability_note)?d.availability_note:
+  d.availability_spb===true?'Наличие подтверждалось в СПб':d.availability_spb===false?'Нет в наличии в СПб':'';
+ const stockDate=d.availability_note?(d.field_checked_at?.availability_note||d.checked_at):
+  (d.field_checked_at?.availability_spb||d.checked_at);
+ if(!rows&&!stockNote)return '';
+ return '<details class="rating-details characteristics"><summary>Вкус, наличие и характеристики</summary>'+
+ (stockNote?'<p class="availability-note">'+safe(stockNote)+' · '+date(stockDate)+'</p>':'')+
+ (rows?'<ul>'+rows+'</ul>':'')+
+ '<p class="rating-hint">Данные WineStyle на '+date(d.checked_at)+' · <a href="'+safe(s.url)+'" target="_blank" rel="noopener noreferrer">Источник</a></p></details>';
 }
 function photoMarkup(r){
  const p=r.photo||{};
