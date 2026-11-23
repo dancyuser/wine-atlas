@@ -40,7 +40,7 @@ def canonical_url(value):
         url = urlsplit(value)
         if url.scheme != "https" or not url.hostname or url.username or url.password:
             return None
-        return (url.hostname.lower(), unquote(url.path).rstrip("/") or "/")
+        return (url.hostname.lower(), unquote(url.path).rstrip("/") or "/", url.query)
     except (TypeError, ValueError):
         return None
 
