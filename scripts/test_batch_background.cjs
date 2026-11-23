@@ -90,8 +90,8 @@ async function run(){
  assert.equal(job?.status,'completed',JSON.stringify({cursor:job?.cursor,last:job?.last}));
  assert.equal(job.cursor,4);
  assert.equal(job.total,4);
- assert.equal(job.exact,3);
- assert.equal(job.needs_review,1,'NV bottles must remain review candidates');
+ assert.equal(job.exact,4);
+ assert.equal(job.needs_review,0,'Strictly identified undated products should be accepted without manufacturing vintages');
  assert.equal(job.errors.length,0);
  assert.equal(job.observations.length,4);
  assert.equal(tabMap.size,0,'Temporary tabs must be closed');
@@ -122,6 +122,6 @@ async function run(){
  assert.equal(after.observations.length,2,'Download metadata cannot erase observations');
  assert.equal(after.observations[1].target_id,'captured_during_export');
  assert.equal(memory.wineAtlasBatchDownloadV2.status,'success');
- console.log('BACKGROUND BATCH TESTS PASSED: 4 tabs, NV review, auto export, concurrent-write integrity');
+ console.log('BACKGROUND BATCH TESTS PASSED: 4 tabs, undated identity, auto export, concurrent-write integrity');
 }
 run().catch(e=>{console.error(e);process.exitCode=1});
