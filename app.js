@@ -194,7 +194,7 @@ function pairingValues(r){
  const note=retailerDetails(r)?.pairing_notes;
  if(!note)return r.pairings||[];
  const found=new Set();
- for(const item of String(note).split(/[;,]/).map(s=>s.trim()).filter(Boolean)){
+ for(const item of String(note).split(/[;,]/).flatMap(s=>s.split(/\s+(?:и|или)\s+|[/／]/)).map(s=>s.trim()).filter(Boolean)){
   const match=pairingRules.find(([,pattern])=>pattern.test(item));
   if(match)found.add(match[0]);
  }
