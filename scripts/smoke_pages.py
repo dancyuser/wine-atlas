@@ -89,8 +89,8 @@ def check(base):
     )
     if rendered != expected or expected == 0:
         raise ValueError(f"Rendered cards {rendered}, expected {expected}")
-    # Header shows the entire curated catalog, while the grid hides unavailable wines.
-    if not re.search(r'id="stat-total"[^>]*>' + str(len(catalog["records"])) + r'<', dom):
+    # The application filters unavailable wines before populating both the header and card grid.
+    if not re.search(r'id="stat-total"[^>]*>' + str(expected) + r'<', dom):
         raise ValueError("Catalog total was not populated by app.js")
     if 'id="result-count"' not in dom or 'Ошибка загрузки' in dom:
         raise ValueError("Catalog initialization failed")
