@@ -299,6 +299,16 @@ def apply_observations(catalog, observations, automated=False):
             }
             offer, _ = verified_offer(synthetic, verified_record, store['url'].split('#')[0],
                                       captured['source_url'].split('#')[0])
+            # Two simultaneous sources on the same WineStyle page must agree.
+            # Do not publish a JSON-LD offer when the primary visible product
+            # panel explicitly shows a different price or stock status.
+            if (offer and canonical_url(store['url'])[0]=='spb.winestyle.ru'
+                    and captured.get('visible_offer') is not None):
+                panel=verified_visible_main_offer(r,captured)
+                if (not panel or panel['price_rub']!=offer['price_rub'] or
+                        (offer['availability']!='unknown' and
+                         panel['availability']!=offer['availability'])):
+                    offer=None
             if offer and observed_on >= (review.get('checked_at') or store.get('enrichment_status', {}).get('checked_at', '9999-12-31')):
                 previous = store.get('live_offer') or {}
                 if previous.get('observed_on', '') <= observed_on:
