@@ -33,9 +33,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Graham-s-Late-Bottled-Vintage-LBV-2019-gift-tube.html",
-          "price_rub": null,
+          "price_rub": 4835,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": 4835,
           "reference_regular_price_rub": null,
           "reference_date": "2026-11-14",
@@ -138,6 +138,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Graham-s-Late-Bottled-Vintage-LBV-2019-gift-tube.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Graham-s-Late-Bottled-Vintage-LBV-2019-gift-tube.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 4835,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -175,9 +183,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Quinta-De-La-Rosa-LBV-Port-2019.html",
-          "price_rub": null,
+          "price_rub": 5035,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -274,6 +282,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Quinta-De-La-Rosa-LBV-Port-2019.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Quinta-De-La-Rosa-LBV-Port-2019.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 5035,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -405,9 +421,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Zantho-Beerenauslese-2018.html",
-          "price_rub": null,
+          "price_rub": 4330,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -519,6 +535,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Zantho-Beerenauslese-2018.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Zantho-Beerenauslese-2018.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 4330,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -556,9 +580,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Girlan-Chardonnay-Sudtirol-Alto-Adige-DOC-2023.html",
-          "price_rub": null,
+          "price_rub": 4099,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -661,6 +685,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Girlan-Chardonnay-Sudtirol-Alto-Adige-DOC-2023.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Girlan-Chardonnay-Sudtirol-Alto-Adige-DOC-2023.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 4099,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -696,9 +728,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Tement-Ehrenhausen-Muschelkalk-2017-375.html",
-          "price_rub": null,
+          "price_rub": 4640,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": 4640,
           "reference_regular_price_rub": null,
           "reference_date": "2026-11-14",
@@ -804,6 +836,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Tement-Ehrenhausen-Muschelkalk-2017-375.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Tement-Ehrenhausen-Muschelkalk-2017-375.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 4640,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -841,9 +881,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Lapis-Luna-Chardonnay-North-Coast-AVA-2022.html",
-          "price_rub": null,
+          "price_rub": 4025,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -940,6 +980,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Lapis-Luna-Chardonnay-North-Coast-AVA-2022.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Lapis-Luna-Chardonnay-North-Coast-AVA-2022.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 4025,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -969,9 +1017,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Chardonnay-2023.html",
-          "price_rub": null,
+          "price_rub": 3690,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": 3690,
           "reference_regular_price_rub": null,
           "reference_date": "2026-11-14",
@@ -1068,6 +1116,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Chardonnay-2023.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Chardonnay-2023.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 3690,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -1100,9 +1156,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Kurtatsch-Caliz-Chardonnay-Sudtirol-Alto-Adige-DOC-2022.html",
-          "price_rub": null,
+          "price_rub": 3690,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -1214,6 +1270,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Kurtatsch-Caliz-Chardonnay-Sudtirol-Alto-Adige-DOC-2022.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Kurtatsch-Caliz-Chardonnay-Sudtirol-Alto-Adige-DOC-2022.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 3690,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -1243,9 +1307,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Kleine-Zalze-Vineyard-Selection-Chardonnay-2024.html",
-          "price_rub": null,
+          "price_rub": 4090,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -1336,6 +1400,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Kleine-Zalze-Vineyard-Selection-Chardonnay-2024.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Kleine-Zalze-Vineyard-Selection-Chardonnay-2024.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 4090,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -1373,9 +1445,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Feudi-del-Pisciotto-Alberta-Ferretti-Chardonnay-Sicilia-IGT-2014.html",
-          "price_rub": null,
+          "price_rub": 4390,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -1484,6 +1556,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Feudi-del-Pisciotto-Alberta-Ferretti-Chardonnay-Sicilia-IGT-2014.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Feudi-del-Pisciotto-Alberta-Ferretti-Chardonnay-Sicilia-IGT-2014.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 4390,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -1513,9 +1593,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Peter-Zemmer-Chardonnay-Alto-Adige-DOC-2023.html",
-          "price_rub": null,
+          "price_rub": 4790,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": 4790,
           "reference_regular_price_rub": null,
           "reference_date": "2026-11-14",
@@ -1600,6 +1680,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Peter-Zemmer-Chardonnay-Alto-Adige-DOC-2023.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Peter-Zemmer-Chardonnay-Alto-Adige-DOC-2023.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 4790,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -1632,9 +1720,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2023.html",
-          "price_rub": null,
+          "price_rub": 2890,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -1743,6 +1831,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2023.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2023.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 2890,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -1772,9 +1868,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2016.html",
-          "price_rub": null,
+          "price_rub": 3450,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -1880,6 +1976,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2016.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2016.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 3450,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -1909,9 +2013,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Albert-Bichot-Origines-Chardonnay-Bourgogne-AOC-2022.html",
-          "price_rub": null,
+          "price_rub": 3565,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -2011,6 +2115,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Albert-Bichot-Origines-Chardonnay-Bourgogne-AOC-2022.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Albert-Bichot-Origines-Chardonnay-Bourgogne-AOC-2022.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 3565,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -2038,9 +2150,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Loimer-Gluegglich.html",
-          "price_rub": null,
+          "price_rub": 4550,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -2134,6 +2246,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Loimer-Gluegglich.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Loimer-Gluegglich.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 4550,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -2163,9 +2283,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Huia-Pinot-Noir-2013.html",
-          "price_rub": null,
+          "price_rub": 3660,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -2234,6 +2354,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Huia-Pinot-Noir-2013.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Huia-Pinot-Noir-2013.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 3660,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -2263,9 +2391,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Pyramid-Scheme-Pinot-Noir-2023.html",
-          "price_rub": null,
+          "price_rub": 4690,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": 4690,
           "reference_regular_price_rub": null,
           "reference_date": "2026-11-14",
@@ -2362,6 +2490,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Pyramid-Scheme-Pinot-Noir-2023.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Pyramid-Scheme-Pinot-Noir-2023.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 4690,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -2394,9 +2530,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Bodega-Aniello-006-Riverside-Estate-Pinot-Noir-Rio-Negro-2022.html",
-          "price_rub": null,
+          "price_rub": 3650,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -2496,6 +2632,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Bodega-Aniello-006-Riverside-Estate-Pinot-Noir-Rio-Negro-2022.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Bodega-Aniello-006-Riverside-Estate-Pinot-Noir-Rio-Negro-2022.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 3650,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -2523,9 +2667,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Ingrid-Groiss-Rose-Ried-Hasenhaide-2023.html",
-          "price_rub": null,
+          "price_rub": 4250,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": 4250,
           "reference_regular_price_rub": null,
           "reference_date": "2026-11-14",
@@ -2597,6 +2741,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Ingrid-Groiss-Rose-Ried-Hasenhaide-2023.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Ingrid-Groiss-Rose-Ried-Hasenhaide-2023.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 4250,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -2626,9 +2778,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Undurraga-Sibaris-Pinot-Noir-Gran-Reserva-Leyda-Valley-DO-2023.html",
-          "price_rub": null,
+          "price_rub": 1835,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -2722,6 +2874,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Undurraga-Sibaris-Pinot-Noir-Gran-Reserva-Leyda-Valley-DO-2023.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Undurraga-Sibaris-Pinot-Noir-Gran-Reserva-Leyda-Valley-DO-2023.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 1835,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -2751,9 +2911,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Weingut-J-Neus-Ingelheim-am-Rhein-Muschelkalk-Spatburgunder-2021.html",
-          "price_rub": null,
+          "price_rub": 3520,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -2859,6 +3019,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Weingut-J-Neus-Ingelheim-am-Rhein-Muschelkalk-Spatburgunder-2021.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Weingut-J-Neus-Ingelheim-am-Rhein-Muschelkalk-Spatburgunder-2021.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 3520,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -2888,9 +3056,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Luca-Winery-G-Lot-Pinot-Noir-Tupungato-2022.html",
-          "price_rub": null,
+          "price_rub": 4840,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -2990,6 +3158,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Luca-Winery-G-Lot-Pinot-Noir-Tupungato-2022.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Luca-Winery-G-Lot-Pinot-Noir-Tupungato-2022.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 4840,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -3017,9 +3193,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/El-Esteco-Blanc-de-Noir-2023.html",
-          "price_rub": null,
+          "price_rub": 2399,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -3113,6 +3289,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/El-Esteco-Blanc-de-Noir-2023.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/El-Esteco-Blanc-de-Noir-2023.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 2399,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -3140,9 +3324,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Amalaya-Blanco-2024.html",
-          "price_rub": null,
+          "price_rub": 1699,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -3254,6 +3438,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Amalaya-Blanco-2024.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Amalaya-Blanco-2024.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 1699,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -3283,9 +3475,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Bestheim-Alsace-Grand-Cru-Schlossberg-Riesling-AOC-2021.html",
-          "price_rub": null,
+          "price_rub": 4081,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": 4081,
           "reference_regular_price_rub": null,
           "reference_date": "2026-11-14",
@@ -3357,6 +3549,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Bestheim-Alsace-Grand-Cru-Schlossberg-Riesling-AOC-2021.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Bestheim-Alsace-Grand-Cru-Schlossberg-Riesling-AOC-2021.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 4081,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -3386,9 +3586,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/d-Arenberg-The-Stump-Jump-White-2021.html",
-          "price_rub": null,
+          "price_rub": 2310,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": 2310,
           "reference_regular_price_rub": null,
           "reference_date": "2026-11-14",
@@ -3473,6 +3673,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/d-Arenberg-The-Stump-Jump-White-2021.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/d-Arenberg-The-Stump-Jump-White-2021.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 2310,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -3503,9 +3711,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Georg-Breuer-Estate-Rudesheim-2018.html",
-          "price_rub": null,
+          "price_rub": 3140,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -3614,6 +3822,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Georg-Breuer-Estate-Rudesheim-2018.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Georg-Breuer-Estate-Rudesheim-2018.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 3140,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -3643,9 +3859,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Nik-Weis-Urban-Riesling-2024.html",
-          "price_rub": null,
+          "price_rub": 2115,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -3745,6 +3961,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Nik-Weis-Urban-Riesling-2024.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Nik-Weis-Urban-Riesling-2024.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 2115,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -3774,9 +3998,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Tesch-Unplugged-Riesling-2024.html",
-          "price_rub": null,
+          "price_rub": 2680,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -3882,6 +4106,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Tesch-Unplugged-Riesling-2024.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Tesch-Unplugged-Riesling-2024.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 2680,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -3911,9 +4143,9 @@
         {
           "name": "winestyle.ru",
           "url": "https://spb.winestyle.ru/products/Frankland-Estate-Poison-Hill-Vineyard-Riesling-2016.html",
-          "price_rub": null,
+          "price_rub": 4725,
           "regular_price_rub": null,
-          "price_checked_at": null,
+          "price_checked_at": "2026-11-22",
           "reference_price_rub": null,
           "reference_regular_price_rub": null,
           "reference_date": null,
@@ -4007,6 +4239,14 @@
             "checked_at": "2026-11-22",
             "source_url": "https://spb.winestyle.ru/products/Frankland-Estate-Poison-Hill-Vineyard-Riesling-2016.html",
             "method": "user_supplied_browser_capture"
+          },
+          "price_source_url": "https://spb.winestyle.ru/products/Frankland-Estate-Poison-Hill-Vineyard-Riesling-2016.html",
+          "price_evidence": {
+            "method": "saved_exact_product_primary_price_text",
+            "source_capture_sha256": "6812bcaedc115ca2a09920d61a6bfbc6eba5d25f27f80fb2ce175153d27b2a0f",
+            "observed_on": "2026-11-22",
+            "value_rub": 4725,
+            "verified_against_original_capture": true
           }
         }
       ],
@@ -4281,7 +4521,15 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "photo": {
+        "url": "https://perrineswine.com/cdn/shop/files/SSWINEBOTTLEPHOTOTEMPLATE_68.png?v=1722522945",
+        "source_url": "https://perrineswine.com/products/2023-can-sumoi-ancestral-montonega-catalonia-spain",
+        "source": "Perrine's Wine Shop",
+        "matched_year": 2023,
+        "verified_on": "2026-11-23",
+        "note": "Can Sumoi Ancestral Montonega 2023, year and cuvee visible on label"
+      }
     },
     {
       "id": "ce214c07863d",
@@ -15345,7 +15593,7 @@
     "collected_target_urls": 121,
     "matched_exact_products": 118,
     "mismatched_variants": 3,
-    "direct_price_observations": 88,
+    "direct_price_observations": 118,
     "retailer_reported_ratings": 246,
     "regular_prices_confirmed": 0,
     "caveat": "Archived retailer display; source prices and ratings are not live stock/independent critic verification.",
@@ -15363,7 +15611,8 @@
       "excluded_scales": [
         3
       ],
-      "note": "Retailer-reported, non-independent, not necessarily vintage-specific; excluded from index"
+      "note": "Retailer-reported, non-independent, not necessarily vintage-specific; excluded from index",
+      "added_prices": 30
     }
   }
 }
