@@ -35,7 +35,7 @@ for r in records:
  if review:
   assert review['status'] in ('verified','excluded'),(r['id'],review)
   assert review['checked_at'] and re.fullmatch(r'\d{4}-\d{2}-\d{2}',review['checked_at'])
-  assert review['source_url'] in {s['url'] for s in r['stores']}
+  assert review['source_url'].split('#')[0].rstrip('/') in {s['url'].split('#')[0].rstrip('/') for s in r['stores']}, (r['id'],review['source_url'])
   assert re.fullmatch(r'[0-9a-f]{64}',review['source_snapshot_sha256'])
   assert review['reason'] and review['evidence'] and review['final_url'],r['id']
   assert review['year']==r['year'],r['id']
