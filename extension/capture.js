@@ -44,7 +44,7 @@ function captureWineAtlasPage() {
         trim(el.innerText,80)+': '+trim(next.innerText||next.textContent,450));
       continue;
     }
-    const parts=text.split(/\n+/).map(x=>trim(x)).filter(Boolean);
+    const parts=String(el.innerText||el.textContent||'').split(/\n+/).map(x=>trim(x)).filter(Boolean);
     // Consecutive visible label-value pairs, never free text or neighboring products.
     if(parts.length===2)collect(parts[0],parts[1],text);
     const colon=text.match(/^([^:]{2,60}):\s*(.{1,600})$/s);
