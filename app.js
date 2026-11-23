@@ -114,7 +114,7 @@ function retailerDetails(r){
  const s=r.stores?.[0];
  if(s?.enrichment_status?.status==='verified'&&s.product_details?.source_url===s.url)return s.product_details;
  // Manually researched exact product descriptions from the original seller.
- if(s?.research_details?.source_url===s?.url?.split('#')[0]&&s.research_details.source_kind==='primary_retailer_product_description')return s.research_details;
+ if(s?.research_details?.source_url===s?.url?.split('#')[0]&&['primary_retailer_product_description','manual_verified_original_seller'].includes(s.research_details.source_kind))return s.research_details;
  return null;
 }
 // Retailers use multiple spellings for the SAME grape variety. Normalize the
