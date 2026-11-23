@@ -116,7 +116,7 @@ async function run(){
    newer.observations.push({target_id:'captured_during_export'});
    memory.wineAtlasBatchV2=newer;
  };
- await vm.runInContext('download(await read(),true)',context);
+ await vm.runInContext('(async()=>download(await read(),true))()',context);
  const after=memory.wineAtlasBatchV2;
  assert.equal(after.cursor,2,'Download metadata cannot revert capture progress');
  assert.equal(after.observations.length,2,'Download metadata cannot erase observations');
