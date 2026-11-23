@@ -68,6 +68,8 @@ function captureWineAtlasPage() {
   const rootName = trim(document.querySelector('main h1,article h1,h1')?.innerText||
     document.querySelector('meta[property="og:title"]')?.content||'',260);
   const products=[];
+  let offerEvidenceComplete=true;
+  const MAX_PRODUCTS=32, MAX_OFFERS=24, MAX_SCRIPTS=40;
   const unpack=(v)=>{
     if(Array.isArray(v)){for(const x of v)unpack(x);return;}
     if(!v||typeof v!=='object')return;
@@ -83,7 +85,7 @@ function captureWineAtlasPage() {
         if(!o||typeof o!=='object')return false;
         const types=Array.isArray(o['@type'])?o['@type']:[o['@type']];
         return types.some(t=>String(t||'').toLowerCase().split('/').pop()==='offer');
-      }).slice(0,4).map(o=>({
+      }).slice(0,MAX_OFFERS).map(o=>({
         '@type':'Offer',url:typeof o.url==='string'?privacyUrl(o.url):null,
         priceCurrency:trim(o.priceCurrency,8),
         price:typeof o.price==='number'||typeof o.price==='string'?o.price:null,
@@ -92,11 +94,20 @@ function captureWineAtlasPage() {
         originalPrice:o.originalPrice??null
       }))
     };
-    if(output.name)products.push(output);
+    if(offers.filter(o=>{
+      const types=Array.isArray(o?.['@type'])?o['@type']:[o?.['@type']];
+      return types.some(t=>String(t||'').toLowerCase().split('/').pop()==='offer');
+    }).length>MAX_OFFERS)offerEvidenceComplete=false;
+    if(output.name){
+      if(products.length<MAX_PRODUCTS)products.push(output);
+      else offerEvidenceComplete=false;
+    }
   };
-  for(const script of [...document.querySelectorAll('script[type="application/ld+json"]')].slice(0,40)){
-    if((script.textContent||'').length>150000)continue;
-    try{unpack(JSON.parse(script.textContent));}catch{}
+  const scripts=[...document.querySelectorAll('script[type="application/ld+json"]')];
+  if(scripts.length>MAX_SCRIPTS)offerEvidenceComplete=false;
+  for(const script of scripts.slice(0,MAX_SCRIPTS)){
+    if((script.textContent||'').length>150000){offerEvidenceComplete=false;continue;}
+    try{unpack(JSON.parse(script.textContent));}catch{offerEvidenceComplete=false;}
   }
   const mainURL=privacyUrl(location.href);
   // Prevent accidental extraction from sign-in, bot, error or checkout pages.
@@ -108,7 +119,7 @@ function captureWineAtlasPage() {
     source_url:mainURL,canonical_url:canonical?trim(canonical,1000):null,
     page_title:trim(document.title,260),h1:rootName,
     captured_at:new Date().toISOString(),
-    fields,products:products.slice(0,4),
+    fields,products,offer_evidence_complete:offerEvidenceComplete,
     image_candidate:image?{url:image,rights:'unverified_not_for_publication'}:null,
     blocked,
     extraction:{type:'manual_active_tab_visible_labels_and_jsonld',raw_html_saved:false}
