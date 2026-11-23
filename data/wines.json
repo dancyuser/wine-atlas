@@ -146,7 +146,15 @@
         "Decanter World Wine Awards 2025 — золото, 95 баллов",
         "Wine Enthusiast — 94"
       ],
-      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены."
+      "review_note": "Данные подборки от 14.11.2026; текущие цены и наличие не подтверждены.",
+      "photo": {
+        "url": "https://facoporti.pt/575-large_default/grahams-lbv-2019-vinho-do-porto.jpg",
+        "source_url": "https://facoporti.pt/vinho-porto/510-grahams-lbv-2019-vinho-do-porto.html",
+        "source": "Facoporti",
+        "matched_year": 2019,
+        "verified_on": "2026-11-23",
+        "note": "2019 Graham's LBV, bottle and gift tube; external retailer image"
+      }
     },
     {
       "id": "4341f4fa849e",
@@ -642,7 +650,15 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "photo": {
+        "url": "https://images.commerce7.com/maze-row/images/large/girlan-chardonnay-2023-bottle-shot-1724878333971.png",
+        "source_url": "https://www.offscriptwines.com/product/2023-girlan-classici-chardonnay-alto-adige/",
+        "source": "Offscript Wines",
+        "matched_year": 2023,
+        "verified_on": "2026-11-23",
+        "note": "Girlan Chardonnay Alto Adige DOC 2023 front bottle label; external retailer image"
+      }
     },
     {
       "id": "bdbf5d0327dc",
@@ -1301,7 +1317,15 @@
       ],
       "volume_l": null,
       "scores": [],
-      "review_note": null
+      "review_note": null,
+      "photo": {
+        "url": "https://shop.kleinezalze.co.za/image/cache/catalog/product/2024_VS_Chardonnay_-_New_Label-630x800.jpg",
+        "source_url": "https://shop.kleinezalze.co.za/kleine-zalze-vineyard-selection-barrel-fermented-chardonnay-2024",
+        "source": "Kleine Zalze",
+        "matched_year": 2024,
+        "verified_on": "2026-11-23",
+        "note": "Photo URL and label explicitly 2024, source page later redirected to 2025; do not use redirected page for other facts"
+      }
     },
     {
       "id": "839e49e2c896",
