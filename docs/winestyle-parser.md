@@ -52,7 +52,7 @@ The offline parser neither contacts WineStyle nor automatically clears a previou
 
 ## Reviewed browser export import (2026-11-22)
 
-The user supplied a captured JSON archive of 121 target WineStyle URLs. Of these, 118 exact product/vintage matches passed the offline validation process, while three redirects were excluded. The resulting 118 `product_details` snapshots, 118 prices and 182 retailer-published ratings have been added to `data/wines.json`. All prices and scores carry an observation date and source provenance. The original complete capture is held by the user; the public repository contains the compact product details plus SHA256 and the audit at `data/archive/winestyle-import-audit-2026-11-22.json`.
+The user supplied a captured JSON archive of 121 target WineStyle URLs. Of these, 118 exact product/vintage matches passed the offline validation process, while three redirects were excluded. The resulting 118 `product_details` snapshots, 118 prices and 246 retailer-published ratings have been added to `data/wines.json`. All prices and scores carry an observation date and source provenance. The original complete capture is held by the user; the public repository contains the compact product details plus SHA256 and the audit at `data/archive/winestyle-import-audit-2026-11-22.json`.
 
 A repeatable offline importer is provided. To verify an overlay without writes:
 
@@ -68,7 +68,7 @@ The site shows short excerpts, specific wine details and source-labelled ratings
 
 ## Post-capture score recovery, 23 Nov 2026
 
-The original authorized browser export contained `raw_product_text` for exact-matched products. The first extraction missed score-first headers such as `93 /100 Wine Enthusiast`, while its initial parser had only collected 182 ratings. The offline recovery extracted and source-checked 64 additional entries across 27 verified products (246 total) without any new retailer requests. The original capture must match the catalog's recorded SHA256; URL, catalog ID, canonical URL and vintage also must match. No redirected products are imported.
+The original authorized browser export contained `raw_product_text` for exact-matched products. The first extraction missed score-first headers such as `93 /100 Wine Enthusiast`, while its initial parser had only collected 246 ratings. The offline recovery extracted and source-checked 64 additional entries across 27 verified products (246 total) without any new retailer requests. The original capture must match the catalog's recorded SHA256; URL, catalog ID, canonical URL and vintage also must match. No redirected products are imported.
 
 ~~~bash
 python scripts/recover_capture_ratings.py 'winestyle-capture-2026-11-22 (1).json'
@@ -77,7 +77,7 @@ python scripts/validate_enrichment.py
 python -m unittest discover -s scripts -p 'test_recover_capture_ratings.py' -v
 ~~~
 
-The current WineStyle HTML rating extractor also recognizes this score-first header convention under strict product-region constraints. Live HTML parsing remains unverified: the saved user export is text, not a replayable DOM snapshot. Price-before-discount remains unsupported by the reviewed export; do not infer it from old prices. Three exact vintage-specific photos have source attribution; other cards intentionally use a neutral placeholder rather than another product's bottle.
+The current WineStyle HTML rating extractor also recognizes this score-first header convention under strict product-region constraints. Live HTML parsing remains unverified: the saved user export is text, not a replayable DOM snapshot. Price-before-discount remains unsupported by the reviewed export; do not infer it from old prices. Seven exact vintage-specific photos have source attribution; other cards intentionally use a neutral placeholder rather than another product's bottle.
 
 ## Exact-product price recovery, 23 Nov 2026
 
