@@ -1,0 +1,65 @@
+/* Burgundy Archive - responsive editorial restyle, layered over original styles. */
+:root{--bg:#171319;--white:#241d25;--ink:#f6eee7;--sub:#c4b1b2;--line:#453741;--accent:#edbe9a;--on-accent:#25141a;--active:#493041;--active-ink:#f9e7df;--active-border:#9b6e80;--focus:#ffd0a8;--control-border:#705760;--placeholder:#ad969e;--rating-bg:#302431;--rating-border:#513a48;--rating-label:#d5b8c6;--detail-line:#4c3946;--code-bg:#392c36;--code-ink:#f6eee7;--link-hover:#ffe2c7;--button-hover:#ffd5b2}
+:root[data-theme="light"]{--bg:#f7f2e9;--white:#fffdf9;--ink:#31242b;--sub:#786a6b;--line:#e4d9d1;--accent:#783d50;--on-accent:#fff8f2;--active:#f3e4e9;--active-ink:#663346;--active-border:#9b6376;--focus:#ad6573;--control-border:#c8b6b5;--placeholder:#8c7e7f;--rating-bg:#faf4f0;--rating-border:#ebded7;--rating-label:#7b505f;--detail-line:#eee1dd;--code-bg:#f1e9e4;--code-ink:#4e3940;--link-hover:#512b3d;--button-hover:#663145}
+html{scroll-padding-top:24px}
+body{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;letter-spacing:-.005em}
+.container{width:min(1320px,calc(100% - 72px))}
+.site-header{background:var(--bg);border-bottom:1px solid var(--line)}
+.header-inner{min-height:80px}
+.logo{font-family:Georgia,"Times New Roman",serif;font-size:24px;font-weight:500;letter-spacing:-.045em}
+.logo::before{content:"✦";color:var(--accent);font-size:18px;margin-right:12px}
+.header-note{letter-spacing:.06em;text-transform:uppercase;font-size:10px;font-weight:750}
+.theme-control select{min-width:145px;height:40px;border-radius:100px}
+.intro{position:relative;isolation:isolate;overflow:hidden;background:var(--white);border:1px solid var(--line);border-radius:24px;margin:28px 0 36px;padding:54px 55px 50px}
+.intro::after{content:"";position:absolute;z-index:-1;right:-110px;top:-125px;width:490px;height:490px;border:1px solid var(--line);border-radius:50%;opacity:.55;box-shadow:0 0 0 60px color-mix(in srgb,var(--line) 30%,transparent),0 0 0 120px color-mix(in srgb,var(--line) 15%,transparent)}
+.intro-kicker{color:var(--accent)!important;font-size:10px!important;letter-spacing:.2em;text-transform:uppercase;font-weight:800;margin:0 0 17px!important}
+.intro h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(44px,5.4vw,76px);font-weight:500;letter-spacing:-.055em;line-height:1.04;max-width:870px;margin:0 0 18px}
+.intro p:not(.intro-kicker){max-width:550px;font-size:15px;line-height:1.7;margin:0 0 26px}
+.quick-stats{border-top:1px solid var(--line);padding-top:21px;gap:28px}
+.quick-stats span{display:inline-flex;align-items:baseline;gap:7px;font-size:12px}
+.quick-stats strong{font-family:Georgia,serif;font-size:25px;font-weight:500;color:var(--accent)}
+.section-title{font-family:Georgia,"Times New Roman",serif;font-size:34px;font-weight:500;letter-spacing:-.04em;margin:10px 0 22px}
+.search-field,.sort-field,.filters label{font-size:11px;font-weight:750;letter-spacing:.07em;text-transform:uppercase}
+input,select{height:49px;margin-top:8px;padding:0 15px;border-radius:11px;border-color:var(--line);font-size:14px}
+.filters{gap:15px;margin-top:17px}
+.tools-row{margin:22px 0 13px}
+.scope{gap:6px;padding:4px;border:1px solid var(--line);border-radius:100px;background:var(--white)}
+.scope button{border-radius:100px;min-height:35px;border:0;background:transparent;font-size:12px;padding:7px 17px}
+.scope button.active{background:var(--active);color:var(--active-ink)}
+.link-button{border-radius:100px;min-height:39px;font-size:12px}
+.results{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:15px 2px;margin-bottom:23px}
+.wine-grid{gap:21px;align-items:start}
+.wine-card{padding:24px;border-radius:19px;box-shadow:0 4px 22px #08040812;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.wine-card:hover{transform:translateY(-2px);border-color:var(--active-border);box-shadow:0 14px 35px #08040820}
+.type-tag{font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:800}
+.type-dot{width:7px;height:7px}
+.save-btn{border-color:var(--line);border-radius:50%;min-height:36px;min-width:36px;font-size:19px}
+.card-intro{grid-template-columns:128px minmax(0,1fr);gap:21px;margin:14px 0 19px;min-height:200px}
+.bottle-media{width:128px;height:199px;border-radius:14px;padding:12px 9px 24px;border-color:var(--rating-border);background:radial-gradient(circle at 50% 28%,color-mix(in srgb,var(--rating-bg) 78%,white),var(--rating-bg) 70%)}
+.bottle-photo{filter:drop-shadow(0 7px 9px #0000002c)}
+.card-title,.card-intro .card-title{font-family:Georgia,"Times New Roman",serif;font-size:clamp(21px,2vw,27px);font-weight:500;line-height:1.19;letter-spacing:-.03em;margin:0 0 10px}
+.card-meta{font-size:12px;line-height:1.65}
+.card-description{font-size:12px;line-height:1.65;margin-top:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.rating-box{grid-template-columns:repeat(2,minmax(0,1fr));gap:0;padding:0;border-radius:13px;overflow:hidden}
+.rating-cell{min-width:0;padding:15px 18px}
+.rating-cell+.rating-cell{border-left:1px solid var(--rating-border)}
+.rating-label{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px}
+.rating-value{font-family:Georgia,serif;font-size:32px;font-weight:500;line-height:1.1}
+.rating-sub{font-size:10px;line-height:1.45;margin-top:7px}
+.rating-details{margin:6px 0}
+.rating-details summary{font-size:12px;min-height:43px}
+.rating-details li{font-size:12px;padding:9px 0}
+.rating-details h4{letter-spacing:.045em;text-transform:uppercase;font-size:10px;margin-top:15px}
+.card-pairings{font-size:12px;line-height:1.55;margin:14px 0 22px}
+.card-bottom{gap:15px;align-items:center;padding-top:18px}
+.price-main{font-family:Georgia,serif;font-size:27px;font-weight:500}
+.price-note{font-size:10px}
+.store-link{border-radius:50px;min-height:43px;padding:11px 17px;font-size:11px}
+.method{max-width:none;margin-top:35px;padding:28px 0 45px}
+.method h2{font-family:Georgia,serif;font-size:28px;font-weight:500}
+.method p{max-width:900px}
+.site-footer{background:var(--bg);padding:26px 0}
+@media(max-width:1020px){.container{width:calc(100% - 48px)}.wine-card{padding:18px}.card-intro{grid-template-columns:105px minmax(0,1fr);gap:14px}.bottle-media{width:105px;height:175px}}
+@media(max-width:760px){.container{width:calc(100% - 28px)}.intro{padding:32px 26px;margin:16px 0 30px;border-radius:18px}.intro::after{opacity:.18;right:-330px}.intro h1{font-size:clamp(39px,9vw,56px)}.section-title{font-size:31px}.wine-grid{grid-template-columns:1fr;gap:16px}.wine-card{padding:19px}.card-intro{grid-template-columns:118px minmax(0,1fr)}.bottle-media{width:118px;height:190px}.search-row{grid-template-columns:1fr}.filters{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.quick-stats{gap:15px}}
+@media(max-width:400px){.logo{font-size:20px}.intro{padding:26px 19px}.intro h1{font-size:38px}.card-intro{grid-template-columns:86px minmax(0,1fr);gap:12px}.bottle-media{width:86px;height:145px}.card-title,.card-intro .card-title{font-size:20px}.rating-cell{padding:12px 11px}.rating-value{font-size:27px}.card-bottom{flex-direction:column;align-items:stretch}.store-link{width:100%}}
+@media(prefers-reduced-motion:reduce){.wine-card{transition:none}.wine-card:hover{transform:none}}
