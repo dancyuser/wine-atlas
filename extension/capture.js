@@ -135,7 +135,7 @@ function captureWineAtlasPage() {
     // old-price element in the same product panel, never a generic "from" price.
     const regular=oldValues.length===1&&oldValues[0]>amounts[0]?oldValues[0]:null;
     const availableTexts=[...root.querySelectorAll('.m-productpage-price__in-stock-shops')].map(el=>
-      trim(el.innerText||el.textContent,180)).filter(s=>/^в наличии\b/iu.test(s));
+      trim(el.innerText||el.textContent,180)).filter(s=>/^в наличии(?:\s|$)/iu.test(s));
     const rootText=trim(root.innerText||root.textContent,1200);
     const outOfStockMatch=rootText.match(/ожидаем поступление|нет в наличии|товар отсутствует/iu);
     const stock=(availableTexts.length && !outOfStockMatch)?'in_stock':
