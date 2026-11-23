@@ -13,7 +13,7 @@ This feature ports the non-invasive HTML extractor from historic agent commit `9
 
 ## Current access status
 
-The historic agent reports an automated HTTP 403 response from WineStyle on 2026-11-22. A blocking marker is carried forward in `reports/winestyle-access.json`. The generic price updater skips the entire WineStyle domain, even if run through GitHub Actions. This PR makes **zero new live requests** to WineStyle. Its parser and rating fixtures were tested offline; the real WineStyle DOM and end-to-end network collection remain unverified. The active catalog retains 124 entries. From the supplied browser export, 118 exact products were enriched with 88 observed prices and 182 retailer-reported scores; independently verified Vivino data remain unchanged.
+The historic agent reports an automated HTTP 403 response from WineStyle on 2026-11-22. A blocking marker is carried forward in `reports/winestyle-access.json`. The generic price updater skips the entire WineStyle domain, even if run through GitHub Actions. This PR makes **zero new live requests** to WineStyle. Its parser and rating fixtures were tested offline; the real WineStyle DOM and end-to-end network collection remain unverified. The active catalog retains 124 entries. From the supplied browser export, 118 exact products were enriched with 88 observed prices and 246 retailer-reported scores; independently verified Vivino data remain unchanged.
 
 Do not remove the blocked-state marker to work around QRATOR, CAPTCHA or other site access controls. Before any future automated collection, establish permission under applicable site terms, verify robots.txt and ordinary automated access, and only then review the block with an audit trail.
 
@@ -64,4 +64,17 @@ Add `--apply` only after reviewing the dry-run output. It enforces identity, vin
 
 The site shows short excerpts, specific wine details and source-labelled ratings. Country, grape and food-pairing filters use verified details when the existing metadata lacks those values; pre-existing curated grapes take precedence.
 
-**Limitations:** the actual browser DOM/live network scraper is not independently validated within GitHub Actions, because the submitted export contains extracted text, not replayable HTML. The 182 ratings are WineStyle's reported values, not independently sourced reviews. No new live network request to WineStyle was made by this PR. Changes to QRATOR behavior and retailer stock are not assumed.
+**Limitations:** the actual browser DOM/live network scraper is not independently validated within GitHub Actions, because the submitted export contains extracted text, not replayable HTML. The 246 ratings are WineStyle's reported values, not independently sourced reviews. No new live network request to WineStyle was made by this PR. Changes to QRATOR behavior and retailer stock are not assumed.
+
+## Post-capture score recovery, 23 Nov 2026
+
+The original authorized browser export contained `raw_product_text` for exact-matched products. The first extraction missed score-first headers such as `93 /100 Wine Enthusiast`, while its initial parser had only collected 182 ratings. The offline recovery extracted and source-checked 64 additional entries across 27 verified products (246 total) without any new retailer requests. The original capture must match the catalog's recorded SHA256; URL, catalog ID, canonical URL and vintage also must match. No redirected products are imported.
+
+~~~bash
+python scripts/recover_capture_ratings.py 'winestyle-capture-2026-11-22 (1).json'
+python scripts/recover_capture_ratings.py 'winestyle-capture-2026-11-22 (1).json' --apply
+python scripts/validate_enrichment.py
+python -m unittest discover -s scripts -p 'test_recover_capture_ratings.py' -v
+~~~
+
+The current WineStyle HTML rating extractor also recognizes this score-first header convention under strict product-region constraints. Live HTML parsing remains unverified: the saved user export is text, not a replayable DOM snapshot. Price-before-discount remains unsupported by the reviewed export; do not infer it from old prices. Three exact vintage-specific photos have source attribution; other cards intentionally use a neutral placeholder rather than another product's bottle.
