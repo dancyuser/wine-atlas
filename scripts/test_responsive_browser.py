@@ -93,7 +93,24 @@ def render(tmp: Path, width: int, mode: str) -> dict:
       <label>Еда<select><option>Все</option></select></label></div>
       <div class="wine-grid">{CARD*3}</div></section>
     </main>{SCRIPT}</body></html>"""
-    page.write_text(markup,encoding='utf-8')
+    # Headless Chrome clamps top-level windows to a minimum width (~500px).
+    # Testing "320px" via --window-size alone silently runs at 500px.
+    # A fixed-width srcdoc iframe has a genuine CSS layout viewport at 320px.
+    frame_source=html.escape(markup,quote=True)
+    outer=f"""<!doctype html><html><head><meta charset="utf-8"></head>
+    <body style="margin:0"><iframe id="fixture" srcdoc="{frame_source}"
+      style="border:0;display:block;width:{width}px;height:1000px"></iframe>
+    <script>
+    const frame=document.getElementById('fixture');
+    frame.addEventListener('load',()=>{
+      const metric=frame.contentDocument.getElementById('layout-metrics');
+      const pre=document.createElement('pre');
+      pre.id='layout-metrics';
+      pre.textContent=metric?metric.textContent:'{}';
+      document.body.appendChild(pre);
+    });
+    </script></body></html>"""
+    page.write_text(outer,encoding='utf-8')
     command=[BROWSER, '--headless=new', '--no-sandbox', '--disable-gpu',
              '--disable-dev-shm-usage', '--hide-scrollbars',
              '--force-device-scale-factor=1', f'--window-size={width},1000',
@@ -109,6 +126,7 @@ with tempfile.TemporaryDirectory(prefix='wine-layout-') as folder:
     root=Path(folder)
     for width,expected in ((320,1),(390,1),(768,1),(1024,1),(1366,2),(1920,3),(2560,3),(3840,3)):
         values=render(root,width,'normal')
+        assert values['width']==width,('Test viewport must equal requested CSS width',width,values)
         assert values['pageWidth']<=values['viewport']+1,values
         assert values['containerWidth']<=2241,values
         assert values['gridColumns']==expected,values
