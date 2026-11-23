@@ -50,7 +50,40 @@ def report():
             missing.append({'id': r['id'], 'title': r['title'], 'vintage': r.get('year'),
                             'source_url': s['url'], 'gaps': gaps,
                             'identity_verified_in_archive': r['id'] in verified})
-    return {'as_of': snapshot['as_of'], 'totals': totals, 'gaps': missing}
+    detail_fields=('color','aging_potential','wine_style','body','pairing_notes',
+                   'alcohol_percent','aroma','taste')
+    detail_totals={k:0 for k in ('year','volume_l','grapes',*detail_fields)}
+    detail_gaps=[]
+    for r in visible:
+        st=r['stores'][0]
+        d=st.get('product_details') if st.get('enrichment_status',{}).get('status')=='verified' else None
+        if not d:
+            d=st.get('research_details') or {}
+        absent=[]
+        for field in ('year','volume_l','grapes'):
+            if not r.get(field):
+                absent.append(field)
+        for field in detail_fields:
+            if not d.get(field):
+                absent.append(field)
+        for field in absent:
+            detail_totals[field]+=1
+        if absent:
+            detail_gaps.append({'id':r['id'],'title':r['title'],
+                                'vintage':r.get('year'),'missing_fields':absent})
+    totals['missing_explicit_regular_price']=sum(
+        (r['stores'][0].get('regular_price_rub') is None and
+         not (r['stores'][0].get('live_offer') or {}).get('regular_price_rub'))
+        for r in visible)
+    totals['with_verified_newer_live_offer']=sum(
+        bool(r['stores'][0].get('live_offer')) for r in visible)
+    totals['vivino_all_vintages_only']=sum(
+        not any(y.get('source')=='Vivino' and y.get('scope')=='vintage'
+                for y in independent['records'].get(r['id'],[]))
+        for r in visible)
+    return {'as_of':snapshot['as_of'],'totals':totals,'gaps':missing,
+            'metadata_missing_counts':detail_totals,'metadata_gaps':detail_gaps}
+
 
 
 def main():
