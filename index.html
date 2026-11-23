@@ -52,8 +52,29 @@
     });
   })();
   </script>
+  <script data-reading-bootstrap>
+  (() => {
+    'use strict';
+    const key='wine-atlas-reading-size';
+    const modes=['normal','large','xlarge'];
+    let size='normal';
+    try { const saved=localStorage.getItem(key);if(modes.includes(saved))size=saved; } catch (_) {}
+    document.documentElement.dataset.readingSize=size;
+    document.addEventListener('DOMContentLoaded', () => {
+      const select=document.getElementById('reading-select');
+      if(!select)return;
+      select.value=size;
+      select.addEventListener('change',()=>{
+        size=modes.includes(select.value)?select.value:'normal';
+        document.documentElement.dataset.readingSize=size;
+        try { localStorage.setItem(key,size); } catch (_) {}
+      });
+    });
+  })();
+  </script>
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./editorial.css">
+  <link rel="stylesheet" href="./responsive.css">
   <script src="./app.js" defer></script>
 </head>
 <body>
@@ -67,6 +88,13 @@
           <option value="dark" selected>Тёмная</option>
           <option value="light">Светлая</option>
           <option value="system">Как в системе</option>
+        </select>
+      </label>
+      <label class="text-scale-control" for="reading-select"><span>Текст</span>
+        <select id="reading-select" name="reading-select" aria-label="Размер текста">
+          <option value="normal">Обычный</option>
+          <option value="large">Крупный</option>
+          <option value="xlarge">Очень крупный</option>
         </select>
       </label>
     </div>
@@ -107,6 +135,13 @@
       </div>
       <div class="results"><span id="result-count" role="status" aria-live="polite">Загрузка…</span><span id="update-tag"></span></div>
       <div id="cards" class="wine-grid"></div>
+      <dialog id="bottle-dialog" class="image-dialog" aria-label="Увеличенное изображение бутылки">
+        <button type="button" id="bottle-dialog-close" class="image-dialog-close" aria-label="Закрыть изображение">×</button>
+        <div class="image-dialog-inner">
+          <img id="bottle-dialog-image" alt="" decoding="async">
+          <div id="bottle-dialog-title" class="image-dialog-title"></div>
+        </div>
+      </dialog>
       <div id="empty" class="empty" hidden><p>По этим условиям вина не найдены.</p><button id="empty-reset" type="button">Сбросить фильтры</button></div>
       <div id="error" class="empty" hidden><p>Каталог не загрузился. Для локальной проверки запустите <code>python -m http.server 8000</code>.</p></div>
     </section>
