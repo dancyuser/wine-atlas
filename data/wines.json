@@ -19,7 +19,13 @@
       "title": "Graham’s Late Bottled Vintage Port (LBV), gift tube",
       "year": 2019,
       "country": "Португалия",
-      "grapes": [],
+      "grapes": [
+        "Тинта Баррока",
+        "Турига Насьональ",
+        "Турига Франсеса/Турига Франка",
+        "Тинта Рориз",
+        "Тинта Као"
+      ],
       "type": "Портвейн",
       "pairings": [
         "Десерты",
@@ -176,7 +182,12 @@
       "title": "Quinta de la Rosa Late Bottled Vintage Port",
       "year": 2019,
       "country": "Португалия",
-      "grapes": [],
+      "grapes": [
+        "Турига Насьональ",
+        "Турига Франсеса/Турига Франка",
+        "Сузао",
+        "Тинта Рориз"
+      ],
       "type": "Портвейн",
       "pairings": [
         "Десерты",
@@ -300,7 +311,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "photo": {
@@ -351,7 +362,25 @@
           "reference_regular_price_rub": null,
           "reference_date": null,
           "price_source_url": "https://ast.wine/catalog/product/dow_s_late_bottled_vintage_port_5608309002876_43233/",
-          "price_evidence": "AST.WINE primary product: 2018, 0.75 l, article 43233, 3579 RUB, Add to cart, St. Petersburg store availability; archived 2026-11-23 HTML and public page."
+          "price_evidence": "AST.WINE primary product: 2018, 0.75 l, article 43233, 3579 RUB, Add to cart, St. Petersburg store availability; archived 2026-11-23 HTML and public page.",
+          "research_details": {
+            "full_name": "Dow's Late Bottled Vintage Port 2018, 0.75 л",
+            "producer": "Dow's",
+            "country": "Португалия",
+            "region": "Дору",
+            "grapes": "Турига Насьональ, Турига Франка, Тинта Баррока, Тинта Рориш, Тинта Као",
+            "alcohol_percent": "20 %",
+            "volume_l": "0.75 л",
+            "wine_style": "Портвейн, сладкое",
+            "color": "Насыщенный рубиновый",
+            "aroma": "Чёрные ягоды, ежевика, черника и свежая мята",
+            "taste": "Лесные ягоды, чёрная слива, выразительные танины, сбалансированная кислотность; послевкусие с оттенками табака и чёрного чая",
+            "pairing_notes": "Мясной стейк, тёмный шоколад, выдержанные твёрдые сыры",
+            "description_excerpt": "Портвейн LBV урожая 2018 года из региона Дору. Производитель указывает выдержку в бочке не менее пяти лет.",
+            "checked_at": "2026-11-23",
+            "source_url": "https://ast.wine/catalog/product/dow_s_late_bottled_vintage_port_5608309002876_43233/",
+            "source_kind": "primary_retailer_product_description"
+          }
         }
       ],
       "volume_l": 0.75,
@@ -400,7 +429,25 @@
           "reference_regular_price_rub": null,
           "reference_date": null,
           "price_source_url": "https://ladogawine.ru/catalog/wine/kopke_leyt_bottled_vintedzh_porto_075/",
-          "price_evidence": "LADOGA Wine primary product: Kopke LBV 2018, barcode 5601194709981, 0.75 l, 6348 RUB, Add to cart; archived 2026-11-23 HTML and public page."
+          "price_evidence": "LADOGA Wine primary product: Kopke LBV 2018, barcode 5601194709981, 0.75 l, 6348 RUB, Add to cart; archived 2026-11-23 HTML and public page.",
+          "research_details": {
+            "full_name": "Kopke Late Bottled Vintage Porto 2018, 0.75 л",
+            "producer": "Kopke Sogevinos Fine Wines",
+            "country": "Португалия",
+            "region": "Долина Дору",
+            "grapes": "Турига Насьональ, Турига Франка, Тинта Рориш, Сузео",
+            "alcohol_percent": "20 %",
+            "volume_l": "0.75 л",
+            "wine_style": "Портвейн, сладкое",
+            "color": "Насыщенный красный с фиолетовым оттенком",
+            "aroma": "Чёрные ягоды с лёгкими бальзамическими нотами",
+            "taste": "Мягкий и сбалансированный, лёгкие бархатистые танины",
+            "pairing_notes": "Стейк и другие блюда из красного мяса, десерты, сыры средней выдержки",
+            "description_excerpt": "Портвейн LBV урожая 2018 года из региона Дору, выдержанный в дубовых бочках около пяти лет.",
+            "checked_at": "2026-11-23",
+            "source_url": "https://ladogawine.ru/catalog/wine/kopke_leyt_bottled_vintedzh_porto_075/",
+            "source_kind": "primary_retailer_product_description"
+          }
         }
       ],
       "volume_l": 0.75,
@@ -468,7 +515,10 @@
       "title": "Zantho Beerenauslese",
       "year": 2018,
       "country": "Австрия",
-      "grapes": [],
+      "grapes": [
+        "Шардоне",
+        "Грюнер Вельтлинер"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -608,7 +658,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.375,
       "scores": [],
       "review_note": null,
       "photo": {
@@ -765,7 +815,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "photo": {
@@ -789,7 +839,11 @@
       "title": "Tement Ehrenhausen Muschelkalk",
       "year": 2017,
       "country": "Австрия",
-      "grapes": [],
+      "grapes": [
+        "Совиньон Блан",
+        "Шардоне",
+        "Вельшрислинг"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -1074,7 +1128,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -1378,7 +1432,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -1515,7 +1569,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "photo": {
@@ -1678,7 +1732,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -1967,7 +2021,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -2119,7 +2173,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -2265,7 +2319,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -2281,7 +2335,14 @@
       "title": "Loimer Glügglich",
       "year": null,
       "country": "Австрия",
-      "grapes": [],
+      "grapes": [
+        "Ротгипфлер",
+        "Траминер",
+        "Шардоне",
+        "Цирфандлер",
+        "Рислинг",
+        "Мускателлер"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -2403,7 +2464,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -2518,7 +2579,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -2810,7 +2871,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -2826,7 +2887,10 @@
       "title": "Ingrid Groiss Ried Hasenhaide Rosé",
       "year": 2023,
       "country": "Австрия",
-      "grapes": [],
+      "grapes": [
+        "Пино Нуар",
+        "Цвайгельт"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -3066,7 +3130,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -3218,7 +3282,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -3364,7 +3428,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -3380,7 +3444,9 @@
       "title": "El Esteco Blanc de Noir",
       "year": 2023,
       "country": "Аргентина",
-      "grapes": [],
+      "grapes": [
+        "Пино Нуар"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -3502,7 +3568,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -3518,7 +3584,10 @@
       "title": "Amalaya Blanco",
       "year": 2024,
       "country": "Аргентина",
-      "grapes": [],
+      "grapes": [
+        "Торронтес",
+        "Рислинг"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -3658,7 +3727,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "publication_review": {
@@ -3798,7 +3867,12 @@
       "title": "d’Arenberg The Stump Jump White",
       "year": 2021,
       "country": "Австралия",
-      "grapes": [],
+      "grapes": [
+        "Руссан",
+        "Рислинг",
+        "Марсан",
+        "Совиньон Блан"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -3930,7 +4004,9 @@
       "title": "Georg Breuer Estate Rüdesheim",
       "year": 2018,
       "country": "Германия",
-      "grapes": [],
+      "grapes": [
+        "Рислинг"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -4067,7 +4143,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.375,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -4213,7 +4289,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -4365,7 +4441,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -4505,7 +4581,7 @@
           }
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -4704,7 +4780,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2019.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -4720,7 +4796,9 @@
       "title": "Can Sumoi Ancestral Montonega",
       "year": 2023,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Парельяда"
+      ],
       "type": "Игристое",
       "pairings": [
         "Закуски",
@@ -4810,7 +4888,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Can-Sumoi-Ancestral-Montonega-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "photo": {
@@ -4877,7 +4955,10 @@
       "title": "Nino Franco Faive Rosé Brut Veneto",
       "year": 2019,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Мерло",
+        "Каберне Фран"
+      ],
       "type": "Игристое",
       "pairings": [
         "Закуски",
@@ -5010,7 +5091,9 @@
       "title": "Bellenda San Fermo Conegliano Valdobbiadene DOCG Prosecco Superiore gift box",
       "year": 2022,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Глера (Просекко)"
+      ],
       "type": "Игристое",
       "pairings": [
         "Закуски",
@@ -5103,7 +5186,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Bellenda-San-Fermo-Conegliano-Valdobbiadene-DOCG-Prosecco-Superiore-2022-gift-box.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "publication_review": {
@@ -5231,7 +5314,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Scarpa-Tacco12-Moscato-d-Asti-DOCG-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -5247,7 +5330,10 @@
       "title": "Nino Franco Faive Rosé Brut Veneto",
       "year": 2022,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Мерло",
+        "Каберне Фран"
+      ],
       "type": "Игристое",
       "pairings": [
         "Закуски",
@@ -5393,7 +5479,10 @@
       "title": "Tabali Tatie Brut Limari Valley",
       "year": null,
       "country": "Чили",
-      "grapes": [],
+      "grapes": [
+        "Шардоне",
+        "Пино Нуар"
+      ],
       "type": "Игристое",
       "pairings": [
         "Закуски",
@@ -5517,7 +5606,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Tabali-Tatie-Brut-Limari-Valley.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -5659,7 +5748,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Montelliana-Prosecco-Treviso-DOC-Extra-Dry.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -5789,7 +5878,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Grande-Alberone-Moscato-Spumante-Dolce.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -5910,7 +5999,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Pitars-Prosecco-DOC.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -5926,7 +6015,10 @@
       "title": "Dulong Crémant de Bordeaux Brut AOP",
       "year": null,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Семильон",
+        "Каберне Фран"
+      ],
       "type": "Игристое",
       "pairings": [
         "Закуски",
@@ -6041,7 +6133,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Dulong-Cremant-de-Bordeaux-AOP-Brut.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -6057,7 +6149,11 @@
       "title": "Lucien Albrecht Crémant d’Alsace Brut AOC",
       "year": null,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Оксеруа Блан",
+        "Пино Гри",
+        "Пино Блан"
+      ],
       "type": "Игристое",
       "pairings": [
         "Закуски",
@@ -6166,7 +6262,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Lucien-Albrecht-Brut-Cremant-d-Alsace-AOC.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -6182,7 +6278,10 @@
       "title": "Romagnoli Vizzo Rosso Emilia IGT",
       "year": 2019,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Барбера",
+        "Мерло"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -6309,7 +6408,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Romagnoli-Vizzo-Rosso-Emilia-IGT-2019.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -6445,7 +6544,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Jordan-Black-Magic-Merlot-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -6570,7 +6669,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Church-Block-Cabernet-Shiraz-Merlot-2011.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -6586,7 +6685,10 @@
       "title": "Tenuta Poggio ai Mandorli Chianti Classico Gran Selezione DOCG",
       "year": 2019,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Санджовезе",
+        "Мерло"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -6701,7 +6803,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Tenuta-Poggio-ai-Mandorli-Chianti-Classico-Gran-Selezione-DOCG-2019.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -6717,7 +6819,10 @@
       "title": "Domaine Laffitte Rosé Côtes de Gascogne IGP",
       "year": 2024,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Мерло",
+        "Мальбек"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -6829,7 +6934,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Domaine-Laffitte-Rose-Cotes-de-Gascogne-IGP-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -6845,7 +6950,9 @@
       "title": "Kracher Spatlese Rosé",
       "year": 2024,
       "country": "Австрия",
-      "grapes": [],
+      "grapes": [
+        "Мерло"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -6963,7 +7070,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Kracher-Spatlese-Rose-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -7099,7 +7206,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Mare-Magnum-The-Chocolate-Tube-Primitivo-Puglia-IGT-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -7235,7 +7342,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Montedidio-San-Domino-Primitivo-Puglia-IGT-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -7251,7 +7358,10 @@
       "title": "Elena Fucci Verha Rosato Basilicata IGT",
       "year": 2023,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Альянико",
+        "Примитиво"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -7369,7 +7479,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Elena-Fucci-Verha-Rosato-Basilicata-IGT-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -7385,7 +7495,11 @@
       "title": "Castello di Querceto Chianti Classico Riserva DOCG",
       "year": 2012,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Санджовезе",
+        "Канайоло",
+        "Колорино"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -7518,7 +7632,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Castello-di-Querceto-Chianti-Classico-Riserva-DOCG-2012.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -7534,7 +7648,13 @@
       "title": "Nipozzano Chianti Rufina Riserva DOCG",
       "year": 2022,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Санджовезе",
+        "Каберне Совиньон",
+        "Мерло",
+        "Мальвазия Нера",
+        "Колорино"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -7652,7 +7772,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Nipozzano-Chianti-Rufina-Riserva-DOCG-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -7668,7 +7788,12 @@
       "title": "Capo di Stato Colli Trevigiani IGT",
       "year": 2013,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Каберне Совиньон",
+        "Мерло",
+        "Каберне Фран",
+        "Мальбек"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -7798,7 +7923,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Capo-di-Stato-Colli-Trevigiani-IGT-2013.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -7814,7 +7939,10 @@
       "title": "Fattoria Le Pupille Morellino di Scansano Riserva DOCG",
       "year": 2021,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Санджовезе",
+        "Каберне Совиньон"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -7944,7 +8072,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Fattoria-Le-Pupille-Morellino-di-Scansano-Riserva-DOCG-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -7960,7 +8088,11 @@
       "title": "Château Ducluzeau Listrac Medoc AOC",
       "year": 2017,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Пти Вердо",
+        "Мерло",
+        "Каберне Совиньон"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -8093,7 +8225,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Chateau-Ducluzeau-Listrac-Medoc-AOC-2017.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -8109,7 +8241,12 @@
       "title": "Château Marjosse Bordeaux AOC Rouge",
       "year": 2021,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Мерло",
+        "Мальбек",
+        "Каберне Совиньон",
+        "Каберне Фран"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -8212,7 +8349,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Chateau-Marjosse-Bordeaux-AOC-Rouge-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -8336,7 +8473,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Myskhako-Quintessence-Zinfandel.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -8466,7 +8603,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Long-Barn-Zinfandel-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -8602,7 +8739,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/El-Esteco-Don-David-Malbec-Reserve-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -8738,7 +8875,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Mi-Terruno-Expresion-Malbec-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -8874,7 +9011,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Malbec-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -8890,7 +9027,14 @@
       "title": "Clos de los Siete",
       "year": 2021,
       "country": "Аргентина",
-      "grapes": [],
+      "grapes": [
+        "Каберне Фран",
+        "Мальбек",
+        "Каберне Совиньон",
+        "Пти Вердо",
+        "Мерло",
+        "Сира"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -9023,7 +9167,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Clos-de-los-Siete-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -9156,7 +9300,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/La-Posta-Rose-of-Malbec-Mendoza-DO-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -9172,7 +9316,9 @@
       "title": "Ramón Bilbao Crianza Rioja DOCa",
       "year": 2021,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Темпранильо"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -9311,7 +9457,11 @@
       "title": "Lavau EnvyFol GSM Pays d’Oc IGP",
       "year": 2022,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Сира",
+        "Гренаш/Гарнача",
+        "Мурведр"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -9429,7 +9579,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Lavau-EnvyFol-GSM-Pays-d-Oc-IGP-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -9445,7 +9595,10 @@
       "title": "Crapula Gold",
       "year": 2022,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Монастрель",
+        "Сира"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -9548,7 +9701,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Crapula-Gold-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -9564,7 +9717,10 @@
       "title": "Belguardo Rosé Toscana IGT",
       "year": 2022,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Сира",
+        "Санджовезе"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -9679,7 +9835,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Belguardo-Rose-Toscana-IGT-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -9695,7 +9851,11 @@
       "title": "Fattoria Le Pupille Morellino di Scansano DOCG",
       "year": 2021,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Санджовезе",
+        "Чильеджоло",
+        "Аликанте"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -9825,7 +9985,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Fattoria-Le-Pupille-Morellino-di-Scansano-DOCG-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -9841,7 +10001,9 @@
       "title": "Santa Cristina Giardino Rosé Toscana IGT",
       "year": 2024,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Санджовезе"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -9959,7 +10121,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Santa-Cristina-Giardino-Rose-Toscana-IGT-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -9975,7 +10137,9 @@
       "title": "Torres Viña Esmeralda Rosé Catalunya DO",
       "year": 2024,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Гренаш/Гарнача"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -10090,7 +10254,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Torres-Vina-Esmeralda-Rose-Catalunya-DO-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -10106,7 +10270,10 @@
       "title": "Apollonio Mani del Sud Rosso Salice Salentino DOP",
       "year": 2021,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Негроамаро",
+        "Мальвазия Нера"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -10209,7 +10376,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Apollonio-Mani-del-Sud-Rosso-Salice-Salentino-DOP-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -10225,7 +10392,9 @@
       "title": "Felline Cicala Rosé Salento IGT",
       "year": 2018,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Негроамаро"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -10343,7 +10512,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Felline-Cicala-Rose-Salento-IGT-2018.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -10482,7 +10651,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Zantho-St-Laurent-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -10498,7 +10667,10 @@
       "title": "d’Arenberg d’Arry’s Original",
       "year": 2020,
       "country": "Австралия",
-      "grapes": [],
+      "grapes": [
+        "Гренаш/Гарнача",
+        "Шираз"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -10619,7 +10791,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/d-Arenberg-d-Arry-s-Original-2020.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -10635,7 +10807,9 @@
       "title": "Protos Roble",
       "year": 2024,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Темпранильо"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -10753,7 +10927,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Protos-Roble-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -10769,7 +10943,11 @@
       "title": "Ramón Bilbao Reserva Rioja DOC",
       "year": 2018,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Темпранильо",
+        "Грасиано",
+        "Масуэло"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -10865,7 +11043,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Ramon-Bilbao-Reserva-Rioja-DOC-2018.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -10881,7 +11059,9 @@
       "title": "Bodegas Ramón Bilbao Crianza Rioja DOC",
       "year": 2013,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Темпранильо"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -11135,7 +11315,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/La-Bioca-Sterma-Nebbiolo-d-Alba-DOC-Superiore-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -11283,7 +11463,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Enrico-Serafino-Pajena-Barbera-d-Alba-DOC-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -11407,7 +11587,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Parajes-del-Valle-Monastrell-Ecologico-Jumilla-DOP-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -11423,7 +11603,15 @@
       "title": "Tedeschi Capitel San Rocco Valpolicella Ripasso Superiore DOC",
       "year": 2015,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Корвина",
+        "Корвиноне",
+        "Рондинелла",
+        "Россиньола",
+        "Оселета",
+        "Неграра",
+        "Диндарелла"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -11541,7 +11729,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Tedeschi-Capitel-San-Rocco-Valpolicella-Ripasso-DOC-Superiore-2015.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -11557,7 +11745,10 @@
       "title": "Tenuta Sant Antonio Nanfre Valpolicella DOC",
       "year": 2023,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Корвина",
+        "Рондинелла"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -11672,7 +11863,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Tenuta-Sant-Antonio-Nanfre-Valpolicella-DOC-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -11688,7 +11879,15 @@
       "title": "Tedeschi Capitel San Rocco Valpolicella Ripasso Superiore DOC",
       "year": 2019,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Корвина",
+        "Корвиноне",
+        "Россиньола",
+        "Оселета",
+        "Рондинелла",
+        "Неграра",
+        "Диндарелла"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -11821,7 +12020,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Tedeschi-Capitel-San-Rocco-Valpolicella-Ripasso-DOC-Superiore-2019.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -11837,7 +12036,12 @@
       "title": "Pieropan Ruberpan Valpolicella Superiore DOC",
       "year": 2021,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Корвина",
+        "Рондинелла",
+        "Кроатина",
+        "Корвиноне"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -11955,7 +12159,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Pieropan-Ruberpan-Valpolicella-Superiore-DOC-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -12103,7 +12307,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Atzei-Saragat-Cannonau-di-Sardegna-DOC-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -12119,7 +12323,9 @@
       "title": "Elias Mora Crianza",
       "year": 2020,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Тинта де Торо"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -12234,7 +12440,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Elias-Mora-Crianza-2020.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -12373,7 +12579,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/D-Angelo-Aglianico-del-Vulture-DOC-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -12389,7 +12595,10 @@
       "title": "Antigua DOC",
       "year": 2024,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Моника",
+        "Кариньяно"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -12510,7 +12719,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Antigua-DOC-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -12526,7 +12735,9 @@
       "title": "Hito Ribera Del Duero DO",
       "year": 2023,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Тинто Фино"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -12644,7 +12855,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Hito-Ribera-Del-Duero-DO-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -12660,7 +12871,10 @@
       "title": "Aixala I Alcait Pardelasses Priorat DOQ",
       "year": 2018,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Гренаш/Гарнача",
+        "Кариньяно"
+      ],
       "type": "Красное",
       "pairings": [
         "Красное мясо",
@@ -12779,7 +12993,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Aixala-I-Alcait-Pardelasses-Priorat-DOQ-2018.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -12795,7 +13009,12 @@
       "title": "Marius Peyol Coteaux d’Aix en Provence AOC",
       "year": 2024,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Гренаш/Гарнача",
+        "Мурведр",
+        "Сира",
+        "Сенсо"
+      ],
       "type": "Розовое",
       "pairings": [
         "Рыба",
@@ -12909,7 +13128,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Marius-Peyol-Coteaux-d-Aix-en-Provence-AOC-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -12925,7 +13144,12 @@
       "title": "Lapostolle Le Rosé",
       "year": 2024,
       "country": "Чили",
-      "grapes": [],
+      "grapes": [
+        "Сенсо",
+        "Мурведр",
+        "Гренаш/Гарнача",
+        "Сира"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -13040,7 +13264,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Lapostolle-Le-Rose-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -13056,7 +13280,12 @@
       "title": "Miraval Rosé Côtes de Provence AOC",
       "year": 2018,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Гренаш/Гарнача",
+        "Сенсо",
+        "Роль",
+        "Сира"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -13190,7 +13419,10 @@
       "title": "Muga Rosado Rioja DOC",
       "year": 2021,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Гренаш/Гарнача",
+        "Виура"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -13305,7 +13537,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Muga-Rosado-Rioja-DOC-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -13321,7 +13553,11 @@
       "title": "Estandon Heritage Côtes de Provence AOP",
       "year": 2020,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Гренаш/Гарнача",
+        "Сенсо",
+        "Сира"
+      ],
       "type": "Розовое",
       "pairings": [
         "Морепродукты",
@@ -13438,7 +13674,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Estandon-Heritage-Cotes-de-Provence-AOP-2020.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -13454,7 +13690,10 @@
       "title": "Muga Rosado Rioja DOC",
       "year": 2023,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Гренаш/Гарнача",
+        "Виура"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -13581,7 +13820,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Muga-Rosado-Rioja-DOC-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -13597,7 +13836,16 @@
       "title": "Château La Tour de L Eveque Petale de Rosé Côtes de Provence AOC",
       "year": 2020,
       "country": "Франция",
-      "grapes": [],
+      "grapes": [
+        "Семильон",
+        "Сенсо",
+        "Гренаш/Гарнача",
+        "Сира",
+        "Мурведр",
+        "Роль",
+        "Каберне Совиньон",
+        "Уни Блан"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -13724,7 +13972,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Chateau-La-Tour-de-L-Eveque-Petale-de-Rose-Cotes-de-Provence-AOC-2020.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -13857,7 +14105,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Mezzacorona-Pinot-Grigio-Trentino-DOC-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -13996,7 +14244,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Domane-Wachau-Katzensprung-Gruner-Veltliner-Federspiel-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -14012,7 +14260,10 @@
       "title": "Gaintza Txakolina",
       "year": 2023,
       "country": "Испания",
-      "grapes": [],
+      "grapes": [
+        "Ондарраби Сури",
+        "Гро Мансенг"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -14130,7 +14381,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Gaintza-Txakolina-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -14146,7 +14397,9 @@
       "title": "Ascevi Luwa Ronco dei Sassi Collio DOC",
       "year": 2021,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Совиньон Блан"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -14261,7 +14514,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Ascevi-Luwa-Ronco-dei-Sassi-Collio-DOC-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -14277,7 +14530,10 @@
       "title": "Recanati Yasmin White kosher mevushal",
       "year": 2018,
       "country": "Израиль",
-      "grapes": [],
+      "grapes": [
+        "Совиньон Блан",
+        "Шардоне"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -14395,7 +14651,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Recanati-Yasmin-White-kosher-mevushal-2018.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -14564,7 +14820,11 @@
       "title": "Fattoria Le Pupille Poggio Argentato IGT",
       "year": 2022,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Совиньон Блан",
+        "Пти Мансенг",
+        "Семильон"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -14694,7 +14954,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Fattoria-Le-Pupille-Poggio-Argentato-IGT-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -14830,7 +15090,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Protos-Verdejo-2018.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -14966,7 +15226,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Chateau-Pajzos-T-Tokaji-Furmint-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -14982,7 +15242,11 @@
       "title": "Taboadella Villae Branco Dão DOC",
       "year": 2020,
       "country": "Португалия",
-      "grapes": [],
+      "grapes": [
+        "Энкрузаду",
+        "Бикал",
+        "Серсиаль"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -15109,7 +15373,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Taboadella-Villae-Branco-Dao-DOC-2020.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -15125,7 +15389,9 @@
       "title": "Ottella Lugana DOC",
       "year": 2017,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Треббьяно"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -15243,7 +15509,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Azienda-Agricola-Ottella-Lugana-Ottella-2017.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -15259,7 +15525,9 @@
       "title": "Ottella Lugana DOC",
       "year": 2024,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Треббьяно ди Лугана"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -15408,7 +15676,9 @@
       "title": "Azienda Agricola Ottella Le Creete Lugana DOC",
       "year": 2024,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Треббьяно ди Лугана"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -15523,7 +15793,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Azienda-Agricola-Ottella-Le-Creete-Lugana-DOC-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -15539,7 +15809,9 @@
       "title": "I Frati Lugana DOC",
       "year": 2024,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Турбиана"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -15672,7 +15944,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/I-Frati-Lugana-DOC-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -15688,7 +15960,9 @@
       "title": "Batasiolo Granée Gavi del Comune di Gavi DOCG",
       "year": 2023,
       "country": "Италия",
-      "grapes": [],
+      "grapes": [
+        "Кортезе"
+      ],
       "type": "Белое",
       "pairings": [
         "Рыба",
@@ -15818,7 +16092,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Batasiolo-Granee-Gavi-del-Comune-di-Gavi-DOCG-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -15948,7 +16222,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Chanzy-Les-Fortunes-Aligote-Bourgogne-AOC-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -16087,7 +16361,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Wohlmuth-Gewurztraminer-Sudsteiermark-DAC-2021.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -16220,7 +16494,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Mar-de-Frades-Albarino-Rias-Baixas-DO-2023.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -16236,7 +16510,9 @@
       "title": "A.A. Badenhorst Secateurs Rosé Swartland WO",
       "year": 2022,
       "country": "ЮАР",
-      "grapes": [],
+      "grapes": [
+        "Мурведр"
+      ],
       "type": "Розовое",
       "pairings": [
         "Салаты",
@@ -16363,7 +16639,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/A-A-Badenhorst-Secateurs-Rose-Swartland-WO-2022.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
@@ -16499,7 +16775,7 @@
           "price_source_url": "https://spb.winestyle.ru/products/Maturana-Wines-Naranjo-Torontel-Maule-Valley-DO-2024.html"
         }
       ],
-      "volume_l": null,
+      "volume_l": 0.75,
       "scores": [],
       "review_note": null,
       "availability": {
