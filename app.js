@@ -72,7 +72,7 @@ function snapshotFor(r){
 }
 function liveOfferFor(r){
  const store=r.stores?.[0], offer=store?.live_offer, review=r.publication_review;
- if(!offer||offer.verification_method!=='exact_jsonld_product'||review?.status==='excluded')return null;
+ if(!offer||!['exact_jsonld_product','exact_main_product_visible_price'].includes(offer.verification_method)||review?.status==='excluded')return null;
  const reviewed=review?.status==='verified';
  const manualArchive=['user_confirmed_active_browser_tab','automated_browser_batch'].includes(offer.capture_method)&&
     store?.enrichment_status?.status==='verified'&&store?.product_details?.source_url===store.url;
