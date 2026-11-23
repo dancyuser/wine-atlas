@@ -250,6 +250,15 @@ assert(mixedCard.includes('Ярко-золотистый'));
 assert(mixedCard.includes('Цитрусовые'));
 assert(!mixedCard.includes('Противоречивый аромат'));
 assert(mixedCard.includes('Дополнено ручной проверкой 23.11.2026'));
+const emptyArchive={...mixed,stores:[{...mixed.stores[0],
+ product_details:{...mixed.stores[0].product_details,color:null,body:''},
+ research_details:{...mixed.stores[0].research_details,
+  body:'Полнотелое',field_checked_at:{color:'2026-11-23',body:'2026-11-23'}}}]};
+assert.equal(h.retailerDetails(emptyArchive).color,'Ярко-золотистый',
+ 'A null archival field must not shadow verified manual evidence');
+assert.equal(h.retailerDetails(emptyArchive).body,'Полнотелое',
+ 'An empty archival field must not shadow verified manual evidence');
+assert(h.card(emptyArchive).includes('Полнотелое'));
 
 const portCard=h.card(port);
 assert(portCard.includes('Насыщенный рубиновый'));
