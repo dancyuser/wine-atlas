@@ -25,6 +25,13 @@ for r in records:
   assert photo.get('url','').startswith('https://'),('Invalid photo URL',r['id'])
   assert photo.get('source_url','').startswith('https://'),('Invalid photo source',r['id'])
   assert photo.get('source') and photo.get('verified_on'),('Missing photo provenance',r['id'])
+ photo=r.get('photo')
+ if photo is not None:
+  assert isinstance(photo,dict) and photo.get('matched_year')==r['year'], 'Photo vintage mismatch: '+r['id']
+  assert photo.get('url','').startswith('https://'), 'Photo URL must be HTTPS'
+  assert photo.get('source_url','').startswith('https://'), 'Photo source must be linked'
+  assert photo.get('source') and photo.get('verified_on'), 'Photo provenance missing'
+  assert re.fullmatch(r'\d{4}-\d{2}-\d{2}',photo['verified_on']), 'Photo verification date invalid'
  assert r['stores']
  assert not (r['section']=='Джин')
  for store in r['stores']:
