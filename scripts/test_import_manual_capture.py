@@ -151,6 +151,21 @@ class ManualImportTests(unittest.TestCase):
         c,report=apply_observations({'records':[copy.deepcopy(RECORD)]},[o],automated=True)
         self.assertEqual(report['live_offers_updated'],0)
 
+    def test_agreeing_jsonld_and_visible_price_are_accepted(self):
+        o=self.browser_visible_offer(OBS,6348)
+        o['capture']['products']=copy.deepcopy(CAPTURE['products'])
+        c,report=apply_observations({'records':[copy.deepcopy(RECORD)]},[o],automated=True)
+        self.assertEqual(report['live_offers_updated'],1)
+        self.assertEqual(c['records'][0]['stores'][0]['live_offer']['price_rub'],6348)
+        self.assertEqual(c['records'][0]['stores'][0]['live_offer']['verification_method'],'exact_jsonld_product')
+
+    def test_jsonld_and_visible_stock_conflict_rejected(self):
+        o=self.browser_visible_offer(OBS,6348,'Ожидаем поступление','out_of_stock')
+        o['capture']['products']=copy.deepcopy(CAPTURE['products'])
+        c,report=apply_observations({'records':[copy.deepcopy(RECORD)]},[o],automated=True)
+        self.assertEqual(report['live_offers_updated'],0)
+        self.assertNotIn('live_offer',c['records'][0]['stores'][0])
+
     def test_jsonld_and_visible_main_price_conflict_rejected(self):
         o=self.browser_visible_offer(OBS)
         o['capture']['products']=copy.deepcopy(CAPTURE['products'])
