@@ -31,6 +31,9 @@ def fixture():
                          "observed_on": "2026-11-22", "evidence": "94/100"}]
         }
     )
+    store["research_details"]={"source_url":WINE,"source_kind":"primary_retailer_product_description",
+                               "checked_at":"2026-11-23","producer":"Peter Zemmer",
+                               "color":"Соломенно-золотистый"}
     store["live_offer"]={"verification_method":"exact_jsonld_product","price_rub":2590,
                          "regular_price_rub":None,"availability":"in_stock",
                          "observed_on":"2026-11-24","product_name":"Peter Zemmer Chardonnay",
@@ -85,6 +88,7 @@ class RebuildTest(unittest.TestCase):
                              original["records"][0]["stores"][0]["product_details"])
             self.assertEqual(observed["availability"],original["records"][0]["availability"])
             self.assertEqual(observed["stores"][0].get("live_offer"),original["records"][0]["stores"][0].get("live_offer"))
+            self.assertEqual(observed["stores"][0].get("research_details"),original["records"][0]["stores"][0].get("research_details"))
             self.assertEqual(actual["inventory_snapshot"],original["inventory_snapshot"])
             again = self.rebuild(root, [WINE, SKIPPED])
             self.assertEqual(again["retailer_snapshot"], actual["retailer_snapshot"])
