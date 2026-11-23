@@ -137,7 +137,12 @@ def apply_observations(catalog, observations):
         if not ok:
             summary['rejected'].append([id_, reason])
             continue
-        if r.get('publication_review', {}).get('status') != 'verified':
+        review = r.get('publication_review') or {}
+        verified_archive = (store.get('enrichment_status', {}).get('status') == 'verified'
+                            and canonical_url(store.get('enrichment_status', {}).get('source_url')) ==
+                                canonical_url(store['url'])
+                            and store.get('product_details', {}).get('source_url') == store['url'])
+        if review.get('status') == 'excluded' or not (review.get('status') == 'verified' or verified_archive):
             summary['rejected'].append([id_, 'not_approved_for_publication'])
             continue
         summary['accepted_identity'] += 1
@@ -169,11 +174,14 @@ def apply_observations(catalog, observations):
             synthetic = '<script type="application/ld+json">' + json.dumps(
                 product, ensure_ascii=False
             ) + '</script>'
-            offer, _ = verified_offer(synthetic, r, store['url'].split('#')[0],
+            verified_record = r if review.get('status') == 'verified' else {
+                **r, 'publication_review': {'status':'verified','final_url':store['url'].split('#')[0]}
+            }
+            offer, _ = verified_offer(synthetic, verified_record, store['url'].split('#')[0],
                                       captured['source_url'].split('#')[0])
             if not offer:
                 continue
-            if observed_on < r['publication_review']['checked_at']:
+            if observed_on < (review.get('checked_at') or store.get('enrichment_status', {}).get('checked_at', '9999-12-31')):
                 continue
             previous = store.get('live_offer') or {}
             if previous.get('observed_on', '') > observed_on:
