@@ -13,7 +13,7 @@ assert.equal(list.filter(x=>!x.excluded).length,110);
 assert.equal(new Set(list.map(x=>x.id)).size,124);
 
 const dataBytes=fs.readFileSync(path.join(__dirname,'..','data','wines.json'));
-const expectedSha=crypto.createHash('sha1').update('blob '+dataBytes.length+'\\0'.replace('\\0','\0')).update(dataBytes).digest('hex');
+const expectedSha=crypto.createHash('sha1').update('blob '+dataBytes.length+'\0').update(dataBytes).digest('hex');
 assert.equal(bundled.catalog_blob_sha,expectedSha,'The bundled queue must match the exact current catalog blob');
 const catalog=JSON.parse(dataBytes.toString('utf8'));
 const sourceById=new Map(catalog.records.map(r=>[r.id,r]));
