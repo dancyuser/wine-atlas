@@ -178,10 +178,9 @@ def verified_visible_main_offer(target, capture):
         or v.get('price_currency')!='RUB'
         or capture.get('offer_evidence_complete') is not True):
         return None
-    # Never silently privilege a visible price if conflicting or unparseable
-    # Product/Offer JSON-LD also appeared on the same page.
-    if any(isinstance(p,dict) and p.get('offers') for p in capture.get('products') or []):
-        return None
+    # Validate the visible offer independently, including on pages that also
+    # provide JSON-LD. The caller compares those two sources, and the
+    # fallback-only path explicitly excludes pages carrying JSON-LD offers.
     price=numeric_displayed_rubles(v.get('price_evidence'))
     if price is None or type(v.get('price_rub')) is not int or v['price_rub']!=price:
         return None
