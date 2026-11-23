@@ -62,6 +62,17 @@
         "source_kind": "vivino_verified_web",
         "observed_on": "2026-11-22",
         "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
+      },
+      {
+        "source": "Wine Enthusiast",
+        "score": 93,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2018,
+        "source_url": "https://www.wineenthusiast.com/buying-guide/dows-2018-late-bottled-vintage-port-port/",
+        "source_kind": "primary_critic_publication",
+        "observed_on": "2026-11-23",
+        "note": "Первичная публикация критика с указанным винтажом."
       }
     ],
     "060e3c866e44": [
@@ -75,6 +86,17 @@
         "source_kind": "vivino_verified_web",
         "observed_on": "2026-11-22",
         "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
+      },
+      {
+        "source": "Wine Enthusiast",
+        "score": 92,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2018,
+        "source_url": "https://www.wineenthusiast.com/buying-guide/kopke-2018-lbv-port-port/",
+        "source_kind": "primary_critic_publication",
+        "observed_on": "2026-11-23",
+        "note": "Первичная публикация критика с указанным винтажом."
       }
     ],
     "8433dbc66ae6": [
@@ -88,6 +110,17 @@
         "source_kind": "vivino_site_verified",
         "observed_on": "2026-11-22",
         "note": "Vivino: общая оценка вина; рейтинг выбранного урожая не подтвержден, поэтому исключен из сводного индекса."
+      },
+      {
+        "source": "Wine Enthusiast",
+        "score": 90,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2018,
+        "source_url": "https://www.wineenthusiast.com/buying-guide/kendall-jackson-2018-vintners-reserve-chardonnay-california/",
+        "source_kind": "primary_critic_publication",
+        "observed_on": "2026-11-23",
+        "note": "Первичная публикация критика с указанным винтажом."
       }
     ],
     "22c9be4678f5": [
@@ -622,6 +655,28 @@
         "source_kind": "vivino_page",
         "observed_on": "2026-11-22",
         "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      },
+      {
+        "source": "Wine Enthusiast",
+        "score": 94,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://www.wineenthusiast.com/buying-guide/braida-di-giacomo-bologna-2023-vigna-senza-nome-moscato-moscato-dasti/",
+        "source_kind": "primary_critic_publication",
+        "observed_on": "2026-11-23",
+        "note": "Критик оценил винтаж 2023; опубликованный объём бутылки может отличаться от выбранных 375 мл."
+      },
+      {
+        "source": "Falstaff",
+        "score": 92,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://www.falstaff.com/en/wines/2023-vigna-senza-nome-moscato-dasti-docg",
+        "source_kind": "primary_critic_publication",
+        "observed_on": "2026-11-23",
+        "note": "Критик оценил винтаж 2023; опубликованный объём бутылки может отличаться от выбранных 375 мл."
       }
     ],
     "e3e9c91e71bc": [
