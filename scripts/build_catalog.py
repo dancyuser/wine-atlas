@@ -122,7 +122,7 @@ def main():
    for store in record['stores']:
     was=old_stores.get(key(store['url']))
     if was:
-     for f in ('price_rub','regular_price_rub','price_checked_at','reference_price_rub','reference_regular_price_rub','reference_date','price_source_url','price_evidence','product_details','enrichment_status','live_offer'):
+     for f in ('price_rub','regular_price_rub','price_checked_at','reference_price_rub','reference_regular_price_rub','reference_date','price_source_url','price_evidence','product_details','enrichment_status','live_offer','research_details'):
       if f in was and was[f] is not None:
        store[f]=was[f]
  out={'updated_at':'2026-11-22','region':'Санкт-Петербург','historical_as_of':'2026-11-14','source':{'kind':'local_text_export','unique_wine_urls':len(recs),'excluded_gin_urls':extra_gin},'records':list(recs.values())}
