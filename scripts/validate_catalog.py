@@ -118,6 +118,8 @@ assert all((r['stores'][0].get('product_details') or r['stores'][0].get('researc
            for r in visible), 'Missing published source color description'
 assert all((r['stores'][0].get('product_details') or r['stores'][0].get('research_details') or {}).get('wine_style')
            for r in visible), 'Missing verified wine style for published bottle'
+assert all((r['stores'][0].get('product_details') or r['stores'][0].get('research_details') or {}).get('pairing_notes')
+           for r in visible), 'Missing verified food pairings for published bottle'
 
 assert len(records)==d['source']['unique_wine_urls'], 'Catalog size differs from source snapshot'
 assert all(r['wishlist'] and not r['research'] for r in records), 'Archived research cannot appear in active catalog'
