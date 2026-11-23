@@ -130,14 +130,19 @@
               "wine_style": "Вино: Портвейн, Сладкое",
               "body": "Насыщенность: полнотелое",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: \"Graham’s\" Late Bottled Vintage — превосходный портвейн, который производится только в лучшие урожайные годы. В отличие от винтажных портвейнов, которые разливаются на второй год после выдержки, \"Late Bottled Vintage\" созревает в среднем в течение 5 "
+              "description_excerpt": "Описание: \"Graham’s\" Late Bottled Vintage — превосходный портвейн, который производится только в лучшие урожайные годы. В отличие от винтажных портвейнов, которые разливаются на второй год после выдержки, \"Late Bottled Vintage\" созревает в среднем в течение 5 ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "a371504ade264b2379b7c8e8a51c282bb937a8b2f73682ecfa0eb0df88403a05",
             "raw_product_text_chars": 7770,
             "availability_note": null,
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Имеет глубокий красный цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -1544,14 +1549,19 @@
               "wine_style": "Вино: Белое, Сухое",
               "body": "Насыщенность: полнотелое",
               "aging_potential": "Потенциал хранения: 5-10 лет",
-              "description_excerpt": "Описание: Kleine Zalze, \"Vineyard Selection\" Chardonnay — насыщенное, но при этом нежное и элегантное белое вино, произведенное из южноафриканского Шардоне. Освежающий фруктовый вкус изящно дополняют дубовые оттенки, напоминающие о месяцах выдержки в подвалах "
+              "description_excerpt": "Описание: Kleine Zalze, \"Vineyard Selection\" Chardonnay — насыщенное, но при этом нежное и элегантное белое вино, произведенное из южноафриканского Шардоне. Освежающий фруктовый вкус изящно дополняют дубовые оттенки, напоминающие о месяцах выдержки в подвалах ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "94ea47b3c47a1833435d7e10a2cb48696d6dff420c0d492430900d5a16ece5d2",
             "raw_product_text_chars": 4720,
             "availability_note": null,
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Вино ярко-золотистого цвета.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -1996,14 +2006,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 2-4 года",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: \"Morning Fog\" Chardonnay — элегантное, освежающее и соблазнительное белое вино, названное в честь, вызванного потоками Тихоокеанского ветра утреннего прибрежного тумана, который окутывает часть залива Сан-Франциско, охлаждая воздух. Благодаря превосх"
+              "description_excerpt": "Описание: \"Morning Fog\" Chardonnay — элегантное, освежающее и соблазнительное белое вино, названное в честь, вызванного потоками Тихоокеанского ветра утреннего прибрежного тумана, который окутывает часть залива Сан-Франциско, охлаждая воздух. Благодаря превосх",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "d740bfad2000b24a016a2e4c7df9fce356c9bc3c20d9ae3bf779e971ff8caceb",
             "raw_product_text_chars": 8093,
             "availability_note": null,
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Яркий золотистый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -2148,14 +2163,19 @@
               "wine_style": "Вино: Белое, Сухое",
               "body": "Насыщенность: среднее",
               "color_intensity": "Глубина цвета: бледное",
-              "description_excerpt": "Описание: \"Morning Fog\" Chardonnay — элегантное, освежающее и соблазнительное белое вино. Вызванный потоками Тихоокеанского ветра, утренний прибрежный туман окутывает часть залива Сан-Франциско, охлаждая воздух. Благодаря превосходным климатическим условиям до"
+              "description_excerpt": "Описание: \"Morning Fog\" Chardonnay — элегантное, освежающее и соблазнительное белое вино. Вызванный потоками Тихоокеанского ветра, утренний прибрежный туман окутывает часть залива Сан-Франциско, охлаждая воздух. Благодаря превосходным климатическим условиям до",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "b4b40907251f9a24342d8f5650273c589ef9afb7cf97d339ff3b24c464f67346",
             "raw_product_text_chars": 7744,
             "availability_note": null,
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "У вина светло-соломенный цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -3105,14 +3125,19 @@
               "wine_style": "Вино: Красное, Сухое",
               "body": "Насыщенность: среднее",
               "color_intensity": "Глубина цвета: умеренное",
-              "description_excerpt": "Описание: \"Sibaris\" Pinot Noir Gran Reserva — свежее фруктовое вино из винограда, выращенного в долине Лейда. Вино с легкой свежестью и яркими фруктовыми нотами идеально подходит для неспешных городских вечеров — будь то встреча с друзьями на террасе или уютны"
+              "description_excerpt": "Описание: \"Sibaris\" Pinot Noir Gran Reserva — свежее фруктовое вино из винограда, выращенного в долине Лейда. Вино с легкой свежестью и яркими фруктовыми нотами идеально подходит для неспешных городских вечеров — будь то встреча с друзьями на террасе или уютны",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "f05f2353334ed2506780380d3a7511162b9eb95ee84f3b822eb419d4d18beeba",
             "raw_product_text_chars": 9054,
             "availability_note": null,
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Вино рубиново-красного цвета.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -3257,14 +3282,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 10-13 лет",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: Weingut J. Neus, Ingelheim am Rhein \"Muschelkalk\" Spatburgunder — приятный и свежий Пино Нуар категории Gutsweine VDP, которая отражает \"домашний стиль\" J. Neus. \"Мушелькальк\" Шпетбургундер отличается высоким качеством, что характерно для всех вин ви"
+              "description_excerpt": "Описание: Weingut J. Neus, Ingelheim am Rhein \"Muschelkalk\" Spatburgunder — приятный и свежий Пино Нуар категории Gutsweine VDP, которая отражает \"домашний стиль\" J. Neus. \"Мушелькальк\" Шпетбургундер отличается высоким качеством, что характерно для всех вин ви",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "0bacfe61d274162ddc5c1e5759de4dd5f82362bb322ddb2f2de035151aa954f3",
             "raw_product_text_chars": 8700,
             "availability_note": null,
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Красно-рубиновый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -4556,14 +4586,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 15 лет",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Начиная с 2001 года, винодельня Франкленд Истейт производит ограниченное количество вин с двух одиночных виноградников — \"Poison Hill\" и \"Cooladerra\". Нетрадиционное название виноградника \"Poison Hill\" является результатом того, что он расположен на "
+              "description_excerpt": "Описание: Начиная с 2001 года, винодельня Франкленд Истейт производит ограниченное количество вин с двух одиночных виноградников — \"Poison Hill\" и \"Cooladerra\". Нетрадиционное название виноградника \"Poison Hill\" является результатом того, что он расположен на ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "4892da4885b30df171b2c509f3e9104a4971cdb4f5c2203407d64da1cf745aee",
             "raw_product_text_chars": 7542,
             "availability_note": null,
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Вино золотисто-желтого цвета.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -5981,14 +6016,19 @@
               "wine_style": "Вино: Белое, Сухое",
               "body": "Насыщенность: лёгкое",
               "color_intensity": "Глубина цвета: бледное",
-              "description_excerpt": "Описание: Pitars, Prosecco DOC — изысканное игристое белое вино, созданное из отборного винограда сорта Глера. Являясь моносортовым, вино полностью раскрывает характер и аромат сорта: свежесть, легкую фруктовость и нежную цветочную ноту. Вино лёгкое, освежающе"
+              "description_excerpt": "Описание: Pitars, Prosecco DOC — изысканное игристое белое вино, созданное из отборного винограда сорта Глера. Являясь моносортовым, вино полностью раскрывает характер и аромат сорта: свежесть, легкую фруктовость и нежную цветочную ноту. Вино лёгкое, освежающе",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "395f167f4b2e7eb27af0d994bda2f73a282532bfcbee809894cdbea96177e4c4",
             "raw_product_text_chars": 8034,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Бледно-соломенно-желтый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -6390,14 +6430,19 @@
               "body": "Насыщенность: полнотелое",
               "aging_potential": "Потенциал хранения: 4 года",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: \"Vizzo\" Rosso — красное полусухое вино для уютного ужина или дружеской встречи. Оно сочетает живую фруктовую основу и мягкую, слегка бархатистую текстуру, позволяя постепенно раскрывать ноты ягод и специй. Производится из винограда Барбера и Мерло, в"
+              "description_excerpt": "Описание: \"Vizzo\" Rosso — красное полусухое вино для уютного ужина или дружеской встречи. Оно сочетает живую фруктовую основу и мягкую, слегка бархатистую текстуру, позволяя постепенно раскрывать ноты ягод и специй. Производится из винограда Барбера и Мерло, в",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "24aea125e4524503e2ebbccc570b79dda71e5e5aeb7418277d0c2f7877ab6410",
             "raw_product_text_chars": 4565,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Насыщенный красный.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -6526,14 +6571,19 @@
               "body": "Насыщенность: полнотелое",
               "aging_potential": "Потенциал хранения: 10-12 лет",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: \"Black Magic\" Merlot — щедрое, ароматное красное вино, созданное из винограда сорта Мерло, который произрастает на виноградниках Стелленбоша с разложившимися гранитными почвами, восточной и западной экспозицией. Возраст лоз колеблется от 30 до 37 лет"
+              "description_excerpt": "Описание: \"Black Magic\" Merlot — щедрое, ароматное красное вино, созданное из винограда сорта Мерло, который произрастает на виноградниках Стелленбоша с разложившимися гранитными почвами, восточной и западной экспозицией. Возраст лоз колеблется от 30 до 37 лет",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "1b484ecf1df050726ea74f998cfe4798ce4e02992ee6f06df31f3058dc365747",
             "raw_product_text_chars": 7532,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Яркий красно-рубиновый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -6916,14 +6966,19 @@
               "wine_style": "Вино: Розовое, Полусухое",
               "body": "Насыщенность: лёгкое",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Domaine Laffitte, Rose — легкое и элегантное розовое вино с яркой фруктовой и ягодной палитрой. Лозы Мерло и Мальбек, растущие на глинисто-известковых почвах Кот де Гасконь, дают аккуратный, концентрированный урожай, который формирует насыщенность вк"
+              "description_excerpt": "Описание: Domaine Laffitte, Rose — легкое и элегантное розовое вино с яркой фруктовой и ягодной палитрой. Лозы Мерло и Мальбек, растущие на глинисто-известковых почвах Кот де Гасконь, дают аккуратный, концентрированный урожай, который формирует насыщенность вк",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "7190c387263909fb2edd733745646ce6f88d88da2191e3c7d85da2596ce6b9bb",
             "raw_product_text_chars": 4140,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Светло-розовый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -8054,14 +8109,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 10-15 лет",
               "color_intensity": "Глубина цвета: тёмное",
-              "description_excerpt": "Описание: Morellino di Scansano Riserva — историческое вино, первое, созданное на винодельне Фаттория Ле Пупилле. Тогда еще не существовало наименования Morellino DOC, оно появилось только в 1978 году. Но уже с первых винтажей было понятно, что это вино являет"
+              "description_excerpt": "Описание: Morellino di Scansano Riserva — историческое вино, первое, созданное на винодельне Фаттория Ле Пупилле. Тогда еще не существовало наименования Morellino DOC, оно появилось только в 1978 году. Но уже с первых винтажей было понятно, что это вино являет",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "e5c527cc11694841df344ea0e419fc7fa84770084a6bc50ed9a1d03f0f76e1c7",
             "raw_product_text_chars": 9582,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Глубокий тёмно-рубиновый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -8331,14 +8391,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 10-12 лет",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: Chateau Marjosse — насыщенное, сочное, ароматное красное сухое вино с яркой фруктовостью и тонкими танинами. Вино произведено из купажа винограда сортов Мерло, Каберне Совиньон, Каберне Фран и Мальбек, выращенного на живописных виноградниках региона "
+              "description_excerpt": "Описание: Chateau Marjosse — насыщенное, сочное, ароматное красное сухое вино с яркой фруктовостью и тонкими танинами. Вино произведено из купажа винограда сортов Мерло, Каберне Совиньон, Каберне Фран и Мальбек, выращенного на живописных виноградниках региона ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "b0880ceadd39daa7e07e8c3b95b46d1e4e1cf192dd6444fb064fa12979e9a5b6",
             "raw_product_text_chars": 4546,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Нежный фиолетовый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -8585,14 +8650,19 @@
               "wine_style": "Вино: Красное, Полусухое",
               "body": "Насыщенность: полнотелое",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: Зинфандель — типично калифорнийский сорт винограда, который, как полагают, возник в Южной Италии и был завезен в Калифорнию выходцами из Италии. Вино из Зинфандель, благодаря жгучему калифорнийскому солнцу, получается сильным и сочным, похожим на фру"
+              "description_excerpt": "Описание: Зинфандель — типично калифорнийский сорт винограда, который, как полагают, возник в Южной Италии и был завезен в Калифорнию выходцами из Италии. Вино из Зинфандель, благодаря жгучему калифорнийскому солнцу, получается сильным и сочным, похожим на фру",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "a3c6990eb47fce65eaf93b22630726942f640df8a57a5e87e8206a9d640a023d",
             "raw_product_text_chars": 4858,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Насыщенный рубиновый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -9282,14 +9352,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 3-4 года",
               "color_intensity": "Глубина цвета: умеренное",
-              "description_excerpt": "Описание: La Posta, Rose of Malbec — моносортовое вино из винограда сорта Мальбек, сочное и освежающее, оно может сочетаться практически с любым блюдом. Виноград собирается на виноградниках долины Уко на большой высоте, что отражается на характере вина. После "
+              "description_excerpt": "Описание: La Posta, Rose of Malbec — моносортовое вино из винограда сорта Мальбек, сочное и освежающее, оно может сочетаться практически с любым блюдом. Виноград собирается на виноградниках долины Уко на большой высоте, что отражается на характере вина. После ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "9b1faf570a4a9e7124bcea535967f29a3c36b65bb1e2f0920815db41ce3c7eb0",
             "raw_product_text_chars": 3784,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Нежный лососевый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -9817,14 +9892,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 1-2 года",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: \"Belgvardo\" Rose — приятное розовое сухое тосканское вино с оттенками свежих фруктов во вкусе и аромате, которое впервые было создано в 2007 году. Это вино рождено из винограда сортов Сира и Санджовезе, использованных в равной пропорции и собранных с"
+              "description_excerpt": "Описание: \"Belgvardo\" Rose — приятное розовое сухое тосканское вино с оттенками свежих фруктов во вкусе и аромате, которое впервые было создано в 2007 году. Это вино рождено из винограда сортов Сира и Санджовезе, использованных в равной пропорции и собранных с",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "2c25281decfacda3d131b3963ee75ede7aa4bbccaeebcba04b19a52e54f271f1",
             "raw_product_text_chars": 5009,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Имеет светло-розовый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -9967,14 +10047,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 5 лет",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: Вино Fattoria Le Pupille, Morellino di Scansano — это превосходное кюве, состоящее на 85% из винограда сорта Санджовезе, с добавлением 15% таких сортов как Аликанте и Чильеджоло. Первый винтаж этого вина датирован 1985-м годом, и с тех пор оно стало "
+              "description_excerpt": "Описание: Вино Fattoria Le Pupille, Morellino di Scansano — это превосходное кюве, состоящее на 85% из винограда сорта Санджовезе, с добавлением 15% таких сортов как Аликанте и Чильеджоло. Первый винтаж этого вина датирован 1985-м годом, и с тех пор оно стало ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "9da8a0c18762525f609513413b4cd616cd39dd113cc1cbdeb199031ec6e2f855",
             "raw_product_text_chars": 9436,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Имеет темно-рубиновый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -10358,14 +10443,19 @@
               "wine_style": "Вино: Красное, Сухое",
               "body": "Насыщенность: полнотелое",
               "color_intensity": "Глубина цвета: тёмное",
-              "description_excerpt": "Описание: \"Mani del Sud\" Rosso — богатое, выразительное, ароматное вино из автохтонных сортов винограда: Негроамаро и Мальвазия Нера, выращиваемых в Саличе Салентино. Исторически в Саленто сорта выращиваются вместе, с чередованием восьми лоз Негроамаро с двумя"
+              "description_excerpt": "Описание: \"Mani del Sud\" Rosso — богатое, выразительное, ароматное вино из автохтонных сортов винограда: Негроамаро и Мальвазия Нера, выращиваемых в Саличе Салентино. Исторически в Саленто сорта выращиваются вместе, с чередованием восьми лоз Негроамаро с двумя",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "e7100b652e19f346512dcb8e6f894a64f5b1c58a581a39078d413aeebec99dcc",
             "raw_product_text_chars": 8630,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Глубокий рубиновый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -11845,14 +11935,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 4 года",
               "color_intensity": "Глубина цвета: насыщенное",
-              "description_excerpt": "Описание: Tenuta Sant'Antonio, \"Nanfre\", Valpolicella DOC — Вальполичелла Классико в современном ключе, с культовым вкусом терруара, но предназначенное для современного потребителя. Вино изготавливается из винограда сортов Корвина и Рондинелла. Виноградники, г"
+              "description_excerpt": "Описание: Tenuta Sant'Antonio, \"Nanfre\", Valpolicella DOC — Вальполичелла Классико в современном ключе, с культовым вкусом терруара, но предназначенное для современного потребителя. Вино изготавливается из винограда сортов Корвина и Рондинелла. Виноградники, г",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "a2282c48543001b01f00d1e5552cba05c5455d222f05f72d9fe86f3c38ade30e",
             "raw_product_text_chars": 4733,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Имеет рубиново-красный цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -12422,14 +12517,19 @@
               "body": "Насыщенность: полнотелое",
               "aging_potential": "Потенциал хранения: 3-6 лет",
               "color_intensity": "Глубина цвета: тёмное",
-              "description_excerpt": "Описание: \"Elias Mora\" Crianza — изысканное красное сухое вино, изготовленное из винограда сорта Тинта де Торо, который выращивается на виноградниках компании. Виноградники расположены между реками Дуэро и Хорния на высоте 800 метров над уровнем моря. Здесь пр"
+              "description_excerpt": "Описание: \"Elias Mora\" Crianza — изысканное красное сухое вино, изготовленное из винограда сорта Тинта де Торо, который выращивается на виноградниках компании. Виноградники расположены между реками Дуэро и Хорния на высоте 800 метров над уровнем моря. Здесь пр",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "44c858711631f314e38863e122bb0c829fa92dc79fb11fb6680d8e9a0fb3f1a5",
             "raw_product_text_chars": 4232,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Насыщенный пурпурный оттенок.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -13519,14 +13619,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 1-3 года",
               "color_intensity": "Глубина цвета: бледное",
-              "description_excerpt": "Описание: Muga, Rosado — испанское розовое сухое вино, созданное по особой технологии. Вино производят из винограда сортов Гарнача и Виура, собранного с 14 виноградников в Риохе, расположенных на высоте от 450 до 600 метров над уровнем моря. Урожай собирают в "
+              "description_excerpt": "Описание: Muga, Rosado — испанское розовое сухое вино, созданное по особой технологии. Вино производят из винограда сортов Гарнача и Виура, собранного с 14 виноградников в Риохе, расположенных на высоте от 450 до 600 метров над уровнем моря. Урожай собирают в ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "c33a1f2ec3d8dbb9e5796623fc28f3423949fe0788abd54de718eed8baecf1ee",
             "raw_product_text_chars": 5596,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Вино бледно-розового цвета.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -13802,14 +13907,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 1-4 года",
               "color_intensity": "Глубина цвета: бледное",
-              "description_excerpt": "Описание: Muga, Rosado — испанское розовое сухое вино, созданное по особой технологии. Вино производят из винограда сортов Гарнача и Виура, собранного с виноградников в Риохе, которые расположены в основном на известково-глинистых почвах долины Оха и железисты"
+              "description_excerpt": "Описание: Muga, Rosado — испанское розовое сухое вино, созданное по особой технологии. Вино производят из винограда сортов Гарнача и Виура, собранного с виноградников в Риохе, которые расположены в основном на известково-глинистых почвах долины Оха и железисты",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "0f7d4ca3b3369c468de92624794634f34bb87c2554be982a46f9d62f2b7d797f",
             "raw_product_text_chars": 5927,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Имеет бледно-розовый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -14087,14 +14197,19 @@
               "wine_style": "Вино: Белое, Сухое",
               "body": "Насыщенность: среднее",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Привлекательное вино Mezzacorona, Pinot Grigio, Trentino DOC обладает душистым ароматом и сбалансированным, свежим, очень элегантным вкусом. Такой выразительности удалось добиться благодаря Пино Гриджио, выращенному на безупречных виноградниках вдоль"
+              "description_excerpt": "Описание: Привлекательное вино Mezzacorona, Pinot Grigio, Trentino DOC обладает душистым ароматом и сбалансированным, свежим, очень элегантным вкусом. Такой выразительности удалось добиться благодаря Пино Гриджио, выращенному на безупречных виноградниках вдоль",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "0913dab6c4ef183458122163d0bb44acaa844dc984e4a9f8ea50d9d7fac3f0c2",
             "raw_product_text_chars": 7604,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Светло-соломенный цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -14496,14 +14611,19 @@
               "wine_style": "Вино: Белое, Сухое",
               "body": "Насыщенность: среднее",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: В райском уголке в самом сердце Коллио, на винограднике Ronco dei Tassi выращивают виноград сорта Совиньон Блан, из которого производят ароматное белое вино \"Ronco dei Sassi\". Тщательный отбор лучших ягод, использование современных технологий и опыт "
+              "description_excerpt": "Описание: В райском уголке в самом сердце Коллио, на винограднике Ronco dei Tassi выращивают виноград сорта Совиньон Блан, из которого производят ароматное белое вино \"Ronco dei Sassi\". Тщательный отбор лучших ягод, использование современных технологий и опыт ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "717d835ad90953c2a83d0ecd50afc27d33dd6495f4326f871614138ebf2e3507",
             "raw_product_text_chars": 7518,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Вино светло-золотистого цвета.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -16204,14 +16324,19 @@
               "wine_style": "Вино: Белое, Сухое",
               "body": "Насыщенность: среднее",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Chanzy, \"Les Fortunes\" Aligote — свежее белое сухое вино из Бургундии, раскрывающее энергичный и чистый характер сорта Алиготе. В бокале раскрываются ноты лимона, зеленого яблока и груши, дополненные легким минеральным оттенком. Вино легкое и живое, "
+              "description_excerpt": "Описание: Chanzy, \"Les Fortunes\" Aligote — свежее белое сухое вино из Бургундии, раскрывающее энергичный и чистый характер сорта Алиготе. В бокале раскрываются ноты лимона, зеленого яблока и груши, дополненные легким минеральным оттенком. Вино легкое и живое, ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "d31ff61bd62ee622b7885f07bf1aa907af9596e19e11db0a431fb34e044de6fc",
             "raw_product_text_chars": 4664,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Светлый соломенный цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -16476,14 +16601,19 @@
               "wine_style": "Вино: Белое, Сухое",
               "body": "Насыщенность: среднее",
               "color_intensity": "Глубина цвета: светлое",
-              "description_excerpt": "Описание: Уникальное вино \"Mar de Frades\", обладающее особым характером, прославило свое хозяйство. Оно представляет всю выразительность сорта Альбариньо, выращенного в Валь до Сальнес в регионе Риас Байшас, окутывает своей свежестью и покоряет балансом между "
+              "description_excerpt": "Описание: Уникальное вино \"Mar de Frades\", обладающее особым характером, прославило свое хозяйство. Оно представляет всю выразительность сорта Альбариньо, выращенного в Валь до Сальнес в регионе Риас Байшас, окутывает своей свежестью и покоряет балансом между ",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "3e1d147c90a05492369d3205287bf167a12573f29ebf0ce1d28961f8ca946d86",
             "raw_product_text_chars": 8686,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "Имеет светло-золотистый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
@@ -16621,14 +16751,19 @@
               "body": "Насыщенность: среднее",
               "aging_potential": "Потенциал хранения: 2 года",
               "color_intensity": "Глубина цвета: бледное",
-              "description_excerpt": "Описание: \"Secateurs\" Rose — изысканное розовое вино, созданное из винограда сорта Мурведр. Весь виноград для этого вина выращивается в Свартланде на гранитных и сланцевых почвах. Виноград собирают рано утром, до восхода солнца. Целые грозди подвергаются прямо"
+              "description_excerpt": "Описание: \"Secateurs\" Rose — изысканное розовое вино, созданное из винограда сорта Мурведр. Весь виноград для этого вина выращивается в Свартланде на гранитных и сланцевых почвах. Виноград собирают рано утром, до восхода солнца. Целые грозди подвергаются прямо",
+              "color": "Verified same-product browser HTML archive; visible `Цвет` heading and following paragraph; 2026-11-23"
             },
             "raw_product_text_sha256": "43ffe5ca7e8d852dfdf7004c10378bc0170a60941113aabc068a05febfbcde28",
             "raw_product_text_chars": 3928,
             "availability_note": "Добавить в корзину",
             "availability_spb": null,
             "image_usage_allowed": false,
-            "image_permission_source": null
+            "image_permission_source": null,
+            "color": "У вина бледно-розовый цвет.",
+            "field_checked_at": {
+              "color": "2026-11-23"
+            }
           },
           "enrichment_status": {
             "status": "verified",
