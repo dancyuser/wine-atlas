@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "reviewed_on": "2026-11-23",
+  "source_archive": "wine-atlas-background-snapshots-2026-11-23.zip",
+  "archive_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+  "reviewed_records": [
+    {
+      "id": "c9f63273980c",
+      "title": "Dow’s Late Bottled Vintage Port (LBV)",
+      "year": 2018,
+      "volume_l": 0.75,
+      "original_url": "https://ast.wine/catalog/product/dow_s_late_bottled_vintage_port_5608309002876_43233/",
+      "status": "verified",
+      "checked_at": "2026-11-23",
+      "source_url": "https://ast.wine/catalog/product/dow_s_late_bottled_vintage_port_5608309002876_43233/",
+      "source_snapshot_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+      "reason": "same_product_in_stock",
+      "volume": 0.75,
+      "final_url": "https://ast.wine/catalog/product/dow_s_late_bottled_vintage_port_5608309002876_43233/",
+      "evidence": "AST.WINE primary product: 2018, 0.75 l, article 43233, 3579 RUB, Add to cart, St. Petersburg store availability; archived 2026-11-23 HTML and public page.",
+      "price_rub": 3579
+    },
+    {
+      "id": "060e3c866e44",
+      "title": "Kopke Late Bottled Vintage Port (LBV)",
+      "year": 2018,
+      "volume_l": 0.75,
+      "original_url": "https://ladogawine.ru/catalog/wine/kopke_leyt_bottled_vintedzh_porto_075/#",
+      "status": "verified",
+      "checked_at": "2026-11-23",
+      "source_url": "https://ladogawine.ru/catalog/wine/kopke_leyt_bottled_vintedzh_porto_075/",
+      "source_snapshot_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+      "reason": "same_product_in_stock",
+      "volume": 0.75,
+      "final_url": "https://ladogawine.ru/catalog/wine/kopke_leyt_bottled_vintedzh_porto_075/",
+      "evidence": "LADOGA Wine primary product: Kopke LBV 2018, barcode 5601194709981, 0.75 l, 6348 RUB, Add to cart; archived 2026-11-23 HTML and public page.",
+      "price_rub": 6348
+    },
+    {
+      "id": "8433dbc66ae6",
+      "title": "Kendall-Jackson Vintner’s Reserve Chardonnay",
+      "year": 2018,
+      "volume_l": 0.75,
+      "original_url": "https://vinissimo.biz/catalog/wine/kendall_jackson_vintners_reserve_chardonnay-1831018/",
+      "status": "excluded",
+      "checked_at": "2026-11-23",
+      "source_url": "https://vinissimo.biz/catalog/wine/kendall_jackson_vintners_reserve_chardonnay-1831018/",
+      "source_snapshot_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+      "reason": "out_of_stock",
+      "volume": 0.75,
+      "final_url": "https://vinissimo.biz/catalog/wine/kendall_jackson_vintners_reserve_chardonnay-1831018/",
+      "evidence": "Vinissimo primary product for 2018 Kendall-Jackson Vintner's Reserve Chardonnay 0.75 l explicitly states 'Нет в наличии', and vintage selector confirms 2018 out of stock."
+    },
+    {
+      "id": "d9a5af8ef749",
+      "title": "Amalaya Blanco",
+      "year": 2024,
+      "volume_l": null,
+      "original_url": "https://spb.winestyle.ru/products/Amalaya-Blanco-2024.html",
+      "status": "excluded",
+      "checked_at": "2026-11-23",
+      "source_url": "https://spb.winestyle.ru/products/Amalaya-Blanco-2024.html",
+      "source_snapshot_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+      "reason": "redirect_vintage_mismatch",
+      "volume": 0.75,
+      "final_url": "https://spb.winestyle.ru/products/Amalaya-Blanco-2025.html",
+      "evidence": "Winestyle 2024 Amalaya Blanco redirected to 2025 primary product, message 'Перенаправлено с отсутствующего товара'. Current 2025 stock is NOT 2024."
+    },
+    {
+      "id": "28bf2f843af7",
+      "title": "Braida Vigna Senza Nome Moscato d’Asti DOCG",
+      "year": 2023,
+      "volume_l": 0.375,
+      "original_url": "https://spb.winestyle.ru/products/Vigna-Senza-Nome-Moscato-d-Asti-DOCG-2023-375.html",
+      "status": "excluded",
+      "checked_at": "2026-11-23",
+      "source_url": "https://spb.winestyle.ru/products/Vigna-Senza-Nome-Moscato-d-Asti-DOCG-2023-375.html",
+      "source_snapshot_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+      "reason": "redirect_vintage_and_volume_mismatch",
+      "volume": 0.375,
+      "final_url": "https://spb.winestyle.ru/products/Vigna-Senza-Nome-Moscato-d-Asti-DOCG-2025-750.html",
+      "evidence": "Winestyle 2023 Braida Vigna Senza Nome 375 ml redirected to in-stock 2025 750 ml; both vintage and volume mismatch; primary page labels 2023 original unavailable."
+    },
+    {
+      "id": "e3e9c91e71bc",
+      "title": "Rotari Blanc de Blancs Extra Brut Trento DOC",
+      "year": 2018,
+      "volume_l": null,
+      "original_url": "https://spb.winestyle.ru/products/Rotari-Blanc-de-Blancs-Extra-Brut-Trento-DOC-2018.html",
+      "status": "excluded",
+      "checked_at": "2026-11-23",
+      "source_url": "https://spb.winestyle.ru/products/Rotari-Blanc-de-Blancs-Extra-Brut-Trento-DOC-2018.html",
+      "source_snapshot_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+      "reason": "redirect_vintage_mismatch",
+      "volume": 0.75,
+      "final_url": "https://spb.winestyle.ru/products/Rotari-Blanc-de-Blancs-Extra-Brut-Trento-DOC-2021.html",
+      "evidence": "Winestyle Rotari Blanc de Blancs Extra Brut 2018 redirected to available 2021, labelled as 'Перенаправлено с отсутствующего товара' 2018."
+    },
+    {
+      "id": "ce214c07863d",
+      "title": "Vilarnau Brut Nature Reserva Cava DO",
+      "year": 2021,
+      "volume_l": null,
+      "original_url": "https://spb.winestyle.ru/products/Vilarnau-Brut-Nature-Reserva-Cava-DO-2021.html",
+      "status": "excluded",
+      "checked_at": "2026-11-23",
+      "source_url": "https://spb.winestyle.ru/products/Vilarnau-Brut-Nature-Reserva-Cava-DO-2021.html",
+      "source_snapshot_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+      "reason": "redirect_vintage_mismatch",
+      "volume": 0.75,
+      "final_url": "https://spb.winestyle.ru/products/Vilarnau-Brut-Nature-Reserva-Cava-DO-2022.html",
+      "evidence": "Winestyle Vilarnau Brut Nature Reserva 2021 redirected to 2022, labelled as 'Перенаправлено с отсутствующего товара' 2021."
+    },
+    {
+      "id": "3684c27c6d62",
+      "title": "Bellenda San Fermo Conegliano Valdobbiadene DOCG Prosecco Superiore gift box",
+      "year": 2022,
+      "volume_l": null,
+      "original_url": "https://spb.winestyle.ru/products/Bellenda-San-Fermo-Conegliano-Valdobbiadene-DOCG-Prosecco-Superiore-2022-gift-box.html",
+      "status": "excluded",
+      "checked_at": "2026-11-23",
+      "source_url": "https://spb.winestyle.ru/products/Bellenda-San-Fermo-Conegliano-Valdobbiadene-DOCG-Prosecco-Superiore-2022-gift-box.html",
+      "source_snapshot_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+      "reason": "redirect_vintage_mismatch",
+      "volume": 0.75,
+      "final_url": "https://spb.winestyle.ru/products/Bellenda-San-Fermo-Conegliano-Valdobbiadene-DOCG-Prosecco-Superiore-2024-gift-box.html",
+      "evidence": "Winestyle Bellenda San Fermo gift box 2022 redirected to gift box 2024, labelled as 'Перенаправлено с отсутствующего товара' 2022; previous 2022 card also showed waiting for restock."
+    }
+  ],
+  "final_counts": {
+    "source_records": 124,
+    "original_out_of_stock": 8,
+    "newly_excluded": 6,
+    "verified_from_external_sellers": 2,
+    "visible": 110,
+    "visible_unknown_prices": 0,
+    "visible_unknown_photos": 0,
+    "remaining_without_independent_professional_score": 2
+  },
+  "missing_professional_scores": [
+    {
+      "id": "5e980b14c4d5",
+      "title": "Canti Moscato d'Asti DOCG 2019",
+      "reason": "No numerical critic score verified for exact Canti Moscato d'Asti 2019; a Gilbert & Gaillard Gold medal for 'Canti Estate 2019' is not safely proven identical."
+    },
+    {
+      "id": "6b16a51f5c8c",
+      "title": "Myskhako Quintessence Zinfandel (non-vintage in catalog)",
+      "reason": "No numerical critic rating verified for the exact red dry/semi-dry Zinfandel cuvee; previously linked Vivino was for a DIFFERENT rosé sparkling wine and was corrected to red Zinfandel Ripasso."
+    }
+  ],
+  "notes": [
+    "The 124 user wishlist entries remain in data/wines.json; visibility excludes stock-unavailable and identity-mismatched originals.",
+    "Prices are 23 Nov 2026 observations, not realtime stock guarantees.",
+    "Critic ratings must match the cuvee/vintage; do not substitute a different year or line.",
+    "Equivalent grape synonyms standardized only for UI filtering; original grape lists retained."
+  ]
+}
