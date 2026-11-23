@@ -64,6 +64,20 @@ class ManualImportTests(unittest.TestCase):
         _,report=apply_observations({'records':[copy.deepcopy(RECORD)]},[o],automated=True)
         self.assertEqual(report['rejected'][0][1],'automated_identity_not_verified')
 
+    def test_automatic_import_rejects_other_cuvee_same_producer(self):
+        o=copy.deepcopy(OBS)
+        o['reviewer_confirmed']=False
+        o['capture_method']='automated_browser_batch'
+        o['verification']={'status':'exact'}
+        r=copy.deepcopy(RECORD)
+        r['title']='Albert Bichot Origines Chardonnay Bourgogne AOC'
+        r['year']=2022
+        r['stores'][0]['product_details']['full_name']='Вино Albert Bichot, Origines Chardonnay, Bourgogne AOC, 2022'
+        o['capture']['h1']='Albert Bichot Origines Pinot Noir Bourgogne AOC 2022, 750 ml'
+        o['capture']['products']=[]
+        _,report=apply_observations({'records':[r]},[o],automated=True)
+        self.assertEqual(report['rejected'][0][1],'strict_main_product_name_mismatch')
+
     def test_auto_import_rechecks_name_and_variant_again(self):
         o=copy.deepcopy(OBS)
         o['reviewer_confirmed']=False
