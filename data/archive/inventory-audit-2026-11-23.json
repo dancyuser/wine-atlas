@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "observed_on": "2026-11-23",
+  "source_archive": "wine-atlas-background-snapshots-2026-11-23.zip",
+  "archive_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+  "method": "Read primary .m-productpage-price only. 'Добавить в корзину' in this block = in stock; 'Ожидаем поступление' inside .m-productpage-price__status with no buy button = out of stock. Ignore bottom bar and recommendation elements.",
+  "targets": 124,
+  "exact_matches": 116,
+  "in_stock": 108,
+  "out_of_stock": 8,
+  "identity_unconfirmed_or_mismatch": 8,
+  "out_of_stock_ids": [
+    "42b87c5124ce",
+    "2a8f07a9732b",
+    "839e49e2c896",
+    "079c918bef91",
+    "3da3f3b14e7a",
+    "85f7014559dd",
+    "5445709eae58",
+    "ffffabb4d41a"
+  ],
+  "previous_collector_false_out_of_stock_ids": [
+    "e3bc96e35d46",
+    "5f82dc29ad72",
+    "75ea3ee23df9",
+    "5740739d992b"
+  ],
+  "unverified_ids": [
+    "d9a5af8ef749",
+    "28bf2f843af7",
+    "e3e9c91e71bc",
+    "ce214c07863d",
+    "3684c27c6d62",
+    "8433dbc66ae6",
+    "c9f63273980c",
+    "060e3c866e44"
+  ],
+  "policy": "Out-of-stock wines stay in source data and are hidden in site UI; unknown inventory remains visible. Independently published Vivino/critic data still display; WineStyle-reported scores do not display."
+}
