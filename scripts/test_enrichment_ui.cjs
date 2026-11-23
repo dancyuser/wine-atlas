@@ -58,6 +58,22 @@ assert(card.includes('92 / 100'),
   'The original critic score and scale must be preserved');
 assert(!card.includes('Оценка покупателей WineStyle'),
   'Retailer customer ratings must not appear');
+// WineStyle can quote Vivino as a last-resort source, but only if there is
+// no direct Vivino value and the retailer product URL is exact-verified.
+sample.stores[0].product_details.ratings.push({
+ source:'Vivino',score:4.1,scale:5,
+ reported_by:'WineStyle',source_url:sample.stores[0].url,
+ observed_on:'2026-11-22'
+});
+const fallbackRating=h.metrics(sample);
+assert.equal(fallbackRating.vivino.score,4.1);
+assert.equal(fallbackRating.vivino.source_kind,'retailer_reported_vivino');
+assert.equal(fallbackRating.vivino.scope,'all_vintages');
+assert.equal(fallbackRating.index,null,'Unverified vintage must not yield vintage-only score');
+const fallbackCard=h.card(sample);
+assert(fallbackCard.includes('По данным WineStyle'));
+assert(fallbackCard.includes('винтаж не установлен'));
+sample.stores[0].product_details.ratings.pop();
 h.state.ratingRecords.fixture=[
  {source:'Vivino',score:4.2,scale:5,scope:'vintage',vintage:2023,
    source_url:'https://www.vivino.com/wines/123'},
@@ -112,6 +128,8 @@ assert(enrichedCard.includes(new Intl.NumberFormat('ru-RU').format(3990)),
   'Snapshot price should use production locale formatting');
 assert(enrichedCard.includes('images_gen/272/272012/0_0_695x600.webp'));
 assert(enrichedCard.includes('Цена в архиве'));
+assert(enrichedCard.includes('data-bottle-view'), 'Photo must have keyboard-focusable zoom button');
+assert(enrichedCard.includes('Увеличить фото:'), 'Zoom button needs an accessible name');
 h.state.snapshots={};
 h.state.researchedPhotos.fixture={
   year:2023,url:'https://photos.example.com/bottle.jpg',
