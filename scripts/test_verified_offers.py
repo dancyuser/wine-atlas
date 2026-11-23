@@ -44,6 +44,25 @@ class ExactOfferTests(unittest.TestCase):
     def test_changed_vintage_rejected(self):
         self.assertIsNone(self.check(page(name="Kopke LBV Port 2025, 750 ml"))[0])
 
+    def test_conflicting_name_and_description_must_be_rejected(self):
+        # Regression for Codex P2: original variant appears only in a historical note.
+        self.assertIsNone(self.check(page(
+            name="Kopke LBV Port 2025, 1.5 l",
+            volume="Previously offered as 2018 vintage in 750 ml bottles."
+        ))[0])
+
+    def test_conflicting_vintage_only_rejected(self):
+        self.assertIsNone(self.check(page(
+            name="Kopke LBV Port 2025, 750 ml",
+            volume="Previous 2018 release"
+        ))[0])
+
+    def test_conflicting_volume_only_rejected(self):
+        self.assertIsNone(self.check(page(
+            name="Kopke LBV Port 2018, 1.5 l",
+            volume="Also released in 750 ml bottles."
+        ))[0])
+
     def test_changed_volume_rejected(self):
         self.assertIsNone(self.check(page(name="Kopke LBV Port 2018, 1.5 l"))[0])
 
