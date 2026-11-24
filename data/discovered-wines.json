@@ -142,9 +142,9 @@
         "max": 2034,
         "scope": "vintage",
         "source": "Vinous",
-        "source_url": "https://vinous.com/wines/inama-2023-soave-classico-foscarino",
+        "source_url": "https://vinous.com/wines/inama-soave-classico-foscarino/2023",
         "raw": "2025–2034",
-        "note": "Диапазон для урожая 2023 был виден в индексированной версии Vinous. На открытой странице может потребоваться доступ к заметке.",
+        "note": "Окно для урожая 2023 подтверждено в браузерной выгрузке по каноническому адресу Vinous.",
         "corroborating_url": "https://whwc.com/inama-soave-classico-vigneti-di-foscarino-2023/"
       },
       "critic_ratings": [

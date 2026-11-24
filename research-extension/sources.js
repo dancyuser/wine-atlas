@@ -29,7 +29,7 @@ const RETAILERS = new Set(['Винлаб','Ароматный мир','Vinissimo
 const RECHECK = [
  ['Wine Enthusiast','https://www.wineenthusiast.com/buying-guide/bodegas-ramon-bilbao-2022-crianza-tempranillo-rioja/'],
  ['Falstaff','https://www.falstaff.com/nordics/wines/inama-2023-foscarino-soave-classico-doc-1'],
- ['Vinous','https://vinous.com/wines/inama-2023-soave-classico-foscarino'],
+ ['Vinous','https://vinous.com/wines/inama-soave-classico-foscarino/2023'],
  ['Sabonis','https://sabonis.ru/productDetail/vino-ramon-bilbao-kriansa-doc-riokha-10'],
  ['Vinissimo','https://vinissimo.biz/catalog/wine/foscarino_soave_classico_doc_inama-1367923/']
 ];

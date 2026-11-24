@@ -58,6 +58,16 @@ class CaptureTests(unittest.TestCase):
         row['blocks']['city'] = 'Москва'
         self.assertIsNone(parse_offer(row, 'spb.luding.ru'))
 
+    def test_vinissimo_uses_availability_for_selected_vintage_and_volume_control(self):
+        row = {'title': 'Фоскарино Соаве Классико', 'url': 'https://vinissimo.biz/catalog/wine/example-1/',
+               'observed_at': '2026-11-24T12:00:00Z', 'blocks': {
+                   'document_title': 'Фоскарино Соаве Классико 2023 — купить | Vinissimo', 'city': 'Санкт-Петербург',
+                   'product': 'Фоскарино Соаве Классико\nFoscarino Soave Classico\nОбъём\n0.75\nГод урожая\n2023\nОбъёмы:\n0.75 л\n2022 г. - 4999 руб\nнет в наличии\n2023 г. - 4999 руб\nв наличии'}}
+        offer = parse_offer(row, 'vinissimo.biz')
+        self.assertEqual((offer['year'], offer['volume_l'], offer['price']), (2023, 0.75, 4999))
+        row['blocks']['product'] = row['blocks']['product'].replace('Год урожая\n2023', 'Год урожая\n2022')
+        self.assertIsNone(parse_offer(row, 'vinissimo.biz'))
+
 
 if __name__ == '__main__':
     unittest.main()

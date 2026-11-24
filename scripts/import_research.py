@@ -115,7 +115,7 @@ def parse_offer(row, host):
     year = year_in(title) or year_in(re.sub(r'\b(?:руб|₽).*$', '', hint, flags=re.I))
     volume_matches = re.findall(r'(\d+(?:[.,]\d+)?)\s*(мл|ml|л|l)(?=\W|$)', hint, re.I)
     if not volume_matches and host == 'vinissimo.biz':
-        volume_matches = re.findall(r'(?:Объем|Объём)\s*[:|]?\s*(\d+(?:[.,]\d+)?)\s*(мл|ml|л|l)(?=\W|$)', text, re.I)
+        volume_matches = re.findall(r'(?:Объ[её]м(?:ы)?)\s*[:|]?\s*(\d+(?:[.,]\d+)?)\s*(мл|ml|л|l)(?=\W|$)', text, re.I)
     volumes = {Decimal(n.replace(',', '.')) / (1000 if unit.lower() in {'мл', 'ml'} else 1)
                for n, unit in volume_matches}
     if not year or len(volumes) != 1:
@@ -145,6 +145,9 @@ def parse_offer(row, host):
             if not stock and re.search(r'доступно\s+под заказ', text, re.I):
                 stock = 'orderable'
     elif host == 'vinissimo.biz' and blocks.get('city') == SPB:
+        selected_year = re.search(rf'\bГод урожая\s*:?\s*({YEAR})\b', text, re.I)
+        if selected_year and int(selected_year[1]) != year:
+            return None
         options = set(re.findall(rf'\b{year}\s*г\.\s*[-–]\s*(\d[\d\u00a0 ]*)\s*руб\.?\s*(?:\n\s*){{0,2}}(в наличии|нет в наличии)', text, re.I))
         if len(options) == 1 and (match := options.pop())[1].lower() == 'в наличии':
             amount, stock = match[0], 'in_stock'
