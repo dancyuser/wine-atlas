@@ -1,0 +1,236 @@
+{
+  "version": 1,
+  "updated_at": "2026-11-24",
+  "reference_year": 2026,
+  "note": "Owner-directed permanent publication exclusions; retain source observations for audit. New vintage with a distinct identity is not excluded automatically.",
+  "records": {
+    "cbc96de28176": {
+      "title": "Wente Morning Fog Chardonnay",
+      "year": 2016,
+      "url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2016.html",
+      "reason": "past"
+    },
+    "91f9214b514c": {
+      "title": "Huia Pinot Noir",
+      "year": 2013,
+      "url": "https://spb.winestyle.ru/products/Huia-Pinot-Noir-2013.html",
+      "reason": "past"
+    },
+    "0269b462fa82": {
+      "title": "Estandon Heritage Côtes de Provence AOP",
+      "year": 2020,
+      "url": "https://spb.winestyle.ru/products/Estandon-Heritage-Cotes-de-Provence-AOP-2020.html",
+      "reason": "past"
+    },
+    "caa3a12da960": {
+      "title": "Romagnoli Vizzo Rosso Emilia IGT",
+      "year": 2019,
+      "url": "https://spb.winestyle.ru/products/Romagnoli-Vizzo-Rosso-Emilia-IGT-2019.html",
+      "reason": "past"
+    },
+    "537d512cc39f": {
+      "title": "Aixala I Alcait Pardelasses Priorat DOQ",
+      "year": 2018,
+      "url": "https://spb.winestyle.ru/products/Aixala-I-Alcait-Pardelasses-Priorat-DOQ-2018.html",
+      "reason": "past"
+    },
+    "bdbf5d0327dc": {
+      "title": "Tement Ehrenhausen Muschelkalk",
+      "year": 2017,
+      "url": "https://spb.winestyle.ru/products/Tement-Ehrenhausen-Muschelkalk-2017-375.html",
+      "reason": "past"
+    },
+    "056c6f909a24": {
+      "title": "Nino Franco Faive Rosé Brut Veneto",
+      "year": 2019,
+      "url": "https://spb.winestyle.ru/products/Nino-Franco-Faive-Rose-Brut-Veneto-IGT-2019.html",
+      "reason": "past"
+    },
+    "88a3bb7ae281": {
+      "title": "Belguardo Rosé Toscana IGT",
+      "year": 2022,
+      "url": "https://spb.winestyle.ru/products/Belguardo-Rose-Toscana-IGT-2022.html",
+      "reason": "past"
+    },
+    "e5af8c73633f": {
+      "title": "Miraval Rosé Côtes de Provence AOC",
+      "year": 2018,
+      "url": "https://spb.winestyle.ru/products/Miraval-Rose-Cotes-de-Provence-AOC-2018-375.html",
+      "reason": "past"
+    },
+    "5f82dc29ad72": {
+      "title": "Muga Rosado Rioja DOC",
+      "year": 2021,
+      "url": "https://spb.winestyle.ru/products/Muga-Rosado-Rioja-DOC-2021.html",
+      "reason": "past"
+    },
+    "f32c8d6cae2b": {
+      "title": "Protos Verdejo",
+      "year": 2018,
+      "url": "https://spb.winestyle.ru/products/Protos-Verdejo-2018.html",
+      "reason": "past"
+    },
+    "cb6c474afa17": {
+      "title": "A.A. Badenhorst Secateurs Rosé Swartland WO",
+      "year": 2022,
+      "url": "https://spb.winestyle.ru/products/A-A-Badenhorst-Secateurs-Rose-Swartland-WO-2022.html",
+      "reason": "past"
+    },
+    "bab581b955b0": {
+      "title": "Parajes del Valle Monastrell Ecologico Jumilla DOP",
+      "year": 2022,
+      "url": "https://spb.winestyle.ru/products/Parajes-del-Valle-Monastrell-Ecologico-Jumilla-DOP-2022.html",
+      "reason": "past"
+    },
+    "f6c18006b2cc": {
+      "title": "Château Pajzos T Tokaji Furmint",
+      "year": 2022,
+      "url": "https://spb.winestyle.ru/products/Chateau-Pajzos-T-Tokaji-Furmint-2022.html",
+      "reason": "past"
+    },
+    "9ddeb3cfb445": {
+      "title": "Church Block Cabernet Shiraz Merlot",
+      "year": 2011,
+      "url": "https://spb.winestyle.ru/products/Church-Block-Cabernet-Shiraz-Merlot-2011.html",
+      "reason": "risk"
+    },
+    "995b5447875b": {
+      "title": "Ottella Lugana DOC",
+      "year": 2017,
+      "url": "https://spb.winestyle.ru/products/Azienda-Agricola-Ottella-Lugana-Ottella-2017.html",
+      "reason": "risk"
+    },
+    "5b8fb4a0202e": {
+      "title": "Felline Cicala Rosé Salento IGT",
+      "year": 2018,
+      "url": "https://spb.winestyle.ru/products/Felline-Cicala-Rose-Salento-IGT-2018.html",
+      "reason": "risk"
+    },
+    "a1faf8b0af1d": {
+      "title": "Canti Moscato d’Asti DOCG",
+      "year": 2023,
+      "url": "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2023.html",
+      "reason": "risk"
+    },
+    "060a331fa324": {
+      "title": "Gaintza Txakolina",
+      "year": 2023,
+      "url": "https://spb.winestyle.ru/products/Gaintza-Txakolina-2023.html",
+      "reason": "risk"
+    },
+    "93f0823b0c90": {
+      "title": "Peter Zemmer Chardonnay Alto Adige DOC",
+      "year": 2023,
+      "url": "https://spb.winestyle.ru/products/Peter-Zemmer-Chardonnay-Alto-Adige-DOC-2023.html",
+      "reason": "last"
+    },
+    "426bd971c45a": {
+      "title": "d’Arenberg The Stump Jump White",
+      "year": 2021,
+      "url": "https://spb.winestyle.ru/products/d-Arenberg-The-Stump-Jump-White-2021.html",
+      "reason": "last"
+    },
+    "7309e60757dd": {
+      "title": "El Esteco Don David Malbec Reserve",
+      "year": 2023,
+      "url": "https://spb.winestyle.ru/products/El-Esteco-Don-David-Malbec-Reserve-2023.html",
+      "reason": "last"
+    },
+    "e3190ea1eebc": {
+      "title": "Mi Terruño Expresión Malbec",
+      "year": 2022,
+      "url": "https://spb.winestyle.ru/products/Mi-Terruno-Expresion-Malbec-2022.html",
+      "reason": "last"
+    },
+    "9b6ffd01ee4a": {
+      "title": "Viña Cobos Felino Malbec",
+      "year": 2021,
+      "url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Malbec-2021.html",
+      "reason": "last"
+    },
+    "87c72ad959cc": {
+      "title": "Ramón Bilbao Crianza Rioja DOCa",
+      "year": 2021,
+      "url": "https://spb.winestyle.ru/products/Bodegas-Ramon-Bilbao-Crianza-Rioja-DOC-2021-750.html",
+      "reason": "last"
+    },
+    "298ebca26e9c": {
+      "title": "Fattoria Le Pupille Morellino di Scansano DOCG",
+      "year": 2021,
+      "url": "https://spb.winestyle.ru/products/Fattoria-Le-Pupille-Morellino-di-Scansano-DOCG-2021.html",
+      "reason": "last"
+    },
+    "006f83a3b98d": {
+      "title": "Santa Cristina Giardino Rosé Toscana IGT",
+      "year": 2024,
+      "url": "https://spb.winestyle.ru/products/Santa-Cristina-Giardino-Rose-Toscana-IGT-2024.html",
+      "reason": "last"
+    },
+    "ee109cc95019": {
+      "title": "Elias Mora Crianza",
+      "year": 2020,
+      "url": "https://spb.winestyle.ru/products/Elias-Mora-Crianza-2020.html",
+      "reason": "last"
+    },
+    "4123b553c232": {
+      "title": "Lapostolle Le Rosé",
+      "year": 2024,
+      "url": "https://spb.winestyle.ru/products/Lapostolle-Le-Rose-2024.html",
+      "reason": "last"
+    },
+    "2b85a6978520": {
+      "title": "Mezzacorona Pinot Grigio Trentino DOC",
+      "year": 2022,
+      "url": "https://spb.winestyle.ru/products/Mezzacorona-Pinot-Grigio-Trentino-DOC-2022.html",
+      "reason": "last"
+    },
+    "b2276984217f": {
+      "title": "Tenuta Poggio ai Mandorli Chianti Classico Gran Selezione DOCG",
+      "year": 2019,
+      "url": "https://spb.winestyle.ru/products/Tenuta-Poggio-ai-Mandorli-Chianti-Classico-Gran-Selezione-DOCG-2019.html",
+      "reason": "last"
+    },
+    "9830fcbfa909": {
+      "title": "Domaine Laffitte Rosé Côtes de Gascogne IGP",
+      "year": 2024,
+      "url": "https://spb.winestyle.ru/products/Domaine-Laffitte-Rose-Cotes-de-Gascogne-IGP-2024.html",
+      "reason": "last"
+    },
+    "9fb448b8f505": {
+      "title": "Apollonio Mani del Sud Rosso Salice Salentino DOP",
+      "year": 2021,
+      "url": "https://spb.winestyle.ru/products/Apollonio-Mani-del-Sud-Rosso-Salice-Salentino-DOP-2021.html",
+      "reason": "last"
+    },
+    "d41d680aacec": {
+      "title": "Fattoria Le Pupille Poggio Argentato IGT",
+      "year": 2022,
+      "url": "https://spb.winestyle.ru/products/Fattoria-Le-Pupille-Poggio-Argentato-IGT-2022.html",
+      "reason": "last"
+    },
+    "2f6a9b761e1f": {
+      "title": "Montedidio San Domino Primitivo Puglia IGT",
+      "year": 2021,
+      "url": "https://spb.winestyle.ru/products/Montedidio-San-Domino-Primitivo-Puglia-IGT-2021.html",
+      "reason": "unknown"
+    },
+    "cd226588d1df": {
+      "title": "Lavau EnvyFol GSM Pays d’Oc IGP",
+      "year": 2022,
+      "url": "https://spb.winestyle.ru/products/Lavau-EnvyFol-GSM-Pays-d-Oc-IGP-2022.html",
+      "reason": "unknown"
+    },
+    "001eeb719213": {
+      "title": "Crapula Gold",
+      "year": 2022,
+      "url": "https://spb.winestyle.ru/products/Crapula-Gold-2022.html",
+      "reason": "unknown"
+    },
+    "80cb76314c74": {
+      "title": "Ascevi Luwa Ronco dei Sassi Collio DOC",
+      "year": 2021,
+      "url": "https://spb.winestyle.ru/products/Ascevi-Luwa-Ronco-dei-Sassi-Collio-DOC-2021.html",
+      "reason": "unknown"
+    }
+  }
+}

@@ -14,6 +14,7 @@ PUBLIC = (
     "data/wines.json",
     "data/full-descriptions.json",
     "data/source-pairings.json",
+    "data/owner-exclusions.json",
     "data/ratings.json",
     "data/verified-snapshot-2026-11-23.json",
     "data/researched-photos-2026-11-23.json",

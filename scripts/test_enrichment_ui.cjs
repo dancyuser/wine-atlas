@@ -349,3 +349,15 @@ assert.equal(h.agingFor(catalogById.get('160221740978'),2026).end,null);
 assert(h.agingMarkup(catalogById.get('19c9dff352b3')).includes('Окно потребления: 2023–2028'));
 assert.equal(h.agingFor(catalogById.get('2f6a9b761e1f'),2026).kind,'unknown');
 console.log('AGING EVIDENCE PASSED: all published cards, identity, exact versus approximate, NV and expiration');
+
+const ownerExclusions=JSON.parse(fs.readFileSync(path.join(__dirname,'..','data','owner-exclusions.json'),'utf8'));
+h.state.ownerExcluded=new Set(Object.keys(ownerExclusions.records));
+assert.equal(h.state.ownerExcluded.size,38);
+for(const [id,row] of Object.entries(ownerExclusions.records)){
+ const wine=catalogById.get(id);assert(wine&&wine.year===row.year&&wine.stores[0].url===row.url);
+ const age=h.agingFor(wine,2026);
+ assert.equal(row.reason,age.kind==='unknown'?'unknown':age.status==='last'?'last':age.status==='past'?(age.approximate?'risk':'past'):'unexpected');
+ assert.equal(h.isPublished(wine),false);
+}
+assert.equal(catalog.records.filter(h.isPublished).length,71);
+console.log('OWNER SELECTION PASSED: 38 exact removals, 71 remaining');

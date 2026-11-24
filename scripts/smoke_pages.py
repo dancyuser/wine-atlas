@@ -19,7 +19,7 @@ from urllib.parse import urljoin, urlsplit, urlunsplit
 ROOT = Path(__file__).resolve().parents[1]
 FILES = (
     "index.html", "app.js", "styles.css", "editorial.css", "responsive.css",
-    "data/wines.json", "data/ratings.json", "data/full-descriptions.json", "data/source-pairings.json",
+    "data/wines.json", "data/ratings.json", "data/full-descriptions.json", "data/source-pairings.json", "data/owner-exclusions.json",
     "data/verified-snapshot-2026-11-23.json",
     "data/researched-photos-2026-11-23.json",
 )
@@ -97,8 +97,10 @@ def check(base):
         raise ValueError("Chromium failed: " + completed.stderr[-1000:])
     dom = completed.stdout
     rendered = len(re.findall(r'<article class="wine-card"', dom))
+    excluded = json.loads((ROOT / "data/owner-exclusions.json").read_text(encoding="utf-8"))["records"]
     expected = sum(
-        r.get("availability", {}).get("status") != "out_of_stock"
+        r["id"] not in excluded
+        and r.get("availability", {}).get("status") != "out_of_stock"
         and r.get("publication_review", {}).get("status") != "excluded"
         and not (
             r.get("publication_review", {}).get("status") == "verified"
@@ -108,6 +110,9 @@ def check(base):
         )
         for r in catalog["records"]
     )
+    rendered_ids = set(re.findall(r'data-wine-id="([^"]+)"', dom))
+    if rendered_ids.intersection(excluded):
+        raise ValueError("Owner-excluded wine rendered")
     if rendered != expected or expected == 0:
         raise ValueError(f"Rendered cards {rendered}, expected {expected}")
     # The application filters unavailable wines before populating both the header and card grid.

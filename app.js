@@ -1,7 +1,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const fmt=new Intl.NumberFormat('ru-RU');
-const state={records:[],ratingRecords:{},unrated:{},snapshots:{},snapshotDate:null,researchedPhotos:{},fullDescriptions:{},sourcePairings:{},pairingLabels:{},favorites:new Set(),scope:'all'};
+const state={records:[],ratingRecords:{},unrated:{},snapshots:{},snapshotDate:null,researchedPhotos:{},fullDescriptions:{},sourcePairings:{},pairingLabels:{},ownerExcluded:new Set(),favorites:new Set(),scope:'all'};
 const options={country:'country',grape:'grapes',type:'type',pairing:'pairings'};
 const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const cleanUrl=s=>{try{const u=new URL(s);return u.protocol==='https:'?u.href:null}catch{return null}};
@@ -90,6 +90,7 @@ function liveOfferFor(r){
  return offer;
 }
 function isPublished(r){
+ if(state.ownerExcluded.has(r.id))return false;
  if(r.availability?.status==='out_of_stock'||r.publication_review?.status==='excluded')return false;
  const live=liveOfferFor(r);
  return !(live?.availability==='out_of_stock'&&live.observed_on>=(r.availability?.observed_on||'0000-00-00'));
@@ -1074,6 +1075,11 @@ async function init(){
  try{
   const response=await fetch('./data/wines.json',{cache:'no-cache'});if(!response.ok)throw Error('Catalog HTTP '+response.status);
   const catalog=await response.json();if(!Array.isArray(catalog.records))throw Error('Invalid catalog');
+  const exclusionResponse=await fetch('./data/owner-exclusions.json',{cache:'no-cache'});
+  if(!exclusionResponse.ok)throw Error('Owner exclusions HTTP '+exclusionResponse.status);
+  const exclusions=await exclusionResponse.json();
+  if(exclusions.version!==1||!exclusions.records||Array.isArray(exclusions.records)||typeof exclusions.records!=='object')throw Error('Invalid owner exclusions');
+  state.ownerExcluded=new Set(Object.keys(exclusions.records));
   state.records=catalog.records.filter(isPublished);
   try{const response=await fetch('./data/source-pairings.json',{cache:'no-cache'});if(response.ok){const data=await response.json();if(data.version===1&&data.records&&data.labels){state.sourcePairings=data.records;state.pairingLabels=data.labels;}}}catch(e){console.warn('Source pairing categories unavailable',e)}
   try{const response=await fetch('./data/full-descriptions.json',{cache:'no-cache'});if(response.ok){const data=await response.json();if(data.version===1&&data.records&&typeof data.records==='object')state.fullDescriptions=data.records;}}catch(e){console.warn('Full descriptions unavailable',e)}
@@ -1099,7 +1105,7 @@ async function init(){
   $('stat-total').textContent=state.records.length;
   $('stat-countries').textContent=new Set(state.records.map(r=>r.country).filter(Boolean)).size;
   $('stat-rated').textContent=state.records.filter(r=>metrics(r).vivino!==null).length;
-  $('update-tag').textContent='Проверка: '+date(catalog.publication_review_snapshot?.checked_at||catalog.inventory_snapshot?.observed_on)+' · исключено '+(catalog.records.length-state.records.length)+' недоступных / несовпадающих';
+  $('update-tag').textContent='Проверка: '+date(catalog.publication_review_snapshot?.checked_at||catalog.inventory_snapshot?.observed_on)+' · исключено '+(catalog.records.length-state.records.length)+' (наличие, совпадение, отбор владельца)';
   setup();render();
  }catch(e){console.error(e);$('result-count').textContent='Ошибка загрузки';$('error').hidden=false}
 }

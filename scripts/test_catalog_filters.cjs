@@ -38,6 +38,8 @@ const source=JSON.parse(fs.readFileSync(path.join(root,'data','source-pairings.j
 const catalog=JSON.parse(fs.readFileSync(path.join(root,'data','wines.json'),'utf8'));
 const snapshot=JSON.parse(fs.readFileSync(path.join(root,'data','verified-snapshot-2026-11-23.json'),'utf8'));
 state.sourcePairings=source.records;state.pairingLabels=source.labels;
+const ownerExclusions=JSON.parse(fs.readFileSync(path.join(root,'data','owner-exclusions.json'),'utf8'));
+state.ownerExcluded=new Set(Object.keys(ownerExclusions.records));
 assert.equal(source.archive_sha256,snapshot.source_archive_sha256);
 assert.equal(Object.keys(source.labels).length,30);
 assert.equal(new Set(Object.values(source.labels)).size,30,'Source category IDs must not share an umbrella label');
@@ -51,7 +53,7 @@ for(const [id,row] of Object.entries(source.records)){
  assert.deepEqual([...pairingValues(r)],row.codes.map(code=>source.labels[code]),'Category loss at '+id);
  for(const code of row.codes){
   controls.get('pairing').value=source.labels[code];
-  if(r.availability?.status!=='out_of_stock'&&r.publication_review?.status!=='excluded')assert(matched(r),'Filter must match exact category '+id+' '+code);
+  if(!state.ownerExcluded.has(id)&&r.availability?.status!=='out_of_stock'&&r.publication_review?.status!=='excluded')assert(matched(r),'Filter must match exact category '+id+' '+code);
  }
 }
 controls.get('pairing').value='';
@@ -64,6 +66,9 @@ assert.deepEqual([...pairingValues(byId.get('745a343dcdc1'))],['Блюда из 
 assert.deepEqual([...pairingValues(byId.get('a1faf8b0af1d'))],['Аперитив','Десерты','Фрукты и ягоды']);
 assert.deepEqual([...pairingValues(byId.get('42b87c5124ce'))],[]);
 assert.equal(Object.keys(source.records).length,115);
+assert.equal(state.ownerExcluded.size,38);
+assert.equal(catalog.records.filter(matched).length,71);
+for(const id of state.ownerExcluded)assert(!matched(byId.get(id)),'Owner-excluded wine matched: '+id);
 const cheap=wine('cheap',1000,'рыба'),expensive=wine('expensive',5000,'рыба'),unknown=wine('unknown',null,'рыба');
 assert(withinPriceRange(unknown,'',''),'No range must retain unpriced cards');
 assert(!withinPriceRange(unknown,'1',''),'Priced ranges must exclude unknown prices');
