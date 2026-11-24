@@ -100,6 +100,7 @@ def check(base):
     excluded = json.loads((ROOT / "data/owner-exclusions.json").read_text(encoding="utf-8"))["records"]
     expected = sum(
         r["id"] not in excluded
+        and type(r.get("year")) is int and r["year"] > 0
         and r.get("availability", {}).get("status") != "out_of_stock"
         and r.get("publication_review", {}).get("status") != "excluded"
         and not (
@@ -111,7 +112,8 @@ def check(base):
         for r in catalog["records"]
     )
     rendered_ids = set(re.findall(r'data-wine-id="([^"]+)"', dom))
-    if rendered_ids.intersection(excluded):
+    undated_ids = {r["id"] for r in catalog["records"] if type(r.get("year")) is not int or r["year"] <= 0}
+    if rendered_ids.intersection(set(excluded) | undated_ids):
         raise ValueError("Owner-excluded wine rendered")
     if rendered != expected or expected == 0:
         raise ValueError(f"Rendered cards {rendered}, expected {expected}")

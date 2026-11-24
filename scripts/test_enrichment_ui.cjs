@@ -352,12 +352,15 @@ console.log('AGING EVIDENCE PASSED: all published cards, identity, exact versus 
 
 const ownerExclusions=JSON.parse(fs.readFileSync(path.join(__dirname,'..','data','owner-exclusions.json'),'utf8'));
 h.state.ownerExcluded=new Set(Object.keys(ownerExclusions.records));
-assert.equal(h.state.ownerExcluded.size,38);
+assert.equal(h.state.ownerExcluded.size,45);
 for(const [id,row] of Object.entries(ownerExclusions.records)){
  const wine=catalogById.get(id);assert(wine&&wine.year===row.year&&wine.stores[0].url===row.url);
  const age=h.agingFor(wine,2026);
- assert.equal(row.reason,age.kind==='unknown'?'unknown':age.status==='last'?'last':age.status==='past'?(age.approximate?'risk':'past'):'unexpected');
+ assert.equal(row.reason,wine.year==null?'no_vintage':age.kind==='unknown'?'unknown':age.status==='last'?'last':age.status==='past'?(age.approximate?'risk':'past'):'unexpected');
  assert.equal(h.isPublished(wine),false);
 }
-assert.equal(catalog.records.filter(h.isPublished).length,71);
-console.log('OWNER SELECTION PASSED: 38 exact removals, 71 remaining');
+assert.equal(catalog.records.filter(h.isPublished).length,65);
+assert(catalog.records.filter(h.isPublished).every(r=>Number.isInteger(r.year)&&r.year>0));
+assert.equal(catalog.records.filter(r=>r.year==null&&ownerExclusions.records[r.id]?.reason==='no_vintage').length,7);
+assert(!h.isPublished({...sample,id:'new-nv',year:null}));
+console.log('OWNER SELECTION PASSED: 45 exact exclusions, 65 vintage wines remaining');

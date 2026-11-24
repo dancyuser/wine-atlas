@@ -90,7 +90,7 @@ function liveOfferFor(r){
  return offer;
 }
 function isPublished(r){
- if(state.ownerExcluded.has(r.id))return false;
+ if(!Number.isInteger(r.year)||r.year<=0||state.ownerExcluded.has(r.id))return false;
  if(r.availability?.status==='out_of_stock'||r.publication_review?.status==='excluded')return false;
  const live=liveOfferFor(r);
  return !(live?.availability==='out_of_stock'&&live.observed_on>=(r.availability?.observed_on||'0000-00-00'));

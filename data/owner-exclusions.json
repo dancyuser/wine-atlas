@@ -2,7 +2,7 @@
   "version": 1,
   "updated_at": "2026-11-24",
   "reference_year": 2026,
-  "note": "Owner-directed permanent publication exclusions; retain source observations for audit. New vintage with a distinct identity is not excluded automatically.",
+  "note": "Owner-directed permanent publication exclusions; retain source observations for audit. New vintage with a distinct identity is not excluded automatically. Undated and non-vintage wines are excluded by publication policy even if newly added.",
   "records": {
     "cbc96de28176": {
       "title": "Wente Morning Fog Chardonnay",
@@ -231,6 +231,48 @@
       "year": 2021,
       "url": "https://spb.winestyle.ru/products/Ascevi-Luwa-Ronco-dei-Sassi-Collio-DOC-2021.html",
       "reason": "unknown"
+    },
+    "209d7a6d9fe0": {
+      "title": "Loimer Glügglich",
+      "year": null,
+      "url": "https://spb.winestyle.ru/products/Loimer-Gluegglich.html",
+      "reason": "no_vintage"
+    },
+    "ffffabb4d41a": {
+      "title": "Tabali Tatie Brut Limari Valley",
+      "year": null,
+      "url": "https://spb.winestyle.ru/products/Tabali-Tatie-Brut-Limari-Valley.html",
+      "reason": "no_vintage"
+    },
+    "46622f963eaa": {
+      "title": "Montelliana Prosecco Treviso DOC Extra Dry",
+      "year": null,
+      "url": "https://spb.winestyle.ru/products/Montelliana-Prosecco-Treviso-DOC-Extra-Dry.html",
+      "reason": "no_vintage"
+    },
+    "f97f2ccc67b8": {
+      "title": "Grande Alberone Moscato Spumante Dolce",
+      "year": null,
+      "url": "https://spb.winestyle.ru/products/Grande-Alberone-Moscato-Spumante-Dolce.html",
+      "reason": "no_vintage"
+    },
+    "5427ef8902aa": {
+      "title": "Pitars Prosecco DOC",
+      "year": null,
+      "url": "https://spb.winestyle.ru/products/Pitars-Prosecco-DOC.html",
+      "reason": "no_vintage"
+    },
+    "e8609b5a3c65": {
+      "title": "Dulong Crémant de Bordeaux Brut AOP",
+      "year": null,
+      "url": "https://spb.winestyle.ru/products/Dulong-Cremant-de-Bordeaux-AOP-Brut.html",
+      "reason": "no_vintage"
+    },
+    "7c836f833ee2": {
+      "title": "Lucien Albrecht Crémant d’Alsace Brut AOC",
+      "year": null,
+      "url": "https://spb.winestyle.ru/products/Lucien-Albrecht-Brut-Cremant-d-Alsace-AOC.html",
+      "reason": "no_vintage"
     }
   }
 }
