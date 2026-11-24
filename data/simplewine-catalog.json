@@ -4,7 +4,7 @@
   "source": "User wishlist, tab 24.11 / Simple wine",
   "source_count": 31,
   "reference_year": 2026,
-  "notes": "Exact SKU and vintage from indexed retailer pages. Direct site HTTP 403; current local stock and exact image URLs not verified. Descriptions paraphrased, unknown fields not fabricated.",
+  "notes": "Exact SKU and vintage from indexed retailer pages. Direct site HTTP 403; current local stock and exact image URLs not verified. Descriptions paraphrased, unknown fields not fabricated. 24.11: добавлены изображения кюве или точного SKU с отдельной маркировкой области, часть дегустационных характеристик структурирована из сохранённых описаний; наличие в СПб не проверено.",
   "records": [
     {
       "id": "sw-155172",
@@ -75,7 +75,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около 2 месяцев"
+      "indexed_recency": "около 2 месяцев",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/UNi5NSW5Q1eT5q_EEdXTBg_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/trapiche-oak-cask-chardonnay/w/1135900?year=2025",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-151672",
@@ -131,7 +139,11 @@
                 "source_url": "https://simplewine.ru/catalog/product/koskil_pinot_noir_2022_075_151672/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "body": "Среднетелое",
+            "taste": "Ягодный вкус, свежая кислотность, мелкозернистые танины",
+            "aroma": "Вишня, земляника, апельсиновая цедра",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -147,7 +159,16 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около 2 месяцев"
+      "indexed_recency": "около 2 месяцев",
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/876/87668a2091d0b7347267c240ac2d7699.png?fmt=webp",
+        "source_url": "https://simplewine.ru/catalog/product/koskil_pinot_noir_2022_075_151672/",
+        "source": "SimpleWine",
+        "verified_on": "2026-11-24",
+        "scope": "vintage",
+        "matched_year": 2022,
+        "note": "Фото на карточке конкретного SKU/урожая."
+      }
     },
     {
       "id": "sw-161435",
@@ -203,7 +224,11 @@
                 "source_url": "https://simplewine.ru/catalog/product/urban_riesling_2025_075_161435/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "body": "Лёгкое",
+            "taste": "Живая кислотность и минеральное послевкусие",
+            "aroma": "Цветы, цитрусы, тропические фрукты",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -219,7 +244,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около недели"
+      "indexed_recency": "около недели",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/kZm3ILljQam-s81T5qBfsQ_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/weingut-nik-weis-st-urbans-hof-nik-weis-selection-urban-riesling/w/1194863?year=2025",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-159284",
@@ -285,7 +318,10 @@
                 "source_url": "https://simplewine.ru/catalog/product/rioja_crianza_2022_075_159284/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "taste": "Сочные фрукты, зрелые танины",
+            "aroma": "Ежевика, гвоздика, лакрица, какао",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -301,7 +337,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около 2 месяцев"
+      "indexed_recency": "около 2 месяцев",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/803iI7rVRBmTp84Iifk2rw_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/hacienda-lopez-de-haro-crianza/w/1224522?year=2022",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-155463",
@@ -364,7 +408,12 @@
                 "source_url": "https://simplewine.ru/catalog/product/gran_reserva_cabernet_sauvignon_2022_075_155463/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "body": "Насыщенное",
+            "taste": "Округлое, фруктовое, длительный финал",
+            "aroma": "Смородина, вишня, кедр, тёмный шоколад",
+            "color": "Насыщенный рубиновый",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -380,7 +429,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около 2 месяцев"
+      "indexed_recency": "около 2 месяцев",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/s9Q9LYqJTCqIKibzG2tZPg_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/santa-carolina-carolina-gran-reserva-cabernet-sauvignon/w/1194109",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-158501",
@@ -445,7 +502,11 @@
                 "source_url": "https://simplewine.ru/catalog/product/le_bordeaux_de_citran_rouge_2022_075_158501/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "body": "Среднетелое",
+            "taste": "Бархатистые танины, дубовый финал",
+            "aroma": "Смородина, ежевика, сухие травы, специи",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -461,7 +522,16 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около 2 месяцев"
+      "indexed_recency": "около 2 месяцев",
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/339/339ae478088a91f74742f546052be66a.png?fmt=webp",
+        "source_url": "https://simplewine.ru/catalog/product/le_bordeaux_de_citran_rouge_2022_075_158501/",
+        "source": "SimpleWine",
+        "verified_on": "2026-11-24",
+        "scope": "vintage",
+        "matched_year": 2022,
+        "note": "Фото на карточке конкретного SKU/урожая."
+      }
     },
     {
       "id": "sw-159818",
@@ -527,7 +597,11 @@
                 "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_0375_159818/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "body": "Насыщенное",
+            "taste": "Живая кислотность, бархатистые танины",
+            "aroma": "Вишня, чернослив, ежевика, подлесок, перец",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -543,7 +617,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "6 дней"
+      "indexed_recency": "6 дней",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/fuF2iwkhTiSZSD2UnKSHTA_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/castello-nipozzano-chianti-rufina-riserva/w/20983?year=2022",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-160773",
@@ -600,7 +682,10 @@
                 "source_url": "https://simplewine.ru/catalog/product/el_pacto_carmenere_2023_075_160773/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "taste": "Гладкие танины, ягодная кислотность, копчёная паприка",
+            "aroma": "Чёрные фрукты, травы, специи",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -616,7 +701,16 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около месяца"
+      "indexed_recency": "около месяца",
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/c08/c08224534f1612631c4b10c4304766cd.png?fmt=webp",
+        "source_url": "https://simplewine.ru/catalog/product/el_pacto_carmenere_2023_075_160773/",
+        "source": "SimpleWine",
+        "verified_on": "2026-11-24",
+        "scope": "vintage",
+        "matched_year": 2023,
+        "note": "Фото на карточке конкретного SKU/урожая."
+      }
     },
     {
       "id": "sw-149378",
@@ -682,7 +776,10 @@
                 "source_url": "https://simplewine.ru/catalog/product/arienzo_crianza_2019_075_149378/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "taste": "Мягкие танины, пряная вишня в финале",
+            "aroma": "Красные ягоды, ваниль, кокос, специи",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -698,7 +795,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около 2 месяцев"
+      "indexed_recency": "около 2 месяцев",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/ps9ovnJhTTOlYDuTh_M3LQ_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/marques-de-riscal-arienzo-crianza/w/1852661?year=2019",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-160922",
@@ -770,7 +875,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около 2 месяцев"
+      "indexed_recency": "около 2 месяцев",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/beHX2eCaQYCOScpt5A22HQ_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/tenuta-sallier-de-la-tour-syrah/w/1510423?year=2024",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-155695",
@@ -836,7 +949,10 @@
                 "source_url": "https://simplewine.ru/catalog/product/casal_di_serra_2024_075_155695/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "taste": "Округлое, минеральное, цитрусовый финал",
+            "aroma": "Полевые цветы, ананас, дыня, фундук",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -852,7 +968,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около 2 месяцев"
+      "indexed_recency": "около 2 месяцев",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/loTyWY87S0m7EQTfgJZVGw_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/umani-ronchi-casal-di-serra-verdicchio-dei-castelli-di-jesi-classico-superiore/w/3743?year=2024",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-160433",
@@ -907,7 +1031,10 @@
                 "source_url": "https://simplewine.ru/catalog/product/max_reserva_pinot_noir_2023_075_160433/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "taste": "Сочное, тонкие танины, бальзамические оттенки",
+            "aroma": "Вишня, малина, роза, табачный лист",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -923,7 +1050,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "shop_only",
-      "indexed_recency": "около 2 месяцев"
+      "indexed_recency": "около 2 месяцев",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/gG3TcFGrShKpwGBSRYID-A_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/errazuriz-max-reserva-pinot-noir/w/1158111",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-161457",
@@ -990,7 +1125,11 @@
                 "source_url": "https://simplewine.ru/catalog/product/cotes_du_rhone_rouge_2023_075_161457/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "body": "Среднетелое",
+            "taste": "Бархатистая текстура, перечно-лавандовый финал",
+            "aroma": "Малина, ежевика, слива, оливки, пряные травы",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -1006,7 +1145,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "shop_only",
-      "indexed_recency": "около 2 месяцев"
+      "indexed_recency": "около 2 месяцев",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/I0e3d01sQLumhbrSID4aEg_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/e-guigal-cotes-du-rhone-rouge/w/7773?year=2023",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-156848",
@@ -1049,7 +1196,7 @@
             "country": "Франция",
             "region": "Бордо",
             "grapes": "Мерло",
-            "alcohol_percent": null,
+            "alcohol_percent": "13 %",
             "volume_l": "0,75 л",
             "wine_style": "красное, сухое, комплексное, выдержанное в дубе",
             "aging_potential": null,
@@ -1064,7 +1211,13 @@
                 "observed_on": "2026-11-24"
               }
             ],
-            "pairing_source_url": "https://macave.carrefour.fr/produit/chateau-fan-carney-2022-aop-fronsac-vin-rouge"
+            "pairing_source_url": "https://macave.carrefour.fr/produit/chateau-fan-carney-2022-aop-fronsac-vin-rouge",
+            "color": "Глубокий рубиновый с гранатовыми оттенками",
+            "aroma": "Слива, чёрная вишня, смородина, фиалка, кедр",
+            "taste": "Округлый, тонкие танины, зрелые чёрные фрукты, пряное послевкусие",
+            "body": "Плотное",
+            "supplemental_source_url": "https://macave.carrefour.fr/produit/chateau-fan-carney-2022-aop-fronsac-vin-rouge",
+            "tasting_basis": "Carrefour, Fronsac 2022, 0,75 л, Merlot. Крепость указана этим продавцом."
           }
         }
       ],
@@ -1080,7 +1233,16 @@
         "note": "Fronsac 2022, 75 cl, Merlot: заявлено 5–8 лет. Расчёт от урожая."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около 3 недель"
+      "indexed_recency": "около 3 недель",
+      "photo": {
+        "url": "https://macave.carrefour.fr/processedfiles/cache/detail/uploads/products/sap_1047209.png",
+        "source_url": "https://macave.carrefour.fr/produit/chateau-fan-carney-2022-aop-fronsac-vin-rouge",
+        "source": "Carrefour",
+        "verified_on": "2026-11-24",
+        "scope": "vintage",
+        "matched_year": 2022,
+        "note": "Фото на карточке конкретного SKU/урожая."
+      }
     },
     {
       "id": "sw-162169",
@@ -1140,7 +1302,11 @@
                 "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2023_075_162169/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "body": "Насыщенное",
+            "taste": "Бархатистые танины, живая кислотность",
+            "aroma": "Вишня, ежевичный джем, чернослив, перец",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -1156,7 +1322,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "shop_only",
-      "indexed_recency": "около 2 месяцев"
+      "indexed_recency": "около 2 месяцев",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/fuF2iwkhTiSZSD2UnKSHTA_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/castello-nipozzano-chianti-rufina-riserva/w/20983?year=2023",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-160731",
@@ -1213,7 +1387,11 @@
                 "source_url": "https://simplewine.ru/catalog/product/chianti_classico_2024_075_160731/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "body": "Среднетелое",
+            "taste": "Сбалансированная структура, ягодное послевкусие",
+            "aroma": "Черешня, вишня, специи, лакрица, кожа",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -1229,7 +1407,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около 2 месяцев"
+      "indexed_recency": "около 2 месяцев",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/Be5jOMQTTKC3fIOXadCu1A_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/banfi-chianti-classico/w/22909?year=2024",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-150458",
@@ -1292,7 +1478,10 @@
                 "source_url": "https://simplewine.ru/catalog/product/cabernet_sauvignon_2022_075_150458/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "taste": "Зрелые танины, сочная кислотность",
+            "aroma": "Чернослив, смородиновый джем, маслины, фиалка, табак",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -1308,7 +1497,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около 2 месяцев"
+      "indexed_recency": "около 2 месяцев",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/Ws0JYyOaRxCCmnayRZ2K7g_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/arboleda-cabernet-sauvignon/w/80228?year=2022",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-159614",
@@ -1363,7 +1560,10 @@
                 "source_url": "https://simplewine.ru/catalog/product/chardonnay_2022_075_159614/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "taste": "Сливочная текстура, минерально-дымные оттенки",
+            "aroma": "Цитрусы, персик, груша, айва",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -1379,7 +1579,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около 2 месяцев"
+      "indexed_recency": "около 2 месяцев",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/SSkHNQq9Qza9USF9M1zVaA_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/arboleda-chardonnay/w/80224",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-162380",
@@ -1438,7 +1646,11 @@
                 "source_url": "https://simplewine.ru/catalog/product/chateau_du_gazin_2022_075_162380/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "body": "Полнотелое",
+            "taste": "Бархатистый, плотный",
+            "aroma": "Смородина, ежевика, вишня, кофе, кедр",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -1454,7 +1666,15 @@
         "note": "Дегустация 1.03.2025: 2025–2027. Состав купажа у критика отличается от карточки продавца; применён более осторожный срок."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около месяца"
+      "indexed_recency": "около месяца",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/USmvcXeHQgec1n9BeQjN4Q_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/du-gazin-canon-fronsac/w/1183448?year=2022",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-162320",
@@ -1511,7 +1731,11 @@
                 "source_url": "https://simplewine.ru/catalog/product/carmenere_2024_075_162320/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "body": "Насыщенное",
+            "taste": "Округлые танины, минеральный финал",
+            "aroma": "Сушёные ягоды, роза, сладкие специи",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -1527,7 +1751,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "6 дней"
+      "indexed_recency": "6 дней",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/_XxgkfUqQ5S8DWVThtx0Qw_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/arboleda-carmenere/w/80226?year=2024",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-161561",
@@ -1584,7 +1816,11 @@
                 "source_url": "https://simplewine.ru/catalog/product/de_sangre_cabernet_franc_2024_075_161561/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "taste": "Сочная кислотность, зрелые танины, пряное послевкусие",
+            "aroma": "Красные ягоды, лакрица, томатный лист",
+            "color": "Рубиновый",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -1600,7 +1836,24 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около месяца"
+      "indexed_recency": "около месяца",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/kRGL7tAwSs6csT-BqPZfZQ_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/luigi-bosca-de-sangre-cabernet-franc/w/9585376?year=2024",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      },
+      "awards": [
+        {
+          "source": "IWSC",
+          "award": "Бронзовая медаль 2026",
+          "vintage": 2024,
+          "source_url": "https://iwsc.net/results/detail/169972/de-sangre-cabernet-franc-2024",
+          "observed_on": "2026-11-24"
+        }
+      ]
     },
     {
       "id": "sw-161332",
@@ -1664,7 +1917,11 @@
                 "source_url": "https://simplewine.ru/catalog/product/vino_nobile_di_montepulciano_silineo_2022_075_161332/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "body": "Насыщенное",
+            "taste": "Мягкие танины, дымное послевкусие",
+            "aroma": "Спелая вишня, табак, чернослив, специи",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -1680,7 +1937,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около 2 месяцев"
+      "indexed_recency": "около 2 месяцев",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/6AZNYN8RSGGOjgkClv5FvA_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/it-fattoria-del-cerro-silineo-vino-nobile-di-montepulciano/w/8998812?year=2022",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-148708",
@@ -1752,7 +2017,11 @@
                 "source_url": "https://simplewine.ru/catalog/product/finca_nueva_reserva_2015_075_148708/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "body": "Плотное",
+            "taste": "Плотное, бархатистые танины",
+            "aroma": "Красная смородина, вишня, табак, кожа",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -1768,7 +2037,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около 2 месяцев"
+      "indexed_recency": "около 2 месяцев",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/Vdlp-YMdQyu6VgoNP4OqlQ_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/es-nueva-reserva/w/1428377?year=2015",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-155766",
@@ -1833,7 +2110,10 @@
                 "source_url": "https://simplewine.ru/catalog/product/hacienda_lopez_de_haro_gran_reserva_2016_075_155766/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "taste": "Бархатистые танины, вишневый финал",
+            "aroma": "Ягодный джем, сухофрукты, какао, ваниль",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -1849,7 +2129,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около 2 месяцев"
+      "indexed_recency": "около 2 месяцев",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/J9nqo-ITRR2eotn19S5PhA_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/hacienda-lopez-de-haro-gran-reserva/w/2870792?year=2016",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-146571",
@@ -1911,7 +2199,11 @@
                 "source_url": "https://simplewine.ru/catalog/product/tokaji_mandolas_2021_075_146571/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "body": "Насыщенное",
+            "taste": "Маслянистая текстура, сбалансированная кислотность, лёгкий дуб",
+            "aroma": "Цитрусы, спелые фрукты, специи",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -1927,7 +2219,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "около 2 месяцев"
+      "indexed_recency": "около 2 месяцев",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/EJBPgnk0SYWHas2fFZKCIA_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/oremus-mandolas-furmint/w/1632873?year=2021",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     },
     {
       "id": "sw-161961",
@@ -1994,7 +2294,11 @@
                 "source_url": "https://simplewine.ru/catalog/product/tavel_2024_075_161961/",
                 "observed_on": "2026-11-24"
               }
-            ]
+            ],
+            "body": "Полнотелое",
+            "taste": "Полнотелое, гранатовое послевкусие",
+            "aroma": "Красные ягоды, пряности, белый шоколад, табачный лист",
+            "tasting_basis": "Структурировано из ранее сохранённого описания продавца; без добавления неподтверждённых характеристик."
           }
         }
       ],
@@ -2010,7 +2314,15 @@
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
       "indexed_stock": "in_stock",
-      "indexed_recency": "4 недели"
+      "indexed_recency": "4 недели",
+      "photo": {
+        "url": "https://images.vivino.com/thumbs/55-IxXiFSueStwFY2JrCAQ_pb_x600.png",
+        "source_url": "https://www.vivino.com/en/e-guigal-tavel/w/7786?year=2024",
+        "source": "Vivino",
+        "verified_on": "2026-11-24",
+        "scope": "cuvee",
+        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      }
     }
   ],
   "excluded": {

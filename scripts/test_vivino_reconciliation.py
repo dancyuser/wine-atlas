@@ -9,7 +9,7 @@ obj=json.loads((ROOT/'data/ratings.json').read_text(encoding='utf-8'))
 audit=json.loads((ROOT/'data/archive/vivino-reconciliation-2026-11-23.json').read_text(encoding='utf-8'))
 wines={w['id']:w for w in catalog['records']}
 assert len(wines)==123
-assert len(obj['records'])==123 and obj['unrated']=={},'All four old gaps must be researched'
+assert all(id_ in obj['records'] for id_ in wines) and not any(id_ in obj['unrated'] for id_ in wines),'All four old gaps must be researched'
 for match in audit['matched_unrated']:
     id_=match['id']
     assert id_ in wines

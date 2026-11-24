@@ -242,11 +242,12 @@ function ratingsDetails(r,m){
  }).join('');
  const published=m.critics.map(x=>'<li><span>'+safe(x.source)+'</span><strong>'+num(x.score)+' / '+x.scale+'</strong></li>').join('');
  const un=vivinoUnavailable(r);
+ const awards=(r.awards||[]).filter(x=>x.vintage===r.year&&cleanUrl(x.source_url)).map(x=>'<li>'+safe(x.source)+': '+safe(x.award)+' · <a href="'+safe(cleanUrl(x.source_url))+'" target="_blank" rel="noopener noreferrer">Источник</a></li>').join('');
  const fallback=!m.vivino?'<p class="rating-hint">'+safe(un.label)+' · <a href="'+safe(un.url)+'" target="_blank" rel="noopener noreferrer">Проверить на Vivino</a></p>':m.vivino.source_kind==='retailer_reported_vivino'?'<p class="rating-hint">Vivino: '+num(m.vivino.score)+'/5, по сведениям '+safe(m.vivino.reported_by||'WineStyle')+' · винтаж не установлен · <a href="'+safe(cleanUrl(m.vivino.source_url)||'#')+'" target="_blank" rel="noopener noreferrer">Источник</a></p>':'';
  return '<details class="rating-details score-details"><summary>Оценки и источники ('+(m.all.length+m.critics.length)+')</summary>'+
  (independent?'<h4>Независимо подтверждённые</h4><ul>'+independent+'</ul>':'')+
  (published?'<h4>Оценки критиков, опубликованные '+safe(retailerRatingData(r).seller||'WineStyle')+'</h4><ul>'+published+'</ul><p class="rating-hint">Не являются оценками покупателей '+safe(retailerRatingData(r).seller||'WineStyle')+'. Первоисточники и принадлежность к винтажу отдельно не проверены.</p>':'')+
- (!independent&&!published?'<p class="rating-hint">Проверенных оценок пока нет.</p>':'')+fallback+'</details>';
+ (!independent&&!published?'<p class="rating-hint">Проверенных оценок пока нет.</p>':'')+fallback+(awards?'<h4>Награды (без числовой оценки)</h4><ul>'+awards+'</ul>':'')+'</details>';
 }
 
 function fullDescription(r){
@@ -944,7 +945,7 @@ function photoMarkup(r){
   '<img class="bottle-photo" src="'+safe(url)+'"'+(backup?' data-fallback="'+safe(backup)+'"':'')+
   ' alt="'+safe(alt)+'" loading="lazy" decoding="async" referrerpolicy="no-referrer">'+placeholder+'</button>':placeholder;
  return '<div class="bottle-media">'+visual+
- (source&&url?'<a class="photo-credit" href="'+safe(source)+'" target="_blank" rel="noopener noreferrer">Фото: '+(snap?'WineStyle':researched?safe(researched.source):safe(p.source||'источник'))+'</a>':'<span class="photo-credit photo-missing">Фото не найдено</span>')+
+ (source&&url?'<a class="photo-credit" href="'+safe(source)+'" target="_blank" rel="noopener noreferrer">Фото: '+(snap?'WineStyle':researched?safe(researched.source):safe(p.source||'источник'))+(p.scope==='cuvee'&&!snap&&!researched?' · фото кюве':'')+'</a>':'<span class="photo-credit photo-missing">Фото не найдено</span>')+
  '</div>';
 }
 

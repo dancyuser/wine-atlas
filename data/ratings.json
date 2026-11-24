@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "generated_at": "2026-11-22",
-  "notes": "Оценки профессиональных критиков перенесены из пользовательской подборки от 14.11.2026. Оценки Vivino вносились адресно по публичным страницам и индексируемым результатам. scope=vintage - рейтинг подтверждён для конкретного года; scope=all_vintages - показатель вина в целом, в индекс конкретного винтажа не включается. Общее значение - эвристический индекс, не рейтинг Vivino. Для вин без доказуемой числовой оценки после проверки добавлен `unrated` со статусом, причиной и ссылкой при наличии. Наличие записи `unrated` не означает отсутствия вина в базе Vivino. Актуальный каталог синхронизирован с единственной вкладкой Google Docs; оценки удалённых из активного списка вин сохранены в data/archive/spb-research-2026-11-14.json.",
+  "generated_at": "2026-11-24",
+  "notes": "Оценки профессиональных критиков перенесены из пользовательской подборки от 14.11.2026. Оценки Vivino вносились адресно по публичным страницам и индексируемым результатам. scope=vintage - рейтинг подтверждён для конкретного года; scope=all_vintages - показатель вина в целом, в индекс конкретного винтажа не включается. Общее значение - эвристический индекс, не рейтинг Vivino. Для вин без доказуемой числовой оценки после проверки добавлен `unrated` со статусом, причиной и ссылкой при наличии. Наличие записи `unrated` не означает отсутствия вина в базе Vivino. Актуальный каталог синхронизирован с единственной вкладкой Google Docs; оценки удалённых из активного списка вин сохранены в data/archive/spb-research-2026-11-14.json. Добавлены 26 карточек SimpleWine с оценками Vivino и отдельным указанием области оценки; оценки критиков из производителя отмечены producer_reported_critic.",
   "records": {
     "2f1b26d235e4": [
       {
@@ -2050,6 +2050,392 @@
         "source_kind": "vivino_verified_web",
         "observed_on": "2026-11-22",
         "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа. Перенесено на урожай 2023 только как оценка линейки для всех винтажей; не является оценкой 2023."
+      }
+    ],
+    "sw-155172": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2025,
+        "ratings_count": 69,
+        "source_url": "https://www.vivino.com/en/trapiche-oak-cask-chardonnay/w/1135900?year=2025",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-151672": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "ratings_count": 677,
+        "source_url": "https://www.vivino.com/en/koskil-pinot-noir/w/11311092?year=2022",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-161435": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2025,
+        "ratings_count": 76,
+        "source_url": "https://www.vivino.com/en/weingut-nik-weis-st-urbans-hof-nik-weis-selection-urban-riesling/w/1194863?year=2025",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-159284": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "ratings_count": 303,
+        "source_url": "https://www.vivino.com/en/hacienda-lopez-de-haro-crianza/w/1224522?year=2022",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-155463": [
+      {
+        "source": "Vivino",
+        "score": 3.7,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "ratings_count": 4413,
+        "source_url": "https://www.vivino.com/en/santa-carolina-carolina-gran-reserva-cabernet-sauvignon/w/1194109",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Общая оценка вина по всем урожаям; рейтинг данного года не подтверждён."
+      }
+    ],
+    "sw-158501": [
+      {
+        "source": "Vivino",
+        "score": 3.5,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "ratings_count": 433,
+        "source_url": "https://www.vivino.com/en/chateau-citran-bordeaux-limited-edition/w/7773741",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Общая оценка вина по всем урожаям; рейтинг данного года не подтверждён."
+      }
+    ],
+    "sw-159818": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "ratings_count": 2217,
+        "source_url": "https://www.vivino.com/en/castello-nipozzano-chianti-rufina-riserva/w/20983?year=2022",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-160773": [
+      {
+        "source": "Vivino",
+        "score": 4.1,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": null,
+        "source_url": "https://www.vivino.com/en/santa-carolina-el-pacto-agreement-no-2-carmenere/w/11313674?year=2023",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-149378": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2019,
+        "ratings_count": 1593,
+        "source_url": "https://www.vivino.com/en/marques-de-riscal-arienzo-crianza/w/1852661?year=2019",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-160922": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "ratings_count": 52,
+        "source_url": "https://www.vivino.com/en/tenuta-sallier-de-la-tour-syrah/w/1510423?year=2024",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-155695": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "ratings_count": 323,
+        "source_url": "https://www.vivino.com/en/umani-ronchi-casal-di-serra-verdicchio-dei-castelli-di-jesi-classico-superiore/w/3743?year=2024",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-160433": [
+      {
+        "source": "Vivino",
+        "score": 3.6,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "ratings_count": 3078,
+        "source_url": "https://www.vivino.com/en/errazuriz-max-reserva-pinot-noir/w/1158111",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Общая оценка вина по всем урожаям; рейтинг данного года не подтверждён."
+      }
+    ],
+    "sw-161457": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": 509,
+        "source_url": "https://www.vivino.com/en/e-guigal-cotes-du-rhone-rouge/w/7773?year=2023",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-156848": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "ratings_count": 832,
+        "source_url": "https://www.vivino.com/en/chateau-fan-carney-fronsac/w/3775267",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Общая оценка вина по всем урожаям; рейтинг данного года не подтверждён."
+      }
+    ],
+    "sw-162169": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": 219,
+        "source_url": "https://www.vivino.com/en/castello-nipozzano-chianti-rufina-riserva/w/20983?year=2023",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-160731": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "ratings_count": 211,
+        "source_url": "https://www.vivino.com/en/banfi-chianti-classico/w/22909?year=2024",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-150458": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "ratings_count": 392,
+        "source_url": "https://www.vivino.com/en/arboleda-cabernet-sauvignon/w/80228?year=2022",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-159614": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "ratings_count": 3568,
+        "source_url": "https://www.vivino.com/en/arboleda-chardonnay/w/80224",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Общая оценка вина по всем урожаям; рейтинг данного года не подтверждён."
+      }
+    ],
+    "sw-162380": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "ratings_count": 47,
+        "source_url": "https://www.vivino.com/en/du-gazin-canon-fronsac/w/1183448?year=2022",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-162320": [
+      {
+        "source": "Vivino",
+        "score": 4.1,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "ratings_count": 36,
+        "source_url": "https://www.vivino.com/en/arboleda-carmenere/w/80226?year=2024",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-161561": [
+      {
+        "source": "Vivino",
+        "score": 4.1,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "ratings_count": 40,
+        "source_url": "https://www.vivino.com/en/luigi-bosca-de-sangre-cabernet-franc/w/9585376?year=2024",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-161332": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "ratings_count": 135,
+        "source_url": "https://www.vivino.com/en/it-fattoria-del-cerro-silineo-vino-nobile-di-montepulciano/w/8998812?year=2022",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      },
+      {
+        "source": "James Suckling",
+        "score": 92,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2022,
+        "source_url": "https://www.tenutedelcerro.it/en/wine/nobile-di-montepulciano-silineo-en",
+        "source_kind": "producer_reported_critic",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая указана производителем; не первичная публикация критика."
+      },
+      {
+        "source": "Luca Maroni",
+        "score": 93,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2022,
+        "source_url": "https://www.tenutedelcerro.it/en/wine/nobile-di-montepulciano-silineo-en",
+        "source_kind": "producer_reported_critic",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая указана производителем; не первичная публикация критика."
+      }
+    ],
+    "sw-148708": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2015,
+        "ratings_count": 150,
+        "source_url": "https://www.vivino.com/en/es-nueva-reserva/w/1428377?year=2015",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-155766": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2016,
+        "ratings_count": 891,
+        "source_url": "https://www.vivino.com/en/hacienda-lopez-de-haro-gran-reserva/w/2870792?year=2016",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-146571": [
+      {
+        "source": "Vivino",
+        "score": 4.1,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2021,
+        "ratings_count": 1554,
+        "source_url": "https://www.vivino.com/en/oremus-mandolas-furmint/w/1632873?year=2021",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+      }
+    ],
+    "sw-161961": [
+      {
+        "source": "Vivino",
+        "score": 3.6,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "ratings_count": 52,
+        "source_url": "https://www.vivino.com/en/e-guigal-tavel/w/7786?year=2024",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
       }
     ]
   },

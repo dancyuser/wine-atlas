@@ -5,7 +5,8 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 catalog=json.loads((ROOT/"data/wines.json").read_text(encoding="utf-8"))
 obj=json.loads((ROOT/"data/ratings.json").read_text(encoding="utf-8"))
-items={r["id"]:r for r in catalog["records"]}
+simple=json.loads((ROOT/"data/simplewine-catalog.json").read_text(encoding="utf-8"))
+items={r["id"]:r for r in catalog["records"]+simple["records"]}
 assert obj["version"]==1
 count=0;vivino=0;scored=0
 for key,rr in obj["records"].items():
