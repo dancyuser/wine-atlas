@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Wine Atlas — сбор исследования",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Собирает наблюдения с открытых страниц для последующей проверки.",
   "minimum_chrome_version": "120",
   "permissions": [
@@ -26,6 +26,7 @@
     "https://www.wineandspiritsmagazine.com/*",
     "https://iwsc.net/*",
     "https://results.concoursmondial.com/*",
+    "https://www.botti.no/*",
     "https://www.kenswineguide.com/*",
     "https://www.winelab.ru/*",
     "https://amwine.ru/*",

@@ -14,6 +14,7 @@ const SOURCES = [
  ['Wine & Spirits','https://www.wineandspiritsmagazine.com/'],
  ['IWSC','https://iwsc.net/results/search'],
  ['Concours Mondial de Bruxelles','https://results.concoursmondial.com/en/results'],
+ ['BOTTI','https://www.botti.no/smaksnotater-bestillingsutvalget-mai-2024-rode-viner/'],
  ["Ken's Wine Guide",'https://www.kenswineguide.com/'],
  ['Винлаб','https://www.winelab.ru/catalog/vino'],
  ['Ароматный мир','https://amwine.ru/catalog/vino/'],

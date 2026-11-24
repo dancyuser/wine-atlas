@@ -71,7 +71,7 @@ chrome.runtime.onMessage.addListener((msg,sender,respond)=>{
   if(msg.action==='start'){
    if(job && job.status!=='complete')throw Error('Уже есть незавершённое задание; продолжите его.');
    const queue=[];
-   for(const retail of [false,true]){
+   for(const retail of msg.scope==='critics'?[false]:[false,true]){
     for(const [source,url] of RECHECK.filter(([name])=>RETAILERS.has(name)===retail))queue.push({source,url});
     for(const [source,url] of SOURCES.filter(([name])=>RETAILERS.has(name)===retail))queue.push({source,url,depth:0});
    }

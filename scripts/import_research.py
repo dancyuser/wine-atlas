@@ -48,7 +48,7 @@ def year_in(text):
 
 def window(text):
     matches = set()
-    for match in re.finditer(rf'\b(?:drinking window|drink(?:ing)?|best (?:enjoyed|drunk))\s*[:|]?\s*(now|{YEAR})?\s*(?:through|until|to|[-–—])\s*({YEAR})\b', text, re.I):
+    for match in re.finditer(rf'\b(?:drinking window|drink(?:ing)?|best(?: enjoyed| drunk)?)(?:\s+from)?\s*[:|]?\s*(now|{YEAR})?\s*(?:through|until|to|[-–—])\s*({YEAR})\b', text, re.I):
         start, end = match.groups()
         matches.add((int(start) if start and start.isdigit() else None, int(end)))
     return matches.pop() if len(matches) == 1 else (None, None)
@@ -87,7 +87,7 @@ def parse_review(row, host):
         price, currency = (amount[1], 'USD') if amount else (None, None)
     elif host == 'falstaff.com':
         # The German tasting summary uses the inflected form "Punkten".
-        marks = set(re.findall(r'\b(\d{2,3})\s+Falstaff(?: points|[- ]Punkten?)\b', text, re.I))
+        marks = set(re.findall(r'\b(\d{2,3})(?:\s*[-–]\s*\d{2,3}|\+)?\s+Falstaff(?: points|[- ]Punkten?)\b', text, re.I))
         score = int(marks.pop()) if len(marks) == 1 else None
         producer = row.get('blocks', {}).get('producer')
         if producer and normalized(producer) not in normalized(title):

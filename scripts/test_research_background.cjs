@@ -53,7 +53,7 @@ function worker() {
     }
   });
   vm.runInContext(fs.readFileSync(path.join(directory, 'background.js'), 'utf8'), context);
-  return {send: action => new Promise(resolve => message({action}, {}, resolve)), tick: () => vm.runInContext('tick()', context)};
+  return {send: (action, scope) => new Promise(resolve => message({action, scope}, {}, resolve)), tick: () => vm.runInContext('tick()', context)};
 }
 
 (async () => {
@@ -75,5 +75,12 @@ function worker() {
   assert.equal(downloads.length, 1);
   const result = JSON.parse(decodeURIComponent(downloads[0].url.split(',')[1]));
   assert.deepEqual(result.observations.map(row => row.status), ['blocked', 'needs_review']);
+  assert.match((await runtime.send('start', 'critics')).text, /0 из 1/);
+  await runtime.tick();
+  await runtime.tick();
+  now += 5000;
+  await runtime.tick();
+  const critics = JSON.parse(decodeURIComponent(downloads[1].url.split(',')[1]));
+  assert.deepEqual(critics.observations.map(row => row.source), ['Critic']);
   console.log('Research queue resumed without popup and exported both outcomes');
 })().catch(error => { console.error(error); process.exitCode = 1; });

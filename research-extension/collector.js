@@ -63,6 +63,9 @@ function captureWineResearch() {
       put('review', (document.querySelector('main')?.innerText || body).split(/Other Vintages|Andere Jahrgänge/i)[0]);
     } else if (host === 'vinous.com' && detailPaths[host].test(path)) {
       put('review', (document.querySelector('main')?.innerText || body).split(/Similar Wines|Related Articles/i)[0]);
+    } else if (host === 'botti.no' && path.startsWith('/smaksnotater-')) {
+      const facts = lines.filter(line => /^(?:Varenr|Vin|Pris|Poeng)\s*:/i.test(line));
+      put('review', facts.join('\n'));
     } else if (/^(?:decanter\.com|results\.decanter\.com|iwsc\.net|jamessuckling\.com|jancisrobinson\.com)$/.test(host) &&
       /(?:\/tastings\/|\/tasting-notes\/|\/detail\/|\/wine-reviews\/(?!search\/)[^/]+\/.*\d)/.test(path)) {
       put('review', (document.querySelector('main article, article, main')?.innerText || '').split(/Related wines|Similar wines|You may also like/i)[0]);
