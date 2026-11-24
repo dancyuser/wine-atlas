@@ -37,7 +37,7 @@ const sample={
 h.state.records=[sample];
 assert.equal(h.countryValue(sample),'Франция');
 assert.deepEqual([...h.grapeValues(sample)],['Шардоне','Пино Гриджио']);
-assert.deepEqual([...h.pairingValues(sample)],['Рыба','Морепродукты','Белое мясо']);
+assert.deepEqual([...h.pairingValues(sample)],['Рыба','Морепродукты/дары моря','Белое мясо']);
 assert([...h.distinct('grapes')].includes('Пино Гриджио'));
 selectors.get('grape').value='Пино Гриджио';
 assert.equal(h.matched(sample),true);
@@ -170,12 +170,12 @@ const unmatchedPairings={
     }
   }]
 };
-assert.deepEqual([...h.pairingValues(unmatchedPairings)],['Рыба','Морепродукты','Птица'],
-  'Unclassified WineStyle food notes must not discard curated pairings');
-selectors.get('pairing').value='Птица';
+assert.deepEqual([...h.pairingValues(unmatchedPairings)],['Сытные блюда','Австрийская кухня'],
+  'Literal source categories override generic curated labels');
+selectors.get('pairing').value='Австрийская кухня';
 assert.equal(h.matched(unmatchedPairings),true);
 selectors.get('pairing').value='';
-assert(h.fullWineMarkup(unmatchedPairings).includes('Подходит к: Рыба, Морепродукты, Птица'));
+assert(h.fullWineMarkup(unmatchedPairings).includes('Подходит к: Сытные блюда, Австрийская кухня'));
 
 const curated={...sample,grapes:['Семильон'],pairings:['Сыры'],country:'Португалия'};
 assert.deepEqual([...h.grapeValues(curated)],['Семильон']);

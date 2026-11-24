@@ -19,7 +19,7 @@ from urllib.parse import urljoin, urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 FILES = (
     "index.html", "app.js", "styles.css", "editorial.css", "responsive.css",
-    "data/wines.json", "data/ratings.json", "data/full-descriptions.json",
+    "data/wines.json", "data/ratings.json", "data/full-descriptions.json", "data/source-pairings.json",
     "data/verified-snapshot-2026-11-23.json",
     "data/researched-photos-2026-11-23.json",
 )

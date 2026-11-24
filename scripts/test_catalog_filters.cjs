@@ -21,20 +21,49 @@ const {state,matched,pairingValues,withinPriceRange,sortRecords,metrics}=sandbox
 const url='https://spb.winestyle.ru/products/example.html';
 const wine=(id,price,note)=>({id,title:id,year:2023,type:'Красное',country:'Италия',grapes:['Мерло'],section:'Мерло',pairings:['Рыба'],stores:[{url,price_rub:price,price_checked_at:price==null?null:'2026-11-23',enrichment_status:{status:'verified'},product_details:{source_url:url,pairing_notes:note,ratings:[]}}]});
 const mixed=wine('mixed',2000,'рыба, лосось/семга, мясо, дичь, красное мясо, салат, овощи, зрелые/выдержанные сыры, сыры');
-const labels=[...pairingValues(mixed)];
-for(const label of ['Рыба','Красная рыба','Мясо','Дичь','Красное мясо','Салаты','Овощи','Выдержанные сыры','Сыры'])assert(labels.includes(label),'Lost separate category '+label);
+assert.deepEqual([...pairingValues(mixed)],['Рыба','Лосось/семга','Мясо','Дичь','Красное мясо','Салат','Овощи','Зрелые/выдержанные сыры','Сыры']);
 const salmon=wine('salmon',2000,'лосось/семга');
-assert.deepEqual([...pairingValues(salmon)],['Красная рыба']);
-const compound=wine('compound',2000,'рыба и красная рыба, мясо и дичь');
-for(const label of ['Рыба','Красная рыба','Мясо','Дичь'])assert([...pairingValues(compound)].includes(label),'Compound retailer pairing lost '+label);
+assert.deepEqual([...pairingValues(salmon)],['Лосось/семга']);
 const game=wine('game',2000,'дичь, мясо диких животных');
-assert.deepEqual([...pairingValues(game)],['Дичь']);
-assert.deepEqual([...pairingValues(wine('salad',1000,'салат'))],['Салаты']);
+assert.deepEqual([...pairingValues(game)],['Дичь','Мясо диких животных']);
+const spicy=wine('spicy',1000,'острые/пряные блюда, азиатская кухня, свинина, утка, мидии');
+assert.deepEqual([...pairingValues(spicy)],['Острые/пряные блюда','Азиатская кухня','Свинина','Утка','Мидии']);
+assert.deepEqual([...pairingValues(wine('prose',1000,'Вино идеально подходит к блюдам из рыбы.'))],[]);
 controls.get('pairing').value='Рыба';
 assert.equal(matched(salmon),false,'Salmon cannot be merged into generic fish');
 controls.get('pairing').value='Мясо';
 assert.equal(matched(game),false,'Game cannot be merged into generic meat');
 controls.get('pairing').value='';
+const source=JSON.parse(fs.readFileSync(path.join(root,'data','source-pairings.json'),'utf8'));
+const catalog=JSON.parse(fs.readFileSync(path.join(root,'data','wines.json'),'utf8'));
+const snapshot=JSON.parse(fs.readFileSync(path.join(root,'data','verified-snapshot-2026-11-23.json'),'utf8'));
+state.sourcePairings=source.records;state.pairingLabels=source.labels;
+assert.equal(source.archive_sha256,snapshot.source_archive_sha256);
+assert.equal(Object.keys(source.labels).length,30);
+assert.equal(new Set(Object.values(source.labels)).size,30,'Source category IDs must not share an umbrella label');
+const byId=new Map(catalog.records.map(r=>[r.id,r]));
+for(const [id,row] of Object.entries(source.records)){
+ const r=byId.get(id);
+ assert(r&&r.year===row.year&&r.stores[0].url===row.url,'Exact source identity must match '+id);
+ assert(row.source==='user_screenshot_exact_2023'||Object.hasOwn(snapshot.records,id),'Archived category must be from verified snapshot');
+ assert.equal(row.codes.length,new Set(row.codes).size);
+ assert(row.codes.every(code=>Object.hasOwn(source.labels,code)));
+ assert.deepEqual([...pairingValues(r)],row.codes.map(code=>source.labels[code]),'Category loss at '+id);
+ for(const code of row.codes){
+  controls.get('pairing').value=source.labels[code];
+  if(r.availability?.status!=='out_of_stock'&&r.publication_review?.status!=='excluded')assert(matched(r),'Filter must match exact category '+id+' '+code);
+ }
+}
+controls.get('pairing').value='';
+const maturana=byId.get('5b9b46b0b3e6');
+assert.deepEqual([...pairingValues(maturana)],['Свинина','Морепродукты','Пернатая дичь','Острые блюда']);
+controls.get('pairing').value='Птица';assert(!matched(maturana));
+controls.get('pairing').value='Блюда из мяса';assert(!matched(maturana));
+controls.get('pairing').value='';
+assert.deepEqual([...pairingValues(byId.get('745a343dcdc1'))],['Блюда из мяса','Дичь','Красная рыба']);
+assert.deepEqual([...pairingValues(byId.get('a1faf8b0af1d'))],['Аперитив','Десерты','Фрукты и ягоды']);
+assert.deepEqual([...pairingValues(byId.get('42b87c5124ce'))],[]);
+assert.equal(Object.keys(source.records).length,115);
 const cheap=wine('cheap',1000,'рыба'),expensive=wine('expensive',5000,'рыба'),unknown=wine('unknown',null,'рыба');
 assert(withinPriceRange(unknown,'',''),'No range must retain unpriced cards');
 assert(!withinPriceRange(unknown,'1',''),'Priced ranges must exclude unknown prices');
