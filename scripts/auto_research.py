@@ -23,7 +23,7 @@ AGENT = 'WineAtlasResearch/1.0 (+https://github.com/dancyuser/wine-atlas)'
 CRITIC = 'www.wineenthusiast.com'
 SEEDS = ['https://www.wineenthusiast.com/wine-ratings/']
 RETAILERS = ['winelab.ru', 'amwine.ru', 'vinissimo.biz', 'sabonis.ru',
-             'spb.winestyle.ru', 'simplewine.ru', 'ast.wine', 'joia.ru']
+             'spb.winestyle.ru', 'simplewine.ru', 'ast.wine', 'joia.ru', 'spb.luding.ru']
 RETAILER_SEEDS = {
     'winelab.ru':'https://www.winelab.ru/catalog/vino',
     'amwine.ru':'https://amwine.ru/catalog/vino/',
@@ -33,6 +33,7 @@ RETAILER_SEEDS = {
     'simplewine.ru':'https://simplewine.ru/catalog/vino/',
     'ast.wine':'https://ast.wine/catalog/vino/',
     'joia.ru':'https://joia.ru/catalog/vino/',
+    'spb.luding.ru':'https://spb.luding.ru/collection/wine/',
 }
 STOP = {'wine','wines','vino','bodegas','bodega','winery','red','white',
         'tempranillo','garnacha','merlot','cabernet','sauvignon','chardonnay',
@@ -143,7 +144,15 @@ def inspect_offer(html, url, review):
         return None, 'spb_not_confirmed'
     if re.search(r'нет в наличии|товар отсутствует|ожидаем поступление', text[:2500], re.I):
         return None, 'stock_unknown_or_unavailable'
-    if not re.search(r'\bв наличии\b|забрать сегодня|наличие\s*:', text[:2500], re.I):
+    # Luding supplier inventory is eligible when the site explicitly shows SPb.
+    # It is kept as a candidate until a source-specific price and identity check.
+    supplier = ('luding.ru' in host and
+                re.search(r'в\s+наличии\s+у\s+поставщика', text[:2500], re.I) and
+                re.search(r'Санкт-Петербург|Санкт.Петербург|\bСПб\b', text[:2500], re.I))
+    if ('luding.ru' in host and re.search(r'в\s+наличии\s+у\s+поставщика', text[:2500], re.I)
+            and not supplier):
+        return None, 'spb_not_confirmed'
+    if not supplier and not re.search(r'\bв наличии\b|забрать сегодня|наличие\s*:', text[:2500], re.I):
         return None, 'stock_not_confirmed'
     # A conditional/ambiguous price is a research result, not an offer.
     return {'url': url, 'matched_tokens': sorted(common), 'year': review['year'],

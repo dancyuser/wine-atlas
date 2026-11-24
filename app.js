@@ -275,7 +275,7 @@ function concisePreview(r){
 }
 function stockMarkup(r,d){
  const observed=r.availability;
- const stockNote=observed?.status==='in_stock'?'Доступно к заказу':observed?.status==='out_of_stock'?'Нет в наличии':
+ const stockNote=observed?.stock_kind==='supplier_stock'?'В наличии у поставщика · Санкт-Петербург':observed?.status==='in_stock'?'Доступно к заказу':observed?.status==='out_of_stock'?'Нет в наличии':
   ['Ожидаем поступление','Нет в наличии'].includes(d?.availability_note)?d.availability_note:
   d?.availability_spb===true?'Наличие подтверждалось в СПб':d?.availability_spb===false?'Нет в наличии в СПб':'';
  const stockDate=observed?.observed_on||(d?.availability_note?(d.field_checked_at?.availability_note||d.checked_at):(d?.field_checked_at?.availability_spb||d?.checked_at));
@@ -292,14 +292,16 @@ const storageEvidence = {
   "2f1b26d235e4": {
     "year": 2019,
     "url": "https://spb.winestyle.ru/products/Graham-s-Late-Bottled-Vintage-LBV-2019-gift-tube.html",
-    "kind": "bottling",
-    "min": 2,
-    "max": 3,
+    "kind": "window",
+    "min": 2024,
+    "max": 2027,
     "scope": "vintage",
-    "source": "Slijterij Kuijpers",
-    "source_url": "https://www.slijterijkuijpers.nl/a-106552376/late-bottled-vintage/graham-s-port-lbv-2019/",
-    "note": "2–3 года после розлива; год розлива конкретной бутылки неизвестен.",
-    "source_year": null
+    "source": "Graham’s + Slijterij Kuijpers",
+    "source_url": "https://www.grahams-port.com/wine/late-bottled-vintage/64?year=2019",
+    "note": "Расчётный предел: производитель указывает 5 лет выдержки в дереве до розлива (2019 + 5 ≈ 2024); продавец Slijterij Kuijpers для LBV 2019 указывает 2–3 года сохранения качества после розлива. Ориентир до 2027, точная дата розлива конкретной бутылки не проверена. Техлист производителя датирован 24.07.2024.",
+    "source_year": null,
+    "additional_source_url": "https://www.slijterijkuijpers.nl/a-106552376/late-bottled-vintage/graham-s-port-lbv-2019/",
+    "technical_sheet_url": "https://www.grahams-port.com/files/year/92_2019_file.pdf"
   },
   "c9f63273980c": {
     "year": 2018,
@@ -400,13 +402,13 @@ const storageEvidence = {
   "8fb6ff3a814f": {
     "year": 2023,
     "url": "https://spb.winestyle.ru/products/Undurraga-Sibaris-Pinot-Noir-Gran-Reserva-Leyda-Valley-DO-2023.html",
-    "kind": "note",
-    "min": null,
-    "max": null,
-    "scope": "style",
-    "source": "Gilbert & Gaillard",
-    "source_url": "https://gilbertgaillard.com/en/resultats/valle-de-san-antonio-leyda",
-    "note": "Для вин долины Лейда рекомендованы первые годы; более концентрированные Pinot Noir могут выиграть от нескольких лет выдержки. Точный срок Sibaris 2023 не установлен.",
+    "kind": "duration",
+    "min": 6,
+    "max": 6,
+    "scope": "vintage",
+    "source": "Wine.com.br",
+    "source_url": "https://www.wine.com.br/vinhos/sibaris-gran-reserva-d-o-valle-de-leyda-pinot-noir-2023/prod30809.html",
+    "note": "Точная карточка урожая 2023, 750 мл, 13,5%: потенциал 6 лет. Расчёт от урожая.",
     "source_year": null
   },
   "aa6da0a65a5d": {
@@ -562,8 +564,9 @@ const storageEvidence = {
     "scope": "vintage",
     "source": "Vinhuset NoFra",
     "source_url": "https://vinhusetnofra.no/vin/loredan-gasparini-capo-di-stato/",
-    "note": "2013: готово к употреблению, допускается ещё восемь лет хранения; дата исходной оценки не установлена.",
-    "source_year": null
+    "note": "Норвежский импортёр: ещё 8 лет хранения, дата исходной рекомендации неизвестна. Decanter (дегустация 2025) отмечает признаки зрелости, но открытый текст не содержит верхней границы. Оценку 2021 урожая до 2045 не переносим на 2013.",
+    "source_year": null,
+    "additional_source_url": "https://www.decanter.com/wine-reviews/italy/veneto/loredan-gasparini-capo-di-stato-montello-asolo-rosso-92571/"
   },
   "de91d5c1fa5e": {
     "year": 2024,
@@ -676,13 +679,13 @@ const storageEvidence = {
   "75ea3ee23df9": {
     "year": 2020,
     "url": "https://spb.winestyle.ru/products/Chateau-La-Tour-de-L-Eveque-Petale-de-Rose-Cotes-de-Provence-AOC-2020.html",
-    "kind": "note",
+    "kind": "window",
     "min": null,
-    "max": null,
+    "max": 2023,
     "scope": "vintage",
-    "source": "WineStyle (архив описания)",
-    "source_url": "https://spb.winestyle.ru/products/Chateau-La-Tour-de-L-Eveque-Petale-de-Rose-Cotes-de-Provence-AOC-2020.html",
-    "note": "В описании: может хорошо храниться в течение следующих 1–2 лет; дата исходной оценки не указана.",
+    "source": "Samedivin",
+    "source_url": "https://www.samedivin.com/chateau-la-tour-de-l-eveque/6443-petale-de-rose-2020.html",
+    "note": "Карточка урожая 2020, 75 cl: рекомендация выпить до 2023 года.",
     "source_year": null
   },
   "2b85a6978520": {
@@ -712,14 +715,14 @@ const storageEvidence = {
   "5740739d992b": {
     "year": 2018,
     "url": "https://spb.winestyle.ru/products/Recanati-Yasmin-White-kosher-mevushal-2018.html",
-    "kind": "note",
-    "min": null,
-    "max": null,
-    "scope": "cuvee",
-    "source": "Recanati Winery",
-    "source_url": "https://www.recanati-winery.com/en/home-series/",
-    "note": "Линейка Yasmin рассчитана на молодое вино, числовой срок не указан.",
-    "source_year": null
+    "kind": "duration",
+    "min": 3,
+    "max": 5,
+    "scope": "other_vintage",
+    "source": "Декантер",
+    "source_url": "https://ivn.decanter.ru/product/recanati-yasmin-white-2019-id137655",
+    "note": "Урожай 2019: потенциал 3–5 лет. Для 2018 это только ориентир.",
+    "source_year": 2019
   },
   "f32c8d6cae2b": {
     "year": 2018,
@@ -736,14 +739,14 @@ const storageEvidence = {
   "4bdac639abe7": {
     "year": 2020,
     "url": "https://spb.winestyle.ru/products/Taboadella-Villae-Branco-Dao-DOC-2020.html",
-    "kind": "note",
+    "kind": "duration",
     "min": null,
-    "max": null,
-    "scope": "vintage",
-    "source": "Wine Enthusiast",
-    "source_url": "https://www.wineenthusiast.com/buying-guide/quinta-da-taboadella-2020-villae-white-dao/",
-    "note": "По обзору от 31.12.2021 вино готово к употреблению; верхняя граница не указана.",
-    "source_year": null
+    "max": 5,
+    "scope": "other_vintage",
+    "source": "The Wine Advocate / WTSO",
+    "source_url": "https://www.wtso.com/shared/product/89676",
+    "note": "Марк Сквайрс, оценка 2021 Villae Branco от 29.07.2022: окно 2022–2026. Для 2020 пересчёт 5 лет от урожая даёт только ориентир до 2025. Не путать с Grande Villae.",
+    "source_year": 2021
   },
   "995b5447875b": {
     "year": 2017,
@@ -856,13 +859,13 @@ const storageEvidence = {
   "160221740978": {
     "year": 2013,
     "url": "https://spb.winestyle.ru/products/Bodegas-Ramon-Bilbao-Crianza-Rioja-DOC-2013-1500.html",
-    "kind": "note",
+    "kind": "duration",
     "min": null,
-    "max": null,
+    "max": 8,
     "scope": "other_vintage",
     "source": "Perfecte Wijn",
     "source_url": "https://perfectewijn.nl/en/products/ramon-bilbao-crianza-magnum",
-    "note": "Для магнума 2020 в архивной версии страницы указано окно 2026–2034; оценка меняется по версии страницы. Не переношу календарный предел на урожай 2013.",
+    "note": "Магнум 2020: окно 2023–2028. Расчёт по другому урожаю: 8 лет от урожая; для 2013 ориентир 2021. Точная граница для магнума 2013 не установлена.",
     "source_year": 2020
   }
 };
@@ -893,8 +896,8 @@ function agingStatus(x){
  return 'Календарный предел не установлен';
 }
 function agingMarkup(r){
- const x=agingFor(r),url=cleanUrl(x.source_url);
- return '<section class="wine-detail-section"><h3>Потенциал хранения</h3><p><strong>'+safe(x.kind==='window'?'Окно потребления: '+x.range:x.range)+'</strong></p><p class="aging-status">'+safe(agingStatus(x))+'</p><p class="detail-note">'+safe(x.scopeText)+(x.source_year?' · источник: урожай '+x.source_year:'')+(x.note?' · '+safe(x.note):'')+(url?' · <a href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">'+safe(x.source||'Источник')+'</a>':'')+'</p></section>';
+ const x=agingFor(r),url=cleanUrl(x.source_url),additional=cleanUrl(x.additional_source_url),technical=cleanUrl(x.technical_sheet_url);
+ return '<section class="wine-detail-section"><h3>Потенциал хранения</h3><p><strong>'+safe(x.kind==='window'?'Окно потребления: '+x.range:x.range)+'</strong></p><p class="aging-status">'+safe(agingStatus(x))+'</p><p class="detail-note">'+safe(x.scopeText)+(x.source_year?' · источник: урожай '+x.source_year:'')+(x.note?' · '+safe(x.note):'')+(url?' · <a href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">'+safe(x.source||'Источник')+'</a>':'')+(additional?' · <a href="'+safe(additional)+'" target="_blank" rel="noopener noreferrer">Дополнительный источник</a>':'')+(technical?' · <a href="'+safe(technical)+'" target="_blank" rel="noopener noreferrer">Техлист</a>':'')+'</p></section>';
 }
 function agingPreview(r){
  const x=agingFor(r);
@@ -1082,7 +1085,20 @@ async function init(){
   state.ownerExcluded=new Set(Object.keys(exclusions.records));
   state.records=catalog.records.filter(isPublished);
   let discovered=[];
-  try { const response=await fetch('./data/discovered-wines.json',{cache:'no-cache'}); if(response.ok){ const extra=await response.json(); if(extra.version===1&&Array.isArray(extra.records)) discovered=extra.records.filter(r=>isPublished(r)&&r.availability?.status==='in_stock'&&r.drinking_window?.scope==='vintage'&&r.drinking_window.max>=2027&&r.stores?.[0]?.price_rub<=5000&&r.critic_ratings?.some(x=>x.scope==='vintage'&&x.vintage===r.year&&x.scale===100&&x.score>=85)); } } catch(e){console.warn('Discovered wines unavailable',e)}
+  try {
+   const response=await fetch('./data/discovered-wines.json',{cache:'no-cache'});
+   if(response.ok){
+    const extra=await response.json();
+    if(extra.version===1&&Array.isArray(extra.records)) discovered=extra.records.filter(r=>{
+     const offer=r.stores?.[0], foreign=r.foreign_reference?.amount_rub, window=r.drinking_window;
+     return isPublished(r)&&r.availability?.status==='in_stock'&&r.availability.source_url===offer?.url&&
+      window?.scope==='vintage'&&window.max>=Math.max(2027,new Date().getFullYear())&&
+      offer?.price_rub>0&&offer.price_rub<=5000&&foreign>0&&foreign<=6000&&
+      r.critic_ratings?.some(x=>x.scope==='vintage'&&x.vintage===r.year&&[100,20].includes(x.scale)&&
+       x.score<=x.scale&&x.score*100/x.scale>=85);
+    });
+   }
+  } catch(e){console.warn('Discovered wines unavailable',e)}
   const existingUrls=new Set(state.records.flatMap(r=>r.stores.map(s=>s.url)));
   discovered=discovered.filter(r=>!state.records.some(x=>x.id===r.id)&&!r.stores.some(s=>existingUrls.has(s.url)));
   state.records.push(...discovered);

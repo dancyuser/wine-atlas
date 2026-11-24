@@ -1,0 +1,16 @@
+'use strict';
+const assert=require('node:assert/strict');
+const {captureWineResearch}=require('../research-extension/collector.js');
+const {SOURCES}=require('../research-extension/sources.js');
+assert(SOURCES.some(([name])=>name==='Luding'));
+assert(SOURCES.some(([name])=>name==='Wine Enthusiast'));
+assert.equal(new Set(SOURCES.map(x=>x[0])).size,SOURCES.length);
+global.location={href:'https://spb.luding.ru/collection/item/a/?token=secret',hostname:'spb.luding.ru'};
+global.document={body:{innerText:'Санкт-Петербург\nВ наличии у поставщика\n2 000 ₽'},querySelector:s=>s==='h1'?{innerText:'Test 2022'}:null,querySelectorAll:()=>[]};
+let row=captureWineResearch();
+assert.equal(row.url,'https://spb.luding.ru/collection/item/a/');
+assert.equal(row.status,'needs_review');
+assert(row.excerpts.some(s=>s.includes('поставщика')));
+document.body.innerText='Please verify you are human';
+row=captureWineResearch();assert.equal(row.status,'blocked');assert.equal(row.excerpts.length,0);
+console.log('research browser capture tests passed');

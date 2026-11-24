@@ -14,7 +14,7 @@ class SitePackageTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             output = Path(folder) / "_site"
             self.assertEqual(build_site(output), len(PUBLIC))
-            files = {str(p.relative_to(output)) for p in output.rglob("*") if p.is_file()}
+            files = {p.relative_to(output).as_posix() for p in output.rglob("*") if p.is_file()}
             self.assertEqual(files, set(PUBLIC) | {".nojekyll"})
             for relative in PUBLIC:
                 self.assertEqual(

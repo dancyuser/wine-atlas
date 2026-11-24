@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "records": [
+    {
+      "id": "a7ed12c0ab02",
+      "title": "Hacienda López de Haro Crianza Rioja",
+      "year": 2022,
+      "country": "Испания",
+      "grapes": [
+        "Темпранильо",
+        "Гарнача",
+        "Грасиано"
+      ],
+      "type": "Красное",
+      "pairings": [
+        "Красное мясо",
+        "Сыры"
+      ],
+      "section": "Темпранильо",
+      "wishlist": false,
+      "research": true,
+      "volume_l": 0.75,
+      "description": "Красное сухое вино из Риохи.",
+      "scores": [],
+      "review_note": null,
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/rioja_crianza_2022_075_159284/",
+          "price_rub": 2490,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "reference_price_rub": null,
+          "reference_regular_price_rub": null,
+          "reference_date": null,
+          "research_details": {
+            "source_kind": "manual_verified_original_seller",
+            "source_url": "https://simplewine.ru/catalog/product/rioja_crianza_2022_075_159284/",
+            "checked_at": "2026-11-24",
+            "full_name": "Rioja Crianza, Hacienda Lopez de Haro, 2022",
+            "wine_style": "Красное сухое",
+            "color": "Красное",
+            "pairing_notes": "мясные тапасы, красное мясо, выдержанные сыры"
+          }
+        }
+      ],
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/rioja_crianza_2022_075_159284/",
+        "evidence": "Санкт-Петербург: забрать сегодня из 2 винотек; урожай 2022 в наличии.",
+        "snapshot_source": "browser_observation",
+        "region": "Санкт-Петербург",
+        "stock_kind": "in_stock"
+      },
+      "drinking_window": {
+        "kind": "window",
+        "min": 2024,
+        "max": 2028,
+        "scope": "vintage",
+        "source": "Bon Coeur Fine Wines",
+        "source_url": "https://www.bcfw.co.uk/wine-sale/end-of-summer-sale/r-sp520226-bodega-classica-hacienda-lopez-de-haro-crianza-rioja-2022",
+        "raw": "2024–2028",
+        "note": "Окно для урожая 2022 по оценке продавца."
+      },
+      "critic_ratings": [
+        {
+          "source": "James Suckling (по Decántalo)",
+          "score": 90,
+          "scale": 100,
+          "scope": "vintage",
+          "vintage": 2022,
+          "source_url": "https://www.decantalo.com/is/en/hacienda-lopez-de-haro-crianza.html",
+          "observed_on": "2026-11-24",
+          "note": "Оценка критика приведена другим продавцом; первоисточник не проверен."
+        }
+      ],
+      "foreign_reference": {
+        "amount": 11,
+        "currency": "GBP",
+        "price_source_url": "https://www.bcfw.co.uk/wine-sale/end-of-summer-sale/r-sp520226-bodega-classica-hacienda-lopez-de-haro-crianza-rioja-2022",
+        "exchange_rate_rub": 107.6314,
+        "rate_source": {
+          "source": "Банк России",
+          "date": "2026-11-24",
+          "source_url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=24.11.2026"
+        },
+        "amount_rub": 1183.95
+      },
+      "research_status": "pending_primary_numeric_rating",
+      "primary_review_candidate": "https://www.decanter.com/wine-reviews/spain/rioja-1/hacienda-lopez-de-haro-crianza-rioja-spain-2022-92636/"
+    }
+  ]
+}
