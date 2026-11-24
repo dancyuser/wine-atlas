@@ -1,7 +1,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const fmt=new Intl.NumberFormat('ru-RU');
-const state={records:[],ratingRecords:{},unrated:{},snapshots:{},snapshotDate:null,researchedPhotos:{},fullDescriptions:{},favorites:new Set(),scope:'all'};
+const state={records:[],ratingRecords:{},unrated:{},snapshots:{},snapshotDate:null,researchedPhotos:{},fullDescriptions:{},sourcePairings:{},pairingLabels:{},favorites:new Set(),scope:'all'};
 const options={country:'country',grape:'grapes',type:'type',pairing:'pairings'};
 const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const cleanUrl=s=>{try{const u=new URL(s);return u.protocol==='https:'?u.href:null}catch{return null}};
@@ -101,35 +101,7 @@ function priceValue(r){
 }
 // Classify each stated dish separately: red fish is not generic fish;
 // game is not generic meat; lettuce salad is not a vegetable synonym.
-const pairingRules=[
- ['Красная рыба',/лосос|с[её]мг|форел|горбуш|красн(?:ая|ой|ую) рыб/i],
- ['Голубая рыба',/голубая рыба/i],
- ['Суши и сашими',/суши|сашими/i],
- ['Рыба',/рыб|тунец|лещ|барабульк|морск.*окун|сибас/i],
- ['Морепродукты',/морепродукт|дар(?:ы|ов) моря|моллюск|кревет|устриц|кальмар|омар|лобстер|мидии|лангуст|гребешк/i],
- ['Дичь',/дичь|мясо диких животн|оленин|кабанин/i],
- ['Белое мясо',/белое мясо/i],
- ['Красное мясо',/красное мясо|говядин|баранин|ягнятин|телятин|стейк|ростбиф/i],
- ['Птица',/птиц|куриц|цыплен|утк|индейк|цесарк/i],
- ['Мясо',/мясо|свинин|ветчин|прошутто|салями|колбасн|котлет|шницел|жаркое/i],
- ['Выдержанные сыры',/выдержан.*сыр|зрел.*сыр/i],
- ['Сыры с плесенью',/голуб(?:ой|ые) сыр|сыр.*плесен/i],
- ['Мягкие сыры',/мягк.*сыр|сливочн.*сыр/i],
- ['Твёрдые сыры',/тверд.*сыр|твёрд.*сыр/i],
- ['Козий сыр',/козий сыр/i],
- ['Сыры',/сыр/i],
- ['Ризотто',/ризотто/i],
- ['Паста',/паст|макарон|лазан|лапш/i],
- ['Грибы',/гриб/i],
- ['Салаты',/салат/i],
- ['Овощи',/овощ|вегетарианск|картофел/i],
- ['Фрукты',/фрукт/i],
- ['Десерты',/десерт|шоколад|выпечк|торт|пирог|суфле|сорбет|кулич/i],
- ['Супы',/суп|первые блюда/i],
- ['Закуски',/закуск|тапас|канапе|паштет|фуа-гра/i],
- ['Аперитив',/аперитив/i],
- ['Пряные блюда',/остр|прян|карри|азиатск|тайск|индийск|марокканск/i]
-];
+// Pairing categories come from exact product source data, not a semantic classifier.
 function retailerDetails(r){
  const s=r.stores?.[0];
  if(!s)return null;
@@ -190,15 +162,34 @@ function grapeValues(r){
  return [...new Set(raw.map(normalizeGrape).filter(Boolean))];
 }
 function countryValue(r){return r.country||retailerDetails(r)?.country?.split(',')[0]?.trim()||null}
+function sourcePairing(r){
+ const item=state.sourcePairings[r.id],store=r.stores?.[0];
+ if(!item||item.url!==store?.url||item.year!==(r.year??null)||!Array.isArray(item.codes))return null;
+ if(item.codes.some(code=>!Object.hasOwn(state.pairingLabels,code)))return null;
+ return item;
+}
+function literalPairingValues(note){
+ const text=String(note||'').trim();
+ if(!text)return [];
+ // A prose recommendation is retained as prose, not turned into speculative categories.
+ if(/[.!?](?:\s|$)/u.test(text)||/^(?:это вино|вино |составит |прекрасно |хорошо |идеально |сочетается )/iu.test(text))return [];
+ const items=text.split(/[,;]/).map(s=>s.trim().replace(/\s+/g,' ')).filter(Boolean);
+ if(items.some(s=>s.length>100))return [];
+ return [...new Set(items.map(s=>s[0].toLocaleUpperCase('ru')+s.slice(1)))];
+}
 function pairingValues(r){
+ const item=sourcePairing(r);
+ if(item)return [...new Set(item.codes)].map(code=>state.pairingLabels[code]);
  const note=retailerDetails(r)?.pairing_notes;
- if(!note)return r.pairings||[];
- const found=new Set();
- for(const item of String(note).split(/[;,]/).flatMap(s=>s.split(/\s+(?:и|или)\s+|[/／]/)).map(s=>s.trim()).filter(Boolean)){
-  const match=pairingRules.find(([,pattern])=>pattern.test(item));
-  if(match)found.add(match[0]);
- }
- return found.size?[...found]:(r.pairings||[]);
+ // Outside a verified icon list, use only explicitly stated labels, preserving slash aliases.
+ if(note)return literalPairingValues(note);
+ return [...new Set((r.pairings||[]).filter(Boolean))];
+}
+function pairingProse(r){
+ const item=sourcePairing(r);
+ if(item)return item.note||'';
+ const note=retailerDetails(r)?.pairing_notes;
+ return note&&!literalPairingValues(note).length?String(note).trim():'';
 }
 function distinct(k){return [...new Set(state.records.flatMap(r=>k==='grapes'?grapeValues(r):
   k==='country'?[countryValue(r)].filter(Boolean):k==='pairings'?pairingValues(r):
@@ -293,7 +284,7 @@ function metaText(r){
  return [countryValue(r),...grapeValues(r),r.year?String(r.year):null,r.volume_l?(r.volume_l<1?Math.round(r.volume_l*1000)+' мл':fmt.format(r.volume_l)+' л'):null].filter(Boolean).join(' · ');
 }
 function pairingText(r){
- const pairs=pairingValues(r);return pairs.length?'Подходит к: '+pairs.join(', '):'Сочетания не указаны';
+ const pairs=pairingValues(r);return pairs.length?'Подходит к: '+pairs.join(', '):pairingProse(r)||'Сочетания не указаны';
 }
 function fullWineMarkup(r){
  const d=retailerDetails(r),s=r.stores?.[0],url=cleanUrl(s?.url),m=metrics(r),description=fullDescription(r);
@@ -309,7 +300,7 @@ function fullWineMarkup(r){
  metricRow(m,r)+
  (facts.length?'<section class="wine-detail-section"><h3>Характеристики</h3><div class="wine-facts">'+facts.map(([label,value])=>'<div class="wine-fact"><span>'+safe(label)+'</span><p>'+safe(value)+'</p></div>').join('')+'</div></section>':'')+
  (tasting.length?'<section class="wine-detail-section"><h3>Дегустационный профиль</h3><div class="wine-tasting">'+tasting.map(([label,value])=>'<div><h4>'+safe(label)+'</h4><p>'+safe(value)+'</p></div>').join('')+'</div></section>':'')+
- '<section class="wine-detail-section"><h3>Гастрономические сочетания</h3><p>'+safe(pairingText(r))+'</p>'+ (d?.pairing_notes?'<p class="detail-note">'+safe(d.pairing_notes)+'</p>':'')+'</section>'+
+ '<section class="wine-detail-section"><h3>Гастрономические сочетания</h3><p>'+safe(pairingText(r))+'</p>'+ (pairingValues(r).length&&pairingProse(r)?'<p>'+safe(pairingProse(r))+'</p>':'')+'</section>'+
  descMarkup+
  '<section class="wine-detail-section wine-detail-ratings"><h3>Оценки и источники</h3>'+ratingsDetails(r,m).replace('<details class="rating-details score-details">','<details class="rating-details score-details" open>')+'</section>'+
  (d?'<p class="rating-hint detail-note">Данные '+safe(sourceLabel)+' на '+date(d.checked_at)+(d.supplemental_checked_at?' · Дополнено ручной проверкой '+date(d.supplemental_checked_at):'')+(source?' · <a href="'+safe(source)+'" target="_blank" rel="noopener noreferrer">Источник</a>':'')+'</p>':'');
@@ -471,6 +462,7 @@ async function init(){
   const response=await fetch('./data/wines.json',{cache:'no-cache'});if(!response.ok)throw Error('Catalog HTTP '+response.status);
   const catalog=await response.json();if(!Array.isArray(catalog.records))throw Error('Invalid catalog');
   state.records=catalog.records.filter(isPublished);
+  try{const response=await fetch('./data/source-pairings.json',{cache:'no-cache'});if(response.ok){const data=await response.json();if(data.version===1&&data.records&&data.labels){state.sourcePairings=data.records;state.pairingLabels=data.labels;}}}catch(e){console.warn('Source pairing categories unavailable',e)}
   try{const response=await fetch('./data/full-descriptions.json',{cache:'no-cache'});if(response.ok){const data=await response.json();if(data.version===1&&data.records&&typeof data.records==='object')state.fullDescriptions=data.records;}}catch(e){console.warn('Full descriptions unavailable',e)}
   try{
     const snapshots=await fetch('./data/verified-snapshot-2026-11-23.json',{cache:'no-cache'});
