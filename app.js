@@ -286,9 +286,562 @@ function metaText(r){
 function pairingText(r){
  const pairs=pairingValues(r);return pairs.length?'Подходит к: '+pairs.join(', '):pairingProse(r)||'Сочетания не указаны';
 }
+// Research supplement 2026-11-24; identity-checked sources, no inferred expiry from absent dates.
+const storageEvidence = {
+  "2f1b26d235e4": {
+    "year": 2019,
+    "url": "https://spb.winestyle.ru/products/Graham-s-Late-Bottled-Vintage-LBV-2019-gift-tube.html",
+    "kind": "bottling",
+    "min": 2,
+    "max": 3,
+    "scope": "vintage",
+    "source": "Slijterij Kuijpers",
+    "source_url": "https://www.slijterijkuijpers.nl/a-106552376/late-bottled-vintage/graham-s-port-lbv-2019/",
+    "note": "2–3 года после розлива; год розлива конкретной бутылки неизвестен.",
+    "source_year": null
+  },
+  "c9f63273980c": {
+    "year": 2018,
+    "url": "https://ast.wine/catalog/product/dow_s_late_bottled_vintage_port_5608309002876_43233/",
+    "kind": "window",
+    "min": null,
+    "max": 2031,
+    "scope": "vintage",
+    "source": "Premium Port Wines / Dow’s",
+    "source_url": "https://www.premiumport.com/portfolio/dows/dows_late_bottled_vintage/dows_late_bottled_vintage_2018",
+    "note": "Готово к употреблению; дальнейшее созревание не требуется.",
+    "source_year": null
+  },
+  "060e3c866e44": {
+    "year": 2018,
+    "url": "https://ladogawine.ru/catalog/wine/kopke_leyt_bottled_vintedzh_porto_075/#",
+    "kind": "window",
+    "min": 2022,
+    "max": 2027,
+    "scope": "vintage",
+    "source": "Dagens Næringsliv / Smak",
+    "source_url": "https://www.dn.no/smak/vin/kopke-lbv/4-1-164095?zephr_sso_ott=BytSh1",
+    "note": "",
+    "source_year": null
+  },
+  "bdbf5d0327dc": {
+    "year": 2017,
+    "url": "https://spb.winestyle.ru/products/Tement-Ehrenhausen-Muschelkalk-2017-375.html",
+    "kind": "window",
+    "min": 2018,
+    "max": 2024,
+    "scope": "vintage",
+    "source": "Weinfurore",
+    "source_url": "https://www.weinfurore.de/sauvignon-blanc-ehrenhausen-2017-manfred-tement-suedsteiermark",
+    "note": "Источник не уточняет формат 0,375 л; маленькая бутылка может стареть быстрее.",
+    "source_year": null
+  },
+  "1fc33a9c0505": {
+    "year": 2023,
+    "url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Chardonnay-2023.html",
+    "kind": "duration",
+    "min": 3,
+    "max": 5,
+    "scope": "vintage",
+    "source": "Декантер",
+    "source_url": "https://decanter.ru/product/vina-cobos-felino-chardonnay-2023-id259020",
+    "note": "",
+    "source_year": null
+  },
+  "cbc96de28176": {
+    "year": 2016,
+    "url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2016.html",
+    "kind": "window",
+    "min": 2017,
+    "max": 2020,
+    "scope": "vintage",
+    "source": "Decanter",
+    "source_url": "https://www.decanter.com/wine-reviews/usa/california/wente-san-francisco-bay-livermore-morning-fog-chardonnay-14047/",
+    "note": "",
+    "source_year": null
+  },
+  "209d7a6d9fe0": {
+    "year": null,
+    "url": "https://spb.winestyle.ru/products/Loimer-Gluegglich.html",
+    "kind": "note",
+    "min": null,
+    "max": null,
+    "scope": "cuvee",
+    "source": "Loimer",
+    "source_url": "https://www.loimer.at/en/shop/gluegglich-nv/",
+    "note": "Производитель указывает готовность к употреблению до 2028 года для текущей партии NV; без идентификации партии не применяю календарный предел.",
+    "source_year": null
+  },
+  "91f9214b514c": {
+    "year": 2013,
+    "url": "https://spb.winestyle.ru/products/Huia-Pinot-Noir-2013.html",
+    "kind": "window",
+    "min": null,
+    "max": 2022,
+    "scope": "vintage",
+    "source": "Wine.com / опубликованная оценка",
+    "source_url": "https://www.wine.com/product/huia-pinot-noir-2013/353610",
+    "note": "",
+    "source_year": null
+  },
+  "2d98b7c07c09": {
+    "year": 2023,
+    "url": "https://spb.winestyle.ru/products/Pyramid-Scheme-Pinot-Noir-2023.html",
+    "kind": "duration",
+    "min": 3,
+    "max": 5,
+    "scope": "vintage",
+    "source": "Декантер",
+    "source_url": "https://spb.decanter.ru/product/pyramid-scheme-pinot-noir-2023-id270091",
+    "note": "В заголовке продавца ошибка цвета, но описание и название идентифицируют красный Pinot Noir.",
+    "source_year": null
+  },
+  "8fb6ff3a814f": {
+    "year": 2023,
+    "url": "https://spb.winestyle.ru/products/Undurraga-Sibaris-Pinot-Noir-Gran-Reserva-Leyda-Valley-DO-2023.html",
+    "kind": "note",
+    "min": null,
+    "max": null,
+    "scope": "style",
+    "source": "Gilbert & Gaillard",
+    "source_url": "https://gilbertgaillard.com/en/resultats/valle-de-san-antonio-leyda",
+    "note": "Для вин долины Лейда рекомендованы первые годы; более концентрированные Pinot Noir могут выиграть от нескольких лет выдержки. Точный срок Sibaris 2023 не установлен.",
+    "source_year": null
+  },
+  "aa6da0a65a5d": {
+    "year": 2021,
+    "url": "https://spb.winestyle.ru/products/Bestheim-Alsace-Grand-Cru-Schlossberg-Riesling-AOC-2021.html",
+    "kind": "duration",
+    "min": 5,
+    "max": 10,
+    "scope": "cuvee",
+    "source": "Bestheim",
+    "source_url": "https://www.bestheim.com/en/grand-cru-wines/10-riesling-grand-cru-schlossberg.html",
+    "note": "Рекомендация производителя для кюве.",
+    "source_year": null
+  },
+  "426bd971c45a": {
+    "year": 2021,
+    "url": "https://spb.winestyle.ru/products/d-Arenberg-The-Stump-Jump-White-2021.html",
+    "kind": "window",
+    "min": 2021,
+    "max": 2026,
+    "scope": "vintage",
+    "source": "Perfecte Wijn",
+    "source_url": "https://perfectewijn.nl/en/collections/wijnhuis-d-arenberg/products/the-stump-jump-darenberg-white-blend",
+    "note": "",
+    "source_year": null
+  },
+  "62988f645654": {
+    "year": 2024,
+    "url": "https://spb.winestyle.ru/products/Tesch-Unplugged-Riesling-2024.html",
+    "kind": "window",
+    "min": 2025,
+    "max": 2029,
+    "scope": "vintage",
+    "source": "Lobenbergs",
+    "source_url": "https://www.gute-weine.de/produkt/weingut-tesch-riesling-unplugged-2024-74193h/",
+    "note": "",
+    "source_year": null
+  },
+  "a1faf8b0af1d": {
+    "year": 2023,
+    "url": "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2023.html",
+    "kind": "duration",
+    "min": 0,
+    "max": 2,
+    "scope": "style",
+    "source": "Caviste",
+    "source_url": "https://cavisteapp.com/appellations/moscato-d-asti.html",
+    "note": "Общий ориентир для Moscato d’Asti, не оценка Canti 2023.",
+    "source_year": null
+  },
+  "46622f963eaa": {
+    "year": null,
+    "url": "https://spb.winestyle.ru/products/Montelliana-Prosecco-Treviso-DOC-Extra-Dry.html",
+    "kind": "note",
+    "min": null,
+    "max": null,
+    "scope": "style",
+    "source": "Consorzio Tutela Prosecco DOC",
+    "source_url": "https://www.prosecco.wine/en/five-things-you-didnt-know-about-prosecco-doc/",
+    "note": "Предпочтительно пить в году, следующем за урожаем; год неизвестен.",
+    "source_year": null
+  },
+  "5427ef8902aa": {
+    "year": null,
+    "url": "https://spb.winestyle.ru/products/Pitars-Prosecco-DOC.html",
+    "kind": "note",
+    "min": null,
+    "max": null,
+    "scope": "style",
+    "source": "Consorzio Tutela Prosecco DOC",
+    "source_url": "https://www.prosecco.wine/en/five-things-you-didnt-know-about-prosecco-doc/",
+    "note": "Предпочтительно пить в году, следующем за урожаем; год неизвестен.",
+    "source_year": null
+  },
+  "f97f2ccc67b8": {
+    "year": null,
+    "url": "https://spb.winestyle.ru/products/Grande-Alberone-Moscato-Spumante-Dolce.html",
+    "kind": "duration",
+    "min": 1,
+    "max": 2,
+    "scope": "cuvee",
+    "source": "ALDI Suisse",
+    "source_url": "https://www.aldi-now.ch/it/grande-alberone-moscato-spumante-dolce/333042",
+    "note": "Невинтажное вино; дата производства не установлена.",
+    "source_year": null
+  },
+  "7c836f833ee2": {
+    "year": null,
+    "url": "https://spb.winestyle.ru/products/Lucien-Albrecht-Brut-Cremant-d-Alsace-AOC.html",
+    "kind": "bottling",
+    "min": 0,
+    "max": 3,
+    "scope": "cuvee",
+    "source": "Lucien Albrecht",
+    "source_url": "https://www.lucien-albrecht.com/wp-content/uploads/2021/03/Cremant-dAlsace-Lucien-Albrecht-Brut-WE_e.pdf",
+    "note": "Техлист: пить сразу или хранить до трёх лет; партия NV не идентифицирована.",
+    "source_year": null
+  },
+  "9ddeb3cfb445": {
+    "year": 2011,
+    "url": "https://spb.winestyle.ru/products/Church-Block-Cabernet-Shiraz-Merlot-2011.html",
+    "kind": "duration",
+    "min": null,
+    "max": 10,
+    "scope": "cuvee",
+    "source": "Waitrose",
+    "source_url": "https://www.waitrose.com/ecom/products/wirra-wirra-church-block-mclaren-vale/450265-63440-63441",
+    "note": "Общий ориентир для Church Block, не конкретный урожай 2011.",
+    "source_year": null
+  },
+  "b2276984217f": {
+    "year": 2019,
+    "url": "https://spb.winestyle.ru/products/Tenuta-Poggio-ai-Mandorli-Chianti-Classico-Gran-Selezione-DOCG-2019.html",
+    "kind": "duration",
+    "min": null,
+    "max": 7,
+    "scope": "other_vintage",
+    "source": "Wine Enthusiast",
+    "source_url": "https://www.wineenthusiast.com/buying-guide/poggio-ai-mandorli-2012-gran-selezione-chianti-classico/",
+    "note": "Для урожая 2012 указан предел 2019. Это лишь ориентир, не оценка 2019.",
+    "source_year": 2012
+  },
+  "9830fcbfa909": {
+    "year": 2024,
+    "url": "https://spb.winestyle.ru/products/Domaine-Laffitte-Rose-Cotes-de-Gascogne-IGP-2024.html",
+    "kind": "duration",
+    "min": 1,
+    "max": 2,
+    "scope": "other_vintage",
+    "source": "Domaine Laffitte (техлист 2022)",
+    "source_url": "https://static1.squarespace.com/static/5f341de3ca1c301eef3c4e4b/t/657b68f87ed61168f77844e8/1702586616778/ROSE%2BDomaine%2BLaffitte%2BTech%2BSheet%2B2022.pdf",
+    "note": "Для 2024 отдельного срока не найдено.",
+    "source_year": 2022
+  },
+  "0d2ee38169c9": {
+    "year": 2023,
+    "url": "https://spb.winestyle.ru/products/Mare-Magnum-The-Chocolate-Tube-Primitivo-Puglia-IGT-2023.html",
+    "kind": "duration",
+    "min": 3,
+    "max": 4,
+    "scope": "cuvee",
+    "source": "Mare Magnum",
+    "source_url": "https://www.terramaremagnum.com/GenerateProductPdf.aspx?url=chocolate-tube-primitivo-alberello",
+    "note": "Техлист того же кюве; урожай не указан.",
+    "source_year": null
+  },
+  "8a9950e9e3c4": {
+    "year": 2013,
+    "url": "https://spb.winestyle.ru/products/Capo-di-Stato-Colli-Trevigiani-IGT-2013.html",
+    "kind": "note",
+    "min": null,
+    "max": null,
+    "scope": "vintage",
+    "source": "Vinhuset NoFra",
+    "source_url": "https://vinhusetnofra.no/vin/loredan-gasparini-capo-di-stato/",
+    "note": "2013: готово к употреблению, допускается ещё восемь лет хранения; дата исходной оценки не установлена.",
+    "source_year": null
+  },
+  "de91d5c1fa5e": {
+    "year": 2024,
+    "url": "https://spb.winestyle.ru/products/Long-Barn-Zinfandel-2024.html",
+    "kind": "duration",
+    "min": 3,
+    "max": 5,
+    "scope": "vintage",
+    "source": "Декантер",
+    "source_url": "https://ivn.decanter.ru/product/long-barn-zinfandel-2023-id266724",
+    "note": "На странице указан 2024, несмотря на 2023 в адресе.",
+    "source_year": null
+  },
+  "9fb448b8f505": {
+    "year": 2021,
+    "url": "https://spb.winestyle.ru/products/Apollonio-Mani-del-Sud-Rosso-Salice-Salentino-DOP-2021.html",
+    "kind": "duration",
+    "min": 3,
+    "max": 5,
+    "scope": "other_vintage",
+    "source": "Декантер",
+    "source_url": "https://ivn.decanter.ru/product/apollonio-mani-del-sud-rosso-2020-id250774",
+    "note": "Ориентир по урожаю 2020.",
+    "source_year": 2020
+  },
+  "5b8fb4a0202e": {
+    "year": 2018,
+    "url": "https://spb.winestyle.ru/products/Felline-Cicala-Rose-Salento-IGT-2018.html",
+    "kind": "duration",
+    "min": 3,
+    "max": 5,
+    "scope": "other_vintage",
+    "source": "Декантер",
+    "source_url": "https://decanter.ru/product/felline-cicala-rose-2015-id159287",
+    "note": "Ориентир по урожаю 2015.",
+    "source_year": 2015
+  },
+  "bab581b955b0": {
+    "year": 2022,
+    "url": "https://spb.winestyle.ru/products/Parajes-del-Valle-Monastrell-Ecologico-Jumilla-DOP-2022.html",
+    "kind": "window",
+    "min": 2024,
+    "max": 2025,
+    "scope": "vintage",
+    "source": "Decanter",
+    "source_url": "https://www.decanter.com/wine-reviews/spain/murcia/parajes-del-valle-monastrell-ecologico-jumilla-2022-84357/",
+    "note": "",
+    "source_year": null
+  },
+  "bb252388600c": {
+    "year": 2015,
+    "url": "https://spb.winestyle.ru/products/Tedeschi-Capitel-San-Rocco-Valpolicella-Ripasso-DOC-Superiore-2015.html",
+    "kind": "duration",
+    "min": 12,
+    "max": 15,
+    "scope": "cuvee",
+    "source": "Tedeschi",
+    "source_url": "https://tedeschiwines.com/wp-content/uploads/2026/01/EN_Ripasso-San-Rocco.pdf",
+    "note": "Общий потенциал кюве.",
+    "source_year": null
+  },
+  "a748bd657f0a": {
+    "year": 2021,
+    "url": "https://spb.winestyle.ru/products/Atzei-Saragat-Cannonau-di-Sardegna-DOC-2021.html",
+    "kind": "window",
+    "min": null,
+    "max": 2027,
+    "scope": "vintage",
+    "source": "Vineshop24",
+    "source_url": "https://www.vineshop24.de/en/worldwide-wines/italy/sardinia/atzei-saragat-cannonau-di-sardegna-doc",
+    "note": "В карточке продавца указан потенциал до 2027; сухость указана иначе, чем в каталоге.",
+    "source_year": null
+  },
+  "2f06acc1cf43": {
+    "year": 2023,
+    "url": "https://spb.winestyle.ru/products/Hito-Ribera-Del-Duero-DO-2023.html",
+    "kind": "duration",
+    "min": 8,
+    "max": 10,
+    "scope": "vintage",
+    "source": "SimpleWine",
+    "source_url": "https://simplewine.ru/catalog/product/hito_2023_075_153218/",
+    "note": "",
+    "source_year": null
+  },
+  "f0c33d420f2f": {
+    "year": 2024,
+    "url": "https://spb.winestyle.ru/products/Marius-Peyol-Coteaux-d-Aix-en-Provence-AOC-2024.html",
+    "kind": "duration",
+    "min": 1,
+    "max": 3,
+    "scope": "other_vintage",
+    "source": "Cdiscount",
+    "source_url": "https://www.cdiscount.com/vin-champagne/vin-rose/marius-peyol-coteaux/f-12936-aaadv85533.html",
+    "note": "Ориентир по урожаю 2021.",
+    "source_year": 2021
+  },
+  "e5af8c73633f": {
+    "year": 2018,
+    "url": "https://spb.winestyle.ru/products/Miraval-Rose-Cotes-de-Provence-AOC-2018-375.html",
+    "kind": "window",
+    "min": 2019,
+    "max": 2024,
+    "scope": "vintage",
+    "source": "Woodland Hills Wine Company",
+    "source_url": "https://whwc.com/miraval-cotes-de-provence-rose-2018/",
+    "note": "Berry Bros. & Rudd даёт более короткое окно; взята более поздняя граница. Формат 0,375 л может стареть быстрее.",
+    "source_year": null
+  },
+  "75ea3ee23df9": {
+    "year": 2020,
+    "url": "https://spb.winestyle.ru/products/Chateau-La-Tour-de-L-Eveque-Petale-de-Rose-Cotes-de-Provence-AOC-2020.html",
+    "kind": "note",
+    "min": null,
+    "max": null,
+    "scope": "vintage",
+    "source": "WineStyle (архив описания)",
+    "source_url": "https://spb.winestyle.ru/products/Chateau-La-Tour-de-L-Eveque-Petale-de-Rose-Cotes-de-Provence-AOC-2020.html",
+    "note": "В описании: может хорошо храниться в течение следующих 1–2 лет; дата исходной оценки не указана.",
+    "source_year": null
+  },
+  "2b85a6978520": {
+    "year": 2022,
+    "url": "https://spb.winestyle.ru/products/Mezzacorona-Pinot-Grigio-Trentino-DOC-2022.html",
+    "kind": "window",
+    "min": 2024,
+    "max": 2026,
+    "scope": "vintage",
+    "source": "Natalie MacLean",
+    "source_url": "https://www.nataliemaclean.com/wine-reviews/mezzacorona-pinot-grigio-2022/344943",
+    "note": "",
+    "source_year": null
+  },
+  "060a331fa324": {
+    "year": 2023,
+    "url": "https://spb.winestyle.ru/products/Gaintza-Txakolina-2023.html",
+    "kind": "duration",
+    "min": 1,
+    "max": 2,
+    "scope": "style",
+    "source": "Wine Champ",
+    "source_url": "https://winechamp.co.uk/regions/txakoli-basque-coast/",
+    "note": "Ориентир для молодого Getariako Txakolina. У того же кюве 2022 другой продавец указывает 2023–2028, поэтому точный предел 2023 не установлен.",
+    "source_year": null
+  },
+  "5740739d992b": {
+    "year": 2018,
+    "url": "https://spb.winestyle.ru/products/Recanati-Yasmin-White-kosher-mevushal-2018.html",
+    "kind": "note",
+    "min": null,
+    "max": null,
+    "scope": "cuvee",
+    "source": "Recanati Winery",
+    "source_url": "https://www.recanati-winery.com/en/home-series/",
+    "note": "Линейка Yasmin рассчитана на молодое вино, числовой срок не указан.",
+    "source_year": null
+  },
+  "f32c8d6cae2b": {
+    "year": 2018,
+    "url": "https://spb.winestyle.ru/products/Protos-Verdejo-2018.html",
+    "kind": "window",
+    "min": null,
+    "max": 2024,
+    "scope": "vintage",
+    "source": "Wine.com / опубликованная оценка",
+    "source_url": "https://www.wine.com/product/protos-verdejo-2018/525768",
+    "note": "",
+    "source_year": null
+  },
+  "4bdac639abe7": {
+    "year": 2020,
+    "url": "https://spb.winestyle.ru/products/Taboadella-Villae-Branco-Dao-DOC-2020.html",
+    "kind": "note",
+    "min": null,
+    "max": null,
+    "scope": "vintage",
+    "source": "Wine Enthusiast",
+    "source_url": "https://www.wineenthusiast.com/buying-guide/quinta-da-taboadella-2020-villae-white-dao/",
+    "note": "По обзору от 31.12.2021 вино готово к употреблению; верхняя граница не указана.",
+    "source_year": null
+  },
+  "995b5447875b": {
+    "year": 2017,
+    "url": "https://spb.winestyle.ru/products/Azienda-Agricola-Ottella-Lugana-Ottella-2017.html",
+    "kind": "duration",
+    "min": 3,
+    "max": 5,
+    "scope": "other_vintage",
+    "source": "WineStyle (Lugana 2024)",
+    "source_url": "https://spb.winestyle.ru/products/Ottella-Lugana-DOC-2024-750.html",
+    "note": "Ориентир по урожаю 2024.",
+    "source_year": 2024
+  },
+  "321ec8a9b417": {
+    "year": 2024,
+    "url": "https://spb.winestyle.ru/products/Azienda-Agricola-Ottella-Le-Creete-Lugana-DOC-2024.html",
+    "kind": "duration",
+    "min": 5,
+    "max": 8,
+    "scope": "vintage",
+    "source": "Декантер",
+    "source_url": "https://decanter.ru/product/ottella-lugana-le-creete-2024-id263567",
+    "note": "",
+    "source_year": null
+  },
+  "5039c04e5d73": {
+    "year": 2023,
+    "url": "https://spb.winestyle.ru/products/Batasiolo-Granee-Gavi-del-Comune-di-Gavi-DOCG-2023.html",
+    "kind": "duration",
+    "min": 1,
+    "max": 4,
+    "scope": "other_vintage",
+    "source": "Perfecte Wijn",
+    "source_url": "https://perfectewijn.be/en/products/batasiolo-gavi-di-gavi-granee",
+    "note": "Для урожая 2024 окно 2025–2028; пересчёт на 2023 — ориентир.",
+    "source_year": 2024
+  },
+  "47bef620896d": {
+    "year": 2023,
+    "url": "https://spb.winestyle.ru/products/Chanzy-Les-Fortunes-Aligote-Bourgogne-AOC-2023.html",
+    "kind": "duration",
+    "min": 2,
+    "max": 4,
+    "scope": "cuvee",
+    "source": "Domaine & Maison Chanzy",
+    "source_url": "https://www.chanzy.com/en/produit/bourgogne-aligote",
+    "note": "Общий срок производителя.",
+    "source_year": null
+  },
+  "e6beca8a8172": {
+    "year": 2023,
+    "url": "https://spb.winestyle.ru/products/Mar-de-Frades-Albarino-Rias-Baixas-DO-2023.html",
+    "kind": "window",
+    "min": 2025,
+    "max": 2030,
+    "scope": "vintage",
+    "source": "Vinous",
+    "source_url": "https://vinous.com/wines/mar-de-frades-albarino/2023",
+    "note": "",
+    "source_year": null
+  }
+};
+function agingFor(r,year=new Date().getFullYear()){
+ const d=retailerDetails(r),store=r.stores?.[0],item=storageEvidence[r.id];
+ const overlay=item&&item.url===store?.url&&item.year===(r.year??null)?item:null;
+ const raw=String(d?.aging_potential||'').trim();
+ let data=overlay;
+ if(!data&&raw){
+  const m=raw.match(/^(\d+)(?:\s*[-–—]\s*(\d+))?\s*(лет|год(?:а|ов)?)$/iu);
+  data={kind:m?'duration':'note',min:m?Number(m[1]):null,max:m?Number(m[2]||m[1]):null,scope:'vintage',source:store?.name||'WineStyle',source_url:d.source_url,raw,note:'Расчёт от урожая; это не окно оптимальной зрелости.'};
+ }
+ if(!data)data={kind:'unknown',scope:'unknown',note:'Подтверждённый срок не найден.'};
+ let end=null,start=null;
+ if(data.kind==='window'){end=data.max;start=data.min;}
+ if(data.kind==='duration'&&Number.isInteger(r.year)&&Number.isFinite(data.max))end=r.year+data.max;
+ const status=end===null?'unknown':year>end?'past':start!==null&&year<start?'early':year===end?'last':'within';
+ const approximate=['other_vintage','cuvee','style'].includes(data.scope);
+ const scopeText={vintage:'Конкретный урожай',cuvee:'Ориентир для кюве',other_vintage:'Ориентир по другому урожаю',style:'Общий ориентир для стиля',unknown:'Не подтверждено'}[data.scope]||'';
+ const range=data.raw||(data.kind==='duration'||data.kind==='bottling'?(data.min==null?'До '+data.max:data.min===data.max?String(data.max):data.min+'–'+data.max)+' лет'+(data.kind==='bottling'?' после розлива':''):data.kind==='window'?(start===null?'До '+end:start+'–'+end):data.kind==='unknown'?'Не установлено':'Числовой срок не установлен');
+ return {...data,end,start,status,approximate,scopeText,range};
+}
+function agingStatus(x){
+ if(x.status==='past')return (x.approximate?'Возможно за пределами ориентира':'За пределами указанного срока')+' · до '+x.end;
+ if(x.status==='early')return 'До начала окна потребления · с '+x.start;
+ if(x.status==='last')return (x.approximate?'Последний расчётный год':'Последний указанный год')+' · '+x.end;
+ if(x.status==='within')return (x.approximate?'Ориентир до ':'Расчётный предел: ')+x.end;
+ return 'Календарный предел не установлен';
+}
+function agingMarkup(r){
+ const x=agingFor(r),url=cleanUrl(x.source_url);
+ return '<section class="wine-detail-section"><h3>Потенциал хранения</h3><p><strong>'+safe(x.range)+'</strong></p><p class="aging-status">'+safe(agingStatus(x))+'</p><p class="detail-note">'+safe(x.scopeText)+(x.source_year?' · источник: урожай '+x.source_year:'')+(x.note?' · '+safe(x.note):'')+(url?' · <a href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">'+safe(x.source||'Источник')+'</a>':'')+'</p></section>';
+}
+function agingPreview(r){
+ const x=agingFor(r);
+ return '<p class="card-pairings card-aging">'+(x.status==='past'?'<strong>':'')+safe(x.kind==='unknown'?'Потенциал хранения не подтверждён':agingStatus(x))+(x.status==='past'?'</strong>':'')+'</p>';
+}
 function fullWineMarkup(r){
  const d=retailerDetails(r),s=r.stores?.[0],url=cleanUrl(s?.url),m=metrics(r),description=fullDescription(r);
- const facts=[['Стиль',d?.wine_style],['Регион',d?.region],['Крепость',d?.alcohol_percent],['Объём',d?.volume_l],['Производитель',d?.producer],['Насыщенность',d?.body],['Потенциал хранения',d?.aging_potential]].filter(([,value])=>value!=null&&value!=='');
+ const facts=[['Стиль',d?.wine_style],['Регион',d?.region],['Крепость',d?.alcohol_percent],['Объём',d?.volume_l],['Производитель',d?.producer],['Насыщенность',d?.body]].filter(([,value])=>value!=null&&value!=='');
  const tasting=[['Вкус',d?.taste],['Аромат',d?.aroma],['Цвет',d?.color]].filter(([,value])=>value!=null&&value!=='');
  const source=cleanUrl(d?.source_url);
  const sourceLabel=d?.source_kind==='producer_style_profile'?'производителя (описание линейки, не проверка винтажа)':s?.name||'продавца';
@@ -301,7 +854,7 @@ function fullWineMarkup(r){
  (facts.length?'<section class="wine-detail-section"><h3>Характеристики</h3><div class="wine-facts">'+facts.map(([label,value])=>'<div class="wine-fact"><span>'+safe(label)+'</span><p>'+safe(value)+'</p></div>').join('')+'</div></section>':'')+
  (tasting.length?'<section class="wine-detail-section"><h3>Дегустационный профиль</h3><div class="wine-tasting">'+tasting.map(([label,value])=>'<div><h4>'+safe(label)+'</h4><p>'+safe(value)+'</p></div>').join('')+'</div></section>':'')+
  '<section class="wine-detail-section"><h3>Гастрономические сочетания</h3><p>'+safe(pairingText(r))+'</p>'+ (pairingValues(r).length&&pairingProse(r)?'<p>'+safe(pairingProse(r))+'</p>':'')+'</section>'+
- descMarkup+
+ agingMarkup(r)+descMarkup+
  '<section class="wine-detail-section wine-detail-ratings"><h3>Оценки и источники</h3>'+ratingsDetails(r,m).replace('<details class="rating-details score-details">','<details class="rating-details score-details" open>')+'</section>'+
  (d?'<p class="rating-hint detail-note">Данные '+safe(sourceLabel)+' на '+date(d.checked_at)+(d.supplemental_checked_at?' · Дополнено ручной проверкой '+date(d.supplemental_checked_at):'')+(source?' · <a href="'+safe(source)+'" target="_blank" rel="noopener noreferrer">Источник</a>':'')+'</p>':'');
 }
@@ -325,7 +878,7 @@ function card(r){
  const m=metrics(r),synopsis=concisePreview(r);
  return '<article class="wine-card" data-wine-id="'+safe(r.id)+'"><div class="card-head"><span class="type-tag"><i aria-hidden="true" class="type-dot '+typeDot(r.type)+'"></i>'+safe(r.type||'Вино')+'</span>'+favoriteButton(r.id)+'</div>'+
  '<div class="card-intro">'+photoMarkup(r)+'<div class="card-intro-copy"><h3 class="card-title"><button type="button" class="wine-title-button" data-wine-open="'+safe(r.id)+'">'+safe(r.title)+'</button></h3><p class="card-meta">'+safe(metaText(r))+'</p>'+(synopsis?'<p class="card-description">'+safe(synopsis)+'</p>':'')+'</div></div>'+
- metricRow(m,r)+'<p class="card-pairings">'+safe(pairingText(r))+'</p>'+
+ metricRow(m,r)+agingPreview(r)+'<p class="card-pairings">'+safe(pairingText(r))+'</p>'+
  '<div class="card-bottom"><div class="price-block">'+priceBlock(r)+'</div><button type="button" class="store-link wine-open" data-wine-open="'+safe(r.id)+'">Карточка вина</button></div></article>';
 }
 function withinPriceRange(r,minimum,maximum){
