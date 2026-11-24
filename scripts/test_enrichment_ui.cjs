@@ -14,7 +14,7 @@ const sandbox = {
 };
 vm.createContext(sandbox);
 vm.runInContext(original.replace(/\binit\(\);\s*$/, '')+
-  '\nglobalThis.helpers={countryValue,grapeValues,pairingValues,distinct,matched,card,fullWineMarkup,fullDescription,concisePreview,agingFor,agingMarkup,storageEvidence,state,metrics,criticRatingsFor,snapshotFor,priceValue,priceBlock,liveOfferFor,isPublished,retailerDetails};',sandbox);
+  '\nglobalThis.helpers={countryValue,grapeValues,pairingValues,distinct,matched,card,fullWineMarkup,fullDescription,concisePreview,agingFor,agingMarkup,storageEvidence,mergeSimpleWine,state,metrics,criticRatingsFor,snapshotFor,priceValue,priceBlock,liveOfferFor,isPublished,retailerDetails};',sandbox);
 const h=sandbox.helpers;
 const sample={
  id:'fixture',title:'Test Chardonnay',country:null,grapes:[],type:'Белое',
@@ -374,3 +374,32 @@ assert(catalog.records.filter(h.isPublished).every(r=>Number.isInteger(r.year)&&
 assert.equal(catalog.records.filter(r=>r.year==null&&ownerExclusions.records[r.id]?.reason==='no_vintage').length,7);
 assert(!h.isPublished({...sample,id:'new-nv',year:null}));
 console.log('OWNER SELECTION PASSED: 50 exact exclusions, 60 vintage wines with calendar limits remaining');
+
+const simple=JSON.parse(fs.readFileSync(path.join(__dirname,'..','data','simplewine-catalog.json'),'utf8'));
+const merged=h.mergeSimpleWine(catalog,simple);
+assert.equal(simple.source_count,31);
+assert.equal(simple.records.length,26);
+assert.equal(Object.keys(simple.excluded).length,5);
+assert.equal(merged.records.filter(h.isPublished).length,86);
+assert.equal(new Set(simple.records.map(r=>r.stores[0].url)).size,26);
+for(const r of simple.records){
+ const age=h.agingFor(r,2026);
+ assert(Number.isInteger(age.end)&&age.end>2026);
+ assert(h.isPublished(r));
+ assert(h.fullWineMarkup(r).includes('Потенциал хранения'));
+ assert(h.fullWineMarkup(r).includes('SimpleWine'));
+ assert(h.fullWineMarkup(r).includes('остатки в СПб не проверены'));
+ assert.equal(h.retailerDetails(r).source_kind,'indexed_retailer_card');
+ assert(h.card(r).includes('SimpleWine'));
+ assert.deepEqual([...h.pairingValues(r)],r.pairings);
+}
+const sw=Object.fromEntries(simple.records.map(r=>[r.id,r]));
+assert.equal(h.agingFor(sw['sw-162380'],2026).end,2027);
+assert.equal(h.agingFor(sw['sw-159818'],2026).end,2032);
+assert.equal(h.metrics(sw['sw-155172']).critics[0].score,91);
+assert.equal(h.metrics(sw['sw-159818']).vivino.score,4);
+assert(h.fullWineMarkup(sw['sw-159818']).includes('Оценки критиков, опубликованные SimpleWine'));
+assert(h.fullWineMarkup(sw['sw-159818']).includes('по сведениям SimpleWine'));
+assert(!h.fullWineMarkup(sw['sw-159818']).includes('по сведениям WineStyle'));
+assert.throws(()=>h.mergeSimpleWine(catalog,{...simple,records:[...simple.records,simple.records[0]],source_count:32}));
+console.log('SIMPLEWINE PASSED: 31 reviewed, 26 imported, 5 excluded, 86 public cards');
