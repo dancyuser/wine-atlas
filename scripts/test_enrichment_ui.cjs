@@ -376,11 +376,11 @@ assert(!h.isPublished({...sample,id:'new-nv',year:null}));
 console.log('OWNER SELECTION PASSED: 50 exact exclusions, 60 vintage wines with calendar limits remaining');
 
 const simple=JSON.parse(fs.readFileSync(path.join(__dirname,'..','data','simplewine-catalog.json'),'utf8'));
-const merged=h.mergeSimpleWine(catalog,simple);
+const simpleMerged=h.mergeSimpleWine(catalog,simple);
 assert.equal(simple.source_count,31);
 assert.equal(simple.records.length,26);
 assert.equal(Object.keys(simple.excluded).length,5);
-assert.equal(merged.records.filter(h.isPublished).length,86);
+assert.equal(simpleMerged.records.filter(h.isPublished).length,86);
 assert.equal(new Set(simple.records.map(r=>r.stores[0].url)).size,26);
 for(const r of simple.records){
  const age=h.agingFor(r,2026);
