@@ -70,7 +70,19 @@
           "source_url": "https://www.wineenthusiast.com/buying-guide/bodegas-ramon-bilbao-2022-crianza-tempranillo-rioja/",
           "observed_on": "2026-11-24"
         }
-      ]
+      ],
+      "foreign_reference": {
+        "amount": 17,
+        "currency": "USD",
+        "price_source_url": "https://www.wineenthusiast.com/buying-guide/bodegas-ramon-bilbao-2022-crianza-tempranillo-rioja/",
+        "exchange_rate_rub": 82.1488,
+        "rate_source": {
+          "source": "Банк России",
+          "date": "2026-11-24",
+          "source_url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=24.11.2026"
+        },
+        "amount_rub": 1396.53
+      }
     },
     {
       "id": "a7ed12c0ab02",
@@ -143,7 +155,19 @@
           "observed_on": "2026-11-24",
           "note": "Оценка критика приведена другим продавцом; первоисточник не проверен."
         }
-      ]
+      ],
+      "foreign_reference": {
+        "amount": 11,
+        "currency": "GBP",
+        "price_source_url": "https://www.bcfw.co.uk/wine-sale/end-of-summer-sale/r-sp520226-bodega-classica-hacienda-lopez-de-haro-crianza-rioja-2022",
+        "exchange_rate_rub": 107.6314,
+        "rate_source": {
+          "source": "Банк России",
+          "date": "2026-11-24",
+          "source_url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=24.11.2026"
+        },
+        "amount_rub": 1183.95
+      }
     },
     {
       "id": "a7ed12c0ab03",
@@ -213,7 +237,19 @@
           "source_url": "https://www.falstaff.com/nordics/wines/inama-2023-foscarino-soave-classico-doc-1",
           "observed_on": "2026-11-24"
         }
-      ]
+      ],
+      "foreign_reference": {
+        "amount": 29.95,
+        "currency": "USD",
+        "price_source_url": "https://whwc.com/inama-soave-classico-vigneti-di-foscarino-2023/",
+        "exchange_rate_rub": 82.1488,
+        "rate_source": {
+          "source": "Банк России",
+          "date": "2026-11-24",
+          "source_url": "https://www.cbr.ru/currency_base/daily/?UniDbQuery.Posted=True&UniDbQuery.To=24.11.2026"
+        },
+        "amount_rub": 2460.36
+      }
     }
   ]
 }
