@@ -61,7 +61,7 @@ def parse_review(html, url):
     text = soup.get_text('\n', strip=True).split('What Is Blind Tasting?')[0]
     rating = re.search(r'\bRating\s+(\d{2,3})\b', text, re.I)
     price = re.search(r'\bPrice\s+\$\s*(\d+(?:\.\d{1,2})?)', text, re.I)
-    end = re.search(r'\b(?:drink|drinking|enjoy|best)[^.!?\n]{0,70}?(?:through|until|to|[---])\s*((?:20)\d{2})\b', text, re.I)
+    end = re.search(r'\b(?:drink|drinking|enjoy|best)[^.!?\n]{0,70}?(?:through|until|to|[-–—])\s*((?:20)\d{2})\b', text, re.I)
     if not (year and rating and price and end):
         return None
     score, year, end_year = int(rating.group(1)), int(year.group(1)), int(end.group(1))
@@ -126,7 +126,7 @@ def inspect_offer(html, url, review):
     title_tag = soup.find('title')
     title = h.get_text(' ', strip=True) + ' ' + (title_tag.get_text(' ', strip=True) if title_tag else '')
     text = soup.get_text(' ', strip=True)
-    text = re.split(r'�������������� ⮢���|��宦�� ⮢���|���� � ��宦�� �⨫�', text, flags=re.I)[0]
+    text = re.split(r'Рекомендованные товары|Похожие товары|Вина в похожем стиле', text, flags=re.I)[0]
     # Year must belong to the main heading/title, not the recommendations.
     if not re.search(r'(?<!\d)' + str(review['year']) + r'(?!\d)', title):
         return None, 'vintage_not_in_heading'
@@ -136,14 +136,14 @@ def inspect_offer(html, url, review):
     # Multiple distinctive identity tokens required; do not assign generic varietal scores.
     if len(common) < 3 or len(common) / max(1, len(expected)) < 0.6:
         return None, 'identity_not_confirmed'
-    if not re.search(r'(?:0[,.]75\s*(?:�|l)|750\s*(?:��|ml))', title + ' ' + text[:1800], re.I):
+    if not re.search(r'(?:0[,.]75\s*(?:л|l)|750\s*(?:мл|ml))', title + ' ' + text[:1800], re.I):
         return None, 'volume_not_confirmed'
     host = urllib.parse.urlsplit(url).hostname or ''
-    if 'sabonis.ru' not in host and not re.search(r'�����-������|�����.������|\b���\b', text[:2500], re.I) and not host.startswith('spb.'):
+    if 'sabonis.ru' not in host and not re.search(r'Санкт-Петербург|Санкт.Петербург|\bСПб\b', text[:2500], re.I) and not host.startswith('spb.'):
         return None, 'spb_not_confirmed'
-    if re.search(r'��� � ����稨|⮢�� ���������|������� ����㯫����', text[:2500], re.I):
+    if re.search(r'нет в наличии|товар отсутствует|ожидаем поступление', text[:2500], re.I):
         return None, 'stock_unknown_or_unavailable'
-    if not re.search(r'\b� ����稨\b|������ ᥣ����|����稥\s*:', text[:2500], re.I):
+    if not re.search(r'\bв наличии\b|забрать сегодня|наличие\s*:', text[:2500], re.I):
         return None, 'stock_not_confirmed'
     # A conditional/ambiguous price is a research result, not an offer.
     return {'url': url, 'matched_tokens': sorted(common), 'year': review['year'],
@@ -279,4 +279,3 @@ def main():
 
 if __name__ == '__main__':
     raise SystemExit(main())
-
