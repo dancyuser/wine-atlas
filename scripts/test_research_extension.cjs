@@ -27,4 +27,26 @@ global.document.querySelectorAll=()=>[
   link('https://www.decanter.com/wine-reviews/spain/rioja/review-92636/','Review')
 ];
 assert.deepEqual(captureWineResearch().links.map(l=>l.url),['https://www.decanter.com/wine-reviews/spain/rioja/review-92636/']);
+
+const astUrl = 'https://ast.wine/catalog/product/example_25031/';
+global.location={href:astUrl,hostname:'ast.wine'};
+const item = {
+  getClientRects:()=>[{}],
+  querySelector:s=>({innerText:s.includes('address')?'ул. Жуковского, 22':'Мало'})
+};
+global.document={
+  title:'Вино Domaine Example 0.75 л',
+  body:{innerText:'Санкт-Петербург\nВино Domaine Example\nВинтажи и объемы\n2015, 0.75 л\n2016, 0.75 л'},
+  querySelector:s=>s==='h1'?{innerText:'Вино Domaine Example'}:
+    s==='a.vintage_item.current'?{href:astUrl,innerText:'2016, 0.75 л'}:null,
+  querySelectorAll:s=>s==='.product-price__wrap'?[{innerText:'1 800 ₽'}]:
+    s==='.stock-list-short__item'?[item]:[]
+};
+row=captureWineResearch();
+assert.equal(row.blocks.city,'Санкт-Петербург');
+assert.equal(row.blocks.selected_variant,'2016, 0.75 л');
+assert.equal(row.blocks.offer_price,'1 800 ₽');
+assert.equal(row.blocks.local_shops,'ул. Жуковского, 22 | Мало');
+document.body.innerText='Москва\n'+document.body.innerText;
+assert.equal(captureWineResearch().blocks.city,undefined);
 console.log('research browser capture tests passed');

@@ -8,12 +8,14 @@ const cleanUrl=s=>{try{const u=new URL(s);return u.protocol==='https:'?u.href:nu
 const date=s=>{if(!s||!/^\d{4}-\d{2}-\d{2}$/.test(s))return '—';const a=s.split('-');return a[2]+'.'+a[1]+'.'+a[0]};
 const num=x=>Number.isInteger(x)?String(x):fmt.format(x);
 const money=x=>fmt.format(x)+' ₽';
+const criticScales=new Set([20,99,100]);
+const ratingPoints=x=>x.scale===5?50+10*x.score:100*x.score/x.scale;
 function isWineStyleRating(x){
   try { return /(^|\.)winestyle\.ru$/i.test(new URL(x.source_url).hostname); }
   catch { return false; }
 }
 function ratingsFor(r){
-  const all=(state.ratingRecords[r.id]||[]).filter(x=>x&&typeof x.source==='string'&&Number.isFinite(x.score)&&!isWineStyleRating(x)&&((x.scale===100&&x.score>=0&&x.score<=100)||(x.scale===5&&x.score>=1&&x.score<=5)));
+  const all=(state.ratingRecords[r.id]||[]).filter(x=>x&&typeof x.source==='string'&&Number.isFinite(x.score)&&!isWineStyleRating(x)&&((criticScales.has(x.scale)&&x.score>=0&&x.score<=x.scale)||(x.scale===5&&x.score>=1&&x.score<=5)));
   return all.filter(x=>x.scope==='all_vintages'||x.scope==='vintage'&&x.vintage===r.year);
 }
 // Scores shown by a retailer are third-party critics' publications,
@@ -57,12 +59,21 @@ function metrics(r){
  const vivino=all.find(x=>x.source==='Vivino'&&x.scope==='vintage')||all.find(x=>x.source==='Vivino'&&x.scope==='all_vintages')||retailerVivinoFor(r);
  // Include Vivino at most once, including a scope-all-vintages estimate.
  if(vivino&&!chosen.has('vivino'))chosen.set('vivino',vivino);
- const scaled=[...chosen.values()].map(x=>x.scale===5?50+10*x.score:x.scale===20?5*x.score:x.score);
+ const scaled=[...chosen.values()].map(ratingPoints);
  const summary=scaled.length?Math.round(10*scaled.reduce((a,b)=>a+b,0)/scaled.length)/10:null;
- const exactScaled=items.map(x=>x.scale===5?50+10*x.score:x.score);
+ const exactScaled=items.map(ratingPoints);
  const index=exactScaled.length?Math.round(10*exactScaled.reduce((a,b)=>a+b,0)/exactScaled.length)/10:null;
  const ranking=summary===null?null:Math.round(10*(summary-8/Math.sqrt(chosen.size)))/10;
  return {all,exact:items,index,summary,ranking,summaryCount:chosen.size,critics,vivino,count:items.length,hasUnverifiedVintage:critics.length>0||(vivino?.scope==='all_vintages')};
+}
+
+function isDiscovered(r, currentYear=new Date().getFullYear()){
+ const offer=r.stores?.[0], foreign=r.foreign_reference?.amount_rub, window=r.drinking_window;
+ return isPublished(r)&&r.availability?.status==='in_stock'&&r.availability.source_url===offer?.url&&
+  window?.scope==='vintage'&&window.max>=Math.max(2027,currentYear)&&
+  offer?.price_rub>0&&offer.price_rub<=5000&&foreign>0&&foreign<=6000&&
+  Boolean(r.critic_ratings?.some(x=>x.scope==='vintage'&&x.vintage===r.year&&criticScales.has(x.scale)&&
+   Number.isFinite(x.score)&&x.score<=x.scale&&ratingPoints(x)>=85));
 }
 
 function snapshotFor(r){
@@ -1089,14 +1100,7 @@ async function init(){
    const response=await fetch('./data/discovered-wines.json',{cache:'no-cache'});
    if(response.ok){
     const extra=await response.json();
-    if(extra.version===1&&Array.isArray(extra.records)) discovered=extra.records.filter(r=>{
-     const offer=r.stores?.[0], foreign=r.foreign_reference?.amount_rub, window=r.drinking_window;
-     return isPublished(r)&&r.availability?.status==='in_stock'&&r.availability.source_url===offer?.url&&
-      window?.scope==='vintage'&&window.max>=Math.max(2027,new Date().getFullYear())&&
-      offer?.price_rub>0&&offer.price_rub<=5000&&foreign>0&&foreign<=6000&&
-      r.critic_ratings?.some(x=>x.scope==='vintage'&&x.vintage===r.year&&[100,20].includes(x.scale)&&
-       x.score<=x.scale&&x.score*100/x.scale>=85);
-    });
+    if(extra.version===1&&Array.isArray(extra.records)) discovered=extra.records.filter(r=>isDiscovered(r));
    }
   } catch(e){console.warn('Discovered wines unavailable',e)}
   const existingUrls=new Set(state.records.flatMap(r=>r.stores.map(s=>s.url)));

@@ -113,6 +113,7 @@ def stage(evidence, rate_date, rates):
         })
     queue.sort(key=lambda row: (row['status'] != 'ready_for_retailer_search', row['title'].casefold(), row['year']))
     return {
+        'kind': 'wine_atlas_critic_queue', 'version': 1,
         'observed_on': evidence['observed_on'], 'rate_date': rate_date,
         'rate_source_url': 'https://www.cbr.ru/currency_base/daily/',
         'sources': list(coverage.values()), 'vintages_total': len(queue),

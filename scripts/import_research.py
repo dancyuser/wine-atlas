@@ -8,6 +8,7 @@ import re
 import unicodedata
 import urllib.request
 import xml.etree.ElementTree as ET
+from collections import defaultdict
 from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -20,10 +21,25 @@ CRITICS = {'wineenthusiast.com': 'Wine Enthusiast', 'falstaff.com': 'Falstaff',
            'vinous.com': 'Vinous', 'decanter.com': 'Decanter',
            'results.decanter.com': 'Decanter World Wine Awards', 'iwsc.net': 'IWSC',
            'jamessuckling.com': 'James Suckling', 'jancisrobinson.com': 'Jancis Robinson'}
+RETAILERS = {
+    'winelab.ru': 'Винлаб', 'amwine.ru': 'Ароматный мир', 'vinissimo.biz': 'Vinissimo',
+    'sabonis.ru': 'Sabonis', 'spb.winestyle.ru': 'WineStyle', 'simplewine.ru': 'SimpleWine',
+    'ast.wine': 'AST.WINE', 'joia.ru': 'Joia', 'luding.ru': 'Luding', 'spb.luding.ru': 'Luding',
+}
+LABELED_RETAILERS = {'winelab.ru', 'amwine.ru', 'simplewine.ru', 'ast.wine', 'joia.ru'}
+RUBLES = r'(\d+(?:[ \u00a0\u202f]\d{3})*(?:[.,]\d{2})?)\s*(?:₽|руб\.?)'
+VOLUME = r'(\d+(?:[.,]\d+)?)\s*(мл|ml|л|l)(?=\W|$)'
 
 
 def moscow_date(value):
-    return dt.datetime.fromisoformat(value.replace('Z', '+00:00')).astimezone(dt.timezone(dt.timedelta(hours=3))).date().isoformat()
+    return observation_time(value).astimezone(dt.timezone(dt.timedelta(hours=3))).date().isoformat()
+
+
+def observation_time(value):
+    stamp = dt.datetime.fromisoformat(value.replace('Z', '+00:00'))
+    if stamp.tzinfo is None:
+        raise ValueError('observation timestamp requires a time zone')
+    return stamp
 
 
 def load(path):
@@ -109,12 +125,14 @@ def parse_review(row, host):
 
 
 def parse_offer(row, host):
+    if host in LABELED_RETAILERS:
+        return parse_labeled_offer(row, host)
     blocks = row.get('blocks', {})
     text = blocks.get('product', '')
     title = row.get('title', '')
     hint = blocks.get('document_title', '')
     year = year_in(title) or year_in(re.sub(r'\b(?:руб|₽).*$', '', hint, flags=re.I))
-    volume_matches = re.findall(r'(\d+(?:[.,]\d+)?)\s*(мл|ml|л|l)(?=\W|$)', hint, re.I)
+    volume_matches = re.findall(VOLUME, hint, re.I)
     if not volume_matches and host == 'vinissimo.biz':
         volume_matches = re.findall(r'(?:Объ[её]м(?:ы)?)\s*[:|]?\s*(\d+(?:[.,]\d+)?)\s*(мл|ml|л|l)(?=\W|$)', text, re.I)
     volumes = {Decimal(n.replace(',', '.')) / (1000 if unit.lower() in {'мл', 'ml'} else 1)
@@ -137,6 +155,8 @@ def parse_offer(row, host):
                 amount = None
             stock = 'in_stock'
             title = re.sub(r'^.*?Вино\s+', '', hint, flags=re.I).split(str(year), 1)[0].strip()
+            stores = '\n'.join(match[0] for match in re.finditer(addresses + r'\.?', stock_line[1], re.I))
+            text = f'{SPB}\n{price_line[1].strip()} ₽\nНаличие:\n{stores}'
     elif host == 'spb.winestyle.ru':
         text = blocks.get('price_stock', '')
         price = {re.sub(r'\s', '', value) for value in re.findall(r'(?<!\d)(\d[\d\u00a0\u202f ]*)\s*₽', text)}
@@ -155,6 +175,7 @@ def parse_offer(row, host):
             latin = next((line for line in text.splitlines()[1:5]
                           if re.search(r'[A-Za-z]{3,}.*[A-Za-z]{3,}', line) and not re.search(r'[А-Яа-я]', line)), None)
             title = latin or title
+            text = f'{SPB}\n{year} г. — {amount} ₽\n{match[1]}'
     elif host in {'luding.ru', 'spb.luding.ru'} and blocks.get('city') == SPB:
         if year_in(title) != year:
             return None
@@ -180,7 +201,76 @@ def parse_offer(row, host):
         return None
     return {'title': title, 'year': year, 'volume_l': float(volumes.pop()),
             'price': int(re.sub(r'\s', '', amount)), 'stock': stock, 'text': text[:1000],
-            'url': row['url'], 'source': row.get('source') or host, 'date': moscow_date(row['observed_at'])}
+            'url': row['url'], 'source': RETAILERS[host], 'date': moscow_date(row['observed_at'])}
+
+
+def parse_labeled_offer(row, host):
+    blocks = row.get('blocks', {})
+    if blocks.get('city') != SPB or not blocks.get('product'):
+        return None
+    text = blocks['product']
+    title = row.get('title', '')
+    displayed_year = year_in(title)
+    years = set(re.findall(rf'(?mi)^[ \t]*(?:Год урожая|Выбранный винтаж|Винтаж)\s*:\s*({YEAR})[ \t]*$', text))
+    selected = blocks.get('selected_variant', '')
+    if selected:
+        selected_year = re.fullmatch(rf'({YEAR})(?:,\s*{VOLUME})?', selected, re.I)
+        if not selected_year:
+            return None
+        years.add(selected_year[1])
+    if host == 'ast.wine' and not years and displayed_year is None:
+        options = re.findall(rf'(?:^|\n)({YEAR}),[ \t]+{VOLUME}', text)
+        title_year = year_in(blocks.get('document_title', ''))
+        if len(options) == 1 and title_year == int(options[0][0]):
+            years.add(options[0][0])
+    if displayed_year is not None:
+        years.add(str(displayed_year))
+    if len(years) != 1:
+        return None
+    year = int(years.pop())
+    sizes = re.findall(rf'(?mi)^[ \t]*Объ[её]м\s*:?\s*{VOLUME}', text)
+    sizes.extend(re.findall(VOLUME, title, re.I))
+    sizes.extend(re.findall(VOLUME, selected, re.I))
+    volumes = {Decimal(n.replace(',', '.')) / (1000 if unit.casefold() in {'мл', 'ml'} else 1)
+               for n, unit in sizes}
+    if len(volumes) != 1 or next(iter(volumes)) <= 0:
+        return None
+
+    if host == 'simplewine.ru':
+        # The price and stock token must belong to the selected year's row.
+        variants = set(re.findall(rf'(?mi)^[ \t]*{year}[ \t]+г\.[ \t]*[—–-][ \t]*{RUBLES}[ \t]*\n[ \t]*(в наличии|нет в наличии)[ \t]*$', text))
+        if len(variants) != 1 or not re.search(r'(?mi)^[ \t]*Забрать сегодня из [1-9]\d* винотек', text):
+            return None
+        amount, label = variants.pop()
+        if label.casefold() != 'в наличии':
+            return None
+    else:
+        prices = set(re.findall(rf'(?mi)^[ \t]*(?:(?:Текущая )?Цена[ \t]*:[ \t]*)?{RUBLES}[ \t]*$',
+                                blocks.get('offer_price') or text))
+        if len(prices) != 1:
+            return None
+        if host == 'ast.wine':
+            # "В наличии в магазинах" is also the name of a general button.
+            addresses = r'(?:ул\.\s*Жуковского,\s*22|ул\.\s*Марата,\s*43)'
+            _, marker, tail = text.partition('\nНаличие\n')
+            stock_block = '\n'.join(tail.splitlines()[:22]) if marker else ''
+            local_shops = blocks.get('local_shops')
+            if local_shops:
+                stock = re.search(rf'(?mi)^{addresses}[ \t]*\|[ \t]*(В наличии|Мало|Много)[ \t]*$', local_shops)
+            else:
+                stock = re.search(rf'(?mi)^{addresses}[ \t]*$(?:\n[^\n]*){{0,2}}\n[ \t]*(В наличии|Мало|Много)[ \t]*$',
+                                  stock_block)
+        else:
+            stock = re.search(r'(?mi)^[ \t]*(В наличии(?: в (?:(?:вашем )?магазине|винотеке|[1-9]\d* магазин(?:е|ах)))?)[ \t]*$', text)
+        if not stock or re.search(r'(?mi)^[ \t]*(Нет в наличии|Ожидаем поступление)[ \t]*$', text):
+            return None
+        amount, label = prices.pop(), stock[1]
+    price = Decimal(re.sub(r'\s', '', amount).replace(',', '.'))
+    if price <= 0:
+        return None
+    return {'title': title, 'year': year, 'volume_l': float(volumes.pop()), 'price': float(price),
+            'stock': 'in_stock', 'text': f'{title}\n{SPB}\n{amount} ₽\n{label}',
+            'url': row['url'], 'source': RETAILERS[host], 'date': moscow_date(row['observed_at'])}
 
 
 def identity(title, year):
@@ -189,68 +279,181 @@ def identity(title, year):
     return tuple(sorted(words)), year
 
 
-def join(bundle, rate_date, rates, aliases=None, checked_on=None):
+def capture_rows(bundle):
     if bundle.get('kind') != 'wine_atlas_research_capture' or bundle.get('version') != 1:
         raise ValueError('unsupported capture format')
-    aliases = aliases or {}
-    checked_on = checked_on or rate_date
+    return bundle['observations']
+
+
+def https_url(value):
+    url = urlsplit(value or '')
+    return url if url.scheme == 'https' and url.hostname and not (url.username or url.password) else None
+
+
+def page_key(url):
+    return url.netloc.lower(), url.path.rstrip('/'), url.query
+
+
+def retailer_host(row):
+    url = https_url(row.get('requested_url') or row.get('url'))
+    return (url.hostname or '').removeprefix('www.') if url else None
+
+
+def wine_key(row, aliases):
+    return identity(aliases.get(row['url'], row['title']), row['year'])
+
+
+def queue_reviews(queue, aliases):
+    if not isinstance(queue.get('vintages'), list) or (
+            'kind' in queue and (queue['kind'], queue.get('version')) != ('wine_atlas_critic_queue', 1)):
+        raise ValueError('unsupported critic queue format')
+    for vintage in queue['vintages']:
+        key = identity(vintage['title'], vintage['year'])
+        for review in vintage['evidence']:
+            if https_url(review.get('url')) and wine_key(review, aliases) == key:
+                yield review
+
+
+def local_stock(offer):
+    return offer['stock'] == 'in_stock' or (offer['source'], offer['stock']) == ('Luding', 'supplier_stock')
+
+
+def observed_city(row):
+    city = row.get('blocks', {}).get('city')
+    if city:
+        return city
+    # Earlier captures kept the city switcher in the first header excerpt.
+    header = row.get('excerpts', [])[:2]
+    cities = {line.split(' | ', 1)[0].strip() for line in header} & {SPB, 'Москва'}
+    return cities.pop() if len(cities) == 1 else None
+
+
+def index_captures(rows, aliases, checked_on):
+    reviews, latest, counters, unresolved = [], {}, {}, []
+    for row in rows:
+        host = retailer_host(row)
+        requested = https_url(row.get('requested_url') or row.get('url'))
+        url = https_url(row.get('url'))
+        if host in RETAILERS:
+            seller = RETAILERS[host]
+            stats = counters.setdefault(seller, dict(pages=0, offers=0, in_stock_in_budget=0))
+            stats['pages'] += 1
+            key = page_key(requested)
+            stamp = observation_time(row['observed_at'])
+            if key not in latest or latest[key][0] <= stamp:
+                latest[key] = (stamp, host, row)
+        elif host in CRITICS and url and page_key(requested) == page_key(url) and row.get('status') == 'needs_review':
+            review = parse_review(row, host)
+            if review:
+                reviews.append(review)
+            elif row.get('blocks'):
+                unresolved.append({'url': row['url'], 'reason': 'review_requires_review'})
+
+    offers = defaultdict(list)
+    for _, host, row in latest.values():
+        url = https_url(row.get('url'))
+        requested = https_url(row.get('requested_url') or row.get('url'))
+        reason = row.get('status') if row.get('status') != 'needs_review' else None
+        if not url or page_key(requested) != page_key(url):
+            reason = 'redirect'
+        offer = None if reason else parse_offer(row, host)
+        if offer:
+            offers[wine_key(offer, aliases)].append(offer)
+            stats = counters[offer['source']]
+            stats['offers'] += 1
+            stats['in_stock_in_budget'] += (offer['date'] == checked_on and local_stock(offer)
+                                             and 0 < offer['price'] <= 5000)
+        elif reason or row.get('blocks') or '/product/' in requested.path or '/productDetail/' in requested.path:
+            if not reason and observed_city(row) not in {None, SPB}:
+                reason = 'other_city'
+            unresolved.append({'url': row.get('url'), 'retailer': RETAILERS[host],
+                               'reason': reason or 'offer_requires_review'})
+    return reviews, offers, counters, unresolved
+
+
+def catalog_record(key, title, offer, ratings, end, price, rate_date, rates):
+    year = key[1]
+    title = ' '.join(re.sub(rf'\b{year}\b', '', title).split())
+    record_id = hashlib.sha256(repr(key).encode()).hexdigest()[:12]
+    return {'id': record_id, 'title': title, 'year': year, 'research': True,
+            'wishlist': False, 'volume_l': offer['volume_l'], 'grapes': [], 'pairings': [],
+            'stores': [{'name': offer['source'], 'url': offer['url'], 'price_rub': offer['price'],
+                        'price_checked_at': offer['date']}],
+            'availability': {'status': 'in_stock', 'stock_kind': offer['stock'], 'region': SPB,
+                             'source_url': offer['url'], 'observed_on': offer['date'], 'evidence': offer['text'],
+                             'snapshot_source': 'browser_observation'},
+            'drinking_window': {'kind': 'window', 'scope': 'vintage', 'min': end.get('start'),
+                                'max': end['end'], 'source': end['source'], 'source_url': end['url']},
+            'critic_ratings': [{'source': score['source'], 'score': score['score'], 'scale': score['scale'],
+                               'scope': 'vintage', 'vintage': year, 'source_url': score['url'],
+                               'observed_on': score['date']} for score in ratings],
+            'foreign_reference': {'amount': float(price['amount']), 'currency': price['currency'], 'kind': price['price_kind'],
+                                  'price_source_url': price['url'], 'exchange_rate_rub': float(rates[price['currency']]),
+                                  'rate_source': {'source': 'Банк России', 'date': rate_date, 'source_url': RATE_URL},
+                                  'amount_rub': exchange(price['amount'], price['currency'], rates)[1]}}
+
+
+def reconcile(rows, rate_date, rates, aliases, checked_on, queue=None):
     if rate_date > checked_on:
         raise ValueError('the exchange rate was not effective on the observation date')
-    reviews, offers, unresolved = {}, {}, []
-    for row in bundle['observations']:
-        url = urlsplit(row.get('url') or '')
-        if url.scheme != 'https' or url.username or url.password or row.get('status') != 'needs_review':
-            continue
-        requested = urlsplit(row.get('requested_url') or row['url'])
-        if (requested.netloc, requested.path.rstrip('/')) != (url.netloc, url.path.rstrip('/')):
-            unresolved.append({'url': row['url'], 'reason': 'redirect'})
-            continue
-        host = (url.hostname or '').removeprefix('www.')
-        review, offer = parse_review(row, host), parse_offer(row, host)
-        for observation, index in [(review, reviews), (offer, offers)]:
-            if observation:
-                label = aliases.get(observation['url'], observation['title'])
-                index.setdefault(identity(label, observation['year']), []).append(observation)
-        if not review and not offer and row.get('blocks'):
-            reason = 'review_requires_review' if host in CRITICS else 'offer_requires_review'
-            unresolved.append({'url': row['url'], 'reason': reason})
-    accepted = []
+    extracted, offers, counters, unresolved = index_captures(rows, aliases, checked_on)
+    reviews = defaultdict(list)
+    for review in queue_reviews(queue, aliases) if queue is not None else ():
+        if review['date'] <= checked_on:
+            reviews[wine_key(review, aliases)].append(review)
+    for review in extracted:
+        if review['date'] <= checked_on:
+            reviews[wine_key(review, aliases)].append(review)
+
+    accepted, candidates = [], []
+    cutoff_year = max(2027, dt.date.fromisoformat(checked_on).year)
     for key, observations in reviews.items():
-        rated = [r for r in observations if r['score'] is not None and 85 <= r['score'] * 100 / r['scale'] <= 100]
-        windows = [r for r in observations if r['end'] and r['end'] >= max(2027, key[1]) and
-                   (r['start'] is None or key[1] <= r['start'] <= r['end'])]
-        priced = [r for r in observations if r['amount'] and r['currency'] in rates and
-                  r['date'] == checked_on and 0 < exchange(r['amount'], r['currency'], rates)[0] <= 6000]
-        local = [o for o in offers.get(key, []) if 0 < o['price'] <= 5000 and o['date'] == checked_on]
-        missing = [flag for flag, rows in [('score', rated), ('window', windows), ('foreign_price', priced), ('spb_offer', local)] if not rows]
-        if missing:
-            unresolved.append({'title': observations[0]['title'], 'year': key[1], 'missing': missing})
+        year = key[1]
+        rated, windows, priced = {}, [], []
+        for r in observations:
+            score, scale = r.get('score'), r.get('scale')
+            if scale in {20, 99, 100} and score is not None and 85 <= score * 100 / scale <= 100:
+                previous = rated.get(r['source'])
+                if previous is None or score / scale > previous['score'] / previous['scale']:
+                    rated[r['source']] = r
+            end, start = r.get('end'), r.get('start')
+            if end and end >= max(cutoff_year, year) and (start is None or year <= start <= end):
+                windows.append(r)
+            amount, currency = r.get('amount'), r.get('currency')
+            if (amount and currency in rates and r.get('price_kind') in {'exact', 'upper_bound'} and
+                    (queue is not None or r['date'] == checked_on) and 0 < exchange(amount, currency, rates)[0] <= 6000):
+                priced.append(r)
+
+        matched = offers.get(key, [])
+        fresh = [o for o in matched if o['date'] == checked_on]
+        local = [o for o in fresh if 0 < o['price'] <= 5000 and local_stock(o)]
+        requirements = [('score', rated), ('window', windows), ('foreign_price', priced)]
+        missing = [flag for flag, evidence in requirements if not evidence]
+        title = aliases.get(observations[0]['url'], observations[0]['title'])
+        if not missing:
+            if local:
+                result = 'matched'
+            elif any(local_stock(o) for o in fresh):
+                result = 'above_budget'
+            elif fresh:
+                result = 'local_stock_unconfirmed'
+            else:
+                result = 'stale_offer' if matched else 'no_exact_offer'
+            candidates.append({'title': title, 'year': year, 'result': result,
+                               'offers': [{k: v for k, v in o.items() if k != 'text'} for o in matched]})
+        if missing or not local:
+            unresolved.append({'title': title, 'year': year, 'missing': missing + ([] if local else ['spb_offer'])})
             continue
         offer = min(local, key=lambda o: (o['price'], o['url']))
-        score = max(rated, key=lambda r: r['score'] * 100 / r['scale'])
         end = min(windows, key=lambda r: r['end'])
-        price = priced[0]
-        title = aliases.get(score['url'], score['title'])
-        if str(key[1]) in title:
-            title = re.sub(rf'\b{key[1]}\b', '', title)
-            title = ' '.join(title.split())
-        record_id = hashlib.sha256(repr(key).encode()).hexdigest()[:12]
-        accepted.append({'id': record_id, 'title': title, 'year': key[1], 'research': True,
-                         'wishlist': False, 'volume_l': offer['volume_l'], 'grapes': [], 'pairings': [],
-                         'stores': [{'name': offer['source'], 'url': offer['url'], 'price_rub': offer['price'],
-                                     'price_checked_at': offer['date']}],
-                         'availability': {'status': 'in_stock', 'stock_kind': offer['stock'], 'region': SPB,
-                                          'source_url': offer['url'], 'observed_on': offer['date'], 'evidence': offer['text']},
-                         'drinking_window': {'kind': 'window', 'scope': 'vintage', 'min': end['start'],
-                                             'max': end['end'], 'source': end['source'], 'source_url': end['url']},
-                         'critic_ratings': [{'source': score['source'], 'score': score['score'], 'scale': score['scale'],
-                                             'scope': 'vintage', 'vintage': key[1], 'source_url': score['url'],
-                                             'observed_on': score['date']}],
-                         'foreign_reference': {'amount': float(price['amount']), 'currency': price['currency'], 'kind': price['price_kind'],
-                                               'price_source_url': price['url'], 'exchange_rate_rub': float(rates[price['currency']]),
-                                               'rate_source': {'source': 'Банк России', 'date': rate_date, 'source_url': RATE_URL},
-                                               'amount_rub': exchange(price['amount'], price['currency'], rates)[1]}})
-    return accepted, unresolved
+        price = min(priced, key=lambda r: exchange(r['amount'], r['currency'], rates)[0])
+        accepted.append(catalog_record(key, title, offer, rated.values(), end, price, rate_date, rates))
+    return {'eligible': accepted, 'candidates': unresolved, 'retailer_matches': candidates, 'retailers': counters}
+
+
+def join(bundle, rate_date, rates, aliases=None, checked_on=None):
+    report = reconcile(capture_rows(bundle), rate_date, rates, aliases or {}, checked_on or rate_date)
+    return report['eligible'], report['candidates']
 
 
 def merge(existing, new, catalog, exclusions):
@@ -270,14 +473,16 @@ def merge(existing, new, catalog, exclusions):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('capture', type=Path)
+    parser.add_argument('capture', type=Path, nargs='+', help='One or more browser exports')
+    parser.add_argument('--critic-queue', type=Path, help='Output of stage_critic_research.py')
     parser.add_argument('--rates', type=Path, help='Saved CBR XML for replay; otherwise fetch today’s rates')
     parser.add_argument('--aliases', type=Path, help='Reviewed mapping from URL to canonical wine name; does not override vintage')
     parser.add_argument('--report', type=Path)
     parser.add_argument('--apply', action='store_true')
     args = parser.parse_args()
-    bundle = load(args.capture)
-    checked_on = max(moscow_date(row['observed_at']) for row in bundle['observations']) if bundle['observations'] else None
+    rows = [row for path in args.capture for row in capture_rows(load(path))]
+    market_rows = [row for row in rows if retailer_host(row) in RETAILERS]
+    checked_on = max((moscow_date(row['observed_at']) for row in market_rows or rows), default=None)
     if not checked_on:
         parser.error('capture has no observations')
     if args.rates:
@@ -290,12 +495,16 @@ def main():
     aliases = load(ROOT / 'data/research-aliases.json')
     if args.aliases:
         aliases.update(load(args.aliases))
-    accepted, unresolved = join(bundle, date, rates, aliases, checked_on=checked_on)
+    queue = load(args.critic_queue) if args.critic_queue else None
+    report = reconcile(rows, date, rates, aliases, checked_on, queue)
+    accepted, unresolved = report['eligible'], report['candidates']
     path = ROOT / 'data/discovered-wines.json'
+    if args.report and args.report.resolve() == path.resolve():
+        parser.error('the report path may not overwrite the catalog')
     overlay = load(path)
     additions = merge(overlay['records'], accepted, load(ROOT / 'data/wines.json')['records'],
                       load(ROOT / 'data/owner-exclusions.json')['records'])
-    report = {'rate_date': date, 'eligible': accepted, 'candidates': unresolved, 'new_catalog_records': additions}
+    report.update(rate_date=date, checked_on=checked_on, new_catalog_records=additions)
     if args.report:
         write(args.report, report)
     if args.apply and additions:

@@ -1,7 +1,8 @@
 import unittest
+from decimal import Decimal
 from report_research_capture import report
 from auto_research import inspect_offer
-from import_research import join, merge, parse_offer, parse_rates, parse_review, window
+from import_research import join, merge, parse_offer, parse_rates, parse_review, reconcile, window
 
 
 class CaptureTests(unittest.TestCase):
@@ -92,6 +93,68 @@ class CaptureTests(unittest.TestCase):
         self.assertEqual((offer['year'], offer['volume_l'], offer['price']), (2023, 0.75, 4999))
         row['blocks']['product'] = row['blocks']['product'].replace('Год урожая\n2023', 'Год урожая\n2022')
         self.assertIsNone(parse_offer(row, 'vinissimo.biz'))
+
+    def test_other_store_cards_require_local_variant_price_and_stock(self):
+        label = 'Domaine Example 2022'
+        shared = 'Объём:\n0,75 л\nЦена: 4 975,20 ₽\nВ наличии в магазине'
+        examples = {
+            'winelab.ru': shared,
+            'amwine.ru': shared,
+            'joia.ru': shared,
+            'simplewine.ru': 'Объем: 0.75 л\nЗабрать сегодня из 2 винотек\n2022 г. — 4 975,20 ₽\nв наличии',
+            'ast.wine': 'Объем: 0.75 л\n4 975,20 ₽\nНаличие\nул. Жуковского, 22\nМаяковская\nМало',
+        }
+        for host, product in examples.items():
+            with self.subTest(host=host):
+                row = {'title': label, 'url': f'https://{host}/product/example',
+                       'observed_at': '2026-11-24T12:00:00Z',
+                       'blocks': {'city': 'Санкт-Петербург', 'product': product}}
+                result = parse_offer(row, host)
+                self.assertEqual((result['year'], result['volume_l'], result['price']), (2022, 0.75, 4975.20))
+                row['blocks']['product'] += '\nГод урожая: 2021'
+                self.assertIsNone(parse_offer(row, host))
+                row['blocks'].update(city='Москва', product=product)
+                self.assertIsNone(parse_offer(row, host))
+
+    def test_import_reprices_critic_queue_and_supersedes_stale_stock(self):
+        wine = 'Domaine Example'
+        review = {'title': wine, 'year': 2022, 'score': 17, 'scale': 20, 'source': 'Example Critic',
+                  'url': 'https://critic.example/review', 'start': 2024, 'end': 2029, 'currency': 'USD',
+                  'amount': 60, 'price_kind': 'exact', 'date': '2026-11-23'}
+        queue = {'kind': 'wine_atlas_critic_queue', 'version': 1,
+                 'vintages': [{'title': wine, 'year': 2022, 'evidence': [review]}]}
+        local = {'url': 'https://sabonis.ru/productDetail/example', 'title': wine,
+                 'status': 'needs_review', 'observed_at': '2026-11-24T12:00:00Z', 'blocks': {
+                     'product': '5 000 ₽\nНаличие: Петроградская наб., 8 - 1 шт.',
+                     'document_title': 'Купить Вино Domaine Example 2022 0.75 л. цена 5000 ₽ в СПб'}}
+        checked_on = '2026-11-24'
+        rates = {'USD': Decimal('100')}
+        report = reconcile([local], checked_on, rates, {}, checked_on, queue)
+        self.assertEqual(report['eligible'][0]['critic_ratings'][0]['scale'], 20)
+        self.assertEqual(report['eligible'][0]['foreign_reference']['amount_rub'], 6000)
+        self.assertEqual(report['retailer_matches'][0]['result'], 'matched')
+        self.assertFalse(reconcile([local], checked_on, {'USD': Decimal('100.01')}, {}, checked_on, queue)['eligible'])
+
+        latest = dict(local, observed_at='2026-11-24T13:00:00Z', status='no_heading')
+        report = reconcile([latest, local], checked_on, rates, {}, checked_on, queue)
+        self.assertFalse(report['eligible'])
+        self.assertEqual(report['retailer_matches'][0]['result'], 'no_exact_offer')
+        wrong = dict(local, blocks=dict(local['blocks'], document_title=local['blocks']['document_title'].replace('2022', '2021')))
+        self.assertFalse(reconcile([wrong], checked_on, rates, {}, checked_on, queue)['eligible'])
+
+    def test_orderable_winestyle_is_distinct_from_local_stock(self):
+        wine = 'Domaine Example'
+        date = '2026-11-24'
+        row = {'url': 'https://spb.winestyle.ru/products/example.html', 'title': wine + ' 2022',
+               'status': 'needs_review', 'observed_at': date + 'T12:00:00Z', 'blocks': {
+                   'price_stock': '4 000 ₽\nДоступно под заказ', 'document_title': 'Domaine Example 2022 0.75 л'}}
+        evidence = {'title': wine, 'year': 2022, 'score': 90, 'scale': 100, 'start': 2023,
+                    'end': 2030, 'date': date, 'url': 'https://critic.example/review',
+                    'source': 'Critic', 'currency': 'USD', 'amount': 20, 'price_kind': 'exact'}
+        queue = {'vintages': [{'title': wine, 'year': 2022, 'evidence': [evidence]}]}
+        report = reconcile([row], date, {'USD': Decimal(100)}, {}, date, queue)
+        self.assertFalse(report['eligible'])
+        self.assertEqual(report['retailer_matches'][0]['result'], 'local_stock_unconfirmed')
 
 
 if __name__ == '__main__':

@@ -37,6 +37,9 @@ function captureWineResearch() {
     'luding.ru': /^\/collection\/item\/[^/]+(?:\/\d+)?\/?$/,
     'simplewine.ru': /^\/catalog\/product\/[^/]+\/?$/,
     'ast.wine': /^\/catalog\/product\/[^/]+\/?$/,
+    'amwine.ru': /^\/catalog\/(?:product\/[^/]+|vino\/[^/]+_[^/]+)\/?$/,
+    'winelab.ru': /^\/(?:catalog\/)?product\/[^/]+\/?$/,
+    'joia.ru': /^\/product\/[^/]+\/?$/,
     'sabonis.ru': /^\/productDetail\/[^/]+\/?$/i,
     'vinissimo.biz': /^\/catalog\/wine\/[^/]+-\d+\/?$/,
     'vinous.com': /^\/wines\/(?!lists(?:\/|$))[^/]+(?:\/\d{4})?\/?$/,
@@ -89,6 +92,44 @@ function captureWineResearch() {
       // The city is chosen in the header. Footer city links are irrelevant.
       const city = page.split('\n').map(line => line.trim()).find(line => /^(?:Санкт-Петербург|Москва)$/.test(line));
       put('city', city);
+    } else if (['winelab.ru', 'amwine.ru', 'simplewine.ru', 'ast.wine', 'joia.ru'].includes(host) &&
+               detailPaths[host].test(path)) {
+      const index = lines.indexOf(title);
+      if (index >= 0) {
+        const section = lines.slice(index);
+        const next = section.findIndex(line => /^(?:Похожие товары|С этим покупают|Рекомендуем также|Вам может понравиться)$/i.test(line));
+        const product = section.slice(0, next >= 0 ? next : undefined);
+        const header = lines.slice(0, index);
+        const cities = new Set(header.map(line => line.match(/^(?:г\.\s*)?(Санкт-Петербург|Москва)$/i)?.[1]).filter(Boolean));
+        // Only an unambiguous city before the product is part of the current selection.
+        if (cities.size === 1) put('city', [...cities][0]);
+        else if (host === 'amwine.ru' && cities.size === 0) {
+          const chosen = header.join('\n').match(/Выбран магазин[^\n]*\n(?:[^\n]*\n){0,2}[^\n]*\bг\.\s*Санкт-Петербург/i);
+          if (chosen) put('city', 'Санкт-Петербург');
+        }
+        const facts = (host === 'joia.ru'
+          ? (document.querySelector('#solo.js__product-card')?.innerText || '').split(/\n+/)
+          : product).slice(0, 85);
+        if (host === 'ast.wine') {
+          const selected = document.querySelector('a.vintage_item.current');
+          if (selected && cleanUrl(selected.href) === url) put('selected_variant', selected.innerText);
+          const prices = new Set([...document.querySelectorAll('.product-price__wrap')]
+            .map(el => el.innerText?.trim()).filter(Boolean));
+          if (prices.size === 1) put('offer_price', [...prices][0]);
+          const shops = [...document.querySelectorAll('.stock-list-short__item')].map(el => {
+            if (!el.getClientRects().length) return '';
+            const address = el.querySelector('.stock-list-short__item-address')?.innerText?.trim();
+            const stock = el.querySelector('span:not(.favorite-store-badge)')?.innerText?.trim();
+            return address && stock ? address + ' | ' + stock : '';
+          });
+          put('local_shops', [...new Set(shops.filter(Boolean))].join('\n'));
+        } else if (host === 'joia.ru') {
+          const selected = document.querySelector('#solo input[name="milezim"]:checked + label');
+          if (selected) put('selected_variant', selected.innerText);
+        }
+        put('product', facts.join('\n'));
+        put('document_title', document.title);
+      }
     }
   }
   return {url, observed_at: new Date().toISOString(), title, status: blocked ? 'blocked' : title ? 'needs_review' : 'no_heading', excerpts, links, blocks};
