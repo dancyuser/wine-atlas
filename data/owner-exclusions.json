@@ -2,7 +2,7 @@
   "version": 1,
   "updated_at": "2026-11-24",
   "reference_year": 2026,
-  "note": "Owner-directed permanent publication exclusions; retain source observations for audit. New vintage with a distinct identity is not excluded automatically. Undated and non-vintage wines are excluded by publication policy even if newly added.",
+  "note": "Owner-directed permanent publication exclusions; retain source observations for audit. New vintage with a distinct identity is not excluded automatically. Undated and non-vintage wines are excluded by publication policy even if newly added. Wines without a defensible calendar limit and newly identified expired/at-risk vintages excluded after calendar review on 2026-11-24.",
   "records": {
     "cbc96de28176": {
       "title": "Wente Morning Fog Chardonnay",
@@ -273,6 +273,36 @@
       "year": null,
       "url": "https://spb.winestyle.ru/products/Lucien-Albrecht-Brut-Cremant-d-Alsace-AOC.html",
       "reason": "no_vintage"
+    },
+    "75ea3ee23df9": {
+      "title": "Château La Tour de L Eveque Petale de Rosé Côtes de Provence AOC",
+      "year": 2020,
+      "url": "https://spb.winestyle.ru/products/Chateau-La-Tour-de-L-Eveque-Petale-de-Rose-Cotes-de-Provence-AOC-2020.html",
+      "reason": "past"
+    },
+    "160221740978": {
+      "title": "Bodegas Ramón Bilbao Crianza Rioja DOC",
+      "year": 2013,
+      "url": "https://spb.winestyle.ru/products/Bodegas-Ramon-Bilbao-Crianza-Rioja-DOC-2013-1500.html",
+      "reason": "risk"
+    },
+    "5740739d992b": {
+      "title": "Recanati Yasmin White kosher mevushal",
+      "year": 2018,
+      "url": "https://spb.winestyle.ru/products/Recanati-Yasmin-White-kosher-mevushal-2018.html",
+      "reason": "risk"
+    },
+    "4bdac639abe7": {
+      "title": "Taboadella Villae Branco Dão DOC",
+      "year": 2020,
+      "url": "https://spb.winestyle.ru/products/Taboadella-Villae-Branco-Dao-DOC-2020.html",
+      "reason": "risk"
+    },
+    "8a9950e9e3c4": {
+      "title": "Capo di Stato Colli Trevigiani IGT",
+      "year": 2013,
+      "url": "https://spb.winestyle.ru/products/Capo-di-Stato-Colli-Trevigiani-IGT-2013.html",
+      "reason": "no_calendar"
     }
   }
 }

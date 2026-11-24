@@ -338,29 +338,39 @@ for(const r of visibleAging){
 assert.equal(h.agingFor(catalogById.get('cbc96de28176'),2026).status,'past');
 assert.equal(h.agingFor(catalogById.get('cbc96de28176'),2026).end,2020);
 assert.equal(h.agingFor(catalogById.get('2b85a6978520'),2026).status,'last');
-assert.equal(h.agingFor(catalogById.get('2f1b26d235e4'),2026).end,null);
+assert.equal(h.agingFor(catalogById.get('2f1b26d235e4'),2026).end,2027);
+assert.equal(h.agingFor(catalogById.get('8fb6ff3a814f'),2026).end,2029);
+assert(h.agingMarkup(catalogById.get('2f1b26d235e4')).includes('Дополнительный источник'));
 assert.equal(h.agingFor(catalogById.get('5b8fb4a0202e'),2026).approximate,true);
 assert.equal(h.agingFor(catalogById.get('5b8fb4a0202e'),2026).status,'past');
 assert.equal(h.agingFor(catalogById.get('056c6f909a24'),2026).end,2024);
 assert.equal(h.agingFor({...catalogById.get('cbc96de28176'),year:2025},2026).status,'unknown');
 assert.equal(h.agingFor(catalogById.get('19c9dff352b3'),2026).end,2028);
 assert.equal(h.agingFor(catalogById.get('4123b553c232'),2026).status,'last');
-assert.equal(h.agingFor(catalogById.get('160221740978'),2026).end,null);
+assert.equal(h.agingFor(catalogById.get('160221740978'),2026).end,2021);
+assert.equal(h.agingFor(catalogById.get('75ea3ee23df9'),2026).end,2023);
+assert.equal(h.agingFor(catalogById.get('5740739d992b'),2026).end,2023);
+assert.equal(h.agingFor(catalogById.get('4bdac639abe7'),2026).end,2025);
+assert.equal(h.agingFor(catalogById.get('8a9950e9e3c4'),2026).end,null);
 assert(h.agingMarkup(catalogById.get('19c9dff352b3')).includes('Окно потребления: 2023–2028'));
 assert.equal(h.agingFor(catalogById.get('2f6a9b761e1f'),2026).kind,'unknown');
 console.log('AGING EVIDENCE PASSED: all published cards, identity, exact versus approximate, NV and expiration');
 
 const ownerExclusions=JSON.parse(fs.readFileSync(path.join(__dirname,'..','data','owner-exclusions.json'),'utf8'));
 h.state.ownerExcluded=new Set(Object.keys(ownerExclusions.records));
-assert.equal(h.state.ownerExcluded.size,45);
+assert.equal(h.state.ownerExcluded.size,50);
 for(const [id,row] of Object.entries(ownerExclusions.records)){
  const wine=catalogById.get(id);assert(wine&&wine.year===row.year&&wine.stores[0].url===row.url);
  const age=h.agingFor(wine,2026);
- assert.equal(row.reason,wine.year==null?'no_vintage':age.kind==='unknown'?'unknown':age.status==='last'?'last':age.status==='past'?(age.approximate?'risk':'past'):'unexpected');
+ assert.equal(row.reason,wine.year==null?'no_vintage':age.kind==='unknown'?'unknown':age.status==='last'?'last':age.status==='past'?(age.approximate?'risk':'past'):age.end===null?'no_calendar':'unexpected');
  assert.equal(h.isPublished(wine),false);
 }
-assert.equal(catalog.records.filter(h.isPublished).length,65);
+assert.equal(catalog.records.filter(h.isPublished).length,60);
+for(const wine of catalog.records.filter(h.isPublished)){
+ const age=h.agingFor(wine,2026);
+ assert(Number.isInteger(age.end)&&age.end>2026,'Missing or expired calendar limit: '+wine.id);
+}
 assert(catalog.records.filter(h.isPublished).every(r=>Number.isInteger(r.year)&&r.year>0));
 assert.equal(catalog.records.filter(r=>r.year==null&&ownerExclusions.records[r.id]?.reason==='no_vintage').length,7);
 assert(!h.isPublished({...sample,id:'new-nv',year:null}));
-console.log('OWNER SELECTION PASSED: 45 exact exclusions, 65 vintage wines remaining');
+console.log('OWNER SELECTION PASSED: 50 exact exclusions, 60 vintage wines with calendar limits remaining');

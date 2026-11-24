@@ -66,8 +66,8 @@ assert.deepEqual([...pairingValues(byId.get('745a343dcdc1'))],['Блюда из 
 assert.deepEqual([...pairingValues(byId.get('a1faf8b0af1d'))],['Аперитив','Десерты','Фрукты и ягоды']);
 assert.deepEqual([...pairingValues(byId.get('42b87c5124ce'))],[]);
 assert.equal(Object.keys(source.records).length,115);
-assert.equal(state.ownerExcluded.size,45);
-assert.equal(catalog.records.filter(matched).length,65);
+assert.equal(state.ownerExcluded.size,50);
+assert.equal(catalog.records.filter(matched).length,60);
 assert(catalog.records.filter(matched).every(r=>Number.isInteger(r.year)&&r.year>0));
 for(const year of [null,undefined,0,'2024'])assert(!matched({...wine('new-undated',1000,'рыба'),year}));
 for(const id of state.ownerExcluded)assert(!matched(byId.get(id)),'Owner-excluded wine matched: '+id);
