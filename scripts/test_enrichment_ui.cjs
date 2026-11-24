@@ -14,7 +14,7 @@ const sandbox = {
 };
 vm.createContext(sandbox);
 vm.runInContext(original.replace(/\binit\(\);\s*$/, '')+
-  '\nglobalThis.helpers={countryValue,grapeValues,pairingValues,distinct,matched,card,state,metrics,criticRatingsFor,snapshotFor,priceValue,priceBlock,liveOfferFor,isPublished,retailerDetails};',sandbox);
+  '\nglobalThis.helpers={countryValue,grapeValues,pairingValues,distinct,matched,card,fullWineMarkup,fullDescription,concisePreview,state,metrics,criticRatingsFor,snapshotFor,priceValue,priceBlock,liveOfferFor,isPublished,retailerDetails};',sandbox);
 const h=sandbox.helpers;
 const sample={
  id:'fixture',title:'Test Chardonnay',country:null,grapes:[],type:'Белое',
@@ -65,7 +65,10 @@ assert.equal(h.matched(reviewExcluded),false,'Redirected wine must not remain vi
 const reviewApproved={...sample,publication_review:{status:'verified',reason:'same_product_in_stock'}};
 assert.equal(h.matched(reviewApproved),true,'Exact matched wine should remain visible');
 
-const card=h.card(sample);
+const preview=h.card(sample);
+assert(preview.includes('data-wine-open')&&!preview.includes('Дегустационный профиль'));
+assert(!preview.includes('rating-details score-details'));
+const card=h.fullWineMarkup(sample);
 assert(card.includes('Вино с ароматом цитрусов'));
 assert(card.includes('Wine Enthusiast'),
   'Named expert scores published by WineStyle must be rendered');
@@ -85,7 +88,7 @@ assert.equal(fallbackRating.vivino.score,4.1);
 assert.equal(fallbackRating.vivino.source_kind,'retailer_reported_vivino');
 assert.equal(fallbackRating.vivino.scope,'all_vintages');
 assert.equal(fallbackRating.index,null,'Unverified vintage must not yield vintage-only score');
-const fallbackCard=h.card(sample);
+const fallbackCard=h.fullWineMarkup(sample);
 assert(fallbackCard.includes('По данным WineStyle'));
 assert(fallbackCard.includes('винтаж не установлен'));
 sample.stores[0].product_details.ratings.pop();
@@ -97,7 +100,7 @@ h.state.ratingRecords.fixture=[
  {source:'Decanter',score:92,scale:100,scope:'vintage',vintage:2023,
    source_url:'https://www.decanter.com/wine/123'}
 ];
-const ratedCard=h.card(sample);
+const ratedCard=h.fullWineMarkup(sample);
 assert(ratedCard.includes('Vivino') && ratedCard.includes('Decanter'),
  'Independently sourced ratings must remain');
 assert(!ratedCard.includes('Wine Spectator'),
@@ -119,26 +122,26 @@ assert.equal(h.matched({...sample,availability:undefined}),true,
 assert(card.includes('Морепродукты'));
 sample.stores[0].product_details.availability_spb=false;
 sample.stores[0].product_details.field_checked_at={availability_spb:'2026-11-21'};
-const noStockCard=h.card(sample);
+const noStockCard=h.fullWineMarkup(sample);
 assert(noStockCard.includes('Нет в наличии в СПб'),
        'Explicit negative stock must be visible');
 assert(noStockCard.includes('21.11.2026'),
        'Retained availability must show its own observation date, not the newer snapshot date');
 sample.stores[0].product_details.availability_note='Ожидаем поступление';
 sample.stores[0].product_details.field_checked_at.availability_note='2026-11-20';
-const oldNoteCard=h.card(sample);
+const oldNoteCard=h.fullWineMarkup(sample);
 assert(oldNoteCard.includes('20.11.2026'),
        'Retained availability note must show its own observation date');
 
 const latest={...sample,availability:{status:'in_stock',observed_on:'2026-11-23'}};
-assert(h.card(latest).includes('Доступно к заказу'));
-assert(h.card(latest).includes('23.11.2026'));
-assert(!h.card(latest).includes('Ожидаем поступление'),
+assert(h.fullWineMarkup(latest).includes('Доступно к заказу'));
+assert(h.fullWineMarkup(latest).includes('23.11.2026'));
+assert(!h.fullWineMarkup(latest).includes('Ожидаем поступление'),
  'New stock observation must override stale historic status');
 
 h.state.snapshots.fixture=[3990,'272012'];
 h.state.snapshotDate='2026-11-23';
-const enrichedCard=h.card(sample);
+const enrichedCard=h.fullWineMarkup(sample);
 assert(enrichedCard.includes(new Intl.NumberFormat('ru-RU').format(3990)),
   'Snapshot price should use production locale formatting');
 assert(enrichedCard.includes('images_gen/272/272012/0_0_695x600.webp'));
@@ -151,7 +154,7 @@ h.state.researchedPhotos.fixture={
   source_url:'https://shop.example.com/products/bottle-2023',
   source:'Example merchant'
 };
-const researched=h.card(sample);
+const researched=h.fullWineMarkup(sample);
 assert(researched.includes('https://photos.example.com/bottle.jpg'));
 assert(researched.includes('Фото: Example merchant'));
 h.state.researchedPhotos={};
@@ -172,7 +175,7 @@ assert.deepEqual([...h.pairingValues(unmatchedPairings)],['Рыба','Мореп
 selectors.get('pairing').value='Птица';
 assert.equal(h.matched(unmatchedPairings),true);
 selectors.get('pairing').value='';
-assert(h.card(unmatchedPairings).includes('Подходит к: Рыба, Морепродукты, Птица'));
+assert(h.fullWineMarkup(unmatchedPairings).includes('Подходит к: Рыба, Морепродукты, Птица'));
 
 const curated={...sample,grapes:['Семильон'],pairings:['Сыры'],country:'Португалия'};
 assert.deepEqual([...h.grapeValues(curated)],['Семильон']);
@@ -228,7 +231,7 @@ const port={
 };
 const manualDetailsPort={...port,stores:[{...port.stores[0],
  research_details:{...port.stores[0].research_details,source_kind:'manual_verified_original_seller'}}]};
-assert(h.card(manualDetailsPort).includes('Насыщенный рубиновый'),
+assert(h.fullWineMarkup(manualDetailsPort).includes('Насыщенный рубиновый'),
   'Imported manual original-seller metadata must be displayed');
 // New observations complement, but never replace, the archived source.
 const mixed={...sample,stores:[{...sample.stores[0],
@@ -245,7 +248,7 @@ assert.equal(merged.aroma,'Цитрусовые',
 assert.equal(merged.color,'Ярко-золотистый',
  'Verified manual color fills the blank field without erasing source data');
 assert.equal(merged.supplemental_checked_at,'2026-11-23');
-const mixedCard=h.card(mixed);
+const mixedCard=h.fullWineMarkup(mixed);
 assert(mixedCard.includes('Ярко-золотистый'));
 assert(mixedCard.includes('Цитрусовые'));
 assert(!mixedCard.includes('Противоречивый аромат'));
@@ -258,9 +261,9 @@ assert.equal(h.retailerDetails(emptyArchive).color,'Ярко-золотисты�
  'A null archival field must not shadow verified manual evidence');
 assert.equal(h.retailerDetails(emptyArchive).body,'Полнотелое',
  'An empty archival field must not shadow verified manual evidence');
-assert(h.card(emptyArchive).includes('Полнотелое'));
+assert(h.fullWineMarkup(emptyArchive).includes('Полнотелое'));
 
-const portCard=h.card(port);
+const portCard=h.fullWineMarkup(port);
 assert(portCard.includes('Насыщенный рубиновый'));
 assert(portCard.includes('Портвейн региона Дору'));
 assert(portCard.includes('Потенциал хранения'));
@@ -299,3 +302,24 @@ assert.equal(h.isPublished(notAvailable),false);
 h.state.snapshots={};
 h.state.snapshotDate=null;
 console.log('WINESTYLE UI TESTS PASSED: derived filters, merged grape synonyms, excluded redirected wines, source display, curated preservation, fallback');
+
+const fullData=JSON.parse(fs.readFileSync(path.join(__dirname,'..','data','full-descriptions.json'),'utf8'));
+assert.equal(fullData.version,1);
+const catalog=JSON.parse(fs.readFileSync(path.join(__dirname,'..','data','wines.json'),'utf8'));
+const catalogById=new Map(catalog.records.map(r=>[r.id,r]));
+for(const [id,d] of Object.entries(fullData.records)){
+ const r=catalogById.get(id);
+ assert(r&&r.year===d.year&&r.stores[0].url===d.url,'Full description identity mismatch: '+id);
+ assert(d.description.startsWith(r.stores[0].product_details.description_excerpt),'Description must preserve archived exact-product prefix');
+}
+h.state.fullDescriptions=fullData.records;
+const capo=catalogById.get('8a9950e9e3c4');
+assert(h.fullDescription(capo).complete);
+assert(h.fullDescription(capo).text.length>1800);
+assert(h.fullWineMarkup(capo).includes('Глава государства'));
+assert(h.concisePreview(capo).length<=155&&/[.!?]["»”)]?$/.test(h.concisePreview(capo)));
+assert(!h.card(capo).includes('Глава государства'));
+assert(!h.fullDescription({...capo,year:2024}).complete);
+assert(h.fullWineMarkup({...capo,year:2024}).includes('сохранённый фрагмент'));
+assert(!h.card(capo).includes('…'));
+console.log('FULL WINE DETAIL PASSED: verified identity, full archive, complete preview and missing-source disclosure');

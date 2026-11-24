@@ -1,7 +1,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const fmt=new Intl.NumberFormat('ru-RU');
-const state={records:[],ratingRecords:{},unrated:{},snapshots:{},snapshotDate:null,researchedPhotos:{},favorites:new Set(),scope:'all'};
+const state={records:[],ratingRecords:{},unrated:{},snapshots:{},snapshotDate:null,researchedPhotos:{},fullDescriptions:{},favorites:new Set(),scope:'all'};
 const options={country:'country',grape:'grapes',type:'type',pairing:'pairings'};
 const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const cleanUrl=s=>{try{const u=new URL(s);return u.protocol==='https:'?u.href:null}catch{return null}};
@@ -248,25 +248,71 @@ function ratingsDetails(r,m){
  (!independent&&!published?'<p class="rating-hint">Проверенных оценок пока нет.</p>':'')+fallback+'</details>';
 }
 
-function wineStyleMarkup(r){
- const s=r.stores?.[0],d=retailerDetails(r);
- if(!s||!d)return '';
- const fields=[['Вкус','taste'],['Аромат','aroma'],['Цвет','color'],['Насыщенность','body'],['Потенциал хранения','aging_potential'],['Стиль','wine_style'],['Сочетания','pairing_notes'],['Регион','region'],['Крепость','alcohol_percent'],['Объём','volume_l'],['Производитель','producer'],['Описание','description_excerpt']];
- const rows=fields.filter(([,k])=>d[k]!=null&&d[k]!=='').map(([label,k])=>'<li><span>'+safe(label)+'</span><strong>'+safe(String(d[k]))+'</strong></li>').join('');
+function fullDescription(r){
+ const d=retailerDetails(r),item=state.fullDescriptions[r.id],store=r.stores?.[0];
+ if(item&&item.url===store?.url&&item.year===(r.year??null)&&typeof item.description==='string'&&item.description.trim())
+  return {text:item.description.trim(),complete:true,observed_on:item.observed_on};
+ const text=String(d?.description_excerpt||'').trim();
+ return {text,complete:false,observed_on:d?.checked_at};
+}
+function completeSentences(text){
+ // Avoid cutting on initials, decimals or incomplete final source fragments.
+ return String(text||'').trim().split(/(?<=[.!?])\s+(?=[А-ЯЁA-Z«"“])/u).map(s=>s.trim()).filter(s=>/[.!?]["»”)]?$/u.test(s));
+}
+function concisePreview(r){
+ const d=retailerDetails(r);
+ if(!d)return '';
+ const desc=fullDescription(r).text;
+ const candidates=completeSentences(desc);
+ const informative=candidates.find(s=>s.length>=35&&s.length<=155&&/вкус|аромат|нот|оттен|купаж|виноград|выдерж|сорт|свеж|слад|сух|танин/i.test(s));
+ if(informative)return informative;
+ const sentence=candidates.find(s=>s.length>=25&&s.length<=155);
+ if(sentence)return sentence;
+ const taste=String(d.taste||'').trim();
+ const tastingSentence=completeSentences(taste).find(s=>s.length<=155);
+ if(tastingSentence)return tastingSentence;
+ if(taste&&!/[.!?]/.test(taste)&&taste.length<=135)return 'Вкус: '+taste.replace(/[;,:]+$/,'')+'.';
+ // Comma-delimited tasting descriptors are independent phrases, not clipped prose.
+ const tags=taste.split(',').map(s=>s.trim()).filter(Boolean);
+ if(tags.length>2&&tags.every(s=>s.length<=42&&!/[.!?]/.test(s))){
+  const selected=[];for(const tag of tags){if(selected.length>=5||selected.join(', ').length+tag.length>110)break;selected.push(tag)}
+  if(selected.length)return 'Вкус: '+selected.join(', ')+'.';
+ }
+ const style=String(d.wine_style||'').trim().replace(/\s*,\s*/g,', ');
+ return style?'Стиль: '+style.replace(/[.!?]+$/,'')+'.':'';
+}
+function stockMarkup(r,d){
  const observed=r.availability;
  const stockNote=observed?.status==='in_stock'?'Доступно к заказу':observed?.status==='out_of_stock'?'Нет в наличии':
-  ['Ожидаем поступление','Нет в наличии'].includes(d.availability_note)?d.availability_note:
-  d.availability_spb===true?'Наличие подтверждалось в СПб':d.availability_spb===false?'Нет в наличии в СПб':'';
- const stockDate=observed?.observed_on||(
-  d.availability_note?(d.field_checked_at?.availability_note||d.checked_at):
-  (d.field_checked_at?.availability_spb||d.checked_at));
- if(!rows&&!stockNote)return '';
- return '<details class="rating-details characteristics"><summary>Вкус, наличие и характеристики</summary>'+
- (stockNote?'<p class="availability-note">'+safe(stockNote)+' · '+date(stockDate)+'</p>':'')+
- (rows?'<ul>'+rows+'</ul>':'')+
- '<p class="rating-hint">Данные '+(d.source_kind==='producer_style_profile'?'производителя (описание линейки, не проверка винтажа) ':safe(s.name||'продавца')+' ')+'на '+date(d.checked_at)+
- (d.supplemental_checked_at?' · Дополнено ручной проверкой '+date(d.supplemental_checked_at):'')+
- ' · <a href="'+safe(d.source_url)+'" target="_blank" rel="noopener noreferrer">Источник</a></p></details>';
+  ['Ожидаем поступление','Нет в наличии'].includes(d?.availability_note)?d.availability_note:
+  d?.availability_spb===true?'Наличие подтверждалось в СПб':d?.availability_spb===false?'Нет в наличии в СПб':'';
+ const stockDate=observed?.observed_on||(d?.availability_note?(d.field_checked_at?.availability_note||d.checked_at):(d?.field_checked_at?.availability_spb||d?.checked_at));
+ return stockNote?'<p class="availability-note">'+safe(stockNote)+' · '+date(stockDate)+'</p>':'';
+}
+function metaText(r){
+ return [countryValue(r),...grapeValues(r),r.year?String(r.year):null,r.volume_l?(r.volume_l<1?Math.round(r.volume_l*1000)+' мл':fmt.format(r.volume_l)+' л'):null].filter(Boolean).join(' · ');
+}
+function pairingText(r){
+ const pairs=pairingValues(r);return pairs.length?'Подходит к: '+pairs.join(', '):'Сочетания не указаны';
+}
+function fullWineMarkup(r){
+ const d=retailerDetails(r),s=r.stores?.[0],url=cleanUrl(s?.url),m=metrics(r),description=fullDescription(r);
+ const facts=[['Стиль',d?.wine_style],['Регион',d?.region],['Крепость',d?.alcohol_percent],['Объём',d?.volume_l],['Производитель',d?.producer],['Насыщенность',d?.body],['Потенциал хранения',d?.aging_potential]].filter(([,value])=>value!=null&&value!=='');
+ const tasting=[['Вкус',d?.taste],['Аромат',d?.aroma],['Цвет',d?.color]].filter(([,value])=>value!=null&&value!=='');
+ const source=cleanUrl(d?.source_url);
+ const sourceLabel=d?.source_kind==='producer_style_profile'?'производителя (описание линейки, не проверка винтажа)':s?.name||'продавца';
+ const paragraphs=description.text.split(/\n+/).map(x=>x.trim()).filter(Boolean).map(x=>'<p>'+safe(x)+'</p>').join('');
+ const descMarkup=description.text?'<section class="wine-detail-section wine-description"><h3>Описание</h3>'+paragraphs+(!description.complete?'<p class="detail-note">В архиве доступен только сохранённый фрагмент. '+(source?'<a href="'+safe(source)+'" target="_blank" rel="noopener noreferrer">Полное описание в источнике ↗</a>':'Полный текст не подтверждён.')+'</p>':'')+'</section>':'';
+ return '<div class="wine-detail-hero">'+photoMarkup(r)+'<div class="wine-detail-heading"><span class="type-tag"><i aria-hidden="true" class="type-dot '+typeDot(r.type)+'"></i>'+safe(r.type||'Вино')+'</span>'+
+ '<h2 id="wine-dialog-title">'+safe(r.title)+'</h2><p class="card-meta">'+safe(metaText(r))+'</p>'+stockMarkup(r,d)+
+ '<div class="wine-detail-price"><div>'+priceBlock(r)+'</div>'+favoriteButton(r.id)+(url?'<a class="store-link" href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">У продавца ↗</a>':'')+'</div></div></div>'+
+ metricRow(m,r)+
+ (facts.length?'<section class="wine-detail-section"><h3>Характеристики</h3><div class="wine-facts">'+facts.map(([label,value])=>'<div class="wine-fact"><span>'+safe(label)+'</span><p>'+safe(value)+'</p></div>').join('')+'</div></section>':'')+
+ (tasting.length?'<section class="wine-detail-section"><h3>Дегустационный профиль</h3><div class="wine-tasting">'+tasting.map(([label,value])=>'<div><h4>'+safe(label)+'</h4><p>'+safe(value)+'</p></div>').join('')+'</div></section>':'')+
+ '<section class="wine-detail-section"><h3>Гастрономические сочетания</h3><p>'+safe(pairingText(r))+'</p>'+ (d?.pairing_notes?'<p class="detail-note">'+safe(d.pairing_notes)+'</p>':'')+'</section>'+
+ descMarkup+
+ '<section class="wine-detail-section wine-detail-ratings"><h3>Оценки и источники</h3>'+ratingsDetails(r,m).replace('<details class="rating-details score-details">','<details class="rating-details score-details" open>')+'</section>'+
+ (d?'<p class="rating-hint detail-note">Данные '+safe(sourceLabel)+' на '+date(d.checked_at)+(d.supplemental_checked_at?' · Дополнено ручной проверкой '+date(d.supplemental_checked_at):'')+(source?' · <a href="'+safe(source)+'" target="_blank" rel="noopener noreferrer">Источник</a>':'')+'</p>':'');
 }
 function photoMarkup(r){
  const snap=snapshotFor(r),p=r.photo||{},raw=state.researchedPhotos[r.id];
@@ -285,18 +331,12 @@ function photoMarkup(r){
 }
 
 function card(r){
- const m=metrics(r),s=r.stores[0]||{},url=cleanUrl(s.url);
- const details=retailerDetails(r);
- const synopsis=details?.description_excerpt?String(details.description_excerpt).slice(0,190):'';
- const meta=[countryValue(r),...grapeValues(r),r.year?String(r.year):null,r.volume_l?(r.volume_l<1?Math.round(r.volume_l*1000)+' мл':new Intl.NumberFormat('ru-RU').format(r.volume_l)+' л'):null].filter(Boolean).join(' · ');
- const sourcePairings=pairingValues(r);
- const pairs=sourcePairings.length?'Подходит к: '+sourcePairings.join(', '):'Сочетания не указаны';
- return '<article class="wine-card"><div class="card-head"><span class="type-tag"><i aria-hidden="true" class="type-dot '+typeDot(r.type)+'"></i>'+safe(r.type||'Вино')+'</span>'+favoriteButton(r.id)+'</div>'+
- '<div class="card-intro">'+photoMarkup(r)+'<div class="card-intro-copy"><h3 class="card-title">'+safe(r.title)+'</h3><p class="card-meta">'+safe(meta)+'</p>'+(synopsis?'<p class="card-description">'+safe(synopsis)+(details.description_excerpt.length>190?'…':'')+'</p>':'')+'</div></div>'+
- metricRow(m,r)+ratingsDetails(r,m)+wineStyleMarkup(r)+'<p class="card-pairings">'+safe(pairs)+'</p>'+
- '<div class="card-bottom"><div class="price-block">'+priceBlock(r)+'</div>'+(url?'<a class="store-link" href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">Карточка вина ↗</a>':'')+'</div></article>';
+ const m=metrics(r),synopsis=concisePreview(r);
+ return '<article class="wine-card" data-wine-id="'+safe(r.id)+'"><div class="card-head"><span class="type-tag"><i aria-hidden="true" class="type-dot '+typeDot(r.type)+'"></i>'+safe(r.type||'Вино')+'</span>'+favoriteButton(r.id)+'</div>'+
+ '<div class="card-intro">'+photoMarkup(r)+'<div class="card-intro-copy"><h3 class="card-title"><button type="button" class="wine-title-button" data-wine-open="'+safe(r.id)+'">'+safe(r.title)+'</button></h3><p class="card-meta">'+safe(metaText(r))+'</p>'+(synopsis?'<p class="card-description">'+safe(synopsis)+'</p>':'')+'</div></div>'+
+ metricRow(m,r)+'<p class="card-pairings">'+safe(pairingText(r))+'</p>'+
+ '<div class="card-bottom"><div class="price-block">'+priceBlock(r)+'</div><button type="button" class="store-link wine-open" data-wine-open="'+safe(r.id)+'">Карточка вина</button></div></article>';
 }
-
 function withinPriceRange(r,minimum,maximum){
  const min=minimum===''?null:Number(minimum),max=maximum===''?null:Number(maximum);
  if(min===null&&max===null)return true;
@@ -348,15 +388,24 @@ function setup(){
  $('price-min').addEventListener('input',render);$('price-max').addEventListener('input',render);
  $('reset').addEventListener('click',reset);$('empty-reset').addEventListener('click',reset);
  document.querySelectorAll('#scope button').forEach(b=>b.addEventListener('click',()=>{state.scope=b.dataset.scope;document.querySelectorAll('#scope button').forEach(btn=>{const on=btn===b;btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',String(on))});render()}));
- $('cards').addEventListener('load',e=>{
+ const detailDialog=$('wine-dialog');
+ let lastWineTrigger=null;
+ function openWine(id,trigger){
+  const wine=state.records.find(r=>r.id===id);if(!wine||!detailDialog)return;
+  lastWineTrigger=trigger;
+  $('wine-dialog-content').innerHTML=fullWineMarkup(wine);
+  detailDialog.showModal();detailDialog.scrollTop=0;
+  $('wine-dialog-close').focus();
+ }
+ function onPhotoLoad(e){
   const img=e.target;
   if(!img.classList?.contains('bottle-photo'))return;
   // Most WineStyle images are wide canvases with a centrally positioned bottle.
   // Cropping side margins makes the bottle fill its tall display rather than
   // shrinking it into a short landscape thumbnail.
   img.classList.toggle('landscape-source',img.naturalWidth>=img.naturalHeight*.9);
- },true);
- $('cards').addEventListener('error',e=>{
+ }
+ function onPhotoError(e){
   const img=e.target;
   if(!img.classList?.contains('bottle-photo'))return;
   if(img.dataset.fallback&&!img.dataset.triedFallback){
@@ -371,8 +420,8 @@ function setup(){
   if(button){button.disabled=true;button.setAttribute('aria-disabled','true')}
   const credit=media?.querySelector('.photo-credit');
   if(credit)credit.textContent='Фото недоступно';
- },true);
- $('cards').addEventListener('click',e=>{
+ }
+ function onWineClick(e){
   const photoButton=e.target.closest('button[data-bottle-view]');
   if(photoButton){
     const img=photoButton.querySelector('img.bottle-photo');
@@ -388,12 +437,28 @@ function setup(){
     return;
   }
   const b=e.target.closest('button[data-fav]');
-  if(!b)return;
+  if(!b){
+    const trigger=e.target.closest('button[data-wine-open]');
+    if(trigger){openWine(trigger.dataset.wineOpen,trigger);return;}
+    if(e.target.closest('a,button,input,select,summary'))return;
+    const tile=e.target.closest('.wine-card[data-wine-id]');
+    if(tile)openWine(tile.dataset.wineId,tile.querySelector('[data-wine-open]'));
+    return;
+  }
   const id=b.dataset.fav;
   if(state.favorites.has(id))state.favorites.delete(id);else state.favorites.add(id);
   try{localStorage.setItem('wine-atlas-favorites',JSON.stringify([...state.favorites]))}catch{}
+  if(detailDialog?.open&&b.closest('#wine-dialog')){const yes=state.favorites.has(id);b.classList.toggle('saved',yes);b.setAttribute('aria-pressed',String(yes));b.setAttribute('aria-label',yes?'Убрать из избранного':'Добавить в избранное');b.textContent=yes?'♥':'♡';}
   render();
- });
+ }
+ for(const root of [$('cards'),$('wine-dialog-content')].filter(Boolean)){
+  root.addEventListener('load',onPhotoLoad,true);root.addEventListener('error',onPhotoError,true);root.addEventListener('click',onWineClick);
+ }
+ if(detailDialog){
+  $('wine-dialog-close').addEventListener('click',()=>detailDialog.close());
+  detailDialog.addEventListener('click',e=>{if(e.target===detailDialog)detailDialog.close()});
+  detailDialog.addEventListener('close',()=>{const id=lastWineTrigger?.dataset.wineOpen;$('wine-dialog-content').innerHTML='';if(lastWineTrigger?.isConnected)lastWineTrigger.focus();else if(id)Array.from($('cards').querySelectorAll('[data-wine-open]')).find(x=>x.dataset.wineOpen===id)?.focus();lastWineTrigger=null});
+ }
  const dialog=$('bottle-dialog');
  if(dialog){
   $('bottle-dialog-close')?.addEventListener('click',()=>dialog.close());
@@ -406,6 +471,7 @@ async function init(){
   const response=await fetch('./data/wines.json',{cache:'no-cache'});if(!response.ok)throw Error('Catalog HTTP '+response.status);
   const catalog=await response.json();if(!Array.isArray(catalog.records))throw Error('Invalid catalog');
   state.records=catalog.records.filter(isPublished);
+  try{const response=await fetch('./data/full-descriptions.json',{cache:'no-cache'});if(response.ok){const data=await response.json();if(data.version===1&&data.records&&typeof data.records==='object')state.fullDescriptions=data.records;}}catch(e){console.warn('Full descriptions unavailable',e)}
   try{
     const snapshots=await fetch('./data/verified-snapshot-2026-11-23.json',{cache:'no-cache'});
     if(snapshots.ok){
