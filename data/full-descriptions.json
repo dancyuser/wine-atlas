@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "source": "user-supplied WineStyle browser capture 2026-11-22; verified heading and exact excerpt prefix; user-supplied full browser snapshots 2026-11-24 (25 exact product profiles, editorial rendering of product-specific sections, not verbatim retailer copy)",
+  "source": "user-supplied WineStyle browser capture 2026-11-22; verified heading and exact excerpt prefix; user-supplied full browser snapshots 2026-11-24 (25 exact product profiles, editorial rendering of product-specific sections, not verbatim retailer copy); three redirected SKUs researched using exact-vintage alternate sources and separately marked cuvee facts",
   "records": {
     "2f1b26d235e4": {
       "url": "https://spb.winestyle.ru/products/Graham-s-Late-Bottled-Vintage-LBV-2019-gift-tube.html",
@@ -997,6 +997,84 @@
       "description_kind": "editorial_full_product_profile",
       "source_archive_sha256": "0a8ad120ec7a8b051179f5c94f4f5b8e633ca720b225f847b73699af774eacc3",
       "html_sha256": "614afaa66bc04c31c74e8e30eda368c39d1b452451642330eb8a9b013756d5f1"
+    },
+    "sw-162169": {
+      "url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2023_075_162169/",
+      "year": 2023,
+      "volume_l": 0.75,
+      "sku": "162169",
+      "description": "Nipozzano Riserva 2023 — красное Chianti Rufina Riserva DOCG из санджовезе с дополняющими сортами. Вино производится в историческом поместье Castello Nipozzano к северо-востоку от Флоренции.\n\nУрожай 2023. Мягкая зима с отдельными холодными периодами и обильными осадками пополнила запасы влаги. Дождливая прохладная весна сменилась жарким июлем; к концу месяца похолодание смягчило водный стресс. Это позволило сохранить баланс созревания.\n\nВинификация и выдержка. После сбора ягоды отделяют от гребней; спонтанная ферментация, мацерация и малолактическая ферментация проходят в стали. К концу года вино переводят в баррики, затем выдерживают в бутылке. Производитель не указывает точную продолжительность этих стадий для 2023 на данной странице.\n\nДегустационный профиль. Яркий рубиновый цвет, цветочные и фруктовые оттенки с переходом к мускатному ореху, гвоздике, кофе и поджаренным нотам. Бальзамическая свежесть, плотный фруктовый вкус, минеральный финал и зрелые, не грубые танины.\n\nПримечание: производитель указывает 13% алкоголя для этого урожая; ранее в каталоге сохранено 13,5% из индексированной карточки SimpleWine. Точный локальный SKU перенаправляет на 2022 год. Описание относится к вину 2023 года, а не к товару после перенаправления.",
+      "observed_on": "2026-11-24",
+      "source_kind": "verified_alternative_vintage_sources",
+      "description_kind": "editorial_full_product_profile",
+      "sources": [
+        {
+          "url": "https://www.frescobaldi.com/en/wines/nipozzano-riserva",
+          "scope": "vintage",
+          "year": 2023,
+          "kind": "producer"
+        }
+      ],
+      "note": "Original seller redirected; vintage profile from alternate sources. General producer facts marked as cuvee."
+    },
+    "sw-161961": {
+      "url": "https://simplewine.ru/catalog/product/tavel_2024_075_161961/",
+      "year": 2024,
+      "volume_l": 0.75,
+      "sku": "161961",
+      "description": "Guigal Tavel 2024 — сухое розовое вино долины Роны. По описанию продавца точного урожая, это выраженное, структурированное розе с красной вишней, лесной земляникой, травами и пряностями. Вкус насыщенно-фруктовый с освежающей кислотностью, минеральными нюансами и длительным сочным финишем.\n\nТерруар и купаж (общий техлист производителя). Глинистые почвы с галькой, средний возраст лоз около 25 лет, урожайность 35 гл/га. Ориентировочный состав линейки: 60% гренаша, 15% сенсо, по 10% клерет и сиры, 5% других сортов.\n\nПроизводство (профиль кюве). Сусло отделяют после ночной мацерации; ферментация идёт при контролируемой температуре. Вино созревает несколько месяцев в стальных резервуарах.\n\nГастрономия и подача (рекомендации производителя). Закуски, рыба, мясные нарезки и мясо на гриле; 12–14 °C. Общий ориентир хранения производителя — три года, а не индивидуальное подтверждение предела для урожая 2024.\n\nПримечание: технические параметры кюве приведены отдельно от дегустации точного урожая. Карточка SimpleWine 2024 перенаправляет на 2023; наличие российского SKU не установлено этим исследованием.",
+      "observed_on": "2026-11-24",
+      "source_kind": "verified_alternative_vintage_sources",
+      "description_kind": "editorial_full_product_profile",
+      "sources": [
+        {
+          "url": "https://www.bremer-weinkolleg.de/domaine-e.-guigal/tavel-2024/235501-2024",
+          "scope": "vintage",
+          "year": 2024,
+          "kind": "retailer"
+        },
+        {
+          "url": "https://www.guigal.com/en/wine/tavel/",
+          "scope": "cuvee",
+          "kind": "producer"
+        }
+      ],
+      "note": "Original seller redirected; vintage profile from alternate sources. General producer facts marked as cuvee."
+    },
+    "sw-162320": {
+      "url": "https://simplewine.ru/catalog/product/carmenere_2024_075_162320/",
+      "year": 2024,
+      "volume_l": 0.75,
+      "sku": "162320",
+      "description": "Arboleda Carmenere 2024 — красное вино долины Аконкагуа. По дегустации La CAV (октябрь 2026), цвет вишнёво-красный с фиолетовым отливом, аромат спелых красных фруктов, карамельные и сладко-пряные оттенки. Вкус сочный, гладкий, с шелковистыми танинами и устойчивым послевкусием.\n\nОписание Winedirect для урожая 2024 дополнительно отмечает чёрный перец, чай, розмарин, влажную землю и шоколад. Кислотность поддерживает фруктовый вкус с оттенками запечённого красного перца и пряностей.\n\nТерруар (общие данные производителя). Carmenere выращивают в Las Vertientes на обращённых к северу склонах у подножия гор; уклон 20–30°, суглинистые почвы глубиной 60–90 см с камнями. Линейка созревает во французском дубе; конкретный срок выдержки 2024 в доступном техлисте не указан.\n\nГастрономия. Красное мясо и свинина; La CAV рекомендует употреблять этот урожай уже сейчас.\n\nПримечание: La CAV указывает 13%, Winedirect — 13,5%. Производитель не опубликовал отдельный техлист 2024 в доступном перечне. Данные о технологии относятся к кюве в целом, а дегустация — к урожаю 2024. Исходная карточка SimpleWine перенаправляет на 2023.",
+      "observed_on": "2026-11-24",
+      "source_kind": "verified_alternative_vintage_sources",
+      "description_kind": "editorial_full_product_profile",
+      "sources": [
+        {
+          "url": "https://cav.cl/mesa-cata/producto/arboleda-carmenere-2024",
+          "scope": "vintage",
+          "year": 2024,
+          "kind": "critic"
+        },
+        {
+          "url": "https://www.winedirect.co.uk/wine/arboleda-carmenere-2024",
+          "scope": "vintage",
+          "year": 2024,
+          "kind": "retailer"
+        },
+        {
+          "url": "https://arboledawines.com/vinos/",
+          "scope": "cuvee",
+          "kind": "producer"
+        },
+        {
+          "url": "https://arboledawines.com/vineyards/",
+          "scope": "cuvee",
+          "kind": "producer"
+        }
+      ],
+      "note": "Original seller redirected; vintage profile from alternate sources. General producer facts marked as cuvee."
     }
   }
 }

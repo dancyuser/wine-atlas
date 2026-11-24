@@ -232,5 +232,65 @@
       "stock_note": "Этот товар закончился, но есть замена"
     }
   ],
-  "note": "Exact navigation, product heading, year, SKU/volume (or port barcode), HTML SHA-256 checked; no redirects imported. Product-specific sections rendered editorially. No change to product inclusion, prices or stock flags in this description-only update."
+  "note": "Exact navigation, product heading, year, SKU/volume (or port barcode), HTML SHA-256 checked; no redirects imported. Product-specific sections rendered editorially. No change to product inclusion, prices or stock flags in this description-only update. All three redirected targets supplemented with alternative exact-vintage sources; they remain unresolved as original seller captures.",
+  "alternative_profiles": [
+    {
+      "id": "sw-162169",
+      "year": 2023,
+      "sources": [
+        {
+          "url": "https://www.frescobaldi.com/en/wines/nipozzano-riserva",
+          "scope": "vintage",
+          "year": 2023,
+          "kind": "producer"
+        }
+      ]
+    },
+    {
+      "id": "sw-161961",
+      "year": 2024,
+      "sources": [
+        {
+          "url": "https://www.bremer-weinkolleg.de/domaine-e.-guigal/tavel-2024/235501-2024",
+          "scope": "vintage",
+          "year": 2024,
+          "kind": "retailer"
+        },
+        {
+          "url": "https://www.guigal.com/en/wine/tavel/",
+          "scope": "cuvee",
+          "kind": "producer"
+        }
+      ]
+    },
+    {
+      "id": "sw-162320",
+      "year": 2024,
+      "sources": [
+        {
+          "url": "https://cav.cl/mesa-cata/producto/arboleda-carmenere-2024",
+          "scope": "vintage",
+          "year": 2024,
+          "kind": "critic"
+        },
+        {
+          "url": "https://www.winedirect.co.uk/wine/arboleda-carmenere-2024",
+          "scope": "vintage",
+          "year": 2024,
+          "kind": "retailer"
+        },
+        {
+          "url": "https://arboledawines.com/vinos/",
+          "scope": "cuvee",
+          "kind": "producer"
+        },
+        {
+          "url": "https://arboledawines.com/vineyards/",
+          "scope": "cuvee",
+          "kind": "producer"
+        }
+      ]
+    }
+  ],
+  "description_coverage": 28
 }

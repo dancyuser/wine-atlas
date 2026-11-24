@@ -320,10 +320,15 @@ for(const [id,d] of Object.entries(fullData.records)){
   assert(/^[a-f0-9]{64}$/.test(d.source_archive_sha256));
   assert(d.description.split('\n\n').length>=4);
   snapshotDescriptions++;
+ }else if(d.source_kind==='verified_alternative_vintage_sources'){
+  assert.equal(r.volume_l,d.volume_l);
+  assert.equal(r.stores[0].sku,d.sku);
+  assert(d.sources.some(s=>s.scope==='vintage'&&s.year===r.year&&/^https:\/\//.test(s.url)));
+  assert(d.description.split('\n\n').length>=4);
  }else assert(d.description.startsWith(r.stores[0].product_details.description_excerpt),'Description must preserve archived exact-product prefix');
 }
 assert.equal(snapshotDescriptions,25);
-for(const id of ['sw-161961','sw-162169','sw-162320'])assert(!fullData.records[id],'No description from redirected vintage: '+id);
+for(const id of ['sw-161961','sw-162169','sw-162320'])assert.equal(fullData.records[id].source_kind,'verified_alternative_vintage_sources','Redirected SKU requires alternate vintage evidence');
 h.state.fullDescriptions=fullData.records;
 const capo=catalogById.get('8a9950e9e3c4');
 assert(h.fullDescription(capo).complete);
