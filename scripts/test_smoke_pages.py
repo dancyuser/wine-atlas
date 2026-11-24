@@ -40,6 +40,16 @@ class SmokePagesTests(unittest.TestCase):
         smoke_pages.check_forbidden(URL)
         self.assertEqual(fetch.call_count, 1)
 
+    def test_archived_simplewine_rows_not_required_in_live_dom(self):
+        rows = [
+            {"id": "sw-1", "year": 2024},
+            {"id": "sw-2", "year": 2023, "publication_review": {"status": "excluded"}},
+            {"id": "sw-3", "year": 2022, "availability": {"status": "out_of_stock"}},
+            {"id": "sw-4", "year": 2022},
+            {"id": "sw-5", "year": None},
+        ]
+        self.assertEqual(smoke_pages.published_ids(rows, {"sw-4"}), {"sw-1"})
+
     def test_upload_and_deploy_select_same_attempt_specific_artifact(self):
         workflow = (Path(__file__).resolve().parents[1] / ".github/workflows/pages.yml").read_text()
         name = "github-pages-${{ github.run_id }}-${{ github.run_attempt }}"

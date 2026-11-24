@@ -64,6 +64,21 @@ def check_forbidden(url, attempts=4):
         time.sleep(min(2 ** attempt, 8))
 
 
+def published_ids(records, excluded):
+    """Match the publication policy, not the archived inventory size."""
+    return {
+        r["id"] for r in records
+        if r["id"] not in excluded
+        and type(r.get("year")) is int and r["year"] > 0
+        and r.get("availability", {}).get("status") != "out_of_stock"
+        and r.get("publication_review", {}).get("status") != "excluded"
+        and not (
+            r.get("stores", [{}])[0].get("live_offer", {}).get("availability") == "out_of_stock"
+            and r["stores"][0]["live_offer"].get("observed_on", "") >= r.get("availability", {}).get("observed_on", "0000-00-00")
+        )
+    }
+
+
 def check(base):
     if urlsplit(base).scheme != "https" or urlsplit(base).hostname != "dancyuser.github.io":
         raise ValueError("Unexpected Pages host: " + base)
@@ -100,25 +115,13 @@ def check(base):
     dom = completed.stdout
     rendered = len(re.findall(r'<article class="wine-card"', dom))
     excluded = json.loads((ROOT / "data/owner-exclusions.json").read_text(encoding="utf-8"))["records"]
-    expected = sum(
-        r["id"] not in excluded
-        and type(r.get("year")) is int and r["year"] > 0
-        and r.get("availability", {}).get("status") != "out_of_stock"
-        and r.get("publication_review", {}).get("status") != "excluded"
-        and not (
-            r.get("publication_review", {}).get("status") == "verified"
-            and r.get("stores", [{}])[0].get("live_offer", {}).get("verification_method") == "exact_jsonld_product"
-            and r["stores"][0]["live_offer"].get("availability") == "out_of_stock"
-            and r["stores"][0]["live_offer"].get("observed_on", "") >= r["publication_review"]["checked_at"]
-        )
-        for r in catalog["records"]
-    )
+    expected_ids = published_ids(catalog["records"], excluded)
+    expected = len(expected_ids)
     rendered_ids = set(re.findall(r'data-wine-id="([^"]+)"', dom))
-    undated_ids = {r["id"] for r in catalog["records"] if type(r.get("year")) is not int or r["year"] <= 0}
-    if not {r["id"] for r in simple["records"] if r["id"] not in excluded}.issubset(rendered_ids):
-        raise ValueError("SimpleWine card missing from live site")
-    if rendered_ids.intersection(set(excluded) | undated_ids):
-        raise ValueError("Owner-excluded wine rendered")
+    if rendered_ids != expected_ids:
+        missing = sorted(expected_ids - rendered_ids)
+        unexpected = sorted(rendered_ids - expected_ids)
+        raise ValueError(f"Published identity mismatch: missing={missing}, unexpected={unexpected}")
     if rendered != expected or expected == 0:
         raise ValueError(f"Rendered cards {rendered}, expected {expected}")
     # The application filters unavailable wines before populating both the header and card grid.
