@@ -235,19 +235,23 @@ function metricRow(m,r){
  '</div>';
 }
 function ratingsDetails(r,m){
- const independent=m.all.map(x=>{
+ const renderRating=x=>{
   const url=cleanUrl(x.source_url);
   const suffix=x.scope==='all_vintages'?' · все урожаи':' · '+String(x.vintage||'год не указан');
   return '<li><span>'+(url?'<a href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">'+safe(x.source)+'</a>':safe(x.source))+safe(suffix)+'</span><strong>'+num(x.score)+' / '+x.scale+'</strong></li>';
- }).join('');
+ };
+ const relayed=x=>['producer_reported_critic','retailer_reported_critic'].includes(x.source_kind);
+ const independent=m.all.filter(x=>!relayed(x)).map(renderRating).join('');
+ const secondary=m.all.filter(relayed).map(renderRating).join('');
  const published=m.critics.map(x=>'<li><span>'+safe(x.source)+'</span><strong>'+num(x.score)+' / '+x.scale+'</strong></li>').join('');
  const un=vivinoUnavailable(r);
  const awards=(r.awards||[]).filter(x=>x.vintage===r.year&&cleanUrl(x.source_url)).map(x=>'<li>'+safe(x.source)+': '+safe(x.award)+' · <a href="'+safe(cleanUrl(x.source_url))+'" target="_blank" rel="noopener noreferrer">Источник</a></li>').join('');
  const fallback=!m.vivino?'<p class="rating-hint">'+safe(un.label)+' · <a href="'+safe(un.url)+'" target="_blank" rel="noopener noreferrer">Проверить на Vivino</a></p>':m.vivino.source_kind==='retailer_reported_vivino'?'<p class="rating-hint">Vivino: '+num(m.vivino.score)+'/5, по сведениям '+safe(m.vivino.reported_by||'WineStyle')+' · винтаж не установлен · <a href="'+safe(cleanUrl(m.vivino.source_url)||'#')+'" target="_blank" rel="noopener noreferrer">Источник</a></p>':'';
  return '<details class="rating-details score-details"><summary>Оценки и источники ('+(m.all.length+m.critics.length)+')</summary>'+
  (independent?'<h4>Независимо подтверждённые</h4><ul>'+independent+'</ul>':'')+
+ (secondary?'<h4>Оценки критиков по вторичным источникам</h4><ul>'+secondary+'</ul><p class="rating-hint">Баллы опубликованы производителем или сторонним продавцом для указанного урожая; числовая оценка в первоисточнике отдельно не подтверждена.</p>':'')+
  (published?'<h4>Оценки критиков, опубликованные '+safe(retailerRatingData(r).seller||'WineStyle')+'</h4><ul>'+published+'</ul><p class="rating-hint">Не являются оценками покупателей '+safe(retailerRatingData(r).seller||'WineStyle')+'. Первоисточники и принадлежность к винтажу отдельно не проверены.</p>':'')+
- (!independent&&!published?'<p class="rating-hint">Проверенных оценок пока нет.</p>':'')+fallback+(awards?'<h4>Награды (без числовой оценки)</h4><ul>'+awards+'</ul>':'')+'</details>';
+ (!independent&&!secondary&&!published?'<p class="rating-hint">Проверенных оценок пока нет.</p>':'')+fallback+(awards?'<h4>Награды (без числовой оценки)</h4><ul>'+awards+'</ul>':'')+'</details>';
 }
 
 function fullDescription(r){

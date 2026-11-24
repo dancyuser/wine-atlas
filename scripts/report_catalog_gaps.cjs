@@ -20,7 +20,7 @@ const result=vm.runInContext(app+`
  if(priceValue(r)==null)gaps.push('price');
  if(!s.regular_price_rub&&!live?.regular_price_rub)gaps.push('explicit_regular_price');
  if(!m.critics.length&&!m.exact.some(x=>x.source!=='Vivino'))gaps.push('critic');
- if(!m.exact.some(x=>x.source!=='Vivino'&&x.source_kind!=='producer_reported_critic'))gaps.push('independent_critic');
+ if(!m.exact.some(x=>x.source!=='Vivino'&&!['producer_reported_critic','retailer_reported_critic'].includes(x.source_kind)))gaps.push('independent_critic');
  if(a.end==null)gaps.push('calendar_limit');
  else if(a.status==='past'||a.status==='last'||a.status==='early')gaps.push('calendar_outside');
  if(a.approximate)gaps.push('approximate_storage');
