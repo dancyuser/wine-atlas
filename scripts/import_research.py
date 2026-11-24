@@ -213,6 +213,11 @@ def parse_labeled_offer(row, host):
     displayed_year = year_in(title)
     years = set(re.findall(rf'(?mi)^[ \t]*(?:Год урожая|Выбранный винтаж|Винтаж)\s*:\s*({YEAR})[ \t]*$', text))
     selected = blocks.get('selected_variant', '')
+    if selected and host == 'ast.wine':
+        selected, *suffix = selected.splitlines()
+        # Some AST variants include their own price on a second line.
+        if suffix and (len(suffix) != 1 or not re.fullmatch(RUBLES, suffix[0].strip(), re.I)):
+            return None
     if selected:
         selected_year = re.fullmatch(rf'({YEAR})(?:,\s*{VOLUME})?', selected, re.I)
         if not selected_year:

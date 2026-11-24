@@ -5,16 +5,20 @@ const path = require('node:path');
 const vm = require('node:vm');
 
 const directory = path.join(__dirname, '..', 'research-extension');
+const stateKey = 'wineAtlasResearchJobV1';
+const observationsKey = 'wineAtlasResearchObservationsV1';
 const disk = {};
 const tabs = new Map();
 const downloads = [];
+const opened = [];
+const shops = Array.from({length: 9}, (_, i) => ['Shop ' + i, 'https://shop' + i + '.test/wine']);
 let nextId = 1;
 let now = Date.parse('2026-11-24T12:00:00Z');
 
 function worker() {
   let message;
   const context = vm.createContext({
-    URL, console, setTimeout: () => {},
+    URL, console, setTimeout: () => 1, clearTimeout: () => {},
     Date: class extends Date {
       constructor() { super(now); }
       static now() { return now; }
@@ -28,8 +32,11 @@ function worker() {
       tabs: {
         create: async ({url, active}) => {
           assert.equal(active, false);
-          const tab = {url, id: nextId++, status: 'complete'};
+          const domain = new URL(url).hostname;
+          assert(![...tabs.values()].some(tab => new URL(tab.url).hostname === domain));
+          const tab = {url, id: nextId++, status: url.endsWith('/blocked') ? 'loading' : 'complete'};
           tabs.set(tab.id, tab);
+          opened.push({url, time: now});
           return tab;
         },
         get: async id => tabs.get(id),
@@ -37,50 +44,92 @@ function worker() {
         onUpdated: {addListener() {}}
       },
       scripting: {executeScript: async ({target}) => {
-        const url = tabs.get(target.tabId).url;
-        const blocked = url.endsWith('/blocked');
-        return [{result: {url, status: blocked ? 'blocked' : 'needs_review', links: []}}];
+        const {url} = tabs.get(target.tabId);
+        const status = url.endsWith('/blocked') ? 'blocked' : 'needs_review';
+        return [{result: {url, status, links: [], observed_at: new Date(now).toISOString()}}];
       }},
-      downloads: {download: async request => { downloads.push(request); return 1; }},
+      downloads: {download: async request => { downloads.push(request); return downloads.length; }},
       runtime: {onStartup: {addListener() {}}, onMessage: {addListener(listener) {message = listener;}}}
     }
   });
-  context.importScripts = (...files) => files.forEach(file => {
-    if (file === 'sources.js') {
-      vm.runInContext("const SOURCES=[['Critic','https://critic.test/blocked'],['Retailer','https://retailer.test/wine']];const RECHECK=[];const RETAILERS=new Set(['Retailer']);", context);
-    } else {
-      vm.runInContext(fs.readFileSync(path.join(directory, file), 'utf8'), context);
-    }
+  context.SOURCES = [
+    ['One', 'https://one.test/catalog'], ['Two', 'https://two.test/catalog'], ['Three', 'https://three.test/catalog'],
+    ...shops
+  ];
+  context.RECHECK = [['One', 'https://one.test/blocked']];
+  context.RETAILERS = new Set(shops.map(row => row[0]));
+  context.importScripts = (...files) => files.filter(file => file !== 'sources.js').forEach(file => {
+    vm.runInContext(fs.readFileSync(path.join(directory, file), 'utf8'), context);
   });
   vm.runInContext(fs.readFileSync(path.join(directory, 'background.js'), 'utf8'), context);
-  return {send: (action, scope) => new Promise(resolve => message({action, scope}, {}, resolve)), tick: () => vm.runInContext('tick()', context)};
+  return {send: (action, scope, row) => new Promise(resolve => message({action, scope, row}, {}, resolve)),
+    tick: () => vm.runInContext('tick()', context)};
 }
+
+const activeURLs = () => [...tabs.values()].map(tab => tab.url);
+const payload = i => JSON.parse(decodeURIComponent(downloads[i].url.split(',')[1]));
 
 (async () => {
   let runtime = worker();
   assert.match((await runtime.send('start')).text, /running/);
   await runtime.tick();
-  assert.equal(tabs.size, 1);
-  runtime = worker(); // Service worker restarted. The popup never opened again.
+  assert.deepEqual(activeURLs(), ['https://one.test/blocked', 'https://two.test/catalog']);
+  const slowTab = [...tabs.values()][0];
+  runtime = worker(); // The service worker restarted with its popup closed.
+  await runtime.tick();
+  assert.deepEqual(activeURLs(), [slowTab.url]);
+  await runtime.tick();
+  assert.deepEqual(activeURLs(), [slowTab.url, 'https://three.test/catalog']);
+  await runtime.tick();
+  assert.deepEqual(activeURLs(), [slowTab.url]);
+  assert.equal(opened.some(row => row.url.includes('shop')), false);
+  slowTab.status = 'complete';
+  await runtime.tick();
   await runtime.tick();
   assert.equal(tabs.size, 0);
-  await runtime.tick(); // Unrelated event during the cooldown must not open a tab.
+  const finishedAt = now;
+  now += 4999;
+  await runtime.tick();
   assert.equal(tabs.size, 0);
-  now += 5000;
+  now++;
   await runtime.tick();
-  assert.equal(tabs.size, 1);
+  assert.deepEqual(activeURLs(), ['https://one.test/catalog']);
+  assert.equal(opened.at(-1).time - finishedAt, 5000);
   await runtime.tick();
-  now += 5000;
+  await runtime.tick();
+  assert.deepEqual(activeURLs(), shops.map(row => row[1]));
+  await runtime.tick();
   await runtime.tick();
   assert.equal(downloads.length, 1);
-  const result = JSON.parse(decodeURIComponent(downloads[0].url.split(',')[1]));
-  assert.deepEqual(result.observations.map(row => row.status), ['blocked', 'needs_review']);
-  assert.match((await runtime.send('start', 'critics')).text, /0 из 1/);
+  assert.equal(payload(0).observations.length, 13);
+  assert.equal(payload(0).observations.filter(row => row.status === 'blocked').length, 1);
+  assert.equal(new Set(payload(0).observations.map(row => row.url)).size, 13);
+
+  assert.match((await runtime.send('start', 'retailers')).text, /0 из 9/);
+  await runtime.tick();
+  assert.equal(tabs.size, 9);
+  assert.match((await runtime.send('pause')).text, /paused/);
+  runtime = worker();
+  await runtime.tick();
+  assert.equal(tabs.size, 9);
+  assert.match((await runtime.send('resume')).text, /running/);
+  await Promise.all([runtime.tick(), runtime.send('record', null, {url: 'https://manual.test', status: 'needs_review'})]);
+  await runtime.tick();
+  assert.equal(payload(1).observations.length, 10);
+  assert.equal(payload(1).observations.filter(row => row.source?.startsWith('Shop ')).length, 9);
+  assert.equal(payload(1).observations.filter(row => row.url === 'https://manual.test').length, 1);
+
+  // Retain the recorded rows and an active tab from the serial collector.
+  const legacyTab={id: nextId++, url: 'https://two.test/catalog', status: 'complete'};
+  tabs.set(legacyTab.id, legacyTab);
+  disk[stateKey] = {
+    status: 'running', cursor: 1, current:{tabId:legacyTab.id, started:now},
+    queue: [{source:'One',url:'https://one.test/catalog'}, {source:'Two',url:legacyTab.url}]
+  };
+  disk[observationsKey] = [{source:'One',url:'https://one.test/catalog'}];
+  runtime = worker();
   await runtime.tick();
   await runtime.tick();
-  now += 5000;
-  await runtime.tick();
-  const critics = JSON.parse(decodeURIComponent(downloads[1].url.split(',')[1]));
-  assert.deepEqual(critics.observations.map(row => row.source), ['Critic']);
-  console.log('Research queue resumed without popup and exported both outcomes');
+  assert.deepEqual(payload(2).observations.map(row => row.source), ['One','Two']);
+  console.log('Parallel research verified: 2 critic domains, 9 stores, cooldown, restart, pause, export and migration');
 })().catch(error => { console.error(error); process.exitCode = 1; });

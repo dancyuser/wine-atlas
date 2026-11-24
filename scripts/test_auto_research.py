@@ -1,5 +1,8 @@
 import unittest
-from auto_research import extract_links, parse_review, inspect_offer, parse_search_rss
+from threading import Barrier
+from unittest.mock import patch
+
+from auto_research import extract_links, parse_review, inspect_offer, parse_search_rss, research_retailers
 
 
 class ResearchTest(unittest.TestCase):
@@ -29,6 +32,22 @@ class ResearchTest(unittest.TestCase):
         self.assertEqual(extract_links(html, 'https://www.wineenthusiast.com/wine-ratings/'), ['https://www.wineenthusiast.com/buying-guide/foo/'])
         xml = '<rss><channel><item><link>https://sabonis.ru/product/1</link></item><item><link>https://sabonis.ru.evil.test/product/2</link></item></channel></rss>'
         self.assertEqual(parse_search_rss(xml, 'sabonis.ru'), ['https://sabonis.ru/product/1'])
+
+    def test_retailer_catalogs_are_loaded_in_parallel(self):
+        both_started = Barrier(2, timeout=3)
+
+        class SiteFetcher:
+            def __init__(self):
+                self.errors = []
+
+            def safe_get(self, url):
+                both_started.wait()
+                return '<a href="/product/example/">Domaine Example</a>'
+
+        seeds = {'a.example': 'https://a.example/wine', 'b.example': 'https://b.example/wine'}
+        with patch('auto_research.Fetcher', SiteFetcher), patch('auto_research.RETAILER_SEEDS', seeds):
+            result = research_retailers([], 1)
+        self.assertEqual(result, {'a.example': (1, [], []), 'b.example': (1, [], [])})
 
 
 if __name__ == '__main__':

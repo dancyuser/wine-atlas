@@ -112,7 +112,7 @@ function captureWineResearch() {
           : product).slice(0, 85);
         if (host === 'ast.wine') {
           const selected = document.querySelector('a.vintage_item.current');
-          if (selected && cleanUrl(selected.href) === url) put('selected_variant', selected.innerText);
+          if (selected && cleanUrl(selected.href) === url) put('selected_variant', selected.innerText?.trim().split('\n', 1)[0]);
           const prices = new Set([...document.querySelectorAll('.product-price__wrap')]
             .map(el => el.innerText?.trim()).filter(Boolean));
           if (prices.size === 1) put('offer_price', [...prices][0]);

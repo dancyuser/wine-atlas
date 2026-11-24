@@ -142,6 +142,17 @@ class CaptureTests(unittest.TestCase):
         wrong = dict(local, blocks=dict(local['blocks'], document_title=local['blocks']['document_title'].replace('2022', '2021')))
         self.assertFalse(reconcile([wrong], checked_on, rates, {}, checked_on, queue)['eligible'])
 
+    def test_ast_selected_variant_may_include_its_price_on_second_line(self):
+        row = {'title': 'Domaine Example', 'url': 'https://ast.wine/catalog/product/example/',
+               'observed_at': '2026-11-24T18:30:00Z', 'blocks': {
+                   'city': 'Санкт-Петербург', 'product': 'Объем:\t0.75 л',
+                   'selected_variant': '2023, 0.75 л\n2 370 ₽', 'offer_price': '2 370 ₽',
+                   'local_shops': 'ул. Жуковского, 22 | Мало'}}
+        offer = parse_offer(row, 'ast.wine')
+        self.assertEqual((offer['year'], offer['price'], offer['volume_l']), (2023, 2370, 0.75))
+        row['blocks']['selected_variant'] = '2023, 0.75 л\n2024, 0.75 л'
+        self.assertIsNone(parse_offer(row, 'ast.wine'))
+
     def test_orderable_winestyle_is_distinct_from_local_stock(self):
         wine = 'Domaine Example'
         date = '2026-11-24'

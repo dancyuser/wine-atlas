@@ -16,14 +16,13 @@ import urllib.request
 import urllib.robotparser
 import xml.etree.ElementTree as ET
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor
 
 from bs4 import BeautifulSoup
 
 AGENT = 'WineAtlasResearch/1.0 (+https://github.com/dancyuser/wine-atlas)'
 CRITIC = 'www.wineenthusiast.com'
 SEEDS = ['https://www.wineenthusiast.com/wine-ratings/']
-RETAILERS = ['winelab.ru', 'amwine.ru', 'vinissimo.biz', 'sabonis.ru',
-             'spb.winestyle.ru', 'simplewine.ru', 'ast.wine', 'joia.ru', 'spb.luding.ru']
 RETAILER_SEEDS = {
     'winelab.ru':'https://www.winelab.ru/catalog/vino',
     'amwine.ru':'https://amwine.ru/catalog/vino/',
@@ -210,6 +209,44 @@ class Fetcher:
             return None
 
 
+def research_retailer(seed, limit, reviews):
+    fetch = Fetcher()
+    queue, visited, products = [seed], set(), {}
+    while queue and len(visited) < limit:
+        url = queue.pop(0)
+        if url in visited:
+            continue
+        visited.add(url)
+        page = fetch.safe_get(url)
+        if page:
+            found, next_pages = retailer_page_links(page, url)
+            products.update(found)
+            queue.extend(page_url for page_url in next_pages if page_url not in visited)
+
+    results = []
+    for review in reviews:
+        expected = tokens(review['name'])
+        for url, label in products.items():
+            if len(expected & tokens(label)) < 2:
+                continue
+            page = fetch.safe_get(url)
+            if not page:
+                continue
+            candidate, reason = inspect_offer(page, url, review)
+            if candidate:
+                results.append({'review': review, 'offer': candidate})
+            elif reason not in ('identity_not_confirmed', 'vintage_not_in_heading'):
+                fetch.errors.append({'url': url, 'error': reason})
+    return len(products), results, fetch.errors
+
+
+def research_retailers(reviews, limit):
+    with ThreadPoolExecutor(max_workers=len(RETAILER_SEEDS)) as pool:
+        jobs = {domain: pool.submit(research_retailer, seed, limit, reviews)
+                for domain, seed in RETAILER_SEEDS.items()}
+        return {domain: job.result() for domain, job in jobs.items()}
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--limit', type=int, default=50, help='maximum critic review pages')
@@ -250,39 +287,20 @@ def main():
             rate_date = dt.datetime.strptime(root.attrib['Date'], '%d.%m.%Y').date().isoformat()
         except Exception as exc:
             fetch.errors.append({'url':'https://www.cbr.ru/scripts/XML_daily.asp','error':'invalid_rate: '+str(exc)})
-    catalogs = {}
-    for domain, seed in RETAILER_SEEDS.items():
-        queue, visited, products = [seed], set(), {}
-        while queue and len(visited) < args.retailer_pages:
-            page_url = queue.pop(0)
-            if page_url in visited:
-                continue
-            visited.add(page_url)
-            page = fetch.safe_get(page_url)
-            if page:
-                found, next_pages = retailer_page_links(page, page_url)
-                products.update(found)
-                queue.extend(x for x in next_pages if x not in visited)
-        catalogs[domain] = products
+    priced_reviews = []
     for review in reviews:
         if rate is None or review['foreign_price'] * rate > 6000:
             continue
         review['rate_rub'], review['rate_date'] = rate, rate_date
-        for domain in RETAILERS:
-            expected = tokens(review['name'])
-            urls = [url for url, label in catalogs.get(domain, {}).items()
-                    if len(expected & tokens(label)) >= 2]
-            for url in urls:
-                page = fetch.safe_get(url)
-                if page:
-                    candidate, reason = inspect_offer(page, url, review)
-                    if candidate:
-                        results.append({'review':review, 'offer':candidate})
-                    elif reason not in ('identity_not_confirmed','vintage_not_in_heading'):
-                        fetch.errors.append({'url':url, 'error':reason})
+        priced_reviews.append(review)
+    indexed = {}
+    for domain, (products, candidates, errors) in research_retailers(priced_reviews, args.retailer_pages).items():
+        indexed[domain] = products
+        results.extend(candidates)
+        fetch.errors.extend(errors)
     output = {'version':1, 'run_at':dt.datetime.now(dt.timezone.utc).isoformat(),
               'review_pages_attempted':len(seen), 'qualifying_reviews':len(reviews),
-              'retailer_products_indexed':{k:len(v) for k,v in catalogs.items()},
+              'retailer_products_indexed':indexed,
               'candidates':results, 'errors':fetch.errors,
               'note':'Candidates require current exact price, SPb inventory and catalog validation before publication.'}
     with open(args.output, 'w', encoding='utf-8') as f:

@@ -38,7 +38,7 @@ global.document={
   title:'Вино Domaine Example 0.75 л',
   body:{innerText:'Санкт-Петербург\nВино Domaine Example\nВинтажи и объемы\n2015, 0.75 л\n2016, 0.75 л'},
   querySelector:s=>s==='h1'?{innerText:'Вино Domaine Example'}:
-    s==='a.vintage_item.current'?{href:astUrl,innerText:'2016, 0.75 л'}:null,
+    s==='a.vintage_item.current'?{href:astUrl,innerText:'\n2016, 0.75 л\n1 800 ₽'}:null,
   querySelectorAll:s=>s==='.product-price__wrap'?[{innerText:'1 800 ₽'}]:
     s==='.stock-list-short__item'?[item]:[]
 };
