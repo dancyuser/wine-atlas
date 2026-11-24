@@ -1,0 +1,363 @@
+{
+  "version": 1,
+  "observed_on": "2026-11-24",
+  "source_archive": "wine-atlas-full-snapshots-8-2026-11-24.zip",
+  "source_archive_sha256": "df14689a143e8b988ebecccf91f4058ebfb184a60b070fbfed4e49eb4d534f8e",
+  "records": [
+    {
+      "id": "sw-153914",
+      "year": 2022,
+      "url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+      "city": "Санкт-Петербург",
+      "price_rub": 4990,
+      "html_sha256": "49bca35e071a11ee1f2e723b3ad632d03b21b2d14c699dab2ff5f53756040509",
+      "availability_evidence": "Забрать сегодня только из 10 винотек",
+      "critics": [
+        {
+          "source": "Vinous",
+          "score": 91,
+          "scale": 100,
+          "reported_by": "SimpleWine",
+          "source_url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+          "observed_on": "2026-11-24"
+        },
+        {
+          "source": "James Suckling",
+          "score": 91,
+          "scale": 100,
+          "reported_by": "SimpleWine",
+          "source_url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+          "observed_on": "2026-11-24"
+        },
+        {
+          "source": "Robert Parker",
+          "score": 92,
+          "scale": 100,
+          "reported_by": "SimpleWine",
+          "source_url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+          "observed_on": "2026-11-24"
+        },
+        {
+          "source": "Vivino",
+          "score": 3.8,
+          "scale": 5,
+          "reported_by": "SimpleWine",
+          "source_url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+          "observed_on": "2026-11-24"
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 3,
+        "max": 5,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+        "year": 2022,
+        "url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+        "note": "Расчёт от урожая, не оптимальное окно зрелости."
+      },
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/e43/e4361e73a232d59951bc425ee843b62b.png",
+        "source_url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+        "source": "SimpleWine",
+        "verified_on": "2026-11-24",
+        "scope": "vintage",
+        "matched_year": 2022,
+        "note": "Изображение основной галереи точного SKU из HTML-снимка; доступность CDN отдельно не проверена."
+      },
+      "status": "added"
+    },
+    {
+      "id": "sw-154682",
+      "year": 2023,
+      "url": "https://simplewine.ru/catalog/product/carmenere_2023_075_154682/",
+      "city": "Санкт-Петербург",
+      "price_rub": 4490,
+      "html_sha256": "a0819d2e4656e3e9718de675e0d081c20f89fc8bd7ee6510ed92aa42bb4b0cec",
+      "availability_evidence": "Забрать сегодня из 8 винотек",
+      "critics": [
+        {
+          "source": "Vivino",
+          "score": 3.4,
+          "scale": 5,
+          "reported_by": "SimpleWine",
+          "source_url": "https://simplewine.ru/catalog/product/carmenere_2023_075_154682/",
+          "observed_on": "2026-11-24"
+        }
+      ],
+      "storage_evidence": {
+        "kind": "window",
+        "min": null,
+        "max": 2029,
+        "scope": "vintage",
+        "source": "Colaris",
+        "source_url": "https://www.colaris.nl/arboleda-carmenere-aconcagua-valley-2023",
+        "year": 2023,
+        "url": "https://simplewine.ru/catalog/product/carmenere_2023_075_154682/",
+        "note": "Консервативное окно до 2029, конкретный урожай; SimpleWine указывает 7–10 лет."
+      },
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/609/609148da105de57b291191cc56c542c4.png",
+        "source_url": "https://simplewine.ru/catalog/product/carmenere_2023_075_154682/",
+        "source": "SimpleWine",
+        "verified_on": "2026-11-24",
+        "scope": "vintage",
+        "matched_year": 2023,
+        "note": "Изображение основной галереи точного SKU из HTML-снимка; доступность CDN отдельно не проверена."
+      },
+      "status": "added"
+    },
+    {
+      "id": "sw-156786",
+      "year": 2024,
+      "url": "https://simplewine.ru/catalog/product/podere_montepulciano_d_abruzzo_2024_075_156786/",
+      "city": "Санкт-Петербург",
+      "price_rub": 2490,
+      "html_sha256": "77b213d2e581f7a7c4e714b355a5588c28ea48472f6da370a1400da905a45386",
+      "availability_evidence": "Забрать сегодня из 14 винотек",
+      "critics": [
+        {
+          "source": "James Suckling",
+          "score": 91,
+          "scale": 100,
+          "reported_by": "SimpleWine",
+          "source_url": "https://simplewine.ru/catalog/product/podere_montepulciano_d_abruzzo_2024_075_156786/",
+          "observed_on": "2026-11-24"
+        },
+        {
+          "source": "Vivino",
+          "score": 3.8,
+          "scale": 5,
+          "reported_by": "SimpleWine",
+          "source_url": "https://simplewine.ru/catalog/product/podere_montepulciano_d_abruzzo_2024_075_156786/",
+          "observed_on": "2026-11-24"
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 3,
+        "max": 5,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/podere_montepulciano_d_abruzzo_2024_075_156786/",
+        "year": 2024,
+        "url": "https://simplewine.ru/catalog/product/podere_montepulciano_d_abruzzo_2024_075_156786/",
+        "note": "Расчёт от урожая, не оптимальное окно зрелости."
+      },
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/43b/43b8ffd96927610ea991d4f65cbd8d5c.png",
+        "source_url": "https://simplewine.ru/catalog/product/podere_montepulciano_d_abruzzo_2024_075_156786/",
+        "source": "SimpleWine",
+        "verified_on": "2026-11-24",
+        "scope": "vintage",
+        "matched_year": 2024,
+        "note": "Изображение основной галереи точного SKU из HTML-снимка; доступность CDN отдельно не проверена."
+      },
+      "status": "added"
+    },
+    {
+      "id": "sw-158289",
+      "year": 2023,
+      "url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+      "city": "Санкт-Петербург",
+      "price_rub": 4990,
+      "html_sha256": "aa499425051e4a4f761cce098e607a74e52ef49c3ce2be1823e0259556c4e7ad",
+      "availability_evidence": "Забрать сегодня только из 46 винотек",
+      "critics": [
+        {
+          "source": "Vinous",
+          "score": 90,
+          "scale": 100,
+          "reported_by": "SimpleWine",
+          "source_url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+          "observed_on": "2026-11-24"
+        },
+        {
+          "source": "James Suckling",
+          "score": 91,
+          "scale": 100,
+          "reported_by": "SimpleWine",
+          "source_url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+          "observed_on": "2026-11-24"
+        },
+        {
+          "source": "Vivino",
+          "score": 3.8,
+          "scale": 5,
+          "reported_by": "SimpleWine",
+          "source_url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+          "observed_on": "2026-11-24"
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 7,
+        "max": 10,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+        "year": 2023,
+        "url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+        "note": "Расчёт от урожая, не оптимальное окно зрелости. Продавец указывает 7–10 лет для этого SKU; общая рекомендация производителя для кюве 3 года отличается."
+      },
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/f1e/f1eb1ddb4f93f966f8b267a4315b5812.png",
+        "source_url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+        "source": "SimpleWine",
+        "verified_on": "2026-11-24",
+        "scope": "vintage",
+        "matched_year": 2023,
+        "note": "Изображение основной галереи точного SKU из HTML-снимка; доступность CDN отдельно не проверена."
+      },
+      "status": "added"
+    },
+    {
+      "id": "sw-159138",
+      "year": 2022,
+      "url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_075_159138/",
+      "city": "Санкт-Петербург",
+      "price_rub": 4190,
+      "html_sha256": "897c722f440b9760b52bf932e56c4e3a378cf897e9a98324ff62cc3a50ff6041",
+      "availability_evidence": "Забрать сегодня из 14 винотек",
+      "critics": [
+        {
+          "source": "James Suckling",
+          "score": 92,
+          "scale": 100,
+          "reported_by": "SimpleWine",
+          "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_075_159138/",
+          "observed_on": "2026-11-24"
+        },
+        {
+          "source": "Vivino",
+          "score": 4,
+          "scale": 5,
+          "reported_by": "SimpleWine",
+          "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_075_159138/",
+          "observed_on": "2026-11-24"
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 10,
+        "max": 15,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_075_159138/",
+        "year": 2022,
+        "url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_075_159138/",
+        "note": "Расчёт от урожая, не оптимальное окно зрелости."
+      },
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/5be/5be136802b35886c6035a231f611fc48.png",
+        "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_075_159138/",
+        "source": "SimpleWine",
+        "verified_on": "2026-11-24",
+        "scope": "vintage",
+        "matched_year": 2022,
+        "note": "Изображение основной галереи точного SKU из HTML-снимка; доступность CDN отдельно не проверена."
+      },
+      "status": "added"
+    },
+    {
+      "id": "sw-159662",
+      "year": 2024,
+      "url": "https://simplewine.ru/catalog/product/riesling_2024_075_159662/",
+      "city": "Санкт-Петербург",
+      "price_rub": 2690,
+      "html_sha256": "c10114b870d16ec3f970a3206bed65b6a59ba3dd26796d0ff73d552ef3880c01",
+      "availability_evidence": "Забрать сегодня из 15 винотек",
+      "critics": [
+        {
+          "source": "James Suckling",
+          "score": 92,
+          "scale": 100,
+          "reported_by": "SimpleWine",
+          "source_url": "https://simplewine.ru/catalog/product/riesling_2024_075_159662/",
+          "observed_on": "2026-11-24"
+        },
+        {
+          "source": "Vivino",
+          "score": 3.9,
+          "scale": 5,
+          "reported_by": "SimpleWine",
+          "source_url": "https://simplewine.ru/catalog/product/riesling_2024_075_159662/",
+          "observed_on": "2026-11-24"
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 5,
+        "max": 5,
+        "scope": "vintage",
+        "source": "Edelrausch",
+        "source_url": "https://www.edelrausch.de/weingut-nik-weis-mosel-riesling-2024",
+        "year": 2024,
+        "url": "https://simplewine.ru/catalog/product/riesling_2024_075_159662/",
+        "note": "Точный урожай, название и крепость 12% совпадают; SimpleWine указывает от 5 лет. Расчётный консервативный предел 2029."
+      },
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/1cc/1cc04974efc4add6ff02a99f3c76a22e.png",
+        "source_url": "https://simplewine.ru/catalog/product/riesling_2024_075_159662/",
+        "source": "SimpleWine",
+        "verified_on": "2026-11-24",
+        "scope": "vintage",
+        "matched_year": 2024,
+        "note": "Изображение основной галереи точного SKU из HTML-снимка; доступность CDN отдельно не проверена."
+      },
+      "status": "added"
+    },
+    {
+      "id": "sw-163341",
+      "year": 2023,
+      "url": "https://simplewine.ru/catalog/product/riesling_coastal_vineyards_neblina_2023_075_163341/",
+      "city": "Санкт-Петербург",
+      "price_rub": 3890,
+      "html_sha256": "b370f71c4059431d3987c0b42518962f0d4c986d051ddacebe916877307e588b",
+      "availability_evidence": "Забрать сегодня из 1 винотек",
+      "critics": [
+        {
+          "source": "James Suckling",
+          "score": 92,
+          "scale": 100,
+          "reported_by": "SimpleWine",
+          "source_url": "https://simplewine.ru/catalog/product/riesling_coastal_vineyards_neblina_2023_075_163341/",
+          "observed_on": "2026-11-24"
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 4,
+        "max": 6,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/riesling_coastal_vineyards_neblina_2023_075_163341/",
+        "year": 2023,
+        "url": "https://simplewine.ru/catalog/product/riesling_coastal_vineyards_neblina_2023_075_163341/",
+        "note": "Расчёт от урожая, не оптимальное окно зрелости."
+      },
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/f8a/f8a47bf8841c978b6c6be015d17d9822.png",
+        "source_url": "https://simplewine.ru/catalog/product/riesling_coastal_vineyards_neblina_2023_075_163341/",
+        "source": "SimpleWine",
+        "verified_on": "2026-11-24",
+        "scope": "vintage",
+        "matched_year": 2023,
+        "note": "Изображение основной галереи точного SKU из HTML-снимка; доступность CDN отдельно не проверена."
+      },
+      "status": "added"
+    },
+    {
+      "id": "sw-155172",
+      "year": 2025,
+      "url": "https://simplewine.ru/catalog/product/chardonnay_oak_cask_2025_075_155172/",
+      "city": "Санкт-Петербург",
+      "price_rub": 1229,
+      "regular_price_rub": 1890,
+      "html_sha256": "38cba3ef884a99db5b3993c7e60a76d55b63197c63bec4cd8bd11c34ff681bb6",
+      "availability_evidence": "Забрать сегодня из 12 винотек",
+      "status": "updated"
+    }
+  ]
+}

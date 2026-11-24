@@ -2496,7 +2496,110 @@
         "observed_on": "2026-11-24",
         "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
       }
+    ],
+    "sw-153914": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "ratings_count": 63,
+        "source_url": "https://www.vivino.com/en/garage-wine-co-pais-carinena-phoenix-ferment-maule-valley-white-wine/w/7764436",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка из карточки или таблицы урожаев Vivino; число отзывов не указано, если не подтверждено."
+      }
+    ],
+    "sw-154682": [
+      {
+        "source": "Vivino",
+        "score": 4.1,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": null,
+        "source_url": "https://www.vivino.com/en/arboleda-carmenere/w/80226?year=2023",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка из карточки или таблицы урожаев Vivino; число отзывов не указано, если не подтверждено."
+      },
+      {
+        "source": "James Suckling",
+        "score": 93,
+        "scale": 100,
+        "scope": "vintage",
+        "vintage": 2023,
+        "source_url": "https://www.colaris.nl/arboleda-carmenere-aconcagua-valley-2023",
+        "source_kind": "retailer_reported_critic",
+        "observed_on": "2026-11-24",
+        "note": "Colaris приводит 93; первичная дегустация https://www.jamessuckling.com/tasting-notes/298966/arboleda-carmenere-valle-de-aconcagua-2023 доступна без числовой оценки. SimpleWine оценки критиков не показывает."
+      }
+    ],
+    "sw-156786": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "ratings_count": 231,
+        "source_url": "https://www.vivino.com/it/umani-ronchi-podere-montepulciano-d-abruzzo/w/1157163",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка из карточки или таблицы урожаев Vivino; число отзывов не указано, если не подтверждено."
+      }
+    ],
+    "sw-158289": [
+      {
+        "source": "Vivino",
+        "score": 3.7,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": null,
+        "source_url": "https://www.vivino.com/en/e-guigal-tavel/w/7786",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка из карточки или таблицы урожаев Vivino; число отзывов не указано, если не подтверждено."
+      }
+    ],
+    "sw-159138": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2022,
+        "ratings_count": 2217,
+        "source_url": "https://www.vivino.com/en/castello-nipozzano-chianti-rufina-riserva/w/20983?year=2022",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка из карточки или таблицы урожаев Vivino; число отзывов не указано, если не подтверждено."
+      }
+    ],
+    "sw-159662": [],
+    "sw-163341": [
+      {
+        "source": "Vivino",
+        "score": 3.7,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "ratings_count": null,
+        "source_url": "https://www.vivino.com/en/leyda-neblina-vineyard-riesling/w/1553715",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка из карточки или таблицы урожаев Vivino; число отзывов не указано, если не подтверждено."
+      }
     ]
   },
-  "unrated": {}
+  "unrated": {
+    "sw-159662": {
+      "status": "unverified_score",
+      "reason": "Импортер указывает Vivino 3.9; точная оценка именно Mosel Dry, не Urban Riesling, в первичном источнике не подтверждена.",
+      "checked_on": "2026-11-24",
+      "source_url": "https://www.vivino.com/en/weingut-nik-weis-st-urbans-hof-riesling-dry-mosel-saar-ruwer-white-wine-v/w/13134233"
+    }
+  }
 }

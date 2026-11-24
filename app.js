@@ -23,7 +23,7 @@ function retailerRatingData(r){
  const store=(r.stores||[]).find(s=>s.enrichment_status?.status==='verified'&&s.product_details?.source_url===s.url);
  if(store)return {store,details:store.product_details,seller:'WineStyle'};
  const sw=r.stores?.[0];
- if(r.source_catalog==='simplewine'&&sw?.name==='SimpleWine'&&sw.research_details?.source_kind==='indexed_retailer_card'&&sw.research_details.source_url===sw.url)return {store:sw,details:sw.research_details,seller:'SimpleWine'};
+ if(r.source_catalog==='simplewine'&&sw?.name==='SimpleWine'&&['indexed_retailer_card','automated_verified_original_seller'].includes(sw.research_details?.source_kind)&&sw.research_details.source_url===sw.url)return {store:sw,details:sw.research_details,seller:'SimpleWine'};
  return {};
 }
 function criticRatingsFor(r){

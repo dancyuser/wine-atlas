@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "source": "user-supplied WineStyle browser capture 2026-11-22; verified heading and exact excerpt prefix; user-supplied full browser snapshots 2026-11-24 (25 exact product profiles, editorial rendering of product-specific sections, not verbatim retailer copy); three redirected SKUs researched using exact-vintage alternate sources and separately marked cuvee facts",
+  "source": "user-supplied WineStyle browser capture 2026-11-22; verified heading and exact excerpt prefix; user-supplied full browser snapshots 2026-11-24 (25 exact product profiles, editorial rendering of product-specific sections, not verbatim retailer copy); three redirected SKUs researched using exact-vintage alternate sources and separately marked cuvee facts; 7 additional exact product profiles from user-supplied SPb browser snapshots 2026-11-24",
   "records": {
     "2f1b26d235e4": {
       "url": "https://spb.winestyle.ru/products/Graham-s-Late-Bottled-Vintage-LBV-2019-gift-tube.html",
@@ -791,8 +791,8 @@
       "observed_on": "2026-11-24",
       "source_kind": "user_browser_full_snapshot",
       "description_kind": "editorial_full_product_profile",
-      "source_archive_sha256": "0a8ad120ec7a8b051179f5c94f4f5b8e633ca720b225f847b73699af774eacc3",
-      "html_sha256": "d3ea011145aeb4575b56b02102f80e15d868ee3b70bc6d1344d28144b60ff54e"
+      "source_archive_sha256": "df14689a143e8b988ebecccf91f4058ebfb184a60b070fbfed4e49eb4d534f8e",
+      "html_sha256": "38cba3ef884a99db5b3993c7e60a76d55b63197c63bec4cd8bd11c34ff681bb6"
     },
     "sw-155463": {
       "url": "https://simplewine.ru/catalog/product/gran_reserva_cabernet_sauvignon_2022_075_155463/",
@@ -1075,6 +1075,90 @@
         }
       ],
       "note": "Original seller redirected; vintage profile from alternate sources. General producer facts marked as cuvee."
+    },
+    "sw-153914": {
+      "url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+      "year": 2022,
+      "volume_l": 0.75,
+      "sku": "153914",
+      "description": "Белое сухое вино из красных сортов паис и кариньян, винифицированных без кожицы. Светлый соломенный цвет с розоватым оттенком, аромат цветов, яблока, лайма, персика и черешни. Свежий сбалансированный вкус с фруктовым и травяным финишем.\n\nСтарые лозы возрастом более 150 лет на гранитных почвах прибрежного хребта в Мауле; органические и биодинамические методы.\n\nРучной сбор, прессование целых гроздей, ферментация без мезги на природных дрожжах в стали при 14–16 °C. Пять месяцев на осадке в стали с батонажем.\n\nМорепродукты, рыба, птица и сыры; подача 10–12 °C.\n\nПосле чилийских пожаров 2017 года виноделы сделали из паиса белое вино, чтобы избежать дымного привкуса. Название отсылает к возрождающемуся из огня фениксу.",
+      "observed_on": "2026-11-24",
+      "source_kind": "user_browser_full_snapshot",
+      "description_kind": "editorial_full_product_profile",
+      "source_archive_sha256": "df14689a143e8b988ebecccf91f4058ebfb184a60b070fbfed4e49eb4d534f8e",
+      "html_sha256": "49bca35e071a11ee1f2e723b3ad632d03b21b2d14c699dab2ff5f53756040509"
+    },
+    "sw-154682": {
+      "url": "https://simplewine.ru/catalog/product/carmenere_2023_075_154682/",
+      "year": 2023,
+      "volume_l": 0.75,
+      "sku": "154682",
+      "description": "Красное сухое вино из карменера с пти вердо, мальбеком и гарначей тинторера. Тёмно-бордовый цвет, сушёные ягоды, розовые лепестки, фруктовая выпечка и сладкие специи. Полнотелое, с округлыми танинами и минеральным финишем.\n\nВиноградник Las Vertientes расположен в 50 км от Тихого океана на высоте 380–590 м. Суглинистые каменистые почвы с хорошим дренажем.\n\nРучной сбор, ферментация в стали при 26–28 °C в течение 15–28 дней, выдержка 12 месяцев во французском дубе (20% новых бочек), по данным SimpleWine.\n\nМясо на гриле и стейки с соусами; подача 16–18 °C.\n\nArboleda основана в 1999 году и ориентирована на отдельные виноградники. James Suckling дегустировал урожай 2023 24.03.2025, 93 балла приводит Colaris. SimpleWine профессиональную оценку не показывает. Colaris рекомендует пить до 2029 года; SimpleWine указывает 7–10 лет хранения.",
+      "observed_on": "2026-11-24",
+      "source_kind": "user_browser_full_snapshot",
+      "description_kind": "editorial_full_product_profile",
+      "source_archive_sha256": "df14689a143e8b988ebecccf91f4058ebfb184a60b070fbfed4e49eb4d534f8e",
+      "html_sha256": "a0819d2e4656e3e9718de675e0d081c20f89fc8bd7ee6510ed92aa42bb4b0cec"
+    },
+    "sw-156786": {
+      "url": "https://simplewine.ru/catalog/product/podere_montepulciano_d_abruzzo_2024_075_156786/",
+      "year": 2024,
+      "volume_l": 0.75,
+      "sku": "156786",
+      "description": "Красное сухое вино из монтепульчано. Рубиновый цвет с фиолетовым оттенком, аромат сливы, вишни, ежевики и смородины; гармоничный округлый вкус с бархатистыми танинами.\n\nВиноградники в провинциях Кьети и Терамо в Абруццо. Лозы формируют традиционным способом tendone, в виде беседки.\n\nРучной сбор, ферментация в стали, четыре месяца выдержки в стальных резервуарах, затем бутылочная выдержка перед продажей.\n\nПаста с мясным соусом, дичь и овощи на гриле; 16–18 °C.\n\nХозяйство носит имя Джино Умани Ронки; семья Бернетти расширила виноградники из Марке в Абруццо. Первый выпуск вина датируется 1977 годом.",
+      "observed_on": "2026-11-24",
+      "source_kind": "user_browser_full_snapshot",
+      "description_kind": "editorial_full_product_profile",
+      "source_archive_sha256": "df14689a143e8b988ebecccf91f4058ebfb184a60b070fbfed4e49eb4d534f8e",
+      "html_sha256": "77b213d2e581f7a7c4e714b355a5588c28ea48472f6da370a1400da905a45386"
+    },
+    "sw-158289": {
+      "url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+      "year": 2023,
+      "volume_l": 0.75,
+      "sku": "158289",
+      "description": "Сухое розовое Tavel из гренаша (65%), сенсо (15%), сиры и клерета (по 10%). Лососевый цвет, аромат красных ягод, пряностей, белого шоколада и табачного листа. Сочный вкус с освежающей кислотностью и гранатовым финишем.\n\nВиноградники на мергелевых почвах с галькой, средний возраст лоз 25 лет, урожайность 35 гл/га.\n\nНочная мацерация на кожице, отделение сока, ферментация в стали и шесть месяцев выдержки в стальных ёмкостях.\n\nСалат с артишоками, буйабес, морепродукты, утка с грибным соусом и мясо на гриле; 12–14 °C.\n\nTavel специализируется на розовом вине. SimpleWine для данного SKU указывает 7–10 лет хранения; общая рекомендация производителя для кюве короче (3 года).",
+      "observed_on": "2026-11-24",
+      "source_kind": "user_browser_full_snapshot",
+      "description_kind": "editorial_full_product_profile",
+      "source_archive_sha256": "df14689a143e8b988ebecccf91f4058ebfb184a60b070fbfed4e49eb4d534f8e",
+      "html_sha256": "aa499425051e4a4f761cce098e607a74e52ef49c3ce2be1823e0259556c4e7ad"
+    },
+    "sw-159138": {
+      "url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_075_159138/",
+      "year": 2022,
+      "volume_l": 0.75,
+      "sku": "159138",
+      "description": "Красное сухое Chianti Rufina Riserva из санджовезе с колорино, мерло, каберне совиньоном и мальвазией нера. Яркий рубиновый цвет, вишня, ежевичный джем, чернослив, подлесок и чёрный перец. Полнотелое вино с бархатистыми танинами и живой кислотностью.\n\nВиноградники на высоте 140–350 м на гравийных, глинистых и известняковых почвах; плотность 2500–6000 лоз/га, урожайность 45 гл/га.\n\nСбор в конце сентября — начале октября, раздельная ферментация сортов в стали 13 дней при температуре до 30 °C. Два года в барриках, около трёх месяцев в бутылке.\n\nБарбекю, тушёное мясо, выдержанные сыры; 16–18 °C.\n\nCastello Nipozzano — историческое поместье Frescobaldi. Карточка относится к бутылке 0,75 л; отдельная карточка 0,375 л сохранена.",
+      "observed_on": "2026-11-24",
+      "source_kind": "user_browser_full_snapshot",
+      "description_kind": "editorial_full_product_profile",
+      "source_archive_sha256": "df14689a143e8b988ebecccf91f4058ebfb184a60b070fbfed4e49eb4d534f8e",
+      "html_sha256": "897c722f440b9760b52bf932e56c4e3a378cf897e9a98324ff62cc3a50ff6041"
+    },
+    "sw-159662": {
+      "url": "https://simplewine.ru/catalog/product/riesling_2024_075_159662/",
+      "year": 2024,
+      "volume_l": 0.75,
+      "sku": "159662",
+      "description": "Белое вино из рислинга, в российской карточке классифицированное как полусухое. Светло-жёлтый цвет, спелые жёлтые фрукты, минеральные оттенки, дымные специи и цитрусы в длительном финише.\n\nВиноградники Мозеля на сланцевых почвах с высоким содержанием железа.\n\nРучной сбор, ферментация при контролируемой температуре в стали, короткая выдержка на осадке в стальных ёмкостях.\n\nМорепродукты, зелёные салаты и рыба на гриле; 8–10 °C.\n\nСемья Вайс живёт в Лейвене более двух столетий; современная винодельня основана в 1947 году. Mosel Dry — базовое вино хозяйства. SimpleWine указывает от пяти лет; немецкий продавец для урожая 2024 с 12% алкоголя указывает пять лет хранения.",
+      "observed_on": "2026-11-24",
+      "source_kind": "user_browser_full_snapshot",
+      "description_kind": "editorial_full_product_profile",
+      "source_archive_sha256": "df14689a143e8b988ebecccf91f4058ebfb184a60b070fbfed4e49eb4d534f8e",
+      "html_sha256": "c10114b870d16ec3f970a3206bed65b6a59ba3dd26796d0ff73d552ef3880c01"
+    },
+    "sw-163341": {
+      "url": "https://simplewine.ru/catalog/product/riesling_coastal_vineyards_neblina_2023_075_163341/",
+      "year": 2023,
+      "volume_l": 0.75,
+      "sku": "163341",
+      "description": "Белое сухое вино из рислинга. Золотисто-зелёный цвет, мандарин, зелёное яблоко, жасмин, свежая трава и заварной крем. Освежающая кислотность и солоновато-минеральный финиш.\n\nВиноградник El Granito расположен в четырёх километрах от Тихого океана; глинистые и суглинистые почвы на граните.\n\nРучной сбор, ферментация в стали и старых французских бочках. Меньшая часть выдерживается семь месяцев во французском дубе, основная — в стали на осадке.\n\nКреветки карри, азиатские и кисло-сладкие блюда, копчёные сыры; 10–12 °C.\n\nNeblina означает туман: прибрежные туманы и океанические бризы обеспечивают медленное созревание рислинга.",
+      "observed_on": "2026-11-24",
+      "source_kind": "user_browser_full_snapshot",
+      "description_kind": "editorial_full_product_profile",
+      "source_archive_sha256": "df14689a143e8b988ebecccf91f4058ebfb184a60b070fbfed4e49eb4d534f8e",
+      "html_sha256": "b370f71c4059431d3987c0b42518962f0d4c986d051ddacebe916877307e588b"
     }
   }
 }

@@ -2,9 +2,9 @@
   "version": 1,
   "checked_at": "2026-11-24",
   "source": "User wishlist, tab 24.11 / Simple wine",
-  "source_count": 31,
+  "source_count": 38,
   "reference_year": 2026,
-  "notes": "Exact SKU and vintage from indexed retailer pages. Direct site HTTP 403; current local stock and exact image URLs not verified. Descriptions paraphrased, unknown fields not fabricated. 24.11: добавлены изображения кюве или точного SKU с отдельной маркировкой области, часть дегустационных характеристик структурирована из сохранённых описаний; наличие в СПб не проверено. Дегустационные характеристики и сведения о производстве дополнены по карточкам соответствующих SKU; описание является редакционным пересказом, а не дословной копией. 24.11: 5 SKU скрыты (2 закончились в СПб, 3 перенаправлены на другой год); 20 оставшихся SKU подтверждены снимком в СПб, 1 снимок относится к Москве. Luigi Bosca дополнены две оценки импортера из точного снимка.",
+  "notes": "Exact SKU and vintage from indexed retailer pages. Direct site HTTP 403; current local stock and exact image URLs not verified. Descriptions paraphrased, unknown fields not fabricated. 24.11: добавлены изображения кюве или точного SKU с отдельной маркировкой области, часть дегустационных характеристик структурирована из сохранённых описаний; наличие в СПб не проверено. Дегустационные характеристики и сведения о производстве дополнены по карточкам соответствующих SKU; описание является редакционным пересказом, а не дословной копией. 24.11: 5 SKU скрыты (2 закончились в СПб, 3 перенаправлены на другой год); 20 оставшихся SKU подтверждены снимком в СПб, 1 снимок относится к Москве. Luigi Bosca дополнены две оценки импортера из точного снимка.; повторная пакетная выгрузка 8 точных SKU в Санкт-Петербурге: 7 новых, 1 обновлён. В архиве сохраняются ранее скрытые SKU.",
   "records": [
     {
       "id": "sw-155172",
@@ -24,22 +24,23 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "city": "Москва",
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
         "observed_on": "2026-11-24",
         "source_url": "https://simplewine.ru/catalog/product/chardonnay_oak_cask_2025_075_155172/",
-        "evidence": "Забрать сегодня из 88 винотек",
-        "note": "Снимок для Москвы, наличие в СПб необходимо проверить."
+        "evidence": "Забрать сегодня из 12 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 12
       },
       "stores": [
         {
           "name": "SimpleWine",
           "url": "https://simplewine.ru/catalog/product/chardonnay_oak_cask_2025_075_155172/",
           "sku": "155172",
-          "price_rub": 1890,
-          "regular_price_rub": null,
+          "price_rub": 1229,
+          "regular_price_rub": 1890,
           "price_checked_at": "2026-11-24",
-          "price_source_kind": "indexed_retailer_card",
+          "price_source_kind": "automated_verified_original_seller",
           "research_details": {
             "source_url": "https://simplewine.ru/catalog/product/chardonnay_oak_cask_2025_075_155172/",
             "source_kind": "indexed_retailer_card",
@@ -85,12 +86,13 @@
       "indexed_stock": "in_stock",
       "indexed_recency": "около 2 месяцев",
       "photo": {
-        "url": "https://images.vivino.com/thumbs/UNi5NSW5Q1eT5q_EEdXTBg_pb_x600.png",
-        "source_url": "https://www.vivino.com/en/trapiche-oak-cask-chardonnay/w/1135900?year=2025",
-        "source": "Vivino",
+        "url": "https://static.simplewine.ru/upload/iblock/3f0/3f0f3c970d75d02917a270ee0192dc8d.png",
+        "source_url": "https://simplewine.ru/catalog/product/chardonnay_oak_cask_2025_075_155172/",
+        "source": "SimpleWine",
         "verified_on": "2026-11-24",
-        "scope": "cuvee",
-        "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+        "scope": "vintage",
+        "matched_year": 2025,
+        "note": "Основная галерея точного SKU."
       }
     },
     {
@@ -2535,6 +2537,704 @@
         "source_url": "https://simplewine.ru/catalog/product/tavel_2024_075_161961/",
         "final_url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
         "note": "Карточка перенаправлена на другой урожай; региональный контекст перенаправления отдельно не зафиксирован."
+      }
+    },
+    {
+      "id": "sw-153914",
+      "title": "Garage Wine Pais-Cariñena Phoenix Ferment",
+      "year": 2022,
+      "volume_l": 0.75,
+      "type": "Белое",
+      "country": "Чили",
+      "grapes": [
+        "Паис",
+        "Кариньян"
+      ],
+      "section": "Паис",
+      "pairings": [
+        "Рыба",
+        "Курица",
+        "Морепродукты",
+        "Сыр"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+        "evidence": "Забрать сегодня только из 10 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 10
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+          "sku": "153914",
+          "price_rub": 4990,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "automated_verified_original_seller",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+            "source_kind": "automated_verified_original_seller",
+            "checked_at": "2026-11-24",
+            "full_name": "Garage Wine Pais-Cariñena Phoenix Ferment",
+            "producer": "Garage Wine",
+            "country": "Чили",
+            "region": "Центральная Долина, Valle del Maule",
+            "grapes": "Паис, Кариньян",
+            "alcohol_percent": "12.5 %",
+            "volume_l": "0,75 л",
+            "wine_style": "белое, сухое, цветочно-фруктовое, без дуба",
+            "aging_potential": "3–5 лет",
+            "description_excerpt": "Белое сухое вино из красных сортов паис и кариньян, винифицированных без кожицы. Светлый соломенный цвет с розоватым оттенком, аромат цветов, яблока, лайма, персика и черешни. Свежий сбалансированный вкус с фруктовым и травяным финишем.",
+            "ratings": [
+              {
+                "source": "Vinous",
+                "score": 91,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "James Suckling",
+                "score": 91,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Robert Parker",
+                "score": 92,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 3.8,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+                "observed_on": "2026-11-24"
+              }
+            ],
+            "body": "Тело 3/5 (SimpleWine)",
+            "color": "Соломенный с розовым оттенком",
+            "aroma": "Цветы, яблоко, лайм, персик, черешня, травы",
+            "taste": "Свежая кислотность, яблоко, черешня, травяной финиш"
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 3,
+        "max": 5,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+        "year": 2022,
+        "url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+        "note": "Расчёт от урожая, не оптимальное окно зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/e43/e4361e73a232d59951bc425ee843b62b.png",
+        "source_url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+        "source": "SimpleWine",
+        "verified_on": "2026-11-24",
+        "scope": "vintage",
+        "matched_year": 2022,
+        "note": "Изображение основной галереи точного SKU из HTML-снимка; доступность CDN отдельно не проверена."
+      }
+    },
+    {
+      "id": "sw-154682",
+      "title": "Vina Arboleda Carmenere",
+      "year": 2023,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Чили",
+      "grapes": [
+        "Карменер",
+        "Пти Вердо",
+        "Мальбек",
+        "Гарнача Тинторера"
+      ],
+      "section": "Карменер",
+      "pairings": [
+        "Говядина",
+        "Свинина"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/carmenere_2023_075_154682/",
+        "evidence": "Забрать сегодня из 8 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 8
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/carmenere_2023_075_154682/",
+          "sku": "154682",
+          "price_rub": 4490,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "automated_verified_original_seller",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/carmenere_2023_075_154682/",
+            "source_kind": "automated_verified_original_seller",
+            "checked_at": "2026-11-24",
+            "full_name": "Vina Arboleda Carmenere",
+            "producer": "Vina Arboleda",
+            "country": "Чили",
+            "region": "Аконкагуа, Valle del Aconcagua",
+            "grapes": "Карменер, Пти Вердо, Мальбек, Гарнача Тинторера",
+            "alcohol_percent": "13.5 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, мощное, выдержанное в дубе",
+            "aging_potential": "7–10 лет",
+            "description_excerpt": "Красное сухое вино из карменера с пти вердо, мальбеком и гарначей тинторера. Тёмно-бордовый цвет, сушёные ягоды, розовые лепестки, фруктовая выпечка и сладкие специи. Полнотелое, с округлыми танинами и минеральным финишем.",
+            "ratings": [
+              {
+                "source": "Vivino",
+                "score": 3.4,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/carmenere_2023_075_154682/",
+                "observed_on": "2026-11-24"
+              }
+            ],
+            "body": "Тело 4/5 (SimpleWine)",
+            "color": "Тёмно-бордовый с фиолетовым блеском",
+            "aroma": "Сушёные ягоды, роза, фруктовый пирог, сладкие специи",
+            "taste": "Полнотелый, округлые танины, минеральный финиш"
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "window",
+        "min": null,
+        "max": 2029,
+        "scope": "vintage",
+        "source": "Colaris",
+        "source_url": "https://www.colaris.nl/arboleda-carmenere-aconcagua-valley-2023",
+        "year": 2023,
+        "url": "https://simplewine.ru/catalog/product/carmenere_2023_075_154682/",
+        "note": "Консервативное окно до 2029, конкретный урожай; SimpleWine указывает 7–10 лет."
+      },
+      "indexed_stock": "in_stock",
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/609/609148da105de57b291191cc56c542c4.png",
+        "source_url": "https://simplewine.ru/catalog/product/carmenere_2023_075_154682/",
+        "source": "SimpleWine",
+        "verified_on": "2026-11-24",
+        "scope": "vintage",
+        "matched_year": 2023,
+        "note": "Изображение основной галереи точного SKU из HTML-снимка; доступность CDN отдельно не проверена."
+      }
+    },
+    {
+      "id": "sw-156786",
+      "title": "Umani Ronchi Podere Montepulciano d'Abruzzo",
+      "year": 2024,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Италия",
+      "grapes": [
+        "Монтепульчано"
+      ],
+      "section": "Монтепульчано",
+      "pairings": [
+        "Паста",
+        "Овощи",
+        "Утка"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/podere_montepulciano_d_abruzzo_2024_075_156786/",
+        "evidence": "Забрать сегодня из 14 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 14
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/podere_montepulciano_d_abruzzo_2024_075_156786/",
+          "sku": "156786",
+          "price_rub": 2490,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "automated_verified_original_seller",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/podere_montepulciano_d_abruzzo_2024_075_156786/",
+            "source_kind": "automated_verified_original_seller",
+            "checked_at": "2026-11-24",
+            "full_name": "Umani Ronchi Podere Montepulciano d'Abruzzo",
+            "producer": "Umani Ronchi",
+            "country": "Италия",
+            "region": "Абруццо",
+            "grapes": "Монтепульчано",
+            "alcohol_percent": "13 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, округлое, фруктовое, без дуба",
+            "aging_potential": "3–5 лет",
+            "description_excerpt": "Красное сухое вино из монтепульчано. Рубиновый цвет с фиолетовым оттенком, аромат сливы, вишни, ежевики и смородины; гармоничный округлый вкус с бархатистыми танинами.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 91,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/podere_montepulciano_d_abruzzo_2024_075_156786/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 3.8,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/podere_montepulciano_d_abruzzo_2024_075_156786/",
+                "observed_on": "2026-11-24"
+              }
+            ],
+            "body": "Тело 3/5 (SimpleWine)",
+            "color": "Яркий рубиновый с фиолетовым оттенком",
+            "aroma": "Слива, вишня, ежевика, чёрная смородина",
+            "taste": "Округлый, гармоничный, бархатистые танины"
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 3,
+        "max": 5,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/podere_montepulciano_d_abruzzo_2024_075_156786/",
+        "year": 2024,
+        "url": "https://simplewine.ru/catalog/product/podere_montepulciano_d_abruzzo_2024_075_156786/",
+        "note": "Расчёт от урожая, не оптимальное окно зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/43b/43b8ffd96927610ea991d4f65cbd8d5c.png",
+        "source_url": "https://simplewine.ru/catalog/product/podere_montepulciano_d_abruzzo_2024_075_156786/",
+        "source": "SimpleWine",
+        "verified_on": "2026-11-24",
+        "scope": "vintage",
+        "matched_year": 2024,
+        "note": "Изображение основной галереи точного SKU из HTML-снимка; доступность CDN отдельно не проверена."
+      }
+    },
+    {
+      "id": "sw-158289",
+      "title": "Guigal Tavel",
+      "year": 2023,
+      "volume_l": 0.75,
+      "type": "Розовое",
+      "country": "Франция",
+      "grapes": [
+        "Гренаш",
+        "Сенсо",
+        "Сира",
+        "Клерет"
+      ],
+      "section": "Гренаш",
+      "pairings": [
+        "Закуски, салаты и антипасто",
+        "Выдержанный сыр",
+        "Утка"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+        "evidence": "Забрать сегодня только из 46 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 46
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+          "sku": "158289",
+          "price_rub": 4990,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "automated_verified_original_seller",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+            "source_kind": "automated_verified_original_seller",
+            "checked_at": "2026-11-24",
+            "full_name": "Guigal Tavel",
+            "producer": "Guigal",
+            "country": "Франция",
+            "region": "Долина Роны, Tavel AOC",
+            "grapes": "Гренаш, Сенсо, Сира, Клерет",
+            "alcohol_percent": "14.5 %",
+            "volume_l": "0,75 л",
+            "wine_style": "розовое, сухое, фруктовое, без дуба",
+            "aging_potential": "7–10 лет",
+            "description_excerpt": "Сухое розовое Tavel из гренаша (65%), сенсо (15%), сиры и клерета (по 10%). Лососевый цвет, аромат красных ягод, пряностей, белого шоколада и табачного листа. Сочный вкус с освежающей кислотностью и гранатовым финишем.",
+            "ratings": [
+              {
+                "source": "Vinous",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "James Suckling",
+                "score": 91,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 3.8,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+                "observed_on": "2026-11-24"
+              }
+            ],
+            "body": "Тело 3/5 (SimpleWine)",
+            "color": "Лососевый",
+            "aroma": "Красные ягоды, пряности, белый шоколад, табачный лист",
+            "taste": "Сочный, освежающая кислотность, гранат"
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 7,
+        "max": 10,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+        "year": 2023,
+        "url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+        "note": "Расчёт от урожая, не оптимальное окно зрелости. Продавец указывает 7–10 лет для этого SKU; общая рекомендация производителя для кюве 3 года отличается."
+      },
+      "indexed_stock": "in_stock",
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/f1e/f1eb1ddb4f93f966f8b267a4315b5812.png",
+        "source_url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+        "source": "SimpleWine",
+        "verified_on": "2026-11-24",
+        "scope": "vintage",
+        "matched_year": 2023,
+        "note": "Изображение основной галереи точного SKU из HTML-снимка; доступность CDN отдельно не проверена."
+      }
+    },
+    {
+      "id": "sw-159138",
+      "title": "Frescobaldi Nipozzano Chianti Rufina Riserva DOCG",
+      "year": 2022,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Италия",
+      "grapes": [
+        "Санджовезе",
+        "Колорино",
+        "Мерло",
+        "Каберне Совиньон",
+        "Мальвазия Нера"
+      ],
+      "section": "Каберне Совиньон",
+      "pairings": [
+        "Выдержанный сыр",
+        "Говядина",
+        "Свинина"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_075_159138/",
+        "evidence": "Забрать сегодня из 14 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 14
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_075_159138/",
+          "sku": "159138",
+          "price_rub": 4190,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "automated_verified_original_seller",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_075_159138/",
+            "source_kind": "automated_verified_original_seller",
+            "checked_at": "2026-11-24",
+            "full_name": "Frescobaldi Nipozzano Chianti Rufina Riserva DOCG",
+            "producer": "Frescobaldi",
+            "country": "Италия",
+            "region": "Тоскана",
+            "grapes": "Санджовезе, Колорино, Мерло, Каберне Совиньон, Мальвазия Нера",
+            "alcohol_percent": "13.5 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, мощное, выдержанное в дубе",
+            "aging_potential": "10–15 лет",
+            "description_excerpt": "Красное сухое Chianti Rufina Riserva из санджовезе с колорино, мерло, каберне совиньоном и мальвазией нера. Яркий рубиновый цвет, вишня, ежевичный джем, чернослив, подлесок и чёрный перец. Полнотелое вино с бархатистыми танинами и живой кислотностью.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 92,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_075_159138/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 4,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_075_159138/",
+                "observed_on": "2026-11-24"
+              }
+            ],
+            "body": "Тело 4/5 (SimpleWine)",
+            "color": "Яркий рубиновый",
+            "aroma": "Вишня, ежевичный джем, чернослив, подлесок, перец",
+            "taste": "Полнотелый, бархатистые танины, живая кислотность"
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 10,
+        "max": 15,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_075_159138/",
+        "year": 2022,
+        "url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_075_159138/",
+        "note": "Расчёт от урожая, не оптимальное окно зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/5be/5be136802b35886c6035a231f611fc48.png",
+        "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_075_159138/",
+        "source": "SimpleWine",
+        "verified_on": "2026-11-24",
+        "scope": "vintage",
+        "matched_year": 2022,
+        "note": "Изображение основной галереи точного SKU из HTML-снимка; доступность CDN отдельно не проверена."
+      }
+    },
+    {
+      "id": "sw-159662",
+      "title": "Nik Weis Mosel Riesling Dry",
+      "year": 2024,
+      "volume_l": 0.75,
+      "type": "Белое",
+      "country": "Германия",
+      "grapes": [
+        "Рислинг"
+      ],
+      "section": "Рислинг",
+      "pairings": [
+        "Рыба",
+        "Морепродукты",
+        "Закуски, салаты и антипасто"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/riesling_2024_075_159662/",
+        "evidence": "Забрать сегодня из 15 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 15
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/riesling_2024_075_159662/",
+          "sku": "159662",
+          "price_rub": 2690,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "automated_verified_original_seller",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/riesling_2024_075_159662/",
+            "source_kind": "automated_verified_original_seller",
+            "checked_at": "2026-11-24",
+            "full_name": "Nik Weis Mosel Riesling Dry",
+            "producer": "Nik Weis St. Urbans-Hof",
+            "country": "Германия",
+            "region": "Мозель",
+            "grapes": "Рислинг",
+            "alcohol_percent": "12 %",
+            "volume_l": "0,75 л",
+            "wine_style": "белое, полусухое, комплексное, минеральное, без дуба",
+            "aging_potential": "От 5 лет и больше",
+            "description_excerpt": "Белое вино из рислинга, в российской карточке классифицированное как полусухое. Светло-жёлтый цвет, спелые жёлтые фрукты, минеральные оттенки, дымные специи и цитрусы в длительном финише.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 92,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/riesling_2024_075_159662/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 3.9,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/riesling_2024_075_159662/",
+                "observed_on": "2026-11-24"
+              }
+            ],
+            "body": "Тело 3/5 (SimpleWine)",
+            "color": "Светло-жёлтый",
+            "aroma": "Спелые жёлтые фрукты, минеральные ноты",
+            "taste": "Цитрус, дымные специи, минеральный финиш"
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 5,
+        "max": 5,
+        "scope": "vintage",
+        "source": "Edelrausch",
+        "source_url": "https://www.edelrausch.de/weingut-nik-weis-mosel-riesling-2024",
+        "year": 2024,
+        "url": "https://simplewine.ru/catalog/product/riesling_2024_075_159662/",
+        "note": "Точный урожай, название и крепость 12% совпадают; SimpleWine указывает от 5 лет. Расчётный консервативный предел 2029."
+      },
+      "indexed_stock": "in_stock",
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/1cc/1cc04974efc4add6ff02a99f3c76a22e.png",
+        "source_url": "https://simplewine.ru/catalog/product/riesling_2024_075_159662/",
+        "source": "SimpleWine",
+        "verified_on": "2026-11-24",
+        "scope": "vintage",
+        "matched_year": 2024,
+        "note": "Изображение основной галереи точного SKU из HTML-снимка; доступность CDN отдельно не проверена."
+      }
+    },
+    {
+      "id": "sw-163341",
+      "title": "Leyda Coastal Vineyards Neblina Riesling",
+      "year": 2023,
+      "volume_l": 0.75,
+      "type": "Белое",
+      "country": "Чили",
+      "grapes": [
+        "Рислинг"
+      ],
+      "section": "Рислинг",
+      "pairings": [
+        "Азиатская кухня",
+        "Морепродукты",
+        "Сыр"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/riesling_coastal_vineyards_neblina_2023_075_163341/",
+        "evidence": "Забрать сегодня из 1 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 1
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/riesling_coastal_vineyards_neblina_2023_075_163341/",
+          "sku": "163341",
+          "price_rub": 3890,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "automated_verified_original_seller",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/riesling_coastal_vineyards_neblina_2023_075_163341/",
+            "source_kind": "automated_verified_original_seller",
+            "checked_at": "2026-11-24",
+            "full_name": "Leyda Coastal Vineyards Neblina Riesling",
+            "producer": "Leyda",
+            "country": "Чили",
+            "region": "Аконкагуа, Valle de Leyda",
+            "grapes": "Рислинг",
+            "alcohol_percent": "13 %",
+            "volume_l": "0,75 л",
+            "wine_style": "белое, сухое, фруктовое, яркая кислотность, частично в дубе",
+            "aging_potential": "4–6 лет",
+            "description_excerpt": "Белое сухое вино из рислинга. Золотисто-зелёный цвет, мандарин, зелёное яблоко, жасмин, свежая трава и заварной крем. Освежающая кислотность и солоновато-минеральный финиш.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 92,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/riesling_coastal_vineyards_neblina_2023_075_163341/",
+                "observed_on": "2026-11-24"
+              }
+            ],
+            "body": "Тело 2/5 (SimpleWine)",
+            "color": "Золотисто-зелёный",
+            "aroma": "Мандарин, яблоко, жасмин, свежая трава, заварной крем",
+            "taste": "Яркая кислотность, солоновато-минеральный финиш"
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 4,
+        "max": 6,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/riesling_coastal_vineyards_neblina_2023_075_163341/",
+        "year": 2023,
+        "url": "https://simplewine.ru/catalog/product/riesling_coastal_vineyards_neblina_2023_075_163341/",
+        "note": "Расчёт от урожая, не оптимальное окно зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/f8a/f8a47bf8841c978b6c6be015d17d9822.png",
+        "source_url": "https://simplewine.ru/catalog/product/riesling_coastal_vineyards_neblina_2023_075_163341/",
+        "source": "SimpleWine",
+        "verified_on": "2026-11-24",
+        "scope": "vintage",
+        "matched_year": 2023,
+        "note": "Изображение основной галереи точного SKU из HTML-снимка; доступность CDN отдельно не проверена."
       }
     }
   ],
