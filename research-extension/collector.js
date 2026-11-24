@@ -27,14 +27,27 @@ function captureWineResearch() {
     if (!excerpts.includes(excerpt)) excerpts.push(excerpt);
   }
   const links = [];
+  // Keep catalogue navigation separate from links to individual bottles.
+  const detailPaths = {
+    'wineenthusiast.com': /^\/buying-guide\/[^/]+\/?$/,
+    'falstaff.com': /^\/[^/]+\/(?:wines|weine)\/[^/]+\/?$/,
+    'decanter.com': /^\/wine-reviews\/(?!search\/)(?:[^/]+\/)+[^/]+-\d+\/?$/,
+    'spb.winestyle.ru': /^\/products\/[^/]+\.html$/i,
+    'spb.luding.ru': /^\/collection\/item\/[^/]+(?:\/\d+)?\/?$/,
+    'luding.ru': /^\/collection\/item\/[^/]+(?:\/\d+)?\/?$/,
+    'simplewine.ru': /^\/catalog\/product\/[^/]+\/?$/,
+    'ast.wine': /^\/catalog\/product\/[^/]+\/?$/,
+    'sabonis.ru': /^\/productDetail\/[^/]+\/?$/i,
+    'vinissimo.biz': /^\/catalog\/wine\/[^/]+-\d+\/?$/,
+    'vinous.com': /^\/wines\/(?!lists(?:\/|$))[^/]+(?:\/\d{4})?\/?$/,
+    'jancisrobinson.com': /^\/tastings\/\d+\/?$/
+  };
   if (!blocked) for (const a of document.querySelectorAll('a[href]')) {
     const href = cleanUrl(a.href), label = (a.innerText || a.querySelector('img')?.alt || '').trim().slice(0, 200);
     if (!href || !label || href === url || new URL(href).hostname !== location.hostname) continue;
     const p = new URL(href);
     const next = a.rel === 'next' || (/^(?:next|следующая|weiter)$/i.test(label) && /page|pagen/i.test(p.search));
-    const detail = host === 'wineenthusiast.com' ? /^\/buying-guide\/[^/]+\/?$/.test(p.pathname) :
-      host === 'falstaff.com' ? /^\/[^/]+\/(?:wines|weine)\/[^/]+\/?$/.test(p.pathname) :
-      /\/(?:wines?|weine|wine-reviews|tasting-notes|product(?:s|detail)?|item|detail|reviews?)\/.+|\/catalog\/wine\/[^/]+-\d+/i.test(p.pathname);
+    const detail = (detailPaths[host] || /\/(?:wines?|weine|wine-reviews|tasting-notes|product(?:s|detail)?|item|detail|reviews?)\/.+/i).test(p.pathname);
     if ((next || detail) && !links.some(x => x.url === href)) links.push({url: href, label, kind:next?'next':'detail'});
     if (links.length >= 150) break;
   }
@@ -48,7 +61,7 @@ function captureWineResearch() {
     } else if (/falstaff\.com$/.test(host) && /\/(?:wines|weine)\/.+/.test(path)) {
       put('producer', document.querySelector('main h2')?.innerText);
       put('review', (document.querySelector('main')?.innerText || body).split(/Other Vintages|Andere Jahrgänge/i)[0]);
-    } else if (host === 'vinous.com' && path.startsWith('/wines/')) {
+    } else if (host === 'vinous.com' && detailPaths[host].test(path)) {
       put('review', (document.querySelector('main')?.innerText || body).split(/Similar Wines|Related Articles/i)[0]);
     } else if (/^(?:decanter\.com|results\.decanter\.com|iwsc\.net|jamessuckling\.com|jancisrobinson\.com)$/.test(host) &&
       /(?:\/tastings\/|\/tasting-notes\/|\/detail\/|\/wine-reviews\/(?!search\/)[^/]+\/.*\d)/.test(path)) {

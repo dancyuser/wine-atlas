@@ -13,4 +13,18 @@ assert.equal(row.status,'needs_review');
 assert(row.excerpts.some(s=>s.includes('поставщика')));
 document.body.innerText='Please verify you are human';
 row=captureWineResearch();assert.equal(row.status,'blocked');assert.equal(row.excerpts.length,0);
+
+const link=(href,innerText)=>({href,innerText,querySelector:()=>null});
+global.location={href:'https://spb.winestyle.ru/wine/',hostname:'spb.winestyle.ru'};
+global.document={body:{innerText:'Каталог'},querySelector:()=>({innerText:'Вино'}),querySelectorAll:()=>[
+  link('https://spb.winestyle.ru/wine/rioja/','Риоха'),
+  link('https://spb.winestyle.ru/products/Wine-2022.html','Вино 2022')
+]};
+assert.deepEqual(captureWineResearch().links.map(l=>l.url),['https://spb.winestyle.ru/products/Wine-2022.html']);
+global.location={href:'https://www.decanter.com/wine-reviews/search/page/1/',hostname:'www.decanter.com'};
+global.document.querySelectorAll=()=>[
+  link('https://www.decanter.com/wine/wine-regions/','Wine Regions'),
+  link('https://www.decanter.com/wine-reviews/spain/rioja/review-92636/','Review')
+];
+assert.deepEqual(captureWineResearch().links.map(l=>l.url),['https://www.decanter.com/wine-reviews/spain/rioja/review-92636/']);
 console.log('research browser capture tests passed');

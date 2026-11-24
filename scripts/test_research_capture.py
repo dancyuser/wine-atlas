@@ -1,10 +1,20 @@
 import unittest
 from report_research_capture import report
 from auto_research import inspect_offer
-from import_research import join, merge, parse_offer, parse_rates, window
+from import_research import join, merge, parse_offer, parse_rates, parse_review, window
 
 
 class CaptureTests(unittest.TestCase):
+    def test_falstaff_reads_german_points_and_keeps_tasting_date_separate(self):
+        result = parse_review({'title': '2026 The First Lady Chardonnay',
+                               'url': 'https://www.falstaff.com/at/weine/example',
+                               'observed_at': '2026-11-24T12:00:00Z', 'blocks': {
+                                   'producer': 'Warwick Estate',
+                                   'review': 'Jahrgang 2026; mit 90 Falstaff-Punkten bewertet.\nPreis: bis 10 €'}},
+                              'falstaff.com')
+        self.assertEqual((result['year'], result['score'], result['scale'], result['amount']), (2026, 90, 100, '10'))
+        self.assertIsNone(result['end'])
+
     def test_report_does_not_promote_observations(self):
         bundle = {'version': 1, 'kind': 'wine_atlas_research_capture', 'observations': [
             {'url': 'https://spb.luding.ru/collection/item/a/', 'source': 'Luding', 'status': 'needs_review'},

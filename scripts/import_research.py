@@ -86,7 +86,8 @@ def parse_review(row, host):
         score = int(mark[1]) if mark else None
         price, currency = (amount[1], 'USD') if amount else (None, None)
     elif host == 'falstaff.com':
-        marks = set(re.findall(r'\b(\d{2,3})\s+(?:Falstaff points|Falstaff.Punkte)\b', text, re.I))
+        # The German tasting summary uses the inflected form "Punkten".
+        marks = set(re.findall(r'\b(\d{2,3})\s+Falstaff(?: points|[- ]Punkten?)\b', text, re.I))
         score = int(marks.pop()) if len(marks) == 1 else None
         producer = row.get('blocks', {}).get('producer')
         if producer and normalized(producer) not in normalized(title):
@@ -258,7 +259,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('capture', type=Path)
     parser.add_argument('--rates', type=Path, help='Saved CBR XML for replay; otherwise fetch today’s rates')
-    parser.add_argument('--aliases', type=Path, help='Reviewed URL → canonical wine name mapping; does not override vintage')
+    parser.add_argument('--aliases', type=Path, help='Reviewed mapping from URL to canonical wine name; does not override vintage')
     parser.add_argument('--report', type=Path)
     parser.add_argument('--apply', action='store_true')
     args = parser.parse_args()
