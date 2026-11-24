@@ -1,0 +1,219 @@
+{
+  "version": 1,
+  "checked_at": "2026-11-24",
+  "records": [
+    {
+      "id": "a7ed12c0ab01",
+      "title": "Ramón Bilbao Crianza Rioja DOCa",
+      "year": 2022,
+      "country": "Испания",
+      "grapes": [
+        "Темпранильо"
+      ],
+      "type": "Красное",
+      "pairings": [
+        "Мясо",
+        "Сыры"
+      ],
+      "section": "Темпранильо",
+      "wishlist": false,
+      "research": true,
+      "volume_l": 0.75,
+      "description": "Красное сухое вино из Риохи.",
+      "scores": [],
+      "review_note": null,
+      "stores": [
+        {
+          "name": "Sabonis",
+          "url": "https://sabonis.ru/productDetail/vino-ramon-bilbao-kriansa-doc-riokha-10",
+          "price_rub": 1580,
+          "regular_price_rub": 2106,
+          "price_checked_at": "2026-11-24",
+          "reference_price_rub": null,
+          "reference_regular_price_rub": null,
+          "reference_date": null,
+          "research_details": {
+            "source_kind": "manual_verified_original_seller",
+            "source_url": "https://sabonis.ru/productDetail/vino-ramon-bilbao-kriansa-doc-riokha-10",
+            "checked_at": "2026-11-24",
+            "full_name": "Ramón Bilbao Crianza DOC Rioja 2022",
+            "wine_style": "Красное сухое",
+            "color": "Рубиново-вишнёвый с фиолетовым ободком",
+            "pairing_notes": "мясо, колбасы, тапас, ризотто, сыры"
+          }
+        }
+      ],
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-24",
+        "source_url": "https://sabonis.ru/productDetail/vino-ramon-bilbao-kriansa-doc-riokha-10",
+        "evidence": "В наличии: Петроградская наб., 8 - 6 шт.; Жуковского, 10 - 12 шт.; Казанская, 8-10 - 2 шт.",
+        "snapshot_source": "browser_observation"
+      },
+      "drinking_window": {
+        "kind": "window",
+        "min": null,
+        "max": 2029,
+        "scope": "vintage",
+        "source": "Wine Enthusiast",
+        "source_url": "https://www.wineenthusiast.com/buying-guide/bodegas-ramon-bilbao-2022-crianza-tempranillo-rioja/",
+        "raw": "До 2029",
+        "note": "Рекомендация Джона Самнерса для урожая 2022 года."
+      },
+      "critic_ratings": [
+        {
+          "source": "Wine Enthusiast",
+          "score": 90,
+          "scale": 100,
+          "scope": "vintage",
+          "vintage": 2022,
+          "source_url": "https://www.wineenthusiast.com/buying-guide/bodegas-ramon-bilbao-2022-crianza-tempranillo-rioja/",
+          "observed_on": "2026-11-24"
+        }
+      ]
+    },
+    {
+      "id": "a7ed12c0ab02",
+      "title": "Hacienda López de Haro Crianza Rioja",
+      "year": 2022,
+      "country": "Испания",
+      "grapes": [
+        "Темпранильо",
+        "Гарнача",
+        "Грасиано"
+      ],
+      "type": "Красное",
+      "pairings": [
+        "Красное мясо",
+        "Сыры"
+      ],
+      "section": "Темпранильо",
+      "wishlist": false,
+      "research": true,
+      "volume_l": 0.75,
+      "description": "Красное сухое вино из Риохи.",
+      "scores": [],
+      "review_note": null,
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/rioja_crianza_2022_075_159284/",
+          "price_rub": 2490,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "reference_price_rub": null,
+          "reference_regular_price_rub": null,
+          "reference_date": null,
+          "research_details": {
+            "source_kind": "manual_verified_original_seller",
+            "source_url": "https://simplewine.ru/catalog/product/rioja_crianza_2022_075_159284/",
+            "checked_at": "2026-11-24",
+            "full_name": "Rioja Crianza, Hacienda Lopez de Haro, 2022",
+            "wine_style": "Красное сухое",
+            "color": "Красное",
+            "pairing_notes": "мясные тапасы, красное мясо, выдержанные сыры"
+          }
+        }
+      ],
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/rioja_crianza_2022_075_159284/",
+        "evidence": "Санкт-Петербург: забрать сегодня из 2 винотек; урожай 2022 в наличии.",
+        "snapshot_source": "browser_observation"
+      },
+      "drinking_window": {
+        "kind": "window",
+        "min": 2024,
+        "max": 2028,
+        "scope": "vintage",
+        "source": "Bon Coeur Fine Wines",
+        "source_url": "https://www.bcfw.co.uk/wine-sale/end-of-summer-sale/r-sp520226-bodega-classica-hacienda-lopez-de-haro-crianza-rioja-2022",
+        "raw": "2024–2028",
+        "note": "Окно для урожая 2022 по оценке продавца."
+      },
+      "critic_ratings": [
+        {
+          "source": "James Suckling (по Decántalo)",
+          "score": 90,
+          "scale": 100,
+          "scope": "vintage",
+          "vintage": 2022,
+          "source_url": "https://www.decantalo.com/is/en/hacienda-lopez-de-haro-crianza.html",
+          "observed_on": "2026-11-24",
+          "note": "Оценка критика приведена другим продавцом; первоисточник не проверен."
+        }
+      ]
+    },
+    {
+      "id": "a7ed12c0ab03",
+      "title": "Inama Foscarino Soave Classico DOC",
+      "year": 2023,
+      "country": "Италия",
+      "grapes": [
+        "Гарганега"
+      ],
+      "type": "Белое",
+      "pairings": [
+        "Рыба",
+        "Морепродукты"
+      ],
+      "section": "Гарганега",
+      "wishlist": false,
+      "research": true,
+      "volume_l": 0.75,
+      "description": "Белое сухое вино из Венето.",
+      "scores": [],
+      "review_note": null,
+      "stores": [
+        {
+          "name": "Vinissimo",
+          "url": "https://vinissimo.biz/catalog/wine/foscarino_soave_classico_doc_inama-1367923/",
+          "price_rub": 4999,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "reference_price_rub": null,
+          "reference_regular_price_rub": null,
+          "reference_date": null,
+          "research_details": {
+            "source_kind": "manual_verified_original_seller",
+            "source_url": "https://vinissimo.biz/catalog/wine/foscarino_soave_classico_doc_inama-1367923/",
+            "checked_at": "2026-11-24",
+            "full_name": "Foscarino Soave Classico DOC, Inama, 2023",
+            "wine_style": "Белое сухое",
+            "color": "Интенсивный золотисто-соломенный",
+            "pairing_notes": "рыба, морепродукты, ризотто, паста"
+          }
+        }
+      ],
+      "availability": {
+        "status": "in_stock",
+        "observed_on": "2026-11-24",
+        "source_url": "https://vinissimo.biz/catalog/wine/foscarino_soave_classico_doc_inama-1367923/",
+        "evidence": "Санкт-Петербург; урожай 2023 в наличии, забрать сегодня из 14 винотек.",
+        "snapshot_source": "browser_observation"
+      },
+      "drinking_window": {
+        "kind": "window",
+        "min": 2025,
+        "max": 2034,
+        "scope": "vintage",
+        "source": "Vinous через Woodland Hills Wine Company",
+        "source_url": "https://whwc.com/inama-soave-classico-vigneti-di-foscarino-2023/",
+        "raw": "2025–2034",
+        "note": "Окно Эрика Гвидо приведено продавцом; оригинал Vinous не проверен."
+      },
+      "critic_ratings": [
+        {
+          "source": "Falstaff",
+          "score": 93,
+          "scale": 100,
+          "scope": "vintage",
+          "vintage": 2023,
+          "source_url": "https://www.falstaff.com/nordics/wines/inama-2023-foscarino-soave-classico-doc-1",
+          "observed_on": "2026-11-24"
+        }
+      ]
+    }
+  ]
+}
