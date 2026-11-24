@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Wine Atlas — сбор исследования",
+  "version": "0.1.2",
+  "description": "Собирает наблюдения с открытых страниц для последующей проверки.",
+  "minimum_chrome_version": "120",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "downloads",
+    "alarms"
+  ],
+  "optional_host_permissions": [
+    "https://www.wineenthusiast.com/*",
+    "https://www.winespectator.com/*",
+    "https://www.decanter.com/*",
+    "https://results.decanter.com/*",
+    "https://www.jamessuckling.com/*",
+    "https://www.robertparker.com/*",
+    "https://www.falstaff.com/*",
+    "https://timatkin.com/*",
+    "https://www.jancisrobinson.com/*",
+    "https://www.lucamaroni.it/*",
+    "https://vinous.com/*",
+    "https://www.wineandspiritsmagazine.com/*",
+    "https://iwsc.net/*",
+    "https://results.concoursmondial.com/*",
+    "https://www.botti.no/*",
+    "https://www.kenswineguide.com/*",
+    "https://www.winelab.ru/*",
+    "https://amwine.ru/*",
+    "https://vinissimo.biz/*",
+    "https://sabonis.ru/*",
+    "https://spb.winestyle.ru/*",
+    "https://simplewine.ru/*",
+    "https://ast.wine/*",
+    "https://joia.ru/*",
+    "https://spb.luding.ru/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

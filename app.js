@@ -275,7 +275,7 @@ function concisePreview(r){
 }
 function stockMarkup(r,d){
  const observed=r.availability;
- const stockNote=observed?.status==='in_stock'?'Доступно к заказу':observed?.status==='out_of_stock'?'Нет в наличии':
+ const stockNote=observed?.stock_kind==='supplier_stock'?'В наличии у поставщика · Санкт-Петербург':observed?.status==='in_stock'?'Доступно к заказу':observed?.status==='out_of_stock'?'Нет в наличии':
   ['Ожидаем поступление','Нет в наличии'].includes(d?.availability_note)?d.availability_note:
   d?.availability_spb===true?'Наличие подтверждалось в СПб':d?.availability_spb===false?'Нет в наличии в СПб':'';
  const stockDate=observed?.observed_on||(d?.availability_note?(d.field_checked_at?.availability_note||d.checked_at):(d?.field_checked_at?.availability_spb||d?.checked_at));
@@ -871,7 +871,7 @@ const storageEvidence = {
 };
 function agingFor(r,year=new Date().getFullYear()){
  const d=retailerDetails(r),store=r.stores?.[0],item=storageEvidence[r.id];
- const overlay=item&&item.url===store?.url&&item.year===(r.year??null)?item:null;
+ const overlay=(r.drinking_window?.scope==='vintage'?r.drinking_window:null)||(item&&item.url===store?.url&&item.year===(r.year??null)?item:null);
  const raw=String(d?.aging_potential||'').trim();
  let data=overlay;
  if(!data&&raw){
@@ -1084,6 +1084,24 @@ async function init(){
   if(exclusions.version!==1||!exclusions.records||Array.isArray(exclusions.records)||typeof exclusions.records!=='object')throw Error('Invalid owner exclusions');
   state.ownerExcluded=new Set(Object.keys(exclusions.records));
   state.records=catalog.records.filter(isPublished);
+  let discovered=[];
+  try {
+   const response=await fetch('./data/discovered-wines.json',{cache:'no-cache'});
+   if(response.ok){
+    const extra=await response.json();
+    if(extra.version===1&&Array.isArray(extra.records)) discovered=extra.records.filter(r=>{
+     const offer=r.stores?.[0], foreign=r.foreign_reference?.amount_rub, window=r.drinking_window;
+     return isPublished(r)&&r.availability?.status==='in_stock'&&r.availability.source_url===offer?.url&&
+      window?.scope==='vintage'&&window.max>=Math.max(2027,new Date().getFullYear())&&
+      offer?.price_rub>0&&offer.price_rub<=5000&&foreign>0&&foreign<=6000&&
+      r.critic_ratings?.some(x=>x.scope==='vintage'&&x.vintage===r.year&&[100,20].includes(x.scale)&&
+       x.score<=x.scale&&x.score*100/x.scale>=85);
+    });
+   }
+  } catch(e){console.warn('Discovered wines unavailable',e)}
+  const existingUrls=new Set(state.records.flatMap(r=>r.stores.map(s=>s.url)));
+  discovered=discovered.filter(r=>!state.records.some(x=>x.id===r.id)&&!r.stores.some(s=>existingUrls.has(s.url)));
+  state.records.push(...discovered);
   try{const response=await fetch('./data/source-pairings.json',{cache:'no-cache'});if(response.ok){const data=await response.json();if(data.version===1&&data.records&&data.labels){state.sourcePairings=data.records;state.pairingLabels=data.labels;}}}catch(e){console.warn('Source pairing categories unavailable',e)}
   try{const response=await fetch('./data/full-descriptions.json',{cache:'no-cache'});if(response.ok){const data=await response.json();if(data.version===1&&data.records&&typeof data.records==='object')state.fullDescriptions=data.records;}}catch(e){console.warn('Full descriptions unavailable',e)}
   try{
@@ -1104,11 +1122,12 @@ async function init(){
     }
   }catch(e){console.warn('Supplementary photos unavailable',e)}
   try{const extra=await fetch('./data/ratings.json',{cache:'no-cache'});if(extra.ok){const o=await extra.json();state.ratingRecords=o.records||{};state.unrated=o.unrated||{}}}catch(e){console.warn('Ratings unavailable',e)}
+  for(const r of discovered)state.ratingRecords[r.id]=r.critic_ratings;
   try{const saved=JSON.parse(localStorage.getItem('wine-atlas-favorites')||'[]');if(Array.isArray(saved))state.favorites=new Set(saved.filter(s=>typeof s==='string'))}catch{}
   $('stat-total').textContent=state.records.length;
   $('stat-countries').textContent=new Set(state.records.map(r=>r.country).filter(Boolean)).size;
   $('stat-rated').textContent=state.records.filter(r=>metrics(r).vivino!==null).length;
-  $('update-tag').textContent='Проверка: '+date(catalog.publication_review_snapshot?.checked_at||catalog.inventory_snapshot?.observed_on)+' · исключено '+(catalog.records.length-state.records.length)+' (наличие, совпадение, отбор владельца)';
+  $('update-tag').textContent='Проверка: '+date(catalog.publication_review_snapshot?.checked_at||catalog.inventory_snapshot?.observed_on)+' · исключено '+(catalog.records.length-catalog.records.filter(isPublished).length)+' (наличие, совпадение, отбор владельца)';
   setup();render();
  }catch(e){console.error(e);$('result-count').textContent='Ошибка загрузки';$('error').hidden=false}
 }

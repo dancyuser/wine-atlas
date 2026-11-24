@@ -1,0 +1,46 @@
+name: Wine research
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: Maximum critic review pages
+        required: true
+        default: '100'
+      retailer_pages:
+        description: Maximum catalog pages per retailer
+        required: true
+        default: '10'
+  pull_request:
+    paths:
+      - scripts/auto_research.py
+      - scripts/test_auto_research.py
+      - .github/workflows/wine-research.yml
+permissions:
+  contents: read
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install 'beautifulsoup4>=4.12,<5'
+      - run: python -m unittest discover -s scripts -p test_auto_research.py -v
+      - name: Discover wine candidates
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          MAX_REVIEWS: ${{ inputs.limit || '3' }}
+          RETAILER_PAGES: ${{ inputs.retailer_pages || '1' }}
+        run: python scripts/auto_research.py --limit "$MAX_REVIEWS" --retailer-pages "$RETAILER_PAGES" --output wine-research.json
+      - name: Report access results
+        if: always() && github.event_name == 'workflow_dispatch'
+        run: test ! -f wine-research.json || cat wine-research.json
+      - name: Save evidence and inaccessible domains
+        if: always() && github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: wine-research-${{ github.run_id }}
+          path: wine-research.json
+          if-no-files-found: warn
