@@ -68,6 +68,21 @@ class CaptureTests(unittest.TestCase):
         row['blocks']['city'] = 'Москва'
         self.assertIsNone(parse_offer(row, 'spb.luding.ru'))
 
+    def test_luding_confirms_current_discount_with_visible_card_price(self):
+        row = {'title': 'Вино Adagum Cabernet Franc 2024 0.75 л',
+               'url': 'https://spb.luding.ru/collection/item/example/',
+               'observed_at': '2026-11-24T18:30:00Z', 'blocks': {
+                   'product': '501 ₽\n835 ₽\nВ корзину\nВ НАЛИЧИИ\nМНОГО\nОтзывы\nНет в наличии',
+                   'document_title': 'Adagum Cabernet Franc 0,75 л купить в магазине в Санкт-Петербурге по цене 501 ₽',
+                   'city': 'Санкт-Петербург'}}
+        offer = parse_offer(row, 'spb.luding.ru')
+        self.assertEqual((offer['year'], offer['price'], offer['stock']), (2024, 501, 'in_stock'))
+        row['blocks']['document_title'] = row['blocks']['document_title'].replace('501', '499')
+        self.assertIsNone(parse_offer(row, 'spb.luding.ru'))
+        row['blocks']['document_title'] = row['blocks']['document_title'].replace('499', '501')
+        row['title'] = row['title'].replace('2024', '')
+        self.assertIsNone(parse_offer(row, 'spb.luding.ru'))
+
     def test_vinissimo_uses_availability_for_selected_vintage_and_volume_control(self):
         row = {'title': 'Фоскарино Соаве Классико', 'url': 'https://vinissimo.biz/catalog/wine/example-1/',
                'observed_at': '2026-11-24T12:00:00Z', 'blocks': {

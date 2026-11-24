@@ -156,13 +156,26 @@ def parse_offer(row, host):
                           if re.search(r'[A-Za-z]{3,}.*[A-Za-z]{3,}', line) and not re.search(r'[А-Яа-я]', line)), None)
             title = latin or title
     elif host in {'luding.ru', 'spb.luding.ru'} and blocks.get('city') == SPB:
-        price = {re.sub(r'\s', '', value) for value in re.findall(r'(?<!\d)(\d[\d\u00a0\u202f ]*)\s*₽', text)}
-        if len(price) == 1 and not re.search(r'нет в наличии|ожидаем поступление', text, re.I):
-            amount = price.pop()
-            if re.search(r'в наличии у\s+поставщика', text, re.I):
-                stock = 'supplier_stock'
-            elif re.search(r'в наличии в\s+винотек', text, re.I):
-                stock = 'in_stock'
+        if year_in(title) != year:
+            return None
+        # The block contains the main offer followed by legal text and reviews.
+        # A discounted offer can show two prices. Require the localized title
+        # to confirm which of those visible values is the current price.
+        offer = re.split(r'(?mi)^[ \t]*(?:Внимание!|Отзывы[ \t]*$|Легенда[ \t]*$)', text, maxsplit=1)[0]
+        marks = set(re.findall(r'(?m)^[ \t]*(\d[\d \u00a0\u202f]*)[ \t\u00a0\u202f]*₽[ \t]*$', offer))
+        prices = {re.sub(r'\s', '', value) for value in marks}
+        advertised = re.search(r'в Санкт-Петербурге по цене\s+(\d[\d \u00a0\u202f]*)\s*₽', hint, re.I)
+        if advertised:
+            advertised_amount = re.sub(r'\s', '', advertised[1])
+            amount = advertised_amount if advertised_amount in prices else None
+        elif len(prices) == 1:
+            amount = prices.pop()
+        if not re.search(r'нет в наличии|ожидаем поступление', offer, re.I):
+            availability = re.search(r'(?mi)^[ \t]*(в наличии(?:[ \t]+у[ \t]+поставщика|[ \t]+в[ \t]+винотек[^\n]*)?)[ \t]*$', offer)
+            if availability:
+                label = availability[1]
+                stock = 'supplier_stock' if 'поставщика' in label.casefold() else 'in_stock'
+                text = f'{title}\n{SPB}\n{amount} ₽\n{label}'
     if not stock or not amount:
         return None
     return {'title': title, 'year': year, 'volume_l': float(volumes.pop()),
