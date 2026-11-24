@@ -1,0 +1,567 @@
+{
+  "version": 1,
+  "observed_on": "2026-11-24",
+  "source_archive": "wine-atlas-full-descriptions-28-2026-11-24.zip",
+  "source_archive_sha256": "0a8ad120ec7a8b051179f5c94f4f5b8e633ca720b225f847b73699af774eacc3",
+  "method": "Exact SKU snapshots: primary expert ratings, stock controls, selected city from header (not list of possible cities). Redirects excluded; importer critic ratings count as professional recognition, not a medal. No claim of independent validation unless supported.",
+  "records": {
+    "sw-155172": {
+      "title": "Trapiche Chardonnay Oak Cask",
+      "year": 2025,
+      "url": "https://simplewine.ru/catalog/product/chardonnay_oak_cask_2025_075_155172/",
+      "sku": "155172",
+      "observed_on": "2026-11-24",
+      "html_sha256": "d3ea011145aeb4575b56b02102f80e15d868ee3b70bc6d1344d28144b60ff54e",
+      "city": "Москва",
+      "ratings": [
+        {
+          "source": "James Suckling",
+          "score": 91,
+          "scale": 100
+        }
+      ],
+      "status": "retained_pending_spb"
+    },
+    "sw-151672": {
+      "title": "Trapiche Koskil Pinot Noir",
+      "year": 2022,
+      "url": "https://simplewine.ru/catalog/product/koskil_pinot_noir_2022_075_151672/",
+      "sku": "151672",
+      "observed_on": "2026-11-24",
+      "html_sha256": "607f44a60091169b5b90b19c1e5e1cef9d315d1cfb9c315dde39a564ed7fc8c8",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "James Suckling",
+          "score": 91,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Забрать сегодня из 15 винотек"
+    },
+    "sw-161435": {
+      "title": "Nik Weis Urban Riesling",
+      "year": 2025,
+      "url": "https://simplewine.ru/catalog/product/urban_riesling_2025_075_161435/",
+      "sku": "161435",
+      "observed_on": "2026-11-24",
+      "html_sha256": "0114b6f601c2b992e08f17097b0cabf1e6b4eb2d79b32a11bc81d7165617fb31",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "Wine Spectator",
+          "score": 90,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Забрать сегодня из 15 винотек"
+    },
+    "sw-159284": {
+      "title": "Hacienda Lopez de Haro Crianza Rioja DOCa",
+      "year": 2022,
+      "url": "https://simplewine.ru/catalog/product/rioja_crianza_2022_075_159284/",
+      "sku": "159284",
+      "observed_on": "2026-11-24",
+      "html_sha256": "d2aab8898b41021edcde9b78dc1b7be3471be284ea38d11052d2325faab2dfc9",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "Robert Parker",
+          "score": 90,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Забрать сегодня из 2 винотек"
+    },
+    "sw-155463": {
+      "title": "Santa Carolina Gran Reserva Cabernet Sauvignon",
+      "year": 2022,
+      "url": "https://simplewine.ru/catalog/product/gran_reserva_cabernet_sauvignon_2022_075_155463/",
+      "sku": "155463",
+      "observed_on": "2026-11-24",
+      "html_sha256": "56ebf4f214974caead361adf774f6c48501134d883df5f4bd18905caae6e7608",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "James Suckling",
+          "score": 90,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Забрать сегодня из 11 винотек"
+    },
+    "sw-158501": {
+      "title": "Chateau Citran Bordeaux Rouge Limited Edition",
+      "year": 2022,
+      "url": "https://simplewine.ru/catalog/product/le_bordeaux_de_citran_rouge_2022_075_158501/",
+      "sku": "158501",
+      "observed_on": "2026-11-24",
+      "html_sha256": "0748855880dfa046e638dbe2706920c9e06bd142f8c599f00e995e9915f6dce5",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "Vinous",
+          "score": 90,
+          "scale": 100
+        },
+        {
+          "source": "James Suckling",
+          "score": 90,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Забрать сегодня из 15 винотек"
+    },
+    "sw-159818": {
+      "title": "Frescobaldi Nipozzano Chianti Rufina Riserva DOCG",
+      "year": 2022,
+      "url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_0375_159818/",
+      "sku": "159818",
+      "observed_on": "2026-11-24",
+      "html_sha256": "746b1917c21eca41957418a1470cdc942b46b4886faa86312052d89413beeadb",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "James Suckling",
+          "score": 92,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Самовывоз с завтрашнего дня из любой винотеки"
+    },
+    "sw-160773": {
+      "title": "Santa Carolina Carmenere El Pacto Agreement №2",
+      "year": 2023,
+      "url": "https://simplewine.ru/catalog/product/el_pacto_carmenere_2023_075_160773/",
+      "sku": "160773",
+      "observed_on": "2026-11-24",
+      "html_sha256": "4d9b08382dbf148ad0c2724659ee615ba268b2cfe69b770b4b8e312d7897ebbb",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "James Suckling",
+          "score": 93,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Самовывоз с завтрашнего дня из любой винотеки"
+    },
+    "sw-149378": {
+      "title": "Marques de Riscal Arienzo Crianza Rioja",
+      "year": 2019,
+      "url": "https://simplewine.ru/catalog/product/arienzo_crianza_2019_075_149378/",
+      "sku": "149378",
+      "observed_on": "2026-11-24",
+      "html_sha256": "94e7c24cf5c673aebf7ce56537941898626ea70571ca32c86d880da732e32847",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "José Peñín",
+          "score": 90,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Забрать сегодня из 15 винотек"
+    },
+    "sw-160922": {
+      "title": "Tasca d'Almerita Tenuta Sallier de La Tour Syrah",
+      "year": 2024,
+      "url": "https://simplewine.ru/catalog/product/tenuta_sallier_de_la_tour_syrah_2024_075_160922/",
+      "sku": "160922",
+      "observed_on": "2026-11-24",
+      "html_sha256": "bbcee86137f3a5ba28d3f5c99c386b2ae3f72d75951013dce6570d760d0313cb",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "James Suckling",
+          "score": 91,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Забрать сегодня из 6 винотек"
+    },
+    "sw-155695": {
+      "title": "Umani Ronchi Casal di Serra Verdicchio",
+      "year": 2024,
+      "url": "https://simplewine.ru/catalog/product/casal_di_serra_2024_075_155695/",
+      "sku": "155695",
+      "observed_on": "2026-11-24",
+      "html_sha256": "010374963ca226c85d1d93661b813bf99b91d597be1a5d5f7ea5cec785eadee1",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "James Suckling",
+          "score": 92,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Самовывоз с завтрашнего дня из любой винотеки"
+    },
+    "sw-160433": {
+      "title": "Errazuriz Max Reserva Pinot Noir",
+      "year": 2023,
+      "url": "https://simplewine.ru/catalog/product/max_reserva_pinot_noir_2023_075_160433/",
+      "sku": "160433",
+      "observed_on": "2026-11-24",
+      "html_sha256": "9ad1ecfef950d56e89f884096ed66c001313a22662103f1be10eaaef4626ac55",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "James Suckling",
+          "score": 90,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Забрать сегодня из 1 винотек"
+    },
+    "sw-161457": {
+      "title": "Guigal Cotes du Rhone Rouge",
+      "year": 2023,
+      "url": "https://simplewine.ru/catalog/product/cotes_du_rhone_rouge_2023_075_161457/",
+      "sku": "161457",
+      "observed_on": "2026-11-24",
+      "html_sha256": "d00051ddef2401755ed45c54949fdfad36279f9df3f63f783de36466b773c072",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "Robert Parker",
+          "score": 90,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Забрать сегодня из 13 винотек"
+    },
+    "sw-156848": {
+      "title": "Chateau Fan Carney Fronsac",
+      "year": 2022,
+      "url": "https://simplewine.ru/catalog/product/chateau_fan_carney_2022_075_156848/",
+      "sku": "156848",
+      "observed_on": "2026-11-24",
+      "html_sha256": "fc05c0d007106915e03802ff57b078c9289c128c8e964caa143763ac60c8993b",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "James Suckling",
+          "score": 90,
+          "scale": 100
+        }
+      ],
+      "status": "excluded",
+      "reason": "out_of_stock"
+    },
+    "sw-162169": {
+      "title": "Frescobaldi Nipozzano Chianti Rufina Riserva DOCG",
+      "year": 2023,
+      "url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2023_075_162169/",
+      "sku": "162169",
+      "observed_on": "2026-11-24",
+      "html_sha256": null,
+      "city": null,
+      "ratings": [
+        {
+          "source": "Wine Spectator",
+          "score": 90,
+          "scale": 100
+        }
+      ],
+      "status": "excluded",
+      "reason": "redirected_product",
+      "final_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_075_159138/"
+    },
+    "sw-160731": {
+      "title": "Banfi Chianti Classico DOCG",
+      "year": 2024,
+      "url": "https://simplewine.ru/catalog/product/chianti_classico_2024_075_160731/",
+      "sku": "160731",
+      "observed_on": "2026-11-24",
+      "html_sha256": "724a91ff9e0f38cb30844de764fcaf56440633f03fda14474916c0ecfe0f4c1e",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "James Suckling",
+          "score": 90,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Забрать сегодня из 1 винотек"
+    },
+    "sw-150458": {
+      "title": "Vina Arboleda Cabernet Sauvignon",
+      "year": 2022,
+      "url": "https://simplewine.ru/catalog/product/cabernet_sauvignon_2022_075_150458/",
+      "sku": "150458",
+      "observed_on": "2026-11-24",
+      "html_sha256": "e6ff41621a6e1fd9fa53386a993f44e7aaf40c5eada12a1daa92062038c2fe9a",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "James Suckling",
+          "score": 92,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Забрать сегодня из 2 винотек"
+    },
+    "sw-159614": {
+      "title": "Vina Arboleda Chardonnay",
+      "year": 2022,
+      "url": "https://simplewine.ru/catalog/product/chardonnay_2022_075_159614/",
+      "sku": "159614",
+      "observed_on": "2026-11-24",
+      "html_sha256": "cd6af8a3c76a6b1c643fbbbc9c315c046b48e23eff7670ce1c19828043c08172",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "James Suckling",
+          "score": 93,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Забрать сегодня из 8 винотек"
+    },
+    "sw-162380": {
+      "title": "Chateau du Gazin Canon Fronsac",
+      "year": 2022,
+      "url": "https://simplewine.ru/catalog/product/chateau_du_gazin_2022_075_162380/",
+      "sku": "162380",
+      "observed_on": "2026-11-24",
+      "html_sha256": "614afaa66bc04c31c74e8e30eda368c39d1b452451642330eb8a9b013756d5f1",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "James Suckling",
+          "score": 92,
+          "scale": 100
+        }
+      ],
+      "status": "excluded",
+      "reason": "out_of_stock"
+    },
+    "sw-162320": {
+      "title": "Vina Arboleda Carmenere",
+      "year": 2024,
+      "url": "https://simplewine.ru/catalog/product/carmenere_2024_075_162320/",
+      "sku": "162320",
+      "observed_on": "2026-11-24",
+      "html_sha256": null,
+      "city": null,
+      "ratings": [
+        {
+          "source": "Robert Parker",
+          "score": 90,
+          "scale": 100
+        }
+      ],
+      "status": "excluded",
+      "reason": "redirected_product",
+      "final_url": "https://simplewine.ru/catalog/product/carmenere_2023_075_154682/"
+    },
+    "sw-161561": {
+      "title": "Luigi Bosca De Sangre Cabernet Franc",
+      "year": 2024,
+      "url": "https://simplewine.ru/catalog/product/de_sangre_cabernet_franc_2024_075_161561/",
+      "sku": "161561",
+      "observed_on": "2026-11-24",
+      "html_sha256": "ce4110e314e9d50e45efa1e2e5ceb30d2c059fe7b67a819ccf567b1bba6f9566",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "Vinous",
+          "score": 94,
+          "scale": 100
+        },
+        {
+          "source": "James Suckling",
+          "score": 91,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Забрать сегодня из 15 винотек"
+    },
+    "sw-161332": {
+      "title": "Fattoria del Cerro Vino Nobile di Montepulciano Silineo",
+      "year": 2022,
+      "url": "https://simplewine.ru/catalog/product/vino_nobile_di_montepulciano_silineo_2022_075_161332/",
+      "sku": "161332",
+      "observed_on": "2026-11-24",
+      "html_sha256": "7fd6df222d59b156b787700f8f336fcb8532db8878cef03a17fcfbc628e62f26",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "James Suckling",
+          "score": 92,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Забрать сегодня из 6 винотек"
+    },
+    "sw-148708": {
+      "title": "Finca Nueva Reserva Rioja",
+      "year": 2015,
+      "url": "https://simplewine.ru/catalog/product/finca_nueva_reserva_2015_075_148708/",
+      "sku": "148708",
+      "observed_on": "2026-11-24",
+      "html_sha256": "365e6f5f7bc078336096fb4dadcc08d0e805178ca3cb01f6d37009b417b02344",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "James Suckling",
+          "score": 91,
+          "scale": 100
+        },
+        {
+          "source": "Robert Parker",
+          "score": 90,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Забрать сегодня из 14 винотек"
+    },
+    "sw-155766": {
+      "title": "Hacienda Lopez de Haro Gran Reserva Rioja",
+      "year": 2016,
+      "url": "https://simplewine.ru/catalog/product/hacienda_lopez_de_haro_gran_reserva_2016_075_155766/",
+      "sku": "155766",
+      "observed_on": "2026-11-24",
+      "html_sha256": "2064eded56f21d741171d4f36ac54d9e6ed8d1da9ff055de3ef788cbbe4974ee",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "James Suckling",
+          "score": 92,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Забрать сегодня из 14 винотек"
+    },
+    "sw-146571": {
+      "title": "Oremus Tokaji Mandolas",
+      "year": 2021,
+      "url": "https://simplewine.ru/catalog/product/tokaji_mandolas_2021_075_146571/",
+      "sku": "146571",
+      "observed_on": "2026-11-24",
+      "html_sha256": "b22602c8b64d662a53cadb9fd8ac104bd8d9b4716d5c4731511eda1a1a3ae8c6",
+      "city": "Санкт-Петербург",
+      "ratings": [
+        {
+          "source": "James Suckling",
+          "score": 92,
+          "scale": 100
+        }
+      ],
+      "status": "retained",
+      "availability_evidence": "Забрать сегодня из 9 винотек"
+    },
+    "sw-161961": {
+      "title": "Guigal Tavel",
+      "year": 2024,
+      "url": "https://simplewine.ru/catalog/product/tavel_2024_075_161961/",
+      "sku": "161961",
+      "observed_on": "2026-11-24",
+      "html_sha256": null,
+      "city": null,
+      "ratings": [
+        {
+          "source": "Robert Parker",
+          "score": 90,
+          "scale": 100
+        }
+      ],
+      "status": "excluded",
+      "reason": "redirected_product",
+      "final_url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/"
+    }
+  },
+  "candidates": [
+    {
+      "sku": "156786",
+      "title": "Umani Ronchi Podere Montepulciano d'Abruzzo",
+      "year": 2024,
+      "price_rub": 2490,
+      "critics": {
+        "James Suckling": 91
+      },
+      "vivino": 3.8,
+      "storage": "3–5 years",
+      "calendar_end": 2029,
+      "source_url": "https://simplewine.ru/catalog/product/podere_montepulciano_d_abruzzo_2024_075_156786/",
+      "status": "pending_spb_capture"
+    },
+    {
+      "sku": "159662",
+      "title": "Nik Weis Riesling",
+      "year": 2024,
+      "price_rub": 2790,
+      "critics": {
+        "James Suckling": 92
+      },
+      "vivino": 3.9,
+      "storage": "5 years or longer; upper bound unverified",
+      "source_url": "https://simplewine.ru/catalog/product/riesling_2024_075_159662/",
+      "status": "pending_spb_capture_and_calendar_limit"
+    },
+    {
+      "sku": "163341",
+      "title": "Leyda Coastal Vineyards Neblina Riesling",
+      "year": 2023,
+      "price_rub": 3890,
+      "critics": {
+        "James Suckling": 92
+      },
+      "vivino_all_vintages": 3.7,
+      "storage": "4–6 years",
+      "calendar_end": 2029,
+      "source_url": "https://simplewine.ru/catalog/product/riesling_coastal_vineyards_neblina_2023_075_163341/",
+      "status": "pending_spb_capture"
+    },
+    {
+      "sku": "158289",
+      "title": "Guigal Tavel",
+      "year": 2023,
+      "price_rub": 4990,
+      "critics": {
+        "Vinous": 90,
+        "James Suckling": 91
+      },
+      "vivino": 3.8,
+      "storage": "Exact retailer limit not retrieved; producer generic 3 years, end 2026. Retailer other vintage gives 7–10 years.",
+      "source_url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+      "status": "pending_spb_capture_and_calendar_limit"
+    },
+    {
+      "sku": "153914",
+      "title": "Garage Wine Pais-Carinena Phoenix Ferment",
+      "year": 2022,
+      "price_rub": 4990,
+      "critics": {
+        "Vinous": 91,
+        "James Suckling": 91,
+        "Robert Parker": 92
+      },
+      "vivino": 3.8,
+      "storage": "3–5 years",
+      "calendar_end": 2027,
+      "source_url": "https://simplewine.ru/catalog/product/pais_carinena_phoenix_ferment_2022_075_153914/",
+      "status": "pending_spb_capture"
+    }
+  ]
+}

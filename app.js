@@ -284,7 +284,7 @@ function concisePreview(r){
  return style?'Стиль: '+style.replace(/[.!?]+$/,'')+'.':'';
 }
 function stockMarkup(r,d){
- if(r.source_catalog==='simplewine')return '<p class="availability-note">'+(r.indexed_stock==='in_stock'?'В поисковом индексе: в наличии':r.indexed_stock==='shop_only'?'В поисковом индексе: только в винотеке':'Наличие не подтверждено')+' · остатки в СПб не проверены</p>';
+ if(r.source_catalog==='simplewine'){const av=r.availability;if(av?.city==='Санкт-Петербург'&&av.status==='in_stock'&&av.evidence)return '<p class="availability-note">СПб: '+safe(av.evidence)+' · '+date(av.observed_on)+'</p>';return '<p class="availability-note">'+(r.indexed_stock==='in_stock'?'В поисковом индексе: в наличии':r.indexed_stock==='shop_only'?'В поисковом индексе: только в винотеке':'Наличие не подтверждено')+' · остатки в СПб не проверены</p>';}
  const observed=r.availability;
  const stockNote=observed?.status==='in_stock'?'Доступно к заказу':observed?.status==='out_of_stock'?'Нет в наличии':
   ['Ожидаем поступление','Нет в наличии'].includes(d?.availability_note)?d.availability_note:

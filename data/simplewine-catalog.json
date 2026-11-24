@@ -4,7 +4,7 @@
   "source": "User wishlist, tab 24.11 / Simple wine",
   "source_count": 31,
   "reference_year": 2026,
-  "notes": "Exact SKU and vintage from indexed retailer pages. Direct site HTTP 403; current local stock and exact image URLs not verified. Descriptions paraphrased, unknown fields not fabricated. 24.11: добавлены изображения кюве или точного SKU с отдельной маркировкой области, часть дегустационных характеристик структурирована из сохранённых описаний; наличие в СПб не проверено. Дегустационные характеристики и сведения о производстве дополнены по карточкам соответствующих SKU; описание является редакционным пересказом, а не дословной копией.",
+  "notes": "Exact SKU and vintage from indexed retailer pages. Direct site HTTP 403; current local stock and exact image URLs not verified. Descriptions paraphrased, unknown fields not fabricated. 24.11: добавлены изображения кюве или точного SKU с отдельной маркировкой области, часть дегустационных характеристик структурирована из сохранённых описаний; наличие в СПб не проверено. Дегустационные характеристики и сведения о производстве дополнены по карточкам соответствующих SKU; описание является редакционным пересказом, а не дословной копией. 24.11: 5 SKU скрыты (2 закончились в СПб, 3 перенаправлены на другой год); 20 оставшихся SKU подтверждены снимком в СПб, 1 снимок относится к Москве. Luigi Bosca дополнены две оценки импортера из точного снимка.",
   "records": [
     {
       "id": "sw-155172",
@@ -25,7 +25,11 @@
       "wishlist": true,
       "availability": {
         "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "city": "Москва",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/chardonnay_oak_cask_2025_075_155172/",
+        "evidence": "Забрать сегодня из 88 винотек",
+        "note": "Снимок для Москвы, наличие в СПб необходимо проверить."
       },
       "stores": [
         {
@@ -108,8 +112,13 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/koskil_pinot_noir_2022_075_151672/",
+        "evidence": "Забрать сегодня из 15 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 15
       },
       "stores": [
         {
@@ -194,8 +203,13 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/urban_riesling_2025_075_161435/",
+        "evidence": "Забрать сегодня из 15 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 15
       },
       "stores": [
         {
@@ -281,8 +295,13 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/rioja_crianza_2022_075_159284/",
+        "evidence": "Забрать сегодня из 2 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 2
       },
       "stores": [
         {
@@ -376,8 +395,13 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/gran_reserva_cabernet_sauvignon_2022_075_155463/",
+        "evidence": "Забрать сегодня из 11 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 11
       },
       "stores": [
         {
@@ -470,8 +494,13 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/le_bordeaux_de_citran_rouge_2022_075_158501/",
+        "evidence": "Забрать сегодня из 15 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 15
       },
       "stores": [
         {
@@ -566,8 +595,12 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_0375_159818/",
+        "evidence": "Самовывоз с завтрашнего дня из любой винотеки",
+        "method": "next_day_pickup"
       },
       "stores": [
         {
@@ -660,8 +693,12 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/el_pacto_carmenere_2023_075_160773/",
+        "evidence": "Самовывоз с завтрашнего дня из любой винотеки",
+        "method": "next_day_pickup"
       },
       "stores": [
         {
@@ -694,6 +731,15 @@
                 "reported_by": "SimpleWine",
                 "source_url": "https://simplewine.ru/catalog/product/el_pacto_carmenere_2023_075_160773/",
                 "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 4.2,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/el_pacto_carmenere_2023_075_160773/",
+                "observed_on": "2026-11-24",
+                "evidence": "Primary expert ratings in user-supplied HTML: JS 93.0 VIVINO 4.2"
               }
             ],
             "taste": "Гладкие танины, свежие красные ягоды, копчёная паприка, пряный финал",
@@ -748,8 +794,13 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/arienzo_crianza_2019_075_149378/",
+        "evidence": "Забрать сегодня из 15 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 15
       },
       "stores": [
         {
@@ -841,8 +892,13 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/tenuta_sallier_de_la_tour_syrah_2024_075_160922/",
+        "evidence": "Забрать сегодня из 6 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 6
       },
       "stores": [
         {
@@ -927,8 +983,12 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/casal_di_serra_2024_075_155695/",
+        "evidence": "Самовывоз с завтрашнего дня из любой винотеки",
+        "method": "next_day_pickup"
       },
       "stores": [
         {
@@ -1019,8 +1079,13 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/max_reserva_pinot_noir_2023_075_160433/",
+        "evidence": "Забрать сегодня из 1 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 1
       },
       "stores": [
         {
@@ -1107,8 +1172,13 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/cotes_du_rhone_rouge_2023_075_161457/",
+        "evidence": "Забрать сегодня из 13 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 13
       },
       "stores": [
         {
@@ -1201,8 +1271,11 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "out_of_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "evidence": "Этот товар закончился, но есть замена",
+        "source_url": "https://simplewine.ru/catalog/product/chateau_fan_carney_2022_075_156848/"
       },
       "stores": [
         {
@@ -1268,6 +1341,13 @@
         "scope": "vintage",
         "matched_year": 2022,
         "note": "Фото на карточке конкретного SKU/урожая."
+      },
+      "publication_review": {
+        "status": "excluded",
+        "reason": "out_of_stock",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/chateau_fan_carney_2022_075_156848/",
+        "note": "Этот товар закончился, но есть замена — снимок для Санкт-Петербурга."
       }
     },
     {
@@ -1357,6 +1437,14 @@
         "verified_on": "2026-11-24",
         "scope": "cuvee",
         "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      },
+      "publication_review": {
+        "status": "excluded",
+        "reason": "redirected_product",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2023_075_162169/",
+        "final_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_075_159138/",
+        "note": "Карточка перенаправлена на другой урожай; региональный контекст перенаправления отдельно не зафиксирован."
       }
     },
     {
@@ -1379,8 +1467,13 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/chianti_classico_2024_075_160731/",
+        "evidence": "Забрать сегодня из 1 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 1
       },
       "stores": [
         {
@@ -1463,8 +1556,13 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/cabernet_sauvignon_2022_075_150458/",
+        "evidence": "Забрать сегодня из 2 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 2
       },
       "stores": [
         {
@@ -1555,8 +1653,13 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/chardonnay_2022_075_159614/",
+        "evidence": "Забрать сегодня из 8 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 8
       },
       "stores": [
         {
@@ -1643,8 +1746,11 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "out_of_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "evidence": "Этот товар закончился, но есть замена",
+        "source_url": "https://simplewine.ru/catalog/product/chateau_du_gazin_2022_075_162380/"
       },
       "stores": [
         {
@@ -1707,6 +1813,13 @@
         "verified_on": "2026-11-24",
         "scope": "cuvee",
         "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      },
+      "publication_review": {
+        "status": "excluded",
+        "reason": "out_of_stock",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/chateau_du_gazin_2022_075_162380/",
+        "note": "Этот товар закончился, но есть замена — снимок для Санкт-Петербурга."
       }
     },
     {
@@ -1793,6 +1906,14 @@
         "verified_on": "2026-11-24",
         "scope": "cuvee",
         "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      },
+      "publication_review": {
+        "status": "excluded",
+        "reason": "redirected_product",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/carmenere_2024_075_162320/",
+        "final_url": "https://simplewine.ru/catalog/product/carmenere_2023_075_154682/",
+        "note": "Карточка перенаправлена на другой урожай; региональный контекст перенаправления отдельно не зафиксирован."
       }
     },
     {
@@ -1815,8 +1936,13 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/de_sangre_cabernet_franc_2024_075_161561/",
+        "evidence": "Забрать сегодня из 15 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 15
       },
       "stores": [
         {
@@ -1849,6 +1975,24 @@
                 "reported_by": "SimpleWine",
                 "source_url": "https://simplewine.ru/catalog/product/de_sangre_cabernet_franc_2024_075_161561/",
                 "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vinous",
+                "score": 94,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/de_sangre_cabernet_franc_2024_075_161561/",
+                "observed_on": "2026-11-24",
+                "evidence": "Primary expert ratings in user-supplied HTML: AG 94.0 JS 91.0 VIVINO 4.1"
+              },
+              {
+                "source": "James Suckling",
+                "score": 91,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/de_sangre_cabernet_franc_2024_075_161561/",
+                "observed_on": "2026-11-24",
+                "evidence": "Primary expert ratings in user-supplied HTML: AG 94.0 JS 91.0 VIVINO 4.1"
               }
             ],
             "taste": "Сочная кислотность, зрелые танины, долгий пряный финал",
@@ -1909,8 +2053,13 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/vino_nobile_di_montepulciano_silineo_2022_075_161332/",
+        "evidence": "Забрать сегодня из 6 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 6
       },
       "stores": [
         {
@@ -2002,8 +2151,13 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/finca_nueva_reserva_2015_075_148708/",
+        "evidence": "Забрать сегодня из 14 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 14
       },
       "stores": [
         {
@@ -2104,8 +2258,13 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/hacienda_lopez_de_haro_gran_reserva_2016_075_155766/",
+        "evidence": "Забрать сегодня из 14 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 14
       },
       "stores": [
         {
@@ -2195,8 +2354,13 @@
       "source_catalog": "simplewine",
       "wishlist": true,
       "availability": {
-        "status": "unknown",
-        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+        "status": "in_stock",
+        "city": "Санкт-Петербург",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/tokaji_mandolas_2021_075_146571/",
+        "evidence": "Забрать сегодня из 9 винотек",
+        "method": "same_day_pickup",
+        "stores_count": 9
       },
       "stores": [
         {
@@ -2363,6 +2527,14 @@
         "verified_on": "2026-11-24",
         "scope": "cuvee",
         "note": "Изображение кюве; совпадение года и объёма этикетки отдельно не подтверждено."
+      },
+      "publication_review": {
+        "status": "excluded",
+        "reason": "redirected_product",
+        "observed_on": "2026-11-24",
+        "source_url": "https://simplewine.ru/catalog/product/tavel_2024_075_161961/",
+        "final_url": "https://simplewine.ru/catalog/product/tavel_2023_075_158289/",
+        "note": "Карточка перенаправлена на другой урожай; региональный контекст перенаправления отдельно не зафиксирован."
       }
     }
   ],

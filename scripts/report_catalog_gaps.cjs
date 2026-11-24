@@ -24,7 +24,7 @@ const result=vm.runInContext(app+`
  if(a.end==null)gaps.push('calendar_limit');
  else if(a.status==='past'||a.status==='last'||a.status==='early')gaps.push('calendar_outside');
  if(a.approximate)gaps.push('approximate_storage');
- if(r.source_catalog==='simplewine'||!r.availability?.status&&!live)gaps.push('local_stock_unverified');
+ if(r.source_catalog==='simplewine'?(r.availability?.city!=='Санкт-Петербург'||r.availability?.status!=='in_stock'):(!r.availability?.status&&!live&&r.id!=='c9f63273980c'))gaps.push('local_stock_unverified');
  if(!fullDescription(r).complete)gaps.push('full_description');
  for(const k of ['year','country','volume_l','grapes'])if(!r[k]||Array.isArray(r[k])&&!r[k].length)gaps.push(k);
  for(const k of ['color','wine_style','body','alcohol_percent','aroma','taste','region','producer'])if(!d[k])gaps.push(k);

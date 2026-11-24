@@ -397,15 +397,17 @@ const simpleMerged=h.mergeSimpleWine(catalog,simple);
 assert.equal(simple.source_count,31);
 assert.equal(simple.records.length,26);
 assert.equal(Object.keys(simple.excluded).length,5);
-assert.equal(simpleMerged.records.filter(h.isPublished).length,86);
+assert.equal(simpleMerged.records.filter(h.isPublished).length,81);
 assert.equal(new Set(simple.records.map(r=>r.stores[0].url)).size,26);
 for(const r of simple.records){
  const age=h.agingFor(r,2026);
  assert(Number.isInteger(age.end)&&age.end>2026);
- assert(h.isPublished(r));
+ const hidden=['sw-156848','sw-162380','sw-162169','sw-162320','sw-161961'].includes(r.id);
+ assert.equal(h.isPublished(r),!hidden);
  assert(h.fullWineMarkup(r).includes('Потенциал хранения'));
  assert(h.fullWineMarkup(r).includes('SimpleWine'));
- assert(h.fullWineMarkup(r).includes('остатки в СПб не проверены'));
+ if(r.availability?.city==='Санкт-Петербург'&&r.availability.status==='in_stock')assert(h.fullWineMarkup(r).includes('СПб:'));
+ else assert(h.fullWineMarkup(r).includes('остатки в СПб не проверены'));
  assert.equal(h.retailerDetails(r).source_kind,'indexed_retailer_card');
  assert(h.card(r).includes('SimpleWine'));
  assert.deepEqual([...h.pairingValues(r)],r.pairings);
@@ -419,4 +421,6 @@ assert(h.fullWineMarkup(sw['sw-159818']).includes('Оценки критиков
 assert(h.fullWineMarkup(sw['sw-159818']).includes('по сведениям SimpleWine'));
 assert(!h.fullWineMarkup(sw['sw-159818']).includes('по сведениям WineStyle'));
 assert.throws(()=>h.mergeSimpleWine(catalog,{...simple,records:[...simple.records,simple.records[0]],source_count:32}));
-console.log('SIMPLEWINE PASSED: 31 reviewed, 26 imported, 5 excluded, 86 public cards');
+assert.equal(simple.records.filter(h.isPublished).length,21);
+assert.equal(h.metrics(sw['sw-161561']).critics.length,2);
+console.log('SIMPLEWINE PASSED: 31 reviewed, 26 archived, 5 newly hidden, 81 public cards');
