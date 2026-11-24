@@ -33,6 +33,15 @@ for(const needle of [
   '@media(prefers-reduced-motion:reduce)'
 ])assert.ok(css.includes(needle),'Missing adaptive rule: '+needle);
 assert.ok(!css.includes('min-width:1050px'));
+// The characteristics section must use a stable label/value grid, unlike the
+// separate critic rating list where a justified flex row is intentional.
+const detailRules=css.match(/\.characteristics li\{[^}]+\}/g)||[];
+assert.ok(detailRules.some(rule=>/display:grid/.test(rule)&&/grid-template-columns:minmax\(112px,30%\) minmax\(0,1fr\)/.test(rule)),
+  'Desktop detail values must share a fixed start edge');
+assert.match(css,/\.characteristics li strong\{[^}]*max-width:none;[^}]*text-align:left;/,
+  'Detail values must never be pushed to the far right');
+assert.match(css,/@media\(max-width:580px\)\{[\s\S]*?\.characteristics li\{grid-template-columns:minmax\(0,1fr\);row-gap:4px\}/,
+  'Mobile descriptions must stack without squeezing the value column');
 
 // Text preference is applied before the first stylesheet paints.
 const match=html.match(/<script data-reading-bootstrap>([\s\S]*?)<\/script>/);
