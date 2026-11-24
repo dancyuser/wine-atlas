@@ -253,7 +253,7 @@ function ratingsDetails(r,m){
 function fullDescription(r){
  const d=retailerDetails(r),item=state.fullDescriptions[r.id],store=r.stores?.[0];
  if(item&&item.url===store?.url&&item.year===(r.year??null)&&typeof item.description==='string'&&item.description.trim())
-  return {text:item.description.trim(),complete:true,observed_on:item.observed_on};
+  return {text:item.description.trim(),complete:true,observed_on:item.observed_on,source_kind:item.source_kind,description_kind:item.description_kind};
  const text=String(d?.description_excerpt||'').trim();
  return {text,complete:false,observed_on:d?.checked_at};
 }
@@ -921,7 +921,7 @@ function fullWineMarkup(r){
  const source=cleanUrl(d?.source_url);
  const sourceLabel=d?.source_kind==='producer_style_profile'?'производителя (описание линейки, не проверка винтажа)':s?.name||'продавца';
  const paragraphs=description.text.split(/\n+/).map(x=>x.trim()).filter(Boolean).map(x=>'<p>'+safe(x)+'</p>').join('');
- const descMarkup=description.text?'<section class="wine-detail-section wine-description"><h3>Описание</h3>'+paragraphs+(!description.complete?'<p class="detail-note">'+(r.source_catalog==='simplewine'?'Краткое изложение доступной индексированной карточки. ':'В архиве доступен только сохранённый фрагмент. ')+(source?'<a href="'+safe(source)+'" target="_blank" rel="noopener noreferrer">Полное описание в источнике ↗</a>':'Полный текст не подтверждён.')+'</p>':'')+'</section>':'';
+ const descMarkup=description.text?'<section class="wine-detail-section wine-description"><h3>Описание</h3>'+paragraphs+(!description.complete?'<p class="detail-note">'+(r.source_catalog==='simplewine'?'Краткое изложение доступной индексированной карточки. ':'В архиве доступен только сохранённый фрагмент. ')+(source?'<a href="'+safe(source)+'" target="_blank" rel="noopener noreferrer">Полное описание в источнике ↗</a>':'Полный текст не подтверждён.')+'</p>':description.source_kind==='user_browser_full_snapshot'?'<p class="detail-note">Развёрнутый профиль по полному снимку карточки от '+date(description.observed_on)+'; редакционное изложение. '+(url?'<a href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">Источник ↗</a>':'')+'</p>':'')+'</section>':'';
  return '<div class="wine-detail-hero">'+photoMarkup(r)+'<div class="wine-detail-heading"><span class="type-tag"><i aria-hidden="true" class="type-dot '+typeDot(r.type)+'"></i>'+safe(r.type||'Вино')+'</span>'+
  '<h2 id="wine-dialog-title">'+safe(r.title)+'</h2><p class="card-meta">'+safe(metaText(r))+'</p>'+stockMarkup(r,d)+
  '<div class="wine-detail-price"><div>'+priceBlock(r)+'</div>'+favoriteButton(r.id)+(url?'<a class="store-link" href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">У продавца ↗</a>':'')+'</div></div></div>'+

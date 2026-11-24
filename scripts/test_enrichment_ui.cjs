@@ -307,11 +307,23 @@ const fullData=JSON.parse(fs.readFileSync(path.join(__dirname,'..','data','full-
 assert.equal(fullData.version,1);
 const catalog=JSON.parse(fs.readFileSync(path.join(__dirname,'..','data','wines.json'),'utf8'));
 const catalogById=new Map(catalog.records.map(r=>[r.id,r]));
+const descriptionSimple=JSON.parse(fs.readFileSync(path.join(__dirname,'..','data','simplewine-catalog.json'),'utf8'));
+const descriptionById=new Map([...catalog.records,...descriptionSimple.records].map(r=>[r.id,r]));
+let snapshotDescriptions=0;
 for(const [id,d] of Object.entries(fullData.records)){
- const r=catalogById.get(id);
+ const r=descriptionById.get(id);
  assert(r&&r.year===d.year&&r.stores[0].url===d.url,'Full description identity mismatch: '+id);
- assert(d.description.startsWith(r.stores[0].product_details.description_excerpt),'Description must preserve archived exact-product prefix');
+ if(d.source_kind==='user_browser_full_snapshot'){
+  assert.equal(r.volume_l,d.volume_l);
+  if(r.source_catalog==='simplewine')assert.equal(r.stores[0].sku,d.sku);
+  assert(/^[a-f0-9]{64}$/.test(d.html_sha256));
+  assert(/^[a-f0-9]{64}$/.test(d.source_archive_sha256));
+  assert(d.description.split('\n\n').length>=4);
+  snapshotDescriptions++;
+ }else assert(d.description.startsWith(r.stores[0].product_details.description_excerpt),'Description must preserve archived exact-product prefix');
 }
+assert.equal(snapshotDescriptions,25);
+for(const id of ['sw-161961','sw-162169','sw-162320'])assert(!fullData.records[id],'No description from redirected vintage: '+id);
 h.state.fullDescriptions=fullData.records;
 const capo=catalogById.get('8a9950e9e3c4');
 assert(h.fullDescription(capo).complete);
