@@ -14,7 +14,7 @@ import time
 import urllib.request
 import urllib.error
 from pathlib import Path
-from urllib.parse import urljoin, urlsplit
+from urllib.parse import urljoin, urlsplit, urlunsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = (
@@ -37,6 +37,33 @@ def fetch(url):
         return response.read(2_500_001)
 
 
+def probe_url(url):
+    """Bypass stale negative/error CDN entries while preserving the exact path."""
+    parts = urlsplit(url)
+    query = parts.query + ("&" if parts.query else "") + "pages-smoke=" + str(time.time_ns())
+    return urlunsplit(parts._replace(query=query))
+
+
+def check_forbidden(url, attempts=4):
+    """Only 403/404 prove the forbidden path is not publicly readable.
+    Transient CDN errors are retried; never accepted as proof of absence.
+    """
+    for attempt in range(attempts):
+        try:
+            fetch(probe_url(url))
+        except urllib.error.HTTPError as exc:
+            if exc.code in (403, 404):
+                return
+            if exc.code not in (408, 429, 500, 502, 503, 504) or attempt == attempts - 1:
+                raise ValueError(f"Unexpected HTTP status for {url}: {exc.code}") from exc
+        except (OSError, TimeoutError):
+            if attempt == attempts - 1:
+                raise
+        else:
+            raise ValueError("Internal repository file publicly accessible: " + url)
+        time.sleep(min(2 ** attempt, 8))
+
+
 def check(base):
     if urlsplit(base).scheme != "https" or urlsplit(base).hostname != "dancyuser.github.io":
         raise ValueError("Unexpected Pages host: " + base)
@@ -51,13 +78,7 @@ def check(base):
         print("OK", filename, len(observed), "bytes")
     for forbidden in ("README.md", "scripts/update_prices.py",
                       "data/archive/spb-research-2026-11-14.json"):
-        try:
-            fetch(urljoin(base, forbidden))
-        except urllib.error.HTTPError as exc:
-            if exc.code not in (403, 404):
-                raise ValueError(f"Unexpected HTTP status for {forbidden}: {exc.code}") from exc
-        else:
-            raise ValueError("Internal repository file publicly accessible: " + forbidden)
+        check_forbidden(urljoin(base, forbidden))
     print("INTERNAL_FILES_NOT_PUBLISHED")
     catalog = json.loads((ROOT / "data/wines.json").read_text(encoding="utf-8"))
     assert catalog["records"] and isinstance(catalog["records"], list)

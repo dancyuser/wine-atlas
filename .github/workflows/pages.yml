@@ -36,6 +36,7 @@ jobs:
           python -m unittest discover -s scripts -p 'test_verified_offers.py' -v
           python -m unittest discover -s scripts -p 'test_import_manual_capture.py' -v
           python -m unittest discover -s scripts -p 'test_site_package.py' -v
+          python -m unittest discover -s scripts -p 'test_smoke_pages.py' -v
           node --check extension/capture.js
           node --check extension/popup.js
           node scripts/test_extension_capture.cjs
@@ -58,10 +59,13 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
+          name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Wait for Pages artifact indexing
         run: sleep 15
       - id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Verify actual GitHub Pages content after deploy
         run: python scripts/smoke_pages.py "${{ steps.deployment.outputs.page_url }}"
