@@ -4,7 +4,7 @@ from auto_research import extract_links, parse_review, inspect_offer, parse_sear
 
 class ResearchTest(unittest.TestCase):
     def test_review_extracts_exact_vintage_and_window(self):
-        html = '''<h1>Bodegas Ramon Bilbao 2022 Crianza Tempranillo (Rioja)</h1>
+        html = '''<h1>Bodegas Ramón Bilbao 2022 Crianza Tempranillo (Rioja)</h1>
         <div>Rating</div><div>90</div><div>Price</div><div>$17</div>
         <p>Drink now through 2029.</p><h2>What Is Blind Tasting?</h2>'''
         row = parse_review(html, 'https://www.wineenthusiast.com/buying-guide/example/')
@@ -15,14 +15,14 @@ class ResearchTest(unittest.TestCase):
 
     def test_same_year_and_variant_are_not_inferred_from_recommendations(self):
         review = {'name':'Bodegas Ramon Bilbao 2022 Crianza Tempranillo Rioja', 'year':2022}
-        html = '''<title>Ramon Bilbao Crianza 2022 0.75 �</title>
-        <h1>Ramon Bilbao Crianza 2022 0.75 �</h1><p>����稥: �㪮�᪮��, 10 - 12 ��.</p>'''
+        html = '''<title>Ramon Bilbao Crianza 2022 0.75 л</title>
+        <h1>Ramon Bilbao Crianza 2022 0.75 л</h1><p>Наличие: Жуковского, 10 - 12 шт.</p>'''
         found, reason = inspect_offer(html, 'https://sabonis.ru/productDetail/example', review)
         self.assertEqual(reason, 'candidate')
         self.assertEqual(found['status'], 'needs_price_and_stock_verification')
-        wrong = html.replace('2022', '2021') + '<p>�������������� ⮢��� Ramon Bilbao Crianza 2022</p>'
+        wrong = html.replace('2022', '2021') + '<p>Рекомендованные товары Ramon Bilbao Crianza 2022</p>'
         self.assertIsNone(inspect_offer(wrong, 'https://sabonis.ru/productDetail/example', review)[0])
-        self.assertIsNone(inspect_offer(html.replace('0.75 �', '1.5 �'), 'https://sabonis.ru/productDetail/example', review)[0])
+        self.assertIsNone(inspect_offer(html.replace('0.75 л', '1.5 л'), 'https://sabonis.ru/productDetail/example', review)[0])
 
     def test_urls_are_scoped(self):
         html = '<a href="/buying-guide/foo/">x</a><a href="https://elsewhere.com/buying-guide/bar/">y</a>'
@@ -33,4 +33,3 @@ class ResearchTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
