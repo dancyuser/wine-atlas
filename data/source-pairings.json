@@ -1,0 +1,1253 @@
+{
+  "version": 1,
+  "archive_sha256": "6a25aaf5b393b0e19c909cef7f44532b6bd6b65972c2c1bfa052bf78fe53f26e",
+  "observed_on": "2026-11-23",
+  "source": "WineStyle exact product pairing image alt codes; Canti 2023 from owner screenshot",
+  "labels": {
+    "aperitif": "Аперитив",
+    "hard-cheeses": "Твёрдые сыры",
+    "dessert": "Десерты",
+    "digestive": "Дижестив",
+    "pate": "Паштеты",
+    "sausages": "Колбасные изделия",
+    "blue-cheese": "Сыр с голубой плесенью",
+    "soft-cheeses": "Мягкие сыры",
+    "poultry": "Птица",
+    "fish": "Рыба",
+    "seafood": "Морепродукты",
+    "salad": "Салаты",
+    "pasta": "Паста",
+    "pork": "Свинина",
+    "snacks": "Закуски",
+    "meat": "Блюда из мяса",
+    "game": "Дичь",
+    "salmon": "Красная рыба",
+    "game-birds": "Пернатая дичь",
+    "beef": "Красное мясо",
+    "pizza": "Пицца",
+    "vegetables": "Овощи",
+    "spicy": "Острые блюда",
+    "fruits": "Фрукты и ягоды",
+    "risotto": "Ризотто",
+    "japanese": "Японская кухня",
+    "mushrooms": "Грибы",
+    "mutton": "Баранина",
+    "entrees": "Первые блюда",
+    "veal": "Телятина"
+  },
+  "records": {
+    "2f1b26d235e4": {
+      "url": "https://spb.winestyle.ru/products/Graham-s-Late-Bottled-Vintage-LBV-2019-gift-tube.html",
+      "year": 2019,
+      "codes": [
+        "aperitif",
+        "hard-cheeses",
+        "dessert",
+        "digestive"
+      ],
+      "source": "archive_image_alt"
+    },
+    "4341f4fa849e": {
+      "url": "https://spb.winestyle.ru/products/Quinta-De-La-Rosa-LBV-Port-2019.html",
+      "year": 2019,
+      "codes": [
+        "pate",
+        "aperitif",
+        "hard-cheeses",
+        "dessert"
+      ],
+      "source": "archive_image_alt"
+    },
+    "22c9be4678f5": {
+      "url": "https://spb.winestyle.ru/products/Zantho-Beerenauslese-2018.html",
+      "year": 2018,
+      "codes": [
+        "sausages",
+        "blue-cheese",
+        "hard-cheeses",
+        "soft-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "42b87c5124ce": {
+      "url": "https://spb.winestyle.ru/products/Girlan-Chardonnay-Sudtirol-Alto-Adige-DOC-2023.html",
+      "year": 2023,
+      "codes": [],
+      "source": "archive_image_alt",
+      "note": "Является отличным аперитивом, а также гармонично сочетается с блюдами из рыбы, морепродуктами и овощными салатами."
+    },
+    "bdbf5d0327dc": {
+      "url": "https://spb.winestyle.ru/products/Tement-Ehrenhausen-Muschelkalk-2017-375.html",
+      "year": 2017,
+      "codes": [
+        "poultry",
+        "fish",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "81d1c4e70b33": {
+      "url": "https://spb.winestyle.ru/products/Lapis-Luna-Chardonnay-North-Coast-AVA-2022.html",
+      "year": 2022,
+      "codes": [
+        "seafood",
+        "salad",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "1fc33a9c0505": {
+      "url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Chardonnay-2023.html",
+      "year": 2023,
+      "codes": [
+        "poultry",
+        "seafood",
+        "salad",
+        "pasta"
+      ],
+      "source": "archive_image_alt"
+    },
+    "2a8f07a9732b": {
+      "url": "https://spb.winestyle.ru/products/Kurtatsch-Caliz-Chardonnay-Sudtirol-Alto-Adige-DOC-2022.html",
+      "year": 2022,
+      "codes": [
+        "fish",
+        "poultry",
+        "aperitif",
+        "seafood"
+      ],
+      "source": "archive_image_alt"
+    },
+    "467b63015a0c": {
+      "url": "https://spb.winestyle.ru/products/Kleine-Zalze-Vineyard-Selection-Chardonnay-2024.html",
+      "year": 2024,
+      "codes": [
+        "poultry",
+        "fish",
+        "pork",
+        "seafood"
+      ],
+      "source": "archive_image_alt"
+    },
+    "839e49e2c896": {
+      "url": "https://spb.winestyle.ru/products/Feudi-del-Pisciotto-Alberta-Ferretti-Chardonnay-Sicilia-IGT-2014.html",
+      "year": 2014,
+      "codes": [
+        "poultry",
+        "seafood",
+        "snacks"
+      ],
+      "source": "archive_image_alt"
+    },
+    "93f0823b0c90": {
+      "url": "https://spb.winestyle.ru/products/Peter-Zemmer-Chardonnay-Alto-Adige-DOC-2023.html",
+      "year": 2023,
+      "codes": [
+        "poultry",
+        "seafood",
+        "hard-cheeses",
+        "snacks"
+      ],
+      "source": "archive_image_alt"
+    },
+    "d8c0fc71ced9": {
+      "url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2023.html",
+      "year": 2023,
+      "codes": [
+        "fish",
+        "aperitif",
+        "seafood",
+        "poultry"
+      ],
+      "source": "archive_image_alt"
+    },
+    "cbc96de28176": {
+      "url": "https://spb.winestyle.ru/products/Wente-Morning-Fog-Chardonnay-2016.html",
+      "year": 2016,
+      "codes": [
+        "fish",
+        "aperitif",
+        "seafood",
+        "poultry"
+      ],
+      "source": "archive_image_alt"
+    },
+    "c917fcb740fd": {
+      "url": "https://spb.winestyle.ru/products/Albert-Bichot-Origines-Chardonnay-Bourgogne-AOC-2022.html",
+      "year": 2022,
+      "codes": [
+        "fish",
+        "poultry",
+        "seafood",
+        "meat"
+      ],
+      "source": "archive_image_alt"
+    },
+    "209d7a6d9fe0": {
+      "url": "https://spb.winestyle.ru/products/Loimer-Gluegglich.html",
+      "year": null,
+      "codes": [],
+      "source": "archive_image_alt",
+      "note": "Вино идеально подходит к сытным блюдам австрийской кухни."
+    },
+    "91f9214b514c": {
+      "url": "https://spb.winestyle.ru/products/Huia-Pinot-Noir-2013.html",
+      "year": 2013,
+      "codes": [
+        "poultry",
+        "game",
+        "fish",
+        "aperitif"
+      ],
+      "source": "archive_image_alt"
+    },
+    "2d98b7c07c09": {
+      "url": "https://spb.winestyle.ru/products/Pyramid-Scheme-Pinot-Noir-2023.html",
+      "year": 2023,
+      "codes": [
+        "meat",
+        "game",
+        "salmon",
+        "game-birds"
+      ],
+      "source": "archive_image_alt"
+    },
+    "079c918bef91": {
+      "url": "https://spb.winestyle.ru/products/Bodega-Aniello-006-Riverside-Estate-Pinot-Noir-Rio-Negro-2022.html",
+      "year": 2022,
+      "codes": [
+        "fish",
+        "poultry",
+        "beef",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "170ab9abed3f": {
+      "url": "https://spb.winestyle.ru/products/Ingrid-Groiss-Rose-Ried-Hasenhaide-2023.html",
+      "year": 2023,
+      "codes": [
+        "poultry",
+        "fish",
+        "aperitif",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "8fb6ff3a814f": {
+      "url": "https://spb.winestyle.ru/products/Undurraga-Sibaris-Pinot-Noir-Gran-Reserva-Leyda-Valley-DO-2023.html",
+      "year": 2023,
+      "codes": [
+        "seafood",
+        "pizza",
+        "pasta",
+        "snacks"
+      ],
+      "source": "archive_image_alt"
+    },
+    "2ae8e7fc916b": {
+      "url": "https://spb.winestyle.ru/products/Weingut-J-Neus-Ingelheim-am-Rhein-Muschelkalk-Spatburgunder-2021.html",
+      "year": 2021,
+      "codes": [
+        "poultry",
+        "beef",
+        "vegetables",
+        "pate"
+      ],
+      "source": "archive_image_alt"
+    },
+    "745a343dcdc1": {
+      "url": "https://spb.winestyle.ru/products/Luca-Winery-G-Lot-Pinot-Noir-Tupungato-2022.html",
+      "year": 2022,
+      "codes": [
+        "meat",
+        "game",
+        "salmon"
+      ],
+      "source": "archive_image_alt"
+    },
+    "1d4b1fae8d7a": {
+      "url": "https://spb.winestyle.ru/products/El-Esteco-Blanc-de-Noir-2023.html",
+      "year": 2023,
+      "codes": [
+        "fish",
+        "pork",
+        "seafood",
+        "poultry"
+      ],
+      "source": "archive_image_alt"
+    },
+    "aa6da0a65a5d": {
+      "url": "https://spb.winestyle.ru/products/Bestheim-Alsace-Grand-Cru-Schlossberg-Riesling-AOC-2021.html",
+      "year": 2021,
+      "codes": [
+        "salmon",
+        "fish",
+        "seafood"
+      ],
+      "source": "archive_image_alt"
+    },
+    "426bd971c45a": {
+      "url": "https://spb.winestyle.ru/products/d-Arenberg-The-Stump-Jump-White-2021.html",
+      "year": 2021,
+      "codes": [
+        "fish",
+        "seafood",
+        "salad",
+        "snacks"
+      ],
+      "source": "archive_image_alt"
+    },
+    "3da3f3b14e7a": {
+      "url": "https://spb.winestyle.ru/products/Georg-Breuer-Estate-Rudesheim-2018.html",
+      "year": 2018,
+      "codes": [
+        "salmon",
+        "game-birds",
+        "hard-cheeses",
+        "dessert"
+      ],
+      "source": "archive_image_alt"
+    },
+    "2d0e198f8485": {
+      "url": "https://spb.winestyle.ru/products/Nik-Weis-Urban-Riesling-2024.html",
+      "year": 2024,
+      "codes": [
+        "fish",
+        "aperitif",
+        "seafood",
+        "pasta"
+      ],
+      "source": "archive_image_alt"
+    },
+    "62988f645654": {
+      "url": "https://spb.winestyle.ru/products/Tesch-Unplugged-Riesling-2024.html",
+      "year": 2024,
+      "codes": [
+        "fish",
+        "spicy",
+        "vegetables"
+      ],
+      "source": "archive_image_alt"
+    },
+    "19cfb8faf5be": {
+      "url": "https://spb.winestyle.ru/products/Frankland-Estate-Poison-Hill-Vineyard-Riesling-2016.html",
+      "year": 2016,
+      "codes": [
+        "spicy"
+      ],
+      "source": "archive_image_alt"
+    },
+    "85f7014559dd": {
+      "url": "https://spb.winestyle.ru/products/Can-Sumoi-Ancestral-Montonega-2023.html",
+      "year": 2023,
+      "codes": [
+        "seafood",
+        "japanese"
+      ],
+      "source": "archive_image_alt"
+    },
+    "056c6f909a24": {
+      "url": "https://spb.winestyle.ru/products/Nino-Franco-Faive-Rose-Brut-Veneto-IGT-2019.html",
+      "year": 2019,
+      "codes": [
+        "meat",
+        "fish",
+        "aperitif",
+        "seafood"
+      ],
+      "source": "archive_image_alt"
+    },
+    "5445709eae58": {
+      "url": "https://spb.winestyle.ru/products/Scarpa-Tacco12-Moscato-d-Asti-DOCG-2022.html",
+      "year": 2022,
+      "codes": [
+        "dessert",
+        "fruits"
+      ],
+      "source": "archive_image_alt"
+    },
+    "801667d481d6": {
+      "url": "https://spb.winestyle.ru/products/Nino-Franco-Faive-Rose-Brut-Veneto-IGT-2022.html",
+      "year": 2022,
+      "codes": [
+        "meat",
+        "fish",
+        "aperitif",
+        "seafood"
+      ],
+      "source": "archive_image_alt"
+    },
+    "ffffabb4d41a": {
+      "url": "https://spb.winestyle.ru/products/Tabali-Tatie-Brut-Limari-Valley.html",
+      "year": null,
+      "codes": [
+        "aperitif",
+        "seafood",
+        "dessert"
+      ],
+      "source": "archive_image_alt"
+    },
+    "46622f963eaa": {
+      "url": "https://spb.winestyle.ru/products/Montelliana-Prosecco-Treviso-DOC-Extra-Dry.html",
+      "year": null,
+      "codes": [
+        "aperitif",
+        "pasta",
+        "hard-cheeses",
+        "snacks"
+      ],
+      "source": "archive_image_alt"
+    },
+    "f97f2ccc67b8": {
+      "url": "https://spb.winestyle.ru/products/Grande-Alberone-Moscato-Spumante-Dolce.html",
+      "year": null,
+      "codes": [
+        "fish",
+        "poultry",
+        "aperitif",
+        "salad"
+      ],
+      "source": "archive_image_alt"
+    },
+    "5427ef8902aa": {
+      "url": "https://spb.winestyle.ru/products/Pitars-Prosecco-DOC.html",
+      "year": null,
+      "codes": [
+        "fish",
+        "aperitif",
+        "snacks"
+      ],
+      "source": "archive_image_alt"
+    },
+    "e8609b5a3c65": {
+      "url": "https://spb.winestyle.ru/products/Dulong-Cremant-de-Bordeaux-AOP-Brut.html",
+      "year": null,
+      "codes": [
+        "aperitif",
+        "dessert",
+        "fruits"
+      ],
+      "source": "archive_image_alt"
+    },
+    "7c836f833ee2": {
+      "url": "https://spb.winestyle.ru/products/Lucien-Albrecht-Brut-Cremant-d-Alsace-AOC.html",
+      "year": null,
+      "codes": [
+        "dessert",
+        "fruits",
+        "digestive"
+      ],
+      "source": "archive_image_alt"
+    },
+    "caa3a12da960": {
+      "url": "https://spb.winestyle.ru/products/Romagnoli-Vizzo-Rosso-Emilia-IGT-2019.html",
+      "year": 2019,
+      "codes": [
+        "meat",
+        "salmon",
+        "hard-cheeses",
+        "fish"
+      ],
+      "source": "archive_image_alt"
+    },
+    "48e6958c78dc": {
+      "url": "https://spb.winestyle.ru/products/Jordan-Black-Magic-Merlot-2021.html",
+      "year": 2021,
+      "codes": [
+        "meat",
+        "game",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "9ddeb3cfb445": {
+      "url": "https://spb.winestyle.ru/products/Church-Block-Cabernet-Shiraz-Merlot-2011.html",
+      "year": 2011,
+      "codes": [
+        "meat",
+        "poultry",
+        "game",
+        "pate"
+      ],
+      "source": "archive_image_alt"
+    },
+    "b2276984217f": {
+      "url": "https://spb.winestyle.ru/products/Tenuta-Poggio-ai-Mandorli-Chianti-Classico-Gran-Selezione-DOCG-2019.html",
+      "year": 2019,
+      "codes": [
+        "meat",
+        "game",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "9830fcbfa909": {
+      "url": "https://spb.winestyle.ru/products/Domaine-Laffitte-Rose-Cotes-de-Gascogne-IGP-2024.html",
+      "year": 2024,
+      "codes": [
+        "poultry",
+        "aperitif",
+        "seafood",
+        "vegetables"
+      ],
+      "source": "archive_image_alt"
+    },
+    "96d588edbbdb": {
+      "url": "https://spb.winestyle.ru/products/Kracher-Spatlese-Rose-2024.html",
+      "year": 2024,
+      "codes": [
+        "hard-cheeses",
+        "spicy",
+        "dessert",
+        "fruits"
+      ],
+      "source": "archive_image_alt"
+    },
+    "0d2ee38169c9": {
+      "url": "https://spb.winestyle.ru/products/Mare-Magnum-The-Chocolate-Tube-Primitivo-Puglia-IGT-2023.html",
+      "year": 2023,
+      "codes": [
+        "game",
+        "beef",
+        "pasta",
+        "meat"
+      ],
+      "source": "archive_image_alt"
+    },
+    "2f6a9b761e1f": {
+      "url": "https://spb.winestyle.ru/products/Montedidio-San-Domino-Primitivo-Puglia-IGT-2021.html",
+      "year": 2021,
+      "codes": [
+        "pork",
+        "beef",
+        "digestive",
+        "meat"
+      ],
+      "source": "archive_image_alt"
+    },
+    "d8aa36dd85fe": {
+      "url": "https://spb.winestyle.ru/products/Elena-Fucci-Verha-Rosato-Basilicata-IGT-2023.html",
+      "year": 2023,
+      "codes": [
+        "salad",
+        "snacks",
+        "seafood",
+        "soft-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "4d35092a1505": {
+      "url": "https://spb.winestyle.ru/products/Castello-di-Querceto-Chianti-Classico-Riserva-DOCG-2012.html",
+      "year": 2012,
+      "codes": [
+        "meat",
+        "game",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "569268902614": {
+      "url": "https://spb.winestyle.ru/products/Nipozzano-Chianti-Rufina-Riserva-DOCG-2022.html",
+      "year": 2022,
+      "codes": [
+        "meat",
+        "hard-cheeses",
+        "beef"
+      ],
+      "source": "archive_image_alt"
+    },
+    "8a9950e9e3c4": {
+      "url": "https://spb.winestyle.ru/products/Capo-di-Stato-Colli-Trevigiani-IGT-2013.html",
+      "year": 2013,
+      "codes": [
+        "game",
+        "beef",
+        "meat",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "7c5d44c4353e": {
+      "url": "https://spb.winestyle.ru/products/Fattoria-Le-Pupille-Morellino-di-Scansano-Riserva-DOCG-2021.html",
+      "year": 2021,
+      "codes": [
+        "meat",
+        "game",
+        "beef",
+        "pasta"
+      ],
+      "source": "archive_image_alt"
+    },
+    "6645f77efb94": {
+      "url": "https://spb.winestyle.ru/products/Chateau-Ducluzeau-Listrac-Medoc-AOC-2017.html",
+      "year": 2017,
+      "codes": [
+        "game",
+        "game-birds",
+        "beef",
+        "meat"
+      ],
+      "source": "archive_image_alt"
+    },
+    "e65c60dd483b": {
+      "url": "https://spb.winestyle.ru/products/Chateau-Marjosse-Bordeaux-AOC-Rouge-2021.html",
+      "year": 2021,
+      "codes": [
+        "meat",
+        "beef",
+        "pasta",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "de91d5c1fa5e": {
+      "url": "https://spb.winestyle.ru/products/Long-Barn-Zinfandel-2024.html",
+      "year": 2024,
+      "codes": [
+        "mushrooms",
+        "meat",
+        "blue-cheese"
+      ],
+      "source": "archive_image_alt"
+    },
+    "7309e60757dd": {
+      "url": "https://spb.winestyle.ru/products/El-Esteco-Don-David-Malbec-Reserve-2023.html",
+      "year": 2023,
+      "codes": [
+        "game",
+        "pizza",
+        "beef",
+        "meat"
+      ],
+      "source": "archive_image_alt"
+    },
+    "e3190ea1eebc": {
+      "url": "https://spb.winestyle.ru/products/Mi-Terruno-Expresion-Malbec-2022.html",
+      "year": 2022,
+      "codes": [
+        "meat",
+        "mutton",
+        "snacks"
+      ],
+      "source": "archive_image_alt"
+    },
+    "9b6ffd01ee4a": {
+      "url": "https://spb.winestyle.ru/products/Vina-Cobos-Felino-Malbec-2021.html",
+      "year": 2021,
+      "codes": [
+        "poultry",
+        "game",
+        "pasta",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "9a7644231a69": {
+      "url": "https://spb.winestyle.ru/products/Clos-de-los-Siete-2021.html",
+      "year": 2021,
+      "codes": [
+        "meat",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "e3bc96e35d46": {
+      "url": "https://spb.winestyle.ru/products/La-Posta-Rose-of-Malbec-Mendoza-DO-2023.html",
+      "year": 2023,
+      "codes": [
+        "fish",
+        "seafood",
+        "salad",
+        "pasta"
+      ],
+      "source": "archive_image_alt"
+    },
+    "87c72ad959cc": {
+      "url": "https://spb.winestyle.ru/products/Bodegas-Ramon-Bilbao-Crianza-Rioja-DOC-2021-750.html",
+      "year": 2021,
+      "codes": [
+        "meat",
+        "hard-cheeses",
+        "risotto",
+        "sausages"
+      ],
+      "source": "archive_image_alt"
+    },
+    "cd226588d1df": {
+      "url": "https://spb.winestyle.ru/products/Lavau-EnvyFol-GSM-Pays-d-Oc-IGP-2022.html",
+      "year": 2022,
+      "codes": [
+        "meat",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "001eeb719213": {
+      "url": "https://spb.winestyle.ru/products/Crapula-Gold-2022.html",
+      "year": 2022,
+      "codes": [
+        "aperitif",
+        "hard-cheeses",
+        "risotto",
+        "vegetables"
+      ],
+      "source": "archive_image_alt"
+    },
+    "88a3bb7ae281": {
+      "url": "https://spb.winestyle.ru/products/Belguardo-Rose-Toscana-IGT-2022.html",
+      "year": 2022,
+      "codes": [
+        "fish",
+        "pizza",
+        "pasta",
+        "snacks"
+      ],
+      "source": "archive_image_alt"
+    },
+    "298ebca26e9c": {
+      "url": "https://spb.winestyle.ru/products/Fattoria-Le-Pupille-Morellino-di-Scansano-DOCG-2021.html",
+      "year": 2021,
+      "codes": [
+        "meat",
+        "pasta",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "006f83a3b98d": {
+      "url": "https://spb.winestyle.ru/products/Santa-Cristina-Giardino-Rose-Toscana-IGT-2024.html",
+      "year": 2024,
+      "codes": [
+        "seafood",
+        "salad",
+        "pasta",
+        "soft-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "15b856b072fd": {
+      "url": "https://spb.winestyle.ru/products/Torres-Vina-Esmeralda-Rose-Catalunya-DO-2024.html",
+      "year": 2024,
+      "codes": [
+        "salmon",
+        "aperitif",
+        "salad",
+        "spicy"
+      ],
+      "source": "archive_image_alt"
+    },
+    "9fb448b8f505": {
+      "url": "https://spb.winestyle.ru/products/Apollonio-Mani-del-Sud-Rosso-Salice-Salentino-DOP-2021.html",
+      "year": 2021,
+      "codes": [
+        "meat",
+        "beef",
+        "pasta",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "5b8fb4a0202e": {
+      "url": "https://spb.winestyle.ru/products/Felline-Cicala-Rose-Salento-IGT-2018.html",
+      "year": 2018,
+      "codes": [
+        "fish",
+        "pizza",
+        "vegetables",
+        "seafood"
+      ],
+      "source": "archive_image_alt"
+    },
+    "4d6ad3b07c95": {
+      "url": "https://spb.winestyle.ru/products/Zantho-St-Laurent-2021.html",
+      "year": 2021,
+      "codes": [
+        "meat",
+        "game",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "65df74bcd692": {
+      "url": "https://spb.winestyle.ru/products/d-Arenberg-d-Arry-s-Original-2020.html",
+      "year": 2020,
+      "codes": [
+        "meat",
+        "pasta",
+        "hard-cheeses",
+        "beef"
+      ],
+      "source": "archive_image_alt"
+    },
+    "55ad5827620c": {
+      "url": "https://spb.winestyle.ru/products/Protos-Roble-2024.html",
+      "year": 2024,
+      "codes": [
+        "game",
+        "pasta",
+        "vegetables",
+        "meat"
+      ],
+      "source": "archive_image_alt"
+    },
+    "3e7d77f4d094": {
+      "url": "https://spb.winestyle.ru/products/Ramon-Bilbao-Reserva-Rioja-DOC-2018.html",
+      "year": 2018,
+      "codes": [
+        "meat",
+        "game",
+        "beef",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "160221740978": {
+      "url": "https://spb.winestyle.ru/products/Bodegas-Ramon-Bilbao-Crianza-Rioja-DOC-2013-1500.html",
+      "year": 2013,
+      "codes": [
+        "meat",
+        "fish",
+        "poultry",
+        "beef"
+      ],
+      "source": "archive_image_alt"
+    },
+    "19c9dff352b3": {
+      "url": "https://spb.winestyle.ru/products/La-Bioca-Sterma-Nebbiolo-d-Alba-DOC-Superiore-2021.html",
+      "year": 2021,
+      "codes": [
+        "hard-cheeses",
+        "meat",
+        "entrees"
+      ],
+      "source": "archive_image_alt"
+    },
+    "c817a42207f3": {
+      "url": "https://spb.winestyle.ru/products/Enrico-Serafino-Pajena-Barbera-d-Alba-DOC-2021.html",
+      "year": 2021,
+      "codes": [
+        "meat",
+        "pasta",
+        "hard-cheeses",
+        "risotto"
+      ],
+      "source": "archive_image_alt"
+    },
+    "bab581b955b0": {
+      "url": "https://spb.winestyle.ru/products/Parajes-del-Valle-Monastrell-Ecologico-Jumilla-DOP-2022.html",
+      "year": 2022,
+      "codes": [
+        "meat",
+        "salad",
+        "pasta",
+        "soft-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "bb252388600c": {
+      "url": "https://spb.winestyle.ru/products/Tedeschi-Capitel-San-Rocco-Valpolicella-Ripasso-DOC-Superiore-2015.html",
+      "year": 2015,
+      "codes": [
+        "meat",
+        "game",
+        "beef",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "77b281dd280d": {
+      "url": "https://spb.winestyle.ru/products/Tenuta-Sant-Antonio-Nanfre-Valpolicella-DOC-2023.html",
+      "year": 2023,
+      "codes": [
+        "meat",
+        "fish",
+        "pasta",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "eaa1207798b9": {
+      "url": "https://spb.winestyle.ru/products/Tedeschi-Capitel-San-Rocco-Valpolicella-Ripasso-DOC-Superiore-2019.html",
+      "year": 2019,
+      "codes": [
+        "meat",
+        "game",
+        "beef",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "87669b47495e": {
+      "url": "https://spb.winestyle.ru/products/Pieropan-Ruberpan-Valpolicella-Superiore-DOC-2021.html",
+      "year": 2021,
+      "codes": [
+        "poultry",
+        "beef",
+        "pasta",
+        "risotto"
+      ],
+      "source": "archive_image_alt"
+    },
+    "a748bd657f0a": {
+      "url": "https://spb.winestyle.ru/products/Atzei-Saragat-Cannonau-di-Sardegna-DOC-2021.html",
+      "year": 2021,
+      "codes": [
+        "meat",
+        "vegetables",
+        "game",
+        "veal"
+      ],
+      "source": "archive_image_alt"
+    },
+    "ee109cc95019": {
+      "url": "https://spb.winestyle.ru/products/Elias-Mora-Crianza-2020.html",
+      "year": 2020,
+      "codes": [
+        "hard-cheeses",
+        "sausages",
+        "meat"
+      ],
+      "source": "archive_image_alt"
+    },
+    "d4d77be3bdca": {
+      "url": "https://spb.winestyle.ru/products/D-Angelo-Aglianico-del-Vulture-DOC-2021.html",
+      "year": 2021,
+      "codes": [
+        "poultry",
+        "beef",
+        "meat",
+        "mutton"
+      ],
+      "source": "archive_image_alt"
+    },
+    "e552320d1248": {
+      "url": "https://spb.winestyle.ru/products/Antigua-DOC-2024.html",
+      "year": 2024,
+      "codes": [
+        "meat",
+        "poultry",
+        "pasta",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "2f06acc1cf43": {
+      "url": "https://spb.winestyle.ru/products/Hito-Ribera-Del-Duero-DO-2023.html",
+      "year": 2023,
+      "codes": [
+        "meat",
+        "game",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "537d512cc39f": {
+      "url": "https://spb.winestyle.ru/products/Aixala-I-Alcait-Pardelasses-Priorat-DOQ-2018.html",
+      "year": 2018,
+      "codes": [
+        "game",
+        "beef",
+        "mushrooms",
+        "meat"
+      ],
+      "source": "archive_image_alt"
+    },
+    "f0c33d420f2f": {
+      "url": "https://spb.winestyle.ru/products/Marius-Peyol-Coteaux-d-Aix-en-Provence-AOC-2024.html",
+      "year": 2024,
+      "codes": [
+        "japanese"
+      ],
+      "source": "archive_image_alt"
+    },
+    "4123b553c232": {
+      "url": "https://spb.winestyle.ru/products/Lapostolle-Le-Rose-2024.html",
+      "year": 2024,
+      "codes": [
+        "aperitif",
+        "seafood",
+        "salad",
+        "pasta"
+      ],
+      "source": "archive_image_alt"
+    },
+    "e5af8c73633f": {
+      "url": "https://spb.winestyle.ru/products/Miraval-Rose-Cotes-de-Provence-AOC-2018-375.html",
+      "year": 2018,
+      "codes": [
+        "meat",
+        "fish",
+        "seafood",
+        "fruits"
+      ],
+      "source": "archive_image_alt"
+    },
+    "5f82dc29ad72": {
+      "url": "https://spb.winestyle.ru/products/Muga-Rosado-Rioja-DOC-2021.html",
+      "year": 2021,
+      "codes": [
+        "fish",
+        "salad",
+        "pasta",
+        "dessert"
+      ],
+      "source": "archive_image_alt"
+    },
+    "0269b462fa82": {
+      "url": "https://spb.winestyle.ru/products/Estandon-Heritage-Cotes-de-Provence-AOP-2020.html",
+      "year": 2020,
+      "codes": [
+        "seafood"
+      ],
+      "source": "archive_image_alt"
+    },
+    "c04e76e37fa1": {
+      "url": "https://spb.winestyle.ru/products/Muga-Rosado-Rioja-DOC-2023.html",
+      "year": 2023,
+      "codes": [
+        "aperitif",
+        "seafood",
+        "salad",
+        "snacks"
+      ],
+      "source": "archive_image_alt"
+    },
+    "75ea3ee23df9": {
+      "url": "https://spb.winestyle.ru/products/Chateau-La-Tour-de-L-Eveque-Petale-de-Rose-Cotes-de-Provence-AOC-2020.html",
+      "year": 2020,
+      "codes": [
+        "fish",
+        "salmon",
+        "spicy",
+        "dessert"
+      ],
+      "source": "archive_image_alt"
+    },
+    "2b85a6978520": {
+      "url": "https://spb.winestyle.ru/products/Mezzacorona-Pinot-Grigio-Trentino-DOC-2022.html",
+      "year": 2022,
+      "codes": [
+        "fish",
+        "poultry",
+        "pasta",
+        "snacks"
+      ],
+      "source": "archive_image_alt"
+    },
+    "45a235043feb": {
+      "url": "https://spb.winestyle.ru/products/Domane-Wachau-Katzensprung-Gruner-Veltliner-Federspiel-2023.html",
+      "year": 2023,
+      "codes": [
+        "meat",
+        "poultry",
+        "snacks"
+      ],
+      "source": "archive_image_alt"
+    },
+    "060a331fa324": {
+      "url": "https://spb.winestyle.ru/products/Gaintza-Txakolina-2023.html",
+      "year": 2023,
+      "codes": [
+        "fish",
+        "poultry",
+        "seafood",
+        "snacks"
+      ],
+      "source": "archive_image_alt"
+    },
+    "80cb76314c74": {
+      "url": "https://spb.winestyle.ru/products/Ascevi-Luwa-Ronco-dei-Sassi-Collio-DOC-2021.html",
+      "year": 2021,
+      "codes": [
+        "fish",
+        "poultry",
+        "seafood",
+        "salmon"
+      ],
+      "source": "archive_image_alt"
+    },
+    "5740739d992b": {
+      "url": "https://spb.winestyle.ru/products/Recanati-Yasmin-White-kosher-mevushal-2018.html",
+      "year": 2018,
+      "codes": [
+        "fish",
+        "aperitif",
+        "poultry",
+        "soft-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "f05b85f57f2c": {
+      "url": "https://spb.winestyle.ru/products/The-Ned-Sauvignon-Blanc-2024.html",
+      "year": 2024,
+      "codes": [
+        "fish",
+        "poultry",
+        "vegetables"
+      ],
+      "source": "archive_image_alt"
+    },
+    "d41d680aacec": {
+      "url": "https://spb.winestyle.ru/products/Fattoria-Le-Pupille-Poggio-Argentato-IGT-2022.html",
+      "year": 2022,
+      "codes": [
+        "poultry",
+        "fish",
+        "salad",
+        "snacks"
+      ],
+      "source": "archive_image_alt"
+    },
+    "f32c8d6cae2b": {
+      "url": "https://spb.winestyle.ru/products/Protos-Verdejo-2018.html",
+      "year": 2018,
+      "codes": [
+        "fish",
+        "seafood",
+        "hard-cheeses",
+        "vegetables"
+      ],
+      "source": "archive_image_alt"
+    },
+    "f6c18006b2cc": {
+      "url": "https://spb.winestyle.ru/products/Chateau-Pajzos-T-Tokaji-Furmint-2022.html",
+      "year": 2022,
+      "codes": [
+        "aperitif",
+        "seafood",
+        "poultry",
+        "japanese"
+      ],
+      "source": "archive_image_alt"
+    },
+    "4bdac639abe7": {
+      "url": "https://spb.winestyle.ru/products/Taboadella-Villae-Branco-Dao-DOC-2020.html",
+      "year": 2020,
+      "codes": [
+        "fish",
+        "aperitif",
+        "seafood",
+        "snacks"
+      ],
+      "source": "archive_image_alt"
+    },
+    "995b5447875b": {
+      "url": "https://spb.winestyle.ru/products/Azienda-Agricola-Ottella-Lugana-Ottella-2017.html",
+      "year": 2017,
+      "codes": [
+        "meat",
+        "fish",
+        "poultry",
+        "pasta"
+      ],
+      "source": "archive_image_alt"
+    },
+    "ea7851a726ac": {
+      "url": "https://spb.winestyle.ru/products/Ottella-Lugana-DOC-2024-750.html",
+      "year": 2024,
+      "codes": [
+        "fish",
+        "poultry",
+        "seafood",
+        "entrees"
+      ],
+      "source": "archive_image_alt"
+    },
+    "321ec8a9b417": {
+      "url": "https://spb.winestyle.ru/products/Azienda-Agricola-Ottella-Le-Creete-Lugana-DOC-2024.html",
+      "year": 2024,
+      "codes": [
+        "fish",
+        "poultry",
+        "seafood",
+        "hard-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "b754161b525f": {
+      "url": "https://spb.winestyle.ru/products/I-Frati-Lugana-DOC-2024.html",
+      "year": 2024,
+      "codes": [
+        "aperitif",
+        "seafood",
+        "salad",
+        "pasta"
+      ],
+      "source": "archive_image_alt"
+    },
+    "5039c04e5d73": {
+      "url": "https://spb.winestyle.ru/products/Batasiolo-Granee-Gavi-del-Comune-di-Gavi-DOCG-2023.html",
+      "year": 2023,
+      "codes": [
+        "fish",
+        "seafood",
+        "aperitif",
+        "salad"
+      ],
+      "source": "archive_image_alt"
+    },
+    "47bef620896d": {
+      "url": "https://spb.winestyle.ru/products/Chanzy-Les-Fortunes-Aligote-Bourgogne-AOC-2023.html",
+      "year": 2023,
+      "codes": [
+        "aperitif"
+      ],
+      "source": "archive_image_alt"
+    },
+    "0f0246d18580": {
+      "url": "https://spb.winestyle.ru/products/Wohlmuth-Gewurztraminer-Sudsteiermark-DAC-2021.html",
+      "year": 2021,
+      "codes": [
+        "pate",
+        "spicy",
+        "japanese",
+        "soft-cheeses"
+      ],
+      "source": "archive_image_alt"
+    },
+    "e6beca8a8172": {
+      "url": "https://spb.winestyle.ru/products/Mar-de-Frades-Albarino-Rias-Baixas-DO-2023.html",
+      "year": 2023,
+      "codes": [
+        "fish",
+        "aperitif",
+        "seafood",
+        "vegetables"
+      ],
+      "source": "archive_image_alt"
+    },
+    "cb6c474afa17": {
+      "url": "https://spb.winestyle.ru/products/A-A-Badenhorst-Secateurs-Rose-Swartland-WO-2022.html",
+      "year": 2022,
+      "codes": [
+        "fish",
+        "poultry",
+        "aperitif",
+        "seafood"
+      ],
+      "source": "archive_image_alt"
+    },
+    "5b9b46b0b3e6": {
+      "url": "https://spb.winestyle.ru/products/Maturana-Wines-Naranjo-Torontel-Maule-Valley-DO-2024.html",
+      "year": 2024,
+      "codes": [
+        "pork",
+        "seafood",
+        "game-birds",
+        "spicy"
+      ],
+      "source": "archive_image_alt"
+    },
+    "a1faf8b0af1d": {
+      "url": "https://spb.winestyle.ru/products/Canti-Moscato-D-Asti-DOCG-2023.html",
+      "year": 2023,
+      "codes": [
+        "aperitif",
+        "dessert",
+        "fruits"
+      ],
+      "source": "user_screenshot_exact_2023"
+    }
+  }
+}
