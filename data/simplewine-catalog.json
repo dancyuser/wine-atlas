@@ -898,7 +898,16 @@
             "wine_style": "красное, сухое, комплексное, выдержанное в дубе",
             "aging_potential": "6–8 лет",
             "description_excerpt": "Вишня, малина, роза и табачный лист; сочный вкус, тонкие танины и бальзамические оттенки.",
-            "ratings": []
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/max_reserva_pinot_noir_2023_075_160433/",
+                "observed_on": "2026-11-24"
+              }
+            ]
           }
         }
       ],
@@ -913,7 +922,7 @@
         "url": "https://simplewine.ru/catalog/product/max_reserva_pinot_noir_2023_075_160433/",
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
-      "indexed_stock": "not_confirmed",
+      "indexed_stock": "shop_only",
       "indexed_recency": "около 2 месяцев"
     },
     {
@@ -964,7 +973,24 @@
             "wine_style": "красное, сухое, среднетелое, выдержанное в дубе",
             "aging_potential": "7–10 лет",
             "description_excerpt": "Малина, ежевика, слива, оливки и пряные травы; бархатистая текстура и перечно-лавандовый финал.",
-            "ratings": []
+            "ratings": [
+              {
+                "source": "Robert Parker",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/cotes_du_rhone_rouge_2023_075_161457/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 3.6,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/cotes_du_rhone_rouge_2023_075_161457/",
+                "observed_on": "2026-11-24"
+              }
+            ]
           }
         }
       ],
@@ -979,7 +1005,7 @@
         "url": "https://simplewine.ru/catalog/product/cotes_du_rhone_rouge_2023_075_161457/",
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
-      "indexed_stock": "not_confirmed",
+      "indexed_stock": "shop_only",
       "indexed_recency": "около 2 месяцев"
     },
     {
@@ -1088,7 +1114,7 @@
           "url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2023_075_162169/",
           "sku": "162169",
           "price_rub": 3143,
-          "regular_price_rub": null,
+          "regular_price_rub": 4490,
           "price_checked_at": "2026-11-24",
           "price_source_kind": "indexed_retailer_card",
           "research_details": {
@@ -1105,7 +1131,16 @@
             "wine_style": "красное, сухое, мощное, выдержанное в дубе",
             "aging_potential": "10–15 лет",
             "description_excerpt": "Вишня, ежевичный джем, чернослив и перец; бархатистые танины и живая кислотность.",
-            "ratings": []
+            "ratings": [
+              {
+                "source": "Wine Spectator",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2023_075_162169/",
+                "observed_on": "2026-11-24"
+              }
+            ]
           }
         }
       ],
@@ -1120,7 +1155,7 @@
         "url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2023_075_162169/",
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
-      "indexed_stock": "not_confirmed",
+      "indexed_stock": "shop_only",
       "indexed_recency": "около 2 месяцев"
     },
     {
@@ -1595,7 +1630,7 @@
           "url": "https://simplewine.ru/catalog/product/vino_nobile_di_montepulciano_silineo_2022_075_161332/",
           "sku": "161332",
           "price_rub": 3493,
-          "regular_price_rub": null,
+          "regular_price_rub": 4990,
           "price_checked_at": "2026-11-24",
           "price_source_kind": "indexed_retailer_card",
           "research_details": {
@@ -1612,7 +1647,24 @@
             "wine_style": "красное, сухое, насыщенное, выдержанное в дубе",
             "aging_potential": "8–10 лет",
             "description_excerpt": "Спелая вишня, табак, чернослив и специи; мягкие танины и дымный финал.",
-            "ratings": []
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 92,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/vino_nobile_di_montepulciano_silineo_2022_075_161332/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 4,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/vino_nobile_di_montepulciano_silineo_2022_075_161332/",
+                "observed_on": "2026-11-24"
+              }
+            ]
           }
         }
       ],
@@ -1627,7 +1679,7 @@
         "url": "https://simplewine.ru/catalog/product/vino_nobile_di_montepulciano_silineo_2022_075_161332/",
         "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
       },
-      "indexed_stock": "not_confirmed",
+      "indexed_stock": "in_stock",
       "indexed_recency": "около 2 месяцев"
     },
     {
