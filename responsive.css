@@ -36,7 +36,7 @@ input,select{height:clamp(50px,3vw,60px);font-size:calc(16px + var(--reading-boo
 .card-intro-copy{min-width:0}
 .card-title,.card-intro .card-title{font-size:calc(clamp(25px,1.25vw,33px) + var(--reading-boost));line-height:1.22;letter-spacing:-.025em;overflow-wrap:anywhere}
 .card-meta,.card-intro .card-meta{font-size:calc(clamp(14px,.25vw + 12px,18px) + var(--reading-boost));line-height:1.55;margin:0 0 13px;overflow-wrap:anywhere}
-.card-description{font-size:calc(clamp(15px,.24vw + 12px,18px) + var(--reading-boost));line-height:1.58;margin-top:12px;-webkit-line-clamp:4;overflow-wrap:anywhere}
+.card-description{font-size:calc(clamp(15px,.24vw + 12px,18px) + var(--reading-boost));line-height:1.58;margin-top:12px;overflow-wrap:anywhere}
 .bottle-media{width:100%;height:clamp(260px,14vw,360px);padding:0 0 28px;border-radius:16px;overflow:hidden}
 .bottle-view{display:block;width:100%;height:100%;margin:0;padding:7px;border:0;background:transparent;color:inherit;cursor:zoom-in;position:relative;z-index:2;min-width:0}
 .bottle-view:focus-visible{outline:3px solid var(--focus);outline-offset:-4px}
@@ -88,7 +88,7 @@ input,select{height:clamp(50px,3vw,60px);font-size:calc(16px + var(--reading-boo
  .wine-grid{grid-template-columns:1fr}
  .card-intro{grid-template-columns:minmax(150px,26%) minmax(0,1fr)}
  .bottle-media{height:285px}
- .card-description{-webkit-line-clamp:5}
+
 }
 @media(max-width:800px){
  .header-inner{min-height:76px}
@@ -121,7 +121,7 @@ input,select{height:clamp(50px,3vw,60px);font-size:calc(16px + var(--reading-boo
  .bottle-media{width:100%;height:310px;padding-bottom:29px}
  .bottle-photo.landscape-source{object-fit:cover}
  .card-title,.card-intro .card-title{font-size:calc(26px + var(--reading-boost))}
- .card-description{-webkit-line-clamp:4}
+
  .rating-cell{padding:15px 13px}
  .rating-label{font-size:calc(12px + var(--reading-boost))}
  .rating-value{font-size:35px}
@@ -151,3 +151,40 @@ input,select{height:clamp(50px,3vw,60px);font-size:calc(16px + var(--reading-boo
 .image-dialog-title{font-size:calc(16px + var(--reading-boost));text-align:center;max-width:78ch;line-height:1.45}
 .image-dialog-close{position:absolute;right:10px;top:10px;display:grid;place-items:center;min-width:44px;min-height:44px;border-radius:50%;background:var(--rating-bg);color:var(--ink);border:1px solid var(--line);font-size:28px;cursor:pointer;z-index:2}
 @media(prefers-reduced-motion:reduce){.wine-card:hover{transform:none}}
+
+/* Complete preview text; details are presented in a dedicated responsive dialog. */
+.card-description{display:block;overflow:visible;-webkit-box-orient:initial}
+.wine-card[data-wine-id]{cursor:pointer}
+.wine-title-button{background:none;border:0;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer;overflow-wrap:anywhere}
+.wine-title-button:hover{text-decoration:underline;text-underline-offset:4px}
+.wine-open{border:0;cursor:pointer}
+.wine-dialog{width:min(1020px,calc(100% - 48px));max-width:none;max-height:92dvh;overflow:auto;overscroll-behavior:contain;margin:auto;padding:0;border:1px solid var(--line);border-radius:22px;background:var(--white);color:var(--ink);box-shadow:0 28px 100px #0008}
+.wine-dialog::backdrop{background:#08060bd9}
+body:has(.wine-dialog[open]){overflow:hidden}
+.wine-dialog-toolbar{position:sticky;top:0;z-index:4;display:flex;justify-content:flex-start;padding:14px clamp(20px,4vw,42px);background:var(--white);border-bottom:1px solid var(--line)}
+.wine-dialog-close{min-height:44px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:var(--rating-bg);color:var(--ink);font-weight:650}
+.wine-dialog-content{padding:clamp(22px,4vw,48px);min-width:0;font-size:calc(16px + var(--reading-boost));line-height:1.7;overflow-wrap:anywhere}
+.wine-detail-hero{display:grid;grid-template-columns:minmax(170px,30%) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center;margin-bottom:30px}
+.wine-detail-hero .bottle-media{height:clamp(300px,32vw,440px);width:100%}
+.wine-detail-heading{min-width:0}
+.wine-detail-heading h2{font-family:Georgia,serif;font-size:calc(clamp(29px,3vw,48px) + var(--reading-boost));line-height:1.12;margin:12px 0 16px;font-weight:500}
+.wine-detail-price{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:24px}
+.wine-detail-price>div{flex:1 1 155px;min-width:0}
+.wine-detail-section{border-top:1px solid var(--line);padding-top:24px;margin-top:30px}
+.wine-detail-section h3{font-family:Georgia,serif;font-size:calc(25px + var(--reading-boost));line-height:1.25;font-weight:500;margin:0 0 18px}
+.wine-detail-section p{margin:0 0 12px}
+.wine-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,185px),1fr));gap:12px}
+.wine-fact{padding:14px 16px;background:var(--rating-bg);border:1px solid var(--rating-border);border-radius:12px;min-width:0}
+.wine-fact span,.detail-note{color:var(--sub);font-size:calc(14px + var(--reading-boost))}
+.wine-fact p{margin:4px 0 0;font-weight:550;line-height:1.45}
+.wine-tasting{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr));gap:20px}
+.wine-tasting h4{font-size:calc(16px + var(--reading-boost));margin:0 0 8px}
+.wine-description p{max-width:76ch;line-height:1.8;white-space:normal}
+.wine-dialog-content>.detail-note{margin-top:24px}
+@media(max-width:640px){
+ .wine-dialog{width:100%;max-height:100dvh;height:100dvh;border:0;border-radius:0}
+ .wine-detail-hero{grid-template-columns:minmax(0,1fr);gap:20px}
+ .wine-detail-hero .bottle-media{height:300px;max-width:310px;margin-inline:auto}
+ .wine-dialog-content{padding:22px}
+ .wine-detail-heading h2{font-size:calc(32px + var(--reading-boost))}
+}

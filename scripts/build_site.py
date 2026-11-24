@@ -12,6 +12,7 @@ PUBLIC = (
     "editorial.css",
     "responsive.css",
     "data/wines.json",
+    "data/full-descriptions.json",
     "data/ratings.json",
     "data/verified-snapshot-2026-11-23.json",
     "data/researched-photos-2026-11-23.json",
