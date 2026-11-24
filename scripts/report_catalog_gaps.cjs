@@ -30,7 +30,7 @@ const result=vm.runInContext(app+`
  for(const k of ['color','wine_style','body','alcohol_percent','aroma','taste','region','producer'])if(!d[k])gaps.push(k);
  if(!pairingValues(r).length)gaps.push('pairings');
  return {id:r.id,title:r.title,year:r.year,group:r.source_catalog||'original',source_url:s.url,gaps};});
- const keys=[...new Set(rows.flatMap(r=>r.gaps))].sort();
+ const keys=[...new Set(['vivino','vivino_vintage','vivino_count','vivino_primary','photo','photo_exact_vintage','price','explicit_regular_price','critic','independent_critic','calendar_limit','calendar_outside','approximate_storage','local_stock_unverified','full_description','year','country','volume_l','grapes','color','wine_style','body','alcohol_percent','aroma','taste','region','producer','pairings',...rows.flatMap(r=>r.gaps)])].sort();
  JSON.stringify({as_of:snap.as_of,visible:visible.length,excluded:all.length-visible.length,totals:{visible:visible.length,...Object.fromEntries(keys.map(k=>['missing_'+k,rows.filter(r=>r.gaps.includes(k)).length]))},groups:Object.fromEntries(['original','simplewine'].map(group=>[group,{visible:rows.filter(r=>r.group===group).length,...Object.fromEntries(keys.map(k=>['missing_'+k,rows.filter(r=>r.group===group&&r.gaps.includes(k)).length]))}])),gaps:rows.filter(r=>r.gaps.length)},null,2);
 `,ctx);
 if(process.argv[2])fs.writeFileSync(process.argv[2],result+'\n');
