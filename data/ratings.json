@@ -73,6 +73,17 @@
         "source_kind": "primary_critic_publication",
         "observed_on": "2026-11-23",
         "note": "Первичная публикация критика с указанным винтажом."
+      },
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2018,
+        "source_url": "https://www.vivino.com/en/dows-port-late-bottled-vintage-port/w/1361814?year=2018",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка на странице конкретного урожая."
       }
     ],
     "060e3c866e44": [
@@ -97,6 +108,18 @@
         "source_kind": "primary_critic_publication",
         "observed_on": "2026-11-23",
         "note": "Первичная публикация критика с указанным винтажом."
+      },
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2018,
+        "ratings_count": 673,
+        "source_url": "https://www.vivino.com/en/kopke-l-b-v-port/w/76373?year=2018",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка на странице конкретного урожая."
       }
     ],
     "8433dbc66ae6": [
@@ -578,6 +601,18 @@
         "source_kind": "vivino_page",
         "observed_on": "2026-11-22",
         "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      },
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2021,
+        "ratings_count": 255,
+        "source_url": "https://www.vivino.com/nl/bestheim-alsace-grand-cru-schlossberg-riesling/w/3793276?year=2021",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка на странице конкретного урожая."
       }
     ],
     "426bd971c45a": [
@@ -1482,6 +1517,18 @@
         "source_kind": "vivino_public_page",
         "observed_on": "2026-11-22",
         "note": "Общая оценка вина. Для года 2015 подтверждённое значение отсутствует."
+      },
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2015,
+        "ratings_count": 882,
+        "source_url": "https://www.vivino.com/de/tedeschi-capitel-san-rocco-valpolicella-ripasso-superiore/w/1150289?year=2015",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка на странице конкретного урожая."
       }
     ],
     "77b281dd280d": [
@@ -1675,6 +1722,18 @@
         "source_kind": "vivino_page",
         "observed_on": "2026-11-22",
         "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      },
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2023,
+        "ratings_count": 770,
+        "source_url": "https://www.vivino.com/en/bodegas-muga-muga-rosado/w/7490?year=2023",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-24",
+        "note": "Оценка на странице конкретного урожая."
       }
     ],
     "75ea3ee23df9": [
