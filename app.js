@@ -495,13 +495,13 @@ const storageEvidence = {
   "7c836f833ee2": {
     "year": null,
     "url": "https://spb.winestyle.ru/products/Lucien-Albrecht-Brut-Cremant-d-Alsace-AOC.html",
-    "kind": "bottling",
+    "kind": "duration",
     "min": 0,
     "max": 3,
     "scope": "cuvee",
     "source": "Lucien Albrecht",
     "source_url": "https://www.lucien-albrecht.com/wp-content/uploads/2021/03/Cremant-dAlsace-Lucien-Albrecht-Brut-WE_e.pdf",
-    "note": "Техлист: пить сразу или хранить до трёх лет; партия NV не идентифицирована.",
+    "note": "Техлист: пить сразу или хранить до трёх лет; партия NV и начало отсчёта не идентифицированы.",
     "source_year": null
   },
   "9ddeb3cfb445": {
@@ -803,6 +803,66 @@ const storageEvidence = {
     "source_url": "https://vinous.com/wines/mar-de-frades-albarino/2023",
     "note": "",
     "source_year": null
+  },
+  "15b856b072fd": {
+    "year": 2024,
+    "url": "https://spb.winestyle.ru/products/Torres-Vina-Esmeralda-Rose-Catalunya-DO-2024.html",
+    "kind": "duration",
+    "min": 3,
+    "max": 3,
+    "scope": "vintage",
+    "source": "edelrausch",
+    "source_url": "https://www.edelrausch.de/torres-vina-esmeralda-rosado-2024",
+    "note": "Потенциал хранения 3 года по продавцу; не гарантия сохранности.",
+    "source_year": null
+  },
+  "19c9dff352b3": {
+    "year": 2021,
+    "url": "https://spb.winestyle.ru/products/La-Bioca-Sterma-Nebbiolo-d-Alba-DOC-Superiore-2021.html",
+    "kind": "window",
+    "min": 2023,
+    "max": 2028,
+    "scope": "vintage",
+    "source": "Decanter",
+    "source_url": "https://www.decanter.com/wine-reviews/italy/piedmont/la-bioca-sterma-nebbiolo-dalba-superiore-2021-73948/",
+    "note": "",
+    "source_year": null
+  },
+  "4123b553c232": {
+    "year": 2024,
+    "url": "https://spb.winestyle.ru/products/Lapostolle-Le-Rose-2024.html",
+    "kind": "window",
+    "min": null,
+    "max": 2026,
+    "scope": "vintage",
+    "source": "Wine Access",
+    "source_url": "https://www.wineaccess.com/catalog/2024-lapostolle-le-rose-chile_20009344/",
+    "note": "Рекомендация пить сейчас и до 2026; другие оценки могут отличаться.",
+    "source_year": null
+  },
+  "d41d680aacec": {
+    "year": 2022,
+    "url": "https://spb.winestyle.ru/products/Fattoria-Le-Pupille-Poggio-Argentato-IGT-2022.html",
+    "kind": "duration",
+    "min": null,
+    "max": 4,
+    "scope": "other_vintage",
+    "source": "Grandcruwijnen",
+    "source_url": "https://www.grandcruwijnen.nl/en/2022-fattoria-le-pupille-poggio-argentato",
+    "note": "На странице указан урожай 2023 с окном 2024–2027. Четыре года от урожая — только ориентир для 2022.",
+    "source_year": 2023
+  },
+  "160221740978": {
+    "year": 2013,
+    "url": "https://spb.winestyle.ru/products/Bodegas-Ramon-Bilbao-Crianza-Rioja-DOC-2013-1500.html",
+    "kind": "note",
+    "min": null,
+    "max": null,
+    "scope": "other_vintage",
+    "source": "Perfecte Wijn",
+    "source_url": "https://perfectewijn.nl/en/products/ramon-bilbao-crianza-magnum",
+    "note": "Для магнума 2020 в архивной версии страницы указано окно 2026–2034; оценка меняется по версии страницы. Не переношу календарный предел на урожай 2013.",
+    "source_year": 2020
   }
 };
 function agingFor(r,year=new Date().getFullYear()){
@@ -833,7 +893,7 @@ function agingStatus(x){
 }
 function agingMarkup(r){
  const x=agingFor(r),url=cleanUrl(x.source_url);
- return '<section class="wine-detail-section"><h3>Потенциал хранения</h3><p><strong>'+safe(x.range)+'</strong></p><p class="aging-status">'+safe(agingStatus(x))+'</p><p class="detail-note">'+safe(x.scopeText)+(x.source_year?' · источник: урожай '+x.source_year:'')+(x.note?' · '+safe(x.note):'')+(url?' · <a href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">'+safe(x.source||'Источник')+'</a>':'')+'</p></section>';
+ return '<section class="wine-detail-section"><h3>Потенциал хранения</h3><p><strong>'+safe(x.kind==='window'?'Окно потребления: '+x.range:x.range)+'</strong></p><p class="aging-status">'+safe(agingStatus(x))+'</p><p class="detail-note">'+safe(x.scopeText)+(x.source_year?' · источник: урожай '+x.source_year:'')+(x.note?' · '+safe(x.note):'')+(url?' · <a href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">'+safe(x.source||'Источник')+'</a>':'')+'</p></section>';
 }
 function agingPreview(r){
  const x=agingFor(r);

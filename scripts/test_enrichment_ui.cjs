@@ -14,7 +14,7 @@ const sandbox = {
 };
 vm.createContext(sandbox);
 vm.runInContext(original.replace(/\binit\(\);\s*$/, '')+
-  '\nglobalThis.helpers={countryValue,grapeValues,pairingValues,distinct,matched,card,fullWineMarkup,fullDescription,concisePreview,state,metrics,criticRatingsFor,snapshotFor,priceValue,priceBlock,liveOfferFor,isPublished,retailerDetails};',sandbox);
+  '\nglobalThis.helpers={countryValue,grapeValues,pairingValues,distinct,matched,card,fullWineMarkup,fullDescription,concisePreview,agingFor,agingMarkup,storageEvidence,state,metrics,criticRatingsFor,snapshotFor,priceValue,priceBlock,liveOfferFor,isPublished,retailerDetails};',sandbox);
 const h=sandbox.helpers;
 const sample={
  id:'fixture',title:'Test Chardonnay',country:null,grapes:[],type:'Белое',
@@ -323,3 +323,29 @@ assert(!h.fullDescription({...capo,year:2024}).complete);
 assert(h.fullWineMarkup({...capo,year:2024}).includes('сохранённый фрагмент'));
 assert(!h.card(capo).includes('…'));
 console.log('FULL WINE DETAIL PASSED: verified identity, full archive, complete preview and missing-source disclosure');
+
+const visibleAging=catalog.records.filter(h.isPublished);
+assert.equal(Object.keys(h.storageEvidence).length,48);
+for(const [id,row] of Object.entries(h.storageEvidence)){
+ const r=catalogById.get(id);
+ assert(r&&r.year===row.year&&r.stores[0].url===row.url,'Storage evidence identity mismatch: '+id);
+ assert(/^https:\/\//.test(row.source_url));
+}
+for(const r of visibleAging){
+ assert(h.agingFor(r,2026).range);
+ assert(h.fullWineMarkup(r).includes('Потенциал хранения'));
+}
+assert.equal(h.agingFor(catalogById.get('cbc96de28176'),2026).status,'past');
+assert.equal(h.agingFor(catalogById.get('cbc96de28176'),2026).end,2020);
+assert.equal(h.agingFor(catalogById.get('2b85a6978520'),2026).status,'last');
+assert.equal(h.agingFor(catalogById.get('2f1b26d235e4'),2026).end,null);
+assert.equal(h.agingFor(catalogById.get('5b8fb4a0202e'),2026).approximate,true);
+assert.equal(h.agingFor(catalogById.get('5b8fb4a0202e'),2026).status,'past');
+assert.equal(h.agingFor(catalogById.get('056c6f909a24'),2026).end,2024);
+assert.equal(h.agingFor({...catalogById.get('cbc96de28176'),year:2025},2026).status,'unknown');
+assert.equal(h.agingFor(catalogById.get('19c9dff352b3'),2026).end,2028);
+assert.equal(h.agingFor(catalogById.get('4123b553c232'),2026).status,'last');
+assert.equal(h.agingFor(catalogById.get('160221740978'),2026).end,null);
+assert(h.agingMarkup(catalogById.get('19c9dff352b3')).includes('Окно потребления: 2023–2028'));
+assert.equal(h.agingFor(catalogById.get('2f6a9b761e1f'),2026).kind,'unknown');
+console.log('AGING EVIDENCE PASSED: all published cards, identity, exact versus approximate, NV and expiration');
