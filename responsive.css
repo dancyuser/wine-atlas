@@ -57,9 +57,11 @@ input,select{height:clamp(50px,3vw,60px);font-size:calc(16px + var(--reading-boo
 .rating-details .rating-hint,.availability-note{font-size:calc(14px + var(--reading-boost));line-height:1.6}
 .rating-details li span{max-width:65%;min-width:0;overflow-wrap:anywhere}
 .rating-details li strong{min-width:0;overflow-wrap:anywhere}
-.characteristics li{align-items:flex-start}
-.characteristics li span{max-width:30%;min-width:0}
-.characteristics li strong{max-width:68%;text-align:left;font-size:calc(15px + var(--reading-boost));line-height:1.55;overflow-wrap:anywhere;word-break:normal;font-weight:450}
+/* Fixed two-column detail grid: short values start at the same left edge as long text.
+   The generic rating-details flex layout must not push details to the right. */
+.characteristics li{display:grid;grid-template-columns:minmax(112px,30%) minmax(0,1fr);column-gap:clamp(12px,1.4vw,24px);align-items:start;justify-content:initial}
+.characteristics li span{width:auto;min-width:0;max-width:none;color:var(--sub);font-weight:600}
+.characteristics li strong{display:block;width:auto;min-width:0;max-width:none;text-align:left;white-space:normal;font-size:calc(15px + var(--reading-boost));line-height:1.55;overflow-wrap:anywhere;word-break:normal;font-weight:450}
 .card-pairings{font-size:calc(15px + var(--reading-boost));line-height:1.6;margin:16px 0 24px}
 .card-bottom{padding-top:20px;align-items:center;flex-wrap:wrap}
 .price-main{font-size:clamp(30px,1.7vw,40px)}
@@ -129,8 +131,9 @@ input,select{height:clamp(50px,3vw,60px);font-size:calc(16px + var(--reading-boo
  .rating-details li{flex-wrap:wrap;gap:4px}
  .rating-details li span{max-width:100%;width:100%}
  .rating-details li strong{max-width:100%;width:100%}
- .characteristics li span{max-width:100%}
- .characteristics li strong{max-width:100%}
+ /* Narrow screens stack the label above its value to keep descriptions readable. */
+ .characteristics li{grid-template-columns:minmax(0,1fr);row-gap:4px}
+ .characteristics li span,.characteristics li strong{width:auto;max-width:none}
 }
 @media(max-width:380px){
  .filters{grid-template-columns:1fr}
