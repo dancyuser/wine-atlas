@@ -1,0 +1,2049 @@
+{
+  "version": 1,
+  "checked_at": "2026-11-24",
+  "source": "User wishlist, tab 24.11 / Simple wine",
+  "source_count": 31,
+  "reference_year": 2026,
+  "notes": "Exact SKU and vintage from indexed retailer pages. Direct site HTTP 403; current local stock and exact image URLs not verified. Descriptions paraphrased, unknown fields not fabricated.",
+  "records": [
+    {
+      "id": "sw-155172",
+      "title": "Trapiche Chardonnay Oak Cask",
+      "year": 2025,
+      "volume_l": 0.75,
+      "type": "Белое",
+      "country": "Аргентина",
+      "grapes": [
+        "Шардоне"
+      ],
+      "section": "Шардоне",
+      "pairings": [
+        "Курица",
+        "Паста"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/chardonnay_oak_cask_2025_075_155172/",
+          "sku": "155172",
+          "price_rub": 1890,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/chardonnay_oak_cask_2025_075_155172/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Trapiche Chardonnay Oak Cask",
+            "producer": "Trapiche",
+            "country": "Аргентина",
+            "region": "Мендоса",
+            "grapes": "Шардоне",
+            "alcohol_percent": "13 %",
+            "volume_l": "0,75 л",
+            "wine_style": "белое, сухое, выдержанное в дубе",
+            "aging_potential": "5–7 лет",
+            "description_excerpt": "Груша, лимон, бриошь и свежая кислотность. Выдержка 9 месяцев в дубе.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 91,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/chardonnay_oak_cask_2025_075_155172/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 5,
+        "max": 7,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/chardonnay_oak_cask_2025_075_155172/",
+        "year": 2025,
+        "url": "https://simplewine.ru/catalog/product/chardonnay_oak_cask_2025_075_155172/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около 2 месяцев"
+    },
+    {
+      "id": "sw-151672",
+      "title": "Trapiche Koskil Pinot Noir",
+      "year": 2022,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Аргентина",
+      "grapes": [
+        "Пино Нуар"
+      ],
+      "section": "Пино Нуар",
+      "pairings": [
+        "Говядина",
+        "Свинина",
+        "Овощи"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/koskil_pinot_noir_2022_075_151672/",
+          "sku": "151672",
+          "price_rub": 2490,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/koskil_pinot_noir_2022_075_151672/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Trapiche Koskil Pinot Noir",
+            "producer": "Trapiche",
+            "country": "Аргентина",
+            "region": "Патагония",
+            "grapes": "Пино Нуар",
+            "alcohol_percent": "14 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, среднетелое, выдержанное в дубе",
+            "aging_potential": "3–5 лет",
+            "description_excerpt": "Вишня, земляника и цедра апельсина; свежий ягодный вкус и мелкозернистые танины.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 91,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/koskil_pinot_noir_2022_075_151672/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 3,
+        "max": 5,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/koskil_pinot_noir_2022_075_151672/",
+        "year": 2022,
+        "url": "https://simplewine.ru/catalog/product/koskil_pinot_noir_2022_075_151672/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около 2 месяцев"
+    },
+    {
+      "id": "sw-161435",
+      "title": "Nik Weis Urban Riesling",
+      "year": 2025,
+      "volume_l": 0.75,
+      "type": "Белое",
+      "country": "Германия",
+      "grapes": [
+        "Рислинг"
+      ],
+      "section": "Рислинг",
+      "pairings": [
+        "Морепродукты",
+        "Рыба",
+        "Овощи"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/urban_riesling_2025_075_161435/",
+          "sku": "161435",
+          "price_rub": 1590,
+          "regular_price_rub": 2120,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/urban_riesling_2025_075_161435/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Nik Weis Urban Riesling",
+            "producer": "Nik Weis St. Urbans-Hof",
+            "country": "Германия",
+            "region": "Мозель",
+            "grapes": "Рислинг",
+            "alcohol_percent": "10,5 %",
+            "volume_l": "0,75 л",
+            "wine_style": "белое, полусухое, лёгкое, без дубовой выдержки",
+            "aging_potential": "3–5 лет",
+            "description_excerpt": "Цветочные и цитрусовые ароматы, тропические фрукты, живая кислотность и минеральный финал.",
+            "ratings": [
+              {
+                "source": "Wine Spectator",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/urban_riesling_2025_075_161435/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 3,
+        "max": 5,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/urban_riesling_2025_075_161435/",
+        "year": 2025,
+        "url": "https://simplewine.ru/catalog/product/urban_riesling_2025_075_161435/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около недели"
+    },
+    {
+      "id": "sw-159284",
+      "title": "Hacienda Lopez de Haro Crianza Rioja DOCa",
+      "year": 2022,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Испания",
+      "grapes": [
+        "Грасиано",
+        "Гарнача",
+        "Темпранильо"
+      ],
+      "section": "Грасиано",
+      "pairings": [
+        "Закуски, салаты и антипасто",
+        "Говядина",
+        "Выдержанный сыр"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/rioja_crianza_2022_075_159284/",
+          "sku": "159284",
+          "price_rub": 2490,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/rioja_crianza_2022_075_159284/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Hacienda Lopez de Haro Crianza Rioja DOCa",
+            "producer": "Hacienda Lopez de Haro",
+            "country": "Испания",
+            "region": "Риоха",
+            "grapes": "Грасиано, Гарнача, Темпранильо",
+            "alcohol_percent": "13,5 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, пряное, выдержанное в дубе",
+            "aging_potential": "8–10 лет",
+            "description_excerpt": "Ежевика, гвоздика, лакрица и какао; сочные фрукты и зрелые танины.",
+            "ratings": [
+              {
+                "source": "Robert Parker",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/rioja_crianza_2022_075_159284/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 3.8,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/rioja_crianza_2022_075_159284/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 8,
+        "max": 10,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/rioja_crianza_2022_075_159284/",
+        "year": 2022,
+        "url": "https://simplewine.ru/catalog/product/rioja_crianza_2022_075_159284/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около 2 месяцев"
+    },
+    {
+      "id": "sw-155463",
+      "title": "Santa Carolina Gran Reserva Cabernet Sauvignon",
+      "year": 2022,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Чили",
+      "grapes": [
+        "Каберне Совиньон"
+      ],
+      "section": "Каберне Совиньон",
+      "pairings": [
+        "Выдержанный сыр",
+        "Говядина"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/gran_reserva_cabernet_sauvignon_2022_075_155463/",
+          "sku": "155463",
+          "price_rub": 2490,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/gran_reserva_cabernet_sauvignon_2022_075_155463/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Santa Carolina Gran Reserva Cabernet Sauvignon",
+            "producer": "Santa Carolina",
+            "country": "Чили",
+            "region": "Центральная Долина",
+            "grapes": "Каберне Совиньон",
+            "alcohol_percent": "14 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, насыщенное, выдержанное в дубе",
+            "aging_potential": "6–8 лет",
+            "description_excerpt": "Смородина, вишня, кедр и тёмный шоколад; округлая текстура и фруктовый финиш.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/gran_reserva_cabernet_sauvignon_2022_075_155463/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 3.7,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/gran_reserva_cabernet_sauvignon_2022_075_155463/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 6,
+        "max": 8,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/gran_reserva_cabernet_sauvignon_2022_075_155463/",
+        "year": 2022,
+        "url": "https://simplewine.ru/catalog/product/gran_reserva_cabernet_sauvignon_2022_075_155463/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около 2 месяцев"
+    },
+    {
+      "id": "sw-158501",
+      "title": "Chateau Citran Bordeaux Rouge Limited Edition",
+      "year": 2022,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Франция",
+      "grapes": [
+        "Каберне Совиньон",
+        "Мерло"
+      ],
+      "section": "Каберне Совиньон",
+      "pairings": [
+        "Выдержанный сыр",
+        "Говядина",
+        "Свинина"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/le_bordeaux_de_citran_rouge_2022_075_158501/",
+          "sku": "158501",
+          "price_rub": 2790,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/le_bordeaux_de_citran_rouge_2022_075_158501/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Chateau Citran Bordeaux Rouge Limited Edition",
+            "producer": "Chateau Citran",
+            "country": "Франция",
+            "region": "Бордо",
+            "grapes": "Каберне Совиньон, Мерло",
+            "alcohol_percent": "14 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, среднетелое, частично выдержанное в дубе",
+            "aging_potential": "5–7 лет",
+            "description_excerpt": "Смородина, ежевика, сухие травы и специи; бархатистые танины и дубовый финал.",
+            "ratings": [
+              {
+                "source": "Vinous",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/le_bordeaux_de_citran_rouge_2022_075_158501/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "James Suckling",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/le_bordeaux_de_citran_rouge_2022_075_158501/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 5,
+        "max": 7,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/le_bordeaux_de_citran_rouge_2022_075_158501/",
+        "year": 2022,
+        "url": "https://simplewine.ru/catalog/product/le_bordeaux_de_citran_rouge_2022_075_158501/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около 2 месяцев"
+    },
+    {
+      "id": "sw-159818",
+      "title": "Frescobaldi Nipozzano Chianti Rufina Riserva DOCG",
+      "year": 2022,
+      "volume_l": 0.375,
+      "type": "Красное",
+      "country": "Италия",
+      "grapes": [
+        "Каберне Совиньон",
+        "Санджовезе",
+        "Колорино",
+        "Мальвазия Нера",
+        "Мерло"
+      ],
+      "section": "Каберне Совиньон",
+      "pairings": [
+        "Выдержанный сыр"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_0375_159818/",
+          "sku": "159818",
+          "price_rub": 2790,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_0375_159818/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Frescobaldi Nipozzano Chianti Rufina Riserva DOCG",
+            "producer": "Frescobaldi",
+            "country": "Италия",
+            "region": "Тоскана",
+            "grapes": "Каберне Совиньон, Санджовезе, Колорино, Мальвазия Нера, Мерло",
+            "alcohol_percent": "13,5 %",
+            "volume_l": "0,375 л",
+            "wine_style": "красное, сухое, насыщенное, выдержанное в дубе",
+            "aging_potential": "5–10 лет",
+            "description_excerpt": "Вишня, чернослив, ежевика, подлесок и перец; живая кислотность и бархатистые танины.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 92,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_0375_159818/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 4,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_0375_159818/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 5,
+        "max": 10,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_0375_159818/",
+        "year": 2022,
+        "url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2022_0375_159818/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "6 дней"
+    },
+    {
+      "id": "sw-160773",
+      "title": "Santa Carolina Carmenere El Pacto Agreement №2",
+      "year": 2023,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Чили",
+      "grapes": [
+        "Карменер"
+      ],
+      "section": "Карменер",
+      "pairings": [
+        "Азиатская кухня",
+        "Ягненок",
+        "Паста",
+        "Сыр"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/el_pacto_carmenere_2023_075_160773/",
+          "sku": "160773",
+          "price_rub": 2990,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/el_pacto_carmenere_2023_075_160773/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Santa Carolina Carmenere El Pacto Agreement №2",
+            "producer": "Santa Carolina",
+            "country": "Чили",
+            "region": "Центральная Долина",
+            "grapes": "Карменер",
+            "alcohol_percent": "14 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, фруктовое и пряное",
+            "aging_potential": "4–6 лет",
+            "description_excerpt": "Чёрные фрукты, травы и специи; гладкие танины и ягодная кислотность с копчёной паприкой.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 93,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/el_pacto_carmenere_2023_075_160773/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 4,
+        "max": 6,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/el_pacto_carmenere_2023_075_160773/",
+        "year": 2023,
+        "url": "https://simplewine.ru/catalog/product/el_pacto_carmenere_2023_075_160773/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около месяца"
+    },
+    {
+      "id": "sw-149378",
+      "title": "Marques de Riscal Arienzo Crianza Rioja",
+      "year": 2019,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Испания",
+      "grapes": [
+        "Темпранильо",
+        "Грасиано"
+      ],
+      "section": "Темпранильо",
+      "pairings": [
+        "Паста",
+        "Курица",
+        "Свинина",
+        "Овощи"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/arienzo_crianza_2019_075_149378/",
+          "sku": "149378",
+          "price_rub": 2243,
+          "regular_price_rub": 2990,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/arienzo_crianza_2019_075_149378/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Marques de Riscal Arienzo Crianza Rioja",
+            "producer": "Marques de Riscal",
+            "country": "Испания",
+            "region": "Риоха",
+            "grapes": "Темпранильо, Грасиано",
+            "alcohol_percent": "14,5 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, округлое, выдержанное в дубе",
+            "aging_potential": "6–8 лет",
+            "description_excerpt": "Красные ягоды, ваниль, кокос и специи; мягкие танины и пряная вишня в финале.",
+            "ratings": [
+              {
+                "source": "José Peñín",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/arienzo_crianza_2019_075_149378/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 3.9,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/arienzo_crianza_2019_075_149378/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 6,
+        "max": 8,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/arienzo_crianza_2019_075_149378/",
+        "year": 2019,
+        "url": "https://simplewine.ru/catalog/product/arienzo_crianza_2019_075_149378/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около 2 месяцев"
+    },
+    {
+      "id": "sw-160922",
+      "title": "Tasca d'Almerita Tenuta Sallier de La Tour Syrah",
+      "year": 2024,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Италия",
+      "grapes": [
+        "Сира"
+      ],
+      "section": "Сира",
+      "pairings": [
+        "Говядина",
+        "Ягненок",
+        "Выдержанный сыр"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/tenuta_sallier_de_la_tour_syrah_2024_075_160922/",
+          "sku": "160922",
+          "price_rub": 3490,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/tenuta_sallier_de_la_tour_syrah_2024_075_160922/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Tasca d'Almerita Tenuta Sallier de La Tour Syrah",
+            "producer": "Tasca d'Almerita",
+            "country": "Италия",
+            "region": "Сицилия",
+            "grapes": "Сира",
+            "alcohol_percent": "13,5 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, пряное, выдержанное в дубе",
+            "aging_potential": "5–8 лет",
+            "description_excerpt": "Смородина, ежевика, тёмная вишня, гранат и перец с дымным оттенком.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 91,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/tenuta_sallier_de_la_tour_syrah_2024_075_160922/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 5,
+        "max": 8,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/tenuta_sallier_de_la_tour_syrah_2024_075_160922/",
+        "year": 2024,
+        "url": "https://simplewine.ru/catalog/product/tenuta_sallier_de_la_tour_syrah_2024_075_160922/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около 2 месяцев"
+    },
+    {
+      "id": "sw-155695",
+      "title": "Umani Ronchi Casal di Serra Verdicchio",
+      "year": 2024,
+      "volume_l": 0.75,
+      "type": "Белое",
+      "country": "Италия",
+      "grapes": [
+        "Вердиккио"
+      ],
+      "section": "Вердиккио",
+      "pairings": [
+        "Паста",
+        "Морепродукты",
+        "Закуски, салаты и антипасто",
+        "Курица",
+        "Сыр"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/casal_di_serra_2024_075_155695/",
+          "sku": "155695",
+          "price_rub": 3790,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/casal_di_serra_2024_075_155695/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Umani Ronchi Casal di Serra Verdicchio",
+            "producer": "Umani Ronchi",
+            "country": "Италия",
+            "region": "Марке",
+            "grapes": "Вердиккио",
+            "alcohol_percent": "13 %",
+            "volume_l": "0,75 л",
+            "wine_style": "белое, сухое, комплексное, минеральное",
+            "aging_potential": "7–10 лет",
+            "description_excerpt": "Полевые цветы, ананас, дыня, фундук и минеральные тона; округлый вкус с цитрусовым финалом.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 92,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/casal_di_serra_2024_075_155695/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 3.8,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/casal_di_serra_2024_075_155695/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 7,
+        "max": 10,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/casal_di_serra_2024_075_155695/",
+        "year": 2024,
+        "url": "https://simplewine.ru/catalog/product/casal_di_serra_2024_075_155695/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около 2 месяцев"
+    },
+    {
+      "id": "sw-160433",
+      "title": "Errazuriz Max Reserva Pinot Noir",
+      "year": 2023,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Чили",
+      "grapes": [
+        "Пино Нуар"
+      ],
+      "section": "Пино Нуар",
+      "pairings": [
+        "Утка",
+        "Рыба"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/max_reserva_pinot_noir_2023_075_160433/",
+          "sku": "160433",
+          "price_rub": 3790,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/max_reserva_pinot_noir_2023_075_160433/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Errazuriz Max Reserva Pinot Noir",
+            "producer": "Errazuriz",
+            "country": "Чили",
+            "region": "Аконкагуа",
+            "grapes": "Пино Нуар",
+            "alcohol_percent": "13,5 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, комплексное, выдержанное в дубе",
+            "aging_potential": "6–8 лет",
+            "description_excerpt": "Вишня, малина, роза и табачный лист; сочный вкус, тонкие танины и бальзамические оттенки.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/max_reserva_pinot_noir_2023_075_160433/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 6,
+        "max": 8,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/max_reserva_pinot_noir_2023_075_160433/",
+        "year": 2023,
+        "url": "https://simplewine.ru/catalog/product/max_reserva_pinot_noir_2023_075_160433/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "shop_only",
+      "indexed_recency": "около 2 месяцев"
+    },
+    {
+      "id": "sw-161457",
+      "title": "Guigal Cotes du Rhone Rouge",
+      "year": 2023,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Франция",
+      "grapes": [
+        "Мурведр",
+        "Сира",
+        "Гренаш"
+      ],
+      "section": "Мурведр",
+      "pairings": [
+        "Курица",
+        "Говядина",
+        "Утка",
+        "Сыр"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/cotes_du_rhone_rouge_2023_075_161457/",
+          "sku": "161457",
+          "price_rub": 3890,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/cotes_du_rhone_rouge_2023_075_161457/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Guigal Cotes du Rhone Rouge",
+            "producer": "Guigal",
+            "country": "Франция",
+            "region": "Долина Роны",
+            "grapes": "Мурведр, Сира, Гренаш",
+            "alcohol_percent": "15 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, среднетелое, выдержанное в дубе",
+            "aging_potential": "7–10 лет",
+            "description_excerpt": "Малина, ежевика, слива, оливки и пряные травы; бархатистая текстура и перечно-лавандовый финал.",
+            "ratings": [
+              {
+                "source": "Robert Parker",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/cotes_du_rhone_rouge_2023_075_161457/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 3.6,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/cotes_du_rhone_rouge_2023_075_161457/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 7,
+        "max": 10,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/cotes_du_rhone_rouge_2023_075_161457/",
+        "year": 2023,
+        "url": "https://simplewine.ru/catalog/product/cotes_du_rhone_rouge_2023_075_161457/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "shop_only",
+      "indexed_recency": "около 2 месяцев"
+    },
+    {
+      "id": "sw-156848",
+      "title": "Chateau Fan Carney Fronsac",
+      "year": 2022,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Франция",
+      "grapes": [
+        "Мерло"
+      ],
+      "section": "Мерло",
+      "pairings": [
+        "Барбекю",
+        "Красное мясо",
+        "Сыр",
+        "Дичь"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/chateau_fan_carney_2022_075_156848/",
+          "sku": "156848",
+          "price_rub": 3990,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/chateau_fan_carney_2022_075_156848/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Chateau Fan Carney Fronsac",
+            "producer": "Chateau du Gazin",
+            "country": "Франция",
+            "region": "Бордо",
+            "grapes": "Мерло",
+            "alcohol_percent": null,
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, комплексное, выдержанное в дубе",
+            "aging_potential": null,
+            "description_excerpt": "По Carrefour: чёрная слива, вишня, смородина и лёгкие древесные тона; мягкие танины.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/chateau_fan_carney_2022_075_156848/",
+                "observed_on": "2026-11-24"
+              }
+            ],
+            "pairing_source_url": "https://macave.carrefour.fr/produit/chateau-fan-carney-2022-aop-fronsac-vin-rouge"
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 5,
+        "max": 8,
+        "scope": "vintage",
+        "source": "Carrefour Ma Cave",
+        "source_url": "https://macave.carrefour.fr/produit/chateau-fan-carney-2022-aop-fronsac-vin-rouge",
+        "year": 2022,
+        "url": "https://simplewine.ru/catalog/product/chateau_fan_carney_2022_075_156848/",
+        "note": "Fronsac 2022, 75 cl, Merlot: заявлено 5–8 лет. Расчёт от урожая."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около 3 недель"
+    },
+    {
+      "id": "sw-162169",
+      "title": "Frescobaldi Nipozzano Chianti Rufina Riserva DOCG",
+      "year": 2023,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Италия",
+      "grapes": [
+        "Санджовезе",
+        "Каберне Совиньон",
+        "Мерло",
+        "Колорино",
+        "Мальвазия Нера"
+      ],
+      "section": "Санджовезе",
+      "pairings": [
+        "Выдержанный сыр",
+        "Говядина",
+        "Свинина"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2023_075_162169/",
+          "sku": "162169",
+          "price_rub": 3143,
+          "regular_price_rub": 4490,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2023_075_162169/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Frescobaldi Nipozzano Chianti Rufina Riserva DOCG",
+            "producer": "Frescobaldi",
+            "country": "Италия",
+            "region": "Тоскана",
+            "grapes": "Санджовезе, Каберне Совиньон, Мерло, Колорино, Мальвазия Нера",
+            "alcohol_percent": "13,5 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, мощное, выдержанное в дубе",
+            "aging_potential": "10–15 лет",
+            "description_excerpt": "Вишня, ежевичный джем, чернослив и перец; бархатистые танины и живая кислотность.",
+            "ratings": [
+              {
+                "source": "Wine Spectator",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2023_075_162169/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 10,
+        "max": 15,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2023_075_162169/",
+        "year": 2023,
+        "url": "https://simplewine.ru/catalog/product/nipozzano_chianti_rufina_riserva_2023_075_162169/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "shop_only",
+      "indexed_recency": "около 2 месяцев"
+    },
+    {
+      "id": "sw-160731",
+      "title": "Banfi Chianti Classico DOCG",
+      "year": 2024,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Италия",
+      "grapes": [
+        "Санджовезе"
+      ],
+      "section": "Санджовезе",
+      "pairings": [
+        "Говядина",
+        "Свинина",
+        "Паста",
+        "Бургер"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/chianti_classico_2024_075_160731/",
+          "sku": "160731",
+          "price_rub": 4490,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/chianti_classico_2024_075_160731/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Banfi Chianti Classico DOCG",
+            "producer": "Banfi",
+            "country": "Италия",
+            "region": "Тоскана",
+            "grapes": "Санджовезе",
+            "alcohol_percent": "13 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, среднетелое, выдержанное в дубе",
+            "aging_potential": "5–7 лет",
+            "description_excerpt": "Черешня и вишня, специи, лакрица и кожа; сбалансированная структура и ягодный финал.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/chianti_classico_2024_075_160731/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 5,
+        "max": 7,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/chianti_classico_2024_075_160731/",
+        "year": 2024,
+        "url": "https://simplewine.ru/catalog/product/chianti_classico_2024_075_160731/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около 2 месяцев"
+    },
+    {
+      "id": "sw-150458",
+      "title": "Vina Arboleda Cabernet Sauvignon",
+      "year": 2022,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Чили",
+      "grapes": [
+        "Каберне Совиньон"
+      ],
+      "section": "Каберне Совиньон",
+      "pairings": [
+        "Говядина",
+        "Свинина"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/cabernet_sauvignon_2022_075_150458/",
+          "sku": "150458",
+          "price_rub": 4490,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/cabernet_sauvignon_2022_075_150458/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Vina Arboleda Cabernet Sauvignon",
+            "producer": "Vina Arboleda",
+            "country": "Чили",
+            "region": "Аконкагуа",
+            "grapes": "Каберне Совиньон",
+            "alcohol_percent": "13,5 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, округлое, выдержанное в дубе",
+            "aging_potential": "7–10 лет",
+            "description_excerpt": "Чернослив, смородиновый джем, маслины, фиалка и табак; зрелые танины и сочная кислотность.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 92,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/cabernet_sauvignon_2022_075_150458/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 3.6,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/cabernet_sauvignon_2022_075_150458/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 7,
+        "max": 10,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/cabernet_sauvignon_2022_075_150458/",
+        "year": 2022,
+        "url": "https://simplewine.ru/catalog/product/cabernet_sauvignon_2022_075_150458/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около 2 месяцев"
+    },
+    {
+      "id": "sw-159614",
+      "title": "Vina Arboleda Chardonnay",
+      "year": 2022,
+      "volume_l": 0.75,
+      "type": "Белое",
+      "country": "Чили",
+      "grapes": [
+        "Шардоне"
+      ],
+      "section": "Шардоне",
+      "pairings": [
+        "Курица",
+        "Свинина"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/chardonnay_2022_075_159614/",
+          "sku": "159614",
+          "price_rub": 4490,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/chardonnay_2022_075_159614/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Vina Arboleda Chardonnay",
+            "producer": "Vina Arboleda",
+            "country": "Чили",
+            "region": "Аконкагуа",
+            "grapes": "Шардоне",
+            "alcohol_percent": "13,5 %",
+            "volume_l": "0,75 л",
+            "wine_style": "белое, сухое, фруктовое, выдержанное в дубе",
+            "aging_potential": "5–7 лет",
+            "description_excerpt": "Цитрусы, персик, груша и айва с минерально-дымными тонами; сливочная текстура.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 93,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/chardonnay_2022_075_159614/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 5,
+        "max": 7,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/chardonnay_2022_075_159614/",
+        "year": 2022,
+        "url": "https://simplewine.ru/catalog/product/chardonnay_2022_075_159614/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около 2 месяцев"
+    },
+    {
+      "id": "sw-162380",
+      "title": "Chateau du Gazin Canon Fronsac",
+      "year": 2022,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Франция",
+      "grapes": [
+        "Каберне Совиньон",
+        "Каберне Фран",
+        "Мерло"
+      ],
+      "section": "Каберне Совиньон",
+      "pairings": [
+        "Курица",
+        "Говядина",
+        "Сыр",
+        "Десерты и выпечка"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/chateau_du_gazin_2022_075_162380/",
+          "sku": "162380",
+          "price_rub": 4490,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/chateau_du_gazin_2022_075_162380/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Chateau du Gazin Canon Fronsac",
+            "producer": "Chateau du Gazin",
+            "country": "Франция",
+            "region": "Бордо",
+            "grapes": "Каберне Совиньон, Каберне Фран, Мерло",
+            "alcohol_percent": "14,5 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, комплексное, выдержанное в дубе",
+            "aging_potential": "Более 10 лет",
+            "description_excerpt": "Смородина, ежевика, вишня, кофе и кедр; бархатистое полнотелое вино.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 92,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/chateau_du_gazin_2022_075_162380/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "window",
+        "min": 2025,
+        "max": 2027,
+        "scope": "vintage",
+        "source": "The Wine Cellar Insider",
+        "source_url": "https://www.thewinecellarinsider.com/wine-tasting-notes/?country=&producer=Ch%EF%BF%BDteau+Du+Gazin&region=",
+        "year": 2022,
+        "url": "https://simplewine.ru/catalog/product/chateau_du_gazin_2022_075_162380/",
+        "note": "Дегустация 1.03.2025: 2025–2027. Состав купажа у критика отличается от карточки продавца; применён более осторожный срок."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около месяца"
+    },
+    {
+      "id": "sw-162320",
+      "title": "Vina Arboleda Carmenere",
+      "year": 2024,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Чили",
+      "grapes": [
+        "Сира",
+        "Карменер",
+        "Пти Вердо"
+      ],
+      "section": "Сира",
+      "pairings": [
+        "Говядина",
+        "Свинина"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/carmenere_2024_075_162320/",
+          "sku": "162320",
+          "price_rub": 4490,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/carmenere_2024_075_162320/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Vina Arboleda Carmenere",
+            "producer": "Vina Arboleda",
+            "country": "Чили",
+            "region": "Аконкагуа",
+            "grapes": "Сира, Карменер, Пти Вердо",
+            "alcohol_percent": "13,5 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, мощное, выдержанное в дубе",
+            "aging_potential": "7–10 лет",
+            "description_excerpt": "Сушёные ягоды, роза и сладкие специи; округлые танины и минеральный финиш.",
+            "ratings": [
+              {
+                "source": "Robert Parker",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/carmenere_2024_075_162320/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 7,
+        "max": 10,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/carmenere_2024_075_162320/",
+        "year": 2024,
+        "url": "https://simplewine.ru/catalog/product/carmenere_2024_075_162320/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "6 дней"
+    },
+    {
+      "id": "sw-161561",
+      "title": "Luigi Bosca De Sangre Cabernet Franc",
+      "year": 2024,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Аргентина",
+      "grapes": [
+        "Каберне Фран"
+      ],
+      "section": "Каберне Фран",
+      "pairings": [
+        "Закуски, салаты и антипасто",
+        "Говядина",
+        "Ягненок",
+        "Паста"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/de_sangre_cabernet_franc_2024_075_161561/",
+          "sku": "161561",
+          "price_rub": 4490,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/de_sangre_cabernet_franc_2024_075_161561/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Luigi Bosca De Sangre Cabernet Franc",
+            "producer": "Luigi Bosca",
+            "country": "Аргентина",
+            "region": "Мендоса",
+            "grapes": "Каберне Фран",
+            "alcohol_percent": "14,1 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, пряное, выдержанное в дубе",
+            "aging_potential": "8–10 лет",
+            "description_excerpt": "Красные ягоды, лакрица и томатный лист; сочная кислотность и зрелые танины.",
+            "ratings": [
+              {
+                "source": "Vivino",
+                "score": 4.1,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/de_sangre_cabernet_franc_2024_075_161561/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 8,
+        "max": 10,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/de_sangre_cabernet_franc_2024_075_161561/",
+        "year": 2024,
+        "url": "https://simplewine.ru/catalog/product/de_sangre_cabernet_franc_2024_075_161561/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около месяца"
+    },
+    {
+      "id": "sw-161332",
+      "title": "Fattoria del Cerro Vino Nobile di Montepulciano Silineo",
+      "year": 2022,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Италия",
+      "grapes": [
+        "Санджовезе"
+      ],
+      "section": "Санджовезе",
+      "pairings": [
+        "Говядина",
+        "Утка",
+        "Сыр"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/vino_nobile_di_montepulciano_silineo_2022_075_161332/",
+          "sku": "161332",
+          "price_rub": 3493,
+          "regular_price_rub": 4990,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/vino_nobile_di_montepulciano_silineo_2022_075_161332/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Fattoria del Cerro Vino Nobile di Montepulciano Silineo",
+            "producer": "Fattoria del Cerro",
+            "country": "Италия",
+            "region": "Тоскана",
+            "grapes": "Санджовезе",
+            "alcohol_percent": "14 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, насыщенное, выдержанное в дубе",
+            "aging_potential": "8–10 лет",
+            "description_excerpt": "Спелая вишня, табак, чернослив и специи; мягкие танины и дымный финал.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 92,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/vino_nobile_di_montepulciano_silineo_2022_075_161332/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 4,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/vino_nobile_di_montepulciano_silineo_2022_075_161332/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 8,
+        "max": 10,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/vino_nobile_di_montepulciano_silineo_2022_075_161332/",
+        "year": 2022,
+        "url": "https://simplewine.ru/catalog/product/vino_nobile_di_montepulciano_silineo_2022_075_161332/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около 2 месяцев"
+    },
+    {
+      "id": "sw-148708",
+      "title": "Finca Nueva Reserva Rioja",
+      "year": 2015,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Испания",
+      "grapes": [
+        "Темпранильо"
+      ],
+      "section": "Темпранильо",
+      "pairings": [
+        "Дичь",
+        "Баранина",
+        "Выдержанные сыры"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/finca_nueva_reserva_2015_075_148708/",
+          "sku": "148708",
+          "price_rub": 4990,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/finca_nueva_reserva_2015_075_148708/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Finca Nueva Reserva Rioja",
+            "producer": "Finca Nueva",
+            "country": "Испания",
+            "region": "Риоха",
+            "grapes": "Темпранильо",
+            "alcohol_percent": "14,1 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, выдержанное в дубе",
+            "aging_potential": "15–20 лет",
+            "description_excerpt": "Красная смородина, вишня, табак и кожа; плотный вкус и бархатистые танины.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 91,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/finca_nueva_reserva_2015_075_148708/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Robert Parker",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/finca_nueva_reserva_2015_075_148708/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 3.9,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/finca_nueva_reserva_2015_075_148708/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 15,
+        "max": 20,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/finca_nueva_reserva_2015_075_148708/",
+        "year": 2015,
+        "url": "https://simplewine.ru/catalog/product/finca_nueva_reserva_2015_075_148708/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около 2 месяцев"
+    },
+    {
+      "id": "sw-155766",
+      "title": "Hacienda Lopez de Haro Gran Reserva Rioja",
+      "year": 2016,
+      "volume_l": 0.75,
+      "type": "Красное",
+      "country": "Испания",
+      "grapes": [
+        "Грасиано",
+        "Темпранильо"
+      ],
+      "section": "Грасиано",
+      "pairings": [
+        "Закуски, салаты и антипасто",
+        "Говядина",
+        "Выдержанный сыр"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/hacienda_lopez_de_haro_gran_reserva_2016_075_155766/",
+          "sku": "155766",
+          "price_rub": 4990,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/hacienda_lopez_de_haro_gran_reserva_2016_075_155766/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Hacienda Lopez de Haro Gran Reserva Rioja",
+            "producer": "Hacienda Lopez de Haro",
+            "country": "Испания",
+            "region": "Риоха",
+            "grapes": "Грасиано, Темпранильо",
+            "alcohol_percent": "14 %",
+            "volume_l": "0,75 л",
+            "wine_style": "красное, сухое, пряное, выдержанное в дубе",
+            "aging_potential": "13–15 лет",
+            "description_excerpt": "Ягодный джем, сухофрукты, какао и ваниль; бархатистые танины и вишневый финиш.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 92,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/hacienda_lopez_de_haro_gran_reserva_2016_075_155766/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 3.9,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/hacienda_lopez_de_haro_gran_reserva_2016_075_155766/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 13,
+        "max": 15,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/hacienda_lopez_de_haro_gran_reserva_2016_075_155766/",
+        "year": 2016,
+        "url": "https://simplewine.ru/catalog/product/hacienda_lopez_de_haro_gran_reserva_2016_075_155766/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около 2 месяцев"
+    },
+    {
+      "id": "sw-146571",
+      "title": "Oremus Tokaji Mandolas",
+      "year": 2021,
+      "volume_l": 0.75,
+      "type": "Белое",
+      "country": "Венгрия",
+      "grapes": [
+        "Фурминт"
+      ],
+      "section": "Фурминт",
+      "pairings": [
+        "Рыба"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/tokaji_mandolas_2021_075_146571/",
+          "sku": "146571",
+          "price_rub": 4990,
+          "regular_price_rub": null,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/tokaji_mandolas_2021_075_146571/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Oremus Tokaji Mandolas",
+            "producer": "Oremus",
+            "country": "Венгрия",
+            "region": "Токай",
+            "grapes": "Фурминт",
+            "alcohol_percent": "13,5 %",
+            "volume_l": "0,75 л",
+            "wine_style": "белое, сухое, насыщенное, выдержанное в дубе",
+            "aging_potential": "5–7 лет",
+            "description_excerpt": "Цитрусы, спелые фрукты и специи; маслянистая текстура, сбалансированная кислотность и лёгкий дуб.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 92,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/tokaji_mandolas_2021_075_146571/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 4.1,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/tokaji_mandolas_2021_075_146571/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 5,
+        "max": 7,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/tokaji_mandolas_2021_075_146571/",
+        "year": 2021,
+        "url": "https://simplewine.ru/catalog/product/tokaji_mandolas_2021_075_146571/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "около 2 месяцев"
+    },
+    {
+      "id": "sw-161961",
+      "title": "Guigal Tavel",
+      "year": 2024,
+      "volume_l": 0.75,
+      "type": "Розовое",
+      "country": "Франция",
+      "grapes": [
+        "Клерет",
+        "Сира",
+        "Гренаш",
+        "Сенсо"
+      ],
+      "section": "Клерет",
+      "pairings": [
+        "Закуски, салаты и антипасто",
+        "Выдержанный сыр",
+        "Утка"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "note": "Текущие остатки в Санкт-Петербурге не проверены; данные из поискового индекса."
+      },
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "url": "https://simplewine.ru/catalog/product/tavel_2024_075_161961/",
+          "sku": "161961",
+          "price_rub": 3992,
+          "regular_price_rub": 4990,
+          "price_checked_at": "2026-11-24",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/tavel_2024_075_161961/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-24",
+            "full_name": "Guigal Tavel",
+            "producer": "Guigal",
+            "country": "Франция",
+            "region": "Долина Роны",
+            "grapes": "Клерет, Сира, Гренаш, Сенсо",
+            "alcohol_percent": "14 %",
+            "volume_l": "0,75 л",
+            "wine_style": "розовое, сухое, фруктовое, без дубовой выдержки",
+            "aging_potential": "7–10 лет",
+            "description_excerpt": "Красные ягоды, пряности, белый шоколад и табачный лист; полнотелый вкус с гранатовым финишем.",
+            "ratings": [
+              {
+                "source": "Robert Parker",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/tavel_2024_075_161961/",
+                "observed_on": "2026-11-24"
+              },
+              {
+                "source": "Vivino",
+                "score": 3.7,
+                "scale": 5,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/tavel_2024_075_161961/",
+                "observed_on": "2026-11-24"
+              }
+            ]
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 7,
+        "max": 10,
+        "scope": "vintage",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/tavel_2024_075_161961/",
+        "year": 2024,
+        "url": "https://simplewine.ru/catalog/product/tavel_2024_075_161961/",
+        "note": "Потенциал хранения для указанного урожая из индексированной карточки продавца; расчёт от урожая, не окно оптимальной зрелости."
+      },
+      "indexed_stock": "in_stock",
+      "indexed_recency": "4 недели"
+    }
+  ],
+  "excluded": {
+    "155336": {
+      "title": "Warre’s Otima 10 Year Old Tawny Port",
+      "year": null,
+      "reason": "Купаж урожаев; 2017 в URL не подтверждает винтаж.",
+      "url": "https://simplewine.ru/catalog/product/warre_s_otima_10_year_old_tawny_port_2017_05_gift_155336/"
+    },
+    "156614": {
+      "title": "Prosecco Argeo",
+      "year": null,
+      "reason": "Нет года урожая.",
+      "url": "https://simplewine.ru/catalog/product/prosecco_argeo_075_156614/"
+    },
+    "156846": {
+      "title": "Chateau du Gazin Franc 6",
+      "year": 2021,
+      "reason": "Более 10 лет; конечная дата не подтверждена.",
+      "url": "https://simplewine.ru/catalog/product/franc_6_2021_075_156846/"
+    },
+    "157359": {
+      "title": "Chateau Les Rosiers Blanc",
+      "year": 2022,
+      "reason": "3–4 года, верхняя граница 2026.",
+      "end": 2026,
+      "url": "https://simplewine.ru/catalog/product/chateau_les_rosiers_blanc_2022_075_157359/"
+    },
+    "161353": {
+      "title": "Prosecco Superiore Valdobbiadene Quartese Brut",
+      "year": null,
+      "reason": "Нет года урожая.",
+      "url": "https://simplewine.ru/catalog/product/prosecco_superiore_valdobbiadene_quartese_brut_075_161353/"
+    }
+  }
+}

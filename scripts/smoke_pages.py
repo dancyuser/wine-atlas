@@ -19,7 +19,7 @@ from urllib.parse import urljoin, urlsplit, urlunsplit
 ROOT = Path(__file__).resolve().parents[1]
 FILES = (
     "index.html", "app.js", "styles.css", "editorial.css", "responsive.css",
-    "data/wines.json", "data/ratings.json", "data/full-descriptions.json", "data/source-pairings.json", "data/owner-exclusions.json",
+    "data/wines.json", "data/simplewine-catalog.json", "data/ratings.json", "data/full-descriptions.json", "data/source-pairings.json", "data/owner-exclusions.json",
     "data/verified-snapshot-2026-11-23.json",
     "data/researched-photos-2026-11-23.json",
 )
@@ -82,6 +82,8 @@ def check(base):
     print("INTERNAL_FILES_NOT_PUBLISHED")
     catalog = json.loads((ROOT / "data/wines.json").read_text(encoding="utf-8"))
     assert catalog["records"] and isinstance(catalog["records"], list)
+    simple = json.loads((ROOT / "data/simplewine-catalog.json").read_text(encoding="utf-8"))
+    catalog["records"].extend(simple["records"])
     assert "<script src=\"./app.js\" defer></script>" in (ROOT / "index.html").read_text(encoding="utf-8")
     # Chromium exercises real network fetches, initialization and DOM rendering.
     browser = next((shutil.which(x) for x in ("google-chrome-stable", "google-chrome",
@@ -113,6 +115,8 @@ def check(base):
     )
     rendered_ids = set(re.findall(r'data-wine-id="([^"]+)"', dom))
     undated_ids = {r["id"] for r in catalog["records"] if type(r.get("year")) is not int or r["year"] <= 0}
+    if not {r["id"] for r in simple["records"] if r["id"] not in excluded}.issubset(rendered_ids):
+        raise ValueError("SimpleWine card missing from live site")
     if rendered_ids.intersection(set(excluded) | undated_ids):
         raise ValueError("Owner-excluded wine rendered")
     if rendered != expected or expected == 0:

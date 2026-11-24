@@ -18,14 +18,21 @@ function ratingsFor(r){
 }
 // Scores shown by a retailer are third-party critics' publications,
 // NOT customer ratings from that retailer. Vintage attribution is unverified.
-const criticNames=new Set(['wine spectator','wine enthusiast','james suckling','robert parker','jancis robinson','vinous','decanter','tim atkin','falstaff','luca maroni','james halliday']);
-function criticRatingsFor(r){
+const criticNames=new Set(['wine spectator','wine enthusiast','james suckling','robert parker','jancis robinson','vinous','decanter','tim atkin','falstaff','luca maroni','james halliday','josé peñín']);
+function retailerRatingData(r){
  const store=(r.stores||[]).find(s=>s.enrichment_status?.status==='verified'&&s.product_details?.source_url===s.url);
- const rows=store?.product_details?.ratings||[];
+ if(store)return {store,details:store.product_details,seller:'WineStyle'};
+ const sw=r.stores?.[0];
+ if(r.source_catalog==='simplewine'&&sw?.name==='SimpleWine'&&sw.research_details?.source_kind==='indexed_retailer_card'&&sw.research_details.source_url===sw.url)return {store:sw,details:sw.research_details,seller:'SimpleWine'};
+ return {};
+}
+function criticRatingsFor(r){
+ const {store,details,seller}=retailerRatingData(r);
+ const rows=details?.ratings||[];
  const found=new Map();
  for(const x of rows){
   const name=String(x.source||'').trim().toLocaleLowerCase('en');
-  if(!criticNames.has(name)||x.reported_by!=='WineStyle'||x.source_url!==store.url)continue;
+  if(!criticNames.has(name)||x.reported_by!==seller||x.source_url!==store.url)continue;
   if(!Number.isFinite(x.score)||!((x.scale===100&&x.score>0&&x.score<=100)||(x.scale===20&&x.score>0&&x.score<=20)))continue;
   if(!found.has(name))found.set(name,x);
  }
@@ -33,13 +40,13 @@ function criticRatingsFor(r){
 }
 function retailerVivinoFor(r){
  // Fallback only: seller quotes Vivino, but does not prove score vintage.
- const store=(r.stores||[]).find(s=>s.enrichment_status?.status==='verified'&&s.product_details?.source_url===s.url);
- const entry=store?.product_details?.ratings?.find(x=>x?.source==='Vivino'&&x.reported_by==='WineStyle'&&x.source_url===store.url&&x.scale===5&&Number.isFinite(x.score)&&x.score>=1&&x.score<=5);
+ const {store,details,seller}=retailerRatingData(r);
+ const entry=details?.ratings?.find(x=>x?.source==='Vivino'&&x.reported_by===seller&&x.source_url===store.url&&x.scale===5&&Number.isFinite(x.score)&&x.score>=1&&x.score<=5);
  if(!entry)return null;
  return {source:'Vivino',score:entry.score,scale:5,scope:'all_vintages',
   vintage:null,ratings_count:null,source_url:store.url,source_kind:'retailer_reported_vivino',
-  observed_on:entry.observed_on||store.product_details.checked_at,
-  note:'Оценка Vivino указана WineStyle; год рейтинга не подтверждён'};
+  observed_on:entry.observed_on||details.checked_at,reported_by:seller,
+  note:'Оценка Vivino указана '+seller+'; год рейтинга не подтверждён'};
 }
 function metrics(r){
  const all=ratingsFor(r);
@@ -111,7 +118,7 @@ function retailerDetails(r){
  // retailer archive; the overlay fills only fields absent in that archive.
  const candidate=s.research_details;
  const sellerDetails=candidate?.source_url===s.url?.split('#')[0]&&
-  ['primary_retailer_product_description','manual_verified_original_seller','automated_verified_original_seller'].includes(candidate.source_kind);
+  (['primary_retailer_product_description','manual_verified_original_seller','automated_verified_original_seller'].includes(candidate.source_kind)||(r.source_catalog==='simplewine'&&s.name==='SimpleWine'&&candidate.source_kind==='indexed_retailer_card'));
  const producerProfile=candidate?.source_kind==='producer_style_profile'&&candidate.scope==='all_vintages'&&
   candidate.producer&&cleanUrl(candidate.source_url);
  const research=(sellerDetails||producerProfile)?candidate:null;
@@ -179,6 +186,7 @@ function literalPairingValues(note){
  return [...new Set(items.map(s=>s[0].toLocaleUpperCase('ru')+s.slice(1)))];
 }
 function pairingValues(r){
+ if(r.source_catalog==='simplewine')return [...new Set((r.pairings||[]).filter(Boolean))];
  const item=sourcePairing(r);
  if(item)return [...new Set(item.codes)].map(code=>state.pairingLabels[code]);
  const note=retailerDetails(r)?.pairing_notes;
@@ -205,6 +213,7 @@ function priceBlock(r){
   return '<div class="price-main">'+money(live.price_rub)+old+'</div><div class="price-note">Проверка предложения · '+date(live.observed_on)+stock+'</div>';
  }
  if(snap)return '<div class="price-main">'+money(snap.price)+'</div><div class="price-note">Цена в архиве · '+date(state.snapshotDate)+'</div>';
+ if(r.source_catalog==='simplewine'&&store.price_rub!=null)return '<div class="price-main">'+money(store.price_rub)+(store.regular_price_rub>store.price_rub?' <del>'+money(store.regular_price_rub)+'</del>':'')+'</div><div class="price-note">SimpleWine · индекс: '+safe(r.indexed_recency||'дата неизвестна')+' · наличие в СПб не проверено</div>';
  if(store.price_rub!=null&&store.price_checked_at)return '<div class="price-main">'+money(store.price_rub)+(store.regular_price_rub>store.price_rub?' <del>'+money(store.regular_price_rub)+'</del>':'')+'</div><div class="price-note">Архивное наблюдение · '+date(store.price_checked_at)+'</div>';
  if(store.reference_price_rub!=null)return '<div class="price-main">'+money(store.reference_price_rub)+(store.reference_regular_price_rub>store.reference_price_rub?' <del>'+money(store.reference_regular_price_rub)+'</del>':'')+'</div><div class="price-note">Цена на '+date(store.reference_date)+' (архив)</div>';
  return '<div class="price-main">Цена неизвестна</div><div class="price-note">Не проверена</div>';
@@ -219,7 +228,7 @@ function metricRow(m,r){
  const aggregate=m.summary===null?'—':num(m.summary);
  const cv=m.vivino?num(m.vivino.score):'—';
  const unavailable=vivinoUnavailable(r);
- const detail=m.vivino?(m.vivino.source_kind==='retailer_reported_vivino'?'По данным WineStyle · год не проверен':m.vivino.scope==='all_vintages'?'Общая оценка · все урожаи':(m.vivino.ratings_count?fmt.format(m.vivino.ratings_count)+' оценок':'Оценка винтажа')):unavailable.label;
+ const detail=m.vivino?(m.vivino.source_kind==='retailer_reported_vivino'?'По данным '+(m.vivino.reported_by||'WineStyle')+' · год не проверен':m.vivino.scope==='all_vintages'?'Общая оценка · все урожаи':(m.vivino.ratings_count?fmt.format(m.vivino.ratings_count)+' оценок':'Оценка винтажа')):unavailable.label;
  return '<div class="rating-box">'+
  '<div class="rating-cell"><span class="rating-label">Сводный рейтинг</span><div class="rating-value">'+aggregate+'<span class="rating-unit">/ 100</span></div><span class="rating-sub">'+(m.summaryCount?m.summaryCount+' ист. · '+(m.hasUnverifiedVintage?'год оценок может отличаться':'винтаж подтверждён'):'Пока нет оценок')+'</span>'+(m.ranking!==null?'<span class="rating-sub">Индекс сортировки: '+num(m.ranking)+'</span>':'')+'</div>'+
  '<div class="rating-cell"><span class="rating-label">Vivino</span><div class="rating-value">'+cv+'<span class="rating-unit">/ 5</span></div><span class="rating-sub">'+safe(detail)+'</span></div>'+
@@ -233,10 +242,10 @@ function ratingsDetails(r,m){
  }).join('');
  const published=m.critics.map(x=>'<li><span>'+safe(x.source)+'</span><strong>'+num(x.score)+' / '+x.scale+'</strong></li>').join('');
  const un=vivinoUnavailable(r);
- const fallback=!m.vivino?'<p class="rating-hint">'+safe(un.label)+' · <a href="'+safe(un.url)+'" target="_blank" rel="noopener noreferrer">Проверить на Vivino</a></p>':m.vivino.source_kind==='retailer_reported_vivino'?'<p class="rating-hint">Vivino: '+num(m.vivino.score)+'/5, по сведениям WineStyle · винтаж не установлен · <a href="'+safe(cleanUrl(m.vivino.source_url)||'#')+'" target="_blank" rel="noopener noreferrer">Источник</a></p>':'';
+ const fallback=!m.vivino?'<p class="rating-hint">'+safe(un.label)+' · <a href="'+safe(un.url)+'" target="_blank" rel="noopener noreferrer">Проверить на Vivino</a></p>':m.vivino.source_kind==='retailer_reported_vivino'?'<p class="rating-hint">Vivino: '+num(m.vivino.score)+'/5, по сведениям '+safe(m.vivino.reported_by||'WineStyle')+' · винтаж не установлен · <a href="'+safe(cleanUrl(m.vivino.source_url)||'#')+'" target="_blank" rel="noopener noreferrer">Источник</a></p>':'';
  return '<details class="rating-details score-details"><summary>Оценки и источники ('+(m.all.length+m.critics.length)+')</summary>'+
  (independent?'<h4>Независимо подтверждённые</h4><ul>'+independent+'</ul>':'')+
- (published?'<h4>Оценки критиков, опубликованные WineStyle</h4><ul>'+published+'</ul><p class="rating-hint">Не являются оценками покупателей WineStyle. Первоисточники и принадлежность к винтажу отдельно не проверены.</p>':'')+
+ (published?'<h4>Оценки критиков, опубликованные '+safe(retailerRatingData(r).seller||'WineStyle')+'</h4><ul>'+published+'</ul><p class="rating-hint">Не являются оценками покупателей '+safe(retailerRatingData(r).seller||'WineStyle')+'. Первоисточники и принадлежность к винтажу отдельно не проверены.</p>':'')+
  (!independent&&!published?'<p class="rating-hint">Проверенных оценок пока нет.</p>':'')+fallback+'</details>';
 }
 
@@ -274,6 +283,7 @@ function concisePreview(r){
  return style?'Стиль: '+style.replace(/[.!?]+$/,'')+'.':'';
 }
 function stockMarkup(r,d){
+ if(r.source_catalog==='simplewine')return '<p class="availability-note">'+(r.indexed_stock==='in_stock'?'В поисковом индексе: в наличии':r.indexed_stock==='shop_only'?'В поисковом индексе: только в винотеке':'Наличие не подтверждено')+' · остатки в СПб не проверены</p>';
  const observed=r.availability;
  const stockNote=observed?.status==='in_stock'?'Доступно к заказу':observed?.status==='out_of_stock'?'Нет в наличии':
   ['Ожидаем поступление','Нет в наличии'].includes(d?.availability_note)?d.availability_note:
@@ -870,7 +880,7 @@ const storageEvidence = {
   }
 };
 function agingFor(r,year=new Date().getFullYear()){
- const d=retailerDetails(r),store=r.stores?.[0],item=storageEvidence[r.id];
+ const d=retailerDetails(r),store=r.stores?.[0],item=r.source_catalog==='simplewine'?r.storage_evidence:storageEvidence[r.id];
  const overlay=item&&item.url===store?.url&&item.year===(r.year??null)?item:null;
  const raw=String(d?.aging_potential||'').trim();
  let data=overlay;
@@ -910,7 +920,7 @@ function fullWineMarkup(r){
  const source=cleanUrl(d?.source_url);
  const sourceLabel=d?.source_kind==='producer_style_profile'?'производителя (описание линейки, не проверка винтажа)':s?.name||'продавца';
  const paragraphs=description.text.split(/\n+/).map(x=>x.trim()).filter(Boolean).map(x=>'<p>'+safe(x)+'</p>').join('');
- const descMarkup=description.text?'<section class="wine-detail-section wine-description"><h3>Описание</h3>'+paragraphs+(!description.complete?'<p class="detail-note">В архиве доступен только сохранённый фрагмент. '+(source?'<a href="'+safe(source)+'" target="_blank" rel="noopener noreferrer">Полное описание в источнике ↗</a>':'Полный текст не подтверждён.')+'</p>':'')+'</section>':'';
+ const descMarkup=description.text?'<section class="wine-detail-section wine-description"><h3>Описание</h3>'+paragraphs+(!description.complete?'<p class="detail-note">'+(r.source_catalog==='simplewine'?'Краткое изложение доступной индексированной карточки. ':'В архиве доступен только сохранённый фрагмент. ')+(source?'<a href="'+safe(source)+'" target="_blank" rel="noopener noreferrer">Полное описание в источнике ↗</a>':'Полный текст не подтверждён.')+'</p>':'')+'</section>':'';
  return '<div class="wine-detail-hero">'+photoMarkup(r)+'<div class="wine-detail-heading"><span class="type-tag"><i aria-hidden="true" class="type-dot '+typeDot(r.type)+'"></i>'+safe(r.type||'Вино')+'</span>'+
  '<h2 id="wine-dialog-title">'+safe(r.title)+'</h2><p class="card-meta">'+safe(metaText(r))+'</p>'+stockMarkup(r,d)+
  '<div class="wine-detail-price"><div>'+priceBlock(r)+'</div>'+favoriteButton(r.id)+(url?'<a class="store-link" href="'+safe(url)+'" target="_blank" rel="noopener noreferrer">У продавца ↗</a>':'')+'</div></div></div>'+
@@ -920,7 +930,7 @@ function fullWineMarkup(r){
  '<section class="wine-detail-section"><h3>Гастрономические сочетания</h3><p>'+safe(pairingText(r))+'</p>'+ (pairingValues(r).length&&pairingProse(r)?'<p>'+safe(pairingProse(r))+'</p>':'')+'</section>'+
  agingMarkup(r)+descMarkup+
  '<section class="wine-detail-section wine-detail-ratings"><h3>Оценки и источники</h3>'+ratingsDetails(r,m).replace('<details class="rating-details score-details">','<details class="rating-details score-details" open>')+'</section>'+
- (d?'<p class="rating-hint detail-note">Данные '+safe(sourceLabel)+' на '+date(d.checked_at)+(d.supplemental_checked_at?' · Дополнено ручной проверкой '+date(d.supplemental_checked_at):'')+(source?' · <a href="'+safe(source)+'" target="_blank" rel="noopener noreferrer">Источник</a>':'')+'</p>':'');
+ (d?'<p class="rating-hint detail-note">'+(r.source_catalog==='simplewine'?'Поисковый индекс: ':'Данные ')+safe(sourceLabel)+(r.source_catalog==='simplewine'?' · проверено в индексе ':' на ')+date(d.checked_at)+(d.supplemental_checked_at?' · Дополнено ручной проверкой '+date(d.supplemental_checked_at):'')+(source?' · <a href="'+safe(source)+'" target="_blank" rel="noopener noreferrer">Источник</a>':'')+'</p>':'');
 }
 function photoMarkup(r){
  const snap=snapshotFor(r),p=r.photo||{},raw=state.researchedPhotos[r.id];
@@ -1074,10 +1084,23 @@ function setup(){
   dialog.addEventListener('close',()=>{$('bottle-dialog-image')?.removeAttribute('src')});
  }
 }
+function mergeSimpleWine(catalog,extra){
+ if(extra.version!==1||!Array.isArray(extra.records)||!extra.excluded||extra.source_count!==extra.records.length+Object.keys(extra.excluded).length)throw Error('Invalid SimpleWine catalog');
+ const ids=new Set(catalog.records.map(r=>r.id)),urls=new Set(catalog.records.flatMap(r=>(r.stores||[]).map(s=>s.url)));
+ const incoming=extra.records.map(r=>{
+  const s=r.stores?.[0],age=agingFor(r,extra.reference_year);
+  if(r.source_catalog!=='simplewine'||!/^sw-\d+$/.test(r.id)||ids.has(r.id)||urls.has(s?.url)||s?.name!=='SimpleWine'||!/^https:\/\/simplewine\.ru\/catalog\/product\//.test(s.url)||!Number.isInteger(r.year)||!Number.isInteger(age.end)||age.end<=extra.reference_year||age.status==='early')throw Error('Invalid SimpleWine identity or drinking limit: '+r.id);
+  ids.add(r.id);urls.add(s.url);return r;
+ });
+ return {...catalog,records:[...catalog.records,...incoming]};
+}
 async function init(){
  try{
   const response=await fetch('./data/wines.json',{cache:'no-cache'});if(!response.ok)throw Error('Catalog HTTP '+response.status);
-  const catalog=await response.json();if(!Array.isArray(catalog.records))throw Error('Invalid catalog');
+  let catalog=await response.json();if(!Array.isArray(catalog.records))throw Error('Invalid catalog');
+  const simpleResponse=await fetch('./data/simplewine-catalog.json',{cache:'no-cache'});
+  if(!simpleResponse.ok)throw Error('SimpleWine HTTP '+simpleResponse.status);
+  catalog=mergeSimpleWine(catalog,await simpleResponse.json());
   const exclusionResponse=await fetch('./data/owner-exclusions.json',{cache:'no-cache'});
   if(!exclusionResponse.ok)throw Error('Owner exclusions HTTP '+exclusionResponse.status);
   const exclusions=await exclusionResponse.json();
