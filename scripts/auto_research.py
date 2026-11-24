@@ -110,7 +110,7 @@ def retailer_page_links(html, base):
             label = ' '.join((img.get('alt') or '') for img in a.select('img'))
         if re.search(r'/(?:product|products|productDetail)/', p.path, re.I) or (
                 'vinissimo.biz' in p.hostname and '/catalog/wine/' in p.path and re.search(r'-\d+/?$', p.path)):
-            products[url] = label
+            products[url] = label + ' ' + urllib.parse.unquote(p.path).replace('_', ' ').replace('-', ' ')
         elif re.search(r'(?:page|pagen_\d+)=\d+', p.query, re.I):
             pages.append(url)
     return products, list(dict.fromkeys(pages))
@@ -167,6 +167,11 @@ class Fetcher:
                 req = urllib.request.Request(origin + '/robots.txt', headers={'User-Agent': AGENT})
                 with urllib.request.urlopen(req, timeout=20) as res:
                     robots.parse(res.read(500000).decode('utf-8', 'replace').splitlines())
+            except urllib.error.HTTPError as exc:
+                if exc.code in (404, 410):
+                    robots.parse([])
+                else:
+                    raise RuntimeError('robots_unavailable: ' + str(exc)) from exc
             except Exception as exc:
                 raise RuntimeError('robots_unavailable: ' + str(exc)) from exc
             self.robots[origin] = robots
@@ -181,8 +186,8 @@ class Fetcher:
                 final = urllib.parse.urlsplit(res.geturl())
                 if final.hostname != p.hostname:
                     raise RuntimeError('cross_host_redirect')
-                data = res.read(4_000_001)
-                if len(data) > 4_000_000:
+                data = res.read(12_000_001)
+                if len(data) > 12_000_000:
                     raise RuntimeError('response_too_large')
                 return data.decode('utf-8', 'replace')
         finally:
