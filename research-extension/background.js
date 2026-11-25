@@ -70,14 +70,14 @@ async function readJob() {
 const activePhase = job => job.phases.find(phase => phase.lanes.some(lane => lane.cursor < lane.queue.length));
 const words = value => new Set(value.normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase().match(/\p{L}{4,}/gu) || []);
 
-function selectDetails(links, titles) {
+function selectDetails(links, titles, limit) {
   const reviews = titles.map(words);
   const ranked = links.map(link => {
     const tokens = words(link.label + ' ' + new URL(link.url).pathname.replace(/[_-]/g, ' '));
     const score = Math.max(0, ...reviews.map(review => [...review].filter(word => tokens.has(word)).length));
     return {link, score};
   });
-  return ranked.sort((a, b) => b.score - a.score).slice(0, 10).map(row => row.link);
+  return ranked.sort((a, b) => b.score - a.score).slice(0, limit).map(row => row.link);
 }
 
 async function download() {
@@ -92,6 +92,7 @@ async function stepDomain(lane, reviewTitles) {
   const item = lane.queue[lane.cursor];
   const current = lane.current;
   let result;
+  let discovery;
   try {
     if (!current) {
       const tab = await chrome.tabs.create({url: item.url, active: false});
@@ -109,11 +110,15 @@ async function stepDomain(lane, reviewTitles) {
     if (new URL(result.url).origin !== origin) throw Error('redirect_to_other_origin');
     if (item.depth !== undefined && result.status !== 'blocked') {
       const links = result.links.filter(link => new URL(link.url).origin === origin);
-      const details = selectDetails(links.filter(link => link.kind === 'detail'), RETAILERS.has(item.source) ? reviewTitles : []);
-      const next = item.depth < 2 ? links.find(link => link.kind === 'next') : null;
-      const entries = details.map(link => ({source: item.source, url: link.url}));
-      if (next) entries.push({source: item.source, url: next.url, depth: item.depth + 1});
+      const pageLimit = 3;
+      const detailLimit = item.profile === 'rated' ? 25 : item.source === 'Wine Spectator' ? 30 : 10;
       const seen = new Set(lane.queue.map(row => row.url));
+      const detailLinks = links.filter(link => link.kind === 'detail' && !seen.has(link.url));
+      const details = selectDetails(detailLinks, RETAILERS.has(item.source) ? reviewTitles : [], detailLimit);
+      const next = links.find(link => link.kind === 'next' && !seen.has(link.url));
+      const followNext = next && item.depth + 1 < pageLimit;
+      const entries = details.map(link => ({source: item.source, url: link.url}));
+      if (followNext) entries.push({source: item.source, url: next.url, depth: item.depth + 1, profile: item.profile});
       const added = [];
       for (const entry of entries) {
         if (seen.has(entry.url)) continue;
@@ -121,6 +126,10 @@ async function stepDomain(lane, reviewTitles) {
         added.push(entry);
       }
       lane.queue.splice(lane.cursor + 1, 0, ...added);
+      discovery = {page: item.depth + 1, page_limit: pageLimit, detail_limit: detailLimit,
+        visible_details: result.visible_links?.details ?? links.filter(link => link.kind === 'detail').length,
+        eligible_details: detailLinks.length, queued_details: added.filter(row => row.depth === undefined).length,
+        next_found: Boolean(next), next_queued: Boolean(followNext)};
     }
   } catch (error) {
     result = {url: item.url, status: 'error', error: String(error.message || error),
@@ -130,7 +139,7 @@ async function stepDomain(lane, reviewTitles) {
   lane.current = null;
   lane.next_allowed_at = Date.now() + COOLDOWN;
   const row = {...result, links: item.depth === undefined ? [] : result.links.slice(0, 20),
-    source: item.source, requested_url: item.url};
+    source: item.source, requested_url: item.url, ...(discovery ? {discovery} : {})};
   return {changed: true, row, close: current?.tabId};
 }
 
@@ -232,7 +241,7 @@ chrome.runtime.onMessage.addListener((message, sender, respond) => {
     if (message.action === 'start') {
       if (job && job.status !== 'complete') throw Error('Уже есть незавершённое задание; продолжите его.');
       const queue = [
-        ...RECHECK.map(([source, url]) => ({source, url})),
+        ...RECHECK.map(([source, url, profile]) => profile ? {source, url, depth: 0, profile} : {source, url}),
         ...SOURCES.map(([source, url]) => ({source, url, depth: 0}))
       ].filter(item => message.scope === 'critics' ? !RETAILERS.has(item.source) :
         message.scope === 'retailers' ? RETAILERS.has(item.source) : true);

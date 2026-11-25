@@ -24,6 +24,31 @@ class CaptureTests(unittest.TestCase):
         self.assertEqual(result['catalog_updates'], 0)
         self.assertEqual(result['sources']['Falstaff']['blocked'], 1)
 
+    def test_report_separates_store_rating_leads_and_publisher_scores(self):
+        bundle = {'version': 1, 'kind': 'wine_atlas_research_capture', 'observations': [
+            {'source': 'SimpleWine', 'url': 'https://simplewine.ru/catalog/product/example/',
+             'status': 'needs_review', 'title': 'Вино Example Producer 2024',
+             'blocks': {'critic_hints': 'JS 90.0\nWS\n92.0\nVIVINO 4.1\nRP 84.0'}},
+            {'source': 'Wine Spectator', 'url': 'https://top100.winespectator.com/2025/wine/example/',
+             'status': 'needs_review', 'title': 'Example Producer Wine 2024',
+             'observed_at': '2026-11-25T10:00:00Z',
+             'blocks': {'review': 'Score\n92\nPrice\n$25\nTasting Note\nDrink now through 2030.'}},
+            {'source': 'SimpleWine', 'url': 'https://simplewine.ru/catalog/vino/',
+             'status': 'needs_review', 'discovery': {
+                 'visible_details': 35, 'eligible_details': 35, 'queued_details': 25,
+                 'detail_limit': 25, 'next_found': True, 'next_queued': False}},
+        ]}
+        result = report(bundle)
+        self.assertEqual(result['catalog_updates'], 0)
+        self.assertEqual(result['coverage']['Wine Spectator']['parsed_numeric_ratings'], 1)
+        self.assertEqual(result['coverage']['Wine Spectator']['parsed_drinking_windows'], 1)
+        self.assertEqual(result['coverage']['SimpleWine']['catalog_pages_hitting_detail_limit'], 1)
+        self.assertEqual(result['coverage']['SimpleWine']['catalog_pages_hitting_pagination_limit'], 1)
+        hints, = result['retailer_rating_leads']
+        self.assertEqual(hints['year'], 2024)
+        self.assertEqual(hints['status'], 'needs_primary_review')
+        self.assertEqual([x['source'] for x in hints['reported_ratings']], ['James Suckling', 'Wine Spectator'])
+
     def test_reject_bad_capture_url(self):
         with self.assertRaises(ValueError):
             report({'version': 1, 'kind': 'wine_atlas_research_capture', 'observations': [{'url': 'file:///private'}]})

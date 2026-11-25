@@ -27,9 +27,13 @@ function captureWineResearch() {
     if (!excerpts.includes(excerpt)) excerpts.push(excerpt);
   }
   const links = [];
+  const detailURLs = new Set();
+  const nextURLs = new Set();
   // Keep catalogue navigation separate from links to individual bottles.
   const detailPaths = {
     'wineenthusiast.com': /^\/buying-guide\/[^/]+\/?$/,
+    'top100.winespectator.com': /^\/20\d{2}\/wine\/[^/]+\/?$/,
+    'winespectator.com': /^\/wine\/detail\/[^/]+\/?$/,
     'falstaff.com': /^\/[^/]+\/(?:wines|weine)\/[^/]+\/?$/,
     'decanter.com': /^\/wine-reviews\/(?!search\/)(?:[^/]+\/)+[^/]+-\d+\/?$/,
     'spb.winestyle.ru': /^\/products\/[^/]+\.html$/i,
@@ -45,14 +49,24 @@ function captureWineResearch() {
     'vinous.com': /^\/wines\/(?!lists(?:\/|$))[^/]+(?:\/\d{4})?\/?$/,
     'jancisrobinson.com': /^\/tastings\/\d+\/?$/
   };
+  const pagination = u => {
+    const route = u.pathname.match(/\/page(?:\/)?(\d+)(?=\/|$)/i);
+    const query = [...u.searchParams.entries()].find(([key]) => /^(?:page|pagen_\d+)$/i.test(key));
+    return {section: u.pathname.replace(/\/page(?:\/)?\d+(?=\/|$)/i, '').replace(/\/$/, ''),
+      page: Number(route?.[1] || query?.[1] || 1)};
+  };
+  const here = pagination(new URL(url || location.href));
   if (!blocked) for (const a of document.querySelectorAll('a[href]')) {
     const href = cleanUrl(a.href), label = (a.innerText || a.querySelector('img')?.alt || '').trim().slice(0, 200);
     if (!href || !label || href === url || new URL(href).hostname !== location.hostname) continue;
     const p = new URL(href);
-    const next = a.rel === 'next' || (/^(?:next|следующая|weiter)$/i.test(label) && /page|pagen/i.test(p.search));
+    const candidate = pagination(p);
+    const next = a.rel === 'next' || (candidate.section === here.section && candidate.page === here.page + 1);
     const detail = (detailPaths[host] || /\/(?:wines?|weine|wine-reviews|tasting-notes|product(?:s|detail)?|item|detail|reviews?)\/.+/i).test(p.pathname);
-    if ((next || detail) && !links.some(x => x.url === href)) links.push({url: href, label, kind:next?'next':'detail'});
-    if (links.length >= 150) break;
+    const seen = next ? nextURLs : detailURLs;
+    if ((!next && !detail) || seen.has(href)) continue;
+    seen.add(href);
+    if (next || seen.size <= 150) links.push({url: href, label, kind: next ? 'next' : 'detail'});
   }
   // Capture small, attributable blocks used by the offline parser. Read rendered
   // text only: metadata prices on these sites can belong to another region.
@@ -61,6 +75,8 @@ function captureWineResearch() {
     const put = (key, value) => { if (value) blocks[key] = value.trim().slice(0, 7000); };
     if (host === 'wineenthusiast.com' && path.startsWith('/buying-guide/')) {
       put('review', (document.querySelector('#review-wrapper, .review-wrapper, main')?.innerText || body).split(/What Is Blind Tasting\?/i)[0]);
+    } else if (host === 'top100.winespectator.com' && detailPaths[host].test(path)) {
+      put('review', (document.querySelector('main, article')?.innerText || body).split(/\n(?:More Wines|See Also|Related Articles)\b/i)[0]);
     } else if (/falstaff\.com$/.test(host) && /\/(?:wines|weine)\/.+/.test(path)) {
       put('producer', document.querySelector('main h2')?.innerText);
       put('review', (document.querySelector('main')?.innerText || body).split(/Other Vintages|Andere Jahrgänge/i)[0]);
@@ -99,6 +115,14 @@ function captureWineResearch() {
         const section = lines.slice(index);
         const next = section.findIndex(line => /^(?:Похожие товары|С этим покупают|Рекомендуем также|Вам может понравиться)$/i.test(line));
         const product = section.slice(0, next >= 0 ? next : undefined);
+        if (host === 'simplewine.ru') {
+          const experts = product.findIndex(line => /^Рейтинги экспертов$/i.test(line));
+          if (experts >= 0) {
+            const following = product.slice(experts + 1, experts + 25);
+            const end = following.findIndex(line => /^(?:Особенности|Мнение эксперта|Отзывы|Характеристики|Гастрономия)$/i.test(line));
+            put('critic_hints', following.slice(0, end >= 0 ? end : undefined).join('\n'));
+          }
+        }
         const header = lines.slice(0, index);
         const cities = new Set(header.map(line => line.match(/^(?:г\.\s*)?(Санкт-Петербург|Москва)$/i)?.[1]).filter(Boolean));
         // Only an unambiguous city before the product is part of the current selection.
@@ -132,6 +156,7 @@ function captureWineResearch() {
       }
     }
   }
-  return {url, observed_at: new Date().toISOString(), title, status: blocked ? 'blocked' : title ? 'needs_review' : 'no_heading', excerpts, links, blocks};
+  return {url, observed_at: new Date().toISOString(), title, status: blocked ? 'blocked' : title ? 'needs_review' : 'no_heading',
+    excerpts, links, blocks, visible_links: {details: detailURLs.size, next: nextURLs.size}};
 }
 if (typeof module !== 'undefined') module.exports = {captureWineResearch};

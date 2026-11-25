@@ -20,7 +20,8 @@ YEAR = r'(?:19|20)\d{2}'
 CRITICS = {'wineenthusiast.com': 'Wine Enthusiast', 'falstaff.com': 'Falstaff',
            'vinous.com': 'Vinous', 'decanter.com': 'Decanter',
            'results.decanter.com': 'Decanter World Wine Awards', 'iwsc.net': 'IWSC',
-           'jamessuckling.com': 'James Suckling', 'jancisrobinson.com': 'Jancis Robinson'}
+           'jamessuckling.com': 'James Suckling', 'jancisrobinson.com': 'Jancis Robinson',
+           'top100.winespectator.com': 'Wine Spectator'}
 RETAILERS = {
     'winelab.ru': 'Винлаб', 'amwine.ru': 'Ароматный мир', 'vinissimo.biz': 'Vinissimo',
     'sabonis.ru': 'Sabonis', 'spb.winestyle.ru': 'WineStyle', 'simplewine.ru': 'SimpleWine',
@@ -99,6 +100,11 @@ def parse_review(row, host):
     if host == 'wineenthusiast.com':
         mark = re.search(r'\bRating\s+(\d{2,3})(?![\d.])', text, re.I)
         amount = re.search(r'\bPrice\s+\$\s*(\d+(?:\.\d{1,2})?)(?![\d,.])', text, re.I)
+        score = int(mark[1]) if mark else None
+        price, currency = (amount[1], 'USD') if amount else (None, None)
+    elif host == 'top100.winespectator.com':
+        mark = re.search(r'(?mi)^[ \t]*Score\s*:?\s*(\d{2,3})[ \t]*$', text)
+        amount = re.search(r'(?mi)^[ \t]*Price\s*:?\s*\$\s*(\d+(?:\.\d{1,2})?)[ \t]*$', text)
         score = int(mark[1]) if mark else None
         price, currency = (amount[1], 'USD') if amount else (None, None)
     elif host == 'falstaff.com':

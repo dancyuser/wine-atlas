@@ -1,7 +1,7 @@
 'use strict';
 const SOURCES = [
  ['Wine Enthusiast','https://www.wineenthusiast.com/wine-ratings/'],
- ['Wine Spectator','https://www.winespectator.com/'],
+ ['Wine Spectator','https://top100.winespectator.com/archives/'],
  ['Decanter','https://www.decanter.com/wine-reviews/search/'],
  ['Decanter World Wine Awards','https://results.decanter.com/'],
  ['James Suckling','https://www.jamessuckling.com/'],
@@ -21,7 +21,7 @@ const SOURCES = [
  ['Vinissimo','https://vinissimo.biz/catalog/wine/'],
  ['Sabonis','https://sabonis.ru/catalog/vino'],
  ['WineStyle','https://spb.winestyle.ru/wine/'],
- ['SimpleWine','https://simplewine.ru/catalog/vino/'],
+ ['SimpleWine','https://simplewine.ru/catalog/vino/filter/main-to-5000/'],
  ['AST.WINE','https://ast.wine/catalog/vino/'],
  ['Joia','https://joia.ru/'],
  ['Luding','https://spb.luding.ru/collection/wine/']
@@ -31,6 +31,7 @@ const RECHECK = [
  ['Wine Enthusiast','https://www.wineenthusiast.com/buying-guide/bodegas-ramon-bilbao-2022-crianza-tempranillo-rioja/'],
  ['Falstaff','https://www.falstaff.com/nordics/wines/inama-2023-foscarino-soave-classico-doc-1'],
  ['Vinous','https://vinous.com/wines/inama-soave-classico-foscarino/2023'],
+ ['SimpleWine','https://simplewine.ru/catalog/vino/filter/rating_num-from-90-to-95/','rated'],
  ['Sabonis','https://sabonis.ru/productDetail/vino-ramon-bilbao-kriansa-doc-riokha-10'],
  ['Vinissimo','https://vinissimo.biz/catalog/wine/foscarino_soave_classico_doc_inama-1367923/']
 ];

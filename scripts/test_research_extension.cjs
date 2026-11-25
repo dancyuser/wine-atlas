@@ -24,9 +24,27 @@ assert.deepEqual(captureWineResearch().links.map(l=>l.url),['https://spb.winesty
 global.location={href:'https://www.decanter.com/wine-reviews/search/page/1/',hostname:'www.decanter.com'};
 global.document.querySelectorAll=()=>[
   link('https://www.decanter.com/wine/wine-regions/','Wine Regions'),
+  link('https://www.decanter.com/wine-reviews/search/page/2/','2'),
   link('https://www.decanter.com/wine-reviews/spain/rioja/review-92636/','Review')
 ];
-assert.deepEqual(captureWineResearch().links.map(l=>l.url),['https://www.decanter.com/wine-reviews/spain/rioja/review-92636/']);
+assert.deepEqual(captureWineResearch().links.map(l=>l.kind),['next','detail']);
+global.location={href:'https://top100.winespectator.com/archives/',hostname:'top100.winespectator.com'};
+global.document.querySelectorAll=()=>[
+  link('https://top100.winespectator.com/2025/restaurant-awards/example/','Restaurant'),
+  link('https://top100.winespectator.com/2025/wine/example/','Wine')
+];
+assert.deepEqual(captureWineResearch().links.map(l=>l.label),['Wine']);
+global.location={href:'https://simplewine.ru/catalog/vino/filter/rating_num-from-90-to-95/',hostname:'simplewine.ru'};
+global.document.querySelectorAll=()=>[
+  link('https://simplewine.ru/catalog/vino/filter/rating_num-from-90-to-95/page2/','2'),
+  link('https://simplewine.ru/catalog/vino/filter/main-to-5000/page2/','Another filter')
+];
+assert.deepEqual(captureWineResearch().links.map(l=>l.kind),['next']);
+global.location={href:'https://simplewine.ru/catalog/product/example/',hostname:'simplewine.ru'};
+global.document={querySelector:s=>s==='h1'?{innerText:'Вино Example 2024'}:null,querySelectorAll:()=>[],
+ body:{innerText:'Санкт-Петербург\nВино Example 2024\n'+Array.from({length:86},(_,i)=>'Line '+i).join('\n')+
+  '\nРейтинги экспертов\nWS 90.0\nJS 92.0\nОсобенности\nRP 99.0'}};
+assert.equal(captureWineResearch().blocks.critic_hints,'WS 90.0\nJS 92.0');
 
 const astUrl = 'https://ast.wine/catalog/product/example_25031/';
 global.location={href:astUrl,hostname:'ast.wine'};
