@@ -48,6 +48,22 @@ function retailerVivinoFor(r){
   observed_on:entry.observed_on||details.checked_at,reported_by:seller,
   note:'Оценка Vivino указана '+seller+'; год рейтинга не подтверждён'};
 }
+// Review counts inform the uncertainty of ONE Vivino source, not the number of critics.
+const VIVINO_CONFIDENCE_K=100;
+const VIVINO_SCOPE_WEIGHT={vintage:1,all_vintages:0.6,all_vintages_proxy:0.35,unknown:0};
+function vivinoConfidence(vivino,all){
+ const countOf=x=>Number.isSafeInteger(x?.ratings_count)&&x.ratings_count>0?x.ratings_count:null;
+ if(!vivino)return {count:null,scope:'unknown',confidence:0,adjusted:null};
+ let count=countOf(vivino),scope=count===null?'unknown':vivino.scope;
+ // A cuvee-wide count may inform confidence in an exact rating lacking a
+ // count, but must never be presented as a count of this vintage.
+ if(count===null&&vivino.scope==='vintage'){
+  const other=all.find(x=>x.source==='Vivino'&&x.scope==='all_vintages'&&countOf(x)!==null);
+  if(other){count=countOf(other);scope='all_vintages_proxy';}
+ }
+ const confidence=count===null?0:(VIVINO_SCOPE_WEIGHT[scope]||0)*count/(count+VIVINO_CONFIDENCE_K);
+ return {count,scope,confidence,adjusted:vivino.score-0.6*(1-confidence)};
+}
 function metrics(r){
  const all=ratingsFor(r);
  const exact=all.filter(x=>x.scope==='vintage');
@@ -68,8 +84,11 @@ function metrics(r){
  const summary=scaled.length?Math.round(10*scaled.reduce((a,b)=>a+b,0)/scaled.length)/10:null;
  const exactScaled=items.map(x=>x.scale===5?50+10*x.score:x.score);
  const index=exactScaled.length?Math.round(10*exactScaled.reduce((a,b)=>a+b,0)/exactScaled.length)/10:null;
- const ranking=summary===null?null:Math.round(10*(summary-8/Math.sqrt(chosen.size)))/10;
- return {all,exact:items,index,summary,ranking,summaryCount:chosen.size,critics,vivino,count:items.length,hasUnverifiedVintage:critics.length>0||(vivino?.scope==='all_vintages')};
+ const vivinoSupport=vivinoConfidence(vivino,all);
+ // Preserve the displayed mean; apply a conservative uncertainty deduction.
+ const reviewPenalty=vivino?6*(1-vivinoSupport.confidence)/chosen.size:0;
+ const ranking=summary===null?null:Math.round(10*(summary-8/Math.sqrt(chosen.size)-reviewPenalty))/10;
+ return {all,exact:items,index,summary,ranking,summaryCount:chosen.size,critics,vivino,vivinoSupport,count:items.length,hasUnverifiedVintage:critics.length>0||(vivino?.scope==='all_vintages')};
 }
 
 function snapshotFor(r){
@@ -228,7 +247,9 @@ function metricRow(m,r){
  const aggregate=m.summary===null?'—':num(m.summary);
  const cv=m.vivino?num(m.vivino.score):'—';
  const unavailable=vivinoUnavailable(r);
- const detail=m.vivino?(m.vivino.source_kind==='retailer_reported_vivino'?'По данным '+(m.vivino.reported_by||'WineStyle')+' · год не проверен':m.vivino.scope==='all_vintages'?'Общая оценка · все урожаи':(m.vivino.ratings_count?fmt.format(m.vivino.ratings_count)+' оценок':'Оценка винтажа')):unavailable.label;
+ const support=m.vivinoSupport;
+ const countLabel=support.count===null?'число оценок неизвестно':fmt.format(support.count)+' оценок'+(support.scope==='all_vintages_proxy'?' (все урожаи, не винтаж)':support.scope==='all_vintages'?' за все урожаи':'');
+ const detail=m.vivino?(m.vivino.source_kind==='retailer_reported_vivino'?'По данным '+(m.vivino.reported_by||'WineStyle')+' · год не проверен':m.vivino.scope==='all_vintages'?'Общая оценка · все урожаи':'Оценка винтажа')+' · '+countLabel:unavailable.label;
  return '<div class="rating-box">'+
  '<div class="rating-cell"><span class="rating-label">Сводный рейтинг</span><div class="rating-value">'+aggregate+'<span class="rating-unit">/ 100</span></div><span class="rating-sub">'+(m.summaryCount?m.summaryCount+' ист. · '+(m.hasUnverifiedVintage?'год оценок может отличаться':'винтаж подтверждён'):'Пока нет оценок')+'</span>'+(m.ranking!==null?'<span class="rating-sub">Индекс сортировки: '+num(m.ranking)+'</span>':'')+'</div>'+
  '<div class="rating-cell"><span class="rating-label">Vivino</span><div class="rating-value">'+cv+'<span class="rating-unit">/ 5</span></div><span class="rating-sub">'+safe(detail)+'</span></div>'+
@@ -984,7 +1005,8 @@ function matched(r){
 function sortRecords(rs,mode){
  if(mode==='rating-desc')rs.sort((a,b)=>(metrics(b).ranking??-Infinity)-(metrics(a).ranking??-Infinity)||
   (metrics(b).summary??-Infinity)-(metrics(a).summary??-Infinity)||a.title.localeCompare(b.title,'ru'));
- else if(mode==='vivino-desc')rs.sort((a,b)=>(metrics(b).vivino?.score??-1)-(metrics(a).vivino?.score??-1));
+ else if(mode==='vivino-desc')rs.sort((a,b)=>(metrics(b).vivinoSupport.adjusted??-Infinity)-(metrics(a).vivinoSupport.adjusted??-Infinity)||
+  (metrics(b).vivino?.score??-1)-(metrics(a).vivino?.score??-1)||a.title.localeCompare(b.title,'ru'));
  else if(mode==='alpha')rs.sort((a,b)=>a.title.localeCompare(b.title,'ru'));
  else if(mode==='price-asc')rs.sort((a,b)=>(priceValue(a)??Infinity)-(priceValue(b)??Infinity));
  else if(mode==='price-desc')rs.sort((a,b)=>(priceValue(b)??-1)-(priceValue(a)??-1));

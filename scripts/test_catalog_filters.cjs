@@ -93,4 +93,36 @@ assert.equal(metrics(one).summary,metrics(many).summary);
 assert(metrics(many).ranking>metrics(one).ranking,'More independent critics need higher confidence ranking');
 assert.deepEqual([...sortRecords([one,many],'rating-desc').map(x=>x.id)],['many','one']);
 assert(metrics(one).ranking<metrics(one).summary,'No bonus should inflate a low-confidence mean');
+
+const low=wine('low',1000,'рыба'),high=wine('high',1000,'рыба'),overall=wine('overall',1000,'рыба'),unknownCount=wine('unknown-count',1000,'рыба'),proxy=wine('proxy',1000,'рыба');
+const vv=(score,scope,count)=>({source:'Vivino',score,scale:5,scope,vintage:scope==='vintage'?2023:null,ratings_count:count,source_url:'https://www.vivino.com/wines/123'});
+state.ratingRecords.low=[vv(4.1,'vintage',10)];
+state.ratingRecords.high=[vv(4.1,'vintage',1000)];
+state.ratingRecords.overall=[vv(4.1,'all_vintages',1000)];
+state.ratingRecords['unknown-count']=[vv(4.1,'vintage',null)];
+state.ratingRecords.proxy=[vv(4.1,'vintage',null),vv(4.3,'all_vintages',1000)];
+assert.equal(metrics(low).summary,metrics(high).summary);
+assert(metrics(high).ranking>metrics(low).ranking);
+assert(metrics(high).ranking>metrics(overall).ranking);
+assert(metrics(overall).ranking>metrics(unknownCount).ranking);
+assert(metrics(proxy).ranking>metrics(unknownCount).ranking);
+assert.equal(metrics(proxy).vivino.score,4.1);
+assert.equal(metrics(proxy).summaryCount,1);
+assert.equal(metrics(proxy).vivinoSupport.scope,'all_vintages_proxy');
+assert.equal(metrics(proxy).vivinoSupport.count,1000);
+assert.equal(metrics(unknownCount).vivinoSupport.count,null);
+assert.deepEqual([...sortRecords([low,high,overall,unknownCount,proxy],'rating-desc').map(x=>x.id)],['high','overall','proxy','low','unknown-count']);
+assert.deepEqual([...sortRecords([low,high,overall,unknownCount,proxy],'vivino-desc').map(x=>x.id)],['high','overall','proxy','low','unknown-count']);
+// A large sample cannot make a markedly worse wine win just by popularity.
+state.ratingRecords.low=[vv(4.8,'vintage',10)];
+state.ratingRecords.high=[vv(3.5,'vintage',1000000)];
+assert(metrics(low).ranking>metrics(high).ranking);
+state.ratingRecords.low=[vv(4.1,'all_vintages',10)];
+state.ratingRecords.high=[vv(4.1,'all_vintages',1000)];
+assert(metrics(high).ranking>metrics(low).ranking);
+assert(metrics(high).vivinoSupport.confidence<0.6);
+state.ratingRecords.high=[vv(4.1,'vintage',1000),vv(4.6,'all_vintages',999999)];
+assert.equal(metrics(high).vivinoSupport.count,1000);
+assert.equal(metrics(high).summaryCount,1);
+
 console.log('CATALOG FILTERS PASSED: price boundaries, missing prices, taxonomy and ranking');
