@@ -4,7 +4,7 @@
   "source": "User wishlist, tab 24.11 / Simple wine",
   "source_count": 38,
   "reference_year": 2026,
-  "notes": "Exact SKU and vintage from indexed retailer pages. Direct site HTTP 403; current local stock and exact image URLs not verified. Descriptions paraphrased, unknown fields not fabricated. 24.11: добавлены изображения кюве или точного SKU с отдельной маркировкой области, часть дегустационных характеристик структурирована из сохранённых описаний; наличие в СПб не проверено. Дегустационные характеристики и сведения о производстве дополнены по карточкам соответствующих SKU; описание является редакционным пересказом, а не дословной копией. 24.11: 5 SKU скрыты (2 закончились в СПб, 3 перенаправлены на другой год); 20 оставшихся SKU подтверждены снимком в СПб, 1 снимок относится к Москве. Luigi Bosca дополнены две оценки импортера из точного снимка.; повторная пакетная выгрузка 8 точных SKU в Санкт-Петербурге: 7 новых, 1 обновлён. В архиве сохраняются ранее скрытые SKU.",
+  "notes": "Exact SKU and vintage from indexed retailer pages. Direct site HTTP 403; current local stock and exact image URLs not verified. Descriptions paraphrased, unknown fields not fabricated. 24.11: добавлены изображения кюве или точного SKU с отдельной маркировкой области, часть дегустационных характеристик структурирована из сохранённых описаний; наличие в СПб не проверено. Дегустационные характеристики и сведения о производстве дополнены по карточкам соответствующих SKU; описание является редакционным пересказом, а не дословной копией. 24.11: 5 SKU скрыты (2 закончились в СПб, 3 перенаправлены на другой год); 20 оставшихся SKU подтверждены снимком в СПб, 1 снимок относится к Москве. Luigi Bosca дополнены две оценки импортера из точного снимка.; повторная пакетная выгрузка 8 точных SKU в Санкт-Петербурге: 7 новых, 1 обновлён. В архиве сохраняются ранее скрытые SKU.; возвращены два невинтажных Ruggeri, наличие именно в СПб требует подтверждения.",
   "records": [
     {
       "id": "sw-155172",
@@ -3236,6 +3236,174 @@
         "matched_year": 2023,
         "note": "Изображение основной галереи точного SKU из HTML-снимка; доступность CDN отдельно не проверена."
       }
+    },
+    {
+      "id": "sw-156614",
+      "title": "Ruggeri Argeo Prosecco Brut",
+      "year": null,
+      "type": "Игристое",
+      "country": "Италия",
+      "volume_l": 0.75,
+      "grapes": [
+        "Глера"
+      ],
+      "section": "Игристое",
+      "pairings": [
+        "Закуски, салаты и антипасто",
+        "Морепродукты"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "observed_on": "2026-11-25",
+        "source_url": "https://simplewine.ru/catalog/product/prosecco_argeo_075_156614/",
+        "evidence": "Самовывоз с завтрашнего дня из любой винотеки; город выдачи не подтверждён."
+      },
+      "indexed_stock": "in_stock",
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "sku": "156614",
+          "url": "https://simplewine.ru/catalog/product/prosecco_argeo_075_156614/",
+          "price_rub": 1794,
+          "regular_price_rub": 2990,
+          "price_checked_at": "2026-11-25",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/prosecco_argeo_075_156614/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-25",
+            "full_name": "Ruggeri Argeo Prosecco Brut",
+            "producer": "Ruggeri",
+            "country": "Италия",
+            "region": "Венето, Prosecco DOC Treviso",
+            "grapes": "Глера",
+            "alcohol_percent": "11 %",
+            "volume_l": "0,75 л",
+            "wine_style": "белое, игристое, брют",
+            "aging_potential": "2–3 года",
+            "description_excerpt": "Светло-соломенное игристое с зеленоватым оттенком и тонкими пузырьками. В аромате тропические фрукты и жёлтое яблоко, вкус сбалансированный, с длительным фруктовым финишем.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/prosecco_argeo_075_156614/",
+                "observed_on": "2026-11-25"
+              }
+            ],
+            "body": "Тело 3/5 (SimpleWine)",
+            "color": "Светло-соломенный с зеленоватым оттенком",
+            "aroma": "Тропические фрукты, жёлтое яблоко",
+            "taste": "Деликатное, сбалансированное, длительный фруктовый финиш"
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 2,
+        "max": 3,
+        "scope": "cuvee",
+        "year": null,
+        "url": "https://simplewine.ru/catalog/product/prosecco_argeo_075_156614/",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/prosecco_argeo_075_156614/",
+        "note": "NV: дата розлива/партия не установлена, календарный предел не вычисляется."
+      },
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/634/6343b54487362293273fb454164efd40.png?fmt=webp",
+        "source_url": "https://simplewine.ru/catalog/product/prosecco_argeo_075_156614/",
+        "source": "SimpleWine",
+        "scope": "cuvee",
+        "verified_on": "2026-11-25",
+        "note": "Фото точного артикула без года."
+      }
+    },
+    {
+      "id": "sw-161353",
+      "title": "Ruggeri Quartese Valdobbiadene Prosecco Superiore Brut",
+      "year": null,
+      "type": "Игристое",
+      "country": "Италия",
+      "volume_l": 0.75,
+      "grapes": [
+        "Глера"
+      ],
+      "section": "Игристое",
+      "pairings": [
+        "Рыба",
+        "Морепродукты"
+      ],
+      "source_catalog": "simplewine",
+      "wishlist": true,
+      "availability": {
+        "status": "unknown",
+        "observed_on": "2026-11-25",
+        "source_url": "https://simplewine.ru/catalog/product/prosecco_superiore_valdobbiadene_quartese_brut_075_161353/",
+        "evidence": "Самовывоз с завтрашнего дня из любой винотеки; город выдачи не подтверждён."
+      },
+      "indexed_stock": "in_stock",
+      "stores": [
+        {
+          "name": "SimpleWine",
+          "sku": "161353",
+          "url": "https://simplewine.ru/catalog/product/prosecco_superiore_valdobbiadene_quartese_brut_075_161353/",
+          "price_rub": 2594,
+          "regular_price_rub": 3990,
+          "price_checked_at": "2026-11-25",
+          "price_source_kind": "indexed_retailer_card",
+          "research_details": {
+            "source_url": "https://simplewine.ru/catalog/product/prosecco_superiore_valdobbiadene_quartese_brut_075_161353/",
+            "source_kind": "indexed_retailer_card",
+            "checked_at": "2026-11-25",
+            "full_name": "Ruggeri Quartese Valdobbiadene Prosecco Superiore Brut",
+            "producer": "Ruggeri",
+            "country": "Италия",
+            "region": "Венето, Prosecco Valdobbiadene Superiore DOCG",
+            "grapes": "Глера",
+            "alcohol_percent": "11 %",
+            "volume_l": "0,75 л",
+            "wine_style": "белое, игристое, брют",
+            "aging_potential": "2–3 года",
+            "description_excerpt": "Светло-соломенное игристое с устойчивыми пузырьками. Аромат зелёного яблока, миндаля и белых цветов; сбалансированный вкус с мягким длительным финалом.",
+            "ratings": [
+              {
+                "source": "James Suckling",
+                "score": 90,
+                "scale": 100,
+                "reported_by": "SimpleWine",
+                "source_url": "https://simplewine.ru/catalog/product/prosecco_superiore_valdobbiadene_quartese_brut_075_161353/",
+                "observed_on": "2026-11-25"
+              }
+            ],
+            "body": "Тело 3/5 (SimpleWine)",
+            "color": "Светло-соломенный с зеленоватым оттенком",
+            "aroma": "Зелёное яблоко, миндаль, белые цветы",
+            "taste": "Комплексное, элегантное, сбалансированное, мягкий длительный финал"
+          }
+        }
+      ],
+      "storage_evidence": {
+        "kind": "duration",
+        "min": 2,
+        "max": 3,
+        "scope": "cuvee",
+        "year": null,
+        "url": "https://simplewine.ru/catalog/product/prosecco_superiore_valdobbiadene_quartese_brut_075_161353/",
+        "source": "SimpleWine",
+        "source_url": "https://simplewine.ru/catalog/product/prosecco_superiore_valdobbiadene_quartese_brut_075_161353/",
+        "note": "NV: дата розлива/партия не установлена, календарный предел не вычисляется."
+      },
+      "photo": {
+        "url": "https://static.simplewine.ru/upload/iblock/3da/3da632653de8cadcde8cc262a9b4c86b.png?fmt=webp",
+        "source_url": "https://simplewine.ru/catalog/product/prosecco_superiore_valdobbiadene_quartese_brut_075_161353/",
+        "source": "SimpleWine",
+        "scope": "cuvee",
+        "verified_on": "2026-11-25",
+        "note": "Фото точного артикула без года."
+      }
     }
   ],
   "excluded": {
@@ -3244,12 +3412,6 @@
       "year": null,
       "reason": "Купаж урожаев; 2017 в URL не подтверждает винтаж.",
       "url": "https://simplewine.ru/catalog/product/warre_s_otima_10_year_old_tawny_port_2017_05_gift_155336/"
-    },
-    "156614": {
-      "title": "Prosecco Argeo",
-      "year": null,
-      "reason": "Нет года урожая.",
-      "url": "https://simplewine.ru/catalog/product/prosecco_argeo_075_156614/"
     },
     "156846": {
       "title": "Chateau du Gazin Franc 6",
@@ -3263,12 +3425,6 @@
       "reason": "3–4 года, верхняя граница 2026.",
       "end": 2026,
       "url": "https://simplewine.ru/catalog/product/chateau_les_rosiers_blanc_2022_075_157359/"
-    },
-    "161353": {
-      "title": "Prosecco Superiore Valdobbiadene Quartese Brut",
-      "year": null,
-      "reason": "Нет года урожая.",
-      "url": "https://simplewine.ru/catalog/product/prosecco_superiore_valdobbiadene_quartese_brut_075_161353/"
     }
   }
 }

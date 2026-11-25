@@ -325,7 +325,7 @@ for(const [id,d] of Object.entries(fullData.records)){
   assert.equal(r.stores[0].sku,d.sku);
   assert(d.sources.some(s=>s.scope==='vintage'&&s.year===r.year&&/^https:\/\//.test(s.url)));
   assert(d.description.split('\n\n').length>=4);
- }else assert(d.description.startsWith(r.stores[0].product_details.description_excerpt),'Description must preserve archived exact-product prefix');
+ }else if(d.source_kind==='retailer_nv_editorial_profile'){assert(r.year===null&&r.type==='Игристое');assert(d.sources.some(s=>s.url===r.stores[0].url));assert(d.description.split('\n\n').length>=4);}else assert(d.description.startsWith(r.stores[0].product_details.description_excerpt),'Description must preserve archived exact-product prefix');
 }
 assert.equal(snapshotDescriptions,32);
 for(const id of ['sw-161961','sw-162169','sw-162320'])assert.equal(fullData.records[id].source_kind,'verified_alternative_vintage_sources','Redirected SKU requires alternate vintage evidence');
@@ -375,33 +375,34 @@ console.log('AGING EVIDENCE PASSED: all published cards, identity, exact versus 
 
 const ownerExclusions=JSON.parse(fs.readFileSync(path.join(__dirname,'..','data','owner-exclusions.json'),'utf8'));
 h.state.ownerExcluded=new Set(Object.keys(ownerExclusions.records));
-assert.equal(h.state.ownerExcluded.size,50);
+assert.equal(h.state.ownerExcluded.size,45);
 for(const [id,row] of Object.entries(ownerExclusions.records)){
  const wine=catalogById.get(id);assert(wine&&wine.year===row.year&&wine.stores[0].url===row.url);
  const age=h.agingFor(wine,2026);
  assert.equal(row.reason,wine.year==null?'no_vintage':age.kind==='unknown'?'unknown':age.status==='last'?'last':age.status==='past'?(age.approximate?'risk':'past'):age.end===null?'no_calendar':'unexpected');
  assert.equal(h.isPublished(wine),false);
 }
-assert.equal(catalog.records.filter(h.isPublished).length,60);
+assert.equal(catalog.records.filter(h.isPublished).length,65);
 for(const wine of catalog.records.filter(h.isPublished)){
  const age=h.agingFor(wine,2026);
- assert(Number.isInteger(age.end)&&age.end>2026,'Missing or expired calendar limit: '+wine.id);
+ assert(wine.year===null?age.status==='nv':Number.isInteger(age.end)&&age.end>2026,'Missing or expired calendar limit: '+wine.id);
 }
-assert(catalog.records.filter(h.isPublished).every(r=>Number.isInteger(r.year)&&r.year>0));
-assert.equal(catalog.records.filter(r=>r.year==null&&ownerExclusions.records[r.id]?.reason==='no_vintage').length,7);
+assert(catalog.records.filter(h.isPublished).every(r=>Number.isInteger(r.year)&&r.year>0||r.year===null&&r.type==='Игристое'));
+assert.equal(catalog.records.filter(r=>h.isPublished(r)&&r.year===null).length,5);
+assert.equal(catalog.records.filter(r=>r.year==null&&ownerExclusions.records[r.id]?.reason==='no_vintage').length,2);
 assert(!h.isPublished({...sample,id:'new-nv',year:null}));
-console.log('OWNER SELECTION PASSED: 50 exact exclusions, 60 vintage wines with calendar limits remaining');
+console.log('OWNER SELECTION PASSED: 45 exact exclusions, 65 available wines including 5 undated sparkling');
 
 const simple=JSON.parse(fs.readFileSync(path.join(__dirname,'..','data','simplewine-catalog.json'),'utf8'));
 const simpleMerged=h.mergeSimpleWine(catalog,simple);
 assert.equal(simple.source_count,38);
-assert.equal(simple.records.length,33);
-assert.equal(Object.keys(simple.excluded).length,5);
-assert.equal(simpleMerged.records.filter(h.isPublished).length,88);
-assert.equal(new Set(simple.records.map(r=>r.stores[0].url)).size,33);
+assert.equal(simple.records.length,35);
+assert.equal(Object.keys(simple.excluded).length,3);
+assert.equal(simpleMerged.records.filter(h.isPublished).length,95);
+assert.equal(new Set(simple.records.map(r=>r.stores[0].url)).size,35);
 for(const r of simple.records){
  const age=h.agingFor(r,2026);
- assert(Number.isInteger(age.end)&&age.end>2026);
+ assert(r.year===null?age.status==='nv':Number.isInteger(age.end)&&age.end>2026);
  const hidden=['sw-156848','sw-162380','sw-162169','sw-162320','sw-161961'].includes(r.id);
  assert.equal(h.isPublished(r),!hidden);
  assert(h.fullWineMarkup(r).includes('Потенциал хранения'));
@@ -421,6 +422,6 @@ assert(h.fullWineMarkup(sw['sw-159818']).includes('Оценки критиков
 assert(h.fullWineMarkup(sw['sw-159818']).includes('по сведениям SimpleWine'));
 assert(!h.fullWineMarkup(sw['sw-159818']).includes('по сведениям WineStyle'));
 assert.throws(()=>h.mergeSimpleWine(catalog,{...simple,records:[...simple.records,simple.records[0]],source_count:39}));
-assert.equal(simple.records.filter(h.isPublished).length,28);
+assert.equal(simple.records.filter(h.isPublished).length,30);
 assert.equal(h.metrics(sw['sw-161561']).critics.length,2);
-console.log('SIMPLEWINE PASSED: 38 reviewed, 33 archived, 5 hidden, 88 public cards');
+console.log('SIMPLEWINE PASSED: 38 reviewed, 35 archived, 5 hidden, 95 public cards');

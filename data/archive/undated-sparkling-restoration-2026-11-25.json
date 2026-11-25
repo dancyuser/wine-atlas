@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "observed_on": "2026-11-25",
+  "restored_original": {
+    "46622f963eaa": {
+      "title": "Montelliana Prosecco Treviso DOC Extra Dry",
+      "year": null,
+      "url": "https://spb.winestyle.ru/products/Montelliana-Prosecco-Treviso-DOC-Extra-Dry.html",
+      "reason": "no_vintage"
+    },
+    "f97f2ccc67b8": {
+      "title": "Grande Alberone Moscato Spumante Dolce",
+      "year": null,
+      "url": "https://spb.winestyle.ru/products/Grande-Alberone-Moscato-Spumante-Dolce.html",
+      "reason": "no_vintage"
+    },
+    "5427ef8902aa": {
+      "title": "Pitars Prosecco DOC",
+      "year": null,
+      "url": "https://spb.winestyle.ru/products/Pitars-Prosecco-DOC.html",
+      "reason": "no_vintage"
+    },
+    "e8609b5a3c65": {
+      "title": "Dulong Crémant de Bordeaux Brut AOP",
+      "year": null,
+      "url": "https://spb.winestyle.ru/products/Dulong-Cremant-de-Bordeaux-AOP-Brut.html",
+      "reason": "no_vintage"
+    },
+    "7c836f833ee2": {
+      "title": "Lucien Albrecht Crémant d’Alsace Brut AOC",
+      "year": null,
+      "url": "https://spb.winestyle.ru/products/Lucien-Albrecht-Brut-Cremant-d-Alsace-AOC.html",
+      "reason": "no_vintage"
+    }
+  },
+  "restored_simplewine": [
+    {
+      "sku": "156614",
+      "title": "Ruggeri Argeo Prosecco Brut",
+      "nv_evidence": "https://www.iwsc.net/results/detail/146213/argeo-brut-nv",
+      "stock": "city unverified",
+      "price_rub": 1794,
+      "ratings_count": 3668
+    },
+    {
+      "sku": "161353",
+      "title": "Ruggeri Quartese Valdobbiadene Prosecco Superiore Brut",
+      "nv_evidence": "https://www.iwsc.net/results/detail/94396/ruggeri-quartese-valdobbiadene-prosecco-superiore-docg-brut-nv",
+      "stock": "city unverified",
+      "price_rub": 2594,
+      "ratings_count": 3137
+    }
+  ],
+  "kept_excluded": [
+    {
+      "id": "ffffabb4d41a",
+      "reason": "archived out of stock 2026-11-23"
+    },
+    {
+      "id": "209d7a6d9fe0",
+      "reason": "not sparkling"
+    }
+  ],
+  "policy": "No invented vintage or expiration date. Exception for reviewed sparkling identities only."
+}

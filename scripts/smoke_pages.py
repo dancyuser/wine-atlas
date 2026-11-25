@@ -69,7 +69,7 @@ def published_ids(records, excluded):
     return {
         r["id"] for r in records
         if r["id"] not in excluded
-        and type(r.get("year")) is int and r["year"] > 0
+        and (type(r.get("year")) is int and r["year"] > 0 or r.get("year") is None and r.get("type") == "Игристое" and r["id"] in ["46622f963eaa","f97f2ccc67b8","5427ef8902aa","e8609b5a3c65","7c836f833ee2","sw-156614","sw-161353"])
         and r.get("availability", {}).get("status") != "out_of_stock"
         and r.get("publication_review", {}).get("status") != "excluded"
         and not (

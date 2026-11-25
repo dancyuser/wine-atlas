@@ -12,7 +12,7 @@ const result=vm.runInContext(app+`
  const rows=visible.map(r=>{const m=metrics(r),d=retailerDetails(r)||{},a=agingFor(r),s=r.stores[0],live=liveOfferFor(r),photo=photoMarkup(r);
  const gaps=[];
  if(!m.vivino)gaps.push('vivino');
- if(m.vivino?.scope!=='vintage')gaps.push('vivino_vintage');
+ if(!isUndatedSparkling(r)&&m.vivino?.scope!=='vintage')gaps.push('vivino_vintage');
  if(m.vivino&&!m.vivino.ratings_count)gaps.push('vivino_count');
  if(m.vivino?.source_kind==='retailer_reported_vivino')gaps.push('vivino_primary');
  if(!photo.includes('<img '))gaps.push('photo');
@@ -21,12 +21,12 @@ const result=vm.runInContext(app+`
  if(!s.regular_price_rub&&!live?.regular_price_rub)gaps.push('explicit_regular_price');
  if(!m.critics.length&&!m.exact.some(x=>x.source!=='Vivino'))gaps.push('critic');
  if(!m.exact.some(x=>x.source!=='Vivino'&&!['producer_reported_critic','retailer_reported_critic'].includes(x.source_kind)))gaps.push('independent_critic');
- if(a.end==null)gaps.push('calendar_limit');
+ if(a.end==null&&!isUndatedSparkling(r))gaps.push('calendar_limit');
  else if(a.status==='past'||a.status==='last'||a.status==='early')gaps.push('calendar_outside');
  if(a.approximate)gaps.push('approximate_storage');
  if(r.source_catalog==='simplewine'?(r.availability?.city!=='Санкт-Петербург'||r.availability?.status!=='in_stock'):(!r.availability?.status&&!live&&r.id!=='c9f63273980c'))gaps.push('local_stock_unverified');
  if(!fullDescription(r).complete)gaps.push('full_description');
- for(const k of ['year','country','volume_l','grapes'])if(!r[k]||Array.isArray(r[k])&&!r[k].length)gaps.push(k);
+ for(const k of ['year','country','volume_l','grapes'])if(!(k==='year'&&isUndatedSparkling(r))&&(!r[k]||Array.isArray(r[k])&&!r[k].length))gaps.push(k);
  for(const k of ['color','wine_style','body','alcohol_percent','aroma','taste','region','producer'])if(!d[k])gaps.push(k);
  if(!pairingValues(r).length)gaps.push('pairings');
  return {id:r.id,title:r.title,year:r.year,group:r.source_catalog||'original',source_url:s.url,gaps};});

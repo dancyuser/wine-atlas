@@ -920,9 +920,12 @@
         "scope": "all_vintages",
         "vintage": null,
         "source_url": "https://www.vivino.com/en/cantina-montelliana-prosecco-treviso-extra-dry/w/1173171",
-        "source_kind": "vivino_page",
-        "observed_on": "2026-11-22",
-        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-25",
+        "note": "Общая или NV-выборка кюве; не оценка определённого года.",
+        "ratings_count": 3278,
+        "ratings_count_source_url": "https://www.vivino.com/en/cantina-montelliana-prosecco-treviso-extra-dry/w/1173171",
+        "ratings_count_observed_on": "2026-11-25"
       }
     ],
     "f97f2ccc67b8": [
@@ -930,13 +933,15 @@
         "source": "Vivino",
         "score": 4.1,
         "scale": 5,
-        "scope": "vintage",
+        "scope": "all_vintages",
         "vintage": null,
         "ratings_count": 1240,
         "source_url": "https://www.vivino.com/en/grande-alberone-moscato-spumante-dolce/w/7819939",
-        "source_kind": "vivino_web_search_verified",
-        "observed_on": "2026-11-22",
-        "note": "Проверено по странице/результатам Vivino, актуальность и численность отзывов могут изменяться."
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-25",
+        "note": "Общая или NV-выборка кюве; не оценка определённого года.",
+        "ratings_count_source_url": "https://www.vivino.com/en/grande-alberone-moscato-spumante-dolce/w/7819939",
+        "ratings_count_observed_on": "2026-11-25"
       }
     ],
     "e8609b5a3c65": [
@@ -947,9 +952,12 @@
         "scope": "all_vintages",
         "vintage": null,
         "source_url": "https://www.vivino.com/en/dulong-cremant-de-bordeaux-brut/w/1136132",
-        "source_kind": "vivino_site_verified",
-        "observed_on": "2026-11-22",
-        "note": "Vivino: общая оценка вина; рейтинг выбранного урожая не подтвержден, поэтому исключен из сводного индекса."
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-25",
+        "note": "Общая или NV-выборка кюве; не оценка определённого года.",
+        "ratings_count": 4998,
+        "ratings_count_source_url": "https://www.vivino.com/en/dulong-cremant-de-bordeaux-brut/w/1136132",
+        "ratings_count_observed_on": "2026-11-25"
       }
     ],
     "7c836f833ee2": [
@@ -959,10 +967,13 @@
         "scale": 5,
         "scope": "all_vintages",
         "vintage": null,
-        "source_url": "https://www.vivino.com/en/explore?search_term=Lucien%20Albrecht%20Cremant%20d%27Alsace%20Brut",
-        "source_kind": "vivino_page",
-        "observed_on": "2026-11-22",
-        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+        "source_url": "https://www.vivino.com/en/lucien-albrecht-cremant-d-alsace-brut/w/87815",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-25",
+        "note": "Общая или NV-выборка кюве; не оценка определённого года.",
+        "ratings_count": 3331,
+        "ratings_count_source_url": "https://www.vivino.com/en/lucien-albrecht-cremant-d-alsace-brut/w/87815",
+        "ratings_count_observed_on": "2026-11-25"
       }
     ],
     "caa3a12da960": [
@@ -2129,7 +2140,10 @@
         "source_url": "https://www.vivino.com/en/pitars-prosecco-brut/w/2179084",
         "source_kind": "vivino_primary_alias_verified",
         "observed_on": "2026-11-23",
-        "note": "WineStyle product H1 explicitly says Pitars Prosecco DOC Brut, so match non-vintage Pitars Prosecco Brut; the bare wishlist title had omitted Brut."
+        "note": "Общая или NV-выборка кюве; не оценка определённого года.",
+        "ratings_count": 774,
+        "ratings_count_source_url": "https://www.vivino.com/en/pitars-prosecco-brut/w/2179084",
+        "ratings_count_observed_on": "2026-11-25"
       }
     ],
     "0d2ee38169c9": [
@@ -2700,6 +2714,34 @@
         "ratings_count_source_url": "https://www.vivino.com/uk/leyda-neblina-vineyard-riesling/w/1553715",
         "ratings_count_observed_on": "2026-11-25",
         "ratings_count_evidence": "3,7 955 оцінок"
+      }
+    ],
+    "sw-156614": [
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "ratings_count": 3668,
+        "source_url": "https://www.vivino.com/en/ruggeri-argeo-prosecco-brut/w/1641856",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-25",
+        "note": "Общая/NV выборка кюве."
+      }
+    ],
+    "sw-161353": [
+      {
+        "source": "Vivino",
+        "score": 4,
+        "scale": 5,
+        "scope": "all_vintages",
+        "vintage": null,
+        "ratings_count": 3137,
+        "source_url": "https://www.vivino.com/en/ruggeri-quartese-valdobbiadene-prosecco-superiore-brut/w/1184265",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-25",
+        "note": "Общая/NV выборка кюве."
       }
     ]
   },

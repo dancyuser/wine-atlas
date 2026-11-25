@@ -1159,6 +1159,50 @@
       "description_kind": "editorial_full_product_profile",
       "source_archive_sha256": "df14689a143e8b988ebecccf91f4058ebfb184a60b070fbfed4e49eb4d534f8e",
       "html_sha256": "b370f71c4059431d3987c0b42518962f0d4c986d051ddacebe916877307e588b"
+    },
+    "sw-156614": {
+      "url": "https://simplewine.ru/catalog/product/prosecco_argeo_075_156614/",
+      "year": null,
+      "volume_l": 0.75,
+      "sku": "156614",
+      "description": "Светло-соломенное игристое с зеленоватым оттенком и тонкими пузырьками. В аромате тропические фрукты и жёлтое яблоко, вкус сбалансированный, с длительным фруктовым финишем.\n\nВиноградники расположены на доломитовых возвышенностях северной части провинции Тревизо. Сбор во второй половине сентября.\n\nМетод Шарма: первичная ферментация при 18 °C, вторичная при 12–14 °C в стали. Краткая выдержка в нейтральных ёмкостях.\n\nАперитив, лёгкие блюда из морепродуктов; подача при 7–10 °C.",
+      "observed_on": "2026-11-25",
+      "source_kind": "retailer_nv_editorial_profile",
+      "description_kind": "editorial_full_product_profile",
+      "sources": [
+        {
+          "url": "https://simplewine.ru/catalog/product/prosecco_argeo_075_156614/",
+          "scope": "cuvee",
+          "kind": "retailer"
+        },
+        {
+          "url": "https://www.iwsc.net/results/detail/146213/argeo-brut-nv",
+          "scope": "cuvee",
+          "kind": "competition"
+        }
+      ]
+    },
+    "sw-161353": {
+      "url": "https://simplewine.ru/catalog/product/prosecco_superiore_valdobbiadene_quartese_brut_075_161353/",
+      "year": null,
+      "volume_l": 0.75,
+      "sku": "161353",
+      "description": "Светло-соломенное игристое с устойчивыми пузырьками. Аромат зелёного яблока, миндаля и белых цветов; сбалансированный вкус с мягким длительным финалом.\n\nВиноградники в зоне Вальдоббьядене, на доломитовых холмах северной части провинции Тревизо.\n\nКраткая выдержка в нейтральных ёмкостях.\n\nАперитив, лёгкие блюда из рыбы и моллюсков; подача при 5–7 °C.",
+      "observed_on": "2026-11-25",
+      "source_kind": "retailer_nv_editorial_profile",
+      "description_kind": "editorial_full_product_profile",
+      "sources": [
+        {
+          "url": "https://simplewine.ru/catalog/product/prosecco_superiore_valdobbiadene_quartese_brut_075_161353/",
+          "scope": "cuvee",
+          "kind": "retailer"
+        },
+        {
+          "url": "https://www.iwsc.net/results/detail/94396/ruggeri-quartese-valdobbiadene-prosecco-superiore-docg-brut-nv",
+          "scope": "cuvee",
+          "kind": "competition"
+        }
+      ]
     }
   }
 }

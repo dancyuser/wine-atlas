@@ -115,8 +115,11 @@ function liveOfferFor(r){
  }catch{return null}
  return offer;
 }
+// Explicit exception for previously reviewed sparkling wines without a declared harvest year.
+const undatedSparklingIds=new Set(["46622f963eaa","f97f2ccc67b8","5427ef8902aa","e8609b5a3c65","7c836f833ee2","sw-156614","sw-161353"]);
+function isUndatedSparkling(r){return r.year===null&&r.type==='Игристое'&&undatedSparklingIds.has(r.id);}
 function isPublished(r){
- if(!Number.isInteger(r.year)||r.year<=0||state.ownerExcluded.has(r.id))return false;
+ if(((!Number.isInteger(r.year)||r.year<=0)&&!isUndatedSparkling(r))||state.ownerExcluded.has(r.id))return false;
  if(r.availability?.status==='out_of_stock'||r.publication_review?.status==='excluded')return false;
  const live=liveOfferFor(r);
  return !(live?.availability==='out_of_stock'&&live.observed_on>=(r.availability?.observed_on||'0000-00-00'));
@@ -249,7 +252,7 @@ function metricRow(m,r){
  const unavailable=vivinoUnavailable(r);
  const support=m.vivinoSupport;
  const countLabel=support.count===null?'число оценок неизвестно':fmt.format(support.count)+' оценок'+(support.scope==='all_vintages_proxy'?' (все урожаи, не винтаж)':support.scope==='all_vintages'?' за все урожаи':'');
- const detail=m.vivino?(m.vivino.source_kind==='retailer_reported_vivino'?'По данным '+(m.vivino.reported_by||'WineStyle')+' · год не проверен':m.vivino.scope==='all_vintages'?'Общая оценка · все урожаи':'Оценка винтажа')+' · '+countLabel:unavailable.label;
+ const detail=m.vivino?(m.vivino.source_kind==='retailer_reported_vivino'?'По данным '+(m.vivino.reported_by||'WineStyle')+' · год не проверен':m.vivino.scope==='all_vintages'?(isUndatedSparkling(r)?'Оценка NV / кюве':'Общая оценка · все урожаи'):'Оценка винтажа')+' · '+countLabel:unavailable.label;
  return '<div class="rating-box">'+
  '<div class="rating-cell"><span class="rating-label">Сводный рейтинг</span><div class="rating-value">'+aggregate+'<span class="rating-unit">/ 100</span></div><span class="rating-sub">'+(m.summaryCount?m.summaryCount+' ист. · '+(m.hasUnverifiedVintage?'год оценок может отличаться':'винтаж подтверждён'):'Пока нет оценок')+'</span>'+(m.ranking!==null?'<span class="rating-sub">Индекс сортировки: '+num(m.ranking)+'</span>':'')+'</div>'+
  '<div class="rating-cell"><span class="rating-label">Vivino</span><div class="rating-value">'+cv+'<span class="rating-unit">/ 5</span></div><span class="rating-sub">'+safe(detail)+'</span></div>'+
@@ -318,7 +321,7 @@ function stockMarkup(r,d){
  return stockNote?'<p class="availability-note">'+safe(stockNote)+' · '+date(stockDate)+'</p>':'';
 }
 function metaText(r){
- return [countryValue(r),...grapeValues(r),r.year?String(r.year):null,r.volume_l?(r.volume_l<1?Math.round(r.volume_l*1000)+' мл':fmt.format(r.volume_l)+' л'):null].filter(Boolean).join(' · ');
+ return [countryValue(r),...grapeValues(r),r.year?String(r.year):isUndatedSparkling(r)?'Без года (NV)':null,r.volume_l?(r.volume_l<1?Math.round(r.volume_l*1000)+' мл':fmt.format(r.volume_l)+' л'):null].filter(Boolean).join(' · ');
 }
 function pairingText(r){
  const pairs=pairingValues(r);return pairs.length?'Подходит к: '+pairs.join(', '):pairingProse(r)||'Сочетания не указаны';
@@ -906,6 +909,7 @@ const storageEvidence = {
   }
 };
 function agingFor(r,year=new Date().getFullYear()){
+ if(isUndatedSparkling(r)){const d=retailerDetails(r),s=r.stores?.[0];return {kind:'nv',scope:'cuvee',end:null,start:null,status:'nv',approximate:false,scopeText:'Без указанного урожая',range:d?.aging_potential||'Календарный срок не установлен',source:s?.name,source_url:s?.url,note:'Год урожая и дата розлива не указаны. Предпочтительно употреблять свежим; проверять партию перед длительным хранением.'};}
  const d=retailerDetails(r),store=r.stores?.[0],item=r.source_catalog==='simplewine'?r.storage_evidence:storageEvidence[r.id];
  const overlay=item&&item.url===store?.url&&item.year===(r.year??null)?item:null;
  const raw=String(d?.aging_potential||'').trim();
@@ -925,6 +929,7 @@ function agingFor(r,year=new Date().getFullYear()){
  return {...data,end,start,status,approximate,scopeText,range};
 }
 function agingStatus(x){
+ if(x.status==='nv')return 'NV · календарный предел зависит от партии';
  if(x.status==='past')return (x.approximate?'Возможно за пределами ориентира':'За пределами указанного срока')+' · до '+x.end;
  if(x.status==='early')return 'До начала окна потребления · с '+x.start;
  if(x.status==='last')return (x.approximate?'Последний расчётный год':'Последний указанный год')+' · '+x.end;
@@ -993,7 +998,7 @@ function withinPriceRange(r,minimum,maximum){
 function matched(r){
  if(!isPublished(r))return false;
  const term=$('search').value.trim().toLocaleLowerCase('ru');
- if(term&&!([r.title,countryValue(r),r.section,String(r.year||''),...grapeValues(r),...pairingValues(r)].join(' ').toLocaleLowerCase('ru').includes(term)))return false;
+ if(term&&!([r.title,countryValue(r),r.section,String(r.year|| (isUndatedSparkling(r)?'NV без года невинтажное':'')),...grapeValues(r),...pairingValues(r)].join(' ').toLocaleLowerCase('ru').includes(term)))return false;
  if($('country').value&&countryValue(r)!==$('country').value)return false;
  if($('grape').value&&!grapeValues(r).includes($('grape').value))return false;
  if($('type').value&&r.type!==$('type').value)return false;
@@ -1116,7 +1121,7 @@ function mergeSimpleWine(catalog,extra){
  const ids=new Set(catalog.records.map(r=>r.id)),urls=new Set(catalog.records.flatMap(r=>(r.stores||[]).map(s=>s.url)));
  const incoming=extra.records.map(r=>{
   const s=r.stores?.[0],age=agingFor(r,extra.reference_year);
-  if(r.source_catalog!=='simplewine'||!/^sw-\d+$/.test(r.id)||ids.has(r.id)||urls.has(s?.url)||s?.name!=='SimpleWine'||!/^https:\/\/simplewine\.ru\/catalog\/product\//.test(s.url)||!Number.isInteger(r.year)||!Number.isInteger(age.end)||age.end<=extra.reference_year||age.status==='early')throw Error('Invalid SimpleWine identity or drinking limit: '+r.id);
+  if(r.source_catalog!=='simplewine'||!/^sw-\d+$/.test(r.id)||ids.has(r.id)||urls.has(s?.url)||s?.name!=='SimpleWine'||!/^https:\/\/simplewine\.ru\/catalog\/product\//.test(s.url)||(!isUndatedSparkling(r)&&(!Number.isInteger(r.year)||!Number.isInteger(age.end)||age.end<=extra.reference_year||age.status==='early')))throw Error('Invalid SimpleWine identity or drinking limit: '+r.id);
   ids.add(r.id);urls.add(s.url);return r;
  });
  return {...catalog,records:[...catalog.records,...incoming]};
