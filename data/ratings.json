@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "generated_at": "2026-11-24",
-  "notes": "Оценки профессиональных критиков перенесены из пользовательской подборки от 14.11.2026. Оценки Vivino вносились адресно по публичным страницам и индексируемым результатам. scope=vintage - рейтинг подтверждён для конкретного года; scope=all_vintages - показатель вина в целом, в индекс конкретного винтажа не включается. Общее значение - эвристический индекс, не рейтинг Vivino. Для вин без доказуемой числовой оценки после проверки добавлен `unrated` со статусом, причиной и ссылкой при наличии. Наличие записи `unrated` не означает отсутствия вина в базе Vivino. Актуальный каталог синхронизирован с единственной вкладкой Google Docs; оценки удалённых из активного списка вин сохранены в data/archive/spb-research-2026-11-14.json. Добавлены 26 карточек SimpleWine с оценками Vivino и отдельным указанием области оценки; оценки критиков из производителя отмечены producer_reported_critic.",
+  "generated_at": "2026-11-25",
+  "notes": "Оценки профессиональных критиков перенесены из пользовательской подборки от 14.11.2026. Оценки Vivino вносились адресно по публичным страницам и индексируемым результатам. scope=vintage - рейтинг подтверждён для конкретного года; scope=all_vintages - показатель вина в целом, в индекс конкретного винтажа не включается. Общее значение - эвристический индекс, не рейтинг Vivino. Для вин без доказуемой числовой оценки после проверки добавлен `unrated` со статусом, причиной и ссылкой при наличии. Наличие записи `unrated` не означает отсутствия вина в базе Vivino. Актуальный каталог синхронизирован с единственной вкладкой Google Docs; оценки удалённых из активного списка вин сохранены в data/archive/spb-research-2026-11-14.json. Добавлены 26 карточек SimpleWine с оценками Vivino и отдельным указанием области оценки; оценки критиков из производителя отмечены producer_reported_critic.; 2026-11-25: 17 missing sample sizes reconciled using product-level Vivino pages and exact vintage rows, not winery totals. Cached page observations retain separate count evidence; NV recorded at cuvee fallback scope.",
   "records": {
     "2f1b26d235e4": [
       {
@@ -83,7 +83,11 @@
         "source_url": "https://www.vivino.com/en/dows-port-late-bottled-vintage-port/w/1361814?year=2018",
         "source_kind": "vivino_primary_web",
         "observed_on": "2026-11-24",
-        "note": "Оценка на странице конкретного урожая."
+        "note": "Оценка на странице конкретного урожая.",
+        "ratings_count": 623,
+        "ratings_count_source_url": "https://www.vivino.com/en/dows-port-late-bottled-vintage-port/w/1361814?price_id=44139433&year=2018",
+        "ratings_count_observed_on": "2026-11-25",
+        "ratings_count_evidence": "2018 4.0 623 ratings; cached yesterday"
       }
     ],
     "060e3c866e44": [
@@ -455,10 +459,14 @@
         "scale": 5,
         "scope": "all_vintages",
         "vintage": null,
-        "source_url": "https://www.vivino.com/en/wineries/pyramid-scheme",
-        "source_kind": "vivino_winery",
-        "observed_on": "2026-11-22",
-        "note": "Оценка Pinot Noir по всем годам; в индекс урожая 2023 не включается."
+        "source_url": "https://www.vivino.com/en/pyramid-scheme-pinot-noir/w/12146035",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-25",
+        "note": "Карточка конкретного вина; урожай 2023 не имеет достаточного числа оценок.",
+        "ratings_count": 116,
+        "ratings_count_source_url": "https://www.vivino.com/en/pyramid-scheme-pinot-noir/w/12146035",
+        "ratings_count_observed_on": "2026-11-25",
+        "ratings_count_evidence": "3.8 116 ratings; 2023 not enough ratings"
       }
     ],
     "079c918bef91": [
@@ -536,6 +544,21 @@
         "source_kind": "vivino_verified_web",
         "observed_on": "2026-11-22",
         "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
+      },
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2021,
+        "source_url": "https://www.vivino.com/it/j-neus-spatburgunder-muschelkalk/w/6089142?year=2021",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-25",
+        "note": "Баллы и число оценок подтверждены карточкой указанного урожая Vivino.",
+        "ratings_count": 102,
+        "ratings_count_source_url": "https://www.vivino.com/it/j-neus-spatburgunder-muschelkalk/w/6089142?year=2021",
+        "ratings_count_observed_on": "2026-11-25",
+        "ratings_count_evidence": "2021: 3,8 102 Voti"
       }
     ],
     "745a343dcdc1": [
@@ -869,7 +892,11 @@
         "source_url": "https://www.vivino.com/en/nino-franco-spumanti-srl-faive-rose-brut/w/1508196",
         "source_kind": "vivino_page",
         "observed_on": "2026-11-22",
-        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа.",
+        "ratings_count": 615,
+        "ratings_count_source_url": "https://www.vivino.com/uk/nino-franco-spumanti-srl-faive-rose-brut/w/1508196",
+        "ratings_count_observed_on": "2026-11-25",
+        "ratings_count_evidence": "N.V.: 3,7 615 оцінок; Vivino lists Faìve as N.V., no 2022 rating; use non-vintage cuvee-level fallback"
       }
     ],
     "ffffabb4d41a": [
@@ -1044,7 +1071,11 @@
         "source_url": "https://www.vivino.com/en/elena-fucci-verha-rosato/w/12114307",
         "source_kind": "vivino_page",
         "observed_on": "2026-11-22",
-        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа.",
+        "ratings_count": 40,
+        "ratings_count_source_url": "https://www.vivino.com/uk/elena-fucci-verha-rosato/w/12114307",
+        "ratings_count_observed_on": "2026-11-25",
+        "ratings_count_evidence": "3,9 40 оцінок; 2023 not enough ratings"
       }
     ],
     "4d35092a1505": [
@@ -1057,7 +1088,11 @@
         "source_url": "https://www.vivino.com/en/castello-di-querceto-chianti-classico-riserva/w/15634",
         "source_kind": "vivino_verified_web",
         "observed_on": "2026-11-22",
-        "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
+        "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа.",
+        "ratings_count": 7368,
+        "ratings_count_source_url": "https://www.vivino.com/uk/castello-di-querceto-chianti-classico-riserva/w/15634",
+        "ratings_count_observed_on": "2026-11-25",
+        "ratings_count_evidence": "3,8 7368 оцінок"
       }
     ],
     "569268902614": [
@@ -1126,7 +1161,11 @@
         "source_url": "https://www.vivino.com/en/chateau-marjosse-bordeaux/w/92492",
         "source_kind": "vivino_page",
         "observed_on": "2026-11-22",
-        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+        "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа.",
+        "ratings_count": 10096,
+        "ratings_count_source_url": "https://www.vivino.com/fr/chateau-marjosse-bordeaux/w/92492",
+        "ratings_count_observed_on": "2026-11-25",
+        "ratings_count_evidence": "3,8 10096 notes; cached about one month ago"
       }
     ],
     "de91d5c1fa5e": [
@@ -1140,6 +1179,21 @@
         "source_kind": "vivino_page",
         "observed_on": "2026-11-22",
         "note": "Средняя оценка вина без подтверждённого соответствия винтажу; исключена из общего индекса винтажа."
+      },
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "source_url": "https://www.vivino.com/uk/long-barn-zinfandel/w/3774480?year=2024",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-25",
+        "note": "Баллы и число оценок подтверждены карточкой указанного урожая Vivino.",
+        "ratings_count": 79,
+        "ratings_count_source_url": "https://www.vivino.com/uk/long-barn-zinfandel/w/3774480?year=2024",
+        "ratings_count_observed_on": "2026-11-25",
+        "ratings_count_evidence": "2024: 3,9 79 оцінок"
       }
     ],
     "7309e60757dd": [
@@ -1654,6 +1708,21 @@
         "source_kind": "vivino_verified_web",
         "observed_on": "2026-11-22",
         "note": "Общая оценка вина, не привязанная к выбранному году; не участвует в индексе винтажа."
+      },
+      {
+        "source": "Vivino",
+        "score": 3.8,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "source_url": "https://www.vivino.com/fr/marius-peyol-coteaux-d-aix-en-provence-rose/w/1228939?year=2024",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-25",
+        "note": "Баллы и число оценок подтверждены карточкой указанного урожая Vivino.",
+        "ratings_count": 35,
+        "ratings_count_source_url": "https://www.vivino.com/fr/marius-peyol-coteaux-d-aix-en-provence-rose/w/1228939?year=2024",
+        "ratings_count_observed_on": "2026-11-25",
+        "ratings_count_evidence": "2024: 3,8 35 notes"
       }
     ],
     "4123b553c232": [
@@ -2043,7 +2112,11 @@
         "source_url": "https://www.vivino.com/en/maturana-naranjo-torontel/w/5354266",
         "source_kind": "vivino_site_verified",
         "observed_on": "2026-11-22",
-        "note": "Vivino: общая оценка вина; рейтинг выбранного урожая не подтвержден, поэтому исключен из сводного индекса."
+        "note": "Vivino: общая оценка вина; рейтинг выбранного урожая не подтвержден, поэтому исключен из сводного индекса.",
+        "ratings_count": 2591,
+        "ratings_count_source_url": "https://www.vivino.com/es/maturana-naranjo-torontel/w/5354266",
+        "ratings_count_observed_on": "2026-11-25",
+        "ratings_count_evidence": "4,0 2591 valoraciones"
       }
     ],
     "5427ef8902aa": [
@@ -2069,7 +2142,11 @@
         "source_url": "https://www.vivino.com/en/the-chocolate-tube-primitivo-puglia/w/4406268",
         "source_kind": "vivino_primary_alias_verified",
         "observed_on": "2026-11-23",
-        "note": "Vivino calls the wine The Chocolate Tube Primitivo; Mare Magnum is the producer/distributor on WineStyle. 2023 appears as 4.1 in Vivino's compare-vintages data."
+        "note": "Vivino calls the wine The Chocolate Tube Primitivo; Mare Magnum is the producer/distributor on WineStyle. 2023 appears as 4.1 in Vivino's compare-vintages data.",
+        "ratings_count": 140,
+        "ratings_count_source_url": "https://www.vivino.com/uk/the-chocolate-tube-primitivo-puglia/w/4406268?year=2023",
+        "ratings_count_observed_on": "2026-11-25",
+        "ratings_count_evidence": "2023: 4,1 140 оцінок"
       }
     ],
     "cd226588d1df": [
@@ -2095,7 +2172,11 @@
         "source_url": "https://www.vivino.com/en/cantina-di-santadi-antigua-monica-di-sardegna/w/1397648",
         "source_kind": "vivino_primary_alias_verified",
         "observed_on": "2026-11-23",
-        "note": "Exact producer Cantina di Santadi and Antigua DOC Monica di Sardegna match. 3.5 applies to all vintages; 2024 rating is not independently published."
+        "note": "Exact producer Cantina di Santadi and Antigua DOC Monica di Sardegna match. 3.5 applies to all vintages; 2024 rating is not independently published.",
+        "ratings_count": 1891,
+        "ratings_count_source_url": "https://www.vivino.com/uk/cantina-di-santadi-antigua-monica-di-sardegna/w/1397648",
+        "ratings_count_observed_on": "2026-11-25",
+        "ratings_count_evidence": "3,5 1891 оцінок"
       }
     ],
     "a1faf8b0af1d": [
@@ -2216,11 +2297,14 @@
         "scale": 5,
         "scope": "vintage",
         "vintage": 2023,
-        "ratings_count": null,
+        "ratings_count": 55,
         "source_url": "https://www.vivino.com/en/santa-carolina-el-pacto-agreement-no-2-carmenere/w/11313674?year=2023",
         "source_kind": "vivino_primary_web",
         "observed_on": "2026-11-24",
-        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino."
+        "note": "Оценка конкретного урожая из карточки или таблицы урожаев Vivino.",
+        "ratings_count_source_url": "https://www.vivino.com/uk/santa-carolina-el-pacto-agreement-no-2-carmenere/w/11313674?year=2023",
+        "ratings_count_observed_on": "2026-11-25",
+        "ratings_count_evidence": "2023: 4,1 55 оцінок"
       }
     ],
     "sw-149378": [
@@ -2518,11 +2602,14 @@
         "scale": 5,
         "scope": "vintage",
         "vintage": 2023,
-        "ratings_count": null,
+        "ratings_count": 325,
         "source_url": "https://www.vivino.com/en/arboleda-carmenere/w/80226?year=2023",
         "source_kind": "vivino_primary_web",
         "observed_on": "2026-11-24",
-        "note": "Оценка из карточки или таблицы урожаев Vivino; число отзывов не указано, если не подтверждено."
+        "note": "Оценка из карточки или таблицы урожаев Vivino; число отзывов не указано, если не подтверждено.",
+        "ratings_count_source_url": "https://www.vivino.com/it/arboleda-carmenere/w/80226?year=2023",
+        "ratings_count_observed_on": "2026-11-25",
+        "ratings_count_evidence": "2023: 4,1 325 Voti"
       },
       {
         "source": "James Suckling",
@@ -2557,11 +2644,14 @@
         "scale": 5,
         "scope": "vintage",
         "vintage": 2023,
-        "ratings_count": null,
+        "ratings_count": 61,
         "source_url": "https://www.vivino.com/en/e-guigal-tavel/w/7786",
         "source_kind": "vivino_primary_web",
         "observed_on": "2026-11-24",
-        "note": "Оценка из карточки или таблицы урожаев Vivino; число отзывов не указано, если не подтверждено."
+        "note": "Оценка из карточки или таблицы урожаев Vivino; число отзывов не указано, если не подтверждено.",
+        "ratings_count_source_url": "https://www.vivino.com/uk/e-guigal-tavel/w/7786?year=2023",
+        "ratings_count_observed_on": "2026-11-25",
+        "ratings_count_evidence": "2023: 3,7 61 оцінок"
       }
     ],
     "sw-159138": [
@@ -2578,7 +2668,23 @@
         "note": "Оценка из карточки или таблицы урожаев Vivino; число отзывов не указано, если не подтверждено."
       }
     ],
-    "sw-159662": [],
+    "sw-159662": [
+      {
+        "source": "Vivino",
+        "score": 3.9,
+        "scale": 5,
+        "scope": "vintage",
+        "vintage": 2024,
+        "source_url": "https://www.vivino.com/da/weingut-nik-weis-st-urbans-hof-riesling-dry-mosel-saar-ruwer-white-wine-v/w/13134233?year=2024",
+        "source_kind": "vivino_primary_web",
+        "observed_on": "2026-11-25",
+        "note": "Баллы и число оценок подтверждены карточкой указанного урожая Vivino.",
+        "ratings_count": 49,
+        "ratings_count_source_url": "https://www.vivino.com/da/weingut-nik-weis-st-urbans-hof-riesling-dry-mosel-saar-ruwer-white-wine-v/w/13134233?year=2024",
+        "ratings_count_observed_on": "2026-11-25",
+        "ratings_count_evidence": "2024: 3,9 49 bedømmelser"
+      }
+    ],
     "sw-163341": [
       {
         "source": "Vivino",
@@ -2586,20 +2692,16 @@
         "scale": 5,
         "scope": "all_vintages",
         "vintage": null,
-        "ratings_count": null,
+        "ratings_count": 955,
         "source_url": "https://www.vivino.com/en/leyda-neblina-vineyard-riesling/w/1553715",
         "source_kind": "vivino_primary_web",
         "observed_on": "2026-11-24",
-        "note": "Оценка из карточки или таблицы урожаев Vivino; число отзывов не указано, если не подтверждено."
+        "note": "Оценка из карточки или таблицы урожаев Vivino; число отзывов не указано, если не подтверждено.",
+        "ratings_count_source_url": "https://www.vivino.com/uk/leyda-neblina-vineyard-riesling/w/1553715",
+        "ratings_count_observed_on": "2026-11-25",
+        "ratings_count_evidence": "3,7 955 оцінок"
       }
     ]
   },
-  "unrated": {
-    "sw-159662": {
-      "status": "unverified_score",
-      "reason": "Импортер указывает Vivino 3.9; точная оценка именно Mosel Dry, не Urban Riesling, в первичном источнике не подтверждена.",
-      "checked_on": "2026-11-24",
-      "source_url": "https://www.vivino.com/en/weingut-nik-weis-st-urbans-hof-riesling-dry-mosel-saar-ruwer-white-wine-v/w/13134233"
-    }
-  }
+  "unrated": {}
 }

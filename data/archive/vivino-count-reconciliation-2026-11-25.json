@@ -1,0 +1,160 @@
+{
+  "version": 1,
+  "observed_on": "2026-11-25",
+  "method": "Product-level rating header or explicit vintage rating row. No winery-wide totals. Exact vintage preferred. Counts reflect indexed/cached pages at retrieval, not a live API.",
+  "records": [
+    {
+      "id": "c9f63273980c",
+      "scope": "vintage",
+      "vintage": 2018,
+      "score": 4,
+      "ratings_count": 623,
+      "source_url": "https://www.vivino.com/en/dows-port-late-bottled-vintage-port/w/1361814?price_id=44139433&year=2018",
+      "evidence": "2018 4.0 623 ratings; cached yesterday"
+    },
+    {
+      "id": "2d98b7c07c09",
+      "scope": "all_vintages",
+      "vintage": null,
+      "score": 3.8,
+      "ratings_count": 116,
+      "source_url": "https://www.vivino.com/en/pyramid-scheme-pinot-noir/w/12146035",
+      "evidence": "3.8 116 ratings; 2023 not enough ratings"
+    },
+    {
+      "id": "2ae8e7fc916b",
+      "scope": "vintage",
+      "vintage": 2021,
+      "score": 3.8,
+      "ratings_count": 102,
+      "source_url": "https://www.vivino.com/it/j-neus-spatburgunder-muschelkalk/w/6089142?year=2021",
+      "evidence": "2021: 3,8 102 Voti"
+    },
+    {
+      "id": "801667d481d6",
+      "scope": "all_vintages",
+      "vintage": null,
+      "score": 3.7,
+      "ratings_count": 615,
+      "source_url": "https://www.vivino.com/uk/nino-franco-spumanti-srl-faive-rose-brut/w/1508196",
+      "evidence": "N.V.: 3,7 615 оцінок; Vivino lists Faìve as N.V., no 2022 rating; use non-vintage cuvee-level fallback"
+    },
+    {
+      "id": "0d2ee38169c9",
+      "scope": "vintage",
+      "vintage": 2023,
+      "score": 4.1,
+      "ratings_count": 140,
+      "source_url": "https://www.vivino.com/uk/the-chocolate-tube-primitivo-puglia/w/4406268?year=2023",
+      "evidence": "2023: 4,1 140 оцінок"
+    },
+    {
+      "id": "d8aa36dd85fe",
+      "scope": "all_vintages",
+      "vintage": null,
+      "score": 3.9,
+      "ratings_count": 40,
+      "source_url": "https://www.vivino.com/uk/elena-fucci-verha-rosato/w/12114307",
+      "evidence": "3,9 40 оцінок; 2023 not enough ratings"
+    },
+    {
+      "id": "4d35092a1505",
+      "scope": "all_vintages",
+      "vintage": null,
+      "score": 3.8,
+      "ratings_count": 7368,
+      "source_url": "https://www.vivino.com/uk/castello-di-querceto-chianti-classico-riserva/w/15634",
+      "evidence": "3,8 7368 оцінок"
+    },
+    {
+      "id": "e65c60dd483b",
+      "scope": "all_vintages",
+      "vintage": null,
+      "score": 3.8,
+      "ratings_count": 10096,
+      "source_url": "https://www.vivino.com/fr/chateau-marjosse-bordeaux/w/92492",
+      "evidence": "3,8 10096 notes; cached about one month ago"
+    },
+    {
+      "id": "de91d5c1fa5e",
+      "scope": "vintage",
+      "vintage": 2024,
+      "score": 3.9,
+      "ratings_count": 79,
+      "source_url": "https://www.vivino.com/uk/long-barn-zinfandel/w/3774480?year=2024",
+      "evidence": "2024: 3,9 79 оцінок"
+    },
+    {
+      "id": "e552320d1248",
+      "scope": "all_vintages",
+      "vintage": null,
+      "score": 3.5,
+      "ratings_count": 1891,
+      "source_url": "https://www.vivino.com/uk/cantina-di-santadi-antigua-monica-di-sardegna/w/1397648",
+      "evidence": "3,5 1891 оцінок"
+    },
+    {
+      "id": "f0c33d420f2f",
+      "scope": "vintage",
+      "vintage": 2024,
+      "score": 3.8,
+      "ratings_count": 35,
+      "source_url": "https://www.vivino.com/fr/marius-peyol-coteaux-d-aix-en-provence-rose/w/1228939?year=2024",
+      "evidence": "2024: 3,8 35 notes"
+    },
+    {
+      "id": "5b9b46b0b3e6",
+      "scope": "all_vintages",
+      "vintage": null,
+      "score": 4,
+      "ratings_count": 2591,
+      "source_url": "https://www.vivino.com/es/maturana-naranjo-torontel/w/5354266",
+      "evidence": "4,0 2591 valoraciones"
+    },
+    {
+      "id": "sw-160773",
+      "scope": "vintage",
+      "vintage": 2023,
+      "score": 4.1,
+      "ratings_count": 55,
+      "source_url": "https://www.vivino.com/uk/santa-carolina-el-pacto-agreement-no-2-carmenere/w/11313674?year=2023",
+      "evidence": "2023: 4,1 55 оцінок"
+    },
+    {
+      "id": "sw-154682",
+      "scope": "vintage",
+      "vintage": 2023,
+      "score": 4.1,
+      "ratings_count": 325,
+      "source_url": "https://www.vivino.com/it/arboleda-carmenere/w/80226?year=2023",
+      "evidence": "2023: 4,1 325 Voti"
+    },
+    {
+      "id": "sw-158289",
+      "scope": "vintage",
+      "vintage": 2023,
+      "score": 3.7,
+      "ratings_count": 61,
+      "source_url": "https://www.vivino.com/uk/e-guigal-tavel/w/7786?year=2023",
+      "evidence": "2023: 3,7 61 оцінок"
+    },
+    {
+      "id": "sw-159662",
+      "scope": "vintage",
+      "vintage": 2024,
+      "score": 3.9,
+      "ratings_count": 49,
+      "source_url": "https://www.vivino.com/da/weingut-nik-weis-st-urbans-hof-riesling-dry-mosel-saar-ruwer-white-wine-v/w/13134233?year=2024",
+      "evidence": "2024: 3,9 49 bedømmelser"
+    },
+    {
+      "id": "sw-163341",
+      "scope": "all_vintages",
+      "vintage": null,
+      "score": 3.7,
+      "ratings_count": 955,
+      "source_url": "https://www.vivino.com/uk/leyda-neblina-vineyard-riesling/w/1553715",
+      "evidence": "3,7 955 оцінок"
+    }
+  ]
+}
