@@ -12,6 +12,7 @@ from collections import defaultdict
 from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 from urllib.parse import urlsplit
+from critic_publications import publication_kind, publication_entries
 
 ROOT = Path(__file__).resolve().parents[1]
 RATE_URL = 'https://www.cbr.ru/scripts/XML_daily.asp'
@@ -21,7 +22,8 @@ CRITICS = {'wineenthusiast.com': 'Wine Enthusiast', 'falstaff.com': 'Falstaff',
            'vinous.com': 'Vinous', 'decanter.com': 'Decanter',
            'results.decanter.com': 'Decanter World Wine Awards', 'iwsc.net': 'IWSC',
            'jamessuckling.com': 'James Suckling', 'jancisrobinson.com': 'Jancis Robinson',
-           'top100.winespectator.com': 'Wine Spectator'}
+           'top100.winespectator.com': 'Wine Spectator', 'lucamaroni.it': 'Luca Maroni',
+           'kenswineguide.com': "Ken's Wine Guide"}
 RETAILERS = {
     'winelab.ru': 'Винлаб', 'amwine.ru': 'Ароматный мир', 'vinissimo.biz': 'Vinissimo',
     'sabonis.ru': 'Sabonis', 'spb.winestyle.ru': 'WineStyle', 'simplewine.ru': 'SimpleWine',
@@ -65,9 +67,14 @@ def year_in(text):
 
 def window(text):
     matches = set()
-    for match in re.finditer(rf'\b(?:drinking window|drink(?:ing)?|best(?: enjoyed| drunk)?)(?:\s+from)?\s*[:|]?\s*(now|{YEAR})?\s*(?:through|until|to|[-–—])\s*({YEAR})\b', text, re.I):
+    for match in re.finditer(rf'\b(?:drinking window|drink(?:ing)?|best(?: enjoyed| drunk)?)(?:\s+from)?\s*[:|]?\s*(now|{YEAR})?\s*(?:through|until|to|[-–—])\s*({YEAR}|\d{{2}})\b', text, re.I):
         start, end = match.groups()
-        matches.add((int(start) if start and start.isdigit() else None, int(end)))
+        start = int(start) if start and start.isdigit() else None
+        if len(end) == 2:
+            if start is None:
+                continue
+            end = str(start // 100) + end
+        matches.add((start, int(end)))
     return matches.pop() if len(matches) == 1 else (None, None)
 
 
@@ -90,6 +97,10 @@ def parse_review(row, host):
     if not text or host not in CRITICS:
         return None
     title = row.get('title', '')
+    if host == 'kenswineguide.com':
+        heading = re.search(r"^Ken['’]s wine review of (.+)$", row.get('blocks', {}).get('document_title', ''), re.I)
+        if heading:
+            title = heading[1]
     year = year_in(title)
     if not year:
         return None
@@ -106,6 +117,18 @@ def parse_review(row, host):
         mark = re.search(r'(?mi)^[ \t]*Score\s*:?\s*(\d{2,3})[ \t]*$', text)
         amount = re.search(r'(?mi)^[ \t]*Price\s*:?\s*\$\s*(\d+(?:\.\d{1,2})?)[ \t]*$', text)
         score = int(mark[1]) if mark else None
+        price, currency = (amount[1], 'USD') if amount else (None, None)
+    elif host == 'lucamaroni.it':
+        producer = re.search(r'(?mi)^Produttore[ :\t]*\s*([^\n]+)', text)
+        mark = re.search(r'(?m)^\s*(\d{2})\s*\n\s*Indice di Piacevolezza\s*$', text)
+        if not producer or not mark:
+            return None
+        title = producer[1].strip() + ' ' + title
+        score, scale = int(mark[1]), 99
+    elif host == 'kenswineguide.com':
+        mark = re.search(r"(?mi)^Ken['’]s Wine Rating:[^(]*\((\d{2,3}(?:\.\d+)?)\)", text)
+        amount = re.search(r'(?mi)^Price:\s*\$\s*(\d+(?:\.\d{1,2})?)', text)
+        score = float(mark[1]) if mark else None
         price, currency = (amount[1], 'USD') if amount else (None, None)
     elif host == 'falstaff.com':
         # The German tasting summary uses the inflected form "Punkten".
@@ -128,6 +151,19 @@ def parse_review(row, host):
             'scale': scale,
             'start': start, 'end': end, 'amount': price, 'currency': currency, 'price_kind': price_kind,
             'url': row['url'], 'date': moscow_date(row['observed_at'])}
+
+
+def parse_reviews(row, host):
+    kind = publication_kind(host, urlsplit(row['url']).path)
+    text = row.get('blocks', {}).get('review')
+    if kind and text:
+        reviews = publication_entries(kind, row.get('title', ''), text)
+        for review in reviews:
+            review['start'], review['end'] = window(review.pop('window_text'))
+            review.update(url=row['url'], date=moscow_date(row['observed_at']))
+        return reviews
+    review = parse_review(row, host)
+    return [review] if review else []
 
 
 def parse_offer(row, host):
@@ -353,11 +389,11 @@ def index_captures(rows, aliases, checked_on):
             stamp = observation_time(row['observed_at'])
             if key not in latest or latest[key][0] <= stamp:
                 latest[key] = (stamp, host, row)
-        elif host in CRITICS and url and page_key(requested) == page_key(url) and row.get('status') == 'needs_review':
-            review = parse_review(row, host)
-            if review:
-                reviews.append(review)
-            elif row.get('blocks'):
+        elif url and page_key(requested) == page_key(url) and row.get('status') == 'needs_review':
+            found = parse_reviews(row, host)
+            if found:
+                reviews.extend(found)
+            elif host in CRITICS and row.get('blocks'):
                 unresolved.append({'url': row['url'], 'reason': 'review_requires_review'})
 
     offers = defaultdict(list)

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Wine Atlas — сбор исследования",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Собирает наблюдения с открытых страниц для последующей проверки.",
   "minimum_chrome_version": "120",
   "permissions": [
@@ -19,6 +19,7 @@
     "https://results.decanter.com/*",
     "https://www.jamessuckling.com/*",
     "https://www.robertparker.com/*",
+    "https://content.robertparker.com/*",
     "https://www.falstaff.com/*",
     "https://timatkin.com/*",
     "https://www.jancisrobinson.com/*",
@@ -26,6 +27,7 @@
     "https://vinous.com/*",
     "https://www.wineandspiritsmagazine.com/*",
     "https://iwsc.net/*",
+    "https://www.iwsc.net/*",
     "https://results.concoursmondial.com/*",
     "https://www.botti.no/*",
     "https://www.kenswineguide.com/*",

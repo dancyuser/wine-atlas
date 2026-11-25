@@ -7,27 +7,11 @@ from decimal import Decimal
 from pathlib import Path
 from urllib.parse import urlsplit
 
-from import_research import (CRITICS, ROOT, exchange, identity, load, moscow_date,
-                             parse_rates, parse_review, write, year_in)
+from import_research import ROOT, exchange, identity, load, parse_rates, parse_reviews, write
 
 
 def botti_observations(row):
-    review = row.get('blocks', {}).get('review', '')
-    for entry in re.split(r'(?mi)^Varenr\s*:', review)[1:]:
-        wine = re.search(r'(?mi)^Vin\s*:\s*([^\n]+)', entry)
-        mark = re.search(r'(?mi)^Poeng\s*:\s*(\d{2,3})(?:\s|$)', entry)
-        if not wine or not mark or (year := year_in(wine[1])) is None:
-            continue
-        record = {
-            'title': re.sub(rf'\s+\b{year}\b\s*$', '', wine[1]).strip(), 'year': year,
-            'source': 'BOTTI', 'url': row['url'], 'score': int(mark[1]), 'scale': 100,
-            'date': moscow_date(row['observed_at']), 'method': 'browser_extract',
-        }
-        price = re.search(r'(?mi)^Pris\s*:\s*(\d[\d \u00a0]*)(?:,(\d{2}|[–-]))?\s*kr\b', entry)
-        if price:
-            amount = re.sub(r'\s+', '', price[1]) + '.' + (price[2] if (price[2] or '').isdigit() else '00')
-            record.update(amount=float(amount), currency='NOK', price_kind='exact')
-        yield record
+    yield from parse_reviews(row, 'botti.no')
 
 
 def browser_observations(bundle, aliases):
@@ -40,20 +24,15 @@ def browser_observations(bundle, aliases):
         if (row.get('status') != 'needs_review' or url.scheme != 'https' or
                 (url.netloc, url.path.rstrip('/')) != (requested.netloc, requested.path.rstrip('/'))):
             continue
-        if host == 'botti.no' and url.path.startswith('/smaksnotater-'):
-            yield from botti_observations(row)
-            continue
-        if host not in CRITICS:
-            continue
         if host == 'falstaff.com':
             review = row.get('blocks', {}).get('review', '')
             if re.search(r'\b(?:Apfel Frizzante|Entalkoholisierter Schaumwein)\b', review, re.I):
                 continue
-        record = parse_review(row, host)
-        if record and any(record[field] is not None for field in ('score', 'end', 'amount')):
-            record['title'] = aliases.get(record['url'], record['title'])
-            record['method'] = 'browser_extract'
-            yield record
+        for record in parse_reviews(row, host):
+            if any(record[field] is not None for field in ('score', 'end', 'amount')):
+                record['title'] = aliases.get(record['url'], record['title'])
+                record['method'] = 'browser_extract'
+                yield record
 
 
 def stage(evidence, rate_date, rates):

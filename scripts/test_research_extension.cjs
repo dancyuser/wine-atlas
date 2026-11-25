@@ -46,6 +46,13 @@ global.document={querySelector:s=>s==='h1'?{innerText:'Вино Example 2024'}:n
   '\nРейтинги экспертов\nWS 90.0\nJS 92.0\nОсобенности\nRP 99.0'}};
 assert.equal(captureWineResearch().blocks.critic_hints,'WS 90.0\nJS 92.0');
 
+global.location={href:'https://www.botti.no/smaksnotater-example/',hostname:'www.botti.no'};
+global.document={querySelector:()=>null,querySelectorAll:()=>[],
+ body:{innerText:'Varenr: 5\nVin: Domaine Example 2023\nPris: 225,– kr\nPoeng: 89'}};
+row=captureWineResearch();
+assert.equal(row.status,'needs_review');
+assert.match(row.blocks.review,/Poeng: 89/);
+
 const astUrl = 'https://ast.wine/catalog/product/example_25031/';
 global.location={href:astUrl,hostname:'ast.wine'};
 const item = {

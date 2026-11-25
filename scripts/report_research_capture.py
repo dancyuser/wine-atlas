@@ -7,7 +7,7 @@ import re
 from pathlib import Path
 from urllib.parse import urlsplit
 
-from import_research import parse_offer, year_in
+from import_research import local_stock, page_key, parse_offer, RETAILERS, year_in
 from stage_critic_research import browser_observations
 
 
@@ -69,6 +69,7 @@ def report(bundle):
     grouped = collections.defaultdict(collections.Counter)
     coverage = collections.defaultdict(collections.Counter)
     hints = {}
+    awards = {}
     for row in rows:
         if not isinstance(row, dict):
             raise ValueError('observation must be an object')
@@ -78,8 +79,24 @@ def report(bundle):
             raise ValueError('invalid observation URL')
         source = row.get('source') or parsed.hostname
         grouped[source][row.get('status') or 'unknown'] += 1
+        host = parsed.hostname.removeprefix('www.')
+        requested = urlsplit(row.get('requested_url') or url)
+        if row.get('status') == 'needs_review' and page_key(parsed) == page_key(requested):
+            if host in RETAILERS and (offer := parse_offer(row, host)):
+                counts = coverage[source]
+                counts['parsed_offers'] += 1
+                counts['local_stock_offers'] += int(local_stock(offer))
+                counts['local_stock_up_to_5000'] += int(local_stock(offer) and 0 < offer['price'] <= 5000)
+            if host == 'results.concoursmondial.com':
+                for line in row.get('blocks', {}).get('medal_leads', '').splitlines():
+                    title, _, medal = line.partition('\t')
+                    if medal and (year := year_in(title)):
+                        awards[(title, year)] = {'title': title, 'year': year, 'medal': medal,
+                                                 'url': url, 'status': 'numeric_score_unconfirmed'}
         if row.get('blocks', {}).get('review'):
             coverage[source]['pages_with_review_block'] += 1
+            if row['blocks'].get('review_truncated'):
+                coverage[source]['review_text_truncations'] += 1
         if limits := row.get('discovery'):
             counts = coverage[source]
             counts['catalog_pages_with_link_counts'] += 1
@@ -97,6 +114,7 @@ def report(bundle):
     return {'observations': len(rows), 'sources': dict(grouped),
             'coverage': {source: dict(coverage[source]) for source in grouped},
             'retailer_rating_leads': list(hints.values()),
+            'competition_medal_leads': list(awards.values()),
             'catalog_updates': 0,
             'note': 'Unverified browser excerpts are candidates, not validated wine, price, stock or drinking windows.'}
 

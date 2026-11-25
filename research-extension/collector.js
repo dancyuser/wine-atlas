@@ -47,6 +47,8 @@ function captureWineResearch() {
     'sabonis.ru': /^\/productDetail\/[^/]+\/?$/i,
     'vinissimo.biz': /^\/catalog\/wine\/[^/]+-\d+\/?$/,
     'vinous.com': /^\/wines\/(?!lists(?:\/|$))[^/]+(?:\/\d{4})?\/?$/,
+    'lucamaroni.it': /^\/vini\/\d+-[^/]+\/?$/,
+    'kenswineguide.com': /^\/wine_review\/[^/]+\/?$/,
     'jancisrobinson.com': /^\/tastings\/\d+\/?$/
   };
   const pagination = u => {
@@ -72,7 +74,21 @@ function captureWineResearch() {
   // text only: metadata prices on these sites can belong to another region.
   const blocks = {};
   if (!blocked) {
-    const put = (key, value) => { if (value) blocks[key] = value.trim().slice(0, 7000); };
+    const put = (key, value, limit = 7000) => {
+      if (!value) return;
+      const text = value.trim();
+      blocks[key] = text.slice(0, limit);
+      if (key === 'review' && text.length > limit) blocks.review_truncated = true;
+    };
+    const publicArticle = (
+      (host === 'jamessuckling.com' && path.startsWith('/wine-tasting-reports/')) ||
+      (host === 'content.robertparker.com' && path.startsWith('/best-wines-2019-mark-squires')) ||
+      (host === 'timatkin.com' && path.startsWith('/score-ranges/')) ||
+      (host === 'iwsc.net' && path.startsWith('/news/wine/results-revealed-iwsc-judging-in-conegliano-valdobbiadene')) ||
+      (host === 'decanter.com' && path.includes('/top-20-value-golds-best-wines-under-15-from-dwwa-2024-531852')) ||
+      (host === 'wineandspiritsmagazine.com' && path.startsWith('/the-short-list/great-rioja-for-under-25')) ||
+      (host === 'jancisrobinson.com' && path.startsWith('/articles/grattamacco-2022-bolgheri-rosso'))
+    );
     if (host === 'wineenthusiast.com' && path.startsWith('/buying-guide/')) {
       put('review', (document.querySelector('#review-wrapper, .review-wrapper, main')?.innerText || body).split(/What Is Blind Tasting\?/i)[0]);
     } else if (host === 'top100.winespectator.com' && detailPaths[host].test(path)) {
@@ -84,10 +100,27 @@ function captureWineResearch() {
       put('review', (document.querySelector('main')?.innerText || body).split(/Similar Wines|Related Articles/i)[0]);
     } else if (host === 'botti.no' && path.startsWith('/smaksnotater-')) {
       const facts = lines.filter(line => /^(?:Varenr|Vin|Pris|Poeng)\s*:/i.test(line));
-      put('review', facts.join('\n'));
+      put('review', facts.join('\n'), 24000);
+    } else if (publicArticle) {
+      const index = lines.indexOf(title);
+      put('review', (index >= 0 ? lines.slice(index).join('\n') : body)
+        .split(/\n(?:Related Articles|You may also like)\b/i)[0], 32000);
+    } else if (host === 'results.concoursmondial.com' && /^\/(?:fr\/resultats|en\/results)\b/.test(path)) {
+      const awards = lines.flatMap((heading, i) => {
+        if (!/\b(?:19|20)\d{2}$/.test(heading) || heading.length > 160) return [];
+        const medal = (lines[i + 1] || '').match(/(?:Grande )?Médaille d['’](?:Or|Argent)|(?:Grand )?Gold Medal|Silver Medal/i)?.[0];
+        return medal ? [heading + '\t' + medal] : [];
+      });
+      put('medal_leads', awards.join('\n'));
+    } else if ((host === 'lucamaroni.it' || host === 'kenswineguide.com') && detailPaths[host].test(path)) {
+      put('review', (document.querySelector('main')?.innerText || body).split(/\n(?:Other Vintages|Altre Annate)\b/i)[0]);
+      put('document_title', document.title);
     } else if (/^(?:decanter\.com|results\.decanter\.com|iwsc\.net|jamessuckling\.com|jancisrobinson\.com)$/.test(host) &&
       /(?:\/tastings\/|\/tasting-notes\/|\/detail\/|\/wine-reviews\/(?!search\/)[^/]+\/.*\d)/.test(path)) {
-      put('review', (document.querySelector('main article, article, main')?.innerText || '').split(/Related wines|Similar wines|You may also like/i)[0]);
+      const index = lines.indexOf(title);
+      const fallback = index >= 0 ? lines.slice(index).join('\n') : '';
+      put('review', (document.querySelector('main article, article, main')?.innerText || fallback)
+        .split(/Related wines|Similar wines|You may also like/i)[0]);
     } else if (host === 'sabonis.ru' && /^\/productDetail\//i.test(path)) {
       put('product', body.split(/Рекомендованные товары/i)[0]);
       put('document_title', document.title);
@@ -156,7 +189,8 @@ function captureWineResearch() {
       }
     }
   }
-  return {url, observed_at: new Date().toISOString(), title, status: blocked ? 'blocked' : title ? 'needs_review' : 'no_heading',
+  const hasContent = title || blocks.review || blocks.medal_leads;
+  return {url, observed_at: new Date().toISOString(), title, status: blocked ? 'blocked' : hasContent ? 'needs_review' : 'no_heading',
     excerpts, links, blocks, visible_links: {details: detailURLs.size, next: nextURLs.size}};
 }
 if (typeof module !== 'undefined') module.exports = {captureWineResearch};

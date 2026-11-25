@@ -2,10 +2,37 @@ import unittest
 from decimal import Decimal
 
 from import_research import window
-from stage_critic_research import botti_observations, stage
+from stage_critic_research import botti_observations, browser_observations, stage
 
 
 class CriticStageTest(unittest.TestCase):
+    def test_public_archive_keeps_the_score_price_and_window_with_each_vintage(self):
+        url = 'https://timatkin.com/score-ranges/90-95/'
+        row = {'url': url, 'status': 'needs_review', 'title': 'Score Range: 90-95',
+               'observed_at': '2026-11-25T12:00:00Z', 'blocks': {
+                   'review': "2nd July 2026\n94\n2024 Domaine Example Sancerre\n( £22, 12.5%, shop )\n"
+                             "Drinking window: 2026-33\n7th March 2025 91\n2018 Domaine Example Jura\n"
+                             "( £27, 14.5%, shop )\nDrinking window: 2025-30"}}
+        bundle = {'kind': 'wine_atlas_research_capture', 'version': 1, 'observations': [row]}
+        records = list(browser_observations(bundle, {}))
+        self.assertEqual([(r['year'], r['score'], r['amount'], r['end']) for r in records],
+                         [(2024, 94, '22', 2033), (2018, 91, '27', 2030)])
+
+    def test_medal_only_does_not_create_a_numeric_critic_record(self):
+        url = 'https://results.concoursmondial.com/fr/resultats/2024'
+        row = {'url': url, 'status': 'needs_review', 'title': 'Results',
+               'blocks': {'medal_leads': "Domaine Example 2022\tGrande Médaille d'Or"}}
+        bundle = {'kind': 'wine_atlas_research_capture', 'version': 1, 'observations': [row]}
+        self.assertEqual(list(browser_observations(bundle, {})), [])
+
+    def test_parker_article_keeps_the_cuvee_after_parenthetical_producer(self):
+        row = {'status': 'needs_review', 'observed_at': '2026-11-25T12:00:00Z',
+               'url': 'https://content.robertparker.com/best-wines-2019-mark-squires',
+               'blocks': {'review': '2017 Domaine Example (Producer Name) • Single Vineyard ($60, 96 points)'}}
+        bundle = {'kind': 'wine_atlas_research_capture', 'version': 1, 'observations': [row]}
+        record, = list(browser_observations(bundle, {}))
+        self.assertEqual(record['title'], 'Domaine Example (Producer Name) Single Vineyard')
+
     def test_matches_vintage_and_requires_an_explicit_window_and_price(self):
         evidence = {'observed_on': '2026-11-24', 'sources': [{'source': 'Critic'}], 'observations': []}
         for year, kwargs in [
