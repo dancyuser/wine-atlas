@@ -24,6 +24,8 @@ def publication_kind(host, path):
         return 'botti'
     if host == 'iwsc.net' and path.rstrip('/') == '/news/wine/results-revealed-iwsc-judging-in-conegliano-valdobbiadene':
         return 'iwsc'
+    if host == 'billing.vinous.com' and path.startswith('/articles/vinous-top-100-wines-of-'):
+        return 'vinous_top100'
     return None
 
 
@@ -116,4 +118,14 @@ def publication_entries(kind, title, text):
         for match in re.finditer(
                 rf'\)\s+(?:and\s+)?([A-Z][^().\n]{{2,100}}?\b{VINTAGE})\s+\((\d{{2,3}})\s+points\)', text):
             rows.append(entry('IWSC', match[1], match[2]))
+    elif kind == 'vinous_top100':
+        headings = [(index, heading[1]) for index, line in enumerate(lines)
+                    if (heading := re.fullmatch(rf'#\d{{1,3}}:\s*({VINTAGE}\s+.+)', line))]
+        for pos, (index, heading) in enumerate(headings):
+            end = headings[pos + 1][0] if pos + 1 < len(headings) else len(lines)
+            body = '\n'.join(lines[index + 1:end])
+            marks = set(re.findall(r'(?mi)^(\d{2,3})\s+points?\s+[–—-]\s+\w', body))
+            price = re.match(rf'^\$({MONEY})(?:,|$)', body)
+            if len(marks) == 1:
+                rows.append(entry('Vinous', heading, marks.pop(), 'USD', price[1] if price else None, span=body))
     return [row for row in rows if row is not None]

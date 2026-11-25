@@ -83,9 +83,27 @@ function selectDetails(links, titles, limit) {
 async function download() {
   const observations = (await chrome.storage.local.get(KEY))[KEY] || [];
   const payload = JSON.stringify({version: 1, kind: 'wine_atlas_research_capture', exported_at: new Date().toISOString(), observations});
-  if (payload.length > 5000000) throw Error('Выгрузка превышает 5 МБ.');
-  await chrome.downloads.download({url: 'data:application/json;charset=utf-8,' + encodeURIComponent(payload),
-    filename: 'wine-atlas-research-' + Date.now() + '.json', saveAs: false});
+  if (new TextEncoder().encode(payload).length > 5000000) throw Error('Выгрузка превышает 5 МБ.');
+  const documentUrl = chrome.runtime.getURL('export.html');
+  const open = await chrome.runtime.getContexts({contextTypes: ['OFFSCREEN_DOCUMENT'], documentUrls: [documentUrl]});
+  if (!open.length) {
+    await chrome.offscreen.createDocument({url: 'export.html', reasons: ['BLOBS'],
+      justification: 'Create a Blob URL to download the research JSON without the data URL size limit.'});
+  }
+  try {
+    const {url} = await chrome.runtime.sendMessage({target: 'research-export', payload});
+    const id = await chrome.downloads.download({url, filename: 'wine-atlas-research-' + Date.now() + '.json', saveAs: false});
+    const deadline = Date.now() + 20000;
+    while (Date.now() < deadline) {
+      const [file] = await chrome.downloads.search({id});
+      if (file?.state === 'complete') return;
+      if (file?.state === 'interrupted') throw Error('Скачивание прервано (' + (file.error || 'неизвестная причина') + ').');
+      await new Promise(resolve => setTimeout(resolve, 250));
+    }
+    throw Error('Браузер не подтвердил скачивание JSON.');
+  } finally {
+    await chrome.offscreen.closeDocument();
+  }
 }
 
 async function stepDomain(lane, reviewTitles) {
@@ -236,6 +254,7 @@ function statusText(job) {
 }
 
 chrome.runtime.onMessage.addListener((message, sender, respond) => {
+  if (message.target === 'research-export') return false;
   serialize(async () => {
     let job = await readJob();
     if (message.action === 'start') {
@@ -263,6 +282,10 @@ chrome.runtime.onMessage.addListener((message, sender, respond) => {
       if (job.status === 'running') wake();
     } else if (message.action === 'export') {
       await download();
+      if (job?.download_error) {
+        delete job.download_error;
+        await chrome.storage.local.set({[JOB]: job});
+      }
     } else if (message.action === 'record') {
       const observations = (await chrome.storage.local.get(KEY))[KEY] || [];
       await chrome.storage.local.set({[KEY]: [...observations, message.row]});

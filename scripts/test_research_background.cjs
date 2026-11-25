@@ -10,6 +10,7 @@ const observationsKey = 'wineAtlasResearchObservationsV1';
 const disk = {};
 const tabs = new Map();
 const downloads = [];
+const exported = [];
 const opened = [];
 const shops = Array.from({length: 9}, (_, i) => ['Shop ' + i, 'https://shop' + i + '.test/wine']);
 let nextId = 1;
@@ -17,8 +18,9 @@ let now = Date.parse('2026-11-24T12:00:00Z');
 
 function worker() {
   let message;
+  let exportOpen = false;
   const context = vm.createContext({
-    URL, console, setTimeout: () => 1, clearTimeout: () => {},
+    URL, TextEncoder, console, setTimeout: () => 1, clearTimeout: () => {},
     Date: class extends Date {
       constructor() { super(now); }
       static now() { return now; }
@@ -48,8 +50,29 @@ function worker() {
         const status = url.endsWith('/blocked') ? 'blocked' : 'needs_review';
         return [{result: {url, status, links: [], observed_at: new Date(now).toISOString()}}];
       }},
-      downloads: {download: async request => { downloads.push(request); return downloads.length; }},
-      runtime: {onStartup: {addListener() {}}, onMessage: {addListener(listener) {message = listener;}}}
+      downloads: {
+        download: async request => {
+          assert(exportOpen && request.url.startsWith('blob:'));
+          downloads.push(request);
+          return downloads.length;
+        },
+        search: async () => [{state: 'complete'}],
+      },
+      offscreen: {
+        createDocument: async () => { exportOpen = true; },
+        closeDocument: async () => { exportOpen = false; },
+      },
+      runtime: {
+        getURL: path => 'chrome-extension://test/' + path,
+        getContexts: async () => exportOpen ? [{}] : [],
+        sendMessage: async ({target, payload}) => {
+          assert(exportOpen && target === 'research-export');
+          exported.push(payload);
+          return {url: 'blob:chrome-extension://test/' + exported.length};
+        },
+        onStartup: {addListener() {}},
+        onMessage: {addListener(listener) {message = listener;}},
+      },
     }
   });
   context.SOURCES = [
@@ -67,7 +90,7 @@ function worker() {
 }
 
 const activeURLs = () => [...tabs.values()].map(tab => tab.url);
-const payload = i => JSON.parse(decodeURIComponent(downloads[i].url.split(',')[1]));
+const payload = i => JSON.parse(exported[i]);
 
 (async () => {
   let runtime = worker();

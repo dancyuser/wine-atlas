@@ -6,6 +6,19 @@ from import_research import join, merge, parse_offer, parse_rates, parse_review,
 
 
 class CaptureTests(unittest.TestCase):
+    def test_joia_store_does_not_treat_year_in_brand_as_vintage(self):
+        row = {
+            'url': 'https://joiastore.ru/product/el-coto-1970/',
+            'title': 'Вино El Coto 1970, 0.75л', 'observed_at': '2026-11-25T12:00:00+03:00',
+            'blocks': {'city': 'Санкт-Петербург', 'product': 'в наличии\n2 051 руб.'},
+        }
+        self.assertIsNone(parse_offer(row, 'joiastore.ru'))
+        row['blocks']['selected_variant'] = '2022'
+        offer = parse_offer(row, 'joiastore.ru')
+        self.assertEqual((offer['year'], offer['price'], offer['stock']), (2022, 2051, 'in_stock'))
+        row['blocks']['city'] = 'Москва'
+        self.assertIsNone(parse_offer(row, 'joiastore.ru'))
+
     def test_falstaff_reads_german_points_and_keeps_tasting_date_separate(self):
         result = parse_review({'title': '2026 The First Lady Chardonnay',
                                'url': 'https://www.falstaff.com/at/weine/example',
@@ -98,7 +111,7 @@ class CaptureTests(unittest.TestCase):
         row = {'title': 'Вино Adagum Cabernet Franc 2024 0.75 л',
                'url': 'https://spb.luding.ru/collection/item/example/',
                'observed_at': '2026-11-24T18:30:00Z', 'blocks': {
-                   'product': '501 ₽\n835 ₽\nВ корзину\nВ НАЛИЧИИ\nМНОГО\nОтзывы\nНет в наличии',
+                   'product': 'Внимание! Условия покупки\n501 ₽\n835 ₽\nВ корзину\nВ НАЛИЧИИ\nМНОГО\nОтзывы\nНет в наличии',
                    'document_title': 'Adagum Cabernet Franc 0,75 л купить в магазине в Санкт-Петербурге по цене 501 ₽',
                    'city': 'Санкт-Петербург'}}
         offer = parse_offer(row, 'spb.luding.ru')

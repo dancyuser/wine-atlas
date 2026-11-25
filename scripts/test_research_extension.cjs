@@ -13,6 +13,8 @@ assert.equal(row.status,'needs_review');
 assert(row.excerpts.some(s=>s.includes('поставщика')));
 document.body.innerText='Please verify you are human';
 row=captureWineResearch();assert.equal(row.status,'blocked');assert.equal(row.excerpts.length,0);
+document.body.innerText='Пожалуйста, подождите, пока ваш запрос будет проверен…';
+assert.equal(captureWineResearch().status,'blocked');
 
 const link=(href,innerText)=>({href,innerText,querySelector:()=>null});
 global.location={href:'https://spb.winestyle.ru/wine/',hostname:'spb.winestyle.ru'};

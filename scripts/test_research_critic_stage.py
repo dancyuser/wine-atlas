@@ -1,11 +1,25 @@
 import unittest
 from decimal import Decimal
 
-from import_research import window
+from import_research import parse_reviews, window
 from stage_critic_research import botti_observations, browser_observations, stage
 
 
 class CriticStageTest(unittest.TestCase):
+    def test_vinous_public_countdown_pairs_each_printed_score_with_its_wine(self):
+        row = {
+            'url': 'https://billing.vinous.com/articles/vinous-top-100-wines-of-2024-5-2-nov-2024',
+            'title': 'Vinous Top 100 Wines',
+            'observed_at': '2026-11-25T12:00:00+03:00',
+            'blocks': {'review': "#5: 2021 Hirsch Pinot Noir Raschen Ridge\n$105, Sonoma\n"
+                       "100 points – Antonio Galloni, January 2024\n"
+                       "#4: 2021 La Ca' Nova Barbaresco Montefico Vigna Bric Mentina\n$50, Piedmont\n"
+                       "97 points – Antonio Galloni, September 2024"},
+        }
+        reviews = parse_reviews(row, 'billing.vinous.com')
+        self.assertEqual([(r['source'], r['year'], r['score'], r['amount'], r['end']) for r in reviews],
+                         [('Vinous', 2021, 100, '105', None), ('Vinous', 2021, 97, '50', None)])
+
     def test_public_archive_keeps_the_score_price_and_window_with_each_vintage(self):
         url = 'https://timatkin.com/score-ranges/90-95/'
         row = {'url': url, 'status': 'needs_review', 'title': 'Score Range: 90-95',

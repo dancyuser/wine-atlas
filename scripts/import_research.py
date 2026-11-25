@@ -27,9 +27,9 @@ CRITICS = {'wineenthusiast.com': 'Wine Enthusiast', 'falstaff.com': 'Falstaff',
 RETAILERS = {
     'winelab.ru': 'Винлаб', 'amwine.ru': 'Ароматный мир', 'vinissimo.biz': 'Vinissimo',
     'sabonis.ru': 'Sabonis', 'spb.winestyle.ru': 'WineStyle', 'simplewine.ru': 'SimpleWine',
-    'ast.wine': 'AST.WINE', 'joia.ru': 'Joia', 'luding.ru': 'Luding', 'spb.luding.ru': 'Luding',
+    'ast.wine': 'AST.WINE', 'joia.ru': 'Joia', 'joiastore.ru': 'Joia', 'luding.ru': 'Luding', 'spb.luding.ru': 'Luding',
 }
-LABELED_RETAILERS = {'winelab.ru', 'amwine.ru', 'simplewine.ru', 'ast.wine', 'joia.ru'}
+LABELED_RETAILERS = {'winelab.ru', 'amwine.ru', 'simplewine.ru', 'ast.wine', 'joia.ru', 'joiastore.ru'}
 RUBLES = r'(\d+(?:[ \u00a0\u202f]\d{3})*(?:[.,]\d{2})?)\s*(?:₽|руб\.?)'
 VOLUME = r'(\d+(?:[.,]\d+)?)\s*(мл|ml|л|l)(?=\W|$)'
 
@@ -120,7 +120,7 @@ def parse_review(row, host):
         price, currency = (amount[1], 'USD') if amount else (None, None)
     elif host == 'lucamaroni.it':
         producer = re.search(r'(?mi)^Produttore[ :\t]*\s*([^\n]+)', text)
-        mark = re.search(r'(?m)^\s*(\d{2})\s*\n\s*Indice di Piacevolezza\s*$', text)
+        mark = re.search(r'(?mi)^\s*(\d{2})\s*\n\s*Indice di Piacevolezza\s*$', text)
         if not producer or not mark:
             return None
         title = producer[1].strip() + ' ' + title
@@ -224,7 +224,7 @@ def parse_offer(row, host):
         # The block contains the main offer followed by legal text and reviews.
         # A discounted offer can show two prices. Require the localized title
         # to confirm which of those visible values is the current price.
-        offer = re.split(r'(?mi)^[ \t]*(?:Внимание!|Отзывы[ \t]*$|Легенда[ \t]*$)', text, maxsplit=1)[0]
+        offer = re.split(r'(?mi)^[ \t]*(?:Отзывы|Легенда)[ \t]*$', text, maxsplit=1)[0]
         marks = set(re.findall(r'(?m)^[ \t]*(\d[\d \u00a0\u202f]*)[ \t\u00a0\u202f]*₽[ \t]*$', offer))
         prices = {re.sub(r'\s', '', value) for value in marks}
         advertised = re.search(r'в Санкт-Петербурге по цене\s+(\d[\d \u00a0\u202f]*)\s*₽', hint, re.I)
@@ -252,7 +252,8 @@ def parse_labeled_offer(row, host):
         return None
     text = blocks['product']
     title = row.get('title', '')
-    displayed_year = year_in(title)
+    # The JOIA storefront has bottle names such as “El Coto 1970”.
+    displayed_year = None if host == 'joiastore.ru' else year_in(title)
     years = set(re.findall(rf'(?mi)^[ \t]*(?:Год урожая|Выбранный винтаж|Винтаж)\s*:\s*({YEAR})[ \t]*$', text))
     selected = blocks.get('selected_variant', '')
     if selected and host == 'ast.wine':

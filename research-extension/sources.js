@@ -10,7 +10,7 @@ const SOURCES = [
  ['Tim Atkin','https://timatkin.com/score-ranges/90-95/'],
  ['Jancis Robinson','https://www.jancisrobinson.com/articles/grattamacco-2022-bolgheri-rosso'],
  ['Luca Maroni','https://www.lucamaroni.it/vini/371015-san-marzano-primitivo-puglia-igp-2023'],
- ['Vinous','https://vinous.com/'],
+ ['Vinous','https://billing.vinous.com/articles/vinous-top-100-wines-of-2024-5-2-nov-2024'],
  ['Wine & Spirits','https://www.wineandspiritsmagazine.com/the-short-list/great-rioja-for-under-25'],
  ['IWSC','https://www.iwsc.net/news/wine/results-revealed-iwsc-judging-in-conegliano-valdobbiadene'],
  ['Concours Mondial de Bruxelles','https://results.concoursmondial.com/fr/resultats/2024'],
@@ -23,7 +23,7 @@ const SOURCES = [
  ['WineStyle','https://spb.winestyle.ru/wine/'],
  ['SimpleWine','https://simplewine.ru/catalog/vino/filter/main-to-5000/'],
  ['AST.WINE','https://ast.wine/catalog/vino/'],
- ['Joia','https://joia.ru/'],
+ ['Joia','https://joiastore.ru/catalog/vino/'],
  ['Luding','https://spb.luding.ru/collection/wine/']
 ];
 const RETAILERS = new Set(['Винлаб','Ароматный мир','Vinissimo','Sabonis','WineStyle','SimpleWine','AST.WINE','Joia','Luding']);

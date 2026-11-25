@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Wine Atlas — сбор исследования",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Собирает наблюдения с открытых страниц для последующей проверки.",
   "minimum_chrome_version": "120",
   "permissions": [
@@ -9,7 +9,8 @@
     "scripting",
     "storage",
     "downloads",
-    "alarms"
+    "alarms",
+    "offscreen"
   ],
   "optional_host_permissions": [
     "https://www.wineenthusiast.com/*",
@@ -25,6 +26,7 @@
     "https://www.jancisrobinson.com/*",
     "https://www.lucamaroni.it/*",
     "https://vinous.com/*",
+    "https://billing.vinous.com/*",
     "https://www.wineandspiritsmagazine.com/*",
     "https://iwsc.net/*",
     "https://www.iwsc.net/*",
@@ -39,6 +41,7 @@
     "https://simplewine.ru/*",
     "https://ast.wine/*",
     "https://joia.ru/*",
+    "https://joiastore.ru/*",
     "https://spb.luding.ru/*"
   ],
   "background": {

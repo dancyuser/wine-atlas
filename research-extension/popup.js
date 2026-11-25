@@ -1,6 +1,6 @@
 'use strict';
 const status=document.getElementById('status');
-const ALLOWED=['wineenthusiast.com','winespectator.com','decanter.com','jamessuckling.com','robertparker.com','falstaff.com','timatkin.com','jancisrobinson.com','lucamaroni.it','vinous.com','wineandspiritsmagazine.com','iwsc.net','concoursmondial.com','botti.no','kenswineguide.com','winelab.ru','amwine.ru','vinissimo.biz','sabonis.ru','winestyle.ru','simplewine.ru','ast.wine','joia.ru','luding.ru'];
+const ALLOWED=['wineenthusiast.com','winespectator.com','decanter.com','jamessuckling.com','robertparker.com','falstaff.com','timatkin.com','jancisrobinson.com','lucamaroni.it','vinous.com','wineandspiritsmagazine.com','iwsc.net','concoursmondial.com','botti.no','kenswineguide.com','winelab.ru','amwine.ru','vinissimo.biz','sabonis.ru','winestyle.ru','simplewine.ru','ast.wine','joia.ru','joiastore.ru','luding.ru'];
 const allowed=h=>ALLOWED.some(d=>h===d||h.endsWith('.'+d));
 async function message(action,details={}){const r=await chrome.runtime.sendMessage({action,...details});if(r.error)throw Error(r.error);status.textContent=r.text;}
 document.getElementById('capture').onclick=async()=>{try{

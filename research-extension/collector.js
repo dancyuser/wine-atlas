@@ -17,7 +17,8 @@ function captureWineResearch() {
   const body = document.body?.innerText || '';
   const host = location.hostname.replace(/^www\./, '');
   const path = new URL(location.href).pathname;
-  const blocked = /captcha|cloudflare ray id|access denied|доступ запрещ[её]н|подтвердите,? что вы не робот|verify you are human|sign in to continue|subscribe to read/i.test(body.slice(0, 5000));
+  const blocked = /captcha|cloudflare ray id|access denied|доступ запрещ[её]н|подтвердите,? что вы не робот|verify you are human|sign in to continue|subscribe to read|выполнение проверки безопасности|пожалуйста, подождите, пока ваш запрос будет проверен/i.test(body.slice(0, 5000)) ||
+    /^(?:403\s+)?Forbidden$/i.test(title);
   const relevant = /\b(?:rating|points?|score|vintage|drink(?:ing)?|enjoy|cellar|price|availability|stock|producer|winery|grape|year|tasted|review|read more|punkte|jahrgang|trinkreife|lagerung|preis)\b|рейтинг|балл|оценк|урожа|винтаж|хранени|употреб|потенциал|цен[аы]|наличи|винотек|поставщик|санкт.петербург|объем|объём|производител|сорт|дегустац/i;
   const lines = body.split(/\n+/).map(x => x.trim()).filter(Boolean);
   const excerpts = [];
@@ -44,6 +45,7 @@ function captureWineResearch() {
     'amwine.ru': /^\/catalog\/(?:product\/[^/]+|vino\/[^/]+_[^/]+)\/?$/,
     'winelab.ru': /^\/(?:catalog\/)?product\/[^/]+\/?$/,
     'joia.ru': /^\/product\/[^/]+\/?$/,
+    'joiastore.ru': /^\/product\/[^/]+\/?$/,
     'sabonis.ru': /^\/productDetail\/[^/]+\/?$/i,
     'vinissimo.biz': /^\/catalog\/wine\/[^/]+-\d+\/?$/,
     'vinous.com': /^\/wines\/(?!lists(?:\/|$))[^/]+(?:\/\d{4})?\/?$/,
@@ -84,6 +86,7 @@ function captureWineResearch() {
       (host === 'jamessuckling.com' && path.startsWith('/wine-tasting-reports/')) ||
       (host === 'content.robertparker.com' && path.startsWith('/best-wines-2019-mark-squires')) ||
       (host === 'timatkin.com' && path.startsWith('/score-ranges/')) ||
+      (host === 'billing.vinous.com' && path.startsWith('/articles/vinous-top-100-wines-of-')) ||
       (host === 'iwsc.net' && path.startsWith('/news/wine/results-revealed-iwsc-judging-in-conegliano-valdobbiadene')) ||
       (host === 'decanter.com' && path.includes('/top-20-value-golds-best-wines-under-15-from-dwwa-2024-531852')) ||
       (host === 'wineandspiritsmagazine.com' && path.startsWith('/the-short-list/great-rioja-for-under-25')) ||
@@ -106,12 +109,17 @@ function captureWineResearch() {
       put('review', (index >= 0 ? lines.slice(index).join('\n') : body)
         .split(/\n(?:Related Articles|You may also like)\b/i)[0], 32000);
     } else if (host === 'results.concoursmondial.com' && /^\/(?:fr\/resultats|en\/results)\b/.test(path)) {
-      const awards = lines.flatMap((heading, i) => {
-        if (!/\b(?:19|20)\d{2}$/.test(heading) || heading.length > 160) return [];
-        const medal = (lines[i + 1] || '').match(/(?:Grande )?Médaille d['’](?:Or|Argent)|(?:Grand )?Gold Medal|Silver Medal/i)?.[0];
-        return medal ? [heading + '\t' + medal] : [];
-      });
-      put('medal_leads', awards.join('\n'));
+      const medalLine = (heading, label) => {
+        if (!heading || !/\b(?:19|20)\d{2}$/.test(heading) || heading.length > 160) return '';
+        const medal = label?.match(/(?:Grande )?Médaille d['’](?:Or|Argent)|(?:Grand )?Gold Medal|Silver Medal/i)?.[0];
+        return medal ? heading + '\t' + medal : '';
+      };
+      const cards = [...document.querySelectorAll('.card-product')];
+      const awards = cards.length ? cards.map(card => medalLine(
+        card.querySelector('.card-title')?.innerText?.trim(),
+        card.querySelector('.medal-card img')?.alt
+      )) : lines.map((heading, i) => medalLine(heading, lines[i + 1]));
+      put('medal_leads', [...new Set(awards.filter(Boolean))].join('\n'));
     } else if ((host === 'lucamaroni.it' || host === 'kenswineguide.com') && detailPaths[host].test(path)) {
       put('review', (document.querySelector('main')?.innerText || body).split(/\n(?:Other Vintages|Altre Annate)\b/i)[0]);
       put('document_title', document.title);
@@ -141,6 +149,18 @@ function captureWineResearch() {
       // The city is chosen in the header. Footer city links are irrelevant.
       const city = page.split('\n').map(line => line.trim()).find(line => /^(?:Санкт-Петербург|Москва)$/.test(line));
       put('city', city);
+    } else if (host === 'joiastore.ru' && detailPaths[host].test(path)) {
+      const card = document.querySelector('.product.js__product-card');
+      const city = document.querySelector('header button.header__city')?.innerText?.trim();
+      if (/^(?:Санкт-Петербург|Москва)$/.test(city)) put('city', city);
+      if (card) {
+        const facts = (card.innerText || '').split(/\n[ \t]*(?:Рейтинги и награды|Описание|Рекомендуем)(?=\s|$)/i)[0];
+        put('product', facts);
+        put('offer_price', card.querySelector('.product__price-box')?.innerText);
+        const selected = card.querySelector('input[name="milezim"]:checked + label');
+        if (selected) put('selected_variant', selected.innerText);
+      }
+      put('document_title', document.title);
     } else if (['winelab.ru', 'amwine.ru', 'simplewine.ru', 'ast.wine', 'joia.ru'].includes(host) &&
                detailPaths[host].test(path)) {
       const index = lines.indexOf(title);
