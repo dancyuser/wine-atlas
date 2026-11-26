@@ -1,0 +1,35 @@
+{
+  "observed_on": "2026-11-25",
+  "observations": [
+    {
+      "title": "Chianti Classico Riserva, Banfi", "year": 2023, "source": "James Suckling",
+      "url": "https://www.jamessuckling.com/tasting-notes/346490/Banfi%20Chianti%20Classico%20Riserva%202023",
+      "score": null, "scale": 100, "method": "publisher_page_lookup"
+    },
+    {
+      "title": "Koskil Pinot Noir, Trapiche", "year": 2022, "source": "James Suckling",
+      "url": "https://www.jamessuckling.com/tasting-notes/213121/koskil-pinot-noir-patagonia-2022",
+      "score": null, "scale": 100, "method": "publisher_page_lookup"
+    },
+    {
+      "title": "Nipozzano Chianti Rufina Riserva, Frescobaldi", "year": 2022, "source": "James Suckling",
+      "url": "https://www.jamessuckling.com/tasting-notes/304073/frescobaldi-chianti-rufina-nipozzano-riserva-2022",
+      "score": null, "scale": 100, "method": "publisher_page_lookup"
+    },
+    {
+      "title": "Chateau Beaumont (Haut-Medoc)", "year": 2023, "source": "James Suckling",
+      "url": "https://www.jamessuckling.com/tasting-notes/258315/chateau-beaumont-haut-medoc-2023",
+      "score": null, "scale": 100, "method": "publisher_page_lookup"
+    },
+    {
+      "title": "Podere Montepulciano d'Abruzzo, Umani Ronchi", "year": 2024, "source": "James Suckling",
+      "url": "https://www.jamessuckling.com/tasting-notes/304671/Umani%20Ronchi%20Montepulciano%20d%27Abruzzo%20Podere%202024",
+      "score": null, "scale": 100, "method": "publisher_page_lookup"
+    },
+    {
+      "title": "Clarendelle by Haut-Brion Rouge, Domaine Clarence Dillon", "year": 2018, "source": "James Suckling",
+      "url": "https://www.jamessuckling.com/tasting-notes/145841/Clarendelle%20Bordeaux%202018",
+      "score": null, "scale": 100, "method": "publisher_page_lookup"
+    }
+  ]
+}

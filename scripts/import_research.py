@@ -142,6 +142,9 @@ def parse_review(row, host):
             price, currency, price_kind = ranges.pop(), 'EUR', 'upper_bound'
     elif host not in {'vinous.com'}:
         marks = set(re.findall(r'\b(?:score|rating|points)\s*[:|]?\s*(\d{1,3}(?:\.\d+)?)\s*/\s*(100|20)\b', text, re.I))
+        if host == 'jamessuckling.com' and not marks and urlsplit(row['url']).path.startswith('/tasting-notes/'):
+            marks = {(mark, '100') for mark in re.findall(
+                r'(?mi)^[ \t]*Score(?:[ \t]*:[ \t]*|[ \t]*\n[ \t]*)([1-9]\d|100)[ \t]*$', text)}
         if host == 'decanter.com' and not marks:
             marks = {(value, '100') for value in re.findall(r'(?m)^\s*(\d{2,3})\s*\n\s*Tasted by\s*:', text)}
         if len(marks) == 1:

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Wine Atlas — сбор исследования",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Собирает наблюдения с открытых страниц для последующей проверки.",
   "minimum_chrome_version": "120",
   "permissions": [
@@ -10,7 +10,8 @@
     "storage",
     "downloads",
     "alarms",
-    "offscreen"
+    "offscreen",
+    "unlimitedStorage"
   ],
   "optional_host_permissions": [
     "https://www.wineenthusiast.com/*",

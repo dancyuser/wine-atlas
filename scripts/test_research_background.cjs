@@ -13,6 +13,7 @@ const downloads = [];
 const exported = [];
 const opened = [];
 const shops = Array.from({length: 9}, (_, i) => ['Shop ' + i, 'https://shop' + i + '.test/wine']);
+const busyOnce = new Set();
 let nextId = 1;
 let now = Date.parse('2026-11-24T12:00:00Z');
 
@@ -34,6 +35,7 @@ function worker() {
       tabs: {
         create: async ({url, active}) => {
           assert.equal(active, false);
+          if (busyOnce.delete(url)) throw Error('Tabs cannot be edited right now (user may be dragging a tab).');
           const domain = new URL(url).hostname;
           assert(![...tabs.values()].some(tab => new URL(tab.url).hostname === domain));
           const tab = {url, id: nextId++, status: url.endsWith('/blocked') ? 'loading' : 'complete'};
@@ -154,5 +156,20 @@ const payload = i => JSON.parse(exported[i]);
   await runtime.tick();
   await runtime.tick();
   assert.deepEqual(payload(2).observations.map(row => row.source), ['One','Two']);
+  const retryURL = shops[0][1];
+  busyOnce.add(retryURL);
+  await runtime.send('start', 'retailers');
+  await runtime.tick();
+  assert.equal(tabs.size, 8);
+  await runtime.tick();
+  assert.equal(tabs.size, 0);
+  assert.equal(disk[observationsKey].length, 8);
+  now += 5000;
+  await runtime.tick();
+  await runtime.tick();
+  await runtime.tick();
+  const recovered = payload(3).observations.find(row => row.url === retryURL);
+  assert.equal(recovered.status, 'needs_review');
+  assert.equal(recovered.retries, 1);
   console.log('Parallel research verified: 2 critic domains, 9 stores, cooldown, restart, pause, export and migration');
 })().catch(error => { console.error(error); process.exitCode = 1; });

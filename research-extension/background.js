@@ -1,11 +1,13 @@
 'use strict';
-importScripts('sources.js', 'collector.js');
+importScripts('sources.js', 'collector.js', 'search.js');
 
 const KEY = 'wineAtlasResearchObservationsV1';
 const JOB = 'wineAtlasResearchJobV1';
 const ALARM = 'wineAtlasResearchRecover';
 const COOLDOWN = 5000;
 const LOAD_TIMEOUT = 60000;
+const TAB_RETRY_LIMIT = 3;
+const EXPORT_PART_BYTES = 4000000;
 const LIMITS = {critics: 2, retailers: RETAILERS.size};
 
 let busy = false;
@@ -80,10 +82,40 @@ function selectDetails(links, titles, limit) {
   return ranked.sort((a, b) => b.score - a.score).slice(0, limit).map(row => row.link);
 }
 
+function exportParts(observations) {
+  const encoder = new TextEncoder();
+  const parts = [[]];
+  let bytes = 0;
+  for (const row of observations) {
+    const encoded = JSON.stringify(row);
+    const size = encoder.encode(encoded).length + 1;
+    if (bytes && bytes + size > EXPORT_PART_BYTES) {
+      parts.push([]);
+      bytes = 0;
+    }
+    parts.at(-1).push(encoded);
+    bytes += size;
+  }
+  return parts;
+}
+
+async function downloadPart(payload, filename) {
+  const {url} = await chrome.runtime.sendMessage({target: 'research-export', payload});
+  const id = await chrome.downloads.download({url, filename, saveAs: false});
+  const deadline = Date.now() + 20000;
+  while (Date.now() < deadline) {
+    const [file] = await chrome.downloads.search({id});
+    if (file?.state === 'complete') return;
+    if (file?.state === 'interrupted') throw Error('Скачивание прервано (' + (file.error || 'неизвестная причина') + ').');
+    await new Promise(resolve => setTimeout(resolve, 250));
+  }
+  throw Error('Браузер не подтвердил скачивание JSON.');
+}
+
 async function download() {
   const observations = (await chrome.storage.local.get(KEY))[KEY] || [];
-  const payload = JSON.stringify({version: 1, kind: 'wine_atlas_research_capture', exported_at: new Date().toISOString(), observations});
-  if (new TextEncoder().encode(payload).length > 5000000) throw Error('Выгрузка превышает 5 МБ.');
+  const parts = exportParts(observations);
+  const stamp = Date.now();
   const documentUrl = chrome.runtime.getURL('export.html');
   const open = await chrome.runtime.getContexts({contextTypes: ['OFFSCREEN_DOCUMENT'], documentUrls: [documentUrl]});
   if (!open.length) {
@@ -91,23 +123,25 @@ async function download() {
       justification: 'Create a Blob URL to download the research JSON without the data URL size limit.'});
   }
   try {
-    const {url} = await chrome.runtime.sendMessage({target: 'research-export', payload});
-    const id = await chrome.downloads.download({url, filename: 'wine-atlas-research-' + Date.now() + '.json', saveAs: false});
-    const deadline = Date.now() + 20000;
-    while (Date.now() < deadline) {
-      const [file] = await chrome.downloads.search({id});
-      if (file?.state === 'complete') return;
-      if (file?.state === 'interrupted') throw Error('Скачивание прервано (' + (file.error || 'неизвестная причина') + ').');
-      await new Promise(resolve => setTimeout(resolve, 250));
+    const header = JSON.stringify({version: 1, kind: 'wine_atlas_research_capture', exported_at: new Date(stamp).toISOString()});
+    for (let i = 0; i < parts.length; i++) {
+      const suffix = parts.length > 1 ? '-' + (i + 1) + '-of-' + parts.length : '';
+      const payload = header.slice(0, -1) + ',"observations":[' + parts[i].join(',') + ']}';
+      await downloadPart(payload, 'wine-atlas-research-' + stamp + suffix + '.json');
     }
-    throw Error('Браузер не подтвердил скачивание JSON.');
   } finally {
     await chrome.offscreen.closeDocument();
   }
 }
 
 async function stepDomain(lane, reviewTitles) {
+  if (lane.next_allowed_at > Date.now()) return {changed: false};
   const item = lane.queue[lane.cursor];
+  if (item.searchUnavailable) {
+    lane.cursor++;
+    return {changed: true, row: {url: item.url, requested_url: item.url, source: item.source,
+      status: 'search_unavailable', lookup: item.lookup, observed_at: new Date().toISOString()}};
+  }
   const current = lane.current;
   let result;
   let discovery;
@@ -122,14 +156,40 @@ async function stepDomain(lane, reviewTitles) {
       if (Date.now() - current.started < LOAD_TIMEOUT) return {changed: false};
       throw Error('load_timeout');
     }
-    const [{result: observed}] = await chrome.scripting.executeScript({target: {tabId: tab.id}, func: captureWineResearch});
+    if (item.searchInput && !current.submittedAt) {
+      const [{result: submitted}] = await chrome.scripting.executeScript({target: {tabId: tab.id},
+        func: submitRetailerSearch, args: [item.searchInput, item.lookup.term]});
+      if (!submitted && Date.now() - current.started < 12000) return {changed: false};
+      if (!submitted) throw Error('search_form_not_found');
+      current.submittedAt = Date.now();
+      return {changed: true};
+    }
+    if (current.submittedAt && Date.now() - current.submittedAt < 3000) return {changed: false};
+    const [{result: observed}] = await chrome.scripting.executeScript({target: {tabId: tab.id}, func: captureWineResearch,
+      args: [item.lookup || null]});
     result = observed;
     const origin = new URL(item.url).origin;
     if (new URL(result.url).origin !== origin) throw Error('redirect_to_other_origin');
-    if (item.depth !== undefined && result.status !== 'blocked') {
+    if (item.lookup?.role === 'query' && result.status === 'needs_review') {
       const links = result.links.filter(link => new URL(link.url).origin === origin);
-      const pageLimit = 3;
-      const detailLimit = item.profile === 'rated' ? 25 : item.source === 'Wine Spectator' ? 30 : 10;
+      const candidates = links.filter(link => link.kind === 'detail');
+      const seen = new Set(lane.queue.filter(entry => entry.lookup?.id === item.lookup.id).map(entry => entry.url));
+      const selected = selectDetails(candidates.filter(link => !seen.has(link.url)), [item.lookup.title], 5);
+      const follow = selected.map(link => ({source: item.source, url: link.url, lookup: {...item.lookup, role: 'detail'}}));
+      const next = links.find(link => link.kind === 'next' && !seen.has(link.url));
+      if (next && item.searchPage < 3) {
+        follow.push({source: item.source, url: next.url, lookup: item.lookup, searchPage: item.searchPage + 1});
+      }
+      lane.queue.splice(lane.cursor + 1, 0, ...follow);
+      result.search_coverage = {visible_cards: result.visible_links?.details ?? candidates.length,
+        queued_cards: selected.length, next_found: Boolean(next), search_page: item.searchPage};
+    } else if (item.lookup?.role === 'query' && result.status === 'no_results') {
+      const follow = shorterSearch(item);
+      if (follow) lane.queue.splice(lane.cursor + 1, 0, follow);
+    } else if (item.depth !== undefined && result.status !== 'blocked') {
+      const links = result.links.filter(link => new URL(link.url).origin === origin);
+      const pageLimit = item.source === 'SimpleWine' ? 6 : 3;
+      const detailLimit = item.source === 'SimpleWine' ? 150 : item.source === 'Wine Spectator' ? 30 : 10;
       const seen = new Set(lane.queue.map(row => row.url));
       const detailLinks = links.filter(link => link.kind === 'detail' && !seen.has(link.url));
       const details = selectDetails(detailLinks, RETAILERS.has(item.source) ? reviewTitles : [], detailLimit);
@@ -150,21 +210,40 @@ async function stepDomain(lane, reviewTitles) {
         next_found: Boolean(next), next_queued: Boolean(followNext)};
     }
   } catch (error) {
-    result = {url: item.url, status: 'error', error: String(error.message || error),
+    const reason = String(error.message || error);
+    const tabBusy = /Tabs cannot be edited right now/i.test(reason);
+    const lostTab = /No tab with id|load_timeout/i.test(reason);
+    if ((tabBusy || lostTab) && (lane.retries || 0) < TAB_RETRY_LIMIT) {
+      lane.retries = (lane.retries || 0) + 1;
+      lane.next_allowed_at = Date.now() + COOLDOWN * lane.retries;
+      if (lostTab) lane.current = null;
+      return {changed: true, close: lostTab ? current?.tabId : undefined};
+    }
+    result = {url: item.url, status: 'error', error: reason,
       observed_at: new Date().toISOString(), excerpts: [], links: []};
   }
   lane.cursor++;
   lane.current = null;
   lane.next_allowed_at = Date.now() + COOLDOWN;
   const row = {...result, links: item.depth === undefined ? [] : result.links.slice(0, 20),
-    source: item.source, requested_url: item.url, ...(discovery ? {discovery} : {})};
+    source: item.source, requested_url: item.url, ...(discovery ? {discovery} : {}),
+    ...(item.lookup ? {lookup: item.lookup} : {}),
+    ...(lane.retries ? {retries: lane.retries} : {})};
+  lane.retries = 0;
   return {changed: true, row, close: current?.tabId};
 }
 
 async function closeFinishedTabs(job) {
   if (!job.cleanup.length) return;
-  await Promise.all(job.cleanup.map(id => chrome.tabs.remove(id).catch(() => {})));
-  job.cleanup = [];
+  const remaining = await Promise.all(job.cleanup.map(async id => {
+    try {
+      await chrome.tabs.remove(id);
+    } catch (error) {
+      if (/Tabs cannot be edited right now/i.test(String(error.message || error))) return id;
+    }
+    return null;
+  }));
+  job.cleanup = remaining.filter(id => id !== null);
   await chrome.storage.local.set({[JOB]: job});
 }
 
@@ -172,6 +251,10 @@ async function runRound() {
   const job = await readJob();
   if (!job || job.status !== 'running') return;
   await closeFinishedTabs(job);
+  if (job.cleanup.length) {
+    wake(COOLDOWN);
+    return;
+  }
   const phase = activePhase(job);
   if (!phase) {
     job.status = 'complete';
@@ -257,9 +340,9 @@ chrome.runtime.onMessage.addListener((message, sender, respond) => {
   if (message.target === 'research-export') return false;
   serialize(async () => {
     let job = await readJob();
-    if (message.action === 'start') {
+    if (message.action === 'start' || message.action === 'startMatrix') {
       if (job && job.status !== 'complete') throw Error('Уже есть незавершённое задание; продолжите его.');
-      const queue = [
+      const queue = message.action === 'startMatrix' ? matrixQueue(message.plan, SOURCES, RETAILERS) : [
         ...RECHECK.map(([source, url, profile]) => profile ? {source, url, depth: 0, profile} : {source, url}),
         ...SOURCES.map(([source, url]) => ({source, url, depth: 0}))
       ].filter(item => message.scope === 'critics' ? !RETAILERS.has(item.source) :

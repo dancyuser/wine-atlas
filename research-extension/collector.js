@@ -1,12 +1,15 @@
 /* Runs in an explicitly chosen browser tab. All extracted claims need review. */
 'use strict';
-function captureWineResearch() {
+function captureWineResearch(lookup) {
+  const queryMode = lookup?.role === 'query';
   const cleanUrl = value => {
     try {
       const u = new URL(value, location.href);
       if (u.protocol !== 'https:' || u.username || u.password) return null;
       for (const key of [...u.searchParams.keys()]) {
-        if (!/^(?:page|pagen_\d+)$/i.test(key) || !/^\d+$/.test(u.searchParams.get(key))) u.searchParams.delete(key);
+        const page = /^(?:page|pagen_\d+)$/i.test(key) && /^\d+$/.test(u.searchParams.get(key));
+        const query = queryMode && /^(?:q|query|search|text|searchText)$/i.test(key);
+        if (!page && !query) u.searchParams.delete(key);
       }
       u.hash = '';
       return u.href;
@@ -17,6 +20,10 @@ function captureWineResearch() {
   const body = document.body?.innerText || '';
   const host = location.hostname.replace(/^www\./, '');
   const path = new URL(location.href).pathname;
+  const sucklingNote = host === 'jamessuckling.com' && /^\/tasting-notes\/\d+\//.test(path);
+  const noteTitle = sucklingNote ? [...document.querySelectorAll('h1')].find(
+    heading => /\b(?:19|20)\d{2}\b/.test(heading.innerText))?.innerText : null;
+  const exactTitle = noteTitle?.trim().slice(0, 500) || title;
   const blocked = /captcha|cloudflare ray id|access denied|доступ запрещ[её]н|подтвердите,? что вы не робот|verify you are human|sign in to continue|subscribe to read|выполнение проверки безопасности|пожалуйста, подождите, пока ваш запрос будет проверен/i.test(body.slice(0, 5000)) ||
     /^(?:403\s+)?Forbidden$/i.test(title);
   const relevant = /\b(?:rating|points?|score|vintage|drink(?:ing)?|enjoy|cellar|price|availability|stock|producer|winery|grape|year|tasted|review|read more|punkte|jahrgang|trinkreife|lagerung|preis)\b|рейтинг|балл|оценк|урожа|винтаж|хранени|употреб|потенциал|цен[аы]|наличи|винотек|поставщик|санкт.петербург|объем|объём|производител|сорт|дегустац/i;
@@ -60,13 +67,21 @@ function captureWineResearch() {
       page: Number(route?.[1] || query?.[1] || 1)};
   };
   const here = pagination(new URL(url || location.href));
-  if (!blocked) for (const a of document.querySelectorAll('a[href]')) {
-    const href = cleanUrl(a.href), label = (a.innerText || a.querySelector('img')?.alt || '').trim().slice(0, 200);
+  const linkScope = queryMode ? document.querySelector('main, [role="main"]') || document : document;
+  if (!blocked) for (const a of linkScope.querySelectorAll('a[href]')) {
+    let href = cleanUrl(a.href);
+    const label = (a.innerText || a.querySelector('img')?.alt || a.title || '').trim().slice(0, 200);
     if (!href || !label || href === url || new URL(href).hostname !== location.hostname) continue;
     const p = new URL(href);
     const candidate = pagination(p);
-    const next = a.rel === 'next' || (candidate.section === here.section && candidate.page === here.page + 1);
+    const sameQuery = !queryMode || ['q', 'query', 'search', 'text', 'searchText'].every(
+      key => p.searchParams.get(key) === new URL(url).searchParams.get(key));
+    const next = sameQuery && (a.rel === 'next' || (candidate.section === here.section && candidate.page === here.page + 1));
     const detail = (detailPaths[host] || /\/(?:wines?|weine|wine-reviews|tasting-notes|product(?:s|detail)?|item|detail|reviews?)\/.+/i).test(p.pathname);
+    if (queryMode && !next && detail) {
+      p.search = '';
+      href = p.href;
+    }
     const seen = next ? nextURLs : detailURLs;
     if ((!next && !detail) || seen.has(href)) continue;
     seen.add(href);
@@ -104,6 +119,8 @@ function captureWineResearch() {
     } else if (host === 'botti.no' && path.startsWith('/smaksnotater-')) {
       const facts = lines.filter(line => /^(?:Varenr|Vin|Pris|Poeng)\s*:/i.test(line));
       put('review', facts.join('\n'), 24000);
+    } else if (sucklingNote && noteTitle) {
+      put('review', body.split(/\n(?:Related wines|Similar wines|You may also like)\b/i)[0]);
     } else if (publicArticle) {
       const index = lines.indexOf(title);
       put('review', (index >= 0 ? lines.slice(index).join('\n') : body)
@@ -210,7 +227,17 @@ function captureWineResearch() {
     }
   }
   const hasContent = title || blocks.review || blocks.medal_leads;
-  return {url, observed_at: new Date().toISOString(), title, status: blocked ? 'blocked' : hasContent ? 'needs_review' : 'no_heading',
+  if (queryMode) {
+    const missing = /ничего не найдено|ничего не нашли|не найдено товаров|товары не найдены|нашли 0 товар|найдено 0 товар|no results found|(?:^|\n)[ \t]*0[ \t\u00a0]+товаров(?=\s|$)/mi.test(body);
+    const searchHeading = /результат[ы ]*поиска|найден[оы] по запросу|нашли по запросу|найдено\s+\d+\s+товар|search results/i.test(
+      [title, document.title, (linkScope.innerText || body).slice(0, 4000)].join('\n'));
+    const input = document.querySelector('input[name="q"]');
+    const echoed = input?.value?.trim().toLowerCase() === (lookup.term || lookup.title).toLowerCase();
+    const status = blocked ? 'blocked' : missing ? 'no_results' : searchHeading || (echoed && detailURLs.size) ? 'needs_review' : 'search_unverified';
+    return {url, observed_at: new Date().toISOString(), title, status, links: status === 'needs_review' ? links : [],
+      blocks: {}, excerpts: [], visible_links: {details: detailURLs.size, next: nextURLs.size}};
+  }
+  return {url, observed_at: new Date().toISOString(), title: exactTitle, status: blocked ? 'blocked' : hasContent ? 'needs_review' : 'no_heading',
     excerpts, links, blocks, visible_links: {details: detailURLs.size, next: nextURLs.size}};
 }
 if (typeof module !== 'undefined') module.exports = {captureWineResearch};

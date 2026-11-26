@@ -19,6 +19,11 @@ SIMPLEWINE_CRITICS = {
     'DECANTER': ('Decanter', 'decanter.com', 100),
     'FALSTAFF': ('Falstaff', 'falstaff.com', 100),
     'VINOUS': ('Vinous', 'vinous.com', 100),
+    'AG': ('Vinous (Antonio Galloni)', 'vinous.com', 100),
+    'PENIN': ('Guía Peñín', 'guiapenin.wine', 100),
+    'GP': ('Guía Peñín', 'guiapenin.wine', 100),
+    'TA': ('Tim Atkin', 'timatkin.com', 100),
+    'JR': ('Jancis Robinson', 'jancisrobinson.com', 20),
     'JANCIS ROBINSON': ('Jancis Robinson', 'jancisrobinson.com', 20),
 }
 EXPERT_RATING = re.compile(r'\b(' + '|'.join(map(re.escape, SIMPLEWINE_CRITICS))

@@ -2,6 +2,31 @@
 const assert=require('node:assert/strict');
 const {captureWineResearch}=require('../research-extension/collector.js');
 const {SOURCES}=require('../research-extension/sources.js');
+const {matrixQueue,shorterSearch}=require('../research-extension/search.js');
+const matrix = matrixQueue({kind:'wine_atlas_store_search_plan',version:1,
+  wines:[{id:'0123456789ab',title:'Rioja & Reserva',year:2023}]}, SOURCES,
+new Set(SOURCES.slice(16).map(row=>row[0])));
+assert.equal(matrix.length,9);
+assert(matrix.every(row=>row.lookup.id==='0123456789ab'&&row.lookup.year===2023));
+assert.equal(new URL(matrix.find(row=>row.source==='Vinissimo').url).searchParams.get('q'),'Rioja & Reserva');
+assert.match(matrix.find(row=>row.source==='Sabonis').url,/search\/query=Rioja/);
+const fallback=shorterSearch(matrix.find(row=>row.source==='Vinissimo'));
+assert.equal(fallback,null); // Generic "Rioja Reserva" alone cannot narrow the request.
+const directPlan={kind:'wine_atlas_store_search_plan',version:1,wines:[{
+  id:'0123456789ab', title:'Banfi Chianti Classico Riserva',year:2023,
+  products:{SimpleWine:['https://simplewine.ru/catalog/product/banfi/','https://elsewhere.test/catalog/product/banfi/']},
+  publisher_pages:[
+    {source:'James Suckling',url:'https://www.jamessuckling.com/tasting-notes/123/banfi-2023'},
+    {source:'James Suckling',url:'https://www.jamessuckling.com/account/'},
+  ],
+}]};
+const directQueue=matrixQueue(directPlan,SOURCES,new Set(SOURCES.slice(16).map(row=>row[0])));
+assert.equal(directQueue.filter(item=>item.lookup.role==='detail').length,1);
+assert.equal(directQueue.filter(item=>item.lookup.role==='publisher').length,1);
+const exact=directQueue.find(item=>item.source==='SimpleWine' && item.lookup.role==='query');
+const broader=shorterSearch(exact);
+assert.equal(broader.lookup.term,'Banfi');
+assert.equal(shorterSearch(broader),null);
 assert(SOURCES.some(([name])=>name==='Luding'));
 assert(SOURCES.some(([name])=>name==='Wine Enthusiast'));
 assert.equal(new Set(SOURCES.map(x=>x[0])).size,SOURCES.length);

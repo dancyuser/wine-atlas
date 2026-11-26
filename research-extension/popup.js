@@ -19,6 +19,30 @@ async function startBatch(scope){try{
 document.getElementById('batch').onclick=()=>startBatch('all');
 document.getElementById('critics').onclick=()=>startBatch('critics');
 document.getElementById('retailers').onclick=()=>startBatch('retailers');
+let plan = null;
+const searchButton = document.getElementById('matrix');
+document.getElementById('search-plan').onchange = async event => {
+  searchButton.disabled = true;
+  plan = null;
+  try {
+    const file = event.target.files[0];
+    if (!file || file.size > 1000000) throw Error('Выберите JSON пакета поиска до 1 МБ.');
+    const candidate = JSON.parse(await file.text());
+    const queue = matrixQueue(candidate, SOURCES, RETAILERS);
+    plan = candidate;
+    searchButton.disabled = false;
+    status.textContent = 'Готово к поиску: ' + queue.filter(item => item.lookup.role === 'query').length + ' пар «винтаж × магазин».';
+  } catch (error) { status.textContent = String(error.message || error); }
+};
+searchButton.onclick = async () => {
+  if (!plan) return;
+  try {
+    const origins = [...new Set(matrixQueue(plan, SOURCES, RETAILERS).filter(item => !item.searchUnavailable)
+      .map(item => new URL(item.url).origin + '/*'))];
+    if (!await chrome.permissions.request({origins})) throw Error('Разрешение на магазины не предоставлено.');
+    await message('startMatrix', {plan});
+  } catch (error) { status.textContent = String(error.message || error); }
+};
 document.getElementById('resume').onclick=()=>message('resume').catch(e=>status.textContent=e.message);
 document.getElementById('pause').onclick=()=>message('pause').catch(e=>status.textContent=e.message);
 document.getElementById('export').onclick=()=>message('export').catch(e=>status.textContent=e.message);
