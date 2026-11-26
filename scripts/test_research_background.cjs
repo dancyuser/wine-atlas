@@ -49,7 +49,8 @@ function worker() {
       },
       scripting: {executeScript: async ({target}) => {
         const {url} = tabs.get(target.tabId);
-        const status = url.endsWith('/blocked') ? 'blocked' : 'needs_review';
+        const status = url.endsWith('/blocked') ? 'blocked'
+          : url.endsWith('/age-gate') ? 'age_gate' : 'needs_review';
         return [{result: {url, status, links: [], observed_at: new Date(now).toISOString()}}];
       }},
       downloads: {
@@ -171,5 +172,26 @@ const payload = i => JSON.parse(exported[i]);
   const recovered = payload(3).observations.find(row => row.url === retryURL);
   assert.equal(recovered.status, 'needs_review');
   assert.equal(recovered.retries, 1);
-  console.log('Parallel research verified: 2 critic domains, 9 stores, cooldown, restart, pause, export and migration');
+
+  const entry = (shop, suffix, id) => ({source: `Shop ${shop}`,
+    url: `https://shop${shop}.test/${suffix}`, searchPage: 1,
+    lookup: {id, role: 'query', title: id, term: id}});
+  const lane = queue => ({queue, cursor: 0, current: null, next_allowed_at: 0});
+  const gated = entry(0, 'age-gate', 'vintage-a');
+  const skipped = entry(0, 'skipped', 'vintage-b');
+  const available = entry(1, 'vintage-b', 'vintage-b');
+  disk[stateKey] = {version: 2, status: 'running', cleanup: [], review_titles: [],
+    phases: [{kind: 'retailers', lanes: [lane([gated, skipped]), lane([available])]}]};
+  disk[observationsKey] = [];
+  await runtime.tick();
+  await runtime.tick();
+  await runtime.tick();
+  assert.equal(opened.some(row => row.url === skipped.url), false);
+  const lookupRows = payload(4).observations;
+  assert.equal(lookupRows.find(row => row.url === gated.url).status, 'age_gate');
+  assert.deepEqual(lookupRows.find(row => row.url === skipped.url).lookup,
+    {...skipped.lookup, role: 'skipped'});
+  assert.equal(lookupRows.find(row => row.url === skipped.url).access_reason, 'age_gate');
+  assert.equal(lookupRows.find(row => row.url === available.url).status, 'needs_review');
+  console.log('Parallel research verified: 2 critic domains, 9 stores, cooldown, restart, pause, export, migration and access gates');
 })().catch(error => { console.error(error); process.exitCode = 1; });

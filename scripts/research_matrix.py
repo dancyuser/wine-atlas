@@ -3,7 +3,6 @@
 import argparse
 import hashlib
 import html
-import json
 import re
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -24,6 +23,7 @@ RESULTS = {
     'above_budget': 'Точный винтаж · в наличии · выше 5 000 ₽',
     'out_of_stock': 'Точный винтаж · нет в наличии в Петербурге',
     'exact_unconfirmed': 'Карточка того же винтажа · условия не подтверждены',
+    'previously_verified': 'Цена того же винтажа подтверждена ранее',
     'other_vintage': 'Найден другой винтаж',
     'vintage_unconfirmed': 'Найдено название · винтаж не подтверждён',
     'search_unresolved': 'Поиск выполнен · совпадение не подтверждено',
@@ -31,6 +31,7 @@ RESULTS = {
     'search_no_results': 'Поиск магазина вернул пустую выдачу',
     'search_error': 'Ошибка адресного поиска',
     'search_unavailable': 'Адресный поиск магазина недоступен',
+    'age_gate': 'Сайт запрашивает подтверждение возраста',
     'index_candidates': 'В карте сайта есть похожие карточки',
     'not_in_index': 'В доступной карте сайта нет ссылки с совпавшим названием',
     'index_without_names': 'Карта сайта содержит артикулы · нужен запрос по названию',
@@ -170,14 +171,17 @@ def index_retailers(rows, aliases):
 def retailer_result(wine, store_state, exact_offers, cards, attempts, date, indexed, index_coverage):
     fresh = [row for row in exact_offers if row['date'] == date]
     local = [row for row in fresh if local_stock(row)]
-    primary = min(local or fresh or exact_offers, key=lambda row: row['price'], default=None)
+    primary = min(local or fresh, key=lambda row: row['price'], default=None)
+    earlier = [row for row in exact_offers if row['date'] < date]
+    previous = max(earlier, key=lambda row: (row['date'], -row['price']), default=None)
     exact_cards = [card for card in cards if card['year'] == wine['year']]
-    unknown = [card for card in cards if card['year'] is None]
     current_cards = [card for card in exact_cards if moscow_date(card['observed_at']) == date]
+    current_named = [card for card in cards if moscow_date(card['observed_at']) == date]
     unavailable = bool(current_cards) and all(card['unavailable_in_spb'] for card in current_cards)
     attempts = sorted(attempts, key=lambda row: row['observed_at'])
     search = [{'url': row.get('requested_url') or row.get('url'), 'status': row['status'],
                'role': row['lookup'].get('role'), 'error': row.get('error'),
+               'access_reason': row.get('access_reason'),
                'query_text': row['lookup'].get('term'),
                'observed_at': row['observed_at'], 'observed_url': row.get('url'), 'title': row.get('title'),
                'search_coverage': row.get('search_coverage')} for row in attempts]
@@ -185,17 +189,28 @@ def retailer_result(wine, store_state, exact_offers, cards, attempts, date, inde
         status = 'matched' if primary['price'] <= 5000 else 'above_budget'
     elif unavailable:
         status = 'out_of_stock'
-    elif primary or exact_cards:
+    elif primary or current_cards:
         status = 'exact_unconfirmed'
-    elif unknown:
+    elif any(card['year'] is None for card in current_named):
+        status = 'vintage_unconfirmed'
+    elif current_named:
+        status = 'other_vintage'
+    elif previous:
+        status = 'previously_verified'
+    elif exact_cards:
+        status = 'exact_unconfirmed'
+    elif any(card['year'] is None for card in cards):
         status = 'vintage_unconfirmed'
     elif cards:
         status = 'other_vintage'
     elif search:
-        queries = [item['status'] for item in search if item['role'] == 'query']
-        outcomes = {item['status'] for item in search}
+        relevant = [item for item in search if moscow_date(item['observed_at']) == date] or search
+        queries = [item['status'] for item in relevant if item['role'] == 'query']
+        outcomes = {item['access_reason'] or item['status'] for item in relevant}
         if 'needs_review' in outcomes:
             status = 'search_unresolved'
+        elif 'age_gate' in outcomes:
+            status = 'age_gate'
         elif outcomes <= {'blocked', 'search_unavailable'}:
             status = 'search_unavailable'
         elif queries and set(queries) == {'no_results'}:
@@ -213,14 +228,16 @@ def retailer_result(wine, store_state, exact_offers, cards, attempts, date, inde
     else:
         status = 'not_checked'
 
-    partial = max(exact_cards, key=lambda card: card['observed_at'], default=None)
-    price = (primary or partial or {}).get('price')
+    partial = max(current_cards or exact_cards, key=lambda card: observation_time(card['observed_at']), default=None)
+    displayed = primary or (previous if status == 'previously_verified' else None) or partial
+    price = (displayed or {}).get('price')
+    price_date = (displayed.get('date') or moscow_date(displayed['observed_at'])) if displayed and price is not None else None
     return {'status': status, 'price_rub': price, 'price_within_budget': 0 < price <= 5000 if price is not None else None,
-            'volume_l': primary['volume_l'] if primary else None,
+            'volume_l': (displayed or {}).get('volume_l'),
             'spb_stock': True if local else False if unavailable else None,
             'availability': primary['stock'] if primary and primary in fresh else 'out_of_stock' if unavailable else None,
-            'url': (primary or partial or {}).get('url'), 'price_date': primary['date'] if primary else
-            moscow_date(partial['observed_at']) if partial else None,
+            'url': (displayed or {}).get('url'), 'price_date': price_date,
+            'previous_offer': {k: v for k, v in previous.items() if k != 'text'} if previous else None,
             'cards': cards, 'offers': [{k: v for k, v in row.items() if k != 'text'} for row in exact_offers],
             'targeted_checks': search, 'indexed_product_urls': indexed}
 
@@ -230,8 +247,13 @@ def build_matrix(bundles, aliases, rates, date, archive=(), index=None):
     rows = [row for bundle in bundles for row in capture_rows(bundle)]
     wines = collect_wines(bundles, aliases, archive)
     _, indexed_offers, _, _ = index_captures(rows, aliases, date)
+    previous_rows = [row for row in rows if retailer_host(row) in RETAILERS and moscow_date(row['observed_at']) < date]
+    _, previous_offers, _, _ = index_captures(previous_rows, aliases, date)
     offers = defaultdict(list)
-    for row in (row for group in indexed_offers.values() for row in group):
+    candidates = deduplicate((row for collection in (previous_offers, indexed_offers)
+                              for group in collection.values() for row in group),
+                             ('source', 'url', 'year', 'date'))
+    for row in candidates:
         offers[matrix_key(aliases.get(row['url'], row['title']), row['year']), row['source']].append(row)
     coverage, cards, attempts = index_retailers(rows, aliases)
     candidate_links, named_counts = product_candidates(wines, index) if index else ({}, {})
@@ -297,7 +319,8 @@ def render_html(matrix):
         if result['price_date'] and result['price_date'] != matrix['checked_on']:
             price += ' · ' + result['price_date']
         if status == 'other_vintage':
-            description += ' · ' + ', '.join(str(y) for y in sorted({card['year'] for card in result['cards']}))
+            years = sorted({card['year'] for card in result['cards'] if card['year'] is not None})
+            description += ' · ' + ', '.join(map(str, years))
         reference = result['url'] or next((card['url'] for card in result['cards']), None)
         if not reference:
             reference = next((item['observed_url'] or item['url'] for item in result['targeted_checks']
@@ -312,9 +335,24 @@ def render_html(matrix):
                 details = '<br><small>' + ' · '.join(link(item['observed_url'] or item['url'],
                     item['title'] or 'Карточка') for item in targets[:5]) + '</small>'
             details = f'<br><small>Страниц поиска: {queries}. Карточек: {len(targets)}.</small>' + details
+            current = [item for item in checks if moscow_date(item['observed_at']) == matrix['checked_on']]
+            blocked = any(item['status'] == 'blocked' or item['access_reason'] == 'blocked' for item in current)
+            gated = any(item['status'] == 'age_gate' or item['access_reason'] == 'age_gate' for item in current)
+            if blocked or gated:
+                reason = 'подтверждение возраста' if gated else 'сайт ограничил доступ'
+                errors = sorted({item['error'] for item in current if item['status'] == 'blocked' and item['error']})
+                if errors:
+                    reason += ' · ' + ', '.join(errors)
+                details += '<br><small>В текущем обходе · ' + escape(reason) + '</small>'
+            skipped = sum(item['role'] == 'skipped' for item in current)
+            if skipped:
+                details += f'<br><small>Пропущено после ограничения: {skipped}.</small>'
         if result['indexed_product_urls'] and status != 'matched':
             details += '<br><small>Карта сайта: ' + ' · '.join(link(url, str(i))
                 for i, url in enumerate(result['indexed_product_urls'], 1)) + '</small>'
+        if result['previous_offer'] and status not in ('matched', 'previously_verified'):
+            earlier = result['previous_offer']
+            details += '<br><small>' + link(earlier['url'], f"Ранее: {earlier['price']:g} ₽ · {earlier['date']}") + '</small>'
         return f'<td class="{status}">{link(reference, description + price)}{details}</td>'
 
     def row(wine):
@@ -342,6 +380,14 @@ def render_html(matrix):
     maps = matrix['public_index_coverage']
     mapped = sum(info['products'] > 0 for info in maps.values())
     urls = sum(info['products'] for info in maps.values())
+    current_checks = []
+    for store in matrix['stores']:
+        checks = [check for wine in matrix['wines'] for check in wine['stores'][store]['targeted_checks']
+                  if moscow_date(check['observed_at']) == matrix['checked_on']]
+        pages = sum(check['role'] == 'query' for check in checks)
+        products = sum(check['role'] == 'detail' for check in checks)
+        skipped = sum(check['role'] == 'skipped' for check in checks)
+        current_checks.append(f'<li>{escape(store)} · страниц поиска {pages} · проверок карточек {products} · пропущено {skipped}</li>')
     headers = ['Вино', 'Урожай', 'Оценки и источники', 'Пить по / цена за рубежом', *matrix['stores']]
     return f"""<!doctype html>
 <html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -352,12 +398,13 @@ table{{border-collapse:collapse;background:white;width:100%;font-size:13px}}
 td,th{{padding:8px;vertical-align:top;text-align:left;border:1px solid #ddd;min-width:94px}}
 th:first-child{{position:sticky;left:0;background:#f5edf0;min-width:170px}}
 thead th{{background:#f5edf0}}.scroll{{overflow-x:auto}}a{{color:#702544}}
-.matched{{background:#e1f2e5}}.above_budget,.exact_unconfirmed,.vintage_unconfirmed{{background:#fff1d6}}
-.store_unavailable,.search_error,.search_unavailable,.out_of_stock{{background:#fae6e7}}
+.matched{{background:#e1f2e5}}.above_budget,.exact_unconfirmed,.vintage_unconfirmed,.previously_verified{{background:#fff1d6}}
+.store_unavailable,.search_error,.search_unavailable,.out_of_stock,.age_gate{{background:#fae6e7}}
 </style>
 <h1>Wine Atlas — матрица поиска</h1>
 <p>{escape(matrix['checked_on'])} · {count} винтажей · {confirmed} с баллом первоисточника · {count * len(matrix['stores'])} пар «вино × магазин».</p>
 <p>Карты сайтов: {mapped} магазинов, {urls:,} товарных адресов. Адресные запросы: {queried} пар. Все условия каталога выполнили {qualified} винтажа.</p>
+<details><summary>Попытки доступа по магазинам за {escape(matrix['checked_on'])}</summary><ul>{''.join(current_checks)}</ul></details>
 <p>Совпадение в карте сайта означает похожий адрес карточки. Цена, наличие и винтаж подтверждаются при чтении товара. Пустая выдача относится к конкретному запросу. Оценки с сайта магазина отмечены отдельно.</p>
 <p><label for="filter">Фильтр по вину, году или критику</label> <input id="filter" type="search">
 <label><input id="qualified" type="checkbox"> Только прошедшие все условия</label></p>

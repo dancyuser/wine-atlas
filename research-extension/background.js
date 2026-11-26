@@ -134,6 +134,22 @@ async function download() {
   }
 }
 
+function skipUnavailableLane(lane, row) {
+  if (!row.lookup || !RETAILERS.has(row.source)) return [];
+  lane.consecutiveBlocks = row.status === 'blocked' ? (lane.consecutiveBlocks || 0) + 1 : 0;
+  if (row.status !== 'age_gate' && lane.consecutiveBlocks < 3) return [];
+  const pending = lane.queue.slice(lane.cursor);
+  lane.cursor = lane.queue.length;
+  const skipped = new Map();
+  for (const entry of pending) {
+    if (!entry.lookup || entry.lookup.id === row.lookup.id || skipped.has(entry.lookup.id)) continue;
+    skipped.set(entry.lookup.id, {url: entry.url, requested_url: entry.url, source: entry.source,
+      status: 'skipped', access_reason: row.status, observed_at: row.observed_at,
+      lookup: {...entry.lookup, role: 'skipped'}});
+  }
+  return [...skipped.values()];
+}
+
 async function stepDomain(lane, reviewTitles) {
   if (lane.next_allowed_at > Date.now()) return {changed: false};
   const item = lane.queue[lane.cursor];
@@ -230,7 +246,8 @@ async function stepDomain(lane, reviewTitles) {
     ...(item.lookup ? {lookup: item.lookup} : {}),
     ...(lane.retries ? {retries: lane.retries} : {})};
   lane.retries = 0;
-  return {changed: true, row, close: current?.tabId};
+  const skipped = skipUnavailableLane(lane, row);
+  return {changed: true, row, skipped, close: current?.tabId};
 }
 
 async function closeFinishedTabs(job) {
@@ -273,7 +290,7 @@ async function runRound() {
   const selected = [...open, ...ready.slice(0, Math.max(0, LIMITS[phase.kind] - open.length))];
   const steps = await Promise.all(selected.map(lane => stepDomain(lane, job.review_titles)));
   if (steps.some(step => step.changed)) {
-    const rows = steps.flatMap(step => step.row ? [step.row] : []);
+    const rows = steps.flatMap(step => step.row ? [step.row, ...(step.skipped || [])] : []);
     const titles = rows.filter(row => !RETAILERS.has(row.source) && row.blocks?.review && row.title).map(row => row.title);
     job.review_titles = [...new Set([...job.review_titles, ...titles])].slice(-250);
     job.cleanup = steps.flatMap(step => step.close === undefined ? [] : [step.close]);

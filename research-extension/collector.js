@@ -233,7 +233,9 @@ function captureWineResearch(lookup) {
       [title, document.title, (linkScope.innerText || body).slice(0, 4000)].join('\n'));
     const input = document.querySelector('input[name="q"]');
     const echoed = input?.value?.trim().toLowerCase() === (lookup.term || lookup.title).toLowerCase();
-    const status = blocked ? 'blocked' : missing ? 'no_results' : searchHeading || (echoed && detailURLs.size) ? 'needs_review' : 'search_unverified';
+    const ageGate = host === 'winelab.ru' && /Вам есть 18 лет\?/i.test(body) && /Да, мне есть 18 лет/i.test(body);
+    const status = blocked ? 'blocked' : missing ? 'no_results' : searchHeading || (echoed && detailURLs.size) ? 'needs_review' :
+      ageGate ? 'age_gate' : 'search_unverified';
     return {url, observed_at: new Date().toISOString(), title, status, links: status === 'needs_review' ? links : [],
       blocks: {}, excerpts: [], visible_links: {details: detailURLs.size, next: nextURLs.size}};
   }

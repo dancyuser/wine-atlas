@@ -41,6 +41,11 @@ row=captureWineResearch();assert.equal(row.status,'blocked');assert.equal(row.ex
 document.body.innerText='Пожалуйста, подождите, пока ваш запрос будет проверен…';
 assert.equal(captureWineResearch().status,'blocked');
 
+global.location={href:'https://www.winelab.ru/search?q=Banfi',hostname:'www.winelab.ru'};
+global.document={title:'Поиск banfi',body:{innerText:'Вам есть 18 лет?\nДа, мне есть 18 лет'},
+  querySelector:()=>null,querySelectorAll:()=>[]};
+assert.equal(captureWineResearch({role:'query',title:'Banfi'}).status,'age_gate');
+
 const link=(href,innerText)=>({href,innerText,querySelector:()=>null});
 global.location={href:'https://spb.winestyle.ru/wine/',hostname:'spb.winestyle.ru'};
 global.document={body:{innerText:'Каталог'},querySelector:()=>({innerText:'Вино'}),querySelectorAll:()=>[

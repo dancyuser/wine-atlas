@@ -19,6 +19,36 @@ def row(url, title, blocks=None, **fields):
 
 
 class MatrixTests(unittest.TestCase):
+    def test_blocked_refresh_preserves_dated_offer_without_confirming_today(self):
+        url = 'https://simplewine.ru/catalog/product/test/'
+        title = 'Вино Test Cellars 2023, 0.75л'
+        old = row(url, title, {'city': 'Санкт-Петербург',
+                              'product': '2023 г. — 3 210 ₽\nв наличии\nЗабрать сегодня из 2 винотек',
+                              'critic_hints': 'JS 90.0'})
+        blocked = row(url, '')
+        blocked.update(status='blocked', observed_at='2026-11-26T07:00:00Z')
+        offer = build_matrix([capture(old, blocked)], {}, {}, '2026-11-26')['wines'][0]['stores']['SimpleWine']
+        self.assertEqual(offer['status'], 'previously_verified')
+        self.assertEqual(offer['price_rub'], 3210)
+        self.assertEqual(offer['price_date'], DATE)
+        self.assertIsNone(offer['spb_stock'])
+        self.assertEqual(offer['previous_offer']['stock'], 'in_stock')
+
+    def test_current_exact_card_takes_precedence_over_yesterdays_price(self):
+        url = 'https://simplewine.ru/catalog/product/test/'
+        title = 'Вино Test Cellars 2023, 0.75л'
+        old = row(url, title, {'city': 'Санкт-Петербург',
+                              'product': '2023 г. — 3 210 ₽\nв наличии\nЗабрать сегодня из 2 винотек',
+                              'critic_hints': 'JS 90.0'})
+        today = row(url, title, {'city': 'Санкт-Петербург', 'product': '2023 г. — 5 210 ₽\nнет в наличии'})
+        today['observed_at'] = '2026-11-26T07:00:00Z'
+        offer = build_matrix([capture(old, today)], {}, {}, '2026-11-26')['wines'][0]['stores']['SimpleWine']
+        self.assertEqual(offer['status'], 'out_of_stock')
+        self.assertEqual(offer['price_rub'], 5210)
+        self.assertFalse(offer['price_within_budget'])
+        self.assertFalse(offer['spb_stock'])
+        self.assertEqual(offer['previous_offer']['price'], 3210)
+
     def test_publisher_note_only_uses_explicit_score(self):
         base = row('https://www.jamessuckling.com/tasting-notes/1/example-2023', 'Domaine Example 2023')
         base['blocks']['review'] = 'Score\nAvg Price (ex-tax) $ 23\nDomaine Example 2023'
