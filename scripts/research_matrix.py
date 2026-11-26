@@ -76,7 +76,8 @@ def collect_wines(bundles, aliases, archive=()):
 
     wines = []
     for key in evidence.keys() | claims.keys():
-        notes = deduplicate(evidence[key], ('source', 'url', 'year', 'score', 'amount', 'end'))
+        notes = deduplicate(evidence[key], ('source', 'url', 'year', 'score', 'scale', 'amount',
+                                            'currency', 'price_kind', 'start', 'end', 'method'))
         published = [row for row in notes if qualifying(row)]
         hints = deduplicate(claims[key], ('retailer_url', 'year'))
         if not published and not hints:
@@ -86,7 +87,8 @@ def collect_wines(bundles, aliases, archive=()):
         title = re.sub(r'^(?:Игристое )?Вино\s+', '', title, flags=re.I)
         title = ' '.join(re.sub(rf'\b{key[1]}\b', '', label_without_volume(title)).split()).strip(' ,–-')
         wines.append({'id': candidate_id(key), 'title': title, 'year': key[1], 'key': key,
-                      'published_ratings': published, 'retailer_claims': hints, 'evidence': notes,
+                      'published_ratings': deduplicate(published, ('source', 'url', 'score', 'scale')),
+                      'retailer_claims': hints, 'evidence': notes,
                       'publisher_pages': [{'source': row['source'], 'url': row['url']} for row in notes
                                           if row.get('method') == 'publisher_page_lookup']})
     return sorted(wines, key=lambda wine: (not wine['published_ratings'], wine['title'].casefold(), wine['year']))
